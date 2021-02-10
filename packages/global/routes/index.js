@@ -1,4 +1,3 @@
-const equipmentExchange = require('./equipment-exchange');
 const identityX = require('./identity-x');
 const printContent = require('./print-content');
 const publicFiles = require('./public-files');
@@ -8,9 +7,6 @@ const staticPage = require('./static-page');
 const taxonomy = require('./taxonomy');
 
 module.exports = (app) => {
-  // EquipmentExchange
-  equipmentExchange(app);
-
   // IdentityX (user routing and app context)
   identityX(app);
 
