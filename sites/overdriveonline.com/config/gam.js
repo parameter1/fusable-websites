@@ -45,6 +45,7 @@ const aliases = [
   'technology',
   'reader-rigs',
   'custom-rigs',
+  'channel-19',
 ];
 
 aliases.forEach(alias => config.setAliasAdUnits(alias, [
