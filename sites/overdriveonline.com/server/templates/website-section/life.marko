@@ -1,7 +1,7 @@
 $ const { id, alias, name, pageNode } = input;
 
-$ const blockName = "pib-page";
-$ const cardBlock = "pib-page-card";
+$ const blockName = "life-page";
+$ const cardBlock = "life-page-card";
 
 $ const { pagination: p } = out.global;
 $ const perPage = 18;
@@ -34,58 +34,43 @@ $ const manualSrc = "pib-issue-cover.png?auto=format&w=120&fit=crop";
           ${value}
         </marko-web-website-section-name>
         <marko-web-element block-name=blockName name="description" tag="h2">
-          The leading business training program for owner-operators.
+          News and stories from on and off the road
         </marko-web-element>
-        <marko-web-element block-name=blockName name="partners">
-          <marko-web-element block-name=blockName name="partners-label">
-            In partnership with
-          </marko-web-element>
-           <marko-web-element block-name=blockName name="header-img">
-            <marko-web-img
-              class=`${blockName}__partner-logo-1`
-              src=`${logoRoot}/${logoSrcs[0]}`
-              srcset=[`${logoRoot}/${logoSrcs[0]}&dpr=2 2x`]
-              alt="TBS Factoring Service Logo"
-            />
-            <marko-web-img
-              class=`${blockName}__partner-logo-2`
-              src=`${logoRoot}/${logoSrcs[1]}`
-              srcset=[`${logoRoot}/${logoSrcs[1]}&dpr=2 2x`]
-              alt="TBS Logo"
-            />
-          </marko-web-element>
-        </marko-web-element>
-      </marko-web-element>
-    </marko-web-block>
-
-    <if(p.page === 1)>
+          <if(p.page === 1)>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <marko-web-block name=cardBlock>
             <marko-web-element block-name=cardBlock name="title">
-              Welcome
+              Don't Worry
             </marko-web-element>
+            <marko-web-element block-name=blockName name="header-img">
+            <marko-web-img
+            class=`${blockName}__img`
+              src='https://img.overdriveonline.com/files/base/randallreilly/all/image/2018/05/ovd.prepass-weigh-station-2018-05-16-12-34.png?w=500'
+              alt="Weigh Station"
+            />
+          </marko-web-element>
             <marko-web-element block-name=cardBlock name="description">
-              You won’t find a more in-depth source of information for running an owner-operator business than our annually updated manual. It’s produced by Overdrive and owner-operator business services provider ATBS, and sponsored by TBS Factoring Service.
+              Keeping up with the world while on the road is hard, let Overdrive catch you up with news and stories from on and off the road.
             </marko-web-element>
           </marko-web-block>
         </div>
-        <div class="col-md-6 mt-md-0 mt-block">
-          <global-ovd-pib-manual-promo-block />
-        </div>
       </div>
-    </if>
+          </if>
+        </marko-web-element>
+    </marko-web-block>
   </@section>
+
   <@section>
     <if(p.page === 1)>
-      <global-pib-featured-block alias="partners-in-business" />
+      <global-pib-featured-block alias="life" limit=2/>
     </if>
   </@section>
 
   <@section|{ blockName, section }|>
     <marko-web-element block-name=blockName name="website-section-name">
-      <if(p.page > 1)>Latest Stories: Page ${p.page}</if>
-      <else>Latest Stories</else>
+      <if(p.page > 1)>Latest: Page ${p.page}</if>
+      <else>Latest</else>
     </marko-web-element>
 
     <global-section-feed-block alias=alias>
