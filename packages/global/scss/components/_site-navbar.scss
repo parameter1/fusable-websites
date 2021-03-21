@@ -1,5 +1,6 @@
 .site-navbar {
   $self: &;
+  position: fixed;
 
   &__container {
     max-width: $marko-web-document-container-max-width;
