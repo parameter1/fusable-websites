@@ -1,0 +1,45 @@
+$ const { id, alias, name, pageNode } = input;
+
+$ const blockName = "custom-rigs-page";
+$ const cardBlock = "custom-rigs-page-card";
+
+$ const { pagination: p } = out.global;
+$ const perPage = 18;
+
+$ const logoRoot = "https://img.overdriveonline.com/files/base/randallreilly/all/image/static";
+$ const logoSrcs = [
+  "pib-tbs-logo.png?auto=format&w=88&fit=crop",
+  "pib-atbs-logo.png?auto=format&w=148&fit=crop",
+];
+$ const manualSrc = "pib-issue-cover.png?auto=format&w=120&fit=crop";
+
+<global-website-section-default-layout
+  id=id
+  alias=alias
+  name=name
+  page-node=pageNode
+>
+  <@section|{ aliases }| modifiers=["first"]>
+    <global-gam-define-display-ad
+      name="leaderboard"
+      position="section_page"
+      aliases=aliases
+      modifiers=["inter-block"]
+    />
+  </@section>
+  <@section|{ section }|>
+    <marko-web-block name=blockName>
+      <marko-web-element block-name=blockName name="header">
+        <marko-web-website-section-name|{ value }| tag="h1" block-name=blockName obj=section>
+          ${value}
+        </marko-web-website-section-name>
+        </marko-web-element>
+    </marko-web-block>
+  </@section>
+
+  <@section>
+      <global-ovd-custom-rigs-feed-block alias="custom-rigs"/>
+  </@section>
+  <marko-web-load-more>
+  </marko-web-load-more>
+</global-website-section-default-layout>

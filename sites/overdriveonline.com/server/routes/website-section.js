@@ -1,5 +1,6 @@
 const { withWebsiteSection } = require('@parameter1/base-cms-marko-web/middleware');
 const queryFragment = require('@randall-reilly/package-global/graphql/fragments/website-section-page');
+const customRigs = require('../templates/website-section/custom-rigs');
 const life = require('../templates/website-section/life');
 const partnersInBusiness = require('../templates/website-section/partners-in-business');
 const products = require('../templates/website-section/products');
@@ -23,6 +24,10 @@ module.exports = (app) => {
   }));
   app.get('/:alias(life)', withWebsiteSection({
     template: life,
+    queryFragment,
+  }));
+  app.get('/:alias(custom-rigs)', withWebsiteSection({
+    template: customRigs,
     queryFragment,
   }));
   app.get('/:alias([a-z0-9-/]+)', withWebsiteSection({

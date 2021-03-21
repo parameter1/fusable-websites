@@ -112,5 +112,12 @@
   },
   "<global-top-stories-menu-block>": {
     "template": "./top-stories-menu.marko"
+  },
+  "<global-ovd-custom-rigs-feed-block>": {
+    "template": "./ovd-custom-rigs-feed.marko",
+    "<query-params>": {},
+    "<node>": {},
+    "@alias": "string",
+    "@count-only": "boolean"
   }
 }

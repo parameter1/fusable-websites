@@ -1,0 +1,32 @@
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
+import queryFragment from "../../graphql/fragments/section-feed-block";
+
+$ const queryParams = {
+  ...input.queryParams,
+  sectionAlias: input.alias,
+  queryFragment,
+};
+
+$ const blockName = "ovd-custom-rigs-feed";
+
+
+<marko-web-query|{ nodes }| name="website-scheduled-content" params=queryParams>
+  <default-theme-card-deck-flow cols=3 nodes=nodes modifiers=[blockName]>
+    <@slot|{ node }|>
+      <global-content-node
+        image-position="top"
+        card=true
+        flush=true
+        full-height=true
+        with-teaser=true
+        with-dates=true
+        modifiers=[blockName]
+        node=node
+      >
+        <@image ar="3:2" fluid=true />
+      </global-content-node>
+    </@slot>
+  </default-theme-card-deck-flow>
+  <marko-web-load-more-trigger>
+  </marko-web-load-more-trigger>
+</marko-web-query>
