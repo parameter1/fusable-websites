@@ -5,7 +5,7 @@ const topics = {
     { href: '/better-roads', label: 'Better Roads' },
     { href: '/big-iron-dealer', label: 'Big Iron Dealer' },
     { href: '/technology', label: 'Technology' },
-    { href: '/workforce', label: 'Safety' },
+    { href: '/workforce/Safety', label: 'Safety' },
   ],
   expanded: [
   ],
