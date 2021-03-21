@@ -1,4 +1,5 @@
 .top-stories {
+  margin-top: 100px;
   &__header {
     margin-bottom: 24px;
     @include media-breakpoint-up(md) {
