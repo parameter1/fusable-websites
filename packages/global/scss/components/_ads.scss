@@ -186,11 +186,10 @@
     top: 0;
   }
 
-  $lr: calc((100vw - #{$marko-web-document-container-max-width} - (#{$width} * 2)) / 2);
   &__left {
-    left: $lr;
+    left: 0;
   }
   &__right {
-    right: $lr;
+    right: 0;
   }
 }
