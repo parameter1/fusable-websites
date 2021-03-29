@@ -165,16 +165,15 @@
 .wallpaper-ad {
   $width: 300px;
 
-  position: absolute;
-  right: -#{$width};
-  left: -#{$width};
+  position: fixed;
+  right: 0;
+  left: 0;
 
   display: none;
 
   @media (min-width: calc(#{$marko-web-document-container-max-width} + (#{$width} * 2))) {
-    $position: calc((100vw - #{$marko-web-document-container-max-width}) / -2);
-    right: $position;
-    left: $position;
+    right: 0;
+    left: 0;
   }
 
   @media (min-width: 1400px) {
@@ -186,10 +185,12 @@
     position: absolute;
     top: 0;
   }
+
+  $lr: calc((100vw - #{$marko-web-document-container-max-width} - (#{$width} * 2)) / 2);
   &__left {
-    left: 0;
+    left: $lr;
   }
   &__right {
-    right: 0;
+    right: $lr;
   }
 }
