@@ -171,11 +171,6 @@
 
   display: none;
 
-  @media (min-width: calc(#{$marko-web-document-container-max-width} + (#{$width} * 2))) {
-    right: 0;
-    left: 0;
-  }
-
   @media (min-width: 1400px) {
     display: block;
   }
@@ -191,5 +186,15 @@
   }
   &__right {
     right: 0;
+  }
+
+  @media (max-width: calc(#{$marko-web-document-container-max-width} + (#{$width} * 2))) {
+    $lr: calc((100vw - #{$marko-web-document-container-max-width} - (#{$width} * 2)) / 2);
+    &__left {
+      left: $lr;
+    }
+    &__right {
+      right: $lr;
+    }
   }
 }
