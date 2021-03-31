@@ -5,7 +5,7 @@ $ const content = convert(story);
 $ const { id, type } = content;
 $ const { primarySection } = content;
 
-<global-content-page id=id type=type>
+<global-default-page title=story.title description=story.teaser>
   <@head>
     <!-- <marko-web-gtm-content-context|{ context }| id=id>
       <marko-web-gtm-push data=context />
@@ -47,4 +47,4 @@ $ const { primarySection } = content;
 
     </marko-web-page-wrapper>
   </@page>
-</global-content-page>
+</global-default-page>
