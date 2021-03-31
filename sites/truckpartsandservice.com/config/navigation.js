@@ -13,7 +13,7 @@ const topics = {
     { href: '/technology', label: 'Technology' },
     { href: '/regulations', label: 'Regulations' },
     { href: '/distributor-of-the-year-award', label: 'Distributor of the Year' },
-    { href: '/successful-dealer-award', label: 'Successful Dealer Award' },
+    { href: '/successful-dealer-award-nomination', label: 'Successful Dealer Award' },
   ],
   secondary: [
   ],
