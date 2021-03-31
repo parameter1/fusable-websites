@@ -1,0 +1,50 @@
+import convert from "@parameter1/base-cms-marko-web-native-x/utils/convert-story-to-content";
+
+$ const { story } = input;
+$ const content = convert(story);
+$ const { id, type } = content;
+$ const { primarySection } = content;
+
+<global-content-page id=id type=type>
+  <@head>
+    <!-- <marko-web-gtm-content-context|{ context }| id=id>
+      <marko-web-gtm-push data=context />
+    </marko-web-gtm-content-context>
+    <marko-web-resolve-page|{ data: content }| node=pageNode>
+      <marko-web-p1-events-track-content node=content />
+    </marko-web-resolve-page> -->
+    <script>console.log('include gtm/trakcing');</script>
+  </@head>
+  <@page>
+    <marko-web-page-wrapper>
+      <@section modifiers=["first-sm"]>
+        <span class="d-none"></span>
+      </@section>
+      <@section|{ blockName }| modifiers=["content-header"]>
+        <div class="content-page-header">
+          <default-theme-breadcrumbs modifiers=["content-page"]>
+            <@item>
+              ${primarySection.name}
+            </@item>
+          </default-theme-breadcrumbs>
+          <marko-web-content-name tag="h1" block-name=blockName obj=content />
+          <presented-by advertiser=story.advertiser />
+        </div>
+      </@section>
+
+      <@section>
+        <div class="content-page-body">
+          <default-theme-page-contents|{ blockName }|>
+            <global-primary-image-block obj=content.primaryImage />
+            <marko-web-content-body block-name=blockName obj=content />
+            <marko-web-social-sharing
+              path=content.siteContext.path
+              providers=["facebook", "linkedin", "twitter", "pinterest"]
+            />
+          </default-theme-page-contents>
+        </div>
+      </@section>
+
+    </marko-web-page-wrapper>
+  </@page>
+</global-content-page>
