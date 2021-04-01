@@ -12,6 +12,9 @@ module.exports = gql`
     primaryImage {
       ...NativeXImageFragment
     }
+    publisher {
+      id
+    }
     advertiser {
       id
       name

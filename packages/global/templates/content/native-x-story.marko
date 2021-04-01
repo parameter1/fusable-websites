@@ -7,19 +7,17 @@ $ const { primarySection } = content;
 
 <global-default-page title=story.title description=story.teaser>
   <@head>
-    <!-- <marko-web-gtm-content-context|{ context }| id=id>
-      <marko-web-gtm-push data=context />
-    </marko-web-gtm-content-context>
-    <marko-web-resolve-page|{ data: content }| node=pageNode>
-      <marko-web-p1-events-track-content node=content />
-    </marko-web-resolve-page> -->
-    <script>console.log('include gtm/trakcing');</script>
+    <marko-web-native-x-gtm-init />
   </@head>
   <@page>
+    <marko-web-native-x-story-track-page-view story=story />
+    <marko-web-native-x-story-track-social-share story=story />
+
     <marko-web-page-wrapper>
       <@section modifiers=["first-sm"]>
         <span class="d-none"></span>
       </@section>
+
       <@section|{ blockName }| modifiers=["content-header"]>
         <div class="content-page-header">
           <default-theme-breadcrumbs modifiers=["content-page"]>
@@ -33,7 +31,7 @@ $ const { primarySection } = content;
       </@section>
 
       <@section>
-        <div class="content-page-body">
+        <div class="content-page-body" id="native-x-story-body">
           <default-theme-page-contents|{ blockName }|>
             <global-primary-image-block obj=content.primaryImage />
             <marko-web-content-body block-name=blockName obj=content />
@@ -44,7 +42,9 @@ $ const { primarySection } = content;
           </default-theme-page-contents>
         </div>
       </@section>
-
     </marko-web-page-wrapper>
+
+    <marko-web-native-x-story-track-outbound-links story=story container="#native-x-story-body" />
+    <marko-web-native-x-story-track-end-of-content story=story />
   </@page>
 </global-default-page>
