@@ -10,8 +10,9 @@ $ const { primarySection } = content;
     <marko-web-native-x-gtm-init />
   </@head>
   <@page>
-    <marko-web-native-x-story-track-page-view story=story />
-    <marko-web-native-x-story-track-social-share story=story />
+    <marko-web-native-x-story-track-init story=story />
+    <marko-web-native-x-story-track-page-view />
+    <marko-web-native-x-story-track-social-share />
 
     <marko-web-page-wrapper>
       <@section modifiers=["first-sm"]>
@@ -44,7 +45,7 @@ $ const { primarySection } = content;
       </@section>
     </marko-web-page-wrapper>
 
-    <marko-web-native-x-story-track-outbound-links story=story container="#native-x-story-body" />
-    <marko-web-native-x-story-track-end-of-content story=story />
+    <marko-web-native-x-story-track-outbound-links container="#native-x-story-body" />
+    <marko-web-native-x-story-track-end-of-content />
   </@page>
 </global-default-page>
