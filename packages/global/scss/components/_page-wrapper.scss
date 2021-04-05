@@ -49,11 +49,16 @@
       margin-bottom: 40px;
     }
 
-    &--content-header {
+    &--content-header,
+    &--nativex-story-header {
       margin-bottom: 20px;
       @include media-breakpoint-up(md) {
         margin-bottom: 30px;
       }
+    }
+
+    &--nativex-story-header {
+      padding-top: 30px;
     }
 
     &--no-spacer {
