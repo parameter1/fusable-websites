@@ -2088,21 +2088,6 @@
     moment "^2.29.1"
     node-fetch "^2.6.1"
 
-"@parameter1/base-cms-marko-web-native-x@^2.14.0":
-  version "2.14.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-native-x/-/base-cms-marko-web-native-x-2.14.0.tgz#9521476b1dd0975432ea826eccc90aa79679b8b2"
-  integrity sha512-3CKXk64ltkatLMn8XVjOTH9A6b2Qvg3NZNmwTKtLrOGYU5xCB3OXf5Hk3goPAARmF58GJvWY6uW9gbpq20E/yw==
-  dependencies:
-    "@parameter1/base-cms-marko-web-deferred-script-loader" "^2.13.0"
-    "@parameter1/base-cms-object-path" "^2.5.0"
-    "@parameter1/base-cms-utils" "^2.4.2"
-    "@parameter1/base-cms-web-common" "^2.5.0"
-    apollo-cache-inmemory "^1.6.6"
-    apollo-client "^2.6.10"
-    apollo-link-http "^1.5.17"
-    graphql-tag "^2.11.0"
-    node-fetch "^2.6.1"
-
 "@parameter1/base-cms-marko-web-native-x@^2.15.0":
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-native-x/-/base-cms-marko-web-native-x-2.15.0.tgz#a5e66dcbf5f2bc14dabed396371aacbce61ff4ad"
