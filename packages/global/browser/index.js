@@ -2,6 +2,7 @@ import GTM from '@parameter1/base-cms-marko-web-gtm/browser';
 import GAM from '@parameter1/base-cms-marko-web-gam/browser';
 import SocialSharing from '@parameter1/base-cms-marko-web-social-sharing/browser';
 import IdentityX from '@parameter1/base-cms-marko-web-identity-x/browser';
+import NativeX from '@parameter1/base-cms-marko-web-native-x/browser';
 import BlockLoader from './block-loader.vue';
 import MenuToggleButton from './menu-toggle-button.vue';
 import NewsletterCloseButton from './newsletter-close-button.vue';
@@ -15,6 +16,7 @@ export default (Browser) => {
   GTM(Browser);
   GAM(Browser);
   SocialSharing(Browser);
+  NativeX(Browser);
   IdentityX(Browser, {
     CustomAuthenticateComponent: IdentityXAuthenticate,
     CustomCommentStreamComponent: IdentityXCommentStream,

@@ -7,7 +7,7 @@ $ const image = getAsObject(input, "obj");
 $ const hasImage = Boolean(image.src);
 
 $ const forceDisplay = defaultValue(input.forceDisplay);
-$ let display = forceDisplay || image.primaryImageDisplay;
+$ let display = forceDisplay || image.primaryImageDisplay || "center";
 $ const aspectRatio = get(image, "cropDimensions.aspectRatio");
 $ const { isLogo } = image;
 
