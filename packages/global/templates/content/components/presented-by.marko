@@ -8,7 +8,7 @@ $ const imgSrc = get(advertiser, "logo.src");
 <if(imgSrc)>
   $ const src = buildImgixUrl(imgSrc, imgDefaults);
   $ const srcset = [`${src}&dpr=2 2x`];
-  <marko-web-block name="sponsor-logo" modifiers=["content-page"] class="mt-3">
+  <marko-web-block name="sponsor-logo">
     <marko-web-element block-name="sponsor-logo" name="label">
       Presented by
     </marko-web-element>
