@@ -2044,10 +2044,10 @@
   dependencies:
     "@parameter1/base-cms-object-path" "^2.5.0"
 
-"@parameter1/base-cms-marko-web-gam@^2.13.1":
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-gam/-/base-cms-marko-web-gam-2.13.1.tgz#4ed41cd5d8184d05e5fd2337a195ca455aca293f"
-  integrity sha512-oKy01Hus23qQW07gP5AHB6Fx+4Rm0QIVZ9JrNksmqzur3wnouvABv2EHvmDQLv+OzCqUmP/FcLoIlcYg+WK4rw==
+"@parameter1/base-cms-marko-web-gam@^2.16.0":
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-gam/-/base-cms-marko-web-gam-2.16.0.tgz#229864798ee6476ee519b0381385145483ffe396"
+  integrity sha512-ytEjKbcF5jj1PG3YoDLOsTv9vqCThzvJ6x6AvizSKZ0Ej+qeuaRoAlvAvUG3uIxRxvsPxyf5PFHAxvvnckeWIg==
   dependencies:
     "@parameter1/base-cms-marko-web-deferred-script-loader" "^2.13.0"
     "@parameter1/base-cms-object-path" "^2.5.0"
@@ -2071,15 +2071,16 @@
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-icons/-/base-cms-marko-web-icons-2.0.0.tgz#a62c0040cfe5b73f1bef28cb2b25b0c6be956064"
   integrity sha512-mbOQrnltRIZfl9fpeYrfuA4PHrCacDe8gdXucK7L6y6B4UAtzPbCNaEwPInXnhSCxkbdyRXfCirEYxTrAV7hOw==
 
-"@parameter1/base-cms-marko-web-identity-x@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-identity-x/-/base-cms-marko-web-identity-x-2.5.0.tgz#74b9891ae3fd711e41bd49a6d48529539b1fbd9b"
-  integrity sha512-mFhXgr8ANdQU2RmnqD11Rfm13mBpAnoywJ5+BPpltYG+xzgZZ6eLLFMdyLPvQDo6XcB8Gig053HtQZe0hezyuw==
+"@parameter1/base-cms-marko-web-identity-x@^2.16.0":
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-identity-x/-/base-cms-marko-web-identity-x-2.16.0.tgz#2b334fd7025ba80f066b571f2fedafd40147cd30"
+  integrity sha512-p/zuO+MAqTL802Pnt3zGdXUuHD+9xd05YOSC6s5vGw9Qm4bYTOHdM0XmBzYYXod3ukgE19kdBD2aJKV0sgXF8w==
   dependencies:
     "@parameter1/base-cms-object-path" "^2.5.0"
     "@parameter1/base-cms-utils" "^2.4.2"
     apollo-cache-inmemory "^1.6.6"
     apollo-client "^2.6.10"
+    apollo-link-context "^1.0.20"
     apollo-link-http "^1.5.17"
     body-parser "^1.19.0"
     cookie "0.3.1"
