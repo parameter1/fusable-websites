@@ -2105,6 +2105,15 @@
     graphql-tag "^2.11.0"
     node-fetch "^2.6.1"
 
+"@parameter1/base-cms-marko-web-omeda-identity-x@^2.16.0":
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda-identity-x/-/base-cms-marko-web-omeda-identity-x-2.16.0.tgz#850db7d38dc6dadf916f01931132eeae57beee85"
+  integrity sha512-o2kzfSDfoDfBfHOBrMzF7PwVfsb+KDxPeATS0ImQKhoQnJhCaPvCb+WRTB4BX9Rht4qRBMAq1zWC1vVxgJXxyg==
+  dependencies:
+    "@parameter1/base-cms-object-path" "^2.5.0"
+    graphql "^14.7.0"
+    graphql-tag "^2.11.0"
+
 "@parameter1/base-cms-marko-web-p1-events@^2.13.1":
   version "2.13.1"
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-p1-events/-/base-cms-marko-web-p1-events-2.13.1.tgz#804d22fc51c10789c2e9dceae99aaac09946ab82"
