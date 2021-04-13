@@ -2255,6 +2255,24 @@
     graphql-tag "^2.11.0"
     http-errors "^1.8.0"
 
+"@parameter1/omeda-graphql-client-express@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/omeda-graphql-client-express/-/omeda-graphql-client-express-0.2.0.tgz#186e30605ca3f09acc213419a35bd368fb9e2589"
+  integrity sha512-UfgzUo+tcG5cmAyOoIOj8Dm573NWjiYo5MA0SygvfpVdF6dHQ4/VGYTBA5rsu9ILNr5V+NOx5WfMzcCJn4kWJg==
+  dependencies:
+    "@parameter1/omeda-graphql-client" "^0.2.0"
+
+"@parameter1/omeda-graphql-client@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/omeda-graphql-client/-/omeda-graphql-client-0.2.0.tgz#1150dbd56e33a4836517cb6e61211aec6e050cc7"
+  integrity sha512-wq0yqNZZcJWonUDGoR6qLS08YMCXBQjdfgqSkgnSlYN62rTQCmeMZyQgpM+vZWiho6E+zyMDHxMtbtgyBMGCvw==
+  dependencies:
+    apollo-cache-inmemory "^1.6.6"
+    apollo-client "^2.6.10"
+    apollo-link-http "^1.5.17"
+    graphql "^15.5.0"
+    node-fetch "^2.6.1"
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
@@ -6469,6 +6487,11 @@ graphql@^15.4.0:
   version "15.4.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.4.0.tgz#e459dea1150da5a106486ba7276518b5295a4347"
   integrity sha512-EB3zgGchcabbsU9cFe1j+yxdzKQKAbGUWRb13DsrsMN1yyfmmIq+2+L5MqVWcDCE4V89R5AyUOi7sMOGxdsYtA==
+
+graphql@^15.5.0:
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.5.0.tgz#39d19494dbe69d1ea719915b578bf920344a69d5"
+  integrity sha512-OmaM7y0kaK31NKG31q4YbD2beNYa6jBBKtMFT6gLYJljHLJr42IqJ8KX08u3Li/0ifzTU5HjmoOOrwa5BRLeDA==
 
 gulp-cached@^1.1.1:
   version "1.1.1"
