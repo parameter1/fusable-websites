@@ -2,6 +2,7 @@ const newrelic = require('newrelic');
 const { startServer } = require('@parameter1/base-cms-marko-web');
 const { set, get } = require('@parameter1/base-cms-object-path');
 const baseBrowse = require('@randall-reilly/base-browse/middleware');
+const omedaGraphQL = require('@parameter1/omeda-graphql-client-express');
 
 const pkg = require('./package.json');
 const document = require('./components/document');
@@ -13,6 +14,7 @@ const newsletterState = require('./middleware/newsletter-state');
 const algolia = require('./middleware/algolia');
 const redirectHandler = require('./redirect-handler');
 const oembedHandler = require('./oembed-handler');
+const omedaConfig = require('./config/omeda');
 
 const { env } = process;
 
@@ -56,6 +58,14 @@ module.exports = (options = {}) => {
 
       // Use newsletterState middleware
       app.use(newsletterState());
+
+      // Use Omeda middleware
+      app.use(omedaGraphQL({
+        uri: 'https://graphql.omeda.parameter1.com/',
+        brandKey: omedaConfig.brandKey,
+        appId: omedaConfig.appId,
+        inputId: omedaConfig.inputId,
+      }));
 
       // Setup GAM.
       const gamConfig = get(options, 'siteConfig.gam');
