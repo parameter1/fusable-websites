@@ -13,9 +13,10 @@ const filterSearchIndexes = (data, id) => getAsArray(data, 'data.findAll')
   .map(({ industry, manufacturer, model }) => ({ industry, manufacturer, model }));
 
 module.exports = ({
-  renderBody = v => v,
+  parseEmbeddedMedia = v => v,
   sectionAlias = 'equipment-experts',
 } = {}) => asyncRoute(async (req, res) => {
+  const renderBody = isFn(parseEmbeddedMedia) ? parseEmbeddedMedia : v => v;
   const page = parseInt(get(req, 'query.page', 1), 10);
   const limit = parseInt(get(req, 'query.posts_per_page', 20), 10);
   const skip = (page - 1) * limit;
