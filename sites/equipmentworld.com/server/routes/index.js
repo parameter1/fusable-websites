@@ -10,7 +10,7 @@ module.exports = (app) => {
   home(app);
 
   // Equipment Experts API
-  app.use('/api/marketplace-articles', EERouter({ sectionAlias: 'equipment-experts' }));
+  app.use('/api/marketplace-articles', EERouter({ app, sectionAlias: 'equipment-experts' }));
 
   // Dynamic Pages
   dynamicPages(app);
