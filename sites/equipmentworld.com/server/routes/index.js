@@ -10,7 +10,8 @@ module.exports = (app) => {
   home(app);
 
   // Equipment Experts API
-  app.use('/api/marketplace-articles', EERouter({ sectionAlias: 'equipment-experts' }));
+  const { parseEmbeddedMedia } = app.locals;
+  app.use('/api/marketplace-articles', EERouter({ parseEmbeddedMedia, sectionAlias: 'equipment-experts' }));
 
   // Dynamic Pages
   dynamicPages(app);
