@@ -1,4 +1,4 @@
-FROM node:10.15 as build
+FROM node:10.24 as build
 WORKDIR /root
 ENV NODE_ENV production
 ARG SITE
