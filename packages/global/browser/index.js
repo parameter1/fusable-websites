@@ -13,8 +13,6 @@ import CommentToggleButton from './comment-toggle-button.vue';
 import IdentityXAuthenticate from './identity-x/authenticate.vue';
 import IdentityXCommentStream from './identity-x/comments/stream.vue';
 
-import omedaConfig from '../config/omeda';
-
 export default (Browser) => {
   GTM(Browser);
   GAM(Browser);
@@ -36,7 +34,7 @@ export default (Browser) => {
     on: {
       'encrypted-id-found': (encryptedId) => {
         if (encryptedId && window.p1events) {
-          window.p1events('setIdentity', `omeda.${omedaConfig.brandKey}.customer*${encryptedId}~encrypted`);
+          window.p1events('setIdentity', `omeda.rrpcd.customer*${encryptedId}~encrypted`);
         }
       },
     },
