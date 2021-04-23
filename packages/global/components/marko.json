@@ -38,6 +38,9 @@
     "<below-container>": {},
     "<foot>": {}
   },
+  "<global-menu-toggle-button>": {
+    "template": "./menu-toggle-button.marko"
+  },
   "<global-pagination-controls>": {
     "template": "./pagination-controls.marko"
   },
