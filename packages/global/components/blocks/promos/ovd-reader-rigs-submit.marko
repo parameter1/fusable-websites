@@ -1,0 +1,31 @@
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
+
+$ const blockName = "pib-page-card";
+$ const logoRoot = "https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd";
+$ const manualSrc = "reader-rigs-submit-promo.jpg?auto=format&w=120&fit=crop";
+
+<marko-web-block name=blockName>
+  <marko-web-element block-name=blockName name="inner-wrapper">
+    <div>
+      <marko-web-element block-name=blockName name="title">
+        Showcase your workhorse
+      </marko-web-element>
+      <marko-web-element block-name=blockName name="description">
+        Add a photo of your rig to our Reader Rigs collection to share it with your peers and the world. Tell us the story behind the truck and your business to help build its story.
+      </marko-web-element>
+      <marko-web-link
+        class=`btn btn-primary ${blockName}__download-btn`
+        href="/new-reader-rigs-submission"
+        title="Submit Your Rig"
+      >
+        Submit Your Rig
+      </marko-web-link>
+    </div>
+    <marko-web-img
+      class=`${blockName}__issue-cover`
+      src=`${logoRoot}/${manualSrc}`
+      srcset=[`${logoRoot}/${manualSrc}&dpr=2 2x`]
+      alt="Reader Rig Submission"
+    />
+  </marko-web-element>
+</marko-web-block>
