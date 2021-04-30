@@ -14,35 +14,37 @@ $ const description = `Submit Reader Rig content to ${config.siteName()}`;
   </@head>
   <@page>
     <marko-web-page-wrapper>
-      <@section|{ aliases }| modifiers=["first"]>
+      <@section modifiers=["first"]>
         <global-gam-define-display-ad
           name="leaderboard"
-          position="section_page"
-          aliases=aliases
+          position="static_page"
+          aliases=[]
           modifiers=["inter-block"]
         />
       </@section>
-      <@section>
-        <h1 class="page-wrapper__website-section-name">Submit Your Rig!</h1>
+      <@section modifiers=["test"]>
+        <div class="content-page-header">
+          <h1 class="page-wrapper__website-section-name">Submit Your Rig!</h1>
+        </div>
+        <div class="content-page-body">
+          <marko-web-block name='wufoo-submission-form'>
+            <marko-web-element block-name='wufoo-submission-form' name="wufoo-form">
+              <marko-web-browser-component
+                name="WufooForm"
+                props={
+                  userName: site.get("wufoo.userName"),
+                  formHash: 's1nhfzge1mfev3n',
+                }
+              />
+            </marko-web-element>
+          </marko-web-block>
+        </div>
       </@section>
       <@section>
-        <marko-web-block name='wufoo-submission-form'>
-          <marko-web-element block-name='wufoo-submission-form' name="wufoo-form">
-            <marko-web-browser-component
-              name="WufooForm"
-              props={
-                userName: site.get("wufoo.userName"),
-                formHash: 's1nhfzge1mfev3n',
-              }
-            />
-          </marko-web-element>
-        </marko-web-block>
-      </@section>
-      <@section|{ aliases }|>
         <global-gam-define-display-ad
           name="rotation"
-          position="section_page"
-          aliases=aliases
+          position="static_page"
+          aliases=[]
           modifiers=["inter-block"]
         />
       </@section>
