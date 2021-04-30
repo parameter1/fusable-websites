@@ -1,0 +1,49 @@
+$ const { site } = out.global;
+
+$ const type = "cost-calculator";
+$ const title = "Equipment World Cost Calculator";
+$ const description = "";
+
+<marko-web-default-page-layout type=type title=title description=description>
+  <@head>
+    <marko-web-gtm-default-context|{ context }| type=type>
+      <marko-web-gtm-push data=context />
+    </marko-web-gtm-default-context>
+  </@head>
+  <@page>
+    <marko-web-page-wrapper>
+      <@section modifiers=["first"]>
+        <global-gam-define-display-ad
+          name="leaderboard"
+          position="static_page"
+          aliases=[]
+          modifiers=["inter-block"]
+        />
+      </@section>
+      <@section>
+        <div class="row">
+          <div class="col">
+            <h1 class="page-wrapper__title">$!{title}</h1>
+            <if(description)>
+              <div class="page-wrapper__deck">$!{description}</div>
+            </if>
+          </div>
+        </div>
+      </@section>
+      <@section>
+        <div class="row">
+          <div class="col text-center">
+            <iframe
+              src="https://rr-dev-cost-calculator.s3-ap-southeast-1.amazonaws.com/index.html"
+              title=title
+              frameborder="0"
+              scrolling="no"
+              height="4100"
+              width="100%"
+            />
+          </div>
+        </div>
+      </@section>
+    </marko-web-page-wrapper>
+  </@page>
+</marko-web-default-page-layout>

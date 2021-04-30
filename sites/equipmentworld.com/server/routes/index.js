@@ -3,6 +3,7 @@ const home = require('./home');
 const content = require('./content');
 const dynamicPages = require('./dynamic-page');
 const search = require('./search');
+const staticPages = require('./static');
 const websiteSections = require('./website-section');
 
 module.exports = (app) => {
@@ -18,6 +19,9 @@ module.exports = (app) => {
 
   // Content Pages
   content(app);
+
+  // Static Pages
+  staticPages(app);
 
   // Search
   search(app);
