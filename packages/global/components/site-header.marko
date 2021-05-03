@@ -17,14 +17,12 @@ $ const navigation = {
 >
   <${input.aboveNav} />
   <default-theme-site-navbar modifiers=["secondary"]>
-    <marko-web-browser-component
-      name="GlobalMenuToggleButton"
-      props={
-        className: "site-navbar__toggler",
-        targets: [".site-menu", "body"],
-        toggleClass: "site-menu--open",
-        iconModifiers: ["lg"],
-      }
+    <global-menu-toggle-button
+      class="site-navbar__toggler"
+      targets=[".site-menu", "body"]
+      toggle-class="site-menu--open"
+      icon-modifiers=["lg"]
+      icon-name="three-bars"
     />
 
     <default-theme-site-navbar-brand title=`${config.website("name")} Homepage`>
@@ -42,16 +40,13 @@ $ const navigation = {
       has-user=input.hasUser
     />
 
-    <marko-web-browser-component
-      name="GlobalMenuToggleButton"
-      props={
-        className: "site-navbar__newsletter-toggler",
-        targets: [".site-newsletter-menu"],
-        toggleClass: "site-newsletter-menu--open",
-        iconModifiers: ["lg"],
-        iconName: 'mail',
-        expandedIconName: 'mail',
-      }
+    <global-menu-toggle-button
+      class="site-navbar__newsletter-toggler"
+      targets=[".site-newsletter-menu"]
+      toggle-class="site-newsletter-menu--open"
+      icon-modifiers=["lg"]
+      icon-name="mail"
+      expanded-icon-name="mail"
     />
   </default-theme-site-navbar>
 

@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@parameter1/base-cms-marko-compiler": "^2.0.0",
+    "babel-eslint": "^10.1.0",
     "lerna": "^3.16.4"
   }
 }
