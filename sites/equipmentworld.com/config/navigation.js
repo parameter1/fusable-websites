@@ -12,6 +12,7 @@ const topics = {
   secondary: [
     { href: '/workforce/safety', label: 'Safety' },
     { href: '/safety-watch', label: 'Safety Watch' },
+    { href: '/videos', label: 'Videos' },
     { href: '/white-papers', label: 'White Papers' },
   ],
 };
