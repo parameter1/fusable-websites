@@ -2,7 +2,7 @@
 # www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449
 
 User-agent: *
-Disallow: /__load-more
+Disallow: /__
 
 Sitemap: https://www.truckpartsandservice.com/sitemap.xml
 Sitemap: https://www.truckpartsandservice.com/sitemap-google-news.xml
