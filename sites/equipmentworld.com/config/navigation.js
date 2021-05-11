@@ -63,6 +63,9 @@ module.exports = {
       { href: '/page/contact-us', label: 'Contact Us' },
     ],
     topics: topics.primary,
-    more: utilities,
+    more: [
+      ...utilities,
+      { href: '/videos', label: 'Videos' },
+    ],
   },
 };
