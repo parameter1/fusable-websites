@@ -14,7 +14,6 @@ $ const { id, type, pageNode, ...rest } = input;
       position="content_page"
       aliases=["gear"]
       modifiers=["max-width-300", "center", "margin-auto-x", "rail"]
-      class="mb-block"
     />
     $ const labels = getAsArray(content, "labels");
     <if(labels.includes("Sponsored by RoadPro"))>
@@ -25,18 +24,34 @@ $ const { id, type, pageNode, ...rest } = input;
       position="section_page"
       aliases=["gear"]
       modifiers=["max-width-300", "center", "margin-auto-x", "rail"]
-      class="mb-block"
     />
     <global-gam-define-display-ad
       name="rotation-3"
       position="section_page"
       aliases=["gear"]
       modifiers=["max-width-300", "center", "margin-auto-x", "rail"]
-      class="mb-block"
     />
   </@right-rail>
   <@after-body|{ content }|>
+    <global-gam-define-display-ad
+      name="rotation-1-mobile"
+      position="content_page"
+      aliases=["gear"]
+      modifiers=["max-width-300", "center", "margin-auto-x", "rail-mobile"]
+    />
+    <global-gam-define-display-ad
+      name="rotation-2-mobile"
+      position="section_page"
+      aliases=["gear"]
+      modifiers=["max-width-300", "center", "margin-auto-x", "rail-mobile"]
+    />
     <global-more-gear-block alias="gear" params={ excludeContentIds: [content.id] } />
+    <global-gam-define-display-ad
+      name="rotation-3-mobile"
+      position="section_page"
+      aliases=["gear"]
+      modifiers=["max-width-300", "center", "margin-auto-x", "rail-mobile"]
+    />
   </@after-body>
 
   <!-- <@section>

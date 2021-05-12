@@ -27,7 +27,7 @@ $ const sections = getAsArray(input, "sections");
           <global-content-page-breadcrumbs section=primarySection />
 
           <div class="row">
-            <global-sponsored-section-name-logo section=primarySection modifiers=["section-page"] class="col-lg-5" />
+            <global-sponsored-section-name-logo section=primarySection modifiers=["section-page"] class="col-lg-5" sectionPage=false />
             $ const labels = getAsArray(content, "labels");
             <for|label| of=labels>
               <global-sponsored-label-logo logo-label=label prefix="Presented By" modifiers=["content-page"] />

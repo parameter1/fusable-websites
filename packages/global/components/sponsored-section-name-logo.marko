@@ -4,6 +4,7 @@ $ const { site } = out.global;
 $ const { section } = input;
 $ const sponsorLogo = site.getAsObject(`sponsoredSectionNameLogos.${section.alias}`);
 $ const blockName = defaultValue(input.blockName, "sponsor-logo");
+$ const sectionPage = defaultValue(input.sectionPage, true);
 
 $ const { src, width, height } = sponsorLogo;
 $ const style = {
@@ -22,6 +23,6 @@ $ const style = {
     />
   </marko-web-block>
 </if>
-<else>
+<else-if(sectionPage)>
   <marko-web-website-section-name tag="h1" block-name=blockName obj=section />
-</else>
+</else-if>

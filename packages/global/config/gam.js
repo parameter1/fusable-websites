@@ -58,6 +58,17 @@ module.exports = ({
     })
     .setTemplate('GEAR', {
       size: [300, 250],
+      sizeMapping: [
+        { viewport: [980, 0], size: [300, 250] },
+        { viewport: [0, 0], size: [] },
+      ],
+    })
+    .setTemplate('GEAR-MOBILE', {
+      size: [300, 250],
+      sizeMapping: [
+        { viewport: [980, 0], size: [] },
+        { viewport: [300, 0], size: [300, 250] },
+      ],
     });
 
   return config;
