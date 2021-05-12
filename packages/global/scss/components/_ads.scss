@@ -108,6 +108,13 @@
     }
   }
 
+  &--inline-feed {
+    background-color: $skin-ad-bg-color;
+    > *:first-child {
+      padding-bottom: $container-bottom-padding;
+    }
+  }
+
   &--max-width-300 {
     #{ $self } {
       &__wrapper {
