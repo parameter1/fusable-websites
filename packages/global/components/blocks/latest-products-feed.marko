@@ -27,6 +27,30 @@ $ const countOnly = defaultValue(input.countOnly, false);
         <@slot|{ node }|>
           <global-product-feed-content-node node=node />
         </@slot>
+        <@slot position="after" index=2 modifiers=["ad"]>
+          <global-gam-define-display-ad
+            name="rotation-1-mobile"
+            position="content_page"
+            aliases=["gear"]
+            modifiers=["max-width-300", "center", "margin-auto-x", "inline-feed"]
+          />
+        </@slot>
+        <@slot position="after" index=5 modifiers=["ad"]>
+          <global-gam-define-display-ad
+            name="rotation-2-mobile"
+            position="content_page"
+            aliases=["gear"]
+            modifiers=["max-width-300", "center", "margin-auto-x", "inline-feed"]
+          />
+        </@slot>
+        <@slot position="after" index=8 modifiers=["ad"]>
+          <global-gam-define-display-ad
+            name="rotation-3-mobile"
+            position="content_page"
+            aliases=["gear"]
+            modifiers=["max-width-300", "center", "margin-auto-x", "inline-feed"]
+          />
+        </@slot>
       </@nodes>
     </marko-web-node-list>
   </marko-web-query>

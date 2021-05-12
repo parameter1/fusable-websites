@@ -81,6 +81,13 @@
         }
       }
 
+      &__node--ad {
+        @media (min-width: 980px) {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+
       &__nodes {
         padding-top: 0;
         padding-bottom: 0;
