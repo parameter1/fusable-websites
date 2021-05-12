@@ -86,8 +86,26 @@
   }
 
   &--rail {
-    padding-bottom: $container-bottom-padding;
     background-color: $skin-ad-bg-color;
+    > *:first-child {
+      padding-bottom: $container-bottom-padding;
+    }
+    @media (min-width: 980px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &--rail-mobile {
+    background-color: $skin-ad-bg-color;
+    > *:first-child {
+      padding-bottom: $container-bottom-padding;
+    }
+    @media (min-width: 300px) {
+      margin-bottom: 24px;
+    }
+    @media (min-width: 980px) {
+      margin-bottom: 0;
+    }
   }
 
   &--max-width-300 {

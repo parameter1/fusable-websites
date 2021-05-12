@@ -14,7 +14,6 @@ $ const { id, type, pageNode, ...rest } = input;
       position="content_page"
       aliases=["gear"]
       modifiers=["max-width-300", "center", "margin-auto-x", "rail"]
-      class="mb-block"
     />
     $ const labels = getAsArray(content, "labels");
     <if(labels.includes("Sponsored by RoadPro"))>
@@ -25,14 +24,12 @@ $ const { id, type, pageNode, ...rest } = input;
       position="section_page"
       aliases=["gear"]
       modifiers=["max-width-300", "center", "margin-auto-x", "rail"]
-      class="mb-block"
     />
     <global-gam-define-display-ad
       name="rotation-3"
       position="section_page"
       aliases=["gear"]
       modifiers=["max-width-300", "center", "margin-auto-x", "rail"]
-      class="mb-block"
     />
   </@right-rail>
   <@after-body|{ content }|>
