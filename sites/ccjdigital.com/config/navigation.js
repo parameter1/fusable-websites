@@ -17,6 +17,7 @@ const topics = {
     { href: '/preventable-or-not', label: 'Preventable or Not?' },
     { href: '/ccj-innovators', label: 'CCJ Innovators' },
     { href: '/ccj-symposiums', label: 'CCJ Symposiums' },
+    { href: '/videos', label: 'Videos' },
     { href: '/white-papers', label: 'White Papers' },
   ],
 };
@@ -67,6 +68,9 @@ module.exports = {
       { href: '/page/contact-us', label: 'Contact Us' },
     ],
     topics: topics.primary,
-    more: utilities,
+    more: [
+      ...utilities,
+      { href: '/videos', label: 'Videos' },
+    ],
   },
 };
