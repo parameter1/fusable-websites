@@ -3,6 +3,7 @@
 
 User-agent: *
 Disallow: /__
+Disallow: /print/content
 
 Sitemap: https://www.totallandscapecare.com/sitemap.xml
 Sitemap: https://www.totallandscapecare.com/sitemap-google-news.xml
