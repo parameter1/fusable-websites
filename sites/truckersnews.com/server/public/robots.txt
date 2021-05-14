@@ -3,6 +3,7 @@
 
 User-agent: *
 Disallow: /__
+Disallow: /print/content
 
 Sitemap: https://www.truckersnews.com/sitemap.xml
 Sitemap: https://www.truckersnews.com/sitemap-google-news.xml
