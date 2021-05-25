@@ -2247,10 +2247,10 @@
   dependencies:
     "@parameter1/base-cms-utils" "^2.4.2"
 
-"@parameter1/base-cms-marko-web-theme-default@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-default/-/base-cms-marko-web-theme-default-2.7.0.tgz#2461713f8fee74d4012565c37921125b00ceb18c"
-  integrity sha512-EgZNOVygtMINM5mxNE3Hw8gT5fiC5MZ8Q6DcyorJzn8SBNGj7WQ5dGSPxPPiCGAoB4w3C0oJ9mkl1AvI77EL1g==
+"@parameter1/base-cms-marko-web-theme-default@^2.20.5":
+  version "2.20.5"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-default/-/base-cms-marko-web-theme-default-2.20.5.tgz#c4b19e48c39b87e3c32a89d9575e045ddd91d206"
+  integrity sha512-iN39JfX4NMSul+mlP6pT+6+F4y5pXM5ZHWVhNg+hP0y4GWwlocoEQn3vsOQUVOZeble3/Vum0du3Q26LD4c8UA==
   dependencies:
     "@parameter1/base-cms-marko-web-icons" "^2.0.0"
     "@parameter1/base-cms-object-path" "^2.5.0"
@@ -2259,7 +2259,7 @@
     graphql "^14.7.0"
     graphql-tag "^2.11.0"
 
-"@parameter1/base-cms-marko-web@^2.20.0", "@parameter1/base-cms-marko-web@^2.20.1":
+"@parameter1/base-cms-marko-web@^2.20.1":
   version "2.20.1"
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web/-/base-cms-marko-web-2.20.1.tgz#978513addb6fb55877ae4f5fdf6661196721045e"
   integrity sha512-ed8CuGOf0M7HGfRXpRdyJgO9AOQpXtylthx32+ZgdgOC7JNVXETKPup416+PtHet/p0WYZTdRkyRtAVHqkHtyw==
