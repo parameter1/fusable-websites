@@ -23,12 +23,14 @@ $ const updatedDate = defaultValue(obj.updated, null, v => moment(v).tz(timezone
   locale=locale
 />
 <if(updatedDate.isAfter(publishedDate, "day"))>
-  <marko-web-obj-date
+  <marko-web-obj-date|{ value }|
     type="content"
     block-name=blockName
     obj=obj
     field="updated"
     format=format
     locale=locale
-  />
+  >
+    Updated ${value}
+  </marko-web-obj-date>
 </if>
