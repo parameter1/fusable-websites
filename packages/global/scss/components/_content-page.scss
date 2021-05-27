@@ -47,11 +47,11 @@
 }
 
 .page-dates {
-  text-transform: none;
   &__content-published,
   &__content-updated {
     @include skin-typography($style: "date");
     display: inline;
+    text-transform: none;
   }
   &__content-updated::before {
     content: " | ";
