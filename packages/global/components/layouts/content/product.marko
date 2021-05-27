@@ -37,7 +37,7 @@ $ const sections = getAsArray(input, "sections");
           <marko-web-content-name tag="h1" block-name=blockName obj=content />
 
           <default-theme-page-dates|{ blockName }|>
-            <marko-web-content-published block-name=blockName obj=content format="MMMM D, YYYY" />
+            <global-content-published-node block-name=blockName obj=content />
           </default-theme-page-dates>
         </div>
 
