@@ -47,8 +47,14 @@
 }
 
 .page-dates {
-  &__content-published {
+  &__content-published,
+  &__content-updated {
     @include skin-typography($style: "date");
+    display: inline;
+    text-transform: none;
+  }
+  &__content-updated::before {
+    content: " | ";
   }
 }
 
@@ -77,9 +83,9 @@
 }
 
 .content-page-header .details {
-    padding: map-get($spacers, block);
-    margin-bottom: map-get($spacers, block);
-    background-color: $gray-100;
+  padding: map-get($spacers, block);
+  margin-bottom: map-get($spacers, block);
+  background-color: $gray-100;
   &__image {
     margin-bottom: map-get($spacers, block);
   }

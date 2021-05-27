@@ -61,7 +61,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             <marko-web-content-starts block-name=blockName obj=content />
           </else-if>
           <else-if(displayPublishedDate)>
-            <marko-web-content-published block-name=blockName obj=content format="MMMM D, YYYY" />
+            <global-content-published-node block-name=blockName obj=content />
           </else-if>
         </default-theme-page-dates>
       </if>

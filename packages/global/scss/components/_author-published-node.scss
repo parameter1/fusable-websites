@@ -15,10 +15,15 @@
     @include skin-typography($style: "author-content-page", $link-style: "primary");
   }
 
-  &__content-published {
-    margin-top: 2px;
+  &__content-published,
+  &__content-updated {
     @include skin-typography($style: "date-content-page");
+    display: inline;
+    margin-top: 2px;
     text-transform: none;
+  }
 
+  &__content-updated::before {
+    content: " | ";
   }
 }
