@@ -1,3 +1,4 @@
+const htmlSitemap = require('@parameter1/base-cms-marko-web-html-sitemap/routes');
 const feed = require('./feed');
 const identityX = require('./identity-x');
 const nativeX = require('./native-x');
@@ -35,4 +36,7 @@ module.exports = (app) => {
 
   // Static pages
   staticPage(app);
+
+  // HTML Sitemap
+  htmlSitemap(app);
 };
