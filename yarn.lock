@@ -2175,10 +2175,10 @@
     graphql "^14.7.0"
     graphql-tag "^2.11.0"
 
-"@parameter1/base-cms-marko-web-html-sitemap@^2.22.0":
-  version "2.22.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-html-sitemap/-/base-cms-marko-web-html-sitemap-2.22.0.tgz#775bb98d7a23e142daf1c8fec7755e0656356ae4"
-  integrity sha512-b/kjljotInPMIqpjn2cKD41INh+dKwNinOpbnBIskb1rVNS3TvuofqadWPSjzPFNsk0CXkZJ9nneVn6B0XuKbw==
+"@parameter1/base-cms-marko-web-html-sitemap@^2.22.1":
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-html-sitemap/-/base-cms-marko-web-html-sitemap-2.22.1.tgz#f8a7fea259d31ef1cb6e458de86113d0d2f04489"
+  integrity sha512-HNzhjwz5hVqXYQ/oIKfoyl7gZUCziJeyx0Cf0wxvnrKmSLV3GE079K8GRX8vDzdFIe1WdRvlcI6vKIcoVqepew==
   dependencies:
     "@parameter1/base-cms-object-path" "^2.5.0"
     "@parameter1/base-cms-utils" "^2.4.2"
