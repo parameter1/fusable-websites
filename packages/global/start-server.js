@@ -3,6 +3,7 @@ const { startServer } = require('@parameter1/base-cms-marko-web');
 const { set, get } = require('@parameter1/base-cms-object-path');
 const baseBrowse = require('@randall-reilly/base-browse/middleware');
 const omedaGraphQL = require('@parameter1/omeda-graphql-client-express');
+const htmlSitemapPagination = require('@parameter1/base-cms-marko-web-html-sitemap/middleware/paginated');
 
 const pkg = require('./package.json');
 const document = require('./components/document');
@@ -55,6 +56,9 @@ module.exports = (options = {}) => {
 
       // Use paginated middleware
       app.use(paginated());
+
+      // Use paginated middleware
+      app.use(htmlSitemapPagination());
 
       // Use newsletterState middleware
       app.use(newsletterState());
