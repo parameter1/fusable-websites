@@ -12,9 +12,9 @@ module.exports = (app) => {
   });
   app.get('/:alias(index.php)', (req, res) => {
     const { s } = req.query;
-    if (s === 'trench+collapse') res.redirect(301, '/workforce/safety');
     if (s === 'JLG') return res.redirect(301, '/14972756');
     if (s === 'AGC') return res.redirect(301, '/14972658');
+    if (s === 'trench collapse') return res.redirect(301, '/workforce/safety');
     if (s === 'rental') return res.redirect(301, '/');
     return res.redirect(301, '/');
   });
