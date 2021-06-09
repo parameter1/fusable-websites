@@ -29,7 +29,4 @@ module.exports = (app) => {
 
   // Website Sections
   websiteSections(app);
-
-  // Redirects
-  redirects(app);
 };
