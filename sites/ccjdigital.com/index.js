@@ -10,5 +10,6 @@ module.exports = startServer({
   rootDir: __dirname,
   coreConfig,
   siteConfig,
+  googleNewsPublicationName: 'CCJ',
   routes,
 }).then(() => log('Website started!')).catch(e => setImmediate(() => { throw e; }));
