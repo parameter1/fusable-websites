@@ -5,7 +5,6 @@ const dynamicPages = require('./dynamic-page');
 const search = require('./search');
 const staticPages = require('./static');
 const websiteSections = require('./website-section');
-const redirects = require('./redirects');
 
 module.exports = (app) => {
   // Homepage
