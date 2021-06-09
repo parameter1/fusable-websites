@@ -32,6 +32,7 @@ module.exports = (options = {}) => {
     days: 7,
     includeContentTypes: ['Article'],
     excludeLabels: ['Sponsored', 'Sponsored by RoadPro'],
+    ...options.googleNewsInput,
   };
   return startServer({
     ...options,
@@ -41,6 +42,7 @@ module.exports = (options = {}) => {
     fragments: options.fragments || fragments,
     sitemapsHeaders: {
       'x-google-news-input': JSON.stringify(googleNewsInput),
+      ...(options.googleNewsPublicationName, { 'x-google-news-publication-name': options.googleNewsPublicationName }),
     },
     onStart: async (app) => {
       if (typeof onStart === 'function') await onStart(app);
