@@ -27,7 +27,34 @@ const getFileRedirect = ({ from, app }) => {
   return { to };
 };
 
-module.exports = ({ from, app }) => {
+const getSiteRedirect = ({ from, req }) => {
+  if (from === '/default.asp') {
+    // Also covers ?magid=28
+    return { to: '/' };
+  }
+
+  if (from === '/apps/news/articleeqw.asp') {
+    const { id } = req.query;
+    if (id === '62860') return { to: '/workforce/safety' };
+    // Also covers ?id=55641
+    return { to: '/' };
+  }
+
+  if (from === '/index.php') {
+    const { s } = req.query;
+    if (s === 'JLG') return { to: '/14972756' };
+    if (s === 'AGC') return { to: '/14972658' };
+    if (s === 'trench collapse') return { to: '/workforce/safety' };
+    // Also covers ?s=rental
+    return { to: '/' };
+  }
+
+  return null;
+};
+
+module.exports = ({ from, app, req }) => {
+  const siteRedirect = getSiteRedirect({ from, app, req });
+  if (siteRedirect) return siteRedirect;
   const sizedImageRedirect = getSizedImageRedirect({ from });
   if (sizedImageRedirect) return sizedImageRedirect;
   return getFileRedirect({ from, app });
