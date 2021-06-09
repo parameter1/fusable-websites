@@ -1,14 +1,14 @@
 module.exports = (app) => {
   app.get('/:alias(default.asp)', (req, res) => {
     const { magid } = req.query;
-    if (parseInt(magid, 10) === 28) res.redirect(301, '/');
     res.redirect(301, '/');
+    if (magid === '28') return res.redirect(301, '/');
   });
   app.get('/:alias(apps/news/articleeqw.asp)', (req, res) => {
     const { id } = req.query;
-    if (parseInt(id, 10) === 55641) res.redirect(301, '/');
-    if (parseInt(id, 10) === 62860) res.redirect(301, '/workforce/safety');
     res.redirect(301, '/');
+    if (id === '55641') return res.redirect(301, '/');
+    if (id === '62860') return res.redirect(301, '/workforce/safety');
   });
   app.get('/:alias(index.php)', (req, res) => {
     const { s } = req.query;
