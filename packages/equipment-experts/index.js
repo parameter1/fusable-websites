@@ -20,6 +20,8 @@ module.exports = ({
   const page = parseInt(get(req, 'query.page', 1), 10);
   const limit = parseInt(get(req, 'query.posts_per_page', 20), 10);
   const skip = (page - 1) * limit;
+  const { protocol } = req;
+  const pathURL = `${protocol}://${req.get('host')}${req.baseUrl}`;
 
   const input = {
     sectionAlias,
@@ -61,7 +63,7 @@ module.exports = ({
       next: page < lastPage ? linkTo(req, page + 1, limit) : '',
     },
     meta: {
-      path: 'https://www.rrmarketplaceblog.com/wp-json/marketplace-articles/v1/articles',
+      path: pathURL,
       current_page: page,
       from: skip + 1,
       to: skip + limit,
