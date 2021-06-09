@@ -53,7 +53,7 @@ const getSiteRedirect = ({ from, req }) => {
 };
 
 module.exports = ({ from, app, req }) => {
-  const siteRedirect = getSiteRedirect({ from, app, req });
+  const siteRedirect = getSiteRedirect({ from, req });
   if (siteRedirect) return siteRedirect;
   const sizedImageRedirect = getSizedImageRedirect({ from });
   if (sizedImageRedirect) return sizedImageRedirect;
