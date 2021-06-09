@@ -61,7 +61,7 @@ module.exports = ({
       next: page < lastPage ? linkTo(req, page + 1, limit) : '',
     },
     meta: {
-      path: 'https://github.com/Shinsina/randall-reilly-websites',
+      path: 'https://www.rrmarketplaceblog.com/wp-json/marketplace-articles/v1/articles',
       current_page: page,
       from: skip + 1,
       to: skip + limit,
