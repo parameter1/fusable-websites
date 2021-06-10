@@ -20,6 +20,8 @@ module.exports = ({
   const page = parseInt(get(req, 'query.page', 1), 10);
   const limit = parseInt(get(req, 'query.posts_per_page', 20), 10);
   const skip = (page - 1) * limit;
+  const { protocol } = req;
+  const pathURL = `${protocol}://${req.get('host')}${req.baseUrl}`;
 
   const input = {
     sectionAlias,
@@ -45,7 +47,7 @@ module.exports = ({
         post_name: node.slug,
         post_title: node.name,
         post_content: renderBody(node.body, res, { lazyloadImages: false }),
-        post_except: node.teaser,
+        post_excerpt: node.teaser,
         featured_image: get(node, 'primaryImage.src'),
         keywords: getAsArray(node, 'keywords.edges').map(e => get(e, 'node.name')),
         key_pairs: filterSearchIndexes(indexes, node.id),
@@ -61,6 +63,7 @@ module.exports = ({
       next: page < lastPage ? linkTo(req, page + 1, limit) : '',
     },
     meta: {
+      path: pathURL,
       current_page: page,
       from: skip + 1,
       to: skip + limit,
