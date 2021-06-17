@@ -145,7 +145,7 @@ $ let contentContactLength = null
             <global-author-published-node author=author.node content=content showPublished=false />
           </if>
           <if (author.node.body !== '')>
-            <p>${author.node.body}</p>
+            <p>$!{author.node.body}</p>
           </if>
           </for>
         </if>
