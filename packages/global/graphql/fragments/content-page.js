@@ -126,6 +126,7 @@ fragment ContentPageFragment on Content {
           id
           name
           type
+          body
           siteContext {
             path
           }

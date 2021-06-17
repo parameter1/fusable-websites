@@ -12,6 +12,8 @@ $ const displaySocialShare = ["contact"].includes(type) ? false : true;
 $ const displayComments = ["contact"].includes(type) ? false : true;
 $ const displayNewsletterSignup = ["contact"].includes(type) ? false : true;
 $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type);
+$ let authors = []
+$ let contentContactLength = null
 
 <global-content-wrapper-layout
   id=id
@@ -35,12 +37,12 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
       <global-content-page-breadcrumbs section=primarySection />
       <marko-web-content-name tag="h1" block-name=blockName obj=content />
 
-      $ const contentContactLength = ["authors", "contributors", "photographers"].reduce((num, field) => {
+      $ contentContactLength = ["authors", "contributors", "photographers"].reduce((num, field) => {
         const contacts = getAsArray(content, `${field}.edges`);
         return num + contacts.length;
       }, 0);
 
-      $ const authors = getAsArray(content, "authors.edges");
+      $ authors = getAsArray(content, "authors.edges");
 
       <if(type !== "contact")>
         <if(authors.length === 1 && contentContactLength < 2)>
@@ -135,6 +137,22 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             <@link class="btn btn-primary" />
           </default-theme-content-download>
         </if>
+
+        <if(type !== "contact")>
+        <if(authors.length === 1 && contentContactLength < 2)>
+        <for|author| of=authors>
+          <if (author.node.name !== 'Overdrive Staff')>
+            <global-author-published-node author=author.node content=content showPublished=false />
+          </if>
+          <if (author.node.body !== '')>
+            <p>${author.node.body}</p>
+          </if>
+          </for>
+        </if>
+        <else>
+          <default-theme-content-attribution obj=content elements=["authors"] />
+        </else>
+      </if>
 
         <if(displayNewsletterSignup)>
           <global-newsletter-signup-banner-block />

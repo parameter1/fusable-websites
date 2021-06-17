@@ -2,6 +2,10 @@ import { buildImgixUrl } from "@parameter1/base-cms-image";
 
 $ const { author, content } = input;
 $ const blockName = "author-published-node";
+$ let showPublished = true
+$ if (input.showPublished === false) {
+  showPublished = input.showPublished
+}
 
 <marko-web-block name=blockName>
   $ const { primaryImage } = author;
@@ -23,6 +27,8 @@ $ const blockName = "author-published-node";
   </if>
   <marko-web-element block-name=blockName name="details">
     <marko-web-content-name block-name=blockName obj=author link=true />
-    <global-content-published-node block-name=blockName obj=content />
+    <if (showPublished)>
+      <global-content-published-node block-name=blockName obj=content />
+    </if>
   </marko-web-element>
 </marko-web-block>
