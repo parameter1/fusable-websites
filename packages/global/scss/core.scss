@@ -70,11 +70,19 @@ label {
   }
 }
 
-.form-control {
+.form-control,
+.custom-select {
   letter-spacing: $skin-input-letter-spacing;
   border-radius: $input-border-radius; // must force this value since radius is disabled
   &:hover:not(:focus) {
     border-color: $skin-input-hover-border-color;
+  }
+
+  &--bg-white {
+    background-color: #fff;
+    &:focus {
+      background-color: #fff;
+    }
   }
 }
 
