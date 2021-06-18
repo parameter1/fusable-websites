@@ -11,16 +11,7 @@
         class="custom-select custom-select--bg-white"
         :required="required"
       >
-        <option value="">
-          Select
-        </option>
-        <option
-          v-for="option in option"
-          :key="option.value"
-          :value="option.value"
-        >
-          {{ option.label }}
-        </option>
+        <slot />
       </select>
     </template>
   </form-group>
@@ -50,10 +41,6 @@ export default {
     required: {
       type: Boolean,
       default: false,
-    },
-    options: {
-      type: Array,
-      default: () => [],
     },
   },
 };
