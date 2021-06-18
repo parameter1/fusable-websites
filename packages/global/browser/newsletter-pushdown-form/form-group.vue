@@ -7,11 +7,6 @@
       {{ displayLabel }}
     </label>
     <slot :id="id" :required="required" />
-    <!-- <input
-      id="newsletter-form-company-name"
-      class="form-control form-control--bg-white"
-      required
-    > -->
   </div>
 </template>
 
