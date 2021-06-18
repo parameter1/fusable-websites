@@ -141,7 +141,7 @@ $ let contentContactLength = null
         <if(type !== "contact")>
         <if(authors.length === 1 && contentContactLength < 2)>
         <for|author| of=authors>
-          <if (author.node.name !== 'Overdrive Staff')>
+          <if (!author.node.name.includes('Staff'))>
             <global-author-published-node author=author.node content=content showPublished=false />
           </if>
           <if (author.node.body !== '')>
