@@ -86,6 +86,17 @@ label {
   }
 }
 
+.custom-control-label {
+  &::before {
+    border-radius: $input-border-radius; // must force this value since radius is disabled
+  }
+  &--bg-white {
+    &::before {
+      background-color: #fff;
+    }
+  }
+}
+
 .btn-primary {
   @include skin-button($style: "primary");
 }
