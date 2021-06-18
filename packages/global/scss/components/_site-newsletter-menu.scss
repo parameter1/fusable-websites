@@ -115,7 +115,7 @@
 }
 
 .complete-newsletter-signup {
-  max-width: 664px;
+  max-width: 652px;
   margin-left: 64px;
 
   &__default-newsletter {
@@ -137,7 +137,7 @@
   }
 
   &__about-you {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     font-size: 18px;
     font-weight: 700;
     line-height: 1.14;
@@ -149,9 +149,12 @@
   }
 
   &__form-group {
-    &--company-name,
-    &--primary-role {
+    &--company-name {
       width: 250px;
+      margin-right: 12px;
+    }
+    &--primary-role {
+      width: 238px;
       margin-right: 12px;
     }
     &--postal-code {
@@ -179,10 +182,15 @@
 
   &__signup {
     display: flex;
-    align-items: baseline;
+    align-items: center;
+
+    .btn {
+      white-space: nowrap;
+    }
   }
 
   &__privacy-policy {
+    padding-right: 90px;
     margin-left: 17px;
     font-size: 15px;
     font-weight: 400;
