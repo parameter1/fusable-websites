@@ -102,6 +102,45 @@
     }
   }
 
+  &__signed-up-to {
+    display: inline-block;
+    padding: 15px 17px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    background: #0d9dc9;
+  }
+
+  &__complete-signup-header {
+    margin-bottom: 24px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.14;
+  }
+
+  &__about-you-header {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.14;
+  }
+
+  &__subscriptions-header {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.14;
+  }
+
+  &__form-label {
+    margin-bottom: 9px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.13;
+  }
+
   .newsletter-name {
     font-weight: $font-weight-bold;
   }

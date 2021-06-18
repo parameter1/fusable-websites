@@ -8,6 +8,7 @@ import OmedaRapidIdentityX from '@parameter1/base-cms-marko-web-omeda-identity-x
 const BlockLoader = () => import(/* webpackChunkName: "global-block-loader" */ './block-loader.vue');
 const MenuToggleButton = () => import(/* webpackChunkName: "global-menu-toggle-button" */ './menu-toggle-button.vue');
 const NewsletterCloseButton = () => import(/* webpackChunkName: "global-newsletter-close-button" */ './newsletter-close-button.vue');
+const NewsletterPushdownForm = () => import(/* webpackChunkName: "global-newsletter-pushdown-form" */ './newsletter-pushdown-form.vue');
 const WufooForm = () => import(/* webpackChunkName: "global-wufoo-form" */ './wufoo-form.vue');
 const TopStoriesMenu = () => import(/* webpackChunkName: "global-top-stories-menu" */ './top-stories-menu.vue');
 const CommentToggleButton = () => import(/* webpackChunkName: "global-comment-toggle-button" */ './comment-toggle-button.vue');
@@ -27,6 +28,7 @@ export default (Browser) => {
   Browser.register('GlobalBlockLoader', BlockLoader);
   Browser.register('GlobalMenuToggleButton', MenuToggleButton);
   Browser.register('GlobalNewsletterCloseButton', NewsletterCloseButton);
+  Browser.register('GlobalNewsletterPushdownForm', NewsletterPushdownForm);
   Browser.register('GlobalTopStoriesMenu', TopStoriesMenu);
   Browser.register('GlobalCommentToggleButton', CommentToggleButton);
   Browser.register('WufooForm', WufooForm);
