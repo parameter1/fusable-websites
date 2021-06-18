@@ -6,7 +6,7 @@
       class="custom-control-input"
     >
     <label
-      class="custom-control-label"
+      class="custom-control-label custom-control-label--bg-white"
       :for="id"
     >
       {{ name }}
