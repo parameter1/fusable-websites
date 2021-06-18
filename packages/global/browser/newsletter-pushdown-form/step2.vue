@@ -1,15 +1,15 @@
 <template>
-  <div :class="`${blockName}__step-two-container`">
-    <div :class="`${blockName}__signed-up-to`">
+  <div :class="blockName">
+    <div :class="`${blockName}__default-newsletter`">
       Signed up for the {{ defaultNewsletterName }}
     </div>
-    <div :class="`${blockName}__complete-signup-header`">
+    <div :class="`${blockName}__header`">
       Complete your sign-up
     </div>
-    <div :class="`${blockName}__about-you-header`">
+    <div :class="`${blockName}__about-you`">
       About you
     </div>
-    <div :class="`${blockName}__complete-signup-form`">
+    <div :class="`${blockName}__form`">
       <input-form-group
         :block-name="blockName"
         field="company-name"
@@ -47,7 +47,7 @@
         Choose your subscriptions
       </div>
 
-      <div :class="`${blockName}__subscriptions-header row`">
+      <div :class="`${blockName}__subscriptions row`">
         <div
           v-for="newsletter in newsletters"
           :key="newsletter.deploymentTypeId"
@@ -62,8 +62,10 @@
       </div>
     </div>
 
-    <div>
-      <sign-up-button />
+    <div :class="`${blockName}__signup`">
+      <div>
+        <sign-up-button />
+      </div>
       <privacy-policy :block-name="blockName" />
     </div>
   </div>
@@ -87,10 +89,6 @@ export default {
   },
 
   props: {
-    blockName: {
-      type: String,
-      required: true,
-    },
     defaultNewsletterName: {
       type: String,
       required: true,
@@ -100,5 +98,9 @@ export default {
       default: () => [],
     },
   },
+
+  data: () => ({
+    blockName: 'complete-newsletter-signup',
+  }),
 };
 </script>

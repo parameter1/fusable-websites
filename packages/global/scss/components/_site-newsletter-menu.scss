@@ -102,7 +102,23 @@
     }
   }
 
-  &__signed-up-to {
+  .newsletter-name {
+    font-weight: $font-weight-bold;
+  }
+
+  &--open {
+    max-height: 1000px;
+    visibility: visible;
+
+    transition: max-height .25s cubic-bezier(.4, 0, .2, 1), visibility 0s linear 0s;
+  }
+}
+
+.complete-newsletter-signup {
+  max-width: 664px;
+  margin-left: 64px;
+
+  &__default-newsletter {
     display: inline-block;
     padding: 15px 17px;
     margin-bottom: 20px;
@@ -113,44 +129,21 @@
     background: #0d9dc9;
   }
 
-  &__complete-signup-header {
+  &__header {
     margin-bottom: 24px;
     font-size: 20px;
     font-weight: 700;
     line-height: 1.14;
   }
 
-  &__about-you-header {
+  &__about-you {
     margin-bottom: 20px;
     font-size: 18px;
     font-weight: 700;
     line-height: 1.14;
   }
 
-  &__subscriptions-header {
-    margin-bottom: 15px;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.14;
-  }
-
-  &__subscriptions {
-    margin-bottom: 15px;
-  }
-
-  &__step-two-container {
-    max-width: 664px;
-    margin-left: 64px;
-  }
-
-  &__form-label {
-    margin-bottom: 9px;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.13;
-  }
-
-  &__complete-signup-form {
+  &__form {
     display: flex;
     margin-bottom: 36px;
   }
@@ -166,19 +159,40 @@
     }
   }
 
-  .newsletter-name {
-    font-weight: $font-weight-bold;
+  &__form-label {
+    margin-bottom: 9px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.13;
   }
 
-  &--open {
-    max-height: 1000px;
-    visibility: visible;
+  &__subscriptions-header {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.14;
+  }
 
-    transition: max-height .25s cubic-bezier(.4, 0, .2, 1), visibility 0s linear 0s;
+  &__subscriptions {
+    margin-bottom: 15px;
+  }
+
+  &__signup {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__privacy-policy {
+    margin-left: 17px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.33;
   }
 }
 
 .newsletter-checkbox-group {
+  padding-right: 40px;
+
   &__name {
     display: inline-block;
     margin-bottom: 2px;
@@ -189,7 +203,6 @@
 
   &__description {
     display: inline-block;
-    padding-right: 40px;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.38;
