@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="`${blockName}__step-two-container`">
     <div :class="`${blockName}__signed-up-to`">
       Signed up for the {{ defaultNewsletterName }}
     </div>
@@ -17,26 +17,22 @@
         required
       />
 
-      <div :class="`${blockName}__complete-signup-form-group`">
-        <label :class="`${blockName}__form-label`" for="newsletter-form-primary-role">
-          Your primary role? *
-        </label>
-        <select
-          id="newsletter-form-primary-role"
-          class="custom-select custom-select--bg-white"
-          required
-        >
-          <option value="">
-            Select
-          </option>
-          <option value="1">
-            Some thing
-          </option>
-          <option value="2">
-            Some other thing
-          </option>
-        </select>
-      </div>
+      <select-form-group
+        :block-name="blockName"
+        field="primary-role"
+        label="Your primary role?"
+        required
+      >
+        <option value="">
+          Select
+        </option>
+        <option value="1">
+          Some thing
+        </option>
+        <option value="2">
+          Some other thing
+        </option>
+      </select-form-group>
 
       <input-form-group
         :block-name="blockName"
@@ -51,14 +47,18 @@
         Choose your subscriptions
       </div>
 
-      <div>
-        <newsletter-checkbox
+      <div :class="`${blockName}__subscriptions-header row`">
+        <div
           v-for="newsletter in newsletters"
           :key="newsletter.deploymentTypeId"
-          :deployment-type-id="newsletter.deploymentTypeId"
-          :name="newsletter.name"
-          :description="newsletter.description"
-        />
+          class="col-md-6"
+        >
+          <newsletter-checkbox
+            :deployment-type-id="newsletter.deploymentTypeId"
+            :name="newsletter.name"
+            :description="newsletter.description"
+          />
+        </div>
       </div>
     </div>
 
@@ -74,6 +74,7 @@
 import InputFormGroup from './input-form-group.vue';
 import NewsletterCheckbox from './newsletter-checkbox.vue';
 import PrivacyPolicy from './privacy-policy.vue';
+import SelectFormGroup from './select-form-group.vue';
 import SignUpButton from './sign-up-button.vue';
 
 export default {
@@ -81,6 +82,7 @@ export default {
     InputFormGroup,
     NewsletterCheckbox,
     PrivacyPolicy,
+    SelectFormGroup,
     SignUpButton,
   },
 

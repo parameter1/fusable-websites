@@ -1,5 +1,5 @@
 <template>
-  <div class="custom-control custom-checkbox">
+  <div class="newsletter-checkbox-group custom-control custom-checkbox">
     <input
       :id="id"
       type="checkbox"
@@ -9,9 +9,12 @@
       class="custom-control-label custom-control-label--bg-white"
       :for="id"
     >
-      {{ name }}
-      <br>
-      {{ description }}
+      <span class="newsletter-checkbox-group__name">
+        {{ name }}
+      </span>
+      <span class="newsletter-checkbox-group__description">
+        {{ description }}
+      </span>
     </label>
   </div>
 </template>

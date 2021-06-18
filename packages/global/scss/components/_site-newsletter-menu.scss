@@ -134,6 +134,15 @@
     line-height: 1.14;
   }
 
+  &__subscriptions {
+    margin-bottom: 15px;
+  }
+
+  &__step-two-container {
+    max-width: 664px;
+    margin-left: 64px;
+  }
+
   &__form-label {
     margin-bottom: 9px;
     font-size: 16px;
@@ -141,14 +150,52 @@
     line-height: 1.13;
   }
 
+  &__complete-signup-form {
+    display: flex;
+    margin-bottom: 36px;
+  }
+
+  &__form-group {
+    &--company-name,
+    &--primary-role {
+      width: 250px;
+      margin-right: 12px;
+    }
+    &--postal-code {
+      width: 140px;
+    }
+  }
+
   .newsletter-name {
     font-weight: $font-weight-bold;
   }
 
   &--open {
-    max-height: 500px;
+    max-height: 1000px;
     visibility: visible;
 
     transition: max-height .25s cubic-bezier(.4, 0, .2, 1), visibility 0s linear 0s;
+  }
+}
+
+.newsletter-checkbox-group {
+  &__name {
+    display: inline-block;
+    margin-bottom: 2px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.22;
+  }
+
+  &__description {
+    display: inline-block;
+    padding-right: 40px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.38;
+  }
+
+  .custom-control-label {
+    margin-bottom: 9px;
   }
 }
