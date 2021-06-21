@@ -5,6 +5,7 @@
       :title="title"
       :description="description"
       :image-src="imageSrc"
+      :error="error"
       :is-loading="isLoading"
       @submit="stepOneSubmit"
     />
@@ -52,16 +53,17 @@ export default {
   },
 
   data: () => ({
+    error: null,
     isLoading: false,
     step: 1,
   }),
 
   methods: {
     stepOneSubmit({ email }) {
-      console.log(this.defaultNewsletter);
-      console.log({ stepOneSubmit: email });
+      console.log({ email });
+      this.error = null;
       this.isLoading = true;
-      // this.step = 2;
+      this.step = 2;
     },
   },
 };

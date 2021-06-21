@@ -71,6 +71,11 @@
         <privacy-policy :block-name="blockName" />
       </div>
     </div>
+
+      <div v-if="error" class="alert alert-danger mt-3" role="alert">
+        <strong>An error ocurred.</strong>
+        {{ error.message }}
+      </div>
   </div>
 </template>
 
@@ -114,6 +119,7 @@ export default {
 
   data: () => ({
     blockName: 'complete-newsletter-signup',
+    error: null,
   }),
 
   computed: {

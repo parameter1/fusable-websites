@@ -5,6 +5,7 @@
       :title="title"
       :description="description"
       :image-src="imageSrc"
+      :error="error"
       :is-loading="isLoading"
       @submit="stepOneSubmit"
     />
@@ -51,6 +52,7 @@ export default {
   },
 
   data: () => ({
+    error: null,
     isLoading: false,
     step: 1,
   }),

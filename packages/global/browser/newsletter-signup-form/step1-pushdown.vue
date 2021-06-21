@@ -20,6 +20,11 @@
       <privacy-policy :block-name="blockName" :disabled="isLoading" :label="buttonLabel" />
       <sign-up-button />
     </form>
+
+    <div v-if="error" class="alert alert-danger mt-3" role="alert">
+      <strong>An error ocurred.</strong>
+      {{ error.message }}
+    </div>
   </div>
 </template>
 
@@ -49,6 +54,10 @@ export default {
     isLoading: {
       type: Boolean,
       default: false,
+    },
+    error: {
+      type: Error,
+      default: null,
     },
   },
 
