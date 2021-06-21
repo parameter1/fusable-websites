@@ -71,11 +71,19 @@
         </div>
       </div>
 
-      <div :class="`${blockName}__signup`">
+      <div v-if="!isComplete" :class="`${blockName}__signup`">
         <div>
           <sign-up-button :is-loading="isLoading" />
         </div>
         <privacy-policy :block-name="blockName" />
+      </div>
+      <div v-else>
+        <div :class="`${blockName}__header`">
+          Thank you!
+        </div>
+        <p class="mb-0">
+          Your submission has been received.
+        </p>
       </div>
 
       <div v-if="error" class="alert alert-danger mt-3 mb-0" role="alert">
@@ -127,6 +135,7 @@ export default {
   data: () => ({
     blockName: 'complete-newsletter-signup',
     error: null,
+    isComplete: false,
     isLoading: false,
   }),
 
