@@ -321,6 +321,7 @@ $newsletter-signup-bg-color: #0d9dc9 !default;
     @include media-breakpoint-up(md) {
       display: block;
       width: 120px;
+      margin-top: auto;
       margin-right: 20px;
       margin-bottom: -22px;
     }
