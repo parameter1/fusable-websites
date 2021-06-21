@@ -1,15 +1,17 @@
 <template>
-  <div>
+  <div class="inline-newsletter-form">
     <step-one
       v-if="step === 1"
       :title="title"
       :description="description"
+      :image-src="imageSrc"
       @submit="step = 2"
     />
     <step-two
       v-if="step === 2"
       :default-newsletter-name="defaultNewsletterName"
       :newsletters="newsletters"
+      as-card
     />
   </div>
 </template>
@@ -32,6 +34,10 @@ export default {
     description: {
       type: String,
       required: true,
+    },
+    imageSrc: {
+      type: String,
+      default: null,
     },
   },
 

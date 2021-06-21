@@ -306,9 +306,13 @@ $newsletter-signup-bg-color: #0d9dc9 !default;
 }
 
 .inline-newsletter-form {
-  display: flex;
-  padding: 22px 16px;
   margin-bottom: 24px;
+}
+
+.inline-newsletter-form-step1 {
+  display: flex;
+  align-items: center;
+  padding: 22px 16px;
   background-color: $newsletter-signup-bg-color;
   border-radius: 4px;
 
@@ -317,12 +321,12 @@ $newsletter-signup-bg-color: #0d9dc9 !default;
     @include media-breakpoint-up(md) {
       display: block;
       width: 120px;
+      margin-right: 20px;
+      margin-bottom: -22px;
     }
-  }
 
-  &__right-col {
-    @include media-breakpoint-up(md) {
-      padding-left: 20px;
+    img {
+      width: 120px;
     }
   }
 

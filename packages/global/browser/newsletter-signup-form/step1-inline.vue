@@ -1,7 +1,10 @@
 <template>
   <div :class="blockName">
-    <div :class="`${blockName}__left-col`">
-      Image
+    <div
+      v-if="imageSrc"
+      :class="`${blockName}__left-col`"
+    >
+      <img :src="imageSrc" :srcset="imageSrcSet" :alt="title">
     </div>
     <div :class="`${blockName}__right-col`">
       <div :class="`${blockName}__title`">
@@ -48,13 +51,25 @@ export default {
       type: String,
       required: true,
     },
+    imageSrc: {
+      type: String,
+      default: null,
+    },
   },
 
 
   data: () => ({
     email: null,
-    blockName: 'inline-newsletter-form',
+    blockName: 'inline-newsletter-form-step1',
   }),
+
+  computed: {
+    imageSrcSet() {
+      const { imageSrc } = this;
+      if (!imageSrc) return null;
+      return `${imageSrc}&dpr=2 2x`;
+    },
+  },
 
   methods: {
     submit() {
