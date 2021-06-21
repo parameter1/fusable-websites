@@ -1,3 +1,5 @@
+$newsletter-signup-bg-color: #0d9dc9 !default;
+
 .site-newsletter-menu {
   max-height: 0;
 
@@ -126,7 +128,7 @@
     font-weight: 700;
     line-height: 1;
     color: #fff;
-    background: #0d9dc9;
+    background-color: $newsletter-signup-bg-color;
 
     @include media-breakpoint-up(md) {
       font-size: 20px;
@@ -300,5 +302,62 @@
 
   .custom-control-label {
     margin-bottom: 9px;
+  }
+}
+
+.inline-newsletter-form {
+  display: flex;
+  padding: 22px 16px;
+  margin-bottom: 24px;
+  background-color: $newsletter-signup-bg-color;
+  border-radius: 4px;
+
+  &__left-col {
+    display: none;
+    @include media-breakpoint-up(md) {
+      display: block;
+      width: 120px;
+    }
+  }
+
+  &__right-col {
+    @include media-breakpoint-up(md) {
+      padding-left: 20px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.14;
+    color: #fff;
+  }
+
+  &__description {
+    max-width: 525px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.38;
+    color: #fff;
+  }
+
+  &__form {
+    display: flex;
+    max-width: 435px;
+  }
+
+  &__email-group {
+    flex-grow: 1;
+  }
+
+  &__email-input {
+    background-color: #fff;
+    border-color: $newsletter-signup-bg-color;
+  }
+
+  &__form-button {
+    margin-left: 10px;
   }
 }
