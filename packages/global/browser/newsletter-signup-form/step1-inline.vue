@@ -34,7 +34,7 @@
         />
       </form>
 
-      <div v-if="error" class="alert alert-danger mt-3" role="alert">
+      <div v-if="error" class="alert alert-danger mt-3 mb-0" role="alert">
         <strong>An error ocurred.</strong>
         {{ error.message }}
       </div>
