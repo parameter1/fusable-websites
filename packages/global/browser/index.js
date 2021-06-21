@@ -6,6 +6,7 @@ import NativeX from '@parameter1/base-cms-marko-web-native-x/browser';
 import OmedaRapidIdentityX from '@parameter1/base-cms-marko-web-omeda-identity-x/browser/rapid-identify.vue';
 
 const BlockLoader = () => import(/* webpackChunkName: "global-block-loader" */ './block-loader.vue');
+const InlineNewsletterForm = () => import(/* webpackChunkName: "global-inline-newsletter-form" */ './inline-newsletter-form.vue');
 const MenuToggleButton = () => import(/* webpackChunkName: "global-menu-toggle-button" */ './menu-toggle-button.vue');
 const NewsletterCloseButton = () => import(/* webpackChunkName: "global-newsletter-close-button" */ './newsletter-close-button.vue');
 const NewsletterPushdownForm = () => import(/* webpackChunkName: "global-newsletter-pushdown-form" */ './newsletter-pushdown-form.vue');
@@ -26,6 +27,7 @@ export default (Browser) => {
   });
 
   Browser.register('GlobalBlockLoader', BlockLoader);
+  Browser.register('GlobalInlineNewsletterForm', InlineNewsletterForm);
   Browser.register('GlobalMenuToggleButton', MenuToggleButton);
   Browser.register('GlobalNewsletterCloseButton', NewsletterCloseButton);
   Browser.register('GlobalNewsletterPushdownForm', NewsletterPushdownForm);

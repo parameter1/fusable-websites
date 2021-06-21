@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import StepOne from './newsletter-signup-form/step1-pushdown.vue';
+import StepOne from './newsletter-signup-form/step1-inline.vue';
 import StepTwo from './newsletter-signup-form/step2.vue';
 
 export default {
@@ -36,7 +36,7 @@ export default {
   },
 
   data: () => ({
-    step: 2,
+    step: 1,
     // @todo these shoud be a props
     defaultNewsletterName: 'CCJ Daily',
     newsletters: [
