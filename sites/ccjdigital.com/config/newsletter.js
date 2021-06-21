@@ -11,7 +11,7 @@ const defaults = {
   imagePath: 'static/newsletter-pushdown/ccj-half.png',
   defaultNewsletter: {
     deploymentTypeId: 10,
-    name: 'CCJ Digital',
+    name: 'CCJ Daily',
   },
   newsletters: [
     {
