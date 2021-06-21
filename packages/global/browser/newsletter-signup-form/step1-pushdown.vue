@@ -11,12 +11,13 @@
         id="newsletter-menu-email"
         v-model="email"
         class="form-control"
+        :disabled="isLoading"
         placeholder="example@gmail.com"
         type="email"
         name="em"
         required
       >
-      <privacy-policy :block-name="blockName" />
+      <privacy-policy :block-name="blockName" :disabled="isLoading" :label="buttonLabel" />
       <sign-up-button />
     </form>
   </div>
@@ -33,10 +34,6 @@ export default {
   },
 
   props: {
-    blockName: {
-      type: String,
-      required: true,
-    },
     title: {
       type: String,
       required: true,
@@ -45,16 +42,36 @@ export default {
       type: String,
       required: true,
     },
+    imageSrc: {
+      type: String,
+      default: null,
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data: () => ({
+    blockName: 'site-newsletter-menu',
     email: null,
   }),
+
+  computed: {
+    buttonLabel() {
+      if (this.isLoading) return 'Signing Up...';
+      return 'Sign Up';
+    },
+    imageSrcSet() {
+      const { imageSrc } = this;
+      if (!imageSrc) return null;
+      return `${imageSrc}&dpr=2 2x`;
+    },
+  },
 
   methods: {
     submit() {
       const { email } = this;
-      console.log({ email });
       this.$emit('submit', { email });
     },
   },

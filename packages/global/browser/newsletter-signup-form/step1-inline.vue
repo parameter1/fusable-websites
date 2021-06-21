@@ -21,13 +21,17 @@
             id="inline-newsletter-email"
             v-model="email"
             :class="`${blockName}__email-input`"
+            :disabled="isLoading"
             class="form-control"
             placeholder="Enter your email"
             type="email"
             required
           >
         </div>
-        <sign-up-button :class="`${blockName}__form-button`" />
+        <sign-up-button
+          :class="`${blockName}__form-button`"
+          :is-loading="isLoading"
+        />
       </form>
     </div>
   </div>
@@ -55,12 +59,16 @@ export default {
       type: String,
       default: null,
     },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
   },
 
 
   data: () => ({
-    email: null,
     blockName: 'inline-newsletter-form-step1',
+    email: null,
   }),
 
   computed: {
@@ -74,7 +82,6 @@ export default {
   methods: {
     submit() {
       const { email } = this;
-      console.log({ email });
       this.$emit('submit', { email });
     },
   },

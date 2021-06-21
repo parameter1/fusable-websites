@@ -5,11 +5,12 @@
       :title="title"
       :description="description"
       :image-src="imageSrc"
-      @submit="step = 2"
+      :is-loading="isLoading"
+      @submit="stepOneSubmit"
     />
     <step-two
       v-if="step === 2"
-      :default-newsletter-name="defaultNewsletterName"
+      :default-newsletter-name="defaultNewsletter.name"
       :newsletters="newsletters"
       as-card
     />
@@ -35,33 +36,33 @@ export default {
       type: String,
       required: true,
     },
+    defaultNewsletter: {
+      type: Object,
+      required: true,
+      validate: o => (o && o.name && o.deploymentTypeId),
+    },
     imageSrc: {
       type: String,
       default: null,
     },
+    newsletters: {
+      type: Array,
+      default: () => [],
+    },
   },
 
   data: () => ({
+    isLoading: false,
     step: 1,
-    // @todo these shoud be a props
-    defaultNewsletterName: 'CCJ Daily',
-    newsletters: [
-      {
-        deploymentTypeId: 1,
-        name: 'CCJ Equipment Weekly',
-        description: 'Roundup of trucking equipment news and reviews',
-      },
-      {
-        deploymentTypeId: 2,
-        name: 'CCJ Technology Weekly',
-        description: 'Top tech developments in the trucking industry',
-      },
-      {
-        deploymentTypeId: 3,
-        name: 'CCJ Weekend Newsletter',
-        description: 'The top news of the week in the trucking industry',
-      },
-    ],
   }),
+
+  methods: {
+    stepOneSubmit({ email }) {
+      console.log(this.defaultNewsletter);
+      console.log({ stepOneSubmit: email });
+      this.isLoading = true;
+      // this.step = 2;
+    },
+  },
 };
 </script>
