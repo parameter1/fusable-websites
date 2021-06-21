@@ -1,6 +1,7 @@
 <template>
   <div :class="blockName">
     <div :class="`${blockName}__default-newsletter`">
+      <check-icon :class="`${blockName}__check-icon`" />
       Signed up for the {{ defaultNewsletterName }}
     </div>
     <div :class="`${blockName}__header`">
@@ -73,6 +74,7 @@
 
 
 <script>
+import CheckIcon from './check-icon.vue';
 import InputFormGroup from './input-form-group.vue';
 import NewsletterCheckbox from './newsletter-checkbox.vue';
 import PrivacyPolicy from './privacy-policy.vue';
@@ -81,6 +83,7 @@ import SignUpButton from './sign-up-button.vue';
 
 export default {
   components: {
+    CheckIcon,
     InputFormGroup,
     NewsletterCheckbox,
     PrivacyPolicy,
