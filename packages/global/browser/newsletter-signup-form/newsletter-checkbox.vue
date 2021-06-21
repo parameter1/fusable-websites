@@ -4,6 +4,7 @@
       :id="id"
       type="checkbox"
       class="custom-control-input"
+      :disabled="disabled"
     >
     <label
       class="custom-control-label custom-control-label--bg-white"
@@ -33,6 +34,10 @@ export default {
     description: {
       type: String,
       required: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
 

@@ -4,7 +4,10 @@
       <check-icon :class="`${blockName}__check-icon`" />
       Signed up for the {{ defaultNewsletterName }}
     </div>
-    <div :class="`${blockName}__card-body`">
+    <form
+      :class="`${blockName}__card-body`"
+      @submit.prevent="submit"
+    >
       <div :class="`${blockName}__header`">
         Complete your sign-up
       </div>
@@ -14,6 +17,7 @@
       <div :class="`${blockName}__form`">
         <input-form-group
           :block-name="blockName"
+          :disabled="isLoading"
           field="company-name"
           label="Company Name"
           required
@@ -21,6 +25,7 @@
 
         <select-form-group
           :block-name="blockName"
+          :disabled="isLoading"
           field="primary-role"
           label="Your primary role?"
           required
@@ -38,6 +43,7 @@
 
         <input-form-group
           :block-name="blockName"
+          :disabled="isLoading"
           field="postal-code"
           label="Zip/Postal"
           required
@@ -59,6 +65,7 @@
               :deployment-type-id="newsletter.deploymentTypeId"
               :name="newsletter.name"
               :description="newsletter.description"
+              :disabled="isLoading"
             />
           </div>
         </div>
@@ -66,16 +73,16 @@
 
       <div :class="`${blockName}__signup`">
         <div>
-          <sign-up-button />
+          <sign-up-button :is-loading="isLoading" />
         </div>
         <privacy-policy :block-name="blockName" />
       </div>
-    </div>
 
       <div v-if="error" class="alert alert-danger mt-3" role="alert">
         <strong>An error ocurred.</strong>
         {{ error.message }}
       </div>
+    </form>
   </div>
 </template>
 
@@ -120,6 +127,7 @@ export default {
   data: () => ({
     blockName: 'complete-newsletter-signup',
     error: null,
+    isLoading: false,
   }),
 
   computed: {
@@ -129,6 +137,14 @@ export default {
       if (this.asCard) classNames.push(`${blockName}--as-card`);
       if (this.inPushdown) classNames.push(`${blockName}--in-pushdown`);
       return classNames;
+    },
+  },
+
+  methods: {
+    submit() {
+      console.log('step2 submit!');
+      this.error = null;
+      this.isLoading = true;
     },
   },
 };

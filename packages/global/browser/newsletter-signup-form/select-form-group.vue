@@ -5,11 +5,12 @@
     :label="label"
     :required="required"
   >
-    <template #default="{ id, required }">
+    <template #default="{ id }">
       <select
         :id="id"
         class="custom-select custom-select--bg-white"
         :required="required"
+        :disabled="disabled"
       >
         <slot />
       </select>
@@ -39,6 +40,10 @@ export default {
       required: true,
     },
     required: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
       type: Boolean,
       default: false,
     },

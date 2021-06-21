@@ -5,11 +5,12 @@
     :label="label"
     :required="required"
   >
-    <template #default="{ id, required }">
+    <template #default="{ id }">
       <input
         :id="id"
         class="form-control form-control--bg-white"
         :required="required"
+        :disabled="disabled"
       >
     </template>
   </form-group>
@@ -37,6 +38,10 @@ export default {
       required: true,
     },
     required: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
       type: Boolean,
       default: false,
     },
