@@ -116,11 +116,6 @@
 
 .complete-newsletter-signup {
   $self: &;
-  max-width: 652px;
-
-  @include media-breakpoint-up(md) {
-    margin-left: 64px;
-  }
 
   &__card-header {
     display: inline-flex;
@@ -136,6 +131,10 @@
     @include media-breakpoint-up(md) {
       font-size: 20px;
     }
+  }
+
+  &__card-body {
+    max-width: 652px;
   }
 
   &__check-icon {
@@ -271,6 +270,13 @@
         padding-bottom: 24px;
         padding-left: 15px;
       }
+    }
+  }
+
+  &--in-pushdown {
+    margin-left: 0;
+    @include media-breakpoint-up(md) {
+      margin-left: 64px;
     }
   }
 }

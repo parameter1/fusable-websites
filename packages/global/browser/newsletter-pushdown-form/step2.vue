@@ -106,6 +106,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    inPushdown: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data: () => ({
@@ -117,6 +121,7 @@ export default {
       const { blockName } = this;
       const classNames = [blockName];
       if (this.asCard) classNames.push(`${blockName}--as-card`);
+      if (this.inPushdown) classNames.push(`${blockName}--in-pushdown`);
       return classNames;
     },
   },
