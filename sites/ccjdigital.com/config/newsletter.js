@@ -10,22 +10,22 @@ const defaults = {
   description: 'Get the business tips, industry insights and trending news every trucking professional needs to know.',
   imagePath: 'static/newsletter-pushdown/ccj-half.png',
   defaultNewsletter: {
-    deploymentTypeId: 10,
-    name: 'CCJ Daily',
+    deploymentTypeId: 29,
+    name: 'CCJ Daily Report',
   },
   newsletters: [
     {
-      deploymentTypeId: 1,
+      deploymentTypeId: 30,
       name: 'CCJ Equipment Weekly',
       description: 'Roundup of trucking equipment news and reviews',
     },
     {
-      deploymentTypeId: 2,
+      deploymentTypeId: 31,
       name: 'CCJ Technology Weekly',
       description: 'Top tech developments in the trucking industry',
     },
     {
-      deploymentTypeId: 3,
+      deploymentTypeId: 32,
       name: 'CCJ Weekend Newsletter',
       description: 'The top news of the week in the trucking industry',
     },

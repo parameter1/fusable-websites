@@ -8,6 +8,13 @@
         :description="description"
         :image-src="imageSrc"
         :image-srcset="imageSrcset"
+        @submit="stepOneSubmit"
+      />
+      <step-2
+        v-if="step === 2"
+        :default-newsletter-name="defaultNewsletter.name"
+        :newsletters="newsletters"
+        in-pushdown
       />
     </div>
   </aside>
@@ -15,10 +22,12 @@
 
 <script>
 import Step1 from './site-newsletter-menu/step1.vue';
+import Step2 from './newsletter-signup-form/step2.vue';
 
 export default {
   components: {
     Step1,
+    Step2,
   },
 
   props: {
@@ -29,6 +38,15 @@ export default {
     description: {
       type: String,
       required: true,
+    },
+    defaultNewsletter: {
+      type: Object,
+      required: true,
+      validate: o => (o && o.name && o.deploymentTypeId),
+    },
+    newsletters: {
+      type: Array,
+      default: () => [],
     },
     imageSrc: {
       type: String,
@@ -64,6 +82,11 @@ export default {
   methods: {
     element(elementName) {
       return `${this.blockName}__${elementName}`;
+    },
+
+    stepOneSubmit({ email }) {
+      this.step = 2;
+      // this.isLoading = true;
     },
   },
 };

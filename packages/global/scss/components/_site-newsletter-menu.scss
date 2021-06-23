@@ -276,8 +276,10 @@ $newsletter-signup-bg-color: #0d9dc9 !default;
   }
 
   &--in-pushdown {
+    padding-bottom: 24px;
     margin-left: 0;
     @include media-breakpoint-up(md) {
+      padding-bottom: 30px;
       margin-left: 64px;
     }
   }
