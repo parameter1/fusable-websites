@@ -10,6 +10,7 @@ const InlineNewsletterForm = () => import(/* webpackChunkName: "global-inline-ne
 const MenuToggleButton = () => import(/* webpackChunkName: "global-menu-toggle-button" */ './menu-toggle-button.vue');
 const NewsletterCloseButton = () => import(/* webpackChunkName: "global-newsletter-close-button" */ './newsletter-close-button.vue');
 const NewsletterPushdownForm = () => import(/* webpackChunkName: "global-newsletter-pushdown-form" */ './newsletter-pushdown-form.vue');
+const SiteNewsletterMenu = () => import(/* webpackChunkName: "global-site-newsletter-menu" */ './site-newsletter-menu.vue');
 const WufooForm = () => import(/* webpackChunkName: "global-wufoo-form" */ './wufoo-form.vue');
 const TopStoriesMenu = () => import(/* webpackChunkName: "global-top-stories-menu" */ './top-stories-menu.vue');
 const CommentToggleButton = () => import(/* webpackChunkName: "global-comment-toggle-button" */ './comment-toggle-button.vue');
@@ -31,6 +32,7 @@ export default (Browser) => {
   Browser.register('GlobalMenuToggleButton', MenuToggleButton);
   Browser.register('GlobalNewsletterCloseButton', NewsletterCloseButton);
   Browser.register('GlobalNewsletterPushdownForm', NewsletterPushdownForm);
+  Browser.register('GlobalSiteNewsletterMenu', SiteNewsletterMenu);
   Browser.register('GlobalTopStoriesMenu', TopStoriesMenu);
   Browser.register('GlobalCommentToggleButton', CommentToggleButton);
   Browser.register('WufooForm', WufooForm);
