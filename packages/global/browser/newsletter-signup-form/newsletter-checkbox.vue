@@ -39,11 +39,16 @@ export default {
       type: Boolean,
       default: false,
     },
+    inPushdown: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
     id() {
-      return `deployment-type-id-${this.deploymentTypeId}`;
+      const id = `deployment-type-id-${this.deploymentTypeId}`;
+      return this.inPushdown ? `pushdown-${id}` : id;
     },
   },
 };

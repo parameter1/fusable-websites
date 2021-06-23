@@ -66,6 +66,7 @@
               :name="newsletter.name"
               :description="newsletter.description"
               :disabled="isLoading"
+              :in-pushdown="inPushdown"
             />
           </div>
         </div>
