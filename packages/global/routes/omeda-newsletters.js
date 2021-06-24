@@ -34,7 +34,6 @@ module.exports = (app) => {
       demographics,
     } = req.body;
     if (!email) throw createError(400, 'An email address is required.');
-    if (!isArray(deploymentTypeIds) || !deploymentTypeIds.length) throw createError(400, 'At least one deployment type ID is required.');
 
     const input = {
       productId: rapidIdentProductId,
@@ -42,6 +41,7 @@ module.exports = (app) => {
       deploymentTypeIds,
       ...(companyName && { companyName }),
       ...(postalCode && { postalCode }),
+      ...(isArray(deploymentTypeIds) && deploymentTypeIds.length && { deploymentTypeIds }),
       ...(isArray(demographics) && demographics.length && { demographics }),
     };
     const { data } = await req.$omeda.mutate({ mutation: RAPID_IDENT, variables: { input } });
