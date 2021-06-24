@@ -58,6 +58,10 @@ export default {
     SignUpButton,
   },
   props: {
+    deploymentTypeId: {
+      type: Number,
+      required: true,
+    },
     blockName: {
       type: String,
       required: true,
@@ -91,9 +95,26 @@ export default {
       return [`${this.blockName}__${elementName}`, ...classNames];
     },
 
-    submit() {
-      const { email } = this;
-      this.$emit('submit', { email });
+    async submit() {
+      try {
+        this.error = null;
+        this.isLoading = true;
+        const { email, deploymentTypeId } = this;
+
+        const res = await fetch('/__omeda/newsletter-signup', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ deploymentTypeIds: [deploymentTypeId], email }),
+        });
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.message);
+        const { encryptedCustomerId } = json;
+        this.$emit('submit', { email, encryptedCustomerId });
+      } catch (e) {
+        this.error = e;
+      } finally {
+        this.isLoading = false;
+      }
     },
   },
 };

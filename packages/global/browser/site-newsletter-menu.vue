@@ -3,6 +3,7 @@
     <div :class="element('container')">
       <step-1
         v-if="step === 1"
+        :deployment-type-id="defaultNewsletter.deploymentTypeId"
         :block-name="blockName"
         :name="name"
         :description="description"
@@ -12,6 +13,7 @@
       />
       <step-2
         v-if="step === 2"
+        :email="email"
         :default-newsletter-name="defaultNewsletter.name"
         :newsletters="newsletters"
         in-pushdown
@@ -68,6 +70,7 @@ export default {
 
   data: () => ({
     step: 1,
+    email: null,
   }),
 
   computed: {
@@ -84,9 +87,9 @@ export default {
       return `${this.blockName}__${elementName}`;
     },
 
-    stepOneSubmit({ email }) {
+    stepOneSubmit({ encryptedCustomerId, email }) {
+      this.email = email;
       this.step = 2;
-      // this.isLoading = true;
     },
   },
 };
