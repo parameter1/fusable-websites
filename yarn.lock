@@ -2394,17 +2394,17 @@
     graphql-tag "^2.11.0"
     http-errors "^1.8.0"
 
-"@parameter1/omeda-graphql-client-express@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/omeda-graphql-client-express/-/omeda-graphql-client-express-0.4.0.tgz#8bdb17dbff7ab6cbf2173ea35cc1ca44c1bddab3"
-  integrity sha512-KOGFzWxYhRjiGc71uaeap5hfgJ4RdmWGv1iSYzrP0Aq+JzK/xZihgzGmopFyM5ngBxTkOA1xbFcGmjdHJAP2+g==
+"@parameter1/omeda-graphql-client-express@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@parameter1/omeda-graphql-client-express/-/omeda-graphql-client-express-0.4.2.tgz#a0552d607de75ab35862d62a2c4fac2522aef83f"
+  integrity sha512-Ui4Tt7G8gs2leBlQS/VIzrXpcsLdRp/nb6d0I5JhhKkT3EojrkpA7SZSrAChnwDoCWLn7giP0vtRnWdVE9SpVg==
   dependencies:
-    "@parameter1/omeda-graphql-client" "^0.4.0"
+    "@parameter1/omeda-graphql-client" "^0.4.2"
 
-"@parameter1/omeda-graphql-client@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/omeda-graphql-client/-/omeda-graphql-client-0.4.0.tgz#cf44ddee4300e71990d5a15e133eb166105f51e7"
-  integrity sha512-ABSNqEs4p10+/4yWt2J4M8QlcuwtYsUFGKCDmt7Il8HomwYeaaX/Ts35jErMg9PryPuz5i9p0BDTwcEpurwDYg==
+"@parameter1/omeda-graphql-client@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@parameter1/omeda-graphql-client/-/omeda-graphql-client-0.4.2.tgz#42476b0acf1c817ad4facbdfb9b9ba34a140522c"
+  integrity sha512-ZwIu67TcrRxGBg3JJjDma2ZqjLdl79KpQDTho0sQH+2GVFvQkM2/uPgiBAv+6VRlT1FkZ6T2slxXQaGaDYW2tw==
   dependencies:
     apollo-cache-inmemory "^1.6.6"
     apollo-client "^2.6.10"
