@@ -1,4 +1,5 @@
 import { buildImgixUrl } from "@parameter1/base-cms-image";
+import { getAsObject } from "@parameter1/base-cms-object-path";
 
 $ const blockName = "site-newsletter-menu";
 $ const { site, config } = out.global;
@@ -12,9 +13,9 @@ $ const {
   demographic,
 }  = pushdown;
 
-<!-- $ const modifiers = (!hasCookie && !fromEmail) ? ["open"] : []; -->
-$ const modifiers = ["open"];
 
+$ const { hasCookie, fromEmail } = getAsObject(out.global, "newsletterState");
+$ const modifiers = (!hasCookie && !fromEmail) ? ["open"] : [];
 $ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/files/base/randallreilly/all/image/${imagePath}`, { w: 280, auto: "format,compress&q=70" }) : null;
 $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
 
