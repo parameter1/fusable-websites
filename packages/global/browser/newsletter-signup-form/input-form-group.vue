@@ -8,9 +8,11 @@
     <template #default="{ id }">
       <input
         :id="id"
+        :value="value"
         class="form-control form-control--bg-white"
         :required="required"
         :disabled="disabled"
+        @input="$emit('input', $event.target.value)"
       >
     </template>
   </form-group>
@@ -25,6 +27,10 @@ export default {
   },
 
   props: {
+    value: {
+      type: String,
+      default: null,
+    },
     field: {
       type: String,
       required: true,

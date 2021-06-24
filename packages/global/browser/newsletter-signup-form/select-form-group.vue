@@ -8,9 +8,11 @@
     <template #default="{ id }">
       <select
         :id="id"
+        :value="value"
         class="custom-select custom-select--bg-white"
         :required="required"
         :disabled="disabled"
+        @change="$emit('input', $event.target.value)"
       >
         <slot />
       </select>
@@ -27,6 +29,10 @@ export default {
   },
 
   props: {
+    value: {
+      type: String,
+      default: null,
+    },
     field: {
       type: String,
       required: true,

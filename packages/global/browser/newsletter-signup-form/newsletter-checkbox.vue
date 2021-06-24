@@ -4,7 +4,9 @@
       :id="id"
       type="checkbox"
       class="custom-control-input"
+      :value="deploymentTypeId"
       :disabled="disabled"
+      @change="$emit('change', { deploymentTypeId, checked: $event.target.checked })"
     >
     <label
       class="custom-control-label custom-control-label--bg-white"

@@ -16,6 +16,7 @@
       </div>
       <div :class="`${blockName}__form`">
         <input-form-group
+          v-model="companyName"
           :block-name="blockName"
           :disabled="isLoading"
           field="company-name"
@@ -24,6 +25,7 @@
         />
 
         <select-form-group
+          v-model="primaryRole"
           :block-name="blockName"
           :disabled="isLoading"
           field="primary-role"
@@ -42,6 +44,7 @@
         </select-form-group>
 
         <input-form-group
+          v-model="postalCode"
           :block-name="blockName"
           :disabled="isLoading"
           field="postal-code"
@@ -67,6 +70,7 @@
               :description="newsletter.description"
               :disabled="isLoading"
               :in-pushdown="inPushdown"
+              @change="selectNewsletter"
             />
           </div>
         </div>
@@ -115,6 +119,10 @@ export default {
   },
 
   props: {
+    email: {
+      type: String,
+      default: null,
+    },
     defaultNewsletterName: {
       type: String,
       required: true,
@@ -138,6 +146,11 @@ export default {
     error: null,
     isComplete: false,
     isLoading: false,
+
+    companyName: null,
+    primaryRole: null,
+    postalCode: null,
+    deploymentTypeIds: [],
   }),
 
   computed: {
