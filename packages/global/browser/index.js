@@ -9,6 +9,8 @@ const BlockLoader = () => import(/* webpackChunkName: "global-block-loader" */ '
 const InlineNewsletterForm = () => import(/* webpackChunkName: "global-inline-newsletter-form" */ './inline-newsletter-form.vue');
 const MenuToggleButton = () => import(/* webpackChunkName: "global-menu-toggle-button" */ './menu-toggle-button.vue');
 const NewsletterCloseButton = () => import(/* webpackChunkName: "global-newsletter-close-button" */ './newsletter-close-button.vue');
+const NewsletterToggleButton = () => import(/* webpackChunkName: "global-newsletter-toggle-button" */ './newsletter-toggle-button.vue');
+
 const SiteNewsletterMenu = () => import(/* webpackChunkName: "global-site-newsletter-menu" */ './site-newsletter-menu.vue');
 const WufooForm = () => import(/* webpackChunkName: "global-wufoo-form" */ './wufoo-form.vue');
 const TopStoriesMenu = () => import(/* webpackChunkName: "global-top-stories-menu" */ './top-stories-menu.vue');
@@ -17,6 +19,8 @@ const IdentityXAuthenticate = () => import(/* webpackChunkName: "global-identity
 const IdentityXCommentStream = () => import(/* webpackChunkName: "global-identity-x-comment-stream" */ './identity-x/comments/stream.vue');
 
 export default (Browser) => {
+  const { EventBus } = Browser;
+
   GTM(Browser);
   GAM(Browser);
   SocialSharing(Browser);
@@ -30,7 +34,12 @@ export default (Browser) => {
   Browser.register('GlobalInlineNewsletterForm', InlineNewsletterForm);
   Browser.register('GlobalMenuToggleButton', MenuToggleButton);
   Browser.register('GlobalNewsletterCloseButton', NewsletterCloseButton);
-  Browser.register('GlobalSiteNewsletterMenu', SiteNewsletterMenu);
+  Browser.register('GlobalSiteNewsletterMenu', SiteNewsletterMenu, {
+    provide: { EventBus },
+  });
+  Browser.register('GlobalNewsletterToggleButton', NewsletterToggleButton, {
+    provide: { EventBus },
+  });
   Browser.register('GlobalTopStoriesMenu', TopStoriesMenu);
   Browser.register('GlobalCommentToggleButton', CommentToggleButton);
   Browser.register('WufooForm', WufooForm);

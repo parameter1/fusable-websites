@@ -40,14 +40,7 @@ $ const navigation = {
       has-user=input.hasUser
     />
 
-    <global-menu-toggle-button
-      class="site-navbar__newsletter-toggler"
-      targets=[".site-newsletter-menu"]
-      toggle-class="site-newsletter-menu--open"
-      icon-modifiers=["lg"]
-      icon-name="mail"
-      expanded-icon-name="mail"
-    />
+    <marko-web-browser-component name="GlobalNewsletterToggleButton" ssr=true />
   </default-theme-site-navbar>
 
   <default-theme-site-navbar modifiers=["primary"]>

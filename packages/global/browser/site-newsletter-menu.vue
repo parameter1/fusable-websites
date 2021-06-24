@@ -28,6 +28,7 @@ import Step1 from './site-newsletter-menu/step1.vue';
 import Step2 from './newsletter-signup-form/step2.vue';
 
 export default {
+  inject: ['EventBus'],
   components: {
     Step1,
     Step2,
@@ -67,24 +68,36 @@ export default {
       type: String,
       required: true,
     },
-    modifiers: {
-      type: Array,
-      default: () => [],
+    initiallyExpanded: {
+      type: Boolean,
+      default: false,
     },
   },
 
   data: () => ({
     email: null,
+    expanded: undefined,
     step: 1,
   }),
 
   computed: {
+    currentlyExpanded() {
+      if (this.expanded != null) return this.expanded;
+      return this.initiallyExpanded;
+    },
+
     classNames() {
       const { blockName } = this;
       const classes = [blockName];
-      this.modifiers.forEach(mod => classes.push(`${blockName}--${mod}`));
+      if (this.currentlyExpanded) classes.push(`${blockName}--open`);
       return classes;
     },
+  },
+
+  mounted() {
+    this.EventBus.$on('newsletter-menu-expanded', (expanded) => {
+      this.expanded = expanded;
+    });
   },
 
   methods: {
