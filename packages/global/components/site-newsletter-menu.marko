@@ -3,7 +3,6 @@ import { getAsObject } from "@parameter1/base-cms-object-path";
 
 $ const blockName = "site-newsletter-menu";
 $ const { site, config } = out.global;
-$ const pushdown = site.getAsObject("newsletter.pushdown");
 $ const {
   name,
   description,
@@ -11,7 +10,7 @@ $ const {
   defaultNewsletter,
   newsletters,
   demographic,
-}  = pushdown;
+} = site.getAsObject("newsletter.pushdown");
 
 
 $ const { hasCookie, fromEmail } = getAsObject(out.global, "newsletterState");

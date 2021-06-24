@@ -74,8 +74,8 @@ export default {
   },
 
   data: () => ({
-    step: 1,
     email: null,
+    step: 1,
   }),
 
   computed: {
