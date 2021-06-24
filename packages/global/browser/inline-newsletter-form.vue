@@ -1,35 +1,37 @@
 <template>
   <div class="inline-newsletter-form">
-    <step-one
+    <step-1
       v-if="step === 1"
-      :title="title"
+      :deployment-type-id="defaultNewsletter.deploymentTypeId"
+      :name="name"
       :description="description"
       :image-src="imageSrc"
-      :error="error"
-      :is-loading="isLoading"
+      :image-srcset="imageSrcset"
       @submit="stepOneSubmit"
     />
-    <step-two
+    <step-2
       v-if="step === 2"
+      :email="email"
       :default-newsletter-name="defaultNewsletter.name"
       :newsletters="newsletters"
+      :demographic="demographic"
       as-card
     />
   </div>
 </template>
 
 <script>
-import StepOne from './newsletter-signup-form/step1-inline.vue';
-import StepTwo from './newsletter-signup-form/step2.vue';
+import Step1 from './inline-newsletter-form/step1.vue';
+import Step2 from './newsletter-signup-form/step2.vue';
 
 export default {
   components: {
-    StepOne,
-    StepTwo,
+    Step1,
+    Step2,
   },
 
   props: {
-    title: {
+    name: {
       type: String,
       required: true,
     },
@@ -42,27 +44,32 @@ export default {
       required: true,
       validate: o => (o && o.name && o.deploymentTypeId),
     },
-    imageSrc: {
-      type: String,
-      default: null,
-    },
     newsletters: {
       type: Array,
       default: () => [],
     },
+    demographic: {
+      type: Object,
+      required: true,
+    },
+    imageSrc: {
+      type: String,
+      default: null,
+    },
+    imageSrcset: {
+      type: String,
+      default: null,
+    },
   },
 
   data: () => ({
-    error: null,
-    isLoading: false,
+    email: null,
     step: 1,
   }),
 
   methods: {
     stepOneSubmit({ email }) {
-      console.log({ email });
-      this.error = null;
-      this.isLoading = true;
+      this.email = email;
       this.step = 2;
     },
   },

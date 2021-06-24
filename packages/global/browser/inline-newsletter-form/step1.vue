@@ -4,15 +4,14 @@
       v-if="imageSrc"
       :class="`${blockName}__left-col`"
     >
-      <img :src="imageSrc" :srcset="imageSrcSet" :alt="title">
+      <img :src="imageSrc" :srcset="imageSrcset" :alt="name">
     </div>
     <div :class="`${blockName}__right-col`">
       <div :class="`${blockName}__title`">
-        {{ title }}
+        {{ name }}
       </div>
-      <div :class="`${blockName}__description`">
-        {{ description }}
-      </div>
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <div :class="`${blockName}__description`" v-html="description" />
 
       <form :class="`${blockName}__form`" @submit.prevent="submit">
         <div :class="`${blockName}__email-group`">
@@ -44,7 +43,7 @@
 
 
 <script>
-import SignUpButton from './sign-up-button.vue';
+import SignUpButton from '../newsletter-signup-form/sign-up-button.vue';
 
 export default {
   components: {
@@ -52,7 +51,11 @@ export default {
   },
 
   props: {
-    title: {
+    deploymentTypeId: {
+      type: Number,
+      required: true,
+    },
+    name: {
       type: String,
       required: true,
     },
@@ -64,12 +67,8 @@ export default {
       type: String,
       default: null,
     },
-    isLoading: {
-      type: Boolean,
-      default: false,
-    },
-    error: {
-      type: Error,
+    imageSrcset: {
+      type: String,
       default: null,
     },
   },
@@ -78,20 +77,31 @@ export default {
   data: () => ({
     blockName: 'inline-newsletter-form-step1',
     email: null,
+    error: null,
+    isLoading: false,
   }),
 
-  computed: {
-    imageSrcSet() {
-      const { imageSrc } = this;
-      if (!imageSrc) return null;
-      return `${imageSrc}&dpr=2 2x`;
-    },
-  },
-
   methods: {
-    submit() {
-      const { email } = this;
-      this.$emit('submit', { email });
+    async submit() {
+      try {
+        this.error = null;
+        this.isLoading = true;
+        const { email, deploymentTypeId } = this;
+
+        const res = await fetch('/__omeda/newsletter-signup', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ deploymentTypeIds: [deploymentTypeId], email }),
+        });
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.message);
+        const { encryptedCustomerId } = json;
+        this.$emit('submit', { email, encryptedCustomerId });
+      } catch (e) {
+        this.error = e;
+      } finally {
+        this.isLoading = false;
+      }
     },
   },
 };
