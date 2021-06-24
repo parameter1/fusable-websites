@@ -16,6 +16,7 @@
         :email="email"
         :default-newsletter-name="defaultNewsletter.name"
         :newsletters="newsletters"
+        :demographic="demographic"
         in-pushdown
       />
     </div>
@@ -49,6 +50,10 @@ export default {
     newsletters: {
       type: Array,
       default: () => [],
+    },
+    demographic: {
+      type: Object,
+      required: true,
     },
     imageSrc: {
       type: String,
@@ -87,7 +92,7 @@ export default {
       return `${this.blockName}__${elementName}`;
     },
 
-    stepOneSubmit({ encryptedCustomerId, email }) {
+    stepOneSubmit({ email }) {
       this.email = email;
       this.step = 2;
     },

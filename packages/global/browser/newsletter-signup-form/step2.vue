@@ -25,21 +25,22 @@
         />
 
         <select-form-group
-          v-model="primaryRole"
+          v-model="demographicValue"
           :block-name="blockName"
           :disabled="isLoading"
           field="primary-role"
-          label="Your primary role?"
+          :label="demographic.label"
           required
         >
           <option value="">
             Select
           </option>
-          <option value="1">
-            Some thing
-          </option>
-          <option value="2">
-            Some other thing
+          <option
+            v-for="value in demographic.values"
+            :key="value.id"
+            :value="value.id"
+          >
+            {{ value.label }}
           </option>
         </select-form-group>
 
@@ -131,6 +132,11 @@ export default {
       type: Array,
       default: () => [],
     },
+    demographic: {
+      type: Object,
+      required: true,
+      validate: demo => (demo && demo.id && demo.label && demo.values),
+    },
     asCard: {
       type: Boolean,
       default: false,
@@ -148,7 +154,7 @@ export default {
     isLoading: false,
 
     companyName: null,
-    primaryRole: null,
+    demographicValue: null,
     postalCode: null,
     deploymentTypeIds: [],
   }),
@@ -164,10 +170,42 @@ export default {
   },
 
   methods: {
-    submit() {
-      console.log('step2 submit!');
-      this.error = null;
-      this.isLoading = true;
+    selectNewsletter({ deploymentTypeId, checked }) {
+      if (checked) {
+        this.deploymentTypeIds.push(deploymentTypeId);
+      } else {
+        this.deploymentTypeIds = this.deploymentTypeIds.filter(id => id !== deploymentTypeId);
+      }
+    },
+
+    async submit() {
+      try {
+        this.error = null;
+        this.isLoading = true;
+        const { email } = this;
+        if (!email) throw new Error('Unable to submit: no email address found.');
+        const payload = {
+          email,
+          companyName: this.companyName,
+          postalCode: this.postalCode,
+          deploymentTypeIds: this.deploymentTypeIds,
+          demographics: [
+            { id: this.demographic.id, values: [this.demographicValue] },
+          ],
+        };
+        const res = await fetch('/__omeda/newsletter-signup', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.message);
+        this.isComplete = true;
+      } catch (e) {
+        this.error = e;
+      } finally {
+        this.isLoading = false;
+      }
     },
   },
 };

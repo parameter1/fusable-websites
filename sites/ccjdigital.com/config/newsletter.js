@@ -30,6 +30,22 @@ const defaults = {
       description: 'The top news of the week in the trucking industry',
     },
   ],
+  demographic: {
+    id: 72,
+    label: 'Your primary role?',
+    values: [
+      { id: 114, label: 'Corporate Management/Owner' },
+      { id: 115, label: 'Operations/Safety Management' },
+      { id: 116, label: 'Maintenance Management' },
+      { id: 117, label: 'Purchasing/Administrative/Marketing Management' },
+      { id: 118, label: 'Technician/Mechanic' },
+      { id: 119, label: 'Sales' },
+      { id: 120, label: 'Driver' },
+      { id: 121, label: 'Engineering' },
+      { id: 122, label: 'Recruiting' },
+      { id: 123, label: 'Other' },
+    ],
+  },
 };
 
 module.exports = {
