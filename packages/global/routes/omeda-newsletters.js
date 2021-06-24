@@ -7,6 +7,11 @@ const createError = require('http-errors');
 const { json } = require('body-parser');
 const omedaConfig = require('../config/omeda');
 
+const { isArray } = Array;
+
+const rapidIdentProductId = get(omedaConfig, 'rapidIdentification.productId');
+if (!rapidIdentProductId) throw new Error('No rapid identification product ID has been configured.');
+
 const RAPID_IDENT = gql`
   mutation RapidIdentifyNewsletterSignup($input: RapidCustomerIdentificationMutationInput!) {
     result: rapidCustomerIdentification(input: $input) {
@@ -16,39 +21,34 @@ const RAPID_IDENT = gql`
   }
 `;
 
-const OPT_IN = gql`
-  mutation NewsletterSignupOptIn($input: EmailAddressOptInMutationInput!) {
-    emailAddressOptIn(input: $input) {
-      emailAddress
-    }
-  }
-`;
-
 module.exports = (app) => {
   const router = Router();
   router.use(json());
-  router.post('/1', asyncRoute(async (req, res) => {
-    const { email, deploymentTypeId } = req.body;
+
+  router.post('/', asyncRoute(async (req, res) => {
+    const {
+      email,
+      companyName,
+      postalCode,
+      deploymentTypeIds,
+      demographics,
+    } = req.body;
     if (!email) throw createError(400, 'An email address is required.');
-    if (!deploymentTypeId) throw createError(400, 'A deployment type ID is required.');
+    if (!isArray(deploymentTypeIds) || !deploymentTypeIds.length) throw createError(400, 'At least one deployment type ID is required.');
 
-    const productId = get(omedaConfig, 'rapidIdentification.productId');
-    if (!productId) throw createError(500, 'No product ID has been configured.');
-    const input = { productId, email };
-
-    // rapidly identify the user.
+    const input = {
+      productId: rapidIdentProductId,
+      email,
+      deploymentTypeIds,
+      ...(companyName && { companyName }),
+      ...(postalCode && { postalCode }),
+      ...(isArray(demographics) && demographics.length && { demographics }),
+    };
     const { data } = await req.$omeda.mutate({ mutation: RAPID_IDENT, variables: { input } });
     const { encryptedCustomerId } = data.result;
-    // then opt-in the email address.
-    const optInInput = {
-      emailAddress: email,
-      deploymentTypeIds: [deploymentTypeId],
-      subscribeToProducts: true,
-      source: 'Website Signup Form',
-    };
-    await req.$omeda.mutate({ mutation: OPT_IN, variables: { input: optInInput } });
-    res.json({ rapidIdentId: encryptedCustomerId });
+    res.json({ encryptedCustomerId });
   }));
+
   router.use(jsonErrorHandler());
   app.use('/__omeda/newsletter-signup', router);
 };
