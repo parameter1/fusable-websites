@@ -13,6 +13,7 @@
       <div :class="element('name')">
         {{ name }}
       </div>
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <div :class="element('description')" v-html="description" />
 
       <form :class="element('form')" @submit.prevent="submit">
