@@ -46,7 +46,7 @@ module.exports = ({
         post_name: node.slug,
         post_title: node.name,
         post_content: await renderer(node.body, res, { lazyloadImages: false }),
-        post_excerpt: await renderer(node.teaser, res, { lazyloadImages: false }),
+        post_excerpt: node.teaser,
         featured_image: get(node, 'primaryImage.src'),
         keywords: getAsArray(node, 'keywords.edges').map(e => get(e, 'node.name')),
         key_pairs: filterSearchIndexes(indexes, node.id),
