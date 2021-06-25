@@ -9,7 +9,7 @@
       <select
         :id="id"
         :value="value"
-        class="custom-select custom-select--bg-white"
+        class="custom-select custom-select--bg-white form-control"
         :required="required"
         :disabled="disabled"
         @change="$emit('input', $event.target.value)"
