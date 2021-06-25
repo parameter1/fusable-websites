@@ -1,5 +1,6 @@
-const { asyncRoute, isFunction: isFn } = require('@parameter1/base-cms-utils');
+const { asyncRoute } = require('@parameter1/base-cms-utils');
 const { getAsArray, get } = require('@parameter1/base-cms-object-path');
+const renderer = require('./renderer');
 const client = require('./client');
 const query = require('./graphql/equipment-experts-content');
 const eeQuery = require('./graphql/equipment-experts-indexes');
@@ -13,10 +14,8 @@ const filterSearchIndexes = (data, id) => getAsArray(data, 'data.findAll')
   .map(({ industry, manufacturer, model }) => ({ industry, manufacturer, model }));
 
 module.exports = ({
-  parseEmbeddedMedia = v => v,
   sectionAlias = 'equipment-experts',
 } = {}) => asyncRoute(async (req, res) => {
-  const renderBody = isFn(parseEmbeddedMedia) ? parseEmbeddedMedia : v => v;
   const page = parseInt(get(req, 'query.page', 1), 10);
   const limit = parseInt(get(req, 'query.posts_per_page', 20), 10);
   const skip = (page - 1) * limit;
@@ -40,13 +39,13 @@ module.exports = ({
   const indexes = await client.query({ query: eeQuery, variables: { contentIds } });
 
   res.json({
-    data: getAsArray(data, 'websiteScheduledContent.edges').map((edge) => {
+    data: await Promise.all(getAsArray(data, 'websiteScheduledContent.edges').map(async (edge) => {
       const { node } = edge;
       return {
         post_id: node.id,
         post_name: node.slug,
         post_title: node.name,
-        post_content: renderBody(node.body, res, { lazyloadImages: false }),
+        post_content: await renderer(node.body, res, { lazyloadImages: false }),
         post_excerpt: node.teaser,
         featured_image: get(node, 'primaryImage.src'),
         keywords: getAsArray(node, 'keywords.edges').map(e => get(e, 'node.name')),
@@ -55,7 +54,7 @@ module.exports = ({
         permalink: get(node, 'siteContext.url'),
         author: getAsArray(node, 'authors.edges').map(e => get(e, 'node.name')).join(', '),
       };
-    }),
+    })),
     links: {
       first: linkTo(req, 1, limit),
       last: linkTo(req, lastPage, limit),
