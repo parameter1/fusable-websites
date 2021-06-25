@@ -10,6 +10,7 @@
         :image-src="imageSrc"
         :image-srcset="imageSrcset"
         @submit="stepOneSubmit"
+        @focus="$emit('focus', { step: 1 })"
       />
       <step-2
         v-if="step === 2"
@@ -18,6 +19,9 @@
         :newsletters="newsletters"
         :demographic="demographic"
         in-pushdown
+        @submit="$emit('submit', { step: 2 })"
+        @focus="$emit('focus', { step: 2 })"
+        @load="$emit('load', { step: 2 })"
       />
     </div>
   </aside>
@@ -75,6 +79,7 @@ export default {
   },
 
   data: () => ({
+    didLoad: false,
     email: null,
     expanded: undefined,
     step: 1,
@@ -94,9 +99,17 @@ export default {
     },
   },
 
+  watch: {
+    didLoad(value) {
+      if (value) this.$emit('load', { step: 1 });
+    },
+  },
+
   mounted() {
+    if (this.initiallyExpanded) this.didLoad = true;
     this.EventBus.$on('newsletter-menu-expanded', (expanded) => {
       this.expanded = expanded;
+      if (expanded) this.didLoad = true;
     });
   },
 
@@ -106,6 +119,7 @@ export default {
     },
 
     stepOneSubmit({ email }) {
+      this.$emit('submit', { step: 1 });
       this.email = email;
       this.step = 2;
     },

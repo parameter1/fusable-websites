@@ -13,6 +13,7 @@
         :required="required"
         :disabled="disabled"
         @input="$emit('input', $event.target.value)"
+        @focus="$emit('focus')"
       >
     </template>
   </form-group>

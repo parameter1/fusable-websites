@@ -25,6 +25,7 @@
             placeholder="Enter your email"
             type="email"
             required
+            @focus="didFocus = true"
           >
         </div>
         <sign-up-button
@@ -76,10 +77,17 @@ export default {
 
   data: () => ({
     blockName: 'inline-newsletter-form-step1',
+    didFocus: false,
     email: null,
     error: null,
     isLoading: false,
   }),
+
+  watch: {
+    didFocus(value) {
+      if (value) this.$emit('focus');
+    },
+  },
 
   methods: {
     async submit() {

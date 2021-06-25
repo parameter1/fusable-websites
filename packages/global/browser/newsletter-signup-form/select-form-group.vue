@@ -13,6 +13,7 @@
         :required="required"
         :disabled="disabled"
         @change="$emit('input', $event.target.value)"
+        @focus="$emit('focus')"
       >
         <slot />
       </select>

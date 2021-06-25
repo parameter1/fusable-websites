@@ -8,6 +8,7 @@
       :image-src="imageSrc"
       :image-srcset="imageSrcset"
       @submit="stepOneSubmit"
+      @focus="$emit('focus', { step: 1 })"
     />
     <step-2
       v-if="step === 2"
@@ -16,6 +17,9 @@
       :newsletters="newsletters"
       :demographic="demographic"
       as-card
+      @submit="$emit('submit', { step: 2 })"
+      @focus="$emit('focus', { step: 2 })"
+      @load="$emit('load', { step: 2 })"
     />
   </div>
 </template>
@@ -67,8 +71,13 @@ export default {
     step: 1,
   }),
 
+  mounted() {
+    this.$emit('load', { step: 1 });
+  },
+
   methods: {
     stepOneSubmit({ email }) {
+      this.$emit('submit', { step: 1 });
       this.email = email;
       this.step = 2;
     },

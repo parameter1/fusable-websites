@@ -27,6 +27,7 @@
           type="email"
           name="em"
           required
+          @focus="didFocus = true"
         >
         <privacy-policy :block-name="blockName" />
         <sign-up-button :is-loading="isLoading" />
@@ -86,10 +87,17 @@ export default {
   },
 
   data: () => ({
+    didFocus: false,
     email: null,
     error: null,
     isLoading: false,
   }),
+
+  watch: {
+    didFocus(value) {
+      if (value) this.$emit('focus');
+    },
+  },
 
   methods: {
     element(elementName, classNames = []) {

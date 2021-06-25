@@ -22,6 +22,7 @@
           field="company-name"
           label="Company Name"
           required
+          @focus="didFocus = true"
         />
 
         <select-form-group
@@ -31,6 +32,7 @@
           field="primary-role"
           :label="demographic.label"
           required
+          @focus="didFocus = true"
         >
           <option value="">
             Select
@@ -51,6 +53,7 @@
           field="postal-code"
           label="Zip/Postal"
           required
+          @focus="didFocus = true"
         />
       </div>
 
@@ -72,6 +75,7 @@
               :disabled="isLoading"
               :in-pushdown="inPushdown"
               @change="selectNewsletter"
+              @focus="didFocus = true"
             />
           </div>
         </div>
@@ -149,6 +153,7 @@ export default {
 
   data: () => ({
     blockName: 'complete-newsletter-signup',
+    didFocus: false,
     error: null,
     isComplete: false,
     isLoading: false,
@@ -167,6 +172,16 @@ export default {
       if (this.inPushdown) classNames.push(`${blockName}--in-pushdown`);
       return classNames;
     },
+  },
+
+  watch: {
+    didFocus(value) {
+      if (value) this.$emit('focus');
+    },
+  },
+
+  mounted() {
+    this.$emit('load');
   },
 
   methods: {
@@ -200,6 +215,7 @@ export default {
         });
         const json = await res.json();
         if (!res.ok) throw new Error(json.message);
+        this.$emit('submit');
         this.isComplete = true;
       } catch (e) {
         this.error = e;
