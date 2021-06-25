@@ -16,11 +16,11 @@
   },
   "dependencies": {
     "@parameter1/base-cms-marko-core": "^2.22.2",
-    "@parameter1/base-cms-marko-web": "^2.30.0",
+    "@parameter1/base-cms-marko-web": "^2.30.1",
     "@parameter1/base-cms-marko-web-gtm": "^2.22.2",
     "@parameter1/base-cms-object-path": "^2.22.2",
     "@parameter1/base-cms-utils": "^2.22.2",
-    "@parameter1/base-cms-web-cli": "^2.30.0",
+    "@parameter1/base-cms-web-cli": "^2.30.1",
     "@randall-reilly/package-global": "^1.15.5",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
