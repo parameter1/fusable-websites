@@ -12,9 +12,6 @@ $ const displaySocialShare = ["contact"].includes(type) ? false : true;
 $ const displayComments = ["contact"].includes(type) ? false : true;
 $ const displayNewsletterSignup = ["contact"].includes(type) ? false : true;
 $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type);
-$ let authors = []
-$ let contentContactLength = null
-
 <global-content-wrapper-layout
   id=id
   type=type
@@ -31,18 +28,11 @@ $ let contentContactLength = null
     <global-gam-wallpaper-ad aliases=aliases position="content_page" />
   </@section>
 
-  <@section|{ blockName, content, aliases }| modifiers=["content-header"]>
+  <@section|{ blockName, content, aliases, contentContactLength, authors}| modifiers=["content-header"]>
     $ const { primarySection } = content;
     <div class="content-page-header">
       <global-content-page-breadcrumbs section=primarySection />
       <marko-web-content-name tag="h1" block-name=blockName obj=content />
-
-      $ contentContactLength = ["authors", "contributors", "photographers"].reduce((num, field) => {
-        const contacts = getAsArray(content, `${field}.edges`);
-        return num + contacts.length;
-      }, 0);
-
-      $ authors = getAsArray(content, "authors.edges");
 
       <if(type !== "contact")>
         <if(authors.length === 1 && contentContactLength < 2)>
@@ -71,7 +61,7 @@ $ let contentContactLength = null
     </div>
   </@section>
 
-  <@section|{ aliases, content }|>
+  <@section|{ aliases, content, contentContactLength, authors }|>
     $ const { primarySection } = content;
     <div class="content-page-body">
       <default-theme-page-contents|{ blockName }| attrs={ "data-gallery-id": id }>
@@ -137,17 +127,16 @@ $ let contentContactLength = null
             <@link class="btn btn-primary" />
           </default-theme-content-download>
         </if>
-
-        <if(type !== "contact")>
+      <if(type !== "contact")>
         <if(authors.length === 1 && contentContactLength < 2)>
-        <for|author| of=authors>
-          <if (!author.node.name.includes('Staff'))>
-            <global-author-published-node author=author.node content=content showPublished=false />
-          </if>
-          <if (author.node.body !== '')>
-            <p>$!{author.node.body}</p>
-          </if>
-          </for>
+          <for|author| of=authors>
+            <if (!author.node.name.includes('Staff'))>
+              <global-author-published-node author=author.node content=content showPublished=false />
+            </if>
+            <if (author.node.body !== '')>
+              <p>$!{author.node.body}</p>
+            </if>
+            </for>
         </if>
         <else>
           <default-theme-content-attribution obj=content elements=["authors"] />
