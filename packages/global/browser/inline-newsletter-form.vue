@@ -1,5 +1,6 @@
 <template>
   <div class="inline-newsletter-form">
+    <div ref="lazyload" class="lazyload" />
     <step-1
       v-if="step === 1"
       :deployment-type-id="defaultNewsletter.deploymentTypeId"
@@ -67,12 +68,22 @@ export default {
   },
 
   data: () => ({
+    didView: false,
     email: null,
     step: 1,
   }),
 
+  watch: {
+    didView(value) {
+      if (value) this.$emit('view', { step: 1 });
+    },
+  },
+
   mounted() {
     this.$emit('load', { step: 1 });
+    this.$refs.lazyload.addEventListener('lazybeforeunveil', () => {
+      this.didView = true;
+    });
   },
 
   methods: {
