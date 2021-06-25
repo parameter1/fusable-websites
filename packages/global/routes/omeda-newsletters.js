@@ -5,6 +5,8 @@ const jsonErrorHandler = require('@parameter1/base-cms-marko-web/express/json-er
 const { get } = require('@parameter1/base-cms-object-path');
 const createError = require('http-errors');
 const { json } = require('body-parser');
+const fetch = require('node-fetch');
+const recaptcha = require('../config/recaptcha');
 const omedaConfig = require('../config/omeda');
 
 const { isArray } = Array;
@@ -27,6 +29,7 @@ module.exports = (app) => {
 
   router.post('/', asyncRoute(async (req, res) => {
     const {
+      token,
       email,
       companyName,
       postalCode,
@@ -34,6 +37,14 @@ module.exports = (app) => {
       demographics,
     } = req.body;
     if (!email) throw createError(400, 'An email address is required.');
+    if (!token) throw createError(400, 'A verification token is required.');
+
+    const params = new URLSearchParams();
+    params.append('response', token);
+    params.append('secret', recaptcha.secretKey);
+    const recaptchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', { method: 'post', mode: 'no-cors', body: params });
+    const recaptchaData = await recaptchaRes.json();
+    if (!recaptchaData.success || recaptchaData.action !== 'newsletterSignup' || recaptchaData.score < 0.5) throw createError(400, 'Unable to validate request because reCAPTCHA failed.');
 
     const input = {
       productId: rapidIdentProductId,

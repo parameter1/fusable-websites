@@ -8,6 +8,7 @@
       :description="description"
       :image-src="imageSrc"
       :image-srcset="imageSrcset"
+      :recaptcha-site-key="recaptchaSiteKey"
       @submit="stepOneSubmit"
       @focus="$emit('focus', { step: 1 })"
     />
@@ -17,6 +18,7 @@
       :default-newsletter-name="defaultNewsletter.name"
       :newsletters="newsletters"
       :demographic="demographic"
+      :recaptcha-site-key="recaptchaSiteKey"
       as-card
       @submit="$emit('submit', { step: 2 })"
       @focus="$emit('focus', { step: 2 })"
@@ -36,6 +38,10 @@ export default {
   },
 
   props: {
+    recaptchaSiteKey: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,

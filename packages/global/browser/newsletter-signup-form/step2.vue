@@ -113,6 +113,8 @@ import PrivacyPolicy from './privacy-policy.vue';
 import SelectFormGroup from './select-form-group.vue';
 import SignUpButton from './sign-up-button.vue';
 
+import getRecaptchaToken from './get-recaptcha-token';
+
 export default {
   components: {
     CheckIcon,
@@ -124,6 +126,10 @@ export default {
   },
 
   props: {
+    recaptchaSiteKey: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       default: null,
@@ -199,7 +205,9 @@ export default {
         this.isLoading = true;
         const { email } = this;
         if (!email) throw new Error('Unable to submit: no email address found.');
+        const token = await getRecaptchaToken(this.recaptchaSiteKey);
         const payload = {
+          token,
           email,
           companyName: this.companyName,
           postalCode: this.postalCode,
