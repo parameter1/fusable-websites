@@ -5,11 +5,49 @@ const baseConfig = {
   ],
 };
 
-module.exports = {
-  signupBanner: {
-    ...baseConfig,
-    description: 'Get the business tips, industry insights and trending news every landscaping professional needs to know in the <em>TLC</em> newsletter. ',
+const defaults = {
+  name: 'Don’t Miss Out',
+  description: 'Get the business tips, industry insights and trending news every landscaping professional needs to know in the <em>TLC</em> newsletter.',
+  imagePath: 'static/newsletter-pushdown/tlc-half.png',
+  defaultNewsletter: {
+    deploymentTypeId: 17,
+    name: 'Total Landscape Care Daily',
   },
+  newsletters: [
+    {
+      deploymentTypeId: 18,
+      name: 'Total Landscape Care Weekly',
+      description: 'The weeks top landscaping news and insights',
+    },
+  ],
+  demographic: {
+    id: 153,
+    label: 'Your primary role?',
+    values: [
+      { id: 265, label: 'Corporate Management/Owner' },
+      { id: 266, label: 'Safety/Operations Management' },
+      { id: 267, label: 'Maintenance/Equipment Mngmt' },
+      { id: 268, label: 'Purchasing/Admin/Marketing' },
+      { id: 269, label: 'Technician/Mechanic' },
+      { id: 270, label: 'Sales' },
+      { id: 271, label: 'Engineering' },
+      { id: 272, label: 'Heavy Equipment Operator' },
+      { id: 273, label: 'Other' },
+    ],
+  },
+};
+
+module.exports = {
+  // uses inline omeda form
+  signupBanner: {
+    ...defaults,
+  },
+  pushdown: {
+    ...defaults,
+    description: 'Join 14,000 landscaping professionals who get helpful insights and important news delivered straight to their inbox with the <em>Total Landscape Care</em> newsletter.',
+  },
+
+  // links off to seperate omeda dragonform
   signupBannerLarge: {
     ...baseConfig,
     name: 'Don’t Miss Out',
@@ -19,11 +57,5 @@ module.exports = {
     ...baseConfig,
     name: 'Newsletter Just for Landscapers',
     description: 'Get landscaping news and insights, plus how-to guides and equipment reviews — delivered straight to your inbox.',
-  },
-  pushdown: {
-    ...baseConfig,
-    imagePath: 'static/newsletter-pushdown/tlc-half.png',
-    name: 'Don’t Miss Out',
-    description: 'Join 14,000 landscaping professionals who get helpful insights and important news delivered straight to their inbox with the <em>Total Landscape Care</em> newsletter.',
   },
 };
