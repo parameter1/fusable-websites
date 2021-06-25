@@ -126,6 +126,16 @@
     }
   }
 
+  &__content-body h2,
+  &__content-body h3 {
+    margin-bottom: 0;
+    font-size: 26px;
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 0;
+      font-size: 23px;
+    }
+  }
+
   &--download-form {
     padding: 22px;
     background-color: $gray-100;
