@@ -124,10 +124,12 @@ export default {
       return `${this.blockName}__${elementName}`;
     },
 
-    stepOneSubmit({ email }) {
+    stepOneSubmit({ email, encryptedCustomerId }) {
       this.$emit('submit', { step: 1 });
       this.email = email;
       this.step = 2;
+      const { olytics } = window;
+      if (olytics) olytics.confirm(encryptedCustomerId);
     },
   },
 };
