@@ -21,6 +21,14 @@ const IdentityXCommentStream = () => import(/* webpackChunkName: "global-identit
 export default (Browser) => {
   const { EventBus } = Browser;
 
+  const emitNewsletterEvent = ({ type, action, data }) => {
+    EventBus.$emit('newsletter-form-action', {
+      ...data,
+      type,
+      action,
+    });
+  };
+
   GTM(Browser);
   GAM(Browser);
   SocialSharing(Browser);
@@ -31,12 +39,30 @@ export default (Browser) => {
   });
 
   Browser.register('GlobalBlockLoader', BlockLoader);
-  Browser.register('GlobalInlineNewsletterForm', InlineNewsletterForm);
-  Browser.register('GlobalMenuToggleButton', MenuToggleButton);
-  Browser.register('GlobalNewsletterCloseButton', NewsletterCloseButton);
+
   Browser.register('GlobalSiteNewsletterMenu', SiteNewsletterMenu, {
     provide: { EventBus },
+    on: {
+      load: (data) => {
+        emitNewsletterEvent({ type: 'Pushdown', action: 'Load', data });
+        emitNewsletterEvent({ type: 'Pushdown', action: 'View', data });
+      },
+      focus: data => emitNewsletterEvent({ type: 'Pushdown', action: 'Focus', data }),
+      submit: data => emitNewsletterEvent({ type: 'Pushdown', action: 'Submit', data }),
+    },
   });
+  Browser.register('GlobalInlineNewsletterForm', InlineNewsletterForm, {
+    on: {
+      load: data => emitNewsletterEvent({ type: 'Inline', action: 'Load', data }),
+      view: data => emitNewsletterEvent({ type: 'Inline', action: 'View', data }),
+      focus: data => emitNewsletterEvent({ type: 'Inline', action: 'Focus', data }),
+      submit: data => emitNewsletterEvent({ type: 'Inline', action: 'Submit', data }),
+    },
+  });
+
+  Browser.register('GlobalMenuToggleButton', MenuToggleButton);
+  Browser.register('GlobalNewsletterCloseButton', NewsletterCloseButton);
+
   Browser.register('GlobalNewsletterToggleButton', NewsletterToggleButton, {
     provide: { EventBus },
   });
