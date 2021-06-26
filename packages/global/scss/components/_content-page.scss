@@ -122,6 +122,12 @@
     }
   }
 
+  &__content-body h2,
+  &__content-body h3 {
+    @include skin-typography($style: "header-2");
+    margin-bottom: 0;
+  }
+
   &--download-form {
     padding: 22px;
     background-color: $gray-100;
