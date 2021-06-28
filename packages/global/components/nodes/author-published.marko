@@ -1,8 +1,9 @@
 import { buildImgixUrl } from "@parameter1/base-cms-image";
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 
 $ const { author, content } = input;
 $ const blockName = "author-published-node";
-$ const showPublished = input.showPublished || true
+$ const showPublished = defaultValue(input.showPublished, true)
 
 <marko-web-block name=blockName>
   $ const { primaryImage } = author;
