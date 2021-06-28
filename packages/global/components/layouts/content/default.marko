@@ -12,6 +12,7 @@ $ const displaySocialShare = ["contact"].includes(type) ? false : true;
 $ const displayComments = ["contact"].includes(type) ? false : true;
 $ const displayNewsletterSignup = ["contact"].includes(type) ? false : true;
 $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type);
+
 <global-content-wrapper-layout
   id=id
   type=type
@@ -134,10 +135,10 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
         <if(type !== "contact")>
           <if(authors.length)>
             <for|author| of=authors>
-              <if (author.name && !author.name.includes('Staff'))>
+              <if(author.name && !author.name.includes('Staff'))>
                 <global-author-published-node author=author content=content showPublished=false />
               </if>
-              <if (author.body)>
+              <if(author.body)>
                 <p>$!{author.body}</p>
               </if>
             </for>
