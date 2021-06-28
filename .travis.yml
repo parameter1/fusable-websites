@@ -10,13 +10,13 @@ _production-job: &production-job
   env:
     - "ENVIRONMENT=production RANCHER_CLUSTERID=c-njflm"
 
-# _staging-job: &staging-job
-#   stage: staging
-#   name: SERVICE_NAME
-#   script: scripts/deploy.js SERVICE_NAME
-#   install: skip
-#   env:
-#     - "ENVIRONMENT=staging RANCHER_CLUSTERID=c-njflm"
+_staging-job: &staging-job
+  stage: staging
+  name: SERVICE_NAME
+  script: scripts/deploy.js SERVICE_NAME
+  install: skip
+  env:
+    - "ENVIRONMENT=staging RANCHER_CLUSTERID=c-njflm"
 
 stages:
   - name: test
@@ -28,12 +28,12 @@ stages:
   - name: production-finished
     if: tag =~ /^v\d+\.\d+\.\d+$/
 
-  # - name: staging-started
-  #   if: tag is present
-  # - name: staging
-  #   if: tag is present
-  # - name: staging-finished
-  #   if: tag is present
+  - name: staging-started
+    if: tag is present
+  - name: staging
+    if: tag is present
+  - name: staging-finished
+    if: tag is present
 
 jobs:
   include:
@@ -44,10 +44,10 @@ jobs:
       stage: production-started
       name: Deployment Started
       script: npx @parameter1/base-cms-website-deployment-tool notify-started
-    # - <<: *staging-job
-    #   stage: staging-started
-    #   name: Deployment Started
-    #   script: npx @parameter1/base-cms-website-deployment-tool notify-started
+    - <<: *staging-job
+      stage: staging-started
+      name: Deployment Started
+      script: npx @parameter1/base-cms-website-deployment-tool notify-started
 
     ##########################
     # vvv ADD SITES HERE vvv #
@@ -56,51 +56,51 @@ jobs:
     - <<: *production-job
       name: ccjdigital.com
       script: npx @parameter1/base-cms-website-deployment-tool deploy ccjdigital.com virgon-websites
-    # - <<: *staging-job
-    #   name: ccjdigital.com
-    #   script: npx @parameter1/base-cms-website-deployment-tool deploy ccjdigital.com staging-websites-virgon
+    - <<: *staging-job
+      name: ccjdigital.com
+      script: npx @parameter1/base-cms-website-deployment-tool deploy ccjdigital.com staging-websites-virgon
 
     - <<: *production-job
       name: equipmentworld.com
       script: npx @parameter1/base-cms-website-deployment-tool deploy equipmentworld.com virgon-websites
-    # - <<: *staging-job
-    #   name: equipmentworld.com
-    #   script: npx @parameter1/base-cms-website-deployment-tool deploy equipmentworld.com staging-websites-virgon
+    - <<: *staging-job
+      name: equipmentworld.com
+      script: npx @parameter1/base-cms-website-deployment-tool deploy equipmentworld.com staging-websites-virgon
 
     - <<: *production-job
       name: hardworkingtrucks.com
       script: npx @parameter1/base-cms-website-deployment-tool deploy hardworkingtrucks.com virgon-websites
-    # - <<: *staging-job
-    #   name: hardworkingtrucks.com
-    #   script: npx @parameter1/base-cms-website-deployment-tool deploy hardworkingtrucks.com staging-websites-virgon
+    - <<: *staging-job
+      name: hardworkingtrucks.com
+      script: npx @parameter1/base-cms-website-deployment-tool deploy hardworkingtrucks.com staging-websites-virgon
 
     - <<: *production-job
       name: overdriveonline.com
       script: npx @parameter1/base-cms-website-deployment-tool deploy overdriveonline.com virgon-websites
-    # - <<: *staging-job
-    #   name: overdriveonline.com
-    #   script: npx @parameter1/base-cms-website-deployment-tool deploy overdriveonline.com staging-websites-virgon
+    - <<: *staging-job
+      name: overdriveonline.com
+      script: npx @parameter1/base-cms-website-deployment-tool deploy overdriveonline.com staging-websites-virgon
 
     - <<: *production-job
       name: totallandscapecare.com
       script: npx @parameter1/base-cms-website-deployment-tool deploy totallandscapecare.com virgon-websites
-    # - <<: *staging-job
-    #   name: totallandscapecare.com
-    #   script: npx @parameter1/base-cms-website-deployment-tool deploy totallandscapecare.com staging-websites-virgon
+    - <<: *staging-job
+      name: totallandscapecare.com
+      script: npx @parameter1/base-cms-website-deployment-tool deploy totallandscapecare.com staging-websites-virgon
 
     - <<: *production-job
       name: truckersnews.com
       script: npx @parameter1/base-cms-website-deployment-tool deploy truckersnews.com virgon-websites
-    # - <<: *staging-job
-    #   name: truckersnews.com
-    #   script: npx @parameter1/base-cms-website-deployment-tool deploy truckersnews.com staging-websites-virgon
+    - <<: *staging-job
+      name: truckersnews.com
+      script: npx @parameter1/base-cms-website-deployment-tool deploy truckersnews.com staging-websites-virgon
 
     - <<: *production-job
       name: truckpartsandservice.com
       script: npx @parameter1/base-cms-website-deployment-tool deploy truckpartsandservice.com virgon-websites
-    # - <<: *staging-job
-    #   name: truckpartsandservice.com
-    #   script: npx @parameter1/base-cms-website-deployment-tool deploy truckpartsandservice.com staging-websites-virgon
+    - <<: *staging-job
+      name: truckpartsandservice.com
+      script: npx @parameter1/base-cms-website-deployment-tool deploy truckpartsandservice.com staging-websites-virgon
 
     ##########################
     # ^^^ ADD SITES HERE ^^^ #
@@ -110,7 +110,7 @@ jobs:
       stage: production-finished
       name: Deployment Finished
       script: npx @parameter1/base-cms-website-deployment-tool notify-finished
-    # - <<: *staging-job
-    #   stage: staging-finished
-    #   name: Deployment Finished
-    #   script: npx @parameter1/base-cms-website-deployment-tool notify-finished
+    - <<: *staging-job
+      stage: staging-finished
+      name: Deployment Finished
+      script: npx @parameter1/base-cms-website-deployment-tool notify-finished
