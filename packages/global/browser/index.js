@@ -22,10 +22,12 @@ export default (Browser) => {
   const { EventBus } = Browser;
 
   const emitNewsletterEvent = ({ type, action, data }) => {
+    let label = `Step ${data.step}`;
+    if (action === 'Error') label = `${label} Error: ${data.error}`;
     EventBus.$emit('newsletter-form-action', {
-      ...data,
-      type,
+      category: `Newsletter Signup Form (${type})`,
       action,
+      label,
     });
   };
 
