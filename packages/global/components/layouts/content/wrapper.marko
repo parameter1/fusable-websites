@@ -18,6 +18,7 @@ $ const alias = get(input, "primarySection.alias");
   <@page>
     <marko-web-resolve-page|{ data: content }| node=pageNode>
       $ const aliases = hierarchyAliases(content.primarySection);
+      $ const authors = getAsArray(content, "authors.edges").map((edge) => edge.node);
       <marko-web-page-wrapper>
         <for|s| of=sections>
           <@section|{ blockName }| modifiers=s.modifiers>
@@ -25,6 +26,7 @@ $ const alias = get(input, "primarySection.alias");
               block-name=blockName
               content=content
               aliases=aliases
+              authors=authors
             />
           </@section>
         </for>
