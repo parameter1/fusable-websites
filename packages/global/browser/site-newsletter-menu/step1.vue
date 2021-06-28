@@ -128,6 +128,7 @@ export default {
         this.$emit('submit', { email, encryptedCustomerId });
       } catch (e) {
         this.error = e;
+        this.$emit('error', e);
       } finally {
         this.isLoading = false;
       }

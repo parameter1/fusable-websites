@@ -10,7 +10,7 @@
       @focus="$emit('focus')"
     >
     <label
-      class="custom-control-label custom-control-label--bg-white"
+      class="d-flex flex-column custom-control-label custom-control-label--bg-white"
       :for="id"
     >
       <span class="newsletter-checkbox-group__name">

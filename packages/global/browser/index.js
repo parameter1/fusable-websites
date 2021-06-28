@@ -49,6 +49,7 @@ export default (Browser) => {
       },
       focus: data => emitNewsletterEvent({ type: 'Pushdown', action: 'Focus', data }),
       submit: data => emitNewsletterEvent({ type: 'Pushdown', action: 'Submit', data }),
+      error: data => emitNewsletterEvent({ type: 'Pushdown', action: 'Error', data: { ...data, error: data.error.message } }),
     },
   });
   Browser.register('GlobalInlineNewsletterForm', InlineNewsletterForm, {
@@ -57,6 +58,7 @@ export default (Browser) => {
       view: data => emitNewsletterEvent({ type: 'Inline', action: 'View', data }),
       focus: data => emitNewsletterEvent({ type: 'Inline', action: 'Focus', data }),
       submit: data => emitNewsletterEvent({ type: 'Inline', action: 'Submit', data }),
+      error: data => emitNewsletterEvent({ type: 'Inline', action: 'Error', data: { ...data, error: data.error.message } }),
     },
   });
 

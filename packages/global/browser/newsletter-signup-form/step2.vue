@@ -66,7 +66,7 @@
           <div
             v-for="newsletter in newsletters"
             :key="newsletter.deploymentTypeId"
-            class="col-md-6"
+            class="col-12 col-md-6"
           >
             <newsletter-checkbox
               :deployment-type-id="newsletter.deploymentTypeId"
@@ -227,6 +227,7 @@ export default {
         this.isComplete = true;
       } catch (e) {
         this.error = e;
+        this.$emit('error', e);
       } finally {
         this.isLoading = false;
       }

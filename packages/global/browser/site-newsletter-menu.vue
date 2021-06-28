@@ -12,6 +12,7 @@
         :recaptcha-site-key="recaptchaSiteKey"
         @submit="stepOneSubmit"
         @focus="$emit('focus', { step: 1 })"
+        @error="$emit('error', { step: 1, error: $event })"
       />
       <step-2
         v-if="step === 2"
@@ -24,6 +25,7 @@
         @submit="$emit('submit', { step: 2 })"
         @focus="$emit('focus', { step: 2 })"
         @load="$emit('load', { step: 2 })"
+        @error="$emit('error', { step: 2, error: $event })"
       />
     </div>
   </aside>
