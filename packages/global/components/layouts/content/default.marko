@@ -137,9 +137,9 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             <for|author| of=authors>
               <if(author.name && !author.name.includes('Staff'))>
                 <global-author-published-node author=author content=content showPublished=false />
-              </if>
-              <if(author.body)>
-                <p>$!{author.body}</p>
+                <if(author.body)>
+                  <p>$!{author.body}</p>
+                </if>
               </if>
             </for>
           </if>
