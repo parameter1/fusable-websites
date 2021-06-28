@@ -9,6 +9,10 @@ $theme-site-header-breakpoints: (
 // Colors
 $primary: #b94909;
 
+// Newsletter signup forms
+$skin-newsletter-signup-bg-color: #f68b21;
+$skin-newsletter-signup-inline-btn-color: #8c3608;
+
 @import "../../node_modules/@randall-reilly/package-global/scss/core";
 
 .safety-watch {
