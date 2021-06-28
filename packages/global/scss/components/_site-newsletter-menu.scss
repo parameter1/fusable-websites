@@ -369,6 +369,13 @@
   &__email-input {
     background-color: #fff;
     border-color: $skin-newsletter-signup-bg-color;
+    &:hover:not(:focus) {
+      border-color: $skin-newsletter-signup-inline-btn-color;
+    }
+    &:focus {
+      border-color: $skin-newsletter-signup-inline-btn-color;
+      box-shadow: 0 0 0 1px $skin-newsletter-signup-inline-btn-color;
+    }
   }
 
   &__form-button {
