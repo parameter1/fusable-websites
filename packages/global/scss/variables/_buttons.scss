@@ -47,6 +47,20 @@ $skin-buttons: non-destructive-map-merge(
       "padding": 4px 16px 7px,
       "text-transform": none,
     ),
+    "inline-newsletter-signup": (
+      "background-color": $skin-newsletter-signup-inline-btn-color,
+      "border-radius": 4px,
+      "color": $white,
+      "hover-background-color": darken($skin-newsletter-signup-inline-btn-color, 5%),
+      "hover-color": $white,
+      "font-family": $skin-font-family-primary,
+      "font-weight": $font-weight-bold,
+      "font-size": 16px,
+      "letter-spacing": .8px,
+      "line-height": 1.25,
+      "padding": 12px 27px,
+      "text-transform": uppercase,
+    ),
   ),
   $skin-buttons
 );

@@ -9,6 +9,10 @@ $theme-site-header-breakpoints: (
 // Colors
 $primary: #b9161b;
 
+// Newsletter signup forms
+$skin-newsletter-signup-bg-color: #d1232a;
+$skin-newsletter-signup-inline-btn-color: #460c0e;
+
 @import "../../node_modules/@randall-reilly/package-global/scss/core";
 
 @import "./components/partners-in-business-page";

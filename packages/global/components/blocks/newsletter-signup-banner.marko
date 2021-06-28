@@ -1,29 +1,33 @@
+import { buildImgixUrl } from "@parameter1/base-cms-image";
+import recaptcha from "../../config/recaptcha";
+
 $ const blockName = "newsletter-signup-banner";
 
-$ const { site } = out.global;
-$ const { action, hiddenInputs, description } = site.getAsObject('newsletter.signupBanner');
+$ const { config, site } = out.global;
+$ const {
+  name,
+  description,
+  imagePath,
+  defaultNewsletter,
+  newsletters,
+  demographic,
+} = site.getAsObject('newsletter.signupBanner');
 
-<if(action && description)>
-  <marko-web-block name=blockName class=input.class>
-    <marko-web-element block-name=blockName name="description" class="mb-3">
-      $!{description}
-    </marko-web-element>
-    <div class=`${blockName}__form-wrapper`>
-      <form method="GET" action=action class=`${blockName}__form`>
-        <label for="newsletter-signup-banner-email" class="sr-only">Email</label>
-        <input
-          id="newsletter-signup-banner-email"
-          class="form-control"
-          placeholder="example@gmail.com"
-          type="email"
-          name="em"
-          required
-        />
-        <for|item| of=hiddenInputs>
-          <input type="hidden" name=item.name value=item.value />
-        </for>
-        <button class="btn btn-primary" type="submit">Sign Up</button>
-      </form>
-    </div>
-  </marko-web-block>
+$ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/files/base/randallreilly/all/image/${imagePath}`, { w: 120, auto: "format,compress&q=70" }) : null;
+$ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
+
+<if(name && description)>
+  <marko-web-browser-component
+    name="GlobalInlineNewsletterForm"
+    props={
+      name,
+      description,
+      defaultNewsletter,
+      newsletters,
+      demographic,
+      imageSrc,
+      imageSrcset,
+      recaptchaSiteKey: recaptcha.siteKey,
+    }
+  />
 </if>

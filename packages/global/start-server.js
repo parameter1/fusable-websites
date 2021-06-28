@@ -75,6 +75,7 @@ module.exports = (options = {}) => {
       app.use(omedaGraphQL({
         uri: 'https://graphql.omeda.parameter1.com/',
         brandKey: omedaConfig.brandKey,
+        clientKey: omedaConfig.clientKey,
         appId: omedaConfig.appId,
         inputId: omedaConfig.inputId,
       }));

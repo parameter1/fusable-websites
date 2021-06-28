@@ -9,4 +9,8 @@ $theme-site-header-breakpoints: (
 // Colors
 $primary: #ed0f13;
 
+// Newsletter signup forms
+$skin-newsletter-signup-bg-color: #ed0f14;
+$skin-newsletter-signup-inline-btn-color: #600608;
+
 @import "../../node_modules/@randall-reilly/package-global/scss/core";

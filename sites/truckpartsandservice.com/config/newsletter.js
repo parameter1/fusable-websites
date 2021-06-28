@@ -5,11 +5,53 @@ const baseConfig = {
   ],
 };
 
-module.exports = {
-  signupBanner: {
-    ...baseConfig,
-    description: 'Get the business tips, industry insights and trending news every dealer and distributor needs to know in the <em>TPS</em> newsletter.',
+const defaults = {
+  name: 'Don’t Miss Out',
+  description: 'Get the business tips, industry insights and trending news every dealer and distributor needs to know in the <em>TPS</em> newsletter.',
+  imagePath: 'static/newsletter-pushdown/tps-half.png',
+  defaultNewsletter: {
+    deploymentTypeId: 13,
+    name: 'Trucks Parts Service Daily',
   },
+  newsletters: [
+    {
+      deploymentTypeId: 14,
+      name: 'Trucks Parts Service Weekly',
+      description: 'The week\'s top aftermarket and dealer industry news',
+    },
+    {
+      deploymentTypeId: 25,
+      name: 'Successful Dealer Weekly',
+      description: 'Top news and insights for commercial truck dealers',
+    },
+  ],
+  demographic: {
+    id: 422,
+    label: 'Your primary role?',
+    values: [
+      { id: 803, label: 'Corporate Management/Owner' },
+      { id: 804, label: 'Operations/Safety Mgmt' },
+      { id: 805, label: 'Maintenance Management' },
+      { id: 806, label: 'Technician/Mechanic' },
+      { id: 807, label: 'Purchasing/Admin' },
+      { id: 808, label: 'Sales' },
+      { id: 809, label: 'Engineering' },
+      { id: 810, label: 'Other' },
+    ],
+  },
+};
+
+module.exports = {
+  // uses inline omeda form
+  signupBanner: {
+    ...defaults,
+  },
+  pushdown: {
+    ...defaults,
+    description: 'Join 20,000 dealer and aftermarket professionals who get helpful insights and important news delivered straight to their inbox with the <em>Trucks, Parts, Service</em> newsletter.',
+  },
+
+  // links off to seperate omeda dragonform
   signupBannerLarge: {
     ...baseConfig,
     name: 'Don’t Miss Out',
@@ -19,11 +61,5 @@ module.exports = {
     ...baseConfig,
     name: 'Newsletter Just for Dealers and Distributors',
     description: 'Get dealer and aftermarket news, plus safety recalls and product reviews — delivered straight to your inbox.',
-  },
-  pushdown: {
-    ...baseConfig,
-    imagePath: 'static/newsletter-pushdown/tps-half.png',
-    name: 'Don’t Miss Out',
-    description: 'Join 20,000 dealer and aftermarket professionals who get helpful insights and important news delivered straight to their inbox with the <em>Trucks, Parts, Service</em> newsletter.',
   },
 };

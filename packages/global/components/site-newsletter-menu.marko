@@ -1,69 +1,37 @@
 import { buildImgixUrl } from "@parameter1/base-cms-image";
-import { get, getAsObject } from "@parameter1/base-cms-object-path";
+import { getAsObject } from "@parameter1/base-cms-object-path";
+import recaptcha from "../config/recaptcha";
 
-$ const blockName = "site-newsletter-menu";
 $ const { site, config } = out.global;
-$ const pushdown = site.getAsObject("newsletter.pushdown");
-$ const { name, action, description, imagePath } = pushdown;
-$ const imageSrc = imagePath ? `https://${config.website("imageHost")}/files/base/randallreilly/all/image/${imagePath}` : null;
+$ const {
+  name,
+  description,
+  imagePath,
+  defaultNewsletter,
+  newsletters,
+  demographic,
+} = site.getAsObject("newsletter.pushdown");
 
-$ const { hasCookie, fromEmail } = getAsObject(out, "global.res.locals.newsletterState");
-$ const modifiers = (!hasCookie && !fromEmail) ? ["open"] : [];
 
-<if(name && action)>
-  <marko-web-block tag="aside" name=blockName modifiers=modifiers>
-    <marko-web-element block-name=blockName name="container">
-      <div class="row">
-        <div class=`d-none d-md-flex col-md-5 col-lg-4 ${blockName}__image-wrapper`>
-          <if(imageSrc)>
-            $ const src = buildImgixUrl(imageSrc, { w: 280, auto: "format,compress&q=70" });
-            $ const srcset = [`${buildImgixUrl(src, { dpr: 2 })} 2x`];
-            <marko-web-img
-              src=src
-              srcset=srcset
-              alt=name
-              class=`${blockName}__image`
-            />
-          </if>
-        </div>
-        <div class=`col-12 col-md-6 col-lg-5 ${blockName}__form-wrapper`>
-          <marko-web-element block-name=blockName name="name">
-            ${name}
-          </marko-web-element>
-          <marko-web-element block-name=blockName name="description">
-            $!{description}
-          </marko-web-element>
+$ const { hasCookie, fromEmail } = getAsObject(out.global, "newsletterState");
+$ const initiallyExpanded = (!hasCookie && !fromEmail) ? true : false;
+$ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/files/base/randallreilly/all/image/${imagePath}`, { w: 280, auto: "format,compress&q=70" }) : null;
+$ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
 
-          <form method="GET" action=action class=`${blockName}__form`>
-            <label for="newsletter-menu-email" class="sr-only">Email</label>
-            <input
-              id="newsletter-menu-email"
-              class="form-control"
-              placeholder="example@gmail.com"
-              type="email"
-              name="em"
-              required
-            />
-            <for|item| of=pushdown.hiddenInputs>
-              <input type="hidden" name=item.name value=item.value />
-            </for>
-            <marko-web-element block-name=blockName name="privacy-policy">
-              By providing your email, you agree to our <marko-web-link href="/termsandprivacy" target="_blank">Privacy Policy</marko-web-link>.
-            </marko-web-element>
-            <button class="btn btn-primary" type="submit">Sign Up</button>
-          </form>
-        </div>
-        <div class=`d-none d-md-flex col-md-1 col-lg-3 ${blockName}__close-container`>
-          <marko-web-browser-component
-            name="GlobalNewsletterCloseButton"
-            props={
-              className: `${blockName}__close`,
-              targetButton: ".site-navbar__newsletter-toggler",
-              iconModifiers: ["lg"],
-            }
-          />
-        </div>
-      </div>
-    </marko-web-element>
-  </marko-web-block>
+<if(name && description)>
+  <marko-web-browser-component
+    name="GlobalSiteNewsletterMenu"
+    ssr=true
+    props={
+      name,
+      description,
+      defaultNewsletter,
+      newsletters,
+      demographic,
+      imageSrc,
+      imageSrcset,
+      initiallyExpanded,
+      recaptchaSiteKey: recaptcha.siteKey,
+    }
+  />
 </if>

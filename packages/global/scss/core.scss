@@ -3,6 +3,8 @@
 @import "./variables";
 
 @import "../../node_modules/@parameter1/base-cms-marko-web-theme-default/scss/theme";
+@import "../../node_modules/bootstrap/scss/spinners";
+
 @import "../../node_modules/@parameter1/base-cms-marko-web-social-sharing/scss/buttons";
 @import "../../node_modules/bootstrap/scss/input-group";
 @import "../../node_modules/@parameter1/base-cms-marko-web-html-sitemap/scss/index";
@@ -70,11 +72,30 @@ label {
   }
 }
 
-.form-control {
+.form-control,
+.custom-select {
   letter-spacing: $skin-input-letter-spacing;
   border-radius: $input-border-radius; // must force this value since radius is disabled
   &:hover:not(:focus) {
     border-color: $skin-input-hover-border-color;
+  }
+
+  &--bg-white {
+    background-color: #fff;
+    &:focus {
+      background-color: #fff;
+    }
+  }
+}
+
+.custom-control-label {
+  &::before {
+    border-radius: $input-border-radius; // must force this value since radius is disabled
+  }
+  &--bg-white {
+    &::before {
+      background-color: #fff;
+    }
   }
 }
 
