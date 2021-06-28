@@ -30,7 +30,7 @@
           @focus="didFocus = true"
         >
         <privacy-policy :block-name="blockName" />
-        <sign-up-button :is-loading="isLoading" />
+        <sign-up-button :class="element('form-button')" :is-loading="isLoading" />
       </form>
 
       <div v-if="error" class="alert alert-danger mt-3 mb-0" role="alert">

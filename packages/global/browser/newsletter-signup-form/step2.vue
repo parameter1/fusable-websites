@@ -83,7 +83,7 @@
 
       <div v-if="!isComplete" :class="`${blockName}__signup`">
         <div>
-          <sign-up-button :is-loading="isLoading" />
+          <sign-up-button :class="`${blockName}__form-button`" :is-loading="isLoading" />
         </div>
         <privacy-policy :block-name="blockName" />
       </div>

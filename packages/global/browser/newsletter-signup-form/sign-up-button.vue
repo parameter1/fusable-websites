@@ -1,6 +1,6 @@
 <template>
   <button
-    class="btn btn-primary"
+    class="text-nowrap"
     type="submit"
     :disabled="isLoading"
   >

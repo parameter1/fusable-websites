@@ -74,10 +74,6 @@ export default {
       type: String,
       default: null,
     },
-    blockName: {
-      type: String,
-      required: true,
-    },
     initiallyExpanded: {
       type: Boolean,
       default: false,
@@ -85,6 +81,7 @@ export default {
   },
 
   data: () => ({
+    blockName: 'site-newsletter-menu',
     didLoad: false,
     email: null,
     expanded: undefined,

@@ -1,4 +1,3 @@
-$newsletter-signup-bg-color: #0d9dc9 !default;
 
 .site-newsletter-menu {
   max-height: 0;
@@ -39,6 +38,10 @@ $newsletter-signup-bg-color: #0d9dc9 !default;
       margin-right: auto;
       margin-left: auto;
     }
+  }
+
+  &__form-button {
+    @include skin-button("primary");
   }
 
   &__image-wrapper {
@@ -128,7 +131,7 @@ $newsletter-signup-bg-color: #0d9dc9 !default;
     font-weight: 700;
     line-height: 1;
     color: #fff;
-    background-color: $newsletter-signup-bg-color;
+    background-color: $skin-newsletter-signup-bg-color;
 
     @include media-breakpoint-up(md) {
       font-size: 20px;
@@ -211,6 +214,10 @@ $newsletter-signup-bg-color: #0d9dc9 !default;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.13;
+  }
+
+  &__form-button {
+    @include skin-button("primary");
   }
 
   &__subscriptions-header {
@@ -315,7 +322,7 @@ $newsletter-signup-bg-color: #0d9dc9 !default;
   display: flex;
   align-items: center;
   padding: 22px 16px;
-  background-color: $newsletter-signup-bg-color;
+  background-color: $skin-newsletter-signup-bg-color;
   border-radius: 4px;
 
   &__left-col {
@@ -361,10 +368,11 @@ $newsletter-signup-bg-color: #0d9dc9 !default;
 
   &__email-input {
     background-color: #fff;
-    border-color: $newsletter-signup-bg-color;
+    border-color: $skin-newsletter-signup-bg-color;
   }
 
   &__form-button {
     margin-left: 10px;
+    @include skin-button("inline-newsletter-signup");
   }
 }
