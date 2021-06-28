@@ -25,7 +25,7 @@ $ const showPublished = defaultValue(input.showPublished, true)
   </if>
   <marko-web-element block-name=blockName name="details">
     <marko-web-content-name block-name=blockName obj=author link=true />
-    <if (showPublished)>
+    <if(showPublished)>
       <global-content-published-node block-name=blockName obj=content />
     </if>
   </marko-web-element>
