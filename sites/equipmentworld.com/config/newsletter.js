@@ -8,7 +8,6 @@ const baseConfig = {
 const defaults = {
   name: 'Don’t Miss Out',
   description: 'Get the business tips, industry insights and trending news every contractor needs to know in the <span class="newsletter-name">Equipment World</span> newsletter.',
-  imagePath: 'static/newsletter-pushdown/eqw-half.png',
   defaultNewsletter: {
     deploymentTypeId: 22,
     name: 'Equipment World Daily',
@@ -61,10 +60,12 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
+    imagePath: 'static/newsletter-pushdown/eqw-full.png',
   },
   pushdown: {
     ...defaults,
     description: 'Join 55,000 construction professionals who get helpful insights and important news delivered straight to their inbox with the <span class="newsletter-name">Equipment World</span> newsletter.',
+    imagePath: 'static/newsletter-pushdown/eqw-half.png',
   },
 
   // links off to seperate omeda dragonform

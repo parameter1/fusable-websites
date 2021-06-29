@@ -11,7 +11,7 @@ $ const {
   defaultNewsletter,
   newsletters,
   demographic,
-} = site.getAsObject('newsletter.signupBanner');
+} = site.getAsObject("newsletter.signupBanner");
 
 $ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/files/base/randallreilly/all/image/${imagePath}`, { w: 120, auto: "format,compress&q=70" }) : null;
 $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
@@ -20,6 +20,7 @@ $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
   <marko-web-browser-component
     name="GlobalInlineNewsletterForm"
     props={
+      siteName: config.website("name"),
       name,
       description,
       defaultNewsletter,

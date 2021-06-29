@@ -8,93 +8,110 @@
       :class="`${blockName}__card-body`"
       @submit.prevent="submit"
     >
-      <div :class="`${blockName}__header`">
-        Complete your sign-up
-      </div>
-      <div :class="`${blockName}__about-you`">
-        About you
-      </div>
-      <div :class="`${blockName}__form`">
-        <input-form-group
-          v-model="companyName"
-          :block-name="blockName"
-          :disabled="isLoading"
-          field="company-name"
-          label="Company Name"
-          required
-          @focus="didFocus = true"
-        />
-
-        <select-form-group
-          v-model="demographicValue"
-          :block-name="blockName"
-          :disabled="isLoading"
-          field="primary-role"
-          :label="demographic.label"
-          required
-          @focus="didFocus = true"
-        >
-          <option value="">
-            Select
-          </option>
-          <option
-            v-for="value in demographic.values"
-            :key="value.id"
-            :value="value.id"
-          >
-            {{ value.label }}
-          </option>
-        </select-form-group>
-
-        <input-form-group
-          v-model="postalCode"
-          :block-name="blockName"
-          :disabled="isLoading"
-          field="postal-code"
-          label="Zip/Postal"
-          required
-          @focus="didFocus = true"
-        />
-      </div>
-
-      <div v-if="newsletters.length">
-        <div :class="`${blockName}__subscriptions-header`">
-          Choose your subscriptions
-        </div>
-
-        <div :class="`${blockName}__subscriptions row`">
-          <div
-            v-for="newsletter in newsletters"
-            :key="newsletter.deploymentTypeId"
-            class="col-12 col-md-6"
-          >
-            <newsletter-checkbox
-              :deployment-type-id="newsletter.deploymentTypeId"
-              :name="newsletter.name"
-              :description="newsletter.description"
+      <transition
+        :leave-active-class="`${blockName}__slide-out`"
+        @after-leave="formHidden = true"
+      >
+        <div v-show="!isComplete">
+          <div :class="`${blockName}__header`">
+            Complete your sign-up
+          </div>
+          <div :class="`${blockName}__about-you`">
+            About you
+          </div>
+          <div :class="`${blockName}__form`">
+            <input-form-group
+              v-model="companyName"
+              :block-name="blockName"
               :disabled="isLoading"
-              :in-pushdown="inPushdown"
-              @change="selectNewsletter"
+              field="company-name"
+              label="Company Name"
+              required
+              @focus="didFocus = true"
+            />
+
+            <select-form-group
+              v-model="demographicValue"
+              :block-name="blockName"
+              :disabled="isLoading"
+              field="primary-role"
+              :label="demographic.label"
+              required
+              @focus="didFocus = true"
+            >
+              <option value="">
+                Select
+              </option>
+              <option
+                v-for="value in demographic.values"
+                :key="value.id"
+                :value="value.id"
+              >
+                {{ value.label }}
+              </option>
+            </select-form-group>
+
+            <input-form-group
+              v-model="postalCode"
+              :block-name="blockName"
+              :disabled="isLoading"
+              field="postal-code"
+              label="Zip/Postal"
+              required
               @focus="didFocus = true"
             />
           </div>
-        </div>
-      </div>
 
-      <div v-if="!isComplete" :class="`${blockName}__signup`">
-        <div>
-          <sign-up-button :class="`${blockName}__form-button`" :is-loading="isLoading" />
+          <div v-if="newsletters.length">
+            <div :class="`${blockName}__subscriptions-header`">
+              Choose your subscriptions
+            </div>
+
+            <div :class="`${blockName}__subscriptions row`">
+              <div
+                v-for="newsletter in newsletters"
+                :key="newsletter.deploymentTypeId"
+                class="col-12 col-md-6"
+              >
+                <newsletter-checkbox
+                  :deployment-type-id="newsletter.deploymentTypeId"
+                  :name="newsletter.name"
+                  :description="newsletter.description"
+                  :disabled="isLoading"
+                  :in-pushdown="inPushdown"
+                  @change="selectNewsletter"
+                  @focus="didFocus = true"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div :class="`${blockName}__signup`">
+            <div>
+              <sign-up-button
+                :class="`${blockName}__form-button`"
+                :is-loading="isLoading"
+                :disabled="isComplete"
+              />
+            </div>
+            <privacy-policy :block-name="blockName" />
+          </div>
         </div>
-        <privacy-policy :block-name="blockName" />
-      </div>
-      <div v-else>
-        <div :class="`${blockName}__header`">
-          Thank you!
+      </transition>
+
+      <transition
+        :enter-active-class="`${blockName}__slide-in`"
+      >
+        <div v-show="formHidden">
+          <div :class="`${blockName}__thank-you-header`">
+            Thank you for subscribing!
+          </div>
+          <p class="mb-0">
+            You should start receiving your subscription in the next 24 hours
+            along with a special welcome from the experts at <em>{{ siteName }}</em>.
+          </p>
         </div>
-        <p class="mb-0">
-          Your submission has been received.
-        </p>
-      </div>
+      </transition>
 
       <div v-if="error" class="alert alert-danger mt-3 mb-0" role="alert">
         <strong>An error ocurred.</strong>
@@ -126,6 +143,10 @@ export default {
   },
 
   props: {
+    siteName: {
+      type: String,
+      required: true,
+    },
     recaptchaSiteKey: {
       type: String,
       required: true,
@@ -161,6 +182,7 @@ export default {
     blockName: 'complete-newsletter-signup',
     didFocus: false,
     error: null,
+    formHidden: false,
     isComplete: false,
     isLoading: false,
 

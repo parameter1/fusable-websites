@@ -1,3 +1,29 @@
+@keyframes slideOutUpAndFade {
+  from {
+    max-height: 1000px;
+    opacity: 1;
+  }
+
+  to {
+    max-height: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes slideInDownAndFade {
+  from {
+    max-height: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  to {
+    max-height: 300px;
+    opacity: 1;
+  }
+}
+
 .grecaptcha-badge {
   visibility: hidden;
 }
@@ -73,7 +99,6 @@
 
   &__privacy-policy {
     @include skin-typography($style: "credit-disclaimer");
-    max-width: 220px;
     margin-top: 10px;
     margin-bottom: 14px;
 
@@ -125,6 +150,18 @@
 .complete-newsletter-signup {
   $self: &;
 
+  &__slide-out {
+    animation-name: slideOutUpAndFade;
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+  }
+
+  &__slide-in {
+    animation-name: slideInDownAndFade;
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+  }
+
   &__card-header {
     display: inline-flex;
     align-items: center;
@@ -143,6 +180,7 @@
 
   &__card-body {
     max-width: 652px;
+    overflow: hidden;
   }
 
   &__check-icon {
@@ -164,6 +202,13 @@
     @include media-breakpoint-up(md) {
       margin-bottom: 24px;
     }
+  }
+
+  &__thank-you-header {
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.14;
   }
 
   &__about-you {
@@ -253,15 +298,11 @@
   }
 
   &__privacy-policy {
-    max-width: 250px;
+    @include skin-typography($style: "credit-disclaimer");
     margin-bottom: 15px;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.33;
 
     @include media-breakpoint-up(md) {
       max-width: 100%;
-      padding-right: 90px;
       margin-bottom: 0;
       margin-left: 17px;
     }
@@ -332,14 +373,14 @@
     display: none;
     @include media-breakpoint-up(md) {
       display: block;
-      width: 120px;
+      width: 100px;
       margin-top: auto;
       margin-right: 20px;
-      margin-bottom: -22px;
+      margin-bottom: auto;
     }
 
     img {
-      width: 120px;
+      width: 100px;
     }
   }
 
@@ -384,5 +425,19 @@
   &__form-button {
     margin-left: 10px;
     @include skin-button("inline-newsletter-signup");
+  }
+
+  &__privacy-policy {
+    max-width: 525px;
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.28;
+    color: $gray-100;
+
+    a {
+      color: $gray-100;
+      text-decoration: underline;
+    }
   }
 }
