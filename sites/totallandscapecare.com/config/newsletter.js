@@ -8,7 +8,6 @@ const baseConfig = {
 const defaults = {
   name: 'Don’t Miss Out',
   description: 'Get the business tips, industry insights and trending news every landscaping professional needs to know in the <em>TLC</em> newsletter.',
-  imagePath: 'static/newsletter-pushdown/tlc-half.png',
   defaultNewsletter: {
     deploymentTypeId: 17,
     name: 'Total Landscape Care Daily',
@@ -41,10 +40,12 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
+    imagePath: 'static/newsletter-pushdown/tlc-full.png',
   },
   pushdown: {
     ...defaults,
     description: 'Join 14,000 landscaping professionals who get helpful insights and important news delivered straight to their inbox with the <em>Total Landscape Care</em> newsletter.',
+    imagePath: 'static/newsletter-pushdown/tlc-half.png',
   },
 
   // links off to seperate omeda dragonform

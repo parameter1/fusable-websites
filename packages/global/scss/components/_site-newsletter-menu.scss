@@ -373,14 +373,14 @@
     display: none;
     @include media-breakpoint-up(md) {
       display: block;
-      width: 120px;
+      width: 100px;
       margin-top: auto;
       margin-right: 20px;
-      margin-bottom: -22px;
+      margin-bottom: auto;
     }
 
     img {
-      width: 120px;
+      width: 100px;
     }
   }
 

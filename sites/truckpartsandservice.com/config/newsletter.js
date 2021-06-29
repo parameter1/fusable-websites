@@ -8,7 +8,6 @@ const baseConfig = {
 const defaults = {
   name: 'Don’t Miss Out',
   description: 'Get the business tips, industry insights and trending news every dealer and distributor needs to know in the <em>TPS</em> newsletter.',
-  imagePath: 'static/newsletter-pushdown/tps-half.png',
   defaultNewsletter: {
     deploymentTypeId: 13,
     name: 'Trucks Parts Service Daily',
@@ -45,10 +44,12 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
+    imagePath: 'static/newsletter-pushdown/tps-full.png',
   },
   pushdown: {
     ...defaults,
     description: 'Join 20,000 dealer and aftermarket professionals who get helpful insights and important news delivered straight to their inbox with the <em>Trucks, Parts, Service</em> newsletter.',
+    imagePath: 'static/newsletter-pushdown/tps-half.png',
   },
 
   // links off to seperate omeda dragonform

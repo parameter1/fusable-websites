@@ -8,7 +8,6 @@ const baseConfig = {
 const defaults = {
   name: 'Don’t Miss Out',
   description: 'Get the business tips, industry insights and trending news every owner-operator needs to know in the <span class="newsletter-name">Overdrive</span> newsletter.',
-  imagePath: 'static/iphone-x-mockup-noshadow-2x.png',
   defaultNewsletter: {
     deploymentTypeId: 33,
     name: 'Overdrive Daily Newsletter',
@@ -48,10 +47,12 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
+    imagePath: 'static/newsletter-pushdown/ovd-full.png',
   },
   pushdown: {
     ...defaults,
     description: 'Join 135,000 owner-operators who get helpful insights and important news delivered straight to their inbox with the <span class="newsletter-name">Overdrive</span> newsletter.',
+    imagePath: 'static/newsletter-pushdown/ovd-half.png',
   },
 
   // links off to seperate omeda dragonform

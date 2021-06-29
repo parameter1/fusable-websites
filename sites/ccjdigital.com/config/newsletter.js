@@ -8,7 +8,6 @@ const baseConfig = {
 const defaults = {
   name: 'Don’t Miss Out',
   description: 'Get the business tips, industry insights and trending news every trucking professional needs to know.',
-  imagePath: 'static/newsletter-pushdown/ccj-half.png',
   defaultNewsletter: {
     deploymentTypeId: 29,
     name: 'CCJ Daily Report',
@@ -52,9 +51,11 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
+    imagePath: 'static/newsletter-pushdown/ccj-full.png',
   },
   pushdown: {
     ...defaults,
+    imagePath: 'static/newsletter-pushdown/ccj-half.png',
     description: 'Join 80,000 trucking professionals who get helpful insights and important news delivered straight to their inbox with the CCJ newsletter.',
   },
 

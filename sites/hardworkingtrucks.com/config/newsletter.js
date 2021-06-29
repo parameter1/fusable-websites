@@ -8,7 +8,6 @@ const baseConfig = {
 const defaults = {
   name: 'Don’t Miss Out',
   description: 'Get the business tips, industry insights and trending news every truck owner needs to know in the <em>Hard Working Trucks</em> newsletter.',
-  imagePath: 'static/newsletter-pushdown/hwt-half.png',
   defaultNewsletter: {
     deploymentTypeId: 24,
     name: 'Hard Working Trucks Weekly',
@@ -35,11 +34,13 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
+    imagePath: 'static/newsletter-pushdown/hwt-full.png',
   },
   pushdown: {
     ...defaults,
     name: 'Newsletter Just for Truck Owners',
     description: 'Get news you need to know about pickups, commercial vans and Class 3-8 trucks — delivered straight to your inbox.',
+    imagePath: 'static/newsletter-pushdown/hwt-half.png',
   },
 
   // links off to seperate omeda dragonform
