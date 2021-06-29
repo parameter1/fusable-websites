@@ -33,6 +33,8 @@
           :is-loading="isLoading"
         />
       </form>
+      <privacy-policy :block-name="blockName" />
+
 
       <div v-if="error" class="alert alert-danger mt-3 mb-0" role="alert">
         <strong>An error ocurred.</strong>
@@ -44,12 +46,14 @@
 
 
 <script>
+import PrivacyPolicy from '../newsletter-signup-form/privacy-policy.vue';
 import SignUpButton from '../newsletter-signup-form/sign-up-button.vue';
 
 import getRecaptchaToken from '../newsletter-signup-form/get-recaptcha-token';
 
 export default {
   components: {
+    PrivacyPolicy,
     SignUpButton,
   },
 

@@ -380,4 +380,17 @@
     margin-left: 10px;
     @include skin-button("inline-newsletter-signup");
   }
+
+  &__privacy-policy {
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.28;
+    color: $gray-100;
+
+    a {
+      color: $gray-100;
+      text-decoration: underline;
+    }
+  }
 }
