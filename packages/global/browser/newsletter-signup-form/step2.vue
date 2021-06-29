@@ -126,6 +126,10 @@ export default {
   },
 
   props: {
+    siteName: {
+      type: String,
+      required: true,
+    },
     recaptchaSiteKey: {
       type: String,
       required: true,

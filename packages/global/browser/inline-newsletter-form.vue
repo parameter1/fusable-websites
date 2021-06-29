@@ -15,6 +15,7 @@
     />
     <step-2
       v-if="step === 2"
+      :site-name="siteName"
       :email="email"
       :default-newsletter-name="defaultNewsletter.name"
       :newsletters="newsletters"
@@ -40,6 +41,10 @@ export default {
   },
 
   props: {
+    siteName: {
+      type: String,
+      required: true,
+    },
     recaptchaSiteKey: {
       type: String,
       required: true,

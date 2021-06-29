@@ -23,6 +23,7 @@ $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
     name="GlobalSiteNewsletterMenu"
     ssr=true
     props={
+      siteName: config.website("name"),
       name,
       description,
       defaultNewsletter,
