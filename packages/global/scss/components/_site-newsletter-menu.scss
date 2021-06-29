@@ -1,3 +1,29 @@
+@keyframes slideOutUpAndFade {
+  from {
+    max-height: 1000px;
+    opacity: 1;
+  }
+
+  to {
+    max-height: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes slideInDownAndFade {
+  from {
+    max-height: 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  to {
+    max-height: 300px;
+    opacity: 1;
+  }
+}
+
 .grecaptcha-badge {
   visibility: hidden;
 }
@@ -124,6 +150,18 @@
 .complete-newsletter-signup {
   $self: &;
 
+  &__slide-out {
+    animation-name: slideOutUpAndFade;
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+  }
+
+  &__slide-in {
+    animation-name: slideInDownAndFade;
+    animation-duration: 500ms;
+    animation-fill-mode: both;
+  }
+
   &__card-header {
     display: inline-flex;
     align-items: center;
@@ -142,6 +180,7 @@
 
   &__card-body {
     max-width: 652px;
+    overflow: hidden;
   }
 
   &__check-icon {
@@ -163,6 +202,13 @@
     @include media-breakpoint-up(md) {
       margin-bottom: 24px;
     }
+  }
+
+  &__thank-you-header {
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.14;
   }
 
   &__about-you {
