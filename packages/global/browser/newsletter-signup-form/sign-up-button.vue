@@ -2,7 +2,7 @@
   <button
     class="text-nowrap"
     type="submit"
-    :disabled="isLoading"
+    :disabled="isLoading || disabled"
   >
     <div class="d-flex align-items-center">
       <div
@@ -28,6 +28,10 @@ export default {
     label: {
       type: String,
       default: 'Sign Up',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
 };
