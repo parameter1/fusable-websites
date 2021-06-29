@@ -103,16 +103,6 @@ fragment ContentPageFragment on Content {
       label
     }
   }
-  ... on ContentTop100 {
-    rank
-    phone
-    website
-    previousRank
-    founded
-    revenueCurrent
-    companyExecutives
-    marketsServing
-  }
   ... on Media {
     fileSrc
   }
@@ -135,26 +125,6 @@ fragment ContentPageFragment on Content {
             src(input: { options: { auto: "format,compress", q: 70 } })
             alt
           }
-        }
-      }
-    }
-    contributors {
-      edges {
-        node {
-          id
-          name
-          type
-          canonicalPath
-        }
-      }
-    }
-    photographers {
-      edges {
-        node {
-          id
-          name
-          type
-          canonicalPath
         }
       }
     }

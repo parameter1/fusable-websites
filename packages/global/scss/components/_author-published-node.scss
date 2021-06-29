@@ -23,7 +23,21 @@
     text-transform: none;
   }
 
-  &__content-updated::before {
-    content: " | ";
+  &__content-updated {
+    &::before {
+      content: " | ";
+    }
+  }
+}
+
+.inline-author-bio {
+  &__content-body {
+    margin-bottom: 18px;
+    font-size: 16px;
+    font-style: italic;
+
+    @include media-breakpoint-up(md) {
+      font-size: 18px;
+    }
   }
 }
