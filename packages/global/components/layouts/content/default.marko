@@ -119,7 +119,9 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
         </if>
         <if(type !== "contact")>
           <for|author| of=authors>
-            <marko-web-content-body obj=author block-name="inline-author-bio" />
+            <if(getAsArray(author, "labels").includes("Contributor"))>
+              <marko-web-content-body obj=author block-name="inline-author-bio" />
+            </if>
           </for>
         </if>
 
