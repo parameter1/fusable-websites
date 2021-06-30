@@ -117,6 +117,7 @@ fragment ContentPageFragment on Content {
           name
           type
           body
+          labels
           siteContext {
             path
           }
