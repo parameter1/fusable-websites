@@ -11,22 +11,26 @@ const defaults = {
   defaultNewsletter: {
     deploymentTypeId: 29,
     name: 'CCJ Daily Report',
+    eventCategory: 'Daily Newsletter Subscription',
   },
   newsletters: [
     {
       deploymentTypeId: 30,
       name: 'CCJ Equipment Weekly',
       description: 'Roundup of trucking equipment news and reviews',
+      eventCategory: 'Weekly Equipment Subscription',
     },
     {
       deploymentTypeId: 31,
       name: 'CCJ Technology Weekly',
       description: 'Top tech developments in the trucking industry',
+      eventCategory: 'Weekly Technology Subscription',
     },
     {
       deploymentTypeId: 32,
       name: 'CCJ Weekend Newsletter',
       description: 'The top news of the week in the trucking industry',
+      eventCategory: 'CCJ Weekend Newsletter',
     },
   ],
   demographic: {

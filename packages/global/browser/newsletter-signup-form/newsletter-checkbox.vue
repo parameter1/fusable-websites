@@ -6,7 +6,7 @@
       class="custom-control-input"
       :value="deploymentTypeId"
       :disabled="disabled"
-      @change="$emit('change', { deploymentTypeId, checked: $event.target.checked })"
+      @change="$emit('change', { newsletter, checked: $event.target.checked })"
       @focus="$emit('focus')"
     >
     <label
@@ -26,17 +26,10 @@
 <script>
 export default {
   props: {
-    deploymentTypeId: {
-      type: [Number, String],
+    newsletter: {
+      type: Object,
       required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
+      validate: o => (o && o.name && o.deploymentTypeId),
     },
     disabled: {
       type: Boolean,
@@ -49,9 +42,21 @@ export default {
   },
 
   computed: {
+    deploymentTypeId() {
+      return this.newsletter.deploymentTypeId;
+    },
+
     id() {
       const id = `deployment-type-id-${this.deploymentTypeId}`;
       return this.inPushdown ? `pushdown-${id}` : id;
+    },
+
+    name() {
+      return this.newsletter.name;
+    },
+
+    description() {
+      return this.newsletter.description;
     },
   },
 };

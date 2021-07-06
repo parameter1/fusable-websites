@@ -11,6 +11,7 @@ const defaults = {
   defaultNewsletter: {
     deploymentTypeId: 24,
     name: 'Hard Working Trucks Weekly',
+    eventCategory: 'HWT Weekly Newsletter',
   },
   newsletters: [],
   demographic: {

@@ -11,32 +11,38 @@ const defaults = {
   defaultNewsletter: {
     deploymentTypeId: 22,
     name: 'Equipment World Daily',
+    eventCategory: 'Daily Newsletter Subscription',
   },
   newsletters: [
     {
       deploymentTypeId: 101,
       name: 'Equipment World Video Highlights',
       description: 'The latest videos and insights for construction professionals',
+      eventCategory: 'Twice Monthly Video Highlights Subscription',
     },
     {
       deploymentTypeId: 23,
       name: 'Equipment World Weekly',
       description: 'The week\'s top construction and heavy equipment news',
+      eventCategory: 'Weekly Equipment World Report Subscription',
     },
     {
       deploymentTypeId: 20,
       name: 'Better Roads Weekly',
       description: 'Roundup of highway project and road construction news',
+      eventCategory: 'Weekly Better Roads Subscription',
     },
     {
       deploymentTypeId: 21,
       name: 'Big Iron Dealer Weekly',
       description: 'Top news and insights for construction equipment dealers',
+      eventCategory: 'Weekly Big Iron Dealer Subscription',
     },
     {
       deploymentTypeId: 108,
       name: 'Equipment World Weekly Technology',
       description: 'The latest news and information in equipment technology',
+      eventCategory: 'Weekly Technology Subscription',
     },
   ],
   demographic: {

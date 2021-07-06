@@ -11,22 +11,26 @@ const defaults = {
   defaultNewsletter: {
     deploymentTypeId: 33,
     name: 'Overdrive Daily Newsletter',
+    eventCategory: 'Daily Newsletter Subscription',
   },
   newsletters: [
     {
       deploymentTypeId: 35,
       name: 'Custom Rigs Weekly Newsletter',
       description: 'Great photos and stories of the coolest rigs out there',
+      eventCategory: 'Custom Rigs Subscription',
     },
     {
       deploymentTypeId: 85,
       name: 'Overdrive Monthly Gear Newsletter',
       description: 'The best products for owner-operators',
+      eventCategory: 'Monthly Gear Subscription',
     },
     {
       deploymentTypeId: 63,
       name: 'Overdrive Weekly Newsletter',
       description: 'The most important news of the week in trucking',
+      eventCategory: 'Weekly Newsletter Subscription',
     },
   ],
   demographic: {
