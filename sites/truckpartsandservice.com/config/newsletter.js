@@ -11,17 +11,20 @@ const defaults = {
   defaultNewsletter: {
     deploymentTypeId: 13,
     name: 'Trucks Parts Service Daily',
+    eventCategory: 'Email Newsletter Signup',
   },
   newsletters: [
     {
       deploymentTypeId: 14,
       name: 'Trucks Parts Service Weekly',
       description: 'The week\'s top aftermarket and dealer industry news',
+      eventCategory: 'TPS Weekly Signup',
     },
     {
       deploymentTypeId: 25,
       name: 'Successful Dealer Weekly',
       description: 'Top news and insights for commercial truck dealers',
+      eventCategory: 'SD Weekly Signup',
     },
   ],
   demographic: {
