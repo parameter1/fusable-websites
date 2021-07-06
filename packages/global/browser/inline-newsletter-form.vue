@@ -3,13 +3,14 @@
     <div ref="lazyload" class="lazyload" />
     <step-1
       v-if="step === 1"
-      :deployment-type-id="defaultNewsletter.deploymentTypeId"
+      :newsletter="defaultNewsletter"
       :name="name"
       :description="description"
       :image-src="imageSrc"
       :image-srcset="imageSrcset"
       :recaptcha-site-key="recaptchaSiteKey"
       @submit="stepOneSubmit"
+      @subscribe="$emit('subscribe', $event)"
       @focus="$emit('focus', { step: 1 })"
       @error="$emit('error', { step: 1, error: $event })"
     />
@@ -17,12 +18,13 @@
       v-if="step === 2"
       :site-name="siteName"
       :email="email"
-      :default-newsletter-name="defaultNewsletter.name"
+      :default-newsletter="defaultNewsletter"
       :newsletters="newsletters"
       :demographic="demographic"
       :recaptcha-site-key="recaptchaSiteKey"
       as-card
       @submit="$emit('submit', { step: 2 })"
+      @subscribe="$emit('subscribe', $event)"
       @focus="$emit('focus', { step: 2 })"
       @load="$emit('load', { step: 2 })"
       @error="$emit('error', { step: 2, error: $event })"

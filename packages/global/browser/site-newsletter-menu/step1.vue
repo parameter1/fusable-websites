@@ -62,12 +62,13 @@ export default {
     SignUpButton,
   },
   props: {
+    newsletter: {
+      type: Object,
+      required: true,
+      validate: o => (o && o.name && o.deploymentTypeId),
+    },
     recaptchaSiteKey: {
       type: String,
-      required: true,
-    },
-    deploymentTypeId: {
-      type: Number,
       required: true,
     },
     blockName: {
@@ -114,7 +115,8 @@ export default {
       try {
         this.error = null;
         this.isLoading = true;
-        const { email, deploymentTypeId } = this;
+        const { email, newsletter } = this;
+        const { deploymentTypeId } = newsletter;
 
         const token = await getRecaptchaToken(this.recaptchaSiteKey);
         const res = await fetch('/__omeda/newsletter-signup', {
@@ -126,6 +128,7 @@ export default {
         if (!res.ok) throw new Error(json.message);
         const { encryptedCustomerId } = json;
         this.$emit('submit', { email, encryptedCustomerId });
+        this.$emit('subscribe', { newsletter });
       } catch (e) {
         this.error = e;
         this.$emit('error', e);

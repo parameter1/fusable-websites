@@ -2,7 +2,7 @@
   <div :class="classNames">
     <div :class="`${blockName}__card-header`">
       <check-icon :class="`${blockName}__check-icon`" />
-      Signed up for the {{ defaultNewsletterName }}
+      Signed up for the {{ defaultNewsletter.name }}
     </div>
     <form
       :class="`${blockName}__card-body`"
@@ -74,9 +74,7 @@
                 class="col-12 col-md-6"
               >
                 <newsletter-checkbox
-                  :deployment-type-id="newsletter.deploymentTypeId"
-                  :name="newsletter.name"
-                  :description="newsletter.description"
+                  :newsletter="newsletter"
                   :disabled="isLoading"
                   :in-pushdown="inPushdown"
                   @change="selectNewsletter"
@@ -155,9 +153,10 @@ export default {
       type: String,
       default: null,
     },
-    defaultNewsletterName: {
-      type: String,
+    defaultNewsletter: {
+      type: Object,
       required: true,
+      validate: o => (o && o.name && o.deploymentTypeId),
     },
     newsletters: {
       type: Array,
@@ -189,7 +188,7 @@ export default {
     companyName: null,
     demographicValue: null,
     postalCode: null,
-    deploymentTypeIds: [],
+    selectedNewsletters: [],
   }),
 
   computed: {
@@ -213,11 +212,12 @@ export default {
   },
 
   methods: {
-    selectNewsletter({ deploymentTypeId, checked }) {
+    selectNewsletter({ newsletter, checked }) {
       if (checked) {
-        this.deploymentTypeIds.push(deploymentTypeId);
+        this.selectedNewsletters.push(newsletter);
       } else {
-        this.deploymentTypeIds = this.deploymentTypeIds.filter(id => id !== deploymentTypeId);
+        this.selectedNewsletters = this.selectedNewsletters
+          .filter(nl => nl.deploymentTypeId !== newsletter.deploymentTypeId);
       }
     },
 
@@ -225,7 +225,7 @@ export default {
       try {
         this.error = null;
         this.isLoading = true;
-        const { email } = this;
+        const { email, selectedNewsletters } = this;
         if (!email) throw new Error('Unable to submit: no email address found.');
         const token = await getRecaptchaToken(this.recaptchaSiteKey);
         const payload = {
@@ -233,7 +233,7 @@ export default {
           email,
           companyName: this.companyName,
           postalCode: this.postalCode,
-          deploymentTypeIds: this.deploymentTypeIds,
+          deploymentTypeIds: selectedNewsletters.map(nl => nl.deploymentTypeId),
           demographics: [
             { id: this.demographic.id, values: [this.demographicValue] },
           ],
@@ -246,6 +246,9 @@ export default {
         const json = await res.json();
         if (!res.ok) throw new Error(json.message);
         this.$emit('submit');
+        selectedNewsletters.forEach((newsletter) => {
+          this.$emit('subscribe', { newsletter });
+        });
         this.isComplete = true;
       } catch (e) {
         this.error = e;
