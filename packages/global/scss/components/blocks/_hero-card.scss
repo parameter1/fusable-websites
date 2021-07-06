@@ -40,7 +40,7 @@
     .node {
       padding: 0;
       &__title {
-        font-weight: bold;
+        font-weight: $font-weight-bold;
       }
       &__website-section-name {
         @include skin-typography($style: "slug-small", $link-style: "primary");
