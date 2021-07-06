@@ -3,7 +3,7 @@ const content = require('./content');
 const dynamicPages = require('./dynamic-page');
 const search = require('./search');
 const websiteSections = require('./website-section');
-const staticPages = require('./static');
+// const staticPages = require('./static');
 
 module.exports = (app) => {
   // Homepage
@@ -19,7 +19,7 @@ module.exports = (app) => {
   search(app);
 
   // Static Pages
-  staticPages(app);
+  // staticPages(app);
 
   // Website Sections
   websiteSections(app);
