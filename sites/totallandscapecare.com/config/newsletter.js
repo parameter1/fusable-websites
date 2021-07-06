@@ -11,12 +11,14 @@ const defaults = {
   defaultNewsletter: {
     deploymentTypeId: 17,
     name: 'Total Landscape Care Daily',
+    eventCategory: 'Daily Newsletter Subscription',
   },
   newsletters: [
     {
       deploymentTypeId: 18,
       name: 'Total Landscape Care Weekly',
       description: 'The weeks top landscaping news and insights',
+      eventCategory: 'Weekly Newsletter Subscription',
     },
   ],
   demographic: {
