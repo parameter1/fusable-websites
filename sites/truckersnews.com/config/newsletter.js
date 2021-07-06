@@ -12,22 +12,26 @@ const defaults = {
   defaultNewsletter: {
     deploymentTypeId: 27,
     name: 'Truckers News Daily',
+    eventCategory: 'Daily Newsletter Subscription',
   },
   newsletters: [
     {
       deploymentTypeId: 84,
       name: 'Truckers News Monthly Gear',
       description: '',
+      eventCategory: 'Monthly Gear Subscription',
     },
     {
       deploymentTypeId: 28,
       name: 'Truckers News Weekly',
       description: '',
+      eventCategory: 'Weekly Newsletter Subscription',
     },
     {
       deploymentTypeId: 26,
       name: 'She Drives Weekly',
       description: '',
+      eventCategory: 'She Drives Newsletter Subscription',
     },
   ],
   demographic: {
