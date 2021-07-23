@@ -4,6 +4,7 @@
 User-agent: *
 Disallow: /__
 Disallow: /print/content
+Disallow: /search
 
 Sitemap: https://www.overdriveonline.com/sitemap.xml
 Sitemap: https://www.overdriveonline.com/sitemap-google-news.xml
