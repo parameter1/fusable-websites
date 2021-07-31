@@ -1,11 +1,9 @@
 const newrelic = require('newrelic');
 const { startServer } = require('@parameter1/base-cms-marko-web');
 const { set, get } = require('@parameter1/base-cms-object-path');
-const baseBrowse = require('@randall-reilly/base-browse/middleware');
 const omedaGraphQL = require('@parameter1/omeda-graphql-client-express');
 const htmlSitemapPagination = require('@parameter1/base-cms-marko-web-html-sitemap/middleware/paginated');
 
-const pkg = require('./package.json');
 const document = require('./components/document');
 const components = require('./components');
 const fragments = require('./fragments');
@@ -52,14 +50,6 @@ module.exports = (options = {}) => {
         appId: env.ALGOLIA_APP_ID,
         apiKey: env.ALGOLIA_API_KEY,
         defaultIndex: env.ALGOLIA_DEFAULT_INDEX,
-      }));
-
-      // Use "Base Browse" GraphQL middleware
-      // Will be available on `req.$baseBrowse` and `res.locals.$baseBrowse`
-      app.use(baseBrowse({
-        uri: env.BASE_BROWSE_GRAPHQL_URI,
-        tenantKey: env.TENANT_KEY,
-        config: { name: pkg.name, version: pkg.version },
       }));
 
       // Use paginated middleware
