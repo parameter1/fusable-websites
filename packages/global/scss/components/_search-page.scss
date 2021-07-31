@@ -66,17 +66,6 @@
 .marko-web-search-filter {
   $self: &;
 
-  // &__title {
-  //   display: inline-flex;
-  //   align-items: baseline;
-  //   margin-bottom: 12px;
-  //   @include skin-typography($style: "input-label");
-  //   font-size: 17px;
-  //   font-weight: $font-weight-semibold;
-  //   color: $gray-800;
-  //   text-transform: uppercase;
-  // }
-
   &__clear-item {
     color: $gray-800;
     &:hover {
