@@ -18,6 +18,9 @@ $ const queryParams = {
 $ const title = `${type}: ${name}`;
 
 <marko-web-default-page-layout type="taxonomy" title=title description=description>
+  <@head>
+    <meta name="robots" content="noindex">
+  </@head>
   <@page>
     <marko-web-page-wrapper>
       <@section modifiers=["first"]>
