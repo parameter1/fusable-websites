@@ -17,9 +17,9 @@ const omedaConfig = require('./config/omeda');
 
 const { env } = process;
 
-const routes = siteRoutes => (app) => {
+const routes = (siteRoutes, siteConfig) => (app) => {
   // Shared/global routes (all sites)
-  sharedRoutes(app);
+  sharedRoutes(app, siteConfig);
   // Load site routes
   siteRoutes(app);
 };
@@ -33,7 +33,7 @@ module.exports = (options = {}) => {
   };
   return startServer({
     ...options,
-    routes: routes(options.routes),
+    routes: routes(options.routes, options.siteConfig),
     document: options.document || document,
     components: options.components || components,
     fragments: options.fragments || fragments,

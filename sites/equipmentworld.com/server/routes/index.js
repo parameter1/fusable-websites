@@ -2,7 +2,6 @@ const EERouter = require('@randall-reilly/equipment-experts');
 const home = require('./home');
 const content = require('./content');
 const dynamicPages = require('./dynamic-page');
-const search = require('./search');
 const staticPages = require('./static');
 const websiteSections = require('./website-section');
 
@@ -22,9 +21,6 @@ module.exports = (app) => {
 
   // Static Pages
   staticPages(app);
-
-  // Search
-  search(app);
 
   // Website Sections
   websiteSections(app);
