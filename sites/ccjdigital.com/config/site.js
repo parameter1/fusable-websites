@@ -4,6 +4,7 @@ const nativeX = require('./native-x');
 const top250 = require('./top250');
 const identityX = require('./identity-x');
 const newsletter = require('./newsletter');
+const search = require('./search');
 
 module.exports = {
   navigation,
@@ -11,6 +12,7 @@ module.exports = {
   nativeX,
   identityX,
   newsletter,
+  search,
   top250,
   company: 'Randall-Reilly, LLC',
   p1events: {

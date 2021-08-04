@@ -1,5 +1,5 @@
 module.exports = {
   assignedToWebsiteSectionIds: [
-    71371,
+    74249,
   ],
 };
