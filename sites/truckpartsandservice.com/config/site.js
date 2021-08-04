@@ -3,6 +3,7 @@ const gam = require('./gam');
 const nativeX = require('./native-x');
 const identityX = require('./identity-x');
 const newsletter = require('./newsletter');
+const search = require('./search');
 
 module.exports = {
   navigation,
@@ -10,6 +11,7 @@ module.exports = {
   nativeX,
   identityX,
   newsletter,
+  search,
   company: 'Randall-Reilly, LLC',
   p1events: {
     tenant: 'randallreilly',

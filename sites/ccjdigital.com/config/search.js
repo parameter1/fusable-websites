@@ -1,8 +1,4 @@
-const MarkoWebSearchConfig = require('@parameter1/base-cms-marko-web-search/config');
-
-module.exports = new MarkoWebSearchConfig({
-  resultsPerPage: { default: 18 },
-  contentTypes: ['Article', 'Blog', 'Company', 'Podcast', 'Product', 'Video', 'Whitepaper'],
+module.exports = {
   assignedToWebsiteSectionIds: [
     71572,
     71567,
@@ -15,4 +11,4 @@ module.exports = new MarkoWebSearchConfig({
     71573,
     71576,
   ],
-});
+};
