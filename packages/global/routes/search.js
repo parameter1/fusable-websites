@@ -14,8 +14,6 @@ module.exports = (app, siteConfig) => {
     contentTypes,
     assignedToWebsiteSectionIds,
   });
-  console.log(config);
-  console.log(newTemplate);
   app.get('/search-new', middleware({ config, template: newTemplate }));
   app.get('/search', (_, res) => { res.marko(template); });
 };
