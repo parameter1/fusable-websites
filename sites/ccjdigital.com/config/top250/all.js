@@ -27,7 +27,7 @@ const columns = {
     type: 'string',
   },
   primaryOperation: {
-    label: 'PRIMARY OPERATION',
+    label: 'ALL OPERATIONS',
     type: 'string',
   },
   revenue: {
