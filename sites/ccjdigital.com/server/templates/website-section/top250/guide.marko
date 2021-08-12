@@ -91,6 +91,14 @@ $ const guide = get(top250, `guides.${alias}`);
           </idx-gating>
         </div>
       </@section>
+      <@section|{ aliases }| modifiers=["first"]>
+        <global-gam-define-display-ad
+          name="leaderboard"
+          position="section_page"
+          aliases=aliases
+          modifiers=["inter-block"]
+        />
+      </@section>
     </marko-web-page-wrapper>
   </@page>
 </marko-web-default-page-layout>
