@@ -15,6 +15,9 @@ $ const guide = get(top250, `guides.${alias}`);
   </@head>
   <@page>
     <marko-web-page-wrapper>
+      <@section|{ blockName, section }| modifiers=["break-container", "top250"]>
+        <graphic-header />
+      </@section>
       <@section|{ aliases }| modifiers=["first"]>
         <global-gam-define-display-ad
           name="leaderboard"
