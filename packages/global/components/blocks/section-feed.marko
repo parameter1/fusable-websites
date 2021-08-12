@@ -9,6 +9,7 @@ $ const queryParams = {
 
 $ const blockName = "section-feed";
 $ const countOnly = defaultValue(input.countOnly, false);
+$ const modifiers = defaultValue(input.modifiers, []);
 
 <if(countOnly)>
   <global-query-total-count|data| name="website-scheduled-content" params=queryParams>
@@ -21,7 +22,7 @@ $ const countOnly = defaultValue(input.countOnly, false);
       inner-justified=true
       flush-x=true
       flush-y=false
-      modifiers=[blockName]
+      modifiers=[blockName, ...modifiers]
     >
       <@nodes nodes=nodes>
         <@slot|{ node }|>
