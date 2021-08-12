@@ -218,3 +218,30 @@
     }
   }
 }
+
+$icon-sort:       url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="#8b8c8e" viewBox="0 0 4 5" id="arrows"><path d="M2 0 0 2h4zm0 5L0 3h4z"></path></svg>');
+$icon-sort-asc:   url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="url(#gradient-vertical) #8b8c8e" viewBox="0 0 4 5" id="arrows"><defs><linearGradient id="gradient-vertical" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff" /><stop offset="50%" stop-color="#ffffff" /><stop offset="50%" stop-color="#8b8c8e" /></linearGradient></defs><path d="M2 0 0 2h4zm0 5L0 3h4z"></path></svg>');
+$icon-sort-desc:  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="url(#gradient-vertical) #8b8c8e" viewBox="0 0 4 5" id="arrows"><defs><linearGradient id="gradient-vertical" x2="0" y2="1"><stop offset="0%" stop-color="#8b8c8e" /><stop offset="50%" stop-color="#8b8c8e" /><stop offset="50%" stop-color="#ffffff" /></linearGradient></defs><path d="M2 0 0 2h4zm0 5L0 3h4z"></path></svg>');
+
+.top250-container {
+  table th {
+    padding: 12px 24px;
+    background-image: $icon-sort;
+    background-repeat: no-repeat;
+    background-position: center right 6px;
+    background-size: 10px;
+    border-right: solid #fff 2px;
+    border-left: solid #fff 2px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .table-header {
+    &--sort-asc {
+      background-image: $icon-sort-asc;
+    }
+    &--sort-desc {
+      background-image: $icon-sort-desc;
+    }
+  }
+}

@@ -25,7 +25,7 @@
             <th
               v-for="col in columnList"
               :key="`${col.key}-header`"
-              class="text-center align-middle"
+              :class="getColumnHeaderClasses(col.key)"
               @click.prevent="setSelectedSortKey(col.key)"
             >
               {{ col.label }}
@@ -274,6 +274,23 @@ export default {
    *
    */
   methods: {
+    /**
+     *
+     */
+    getColumnHeaderClasses(key) {
+      const classes = [
+        'text-center',
+        'align-middle',
+        'table-header',
+        `table-header__${key}`,
+      ];
+      const { sortDirection, selectedSortKey } = this;
+      if (selectedSortKey && selectedSortKey === key) {
+        const sortDirectionClass = sortDirection === 1 ? 'table-header--sort-asc' : 'table-header--sort-desc';
+        classes.push(sortDirectionClass);
+      }
+      return classes.join(' ');
+    },
     /**
      *
      */
