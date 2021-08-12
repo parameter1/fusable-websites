@@ -47,7 +47,7 @@
             <td
               v-for="col in columnList"
               :key="`${col.key}-row-${index}`"
-              class="text-center"
+              :class="getColumnCellClasses(col.key)"
             >
               <template v-if="row[col.key].htmlValue">
                 <!-- eslint-disable-next-line vue/no-v-html -->
@@ -291,6 +291,20 @@ export default {
       }
       return classes.join(' ');
     },
+
+    /**
+     *
+     */
+    getColumnCellClasses(key) {
+      const classes = [
+        'text-center',
+        `col__${key}`,
+      ];
+      const { selectedSortKey } = this;
+      if (selectedSortKey && selectedSortKey === key) classes.push('col--sorted');
+      return classes.join(' ');
+    },
+
     /**
      *
      */
