@@ -67,6 +67,9 @@ module.exports = {
       { href: '/site-map', label: 'Site Map' },
     ],
     topics: topics.primary,
-    more: utilities,
+    more: [
+      ...utilities,
+      { href: '/videos', label: 'Videos' },
+    ],
   },
 };
