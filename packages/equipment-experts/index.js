@@ -5,6 +5,8 @@ const client = require('./client');
 const query = require('./graphql/equipment-experts-content');
 const eeQuery = require('./graphql/equipment-experts-indexes');
 
+const { log } = console;
+
 const linkTo = (req, p, limit) => {
   const { protocol } = req;
   return `${protocol}://${req.get('host')}${req.baseUrl}?page=${p}&posts_per_page=${limit}`;
@@ -41,19 +43,22 @@ module.exports = ({
   res.json({
     data: await Promise.all(getAsArray(data, 'websiteScheduledContent.edges').map(async (edge) => {
       const { node } = edge;
-      return {
-        post_id: node.id,
-        post_name: node.slug,
-        post_title: node.name,
-        post_content: await renderer(node.body, res, { lazyloadImages: false }),
-        post_excerpt: node.teaser,
-        featured_image: get(node, 'primaryImage.src'),
-        keywords: getAsArray(node, 'keywords.edges').map(e => get(e, 'node.name')),
-        key_pairs: filterSearchIndexes(indexes, node.id),
-        blog: get(node, 'primarySite.shortName'),
-        permalink: get(node, 'siteContext.url'),
-        author: getAsArray(node, 'authors.edges').map(e => get(e, 'node.name')).join(', '),
-      };
+      if (filterSearchIndexes(indexes, node.id).length) {
+        return {
+          post_id: node.id,
+          post_name: node.slug,
+          post_title: node.name,
+          post_content: await renderer(node.body, res, { lazyloadImages: false }),
+          post_excerpt: node.teaser,
+          featured_image: get(node, 'primaryImage.src'),
+          keywords: getAsArray(node, 'keywords.edges').map(e => get(e, 'node.name')),
+          key_pairs: filterSearchIndexes(indexes, node.id),
+          blog: get(node, 'primarySite.shortName'),
+          permalink: get(node, 'siteContext.url'),
+          author: getAsArray(node, 'authors.edges').map(e => get(e, 'node.name')).join(', '),
+        };
+      }
+      return log(`No key_pairs found for ${node.id}`);
     })),
     links: {
       first: linkTo(req, 1, limit),
