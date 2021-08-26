@@ -5,9 +5,9 @@ $ const { site, pagination } = out.global;
 $ const top250 = getAsObject(site, 'config.top250');
 $ const perPage = 18;
 
-<idx-gating|{ context, hasRequiredFields }|>
-  $ const canAccess = context.hasUser && hasRequiredFields;
-
+<idx-gating|{ context: idxContext, hasRequiredFields, fields }|>
+  $ const canAccess = idxContext.hasUser && hasRequiredFields;
+  $ const identityX = { user: idxContext.user, hasRequiredFields, fields}
   <global-website-section-default-layout
     id=id
     alias=alias
@@ -15,6 +15,14 @@ $ const perPage = 18;
     page-node=pageNode
   >
     <@head>
+      <marko-web-gtm-default-context|{ context }|>
+        $ const gtmData = { ...context, identityX };
+        <marko-web-gtm-push data=gtmData />
+      </marko-web-gtm-default-context>
+    </@head>
+
+    <@section|{ blockName, section }| modifiers=["break-container", "top250"]>
+      <graphic-header />
       <global-section-feed-block|{ totalCount }| alias=alias count-only=true>
         <global-pagination-controls
           per-page=perPage
@@ -23,10 +31,6 @@ $ const perPage = 18;
           as-rels=true
         />
       </global-section-feed-block>
-    </@head>
-
-    <@section|{ blockName, section }| modifiers=["break-container", "top250"]>
-      <graphic-header />
     </@section>
     <if(!canAccess)>
       <@section|{ blockName, section }|>
@@ -55,7 +59,7 @@ $ const perPage = 18;
                   The heartbeat of trucking’s top<br />fleets, at your fingertips
                 </marko-web-block>
                 <marko-web-block class="top250-login-box__form">
-                  <if(context.hasUser)>
+                  <if(idxContext.hasUser)>
                     <div class="top-250__profile-form">
                       <marko-web-identity-x-form-profile
                         call-to-action="Complete the form below to access the CCJ Top 250."
