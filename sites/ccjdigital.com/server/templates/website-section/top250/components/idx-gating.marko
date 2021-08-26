@@ -9,5 +9,5 @@ $ const hasRequiredFields = (user = {}) => fields.every((k) => user[k]);
 <marko-web-identity-x-context|context|>
   $ const user = getAsObject(context, "user");
   $ const isComplete = hasRequiredFields(user);
-  <${input.renderBody} context=context has-required-fields=isComplete ...input />
+  <${input.renderBody} context=context has-required-fields=isComplete ...input fields=fields />
 </marko-web-identity-x-context>
