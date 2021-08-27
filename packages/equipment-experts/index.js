@@ -1,5 +1,6 @@
 const { asyncRoute } = require('@parameter1/base-cms-utils');
 const { getAsArray, get } = require('@parameter1/base-cms-object-path');
+const { buildImgixUrl } = require('@parameter1/base-cms-image');
 const cheerio = require('cheerio');
 const renderer = require('./renderer');
 const client = require('./client');
@@ -14,16 +15,11 @@ const filterSearchIndexes = (data, id) => getAsArray(data, 'data.findAll')
   .filter(index => index.contentId === id)
   .map(({ industry, manufacturer, model }) => ({ industry, manufacturer, model }));
 
-function setDefaultWidth(body) {
+function setDefaultImgixParams(body) {
   const $ = cheerio.load(body, {}, false);
   $('img').each(function fn() {
-    const currentImg = $(this)[0];
-    if (currentImg) {
-      if (!currentImg.attribs['data-src']) { // If the data-src attribute is not set
-        // Set the src attribute to the default width of the data-src attribute
-        currentImg.attribs.src = currentImg.attribs.src.concat('?w=1440');
-      }
-    }
+    const src = $(this).attr('src');
+    $(this).attr('src', buildImgixUrl(src, { w: 1440, auto: 'format,compress' }));
   });
   // Return the processed body back to the resolver
   return $.html();
@@ -57,12 +53,12 @@ module.exports = ({
   res.json({
     data: await Promise.all(getAsArray(data, 'websiteScheduledContent.edges').map(async (edge) => {
       const { node } = edge;
-      const body = await renderer(node.body, res, { lazyLoadImages: false });
+      const body = await renderer(node.body, res, { lazyloadImages: false });
       return {
         post_id: node.id,
         post_name: node.slug,
         post_title: node.name,
-        post_content: setDefaultWidth(body),
+        post_content: setDefaultImgixParams(body),
         post_excerpt: node.teaser,
         featured_image: get(node, 'primaryImage.src'),
         keywords: getAsArray(node, 'keywords.edges').map(e => get(e, 'node.name')),
