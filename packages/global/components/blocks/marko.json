@@ -93,7 +93,8 @@
     "<query-params>": {},
     "<node>": {},
     "@alias": "string",
-    "@count-only": "boolean"
+    "@count-only": "boolean",
+    "@modifiers": "array"
   },
   "<global-section-title-feed-block>": {
     "template": "./section-title-feed.marko",

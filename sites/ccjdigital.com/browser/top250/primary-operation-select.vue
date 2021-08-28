@@ -15,7 +15,7 @@
           :selected="primaryOperation === selected"
         >
           <span v-if="primaryOperation !== 'all'">{{ primaryOperation }}</span>
-          <span v-else>Primary Operation</span>
+          <span v-else>All Operations</span>
         </option>
       </select>
     </div>

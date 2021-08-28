@@ -6,6 +6,10 @@ const columns = {
     label: 'RANK',
     type: 'number',
   },
+  rank2020: {
+    label: '2020 RANK',
+    type: 'number',
+  },
   company: {
     label: 'COMPANY',
     type: 'string',
@@ -18,25 +22,32 @@ const columns = {
     label: 'STATE',
     type: 'string',
   },
-  rank2019: {
-    label: '2019 RANK',
-    type: 'number',
+  usdot: {
+    label: 'US DOT',
+    type: 'string',
+  },
+  executive: {
+    label: 'EXECUTIVE',
+    type: 'string',
+  },
+  title: {
+    label: 'TITLE',
+    type: 'string',
   },
   website: {
-    label: 'Website',
+    label: 'WEBSITE',
     type: 'string',
   },
   primaryOperation: {
-    label: 'PRIMARY OPERATION',
+    label: 'ALL OPERATIONS',
     type: 'string',
   },
-  revenue: {
-    label: 'REVENUE',
-    type: 'number',
-    numberType: 'usCurrency',
+  carriers: {
+    label: 'CARRIERS',
+    type: 'string',
   },
-  revenue2018: {
-    label: '2018 REVENUE',
+  revenue2020: {
+    label: '2020 REVENUE',
     type: 'number',
     numberType: 'usCurrency',
   },

@@ -6,37 +6,103 @@ $ const { title, description, alias } = data;
 
 $ const guide = get(top250, `guides.${alias}`);
 
+<idx-gating|{ context: idxContext, hasRequiredFields, fields }|>
+  $ const canAccess = idxContext.hasUser && hasRequiredFields;
+  $ const identityX = { user: idxContext.user, hasRequiredFields, fields}
+  <marko-web-default-page-layout type="top250" title=guide.title description=guide.description>
+    <@head>
+      <marko-web-gtm-default-context|{ context }|>
+        $ const gtmData = { ...context, identityX };
+        <marko-web-gtm-push data=gtmData />
+      </marko-web-gtm-default-context>
+    </@head>
+    <@page>
+      <marko-web-page-wrapper>
+        <@section|{ blockName, section }| modifiers=["break-container", "top250"]>
+          <graphic-header />
+        </@section>
+        <@section|{ aliases }| modifiers=["first"]>
+          <global-gam-define-display-ad
+            name="leaderboard"
+            position="section_page"
+            aliases=aliases
+            modifiers=["inter-block"]
+          />
+        </@section>
+        <if(!canAccess)>
+          <@section|{ blockName, section }|>
+            <div class="row">
+              <div class="col-md-6">
+                <marko-web-block class="top250-access">
+                  <h2 class="top250-access__title">
+                    Essential data to drive your business
+                  </h2>
+                  <marko-web-block  class="top250-access__description">
+                    CCJ’s Top 250 data format gives you access to consolidated business intelligence not available anywhere else.
+                  </marko-web-block>
+                  <marko-web-block  class="top250-access__call-to-action">
+                    Unlock the trends propelling the trucking industry’s most successful companies to the top with the CCJ Top 250. Sort real time stats on fiscal year performance for customizable reporting on revenue, location, fleet type and size, leased vs. owned, and driver counts. Track trends and understand your competition with blended, year-to-year data on nine industry segments that tells you where you are now and where you need to go.
+                  </marko-web-block>
 
-<marko-web-default-page-layout type="top250" title=guide.title description=guide.description>
-  <@head>
-    <marko-web-gtm-dynamic-page-context|{ context }| alias=alias>
-      <marko-web-gtm-push data=context />
-    </marko-web-gtm-dynamic-page-context>
-  </@head>
-  <@page>
-    <marko-web-page-wrapper>
-      <@section|{ aliases }| modifiers=["first"]>
-        <global-gam-define-display-ad
-          name="leaderboard"
-          position="section_page"
-          aliases=aliases
-          modifiers=["inter-block"]
-        />
-      </@section>
-      <@section>
-        <div class="top250-container">
-          <div class="row mb-3">
-            <div class="col">
-              <h1 class="page-wrapper__website-section-name">
-                <a href=`/${top250.rootAlias}`>${top250.title}</a>
-              </h1>
-              <h1 class="page-wrapper__website-section-subhead">${guide.title}</h1>
+                  <marko-web-block class="top250-login-box">
+                    <marko-web-img
+                      alt="CCJ Top 250 Logo"
+                      src="https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/top250.svg?w=215"
+                      srcset="https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/top250.svg?w=430 2x"
+                      link={ href: "/ccj-top-250", class: "top250-access__logo-link" }
+                      class="top250-access__logo"
+                    />
+                    <marko-web-block class="top250-login-box__description">
+                      The heartbeat of trucking’s top<br />fleets, at your fingertips
+                    </marko-web-block>
+                    <marko-web-block class="top250-login-box__form">
+                      <if(idxContext.hasUser)>
+                        <div class="top-250__profile-form">
+                          <marko-web-identity-x-form-profile
+                            call-to-action="Complete the form below to access the CCJ Top 250."
+                            reload-page-on-submit=true
+                          />
+                        </div>
+                      </if>
+                      <else>
+                        <div class="top-250__form--login">
+                          <marko-web-identity-x-form-login
+                            button-labels= {
+                              continue: 'Access the Data',
+                              submit: 'Access the Data',
+                              logout: 'Logout',
+
+                            }
+                          />
+                          <p class="top250-login-box__disclaimer">By providing your email, you agree to our Terms of Use and Privacy Policy. This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
+                        </div>
+                      </else>
+                      </marko-web-block>
+                  </marko-web-block>
+                </marko-web-block>
+              </div>
+              <div class="col-md-6">
+                <marko-web-website-section-name tag="h2" block-name=blockName modifiers=["top250-related-content"] obj=section>
+                  Related Stories
+                </marko-web-website-section-name>
+                <global-section-feed-block alias='ccj-top-250' modifiers=["top250"]>
+                  <@query-params limit=5 skip=0 />
+                </global-section-feed-block>
+              </div>
             </div>
-          </div>
-
-          <idx-gating|{ context, hasRequiredFields }|>
-            $ const canAccess = context.hasUser && hasRequiredFields;
-            <if(canAccess)>
+          </@section>
+        </if>
+        <else>
+          <@section>
+            <div class="top250-container">
+              <div class="row mb-3">
+                <div class="col">
+                  <h1 class="page-wrapper__website-section-name">
+                    <a href=`/${top250.rootAlias}`>${top250.title}</a>
+                  </h1>
+                  <h1 class="page-wrapper__website-section-subhead">${guide.title}</h1>
+                </div>
+              </div>
               <div class="row">
                 <div class="col">
                   <div class="mb-block">
@@ -54,40 +120,18 @@ $ const guide = get(top250, `guides.${alias}`);
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col">
-                  <!-- <p>
-                    By clicking the button below, I agree to the Terms & Conditions and Privacy Policy,
-                    and consent to receive automated marketing calls or text messages from Randall-Reilly.
-                    Consent is not a condition of any purchase. You may opt out at any time.
-                  </p> -->
-                  <download-button />
-                </div>
-              </div>
-            </if>
-            <else>
-              <div class="top-250__header">
-                Access the CCJ Top 250
-              </div>
-              <if(context.hasUser)>
-                <div class="top-250__profile-form">
-                  <marko-web-identity-x-form-profile
-                    call-to-action="Complete the form below to access the CCJ Top 250."
-                    reload-page-on-submit=true
-                  />
-                </div>
-              </if>
-              <else>
-                <div class="top-250__login-form">
-                  <p>You must be signed in to access the CCJ Top 250.</p>
-                  <p>To sign in or create an account, enter your email address and we'll send you a one-click sign-in link.</p>
-                  <marko-web-identity-x-form-login />
-                </div>
-              </else>
-            </else>
-          </idx-gating>
-        </div>
-      </@section>
-    </marko-web-page-wrapper>
-  </@page>
-</marko-web-default-page-layout>
+            </div>
+          </@section>
+        </else>
+        <@section|{ aliases }| modifiers=["first"]>
+          <global-gam-define-display-ad
+            name="leaderboard"
+            position="section_page"
+            aliases=aliases
+            modifiers=["inter-block"]
+          />
+        </@section>
+      </marko-web-page-wrapper>
+    </@page>
+  </marko-web-default-page-layout>
+</idx-gating>

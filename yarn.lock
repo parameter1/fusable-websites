@@ -2073,10 +2073,10 @@
     once "^1.4.0"
     universal-user-agent "^4.0.0"
 
-"@parameter1/base-cms-apollo-ssr@^2.34.0":
-  version "2.34.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-apollo-ssr/-/base-cms-apollo-ssr-2.34.0.tgz#5f759128c84f410a1e898ee3525885d5cc193516"
-  integrity sha512-IGsw+7y+kMzMlY7XJj0w7WTYXuE+/ULP6jXqnaSxQhNDRkelw+aCSYCSCKbgMe0/bLvGPs3xMiJO+OlPDplDnw==
+"@parameter1/base-cms-apollo-ssr@^2.39.3":
+  version "2.39.3"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-apollo-ssr/-/base-cms-apollo-ssr-2.39.3.tgz#b40f364f1d3529235d509eff7e3cb363681d20e3"
+  integrity sha512-b99e87f6SRRrwH9/TRhliWhZzQRQWoa6ehN3cLYf+qUer9bERjYrJimXkoaNb4DBV5psUhaVf1n9J0xEOV4PlQ==
   dependencies:
     apollo-cache-inmemory "^1.6.6"
     apollo-client "^2.6.10"
@@ -2104,12 +2104,12 @@
     cheerio "^1.0.0-rc.5"
     escape-string-regexp "^1.0.5"
 
-"@parameter1/base-cms-express-apollo@^2.37.1":
-  version "2.37.1"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-express-apollo/-/base-cms-express-apollo-2.37.1.tgz#15b1245c38db3ff5c1c6ce27ddd4280bc4c5f5e9"
-  integrity sha512-eGEqjUnD+zCUrJaW7gVAHnM4p/kbAySRtlTMbLYnw7V9a0VWN5GmWI/eJuJIYSH5awfjlro1Av03ZvCax7pqXQ==
+"@parameter1/base-cms-express-apollo@^2.39.3":
+  version "2.39.3"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-express-apollo/-/base-cms-express-apollo-2.39.3.tgz#f8cb718106e24a8b9640935071e1e392cf18dd65"
+  integrity sha512-yjTo3zhY58HVwP8ZpxG+E2j/zluxI5MD9iecwI3ChebMLd0T2GbtBeXx2dOgcYU0HxI2+zHObImUcT/SveeHMQ==
   dependencies:
-    "@parameter1/base-cms-apollo-ssr" "^2.34.0"
+    "@parameter1/base-cms-apollo-ssr" "^2.39.3"
     "@parameter1/base-cms-graphql-fragment-types" "^2.37.1"
 
 "@parameter1/base-cms-graphql-fragment-types@^2.37.1":
@@ -2210,10 +2210,10 @@
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-icons/-/base-cms-marko-web-icons-2.0.0.tgz#a62c0040cfe5b73f1bef28cb2b25b0c6be956064"
   integrity sha512-mbOQrnltRIZfl9fpeYrfuA4PHrCacDe8gdXucK7L6y6B4UAtzPbCNaEwPInXnhSCxkbdyRXfCirEYxTrAV7hOw==
 
-"@parameter1/base-cms-marko-web-identity-x@^2.22.2":
-  version "2.22.2"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-identity-x/-/base-cms-marko-web-identity-x-2.22.2.tgz#dd1a81b9e4eb3a26ad0e0655a2d49a2e338d19af"
-  integrity sha512-v9IdX/lq7HjM0KGWbpvypsFGJO1PjiDjFlJFDYrDO4WZ73BIr704Vf7p4+6Tfd1JIFoINRKOac5YHPk4TS3hMQ==
+"@parameter1/base-cms-marko-web-identity-x@^2.39.3":
+  version "2.39.3"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-identity-x/-/base-cms-marko-web-identity-x-2.39.3.tgz#e25e64d6a6c24b54b1367894165d364d00f76c5a"
+  integrity sha512-jS5JeSvKgH/A6YWxsOTa/yd85AjWDhkyiae0cyEOEtFyoKM3gDKs43Io9iHOvXjn53OqG3zxlnRbV36UbUx85A==
   dependencies:
     "@parameter1/base-cms-object-path" "^2.22.2"
     "@parameter1/base-cms-utils" "^2.22.2"
@@ -2303,15 +2303,15 @@
     graphql "^14.7.0"
     graphql-tag "^2.11.0"
 
-"@parameter1/base-cms-marko-web@^2.38.0":
-  version "2.38.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web/-/base-cms-marko-web-2.38.0.tgz#992f1292e4278bb69daa90a6fea059a95e4d7354"
-  integrity sha512-9fH3V9T53OsAeBfNXi2mAB8ggobRCqu6AH97TbQ4+dp4iIxTSe0guMUqNBNJxV1QXMrjkUY90OAGOMuYcEBIeQ==
+"@parameter1/base-cms-marko-web@^2.39.3":
+  version "2.39.3"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web/-/base-cms-marko-web-2.39.3.tgz#eb78887a99a1d35f90f467417bce9b55f61e2ff4"
+  integrity sha512-LadkJtMki7Bjh8/Ju73iRrQj2dQlCcLKdhJQLA3wtxpfBpXTeum3+ss5QywmwlPYq4AzHwwgGCoj4YKHwf8Y6A==
   dependencies:
     "@godaddy/terminus" "^4.5.0"
-    "@parameter1/base-cms-apollo-ssr" "^2.34.0"
+    "@parameter1/base-cms-apollo-ssr" "^2.39.3"
     "@parameter1/base-cms-embedded-media" "^2.8.1"
-    "@parameter1/base-cms-express-apollo" "^2.37.1"
+    "@parameter1/base-cms-express-apollo" "^2.39.3"
     "@parameter1/base-cms-graphql-fragment-types" "^2.37.1"
     "@parameter1/base-cms-image" "^2.8.1"
     "@parameter1/base-cms-inflector" "^2.0.0"
@@ -2356,18 +2356,18 @@
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-utils/-/base-cms-utils-2.22.2.tgz#3d310aee55e81b4775081f90f7bce6a87dfeaaec"
   integrity sha512-lRd87fymrkkcEXb9zu9hA2t5TMXEUAjOcLTisjZF+FHCj+4/xdSgTPk3xvxJaensX1LWDTbql1hFgQ9e6L4zAg==
 
-"@parameter1/base-cms-web-cli@^2.38.0":
-  version "2.38.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-web-cli/-/base-cms-web-cli-2.38.0.tgz#83b80fbfa892c0eb1dd45b2e8cf6c5eb774420fc"
-  integrity sha512-YryJI4uEOj/0PLmL2AzVoyd4DtxXHnQWjrsSIQO6uO72FYUIkOdEyPcGzmnLLdAoW9KnJH7y6TuOkoW9/l+Cog==
+"@parameter1/base-cms-web-cli@^2.39.3":
+  version "2.39.3"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-web-cli/-/base-cms-web-cli-2.39.3.tgz#ffa360e9432b66ae89e9a093a1a2e3d46c02e438"
+  integrity sha512-4tTTNknwJfELuQh7mZYXWeSGVY0KQKa3+GqJ53y/F0f0ZEtUTx+wpOaz5DHa+uxUyFKmwjhClk6LTqRxQOI8Ww==
   dependencies:
     "@babel/core" "^7.13.16"
     "@babel/plugin-transform-runtime" "^7.13.15"
     "@babel/preset-env" "^7.13.15"
     "@babel/runtime" "^7.13.17"
     "@parameter1/base-cms-cli-utils" "^2.8.4"
-    "@parameter1/base-cms-express-apollo" "^2.37.1"
-    "@parameter1/base-cms-marko-web" "^2.38.0"
+    "@parameter1/base-cms-express-apollo" "^2.39.3"
+    "@parameter1/base-cms-marko-web" "^2.39.3"
     autoprefixer "^10.2.5"
     babel-eslint "^10.1.0"
     babel-loader "^8.2.2"
@@ -4077,6 +4077,17 @@ cheerio-select-tmp@^0.1.0:
     domhandler "^4.0.0"
     domutils "^2.4.4"
 
+cheerio-select@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/cheerio-select/-/cheerio-select-1.5.0.tgz#faf3daeb31b17c5e1a9dabcee288aaf8aafa5823"
+  integrity sha512-qocaHPv5ypefh6YNxvnbABM07KMxExbtbfuJoIie3iZXX1ERwYmJcIiRrr9H05ucQP1k28dav8rpdDgjQd8drg==
+  dependencies:
+    css-select "^4.1.3"
+    css-what "^5.0.1"
+    domelementtype "^2.2.0"
+    domhandler "^4.2.0"
+    domutils "^2.7.0"
+
 cheerio@1.0.0-rc.2:
   version "1.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0-rc.2.tgz#4b9f53a81b27e4d5dac31c0ffd0cfa03cc6830db"
@@ -4088,6 +4099,19 @@ cheerio@1.0.0-rc.2:
     htmlparser2 "^3.9.1"
     lodash "^4.15.0"
     parse5 "^3.0.1"
+
+cheerio@^1.0.0-rc.10:
+  version "1.0.0-rc.10"
+  resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0-rc.10.tgz#2ba3dcdfcc26e7956fc1f440e61d51c643379f3e"
+  integrity sha512-g0J0q/O6mW8z5zxQ3A8E8J1hUgp4SMOvEoW/x84OwyHKe/Zccz83PVT4y5Crcr530FV6NgmKI1qvGTKVl9XXVw==
+  dependencies:
+    cheerio-select "^1.5.0"
+    dom-serializer "^1.3.2"
+    domhandler "^4.2.0"
+    htmlparser2 "^6.1.0"
+    parse5 "^6.0.1"
+    parse5-htmlparser2-tree-adapter "^6.0.1"
+    tslib "^2.2.0"
 
 cheerio@^1.0.0-rc.5:
   version "1.0.0-rc.5"
@@ -4757,6 +4781,17 @@ css-select@^3.1.2:
     domutils "^2.4.3"
     nth-check "^2.0.0"
 
+css-select@^4.1.3:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/css-select/-/css-select-4.1.3.tgz#a70440f70317f2669118ad74ff105e65849c7067"
+  integrity sha512-gT3wBNd9Nj49rAbmtFHj1cljIAOLYSX1nZ8CB7TBO3INYckygm5B7LISU/szY//YmdiSLbJvDLOx9VnMVpMBxA==
+  dependencies:
+    boolbase "^1.0.0"
+    css-what "^5.0.0"
+    domhandler "^4.2.0"
+    domutils "^2.6.0"
+    nth-check "^2.0.0"
+
 css-select@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/css-select/-/css-select-1.2.0.tgz#2b3a110539c5355f1cd8d314623e870b121ec858"
@@ -4784,6 +4819,11 @@ css-what@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-4.0.0.tgz#35e73761cab2eeb3d3661126b23d7aa0e8432233"
   integrity sha512-teijzG7kwYfNVsUh2H/YN62xW3KK9YhXEgSlbxMlcyjPNvdKJqFx5lrwlJgoFP1ZHlB89iGDlo/JyshKeRhv5A==
+
+css-what@^5.0.0, css-what@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/css-what/-/css-what-5.0.1.tgz#3efa820131f4669a8ac2408f9c32e7c7de9f4cad"
+  integrity sha512-FYDTSHb/7KXsWICVsxdmiExPjCfRC4qRFBdVwv7Ax9hMnvMmEjP9RfxTEZ3qPZGmADDn2vAKSo9UcN1jKVYscg==
 
 css@2.X, css@^2.2.1:
   version "2.2.4"
@@ -5190,6 +5230,15 @@ dom-serializer@^1.0.1, dom-serializer@~1.2.0:
     domhandler "^4.0.0"
     entities "^2.0.0"
 
+dom-serializer@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-1.3.2.tgz#6206437d32ceefaec7161803230c7a20bc1b4d91"
+  integrity sha512-5c54Bk5Dw4qAxNOI1pFEizPSjVsx5+bpJKmL2kPn8JhBUq2q09tTCa3mjijun2NfK78NMouDYNMBkOrPZiS+ig==
+  dependencies:
+    domelementtype "^2.0.1"
+    domhandler "^4.2.0"
+    entities "^2.0.0"
+
 dom-serializer@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-0.1.1.tgz#1ec4059e284babed36eec2941d4a970a189ce7c0"
@@ -5218,6 +5267,11 @@ domelementtype@^2.1.0:
   resolved "https://registry.yarnpkg.com/domelementtype/-/domelementtype-2.1.0.tgz#a851c080a6d1c3d94344aed151d99f669edf585e"
   integrity sha512-LsTgx/L5VpD+Q8lmsXSHW2WpA+eBlZ9HPf3erD1IoPF00/3JKHZ3BknUVA2QGDNu69ZNmyFmCWBSO45XjYKC5w==
 
+domelementtype@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/domelementtype/-/domelementtype-2.2.0.tgz#9a0b6c2782ed6a1c7323d42267183df9bd8b1d57"
+  integrity sha512-DtBMo82pv1dFtUmHyr48beiuq792Sxohr+8Hm9zoxklYPfa6n0Z3Byjj2IV7bmr2IyqClnqEQhfgHJJ5QF0R5A==
+
 domhandler@^2.3.0:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/domhandler/-/domhandler-2.4.2.tgz#8805097e933d65e85546f726d60f5eb88b44f803"
@@ -5231,6 +5285,13 @@ domhandler@^4.0.0:
   integrity sha512-KPTbnGQ1JeEMQyO1iYXoagsI6so/C96HZiFyByU3T6iAzpXn8EGEvct6unm1ZGoed8ByO2oirxgwxBmqKF9haA==
   dependencies:
     domelementtype "^2.1.0"
+
+domhandler@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/domhandler/-/domhandler-4.2.0.tgz#f9768a5f034be60a89a27c2e4d0f74eba0d8b059"
+  integrity sha512-zk7sgt970kzPks2Bf+dwT/PLzghLnsivb9CcxkvR8Mzr66Olr0Ofd8neSbglHJHaHa2MadfoSdNlKYAaafmWfA==
+  dependencies:
+    domelementtype "^2.2.0"
 
 domutils@1.5.1:
   version "1.5.1"
@@ -5256,6 +5317,15 @@ domutils@^2.4.3, domutils@^2.4.4:
     dom-serializer "^1.0.1"
     domelementtype "^2.0.1"
     domhandler "^4.0.0"
+
+domutils@^2.5.2, domutils@^2.6.0, domutils@^2.7.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/domutils/-/domutils-2.8.0.tgz#4437def5db6e2d1f5d6ee859bd95ca7d02048135"
+  integrity sha512-w96Cjofp72M5IIhpjgobBimYEfoPjx1Vx0BSX9P30WBdZW2WIKU0T1Bd0kz2eNZ9ikjKgHbEyKx8BB6H1L3h3A==
+  dependencies:
+    dom-serializer "^1.0.1"
+    domelementtype "^2.2.0"
+    domhandler "^4.2.0"
 
 dont-sniff-mimetype@1.1.0:
   version "1.1.0"
@@ -7088,6 +7158,16 @@ htmlparser2@^6.0.0:
     domelementtype "^2.0.1"
     domhandler "^4.0.0"
     domutils "^2.4.4"
+    entities "^2.0.0"
+
+htmlparser2@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-6.1.0.tgz#c4d762b6c3371a05dbe65e94ae43a9f845fb8fb7"
+  integrity sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==
+  dependencies:
+    domelementtype "^2.0.1"
+    domhandler "^4.0.0"
+    domutils "^2.5.2"
     entities "^2.0.0"
 
 http-cache-semantics@^3.8.1:
@@ -9764,7 +9844,7 @@ parse-url@^5.0.0:
     parse-path "^4.0.0"
     protocols "^1.4.0"
 
-parse5-htmlparser2-tree-adapter@^6.0.0:
+parse5-htmlparser2-tree-adapter@^6.0.0, parse5-htmlparser2-tree-adapter@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/parse5-htmlparser2-tree-adapter/-/parse5-htmlparser2-tree-adapter-6.0.1.tgz#2cdf9ad823321140370d4dbf5d3e92c7c8ddc6e6"
   integrity sha512-qPuWvbLgvDGilKc5BoicRovlT4MtYT6JfJyBOMDsKoiT+GiuP5qyrPCnR9HcPECIJJmZh5jRndyNThnhhb/vlA==
@@ -12527,6 +12607,11 @@ tslib@^1.9.0, tslib@^1.9.3:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
+
+tslib@^2.2.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
+  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
 tty-browserify@0.0.0:
   version "0.0.0"
