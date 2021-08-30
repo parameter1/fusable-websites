@@ -8,9 +8,11 @@ module.exports = (app) => {
   const { rootAlias = 'ccj-top-250' } = config;
   app.get(`/:alias(${rootAlias})`, withWebsiteSection({ template, queryFragment }));
 
-  Object.keys(config.guides).forEach((alias) => {
-    app.get(`/${rootAlias}/${alias}`, (_, res) => {
-      res.marko(guide, { alias });
-    });
+  Object.keys(config.guides).forEach((guideAlias) => {
+    app.get(`/:alias(${rootAlias})/${guideAlias}`, withWebsiteSection({
+      template: guide,
+      queryFragment,
+      redirectOnPathMismatch: false,
+    }));
   });
 };
