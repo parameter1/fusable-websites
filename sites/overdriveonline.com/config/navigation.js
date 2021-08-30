@@ -15,6 +15,7 @@ const topics = {
   secondary: [
     { href: '/reader-rigs', label: 'Reader Rigs' },
     { href: '/overdrive-radio', label: 'Overdrive Radio' },
+    { href: '/videos', label: 'Videos' },
     { href: '/white-papers', label: 'Whitepapers' },
   ],
 };
@@ -66,6 +67,9 @@ module.exports = {
       { href: '/site-map', label: 'Site Map' },
     ],
     topics: topics.primary,
-    more: utilities,
+    more: [
+      ...utilities,
+      { href: '/videos', label: 'Videos' },
+    ],
   },
 };
