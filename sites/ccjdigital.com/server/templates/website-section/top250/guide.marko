@@ -17,10 +17,11 @@ $ const guide = get(top250, `guides.${guideAlias}`);
     page-node=pageNode
   >
     <@head>
-      <marko-web-gtm-default-context|{ context }|>
+      <marko-web-gtm-website-section-context|{ context }| alias=alias>
+        <marko-web-gtm-push data=context />
         $ const gtmData = { ...context, identityX };
         <marko-web-gtm-push data=gtmData />
-      </marko-web-gtm-default-context>
+      </marko-web-gtm-website-section-context>
     </@head>
     <@section|{ blockName, section }| modifiers=["break-container", "top250"]>
       <graphic-header />
