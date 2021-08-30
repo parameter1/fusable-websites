@@ -114,6 +114,10 @@
     margin-top: $block-spacer;
     font-size: 11px;
     text-align: center;
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
   }
   .top-250 {
     &__form {
