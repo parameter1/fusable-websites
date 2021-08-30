@@ -120,6 +120,35 @@
         text-decoration: none;
       }
     }
+    .node-list {
+      &--gray-background {
+        background-color: $gray-100;
+      }
+    }
+    .section-feed-content-node {
+      &__content-short-name {
+        font-size: 20px;
+        line-height: 1em;
+      }
+      &__image-wrapper {
+        width: 125px;
+        min-width: 125px;
+        height: 83px;
+        @include media-breakpoint-up(md) {
+          width: 198px;
+          min-width: 198px;
+          height: 131px;
+        }
+      }
+      &__image {
+        width: 125px;
+        height: 83px;
+        @include media-breakpoint-up(md) {
+          width: 198px;
+          height: 131px;
+        }
+      }
+    }
   }
 
   &__content-body h2,
@@ -129,6 +158,11 @@
     @include media-breakpoint-down(sm) {
       font-size: 23px;
     }
+  }
+
+  &__content-body ol,
+  &__content-body ul {
+    list-style-position: initial;
   }
 
   &--download-form {
