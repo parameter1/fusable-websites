@@ -38,10 +38,10 @@ $ const guide = get(top250, `guides.${alias}`);
                     Essential data to drive your business
                   </h2>
                   <marko-web-block  class="top250-access__description">
-                    CCJ’s Top 250 data format gives you access to consolidated business intelligence not available anywhere else.
+                    <em>CCJ’s</em> Top 250 data format gives you access to consolidated business intelligence not available anywhere else.
                   </marko-web-block>
                   <marko-web-block  class="top250-access__call-to-action">
-                    Unlock the trends propelling the trucking industry’s most successful companies to the top with the CCJ Top 250. Sort real time stats on fiscal year performance for customizable reporting on revenue, location, fleet type and size, leased vs. owned, and driver counts. Track trends and understand your competition with blended, year-to-year data on nine industry segments that tells you where you are now and where you need to go.
+                    Unlock the trends propelling the trucking industry’s most successful companies to the top with the <em>CCJ</em> Top 250. Sort real-time stats on fiscal year performance for customizable reporting on revenue, location, fleet type and size, leased vs. owned and driver counts. Track trends and understand your competition with blended, year-to-year data on nine industry segments that tells you where you are now and where you need to go.
                   </marko-web-block>
 
                   <marko-web-block class="top250-login-box">
@@ -53,7 +53,7 @@ $ const guide = get(top250, `guides.${alias}`);
                       class="top250-access__logo"
                     />
                     <marko-web-block class="top250-login-box__description">
-                      The heartbeat of trucking’s top<br />fleets, at your fingertips
+                      The heartbeat of trucking’s top<br />fleets at your fingertips
                     </marko-web-block>
                     <marko-web-block class="top250-login-box__form">
                       <if(idxContext.hasUser)>
@@ -98,7 +98,7 @@ $ const guide = get(top250, `guides.${alias}`);
               <div class="row mb-3">
                 <div class="col">
                   <h1 class="page-wrapper__website-section-name">
-                    <a href=`/${top250.rootAlias}`>${top250.title}</a>
+                    <a href=`/${top250.rootAlias}`>$!{top250.title}</a>
                   </h1>
                   <h1 class="page-wrapper__website-section-subhead">${guide.title}</h1>
                 </div>
