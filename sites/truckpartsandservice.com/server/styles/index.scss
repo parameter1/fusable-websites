@@ -26,6 +26,9 @@ $primary: #103a57;
       padding: map-get($spacers, block) / 2;
       margin: map-get($spacers, block) / 3;
       background-color: #f1f1f1;
+      &__sda {
+        background-color: $gray-100;
+      }
     }
   }
 }

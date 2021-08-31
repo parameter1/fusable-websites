@@ -55,6 +55,10 @@ $ const perPage = 18;
       />
     </if>
 
+    <if(['successful-dealer-award'].includes(alias))>
+      <global-successful-dealer-sponsors-block />
+    </if>
+
     <global-section-feed-block alias=alias>
       <@query-params limit=3 skip=p.skip({ perPage }) />
     </global-section-feed-block>
