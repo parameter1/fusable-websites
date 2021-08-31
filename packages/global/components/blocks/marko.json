@@ -113,5 +113,8 @@
   },
   "<global-top-stories-menu-block>": {
     "template": "./top-stories-menu.marko"
+  },
+  "<global-successful-dealer-sponsors-block>": {
+    "template": "./successful-dealer-sponsors.marko"
   }
 }
