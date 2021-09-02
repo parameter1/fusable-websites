@@ -14,6 +14,8 @@ module.exports = gql`
           siteContext {
             url
           }
+          published
+          touched
           primarySite {
             id
             shortName
