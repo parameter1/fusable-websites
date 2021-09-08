@@ -1,4 +1,5 @@
 const slug = require('slug');
+const duplicateContentRedirects = require('./duplicate-content-redirects');
 
 const getSizedImageRedirect = ({ from }) => {
   const matches = /^\/wp-content\/uploads\/.+(-([0-9]+)x([0-9]+))\.[a-z]+$/i.exec(from);
@@ -47,6 +48,10 @@ const getSiteRedirect = ({ from, req }) => {
     if (s === 'trench collapse') return { to: '/workforce/safety' };
     // Also covers ?s=rental
     return { to: '/' };
+  }
+
+  if (duplicateContentRedirects.find(pair => pair.from === from)) {
+    return { to: duplicateContentRedirects.find(pair => pair.from === from).to };
   }
 
   return null;
