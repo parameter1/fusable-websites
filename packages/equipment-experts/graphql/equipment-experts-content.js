@@ -15,7 +15,7 @@ module.exports = gql`
             url
           }
           published
-          touched
+          updated
           primarySite {
             id
             shortName
