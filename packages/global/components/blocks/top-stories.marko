@@ -11,6 +11,7 @@ $ const queryParams = {
 $ const blockName = "top-stories";
 $ const withHeader = defaultValue(input.withHeader, true);
 $ const withNativeX = defaultValue(input.withNativeX, true);
+$ const lazyload = defaultValue(input.lazyload, true);
 
 <marko-web-query|{ nodes }| name="website-scheduled-content" params=queryParams>
   <if(nodes.length)>
@@ -40,7 +41,7 @@ $ const withNativeX = defaultValue(input.withNativeX, true);
             modifiers=[`${blockName}-hero-image`]
             node=heroImageNode
           >
-            <@image fluid=true width=600 ar="3:2" />
+            <@image fluid=true width=600 ar="3:2" lazyload=lazyload />
           </global-content-node>
         </marko-web-element>
         <marko-web-element block-name=blockName name="col" modifiers=["list"]>
@@ -61,7 +62,9 @@ $ const withNativeX = defaultValue(input.withNativeX, true);
           modifiers=[blockName]
           ...(withNativeX && { nativeX: { name: "default", index: 3, sectionName: "Sponsor Content" } })
         >
-          <@node modifiers=[`${blockName}-card`] />
+          <@node modifiers=[`${blockName}-card`]>
+            <@image lazyload=lazyload />
+          </@node>
         </global-content-card-deck-4-col-flow>
       </if>
     </marko-web-block>
