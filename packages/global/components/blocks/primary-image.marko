@@ -18,6 +18,7 @@ $ const withDisplayName = defaultValue(input.withDisplayName, true);
 $ const fluidWidth = defaultValue(input.fluidWidth, 700);
 $ const alignedWidth = defaultValue(input.alignedWidth, 300);
 $ const shouldFill = defaultValue(input.shouldFill, false);
+$ const lazyload = defaultValue(input.lazyload, false);
 
 $ if (display === "center" && isLogo) {
   // force logos to the right when set to center
@@ -67,6 +68,7 @@ $ if (image.id) imageAttrs["data-image-id"] = image.id;
         alt=image.alt
         class=`${blockName}__image`
         attrs=imageAttrs
+        lazyload=lazyload
       />
     </div>
 
