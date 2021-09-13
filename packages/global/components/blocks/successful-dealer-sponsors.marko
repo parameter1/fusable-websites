@@ -9,7 +9,7 @@ $ const sponsorImages = [
 
 $ const imgixSponsors = [];
 $ sponsorImages.forEach((image, index) => {
-  const imgixSponsors.push({ src: buildImgixUrl(image.src, { h: 100, auto: 'format,compress', q: 70 }), alt: image.alt });
+  imgixSponsors.push({ src: buildImgixUrl(image.src, { h: 100, auto: 'format,compress', q: 70 }), alt: image.alt });
 });
 
 <div class="awards">
