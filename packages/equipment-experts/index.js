@@ -59,6 +59,8 @@ module.exports = ({
         post_name: node.slug,
         post_title: node.name,
         post_content: setDefaultImgixParams(body),
+        post_published: new Date(node.published),
+        post_last_modified: new Date(node.updated),
         post_excerpt: node.teaser,
         featured_image: get(node, 'primaryImage.src'),
         keywords: getAsArray(node, 'keywords.edges').map(e => get(e, 'node.name')),

@@ -3,7 +3,8 @@ import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 
 $ const { author, content } = input;
 $ const blockName = "author-published-node";
-$ const showPublished = defaultValue(input.showPublished, true)
+$ const showPublished = defaultValue(input.showPublished, true);
+$ const lazyload = defaultValue(input.lazyload, true);
 
 <marko-web-block name=blockName>
   $ const { primaryImage } = author;
@@ -21,6 +22,7 @@ $ const showPublished = defaultValue(input.showPublished, true)
       alt=primaryImage.alt
       class=`${blockName}__image`
       link={ href: author.siteContext.path }
+      lazyload=lazyload
     />
   </if>
   <marko-web-element block-name=blockName name="details">
