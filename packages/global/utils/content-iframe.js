@@ -9,7 +9,7 @@ const autoplayUrl = (src) => {
   const searchParams = new URLSearchParams(url.search);
   searchParams.set('autoplay', 1);
   url.search = searchParams;
-  return url.toString();
+  return `${url}`;
 };
 
 module.exports = (content) => {
