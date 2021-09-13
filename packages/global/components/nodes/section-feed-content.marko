@@ -13,6 +13,7 @@ $ const withDates = defaultValue(input.withDates, true);
 $ const withSection = defaultValue(input.withSection, true);
 $ const withTeaser = defaultValue(input.withTeaser, true);
 $ const displayImage = defaultValue(input.displayImage, true);
+$ const lazyload = defaultValue(input.lazyload, true);
 
 $ const imageOptions = {
   w: 250,
@@ -72,6 +73,7 @@ $ const blockName = "section-feed-content-node";
             srcset=srcset
             alt=primaryImage.alt
             class=[`${blockName}__image`]
+            lazyload=lazyload
           />
         </marko-web-link>
       </if>

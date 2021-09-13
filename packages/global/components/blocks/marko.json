@@ -94,6 +94,7 @@
     "<node>": {},
     "@alias": "string",
     "@count-only": "boolean",
+    "@lazyload": "boolean",
     "@modifiers": "array"
   },
   "<global-section-title-feed-block>": {

@@ -21,7 +21,7 @@ $ const sections = getAsArray(input, "sections");
   </@section>
 
   <@section|{ aliases }|>
-    <global-top-stories-block with-header=false />
+    <global-top-stories-block with-header=false lazyload=false />
   </@section>
   <for|s| of=sections>
     <@section|{ blockName, section, aliases }| modifiers=s.modifiers>
