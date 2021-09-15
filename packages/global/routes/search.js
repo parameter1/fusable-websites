@@ -13,5 +13,5 @@ module.exports = (app, siteConfig) => {
     contentTypes,
     assignedToWebsiteSectionIds,
   });
-  app.get('/search-new', middleware({ config, template }));
+  app.get('/search', middleware({ config, template }));
 };
