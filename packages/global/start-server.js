@@ -10,12 +10,9 @@ const fragments = require('./fragments');
 const sharedRoutes = require('./routes');
 const paginated = require('./middleware/paginated');
 const newsletterState = require('./middleware/newsletter-state');
-const algolia = require('./middleware/algolia');
 const redirectHandler = require('./redirect-handler');
 const oembedHandler = require('./oembed-handler');
 const omedaConfig = require('./config/omeda');
-
-const { env } = process;
 
 const routes = (siteRoutes, siteConfig) => (app) => {
   // Shared/global routes (all sites)
@@ -43,14 +40,6 @@ module.exports = (options = {}) => {
     onStart: async (app) => {
       if (typeof onStart === 'function') await onStart(app);
       app.set('trust proxy', 'loopback, linklocal, uniquelocal');
-
-      // Use Algolia client/index middleware
-      // Will be available on `req.$algolia` and `res.locals.$algolia`
-      app.use(algolia({
-        appId: env.ALGOLIA_APP_ID,
-        apiKey: env.ALGOLIA_API_KEY,
-        defaultIndex: env.ALGOLIA_DEFAULT_INDEX,
-      }));
 
       // Use paginated middleware
       app.use(paginated());
