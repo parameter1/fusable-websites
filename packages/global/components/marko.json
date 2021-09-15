@@ -8,8 +8,7 @@
     "./layouts/marko.json",
     "./native-x/marko.json",
     "./nodes/marko.json",
-    "./page/marko.json",
-    "./search/marko.json"
+    "./page/marko.json"
   ],
   "<global-client-side-block-loader>": {
     "template": "./client-side-block-loader.marko"

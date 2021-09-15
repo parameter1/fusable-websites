@@ -56,9 +56,6 @@ export SITEMAPS_URI="https://sitemaps.virgon.base.parameter1.com"
 export NODE_ENV="development"
 export IDENTITYX_GRAPHQL_URI="https://identity-x.parameter1.com/graphql"
 export BASE_BROWSE_GRAPHQL_URI="https://base-browse.virgon.base.parameter1.com/graphql"
-export ALGOLIA_APP_ID="05JLREVGZ4"
-export ALGOLIA_API_KEY="<my-api-key>"
-export ALGOLIA_DEFAULT_INDEX="randallreilly_all_platform_content"
 
 ./node_modules/.bin/basecms-website dev sites/equipmentworld.com
 ```
@@ -79,9 +76,6 @@ set "SITEMAPS_URI=https://sitemaps.virgon.base.parameter1.com"
 set "NODE_ENV=development"
 set "IDENTITYX_GRAPHQL_URI=https://identity-x.parameter1.com/graphql"
 set "BASE_BROWSE_GRAPHQL_URI=https://base-browse.virgon.base.parameter1.com/graphql"
-set "ALGOLIA_APP_ID=05JLREVGZ4"
-set "ALGOLIA_API_KEY=<my-api-key>"
-set "ALGOLIA_DEFAULT_INDEX=randallreilly_all_platform_content"
 
 ./node_modules/.bin/basecms-website dev sites/equipmentworld.com
 ```
