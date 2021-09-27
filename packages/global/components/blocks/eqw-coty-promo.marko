@@ -18,7 +18,7 @@ $ const imagePath = "files/base/randallreilly/all/image/static/eqw-coty/eqw-coty
       class=`${blockName}__logo`
       link={ href: node.siteContext.path }
       src=`https://${config.website("imageHost")}/${imagePath}?auto=format,compress&h=48`
-      srcset=`https://${config.website("imageHost")}/${imagePath}?auto=format,compress&h=96&dpr=2 2x`
+      srcset=[`https://${config.website("imageHost")}/${imagePath}?auto=format,compress&h=48&dpr=2 2x`]
       alt="Contractor of the Year Logo"
     />
   </marko-web-element>

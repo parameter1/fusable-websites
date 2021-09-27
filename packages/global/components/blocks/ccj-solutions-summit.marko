@@ -7,15 +7,15 @@
 }; -->
 $ const node = {
   type: "promotion",
-  shortName: "Get all the info on the top 250 trucking companies in America",
-  teaser: "View, sort and download the trucking industry’s most comprehensive ranking of for-hire carriers in North America, based on a blend of metrics including fleet size, annual revenue and number of drivers.",
+  shortName: "Shifting the driver paradigm: Winning with equipment, technology and culture",
+  teaser: "Join us in person on Nov. 30 - Dec. 2 at the beautiful Sheraton Grand Horse Pass in Chandler, Ariz., as top fleet leaders from across the country gather to strategize on how to recruit and retain the best drivers in the industry.",
   siteContext: {
-    path: "https://www.ccjdigital.com/ccj-top-250",
+    path: "https://bit.ly/3zJm32N",
   },
 };
 
-$ const blockName = "ccj-top-250";
-$ const imagePath = "files/base/randallreilly/all/image/static/ccj/top250.svg";
+$ const blockName = "ccj-solutions-summit";
+$ const imagePath = "files/base/randallreilly/all/image/static/ccj/CCJ-Solutions-summit-logo-big.png";
 
 <marko-web-block name=blockName>
   <marko-web-element block-name=blockName name="header">
@@ -24,7 +24,7 @@ $ const imagePath = "files/base/randallreilly/all/image/static/ccj/top250.svg";
       link={ href: node.siteContext.path, target: "_blank" }
       src=`https://img.ccjdigital.com/${imagePath}?w=151`
       srcset=[`https://img.ccjdigital.com/${imagePath}?w=151&dpr=2 2x`]
-      alt="CCJ Top 250"
+      alt="CCJ Solutions Summit"
     />
   </marko-web-element>
 
@@ -47,10 +47,10 @@ $ const imagePath = "files/base/randallreilly/all/image/static/ccj/top250.svg";
           <marko-web-link
             class="btn btn-primary"
             href=node.siteContext.path
-            title="Get the free report"
+            title="Learn More & Register"
             target="_blank"
           >
-            Get the free report
+            Learn More & Register
           </marko-web-link>
         </@left>
       </@footer>
