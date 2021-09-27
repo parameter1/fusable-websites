@@ -1,0 +1,59 @@
+<!-- @todo this should move to OVD or be made generic -->
+<!-- @todo need to determine how this is queried -->
+<!-- $ const queryParams = {
+  requiresImage: true,
+  limit: 1,
+  queryFragment,
+}; -->
+$ const node = {
+  type: "promotion",
+  shortName: "Shifting the driver paradigm: Winning with equipment, technology and culture",
+  teaser: "Join us in person on Nov. 30 - Dec. 2 at the beautiful Sheraton Grand Horse Pass in Chandler, Ariz., as top fleet leaders from across the country gather to strategize on how to recruit and retain the best drivers in the industry.",
+  siteContext: {
+    path: "https://bit.ly/3zJm32N",
+  },
+};
+
+$ const blockName = "ccj-solutions-summit";
+$ const imagePath = "files/base/randallreilly/all/image/static/ccj/CCJ-Solutions-summit-logo-big.png";
+
+<marko-web-block name=blockName>
+  <marko-web-element block-name=blockName name="header">
+    <marko-web-img
+      class=`${blockName}__logo`
+      link={ href: node.siteContext.path, target: "_blank" }
+      src=`https://img.ccjdigital.com/${imagePath}?w=151`
+      srcset=[`https://img.ccjdigital.com/${imagePath}?w=151&dpr=2 2x`]
+      alt="CCJ Solutions Summit"
+    />
+  </marko-web-element>
+
+  <marko-web-node
+    type=`${node.type}-content`
+    card=true
+    flush=true
+    full-height=false
+    modifiers=[blockName]
+  >
+    <@body>
+      <@title tag="h5">
+        <marko-web-content-short-name tag=null obj=node link=true />
+      </@title>
+      <@text modifiers=["teaser"] show=(Boolean(node.teaser))>
+        <marko-web-content-teaser tag=null obj=node link=true />
+      </@text>
+      <@footer modifiers=["buttons"]>
+        <@left>
+          <marko-web-link
+            class="btn btn-primary"
+            href=node.siteContext.path
+            title="Learn More & Register"
+            target="_blank"
+          >
+            Learn More & Register
+          </marko-web-link>
+        </@left>
+      </@footer>
+    </@body>
+  </marko-web-node>
+</marko-web-block>
