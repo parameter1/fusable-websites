@@ -7,6 +7,9 @@ fragment ContentPageFragment on Content {
   teaser(input: { useFallback: false, maxLength: null })
   labels
   body
+  relatedTo {
+    totalCount
+  }
   published
   updated
   siteContext {
