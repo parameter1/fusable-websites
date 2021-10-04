@@ -1,0 +1,56 @@
+import { getAsObject } from "@parameter1/base-cms-object-path";
+
+$ const { nativeX: nxConfig } = out.global;
+$ const { blockName, nodes, modifiers } = input;
+$ const nativeX = getAsObject(input, "nativeX");
+$ const nodeImageInput = getAsObject(input, "node.image");
+
+<marko-web-block name=blockName>
+  <marko-web-element block-name=blockName name="header">
+    Related
+  </marko-web-element>
+
+<default-theme-card-deck-flow cols=4 nodes=nodes modifiers=modifiers>
+  <@slot|{ node, index }|>
+    <if(nxConfig)>
+      <marko-web-native-x-render|{ node: nxNode, linkAttrs, containerAttrs }|
+        ...nativeX
+        when=(index === nativeX.index)
+        node=node
+        config=nxConfig
+      >
+        <global-content-node
+          image-position="top"
+          card=true
+          flush=true
+          full-height=true
+          with-teaser=false
+          with-dates=false
+          ...input.node
+          node=nxNode
+          link-attrs=linkAttrs
+          attrs=containerAttrs
+          modifiers=["top-stories-card"]
+        >
+          <@image ar="3:2" fluid=true ...nodeImageInput />
+        </global-content-node>
+      </marko-web-native-x-render>
+    </if>
+    <else>
+      <global-content-node
+        image-position="top"
+        card=true
+        flush=true
+        full-height=true
+        with-teaser=false
+        with-dates=false
+        ...input.node
+        node=node
+        modifiers=["top-stories-card"]
+      >
+        <@image ar="3:2" fluid=true ...nodeImageInput />
+      </global-content-node>
+    </else>
+  </@slot>
+</default-theme-card-deck-flow>
+</marko-web-block>
