@@ -32,6 +32,9 @@
   margin-top: 30px;
   &__header {
     margin-bottom: 16px;
+    @include media-breakpoint-up(md){
+      margin-bottom: 0;
+    }
     @include skin-typography($style: "section-header-xs");
   }
 }
