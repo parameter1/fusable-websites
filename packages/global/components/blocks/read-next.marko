@@ -1,40 +1,104 @@
 import queryFragment from "../../graphql/fragments/read-next-block";
 
-$ const queryParams = {
-  publishedAfter: input.published,
-  excludeContentIds: [input.contentId],
-  sectionId: input.sectionId,
+$ const { contentId, sectionId, published, relatedToCount } = input;
+
+$ const limit = 4;
+
+$ const relatedQueryParams = {
+  contentId,
+  limit,
+  withSite: false,
+  queryFragment,
+};
+
+$ const afterQueryParams = {
+  publishedAfter: published,
+  sectionId,
   limit: 1,
   queryFragment,
 };
+
+$ const beforeQueryParams = {
+  since: published,
+  sectionId,
+  limit: 1,
+  queryFragment,
+};
+
+$ const contentInSectionParams = {
+  sectionId,
+  queryFragment,
+};
+
+$ const excludeContentIds = [contentId];
+$ const allContentNodes = [];
 $ const blockName = "read-next";
 
-<marko-web-query|{ nodes }| name="all-published-content" params=queryParams>
-  <if(nodes.length)>
-    <marko-web-block name=blockName>
-      <marko-web-element block-name=blockName name="header">
-        Read Next
-      </marko-web-element>
+<if(relatedToCount)>
+  <marko-web-query|{ nodes: relatedNodes }| name="related-published-content" params=relatedQueryParams>
+    $ allContentNodes.push(...relatedNodes);
+    <if(allContentNodes.length === limit)>
+      <global-related-story-list-flow nodes=allContentNodes blockName=blockName modifiers=["top-stories"] />
+    </if>
+    <else>
+      $ excludeContentIds.push(...relatedNodes.map((node) => node.id));
+      $ afterQueryParams.excludeContentIds = excludeContentIds;
+      <marko-web-query|{ nodes: afterNodes }| name="all-published-content" params=afterQueryParams>
+        $ allContentNodes.push(...afterNodes);
+        <if(allContentNodes.length === limit)>
+          <global-related-story-list-flow nodes=allContentNodes blockName=blockName modifiers=["top-stories"] />
+        </if>
+        <else>
+          $ excludeContentIds.push(...afterNodes.map((node) => node.id));
+          $ beforeQueryParams.excludeContentIds = excludeContentIds;
+          <marko-web-query|{ nodes: beforeNodes }| name="all-published-content" params=beforeQueryParams>
+            $ allContentNodes.push(...beforeNodes);
+            <if(allContentNodes.length === limit)>
+              <global-related-story-list-flow nodes=allContentNodes blockName=blockName modifiers=["top-stories"] />
+            </if>
+            <else>
+              $ excludeContentIds.push(...beforeNodes.map((node) => node.id));
+              $ contentInSectionParams.limit = limit - allContentNodes.length;
+              $ contentInSectionParams.excludeContentIds = excludeContentIds;
+              <marko-web-query|{ nodes: otherContentInSection }| name="website-scheduled-content" params=contentInSectionParams>
+                $ allContentNodes.push(...otherContentInSection);
+                <global-related-story-list-flow nodes=allContentNodes blockName=blockName modifiers=["top-stories"] />
+              </marko-web-query>
+            </else>
+          </marko-web-query>
+        </else>
+      </marko-web-query>
+    </else>
+  </marko-web-query>
+</if>
 
-      <marko-web-node-list
-        inner-justified=false
-        flush-x=true
-        flush-y=true
-        modifiers=[blockName]
-      >
-        <@nodes nodes=nodes>
-          <@slot|{ node }|>
-            <global-content-node
-              image-position="left"
-              flush=true
-              node=node
-              modifiers=[blockName]
-            >
-              <@image width=160 ar="3:2" />
-            </global-content-node>
-          </@slot>
-        </@nodes>
-      </marko-web-node-list>
-    </marko-web-block>
+<else>
+  <if(allContentNodes.length < limit)>
+    $ afterQueryParams.excludeContentIds = excludeContentIds;
+    <marko-web-query|{ nodes: afterNodes }| name="all-published-content" params=afterQueryParams>
+      $ allContentNodes.push(...afterNodes);
+      <if(allContentNodes.length === limit)>
+        <global-related-story-list-flow nodes=allContentNodes blockName=blockName modifiers=["top-stories"] />
+      </if>
+      <else>
+        $ excludeContentIds.push(...afterNodes.map((node) => node.id));
+        $ beforeQueryParams.excludeContentIds = excludeContentIds;
+        <marko-web-query|{ nodes: beforeNodes }| name="all-published-content" params=beforeQueryParams>
+          $ allContentNodes.push(...beforeNodes);
+          <if(allContentNodes.length === limit)>
+            <global-related-story-list-flow nodes=allContentNodes blockName=blockName modifiers=["top-stories"] />
+          </if>
+          <else>
+            $ excludeContentIds.push(...beforeNodes.map((node) => node.id));
+            $ contentInSectionParams.limit = limit - allContentNodes.length;
+            $ contentInSectionParams.excludeContentIds = excludeContentIds;
+            <marko-web-query|{ nodes: otherContentInSection }| name="website-scheduled-content" params=contentInSectionParams>
+              $ allContentNodes.push(...otherContentInSection);
+              <global-related-story-list-flow nodes=allContentNodes blockName=blockName modifiers=["top-stories"] />
+            </marko-web-query>
+          </else>
+        </marko-web-query>
+      </else>
+    </marko-web-query>
   </if>
-</marko-web-query>
+</else>
