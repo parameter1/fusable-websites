@@ -50,8 +50,9 @@ const getSiteRedirect = ({ from, req }) => {
     return { to: '/' };
   }
 
-  if (duplicateContentRedirects.find(pair => pair.from === from)) {
-    return { to: duplicateContentRedirects.find(pair => pair.from === from).to };
+  const dupContentFind = duplicateContentRedirects.find(pair => (new RegExp(`${pair.from}`)).test(from));
+  if (dupContentFind) {
+    return dupContentFind;
   }
 
   return null;
