@@ -62,8 +62,12 @@ fragment ContentPageFragment on Content {
     ends
     starts
   }
-  ... on ContentArticle {
-    sidebars
+  ... on SidebarEnabledInterface {
+    sidebars: sidebarStubs {
+      name
+      body
+      label
+    }
   }
   ... on ContentWebinar {
     linkUrl
