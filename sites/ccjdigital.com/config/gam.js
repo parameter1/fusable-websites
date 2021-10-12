@@ -11,8 +11,15 @@ config.lazyLoad = {
 
 config.setAliasAdUnits('default', [
   { name: 'leaderboard', templateName: 'LEADERBOARD', path: 'leaderboard' },
+  { name: 'leaderboard-2', templateName: 'LEADERBOARD', path: 'leaderboard' },
   { name: 'rotation', templateName: 'ROTATION', path: 'rotation' },
   { name: 'rail-1', templateName: 'GEAR', path: 'rail-1' },
+  { name: 'rotation-1', templateName: 'GEAR', path: 'rail-1' },
+  { name: 'rotation-2', templateName: 'GEAR', path: 'rail-1' },
+  { name: 'rotation-3', templateName: 'GEAR', path: 'rail-1' },
+  { name: 'rotation-1-mobile', templateName: 'GEAR-MOBILE', path: 'rail-1' },
+  { name: 'rotation-2-mobile', templateName: 'GEAR-MOBILE', path: 'rail-1' },
+  { name: 'rotation-3-mobile', templateName: 'GEAR-MOBILE', path: 'rail-1' },
   { name: 'inline-content-mobile', templateName: 'INLINE-CONTENT-MOBILE', path: 'rotation' },
   { name: 'inline-content-desktop', templateName: 'INLINE-CONTENT-DESKTOP', path: 'rotation' },
   { name: 'wallpaper-left', templateName: 'WALLPAPER', path: 'wallpaper-left' },
