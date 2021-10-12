@@ -39,6 +39,7 @@ module.exports = {
     { provider: 'linkedin', href: 'https://www.linkedin.com/groups/6650305/', target: '_blank' },
     { provider: 'youtube', href: 'https://www.youtube.com/channel/UCVb9_pwbvG99tK1apahFyIg?view_as=subscriber', target: '_blank' },
     { provider: 'instagram', href: 'https://www.instagram.com/overdriveonline/', target: '_blank' },
+    { provider: 'tiktok', href: 'https://www.tiktok.com/@overdriveonline.com', target: '_blank' },
   ],
   podcastLinks: [
     { label: 'Apple Podcasts', href: 'https://podcasts.apple.com/us/podcast/overdrive-online/id736806291' },
