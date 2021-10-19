@@ -9,4 +9,28 @@ $ const blockName = "wallpaper-ad";
   <marko-web-element block-name=blockName name="right">
     <global-gam-define-display-ad name="wallpaper-right" position=position aliases=aliases show-label=false />
   </marko-web-element>
+  <script>
+  function isNotInViewport(element) {
+    const currentElement = element.getBoundingClientRect();
+    return (
+        currentElement.bottom <= 0
+    );
+  }
+  const elementToCheck = document.querySelector('.site-header');
+  const leftWallpaper = document.querySelector('.wallpaper-ad__left')
+  const rightWallpaper = document.querySelector('.wallpaper-ad__right')
+
+  document.addEventListener('scroll', function () {
+    const checkViewPort = isNotInViewport(elementToCheck)
+    if(checkViewPort){
+      leftWallpaper.style.position = "fixed";
+      rightWallpaper.style.position = "fixed";
+    } else {
+      leftWallpaper.removeAttribute("style");
+      rightWallpaper.removeAttribute("style");
+    }
+  }, {
+    passive: true
+  });
+  </script>
 </marko-web-block>
