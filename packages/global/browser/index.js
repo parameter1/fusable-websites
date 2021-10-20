@@ -2,6 +2,7 @@ import GTM from '@parameter1/base-cms-marko-web-gtm/browser';
 import GAM from '@parameter1/base-cms-marko-web-gam/browser';
 import Search from '@parameter1/base-cms-marko-web-search/browser';
 import SocialSharing from '@parameter1/base-cms-marko-web-social-sharing/browser';
+import Inquiry from '@parameter1/base-cms-marko-web-inquiry/browser';
 import IdentityX from '@parameter1/base-cms-marko-web-identity-x/browser';
 import NativeX from '@parameter1/base-cms-marko-web-native-x/browser';
 import OmedaRapidIdentityX from '@parameter1/base-cms-marko-web-omeda-identity-x/browser/rapid-identify.vue';
@@ -44,6 +45,7 @@ export default (Browser) => {
   Search(Browser);
   SocialSharing(Browser);
   NativeX(Browser);
+  Inquiry(Browser);
   IdentityX(Browser, {
     CustomAuthenticateComponent: IdentityXAuthenticate,
     CustomCommentStreamComponent: IdentityXCommentStream,
