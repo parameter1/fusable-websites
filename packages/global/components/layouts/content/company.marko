@@ -66,6 +66,17 @@ $ const sections = getAsArray(input, "sections");
       </div>
 
       <div class="col-lg-4 pt-block">
+        $ const { site } = out.global;
+        $ const inquiry = site.getAsObject('inquiry');
+        <if(inquiry.enabled && content.enableRmi)>
+          <marko-web-node-list collapsible=false>
+            <@header>Request More Information</@header>
+            <@body>
+              <marko-web-inquiry-form content=content with-header=false modifiers=["node-list"] />
+            </@body>
+          </marko-web-node-list>
+        </if>
+
         <if(input.rightRail)>
           <${input.rightRail}
             aliases=aliases
