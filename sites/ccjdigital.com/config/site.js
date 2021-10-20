@@ -55,9 +55,9 @@ module.exports = {
     userName: 'randallreilly',
   },
   inquiry: {
-    enabled: true,
+    enabled: false,
     directSend: false,
-    sendTo: 'needNewEmailAddress@randall-reilly.com',
+    sendTo: 'support@parameter1.com',
     sendFrom: 'CCJDigital.com <noreply@parameter1.com>',
     logo: 'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ccj-logo.svg?h=45&auto=format,compress&q=70&bg=000000&pad=5',
     bgColor: '#000000',

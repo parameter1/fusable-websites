@@ -52,9 +52,9 @@ module.exports = {
     userName: 'randallreilly',
   },
   inquiry: {
-    enabled: true,
+    enabled: false,
     directSend: false,
-    sendTo: 'needNewEmailAddress@randall-reilly.com',
+    sendTo: 'support@parameter1.com',
     sendFrom: 'HardWorkingTrucks.com <noreply@parameter1.com>',
     logo: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo.svg?h=45&auto=format,compress&q=70&bg=000000&pad=5',
     bgColor: '#000000',
