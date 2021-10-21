@@ -51,4 +51,12 @@ module.exports = {
   wufoo: {
     userName: 'randallreilly',
   },
+  inquiry: {
+    enabled: false,
+    directSend: false,
+    sendTo: 'support@parameter1.com',
+    sendFrom: 'HardWorkingTrucks.com <noreply@parameter1.com>',
+    logo: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo.svg?h=45&auto=format,compress&q=70&bg=000000&pad=5',
+    bgColor: '#000000',
+  },
 };

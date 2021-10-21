@@ -54,4 +54,12 @@ module.exports = {
   wufoo: {
     userName: 'randallreilly',
   },
+  inquiry: {
+    enabled: false,
+    directSend: false,
+    sendTo: 'support@parameter1.com',
+    sendFrom: 'CCJDigital.com <noreply@parameter1.com>',
+    logo: 'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ccj-logo.svg?h=45&auto=format,compress&q=70&bg=000000&pad=5',
+    bgColor: '#000000',
+  },
 };
