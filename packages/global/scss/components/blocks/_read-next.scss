@@ -29,7 +29,8 @@
 }
 
 .read-next {
-  margin-top: 30px;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
   &__header {
     margin-bottom: 16px;
     @include skin-typography($style: "section-header-xs");

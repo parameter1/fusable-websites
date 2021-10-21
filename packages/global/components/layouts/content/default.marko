@@ -52,7 +52,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
     </div>
   </@section>
 
-  <@section|{ aliases, content, authors }|>
+  <@section|{ aliases, content, authors }| modifiers=["content-body"]>
     $ const { primarySection } = content;
     <div class="content-page-body">
       <default-theme-page-contents|{ blockName }| attrs={ "data-gallery-id": id }>
@@ -130,6 +130,14 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
           </for>
         </if>
 
+        <if(displayReadNext)>
+          <global-read-next-block
+            content-id=id
+            section-id=primarySection.id
+            published=content.published
+          />
+        </if>
+
         <if(displayNewsletterSignup)>
           <global-newsletter-signup-banner-block />
         </if>
@@ -145,17 +153,18 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
         <if(displayComments)>
           <global-identity-x-comment-stream content=content />
         </if>
-
-        <if(displayReadNext)>
-          <global-read-next-block
-            content-id=id
-            section-id=primarySection.id
-            published=content.published
-          />
-        </if>
       </default-theme-page-contents>
     </div>
   </@section>
+
+  <@section|{ content }|>
+    <global-related-stories-block
+      content-id=content.id
+      section-id=content.primarySection.id
+      published=content.published
+    />
+  </@section>
+
   <if(showBottomAdBlock)>
     <@section|{ aliases }|>
       <global-gam-define-display-ad
