@@ -2,7 +2,7 @@ import { buildImgixUrl } from "@parameter1/base-cms-image";
 import { get } from "@parameter1/base-cms-object-path";
 
 $ const { advertiser } = input;
-$ const imgDefaults = { auto: "format,compress", h: 50, q: 70 };
+$ const imgDefaults = { auto: "format,compress", h: 50 };
 $ const imgSrc = get(advertiser, "logo.src");
 
 <if(imgSrc)>

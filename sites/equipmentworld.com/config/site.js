@@ -20,15 +20,15 @@ module.exports = {
   },
   logos: {
     navbar: {
-      src: 'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo.svg?h=45&auto=format,compress&q=70',
+      src: 'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo.svg?h=45&auto=format,compress',
       srcset: [
-        'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo.svg?h=90&auto=format,compress&q=70 2x',
+        'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo.svg?h=90&auto=format,compress 2x',
       ],
     },
     footer: {
-      src: 'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo.svg?h=60&auto=format,compress&q=70',
+      src: 'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo.svg?h=60&auto=format,compress',
       srcset: [
-        'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo.svg?h=120&auto=format,compress&q=70 2x',
+        'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo.svg?h=120&auto=format,compress 2x',
       ],
     },
   },
@@ -56,7 +56,7 @@ module.exports = {
     directSend: false,
     sendTo: 'support@parameter1.com',
     sendFrom: 'EquipmentWorld.com <noreply@parameter1.com>',
-    logo: 'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo.svg?h=45&auto=format,compress&q=70&bg=000000&pad=5',
+    logo: 'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo.svg?h=45&auto=format,compress&bg=000000&pad=5',
     bgColor: '#000000',
   },
 };

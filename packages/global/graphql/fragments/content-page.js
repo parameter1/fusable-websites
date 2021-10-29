@@ -33,7 +33,7 @@ fragment ContentPageFragment on Content {
   }
   primaryImage {
     id
-    src(input: { useCropRectangle: true, options: { auto: "format,compress", q: 70 } })
+    src(input: { useCropRectangle: true, options: { auto: "format,compress" } })
     alt
     caption
     credit
@@ -127,7 +127,7 @@ fragment ContentPageFragment on Content {
           }
           primaryImage {
             id
-            src(input: { options: { auto: "format,compress", q: 70 } })
+            src(input: { options: { auto: "format,compress" } })
             alt
           }
         }
@@ -138,7 +138,7 @@ fragment ContentPageFragment on Content {
     edges {
       node {
         id
-        src(input: { options: { auto: "format,compress", q: 70 } })
+        src(input: { options: { auto: "format,compress" } })
         alt
         displayName
         caption
