@@ -22,7 +22,7 @@ module.exports = gql`
           }
           primaryImage {
             id
-            src(input: { options: { auto: "format,compress", q: 70, w: 300 } })
+            src(input: { options: { auto: "format,compress", w: 300 } })
           }
           keywords: taxonomy(input: { type: Tag }) {
             totalCount
