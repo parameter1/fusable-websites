@@ -19,8 +19,22 @@ const TopStoriesMenu = () => import(/* webpackChunkName: "global-top-stories-men
 const CommentToggleButton = () => import(/* webpackChunkName: "global-comment-toggle-button" */ './comment-toggle-button.vue');
 const IdentityXCommentStream = () => import(/* webpackChunkName: "global-identity-x-comment-stream" */ './identity-x/comments/stream.vue');
 
+const setP1EventsIdentity = ({ p1events, brandKey, encryptedId }) => {
+  if (!p1events || !brandKey || !encryptedId) return;
+  p1events('setIdentity', `omeda.${brandKey}.customer*${encryptedId}~encrypted`);
+};
+
 export default (Browser) => {
   const { EventBus } = Browser;
+  EventBus.$on('identity-x-logout', () => {
+    if (window.p1events) window.p1events('setIdentity', null);
+  });
+  EventBus.$on('omeda-identity-x-authenticated', ({ brandKey, encryptedId }) => {
+    setP1EventsIdentity({ p1events: window.p1events, brandKey, encryptedId });
+  });
+  EventBus.$on('omeda-identity-x-rapid-identify-response', ({ brandKey, encryptedId }) => {
+    setP1EventsIdentity({ p1events: window.p1events, brandKey, encryptedId });
+  });
 
   const emitNewsletterEvent = ({ type, action, data }) => {
     let label = `Step ${data.step}`;
