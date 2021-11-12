@@ -5,7 +5,7 @@ import SocialSharing from '@parameter1/base-cms-marko-web-social-sharing/browser
 import Inquiry from '@parameter1/base-cms-marko-web-inquiry/browser';
 import IdentityX from '@parameter1/base-cms-marko-web-identity-x/browser';
 import NativeX from '@parameter1/base-cms-marko-web-native-x/browser';
-import OmedaRapidIdentityX from '@parameter1/base-cms-marko-web-omeda-identity-x/browser/rapid-identify.vue';
+import OmedaIdentityX from '@parameter1/base-cms-marko-web-omeda-identity-x/browser';
 
 const BlockLoader = () => import(/* webpackChunkName: "global-block-loader" */ './block-loader.vue');
 const InlineNewsletterForm = () => import(/* webpackChunkName: "global-inline-newsletter-form" */ './inline-newsletter-form.vue');
@@ -48,6 +48,7 @@ export default (Browser) => {
   IdentityX(Browser, {
     CustomCommentStreamComponent: IdentityXCommentStream,
   });
+  OmedaIdentityX(Browser);
 
   Browser.register('GlobalBlockLoader', BlockLoader);
 
@@ -84,14 +85,4 @@ export default (Browser) => {
   Browser.register('GlobalTopStoriesMenu', TopStoriesMenu);
   Browser.register('GlobalCommentToggleButton', CommentToggleButton);
   Browser.register('WufooForm', WufooForm);
-
-  Browser.register('OmedaRapidIdentityX', OmedaRapidIdentityX, {
-    on: {
-      'encrypted-id-found': (encryptedId) => {
-        if (encryptedId && window.p1events) {
-          window.p1events('setIdentity', `omeda.rrpcd.customer*${encryptedId}~encrypted`);
-        }
-      },
-    },
-  });
 };
