@@ -4,6 +4,7 @@ const { set, get } = require('@parameter1/base-cms-object-path');
 const loadInquiry = require('@parameter1/base-cms-marko-web-inquiry');
 const omedaGraphQL = require('@parameter1/omeda-graphql-client-express');
 const htmlSitemapPagination = require('@parameter1/base-cms-marko-web-html-sitemap/middleware/paginated');
+const stripOlyticsParam = require('@parameter1/base-cms-marko-web-omeda-identity-x/middleware/strip-olytics-param');
 
 const document = require('./components/document');
 const components = require('./components');
@@ -73,6 +74,7 @@ module.exports = (options = {}) => {
       // Setup IdentityX.
       const identityXConfig = get(options, 'siteConfig.identityX');
       set(app.locals, 'identityX', identityXConfig);
+      app.use(stripOlyticsParam());
     },
     onAsyncBlockError: e => newrelic.noticeError(e),
 
