@@ -1,6 +1,7 @@
 const IdentityX = require('@parameter1/base-cms-marko-web-identity-x');
 const { get } = require('@parameter1/base-cms-object-path');
 const rapidIdentify = require('@parameter1/base-cms-marko-web-omeda-identity-x/routes/rapid-identify');
+const stripOlyticsParam = require('@parameter1/base-cms-marko-web-omeda-identity-x/middleware/strip-olytics-param');
 const omedaConfig = require('../config/omeda');
 const authenticate = require('../templates/user/authenticate');
 const login = require('../templates/user/login');
@@ -32,6 +33,8 @@ module.exports = (app, siteConfig) => {
     res.marko(profile);
   });
 
+  // Strip `oly_enc_id` when IdentityX user is logged-in.
+  app.use(stripOlyticsParam());
   app.use('/__idx/omeda-rapid-ident', rapidIdentify({
     brandKey: omedaConfig.brandKey,
     productId: get(omedaConfig, 'rapidIdentification.productId'),

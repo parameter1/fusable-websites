@@ -4,7 +4,6 @@ const { set, get } = require('@parameter1/base-cms-object-path');
 const loadInquiry = require('@parameter1/base-cms-marko-web-inquiry');
 const omedaGraphQL = require('@parameter1/omeda-graphql-client-express');
 const htmlSitemapPagination = require('@parameter1/base-cms-marko-web-html-sitemap/middleware/paginated');
-const stripOlyticsParam = require('@parameter1/base-cms-marko-web-omeda-identity-x/middleware/strip-olytics-param');
 
 const document = require('./components/document');
 const components = require('./components');
@@ -70,9 +69,6 @@ module.exports = (options = {}) => {
       // Setup NativeX.
       const nativeXConfig = get(options, 'siteConfig.nativeX');
       set(app.locals, 'nativeX', nativeXConfig);
-
-      // Strip `oly_enc_id` when IdentityX user is logged-in.
-      app.use(stripOlyticsParam());
     },
     onAsyncBlockError: e => newrelic.noticeError(e),
 
