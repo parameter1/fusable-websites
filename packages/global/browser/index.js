@@ -17,7 +17,6 @@ const SiteNewsletterMenu = () => import(/* webpackChunkName: "global-site-newsle
 const WufooForm = () => import(/* webpackChunkName: "global-wufoo-form" */ './wufoo-form.vue');
 const TopStoriesMenu = () => import(/* webpackChunkName: "global-top-stories-menu" */ './top-stories-menu.vue');
 const CommentToggleButton = () => import(/* webpackChunkName: "global-comment-toggle-button" */ './comment-toggle-button.vue');
-const IdentityXAuthenticate = () => import(/* webpackChunkName: "global-identity-x-authenticate" */ './identity-x/authenticate.vue');
 const IdentityXCommentStream = () => import(/* webpackChunkName: "global-identity-x-comment-stream" */ './identity-x/comments/stream.vue');
 
 export default (Browser) => {
@@ -47,7 +46,6 @@ export default (Browser) => {
   NativeX(Browser);
   Inquiry(Browser);
   IdentityX(Browser, {
-    CustomAuthenticateComponent: IdentityXAuthenticate,
     CustomCommentStreamComponent: IdentityXCommentStream,
   });
 
