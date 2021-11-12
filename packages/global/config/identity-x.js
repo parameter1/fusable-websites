@@ -1,31 +1,37 @@
 const IdentityXConfiguration = require('@parameter1/base-cms-marko-web-identity-x/config');
-const rapidOmedaIdentityX = require('@parameter1/base-cms-marko-web-omeda-identity-x/rapid-identify');
+const addOmedaIntegrationHooks = require('@parameter1/base-cms-marko-web-omeda-identity-x/add-integration-hooks');
 const { get } = require('@parameter1/base-cms-object-path');
 const newrelic = require('newrelic');
 
 const omedaConfig = require('./omeda');
 
+const { log } = console;
+
 module.exports = ({
   appId,
-  apiToken = process.env.IDENTITYX_API_TOKEN,
   requiredServerFields,
+  requiredClientFields,
+  omedaGraphQLProp = '$omeda',
 } = {}) => {
   const config = new IdentityXConfiguration({
     appId,
-    apiToken,
+    apiToken: process.env.IDENTITYX_API_TOKEN,
     requiredServerFields,
-    onHookError: newrelic.noticeError.bind(newrelic),
+    requiredClientFields,
+    onHookError: (e) => {
+      if (process.env.NODE_ENV === 'development') {
+        log('ERROR IN IDENTITY-X HOOK', e);
+        if (e.networkError) log('Network Error', get(e, 'networkError.result.errors.0'));
+      }
+      newrelic.noticeError(e);
+    },
   });
-  config.addHook({
-    name: 'onUserProfileUpdate',
-    shouldAwait: false,
-    fn: async ({ user, service, req }) => rapidOmedaIdentityX({
-      brandKey: omedaConfig.brandKey,
-      productId: get(omedaConfig, 'rapidIdentification.productId'),
-      appUser: user,
-      identityX: service,
-      omedaGraphQL: req.$omeda,
-    }),
+
+  addOmedaIntegrationHooks({
+    idxConfig: config,
+    brandKey: omedaConfig.brandKey,
+    productId: get(omedaConfig, 'rapidIdentification.productId'),
+    omedaGraphQLProp,
   });
   return config;
 };
