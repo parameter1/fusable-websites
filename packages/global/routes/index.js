@@ -16,7 +16,7 @@ module.exports = (app, siteConfig) => {
   feed(app);
 
   // IdentityX (user routing and app context)
-  identityX(app);
+  identityX(app, siteConfig);
 
   // Omeda newsletter signup
   omedaNewsletters(app);

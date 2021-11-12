@@ -1,5 +1,5 @@
 const IdentityX = require('@parameter1/base-cms-marko-web-identity-x');
-const { getAsObject, get } = require('@parameter1/base-cms-object-path');
+const { get } = require('@parameter1/base-cms-object-path');
 const rapidIdentify = require('@parameter1/base-cms-marko-web-omeda-identity-x/routes/rapid-identify');
 const omedaConfig = require('../config/omeda');
 const authenticate = require('../templates/user/authenticate');
@@ -8,8 +8,8 @@ const logout = require('../templates/user/logout');
 const register = require('../templates/user/register');
 const profile = require('../templates/user/profile');
 
-module.exports = (app) => {
-  const config = getAsObject(app, 'locals.identityX');
+module.exports = (app, siteConfig) => {
+  const { identityX: config } = siteConfig;
   IdentityX(app, config);
 
   app.get(config.getEndpointFor('authenticate'), (_, res) => {

@@ -71,9 +71,7 @@ module.exports = (options = {}) => {
       const nativeXConfig = get(options, 'siteConfig.nativeX');
       set(app.locals, 'nativeX', nativeXConfig);
 
-      // Setup IdentityX.
-      const identityXConfig = get(options, 'siteConfig.identityX');
-      set(app.locals, 'identityX', identityXConfig);
+      // Strip `oly_enc_id` when IdentityX user is logged-in.
       app.use(stripOlyticsParam());
     },
     onAsyncBlockError: e => newrelic.noticeError(e),
