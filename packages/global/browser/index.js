@@ -17,7 +17,6 @@ const SiteNewsletterMenu = () => import(/* webpackChunkName: "global-site-newsle
 const WufooForm = () => import(/* webpackChunkName: "global-wufoo-form" */ './wufoo-form.vue');
 const TopStoriesMenu = () => import(/* webpackChunkName: "global-top-stories-menu" */ './top-stories-menu.vue');
 const CommentToggleButton = () => import(/* webpackChunkName: "global-comment-toggle-button" */ './comment-toggle-button.vue');
-const IdentityXCommentStream = () => import(/* webpackChunkName: "global-identity-x-comment-stream" */ './identity-x/comments/stream.vue');
 
 const setP1EventsIdentity = ({ p1events, brandKey, encryptedId }) => {
   if (!p1events || !brandKey || !encryptedId) return;
@@ -59,9 +58,7 @@ export default (Browser) => {
   SocialSharing(Browser);
   NativeX(Browser);
   Inquiry(Browser);
-  IdentityX(Browser, {
-    CustomCommentStreamComponent: IdentityXCommentStream,
-  });
+  IdentityX(Browser);
   OmedaIdentityX(Browser);
 
   Browser.register('GlobalBlockLoader', BlockLoader);
