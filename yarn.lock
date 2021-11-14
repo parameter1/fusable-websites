@@ -2273,10 +2273,10 @@
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-icons/-/base-cms-marko-web-icons-2.46.3.tgz#61c0052b4346c31d39ea1acd811b7656e8ef4abe"
   integrity sha512-ni3iKJLKeAuUs/pZUaeeS0hIbvPRe1SJDxqNH/UVUD8G7Putht4Ok6jsFnADB0vSqYB3E5uyaBNNi8NrsVlhLw==
 
-"@parameter1/base-cms-marko-web-identity-x@^2.53.1":
-  version "2.53.1"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-identity-x/-/base-cms-marko-web-identity-x-2.53.1.tgz#fef699860cab301454f123eb7028fc5e3a90bde2"
-  integrity sha512-LVzYFroJWn/1Pg9C/wP1pbojFNIE7RajNKKT85/BsQHLPDlPnKzYTzMG/f8H6TRjflYhR8jVIkSGl1XzfPU3VQ==
+"@parameter1/base-cms-marko-web-identity-x@^2.56.0":
+  version "2.56.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-identity-x/-/base-cms-marko-web-identity-x-2.56.0.tgz#c51ca17926fc0a8055eef61c8f81de51349eb513"
+  integrity sha512-mLXdeArp84UyrtY4aazD1adHewNPV/7CAvv0Hc2stmGBXnEhDB9Q2vgVbKCZVUMOi1z21Mb+5AzAJG9jAJk2cg==
   dependencies:
     "@parameter1/base-cms-object-path" "^2.45.0"
     "@parameter1/base-cms-utils" "^2.22.2"
@@ -2323,23 +2323,28 @@
     graphql-tag "^2.12.5"
     node-fetch "^2.6.5"
 
-"@parameter1/base-cms-marko-web-omeda-identity-x@^2.52.0":
-  version "2.52.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda-identity-x/-/base-cms-marko-web-omeda-identity-x-2.52.0.tgz#1ede3adca9088e8cec6d0b949f17cd1abb6a4eaa"
-  integrity sha512-tr7vNJcCTfPOnlN27GryY31PC8UlL1URL59v55t5N7RR/lHmzj7MBNCVgW6K2+ixZuVm7cqc8wE2USpoJhnMcw==
+"@parameter1/base-cms-marko-web-omeda-identity-x@^2.56.0":
+  version "2.56.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda-identity-x/-/base-cms-marko-web-omeda-identity-x-2.56.0.tgz#3118c4e98abd8d1b17f75d7f707d73a06c8ad620"
+  integrity sha512-RtKJmwA3gg6xDo9u1enr56umBJurRt+HKcwI3XcHhjaLQnw1trJpSx+H3nvwOBm93igX5QaFoM3k1IZ85zBD8w==
   dependencies:
-    "@parameter1/base-cms-marko-web-omeda" "^2.52.0"
+    "@parameter1/base-cms-marko-web-identity-x" "^2.56.0"
+    "@parameter1/base-cms-marko-web-omeda" "^2.54.0"
     "@parameter1/base-cms-object-path" "^2.45.0"
     "@parameter1/base-cms-utils" "^2.22.2"
     graphql "^14.7.0"
     graphql-tag "^2.12.5"
 
-"@parameter1/base-cms-marko-web-omeda@^2.52.0":
-  version "2.52.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda/-/base-cms-marko-web-omeda-2.52.0.tgz#a4ca432f8b4c7b51d8b0a9ef73001ac1f13d03fd"
-  integrity sha512-ePiDCmzMMiZHN+EPJHgZ9tfpafUDGiKqVZxzBu7ahZgQoSYgSHWkAOLUa0rqKA/dn+OjYcpCLKB6bGz/h3/w7A==
+"@parameter1/base-cms-marko-web-omeda@^2.54.0":
+  version "2.54.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda/-/base-cms-marko-web-omeda-2.54.0.tgz#1f3f3895657f7e972992f8fabe097c54db60a011"
+  integrity sha512-+RAnxG3NckR40tdO4dXi/wwFvEkE+SgRXuD/O5H6xL3HR0ZUtdjkZyOPnfogAM0R2xbgDrdLfqSTxPXWMCXPVg==
   dependencies:
     "@parameter1/base-cms-marko-web-deferred-script-loader" "^2.48.1"
+    "@parameter1/base-cms-utils" "^2.22.2"
+    "@parameter1/omeda-graphql-client" "^0.7.0"
+    graphql "^14.7.0"
+    graphql-tag "^2.12.5"
 
 "@parameter1/base-cms-marko-web-p1-events@^2.52.0":
   version "2.52.0"
@@ -2532,6 +2537,17 @@
     apollo-link-http "^1.5.17"
     graphql "^15.5.0"
     node-fetch "^2.6.1"
+
+"@parameter1/omeda-graphql-client@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/omeda-graphql-client/-/omeda-graphql-client-0.7.0.tgz#d2d7e5a640565494680287f1b5e60b495776b547"
+  integrity sha512-1BZUfMyv8LDBZOlD57awctPNX8c0EzsM3Us16+Z5uF/hOg7l+VkyTyIeO/fTgxzGtbr+TkbgbO6CERuF4K92sQ==
+  dependencies:
+    apollo-cache-inmemory "^1.6.6"
+    apollo-client "^2.6.10"
+    apollo-link-http "^1.5.17"
+    graphql "^15.6.1"
+    node-fetch "^2.6.5"
 
 "@sendgrid/client@^6.5.5":
   version "6.5.5"
@@ -6875,6 +6891,11 @@ graphql@^15.5.0:
   version "15.5.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.5.0.tgz#39d19494dbe69d1ea719915b578bf920344a69d5"
   integrity sha512-OmaM7y0kaK31NKG31q4YbD2beNYa6jBBKtMFT6gLYJljHLJr42IqJ8KX08u3Li/0ifzTU5HjmoOOrwa5BRLeDA==
+
+graphql@^15.6.1:
+  version "15.7.2"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.7.2.tgz#85ab0eeb83722977151b3feb4d631b5f2ab287ef"
+  integrity sha512-AnnKk7hFQFmU/2I9YSQf3xw44ctnSFCfp3zE0N6W174gqe9fWG/2rKaKxROK7CcI3XtERpjEKFqts8o319Kf7A==
 
 gulp-cached@^1.1.1:
   version "1.1.1"

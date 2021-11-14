@@ -1,9 +1,9 @@
 const newrelic = require('newrelic');
 const { startServer } = require('@parameter1/base-cms-marko-web');
-const { set, get } = require('@parameter1/base-cms-object-path');
+const { set, get, getAsObject } = require('@parameter1/base-cms-object-path');
 const loadInquiry = require('@parameter1/base-cms-marko-web-inquiry');
-const omedaGraphQL = require('@parameter1/omeda-graphql-client-express');
 const htmlSitemapPagination = require('@parameter1/base-cms-marko-web-html-sitemap/middleware/paginated');
+const omedaIdentityX = require('@parameter1/base-cms-marko-web-omeda-identity-x');
 
 const document = require('./components/document');
 const components = require('./components');
@@ -14,6 +14,7 @@ const newsletterState = require('./middleware/newsletter-state');
 const redirectHandler = require('./redirect-handler');
 const oembedHandler = require('./oembed-handler');
 const omedaConfig = require('./config/omeda');
+const idxRouteTemplates = require('./templates/user');
 
 const routes = (siteRoutes, siteConfig) => (app) => {
   // Handle submissions on /__inquiry
@@ -53,14 +54,16 @@ module.exports = (options = {}) => {
       // Use newsletterState middleware
       app.use(newsletterState());
 
-      // Use Omeda middleware
-      app.use(omedaGraphQL({
-        uri: 'https://graphql.omeda.parameter1.com/',
+      // Setup IdentityX + Omeda
+      const idxConfig = getAsObject(options, 'siteConfig.identityX');
+      omedaIdentityX(app, {
         brandKey: omedaConfig.brandKey,
-        clientKey: omedaConfig.clientKey,
         appId: omedaConfig.appId,
         inputId: omedaConfig.inputId,
-      }));
+        rapidIdentProductId: get(omedaConfig, 'rapidIdentification.productId'),
+        idxConfig,
+        idxRouteTemplates,
+      });
 
       // Setup GAM.
       const gamConfig = get(options, 'siteConfig.gam');
