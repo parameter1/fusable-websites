@@ -33,7 +33,6 @@ module.exports = (app) => {
 
     const { encryptedCustomerId } = await req.$omedaRapidIdentify({
       email,
-      deploymentTypeIds,
       ...(companyName && { companyName }),
       ...(postalCode && { postalCode }),
       ...(isArray(deploymentTypeIds) && deploymentTypeIds.length && { deploymentTypeIds }),
