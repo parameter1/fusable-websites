@@ -106,8 +106,7 @@ export default {
       this.$emit('submit', { step: 1 });
       this.email = email;
       this.step = 2;
-      const { olytics } = window;
-      if (olytics) olytics.confirm(encryptedCustomerId);
+      if (window.olytics) window.olytics.confirm(encryptedCustomerId);
     },
   },
 };

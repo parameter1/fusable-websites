@@ -1,6 +1,5 @@
 const htmlSitemap = require('@parameter1/base-cms-marko-web-html-sitemap/routes');
 const feed = require('./feed');
-const identityX = require('./identity-x');
 const nativeX = require('./native-x');
 const omedaNewsletters = require('./omeda-newsletters');
 const printContent = require('./print-content');
@@ -14,9 +13,6 @@ const taxonomy = require('./taxonomy');
 module.exports = (app, siteConfig) => {
   // Feed
   feed(app);
-
-  // IdentityX (user routing and app context)
-  identityX(app);
 
   // Omeda newsletter signup
   omedaNewsletters(app);

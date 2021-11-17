@@ -69,6 +69,8 @@ $ const {
     <marko-web-gam-targeting key-values={ uri: req.path } />
   </@head>
   <@above-container>
+    <marko-web-browser-component name="OmedaIdentityXRapidIdentify" />
+
     <marko-web-gtm-track-bus-event
       on="newsletter-form-action"
       clear-data=true
@@ -89,6 +91,5 @@ $ const {
   <@below-wrapper>
     <marko-web-deferred-script-loader-load />
     <global-recaptcha />
-    <marko-web-browser-component name="OmedaRapidIdentityX" />
   </@below-wrapper>
 </marko-web-document>

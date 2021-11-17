@@ -3,9 +3,8 @@ import GAM from '@parameter1/base-cms-marko-web-gam/browser';
 import Search from '@parameter1/base-cms-marko-web-search/browser';
 import SocialSharing from '@parameter1/base-cms-marko-web-social-sharing/browser';
 import Inquiry from '@parameter1/base-cms-marko-web-inquiry/browser';
-import IdentityX from '@parameter1/base-cms-marko-web-identity-x/browser';
 import NativeX from '@parameter1/base-cms-marko-web-native-x/browser';
-import OmedaRapidIdentityX from '@parameter1/base-cms-marko-web-omeda-identity-x/browser/rapid-identify.vue';
+import OmedaIdentityX from '@parameter1/base-cms-marko-web-omeda-identity-x/browser';
 
 const BlockLoader = () => import(/* webpackChunkName: "global-block-loader" */ './block-loader.vue');
 const InlineNewsletterForm = () => import(/* webpackChunkName: "global-inline-newsletter-form" */ './inline-newsletter-form.vue');
@@ -17,11 +16,23 @@ const SiteNewsletterMenu = () => import(/* webpackChunkName: "global-site-newsle
 const WufooForm = () => import(/* webpackChunkName: "global-wufoo-form" */ './wufoo-form.vue');
 const TopStoriesMenu = () => import(/* webpackChunkName: "global-top-stories-menu" */ './top-stories-menu.vue');
 const CommentToggleButton = () => import(/* webpackChunkName: "global-comment-toggle-button" */ './comment-toggle-button.vue');
-const IdentityXAuthenticate = () => import(/* webpackChunkName: "global-identity-x-authenticate" */ './identity-x/authenticate.vue');
-const IdentityXCommentStream = () => import(/* webpackChunkName: "global-identity-x-comment-stream" */ './identity-x/comments/stream.vue');
+
+const setP1EventsIdentity = ({ p1events, brandKey, encryptedId }) => {
+  if (!p1events || !brandKey || !encryptedId) return;
+  p1events('setIdentity', `omeda.${brandKey}.customer*${encryptedId}~encrypted`);
+};
 
 export default (Browser) => {
   const { EventBus } = Browser;
+  EventBus.$on('identity-x-logout', () => {
+    if (window.p1events) window.p1events('setIdentity', null);
+  });
+  EventBus.$on('omeda-identity-x-authenticated', ({ brandKey, encryptedId }) => {
+    setP1EventsIdentity({ p1events: window.p1events, brandKey, encryptedId });
+  });
+  EventBus.$on('omeda-identity-x-rapid-identify-response', ({ brandKey, encryptedId }) => {
+    setP1EventsIdentity({ p1events: window.p1events, brandKey, encryptedId });
+  });
 
   const emitNewsletterEvent = ({ type, action, data }) => {
     let label = `Step ${data.step}`;
@@ -46,10 +57,7 @@ export default (Browser) => {
   SocialSharing(Browser);
   NativeX(Browser);
   Inquiry(Browser);
-  IdentityX(Browser, {
-    CustomAuthenticateComponent: IdentityXAuthenticate,
-    CustomCommentStreamComponent: IdentityXCommentStream,
-  });
+  OmedaIdentityX(Browser);
 
   Browser.register('GlobalBlockLoader', BlockLoader);
 
@@ -86,14 +94,4 @@ export default (Browser) => {
   Browser.register('GlobalTopStoriesMenu', TopStoriesMenu);
   Browser.register('GlobalCommentToggleButton', CommentToggleButton);
   Browser.register('WufooForm', WufooForm);
-
-  Browser.register('OmedaRapidIdentityX', OmedaRapidIdentityX, {
-    on: {
-      'encrypted-id-found': (encryptedId) => {
-        if (encryptedId && window.p1events) {
-          window.p1events('setIdentity', `omeda.rrpcd.customer*${encryptedId}~encrypted`);
-        }
-      },
-    },
-  });
 };
