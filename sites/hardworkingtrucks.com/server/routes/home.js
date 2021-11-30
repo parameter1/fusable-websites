@@ -4,7 +4,7 @@ const postIdHandler = require('@randall-reilly/package-global/middleware/post-id
 const home = require('../templates/index');
 
 module.exports = (app) => {
-  app.get('/', postIdHandler({ sitePostDomain: 'wordpress.hardworkingtrucks.posts' }), withWebsiteSection({
+  app.get('/', postIdHandler(), withWebsiteSection({
     aliasResolver: () => 'home',
     template: home,
     queryFragment,
