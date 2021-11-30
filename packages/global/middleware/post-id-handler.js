@@ -16,11 +16,10 @@ const query = gql`
 
 /**
  * @param {object} req The Express request object.
- * @param {String} sitePostDomain The post domain to query against (ex: wordpress.ccjdigital.posts).
  */
-async function findPost(req, sitePostDomain) {
+async function findPost(req) {
   const { apollo, query: params } = req;
-  const variables = { input: { importEntity: `${sitePostDomain}*${params.p}` } };
+  const variables = { input: { customAttributes: { key: 'wpPostId', value: params.p }, withSite: true } };
   const { data } = await apollo.query({ query, variables });
   const { allPublishedContent } = data;
   const edges = get(allPublishedContent, 'edges');
@@ -30,10 +29,10 @@ async function findPost(req, sitePostDomain) {
   return null;
 }
 
-module.exports = ({ sitePostDomain } = {}) => asyncRoute(async (req, res, next) => {
+module.exports = () => asyncRoute(async (req, res, next) => {
   const { p } = req.query;
-  if (!p || !sitePostDomain) return next();
-  const redirect = await findPost(req, sitePostDomain);
+  if (!p) return next();
+  const redirect = await findPost(req);
   if (redirect) return res.redirect(redirect.code, redirect.to);
   return next();
 });
