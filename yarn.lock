@@ -2299,10 +2299,10 @@
     moment "^2.29.1"
     node-fetch "^2.6.5"
 
-"@parameter1/base-cms-marko-web-inquiry@^2.49.0":
-  version "2.49.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-inquiry/-/base-cms-marko-web-inquiry-2.49.0.tgz#013f40354f21328bc4a7d6a87cfc8ca0de1d879d"
-  integrity sha512-0r2k2lbOugCfHbd6orzuQzLnPbH1K4X1s5JUzkvKIjk9pELqEna+MOrUf63wvAcvbJc6FaqD7yzcQvigr3dTAg==
+"@parameter1/base-cms-marko-web-inquiry@^2.61.0":
+  version "2.61.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-inquiry/-/base-cms-marko-web-inquiry-2.61.0.tgz#3dd04010cbb246318e798f724e6ec9fb1ebafa05"
+  integrity sha512-JXnhqx+RMPOvDOJtVcLwlDMe+yA08gck3SBClcXIlWglZ2hCG+l5M1VsZwQX94emEDMARY4iioh+Kpz4h5FIeA==
   dependencies:
     "@parameter1/base-cms-env" "^2.45.0"
     "@parameter1/base-cms-object-path" "^2.45.0"
