@@ -150,20 +150,20 @@
   &--template-inline-content-desktop,
   &--template-inline-content-mobile {
     min-height: 50px + $container-height;
-    @media (min-width: 750px) {
+    @media (min-width: 780px) {
       min-height: 90px + $container-height;
     }
   }
 
   &--inline-content#{&}--template-inline-content-desktop {
     display: none;
-    @media (min-width: 750px) {
+    @media (min-width: 780px) {
       display: block;
     }
   }
 
   &--inline-content#{&}--template-inline-content-mobile {
-    @media (min-width: 750px) {
+    @media (min-width: 780px) {
       display: none;
     }
   }
