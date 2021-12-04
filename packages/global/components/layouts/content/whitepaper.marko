@@ -21,7 +21,7 @@ $ const { id, type, pageNode, ...rest } = input;
   <@section|{ blockName, content, aliases }| modifiers=["content-header"]>
     $ const { primarySection } = content;
     <div class="content-page-header content-page-header--full-width">
-      <global-content-page-breadcrumbs section=primarySection />
+      <theme-content-page-breadcrumbs section=primarySection />
       <marko-web-content-name tag="h1" block-name=blockName obj=content />
 
       <default-theme-content-attribution obj=content elements=["authors"] />

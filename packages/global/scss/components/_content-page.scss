@@ -37,15 +37,6 @@
   margin-left: auto;
 }
 
-.breadcrumbs {
-  &--content-page {
-    @include skin-typography($style: "slug-medium", $link-style: "primary");
-    .breadcrumb {
-      padding-bottom: 8px;
-    }
-  }
-}
-
 .page-dates {
   &__content-published,
   &__content-updated {
