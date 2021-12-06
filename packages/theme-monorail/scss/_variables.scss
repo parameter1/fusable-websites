@@ -139,6 +139,7 @@ $skin-content-primary-image-max-width: 880px;
 $theme-page-title-font-weight: $font-weight-bold;
 
 // Header
+$navbarStyle: "navbar" !default;
 $theme-site-header-box-shadow: none !default;
 $theme-site-header-breakpoints: () !default;
 $theme-site-header-breakpoints: map-merge(
@@ -287,6 +288,9 @@ $theme-heading-h6-line-height-sm:     1.2 !default;
 // Content Headings
 $theme-content-heading-large-margin-bottom:     1rem !default;
 $theme-content-heading-large-margin-bottom-sm:  1rem !default;
+
+$theme-content-heading-h2-margin-bottom:        1rem !default;
+$theme-content-heading-h2-margin-bottom-sm:     1rem !default;
 
 $theme-content-heading-h3-margin-bottom:        1rem !default;
 $theme-content-heading-h3-margin-bottom-sm:     1rem !default;
