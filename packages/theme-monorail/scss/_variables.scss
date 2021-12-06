@@ -1,9 +1,8 @@
 // Fonts
 //
 // Skin primary + secondary fonts. By default, set secondary to primary.
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap");
-$skin-font-family-primary: "Open Sans", sans-serif !default;
-$skin-font-family-secondary: "Open Sans", sans-serif !default;
+$skin-font-family-primary: Arial, sans-serif !default;
+$skin-font-family-secondary: Arial, sans-serif !default;
 
 // Set bootstrap font to primary skin font
 $font-family-sans-serif: $skin-font-family-primary;
