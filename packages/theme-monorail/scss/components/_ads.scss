@@ -9,6 +9,15 @@
   $label-line-height: 1;
   $container-height: $container-bottom-padding + $wrapper-first-child-padding + ($label-font-size * $label-line-height) + $label-bottom-padding;
 
+  $leaderboard-min-height-mobile: 50px !default;
+  $leaderboard-min-height-desktop: 90px !default;
+  $billboard-min-height-mobile: 210px !default;
+  $billboard-min-height-desktop: 596px !default;
+  $rotation-min-height-mobile: 50px !default;
+  $rotation-min-height-desktop: 90px !default;
+
+  $rail-ad-bg-color: $skin-ad-bg-color !default;
+
   &--inter-block {
     margin-right: -#{$marko-web-page-wrapper-padding};
     margin-bottom: 0;
@@ -86,7 +95,7 @@
   }
 
   &--rail {
-    background-color: $skin-ad-bg-color;
+    background-color: $rail-ad-bg-color;
     > *:first-child {
       padding-bottom: $container-bottom-padding;
     }
@@ -96,7 +105,7 @@
   }
 
   &--rail-mobile {
-    background-color: $skin-ad-bg-color;
+    background-color: $rail-ad-bg-color;
     > *:first-child {
       padding-bottom: $container-bottom-padding;
     }
@@ -145,13 +154,26 @@
     }
   }
 
-  &--template-leaderboard,
+  &--template-leaderboard {
+    min-height: $leaderboard-min-height-mobile + $container-height;
+    @media (min-width: 780px) {
+      min-height: $leaderboard-min-height-desktop + $container-height;
+    }
+  }
+
+  &--template-billboard {
+    min-height: $billboard-min-height-mobile + $container-height;
+    @media (min-width: 780px) {
+      min-height: $billboard-min-height-desktop + $container-height;
+    }
+  }
+
   &--template-rotation,
   &--template-inline-content-desktop,
   &--template-inline-content-mobile {
-    min-height: 50px + $container-height;
+    min-height: $rotation-min-height-mobile + $container-height;
     @media (min-width: 780px) {
-      min-height: 90px + $container-height;
+      min-height: $rotation-min-height-desktop + $container-height;
     }
   }
 
