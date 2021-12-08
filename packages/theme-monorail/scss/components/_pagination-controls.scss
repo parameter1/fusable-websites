@@ -12,6 +12,25 @@
     margin-left: map-get($spacers, block);
   }
 
+  &__before {
+    margin-right: map-get($spacers, block);
+    .btn {
+      margin-bottom: 12px;
+      &:first-child {
+        margin-right: map-get($spacers, block) / 2;
+      }
+    }
+  }
+
+  &__after {
+    .btn {
+      margin-bottom: 12px;
+      &:first-child {
+        margin-right: map-get($spacers, block) / 2;
+      }
+    }
+  }
+
   &__pages {
     @include skin-typography($style: "teaser-text-1");
     line-height: 1;
