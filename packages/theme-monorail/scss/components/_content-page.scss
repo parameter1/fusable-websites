@@ -24,6 +24,9 @@
   max-width: $skin-content-body-max-width;
   margin-right: auto;
   margin-left: auto;
+  video {
+    max-width: 100%;
+  }
 }
 
 .content-page-header {
