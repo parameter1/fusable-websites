@@ -33,7 +33,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
   <@section|{ blockName, content, aliases, authors }| modifiers=["content-header"]>
     $ const { primarySection } = content;
     <div class="content-page-header">
-      <global-content-page-breadcrumbs section=primarySection />
+      <theme-content-page-breadcrumbs section=primarySection />
       <marko-web-content-name tag="h1" block-name=blockName obj=content />
       <if(type !== "contact")>
         <if(authors.length === 1)>

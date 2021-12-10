@@ -17,11 +17,11 @@ $ const { primarySection } = content;
     <marko-web-page-wrapper>
       <@section|{ blockName }| modifiers=["nativex-story-header"]>
         <div class="content-page-header">
-          <default-theme-breadcrumbs modifiers=["content-page"]>
+          <theme-breadcrumbs modifiers=["content-page"]>
             <@item>
               ${primarySection.name}
             </@item>
-          </default-theme-breadcrumbs>
+          </theme-breadcrumbs>
           <marko-web-content-name tag="h1" block-name=blockName obj=content />
           <presented-by advertiser=story.advertiser />
         </div>

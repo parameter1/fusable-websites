@@ -115,7 +115,7 @@ $ const tagline = site.get("tagline");
       />
 
       $ const footerItems = site.getAsArray("navigation.footer.items");
-      <default-theme-breadcrumbs modifiers=["site-footer"]>
+      <theme-breadcrumbs modifiers=["site-footer"]>
         <for|item| of=getNavItems({ items: footerItems, hasUser: input.hasUser, regEnabled: input.regEnabled })>
           <@item>
             $ const obj = asObject(item);
@@ -124,7 +124,7 @@ $ const tagline = site.get("tagline");
             </marko-web-link>
           </@item>
         </for>
-      </default-theme-breadcrumbs>
+      </theme-breadcrumbs>
 
       <default-theme-site-footer-copyright
         company=site.get("company")

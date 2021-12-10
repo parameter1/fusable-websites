@@ -419,6 +419,13 @@ $typography-links: non-destructive-map-merge(
         "hover-color": map-deep-get($typography, "small-body-text", "color"),
         "hover-text-decoration": none,
       ),
+      "with-hover-color": (
+        "max-lines": 3,
+        "text-decoration": underline,
+        "color": $primary,
+        "hover-color": $skin-primary-hover-color,
+        "hover-text-decoration": underline,
+      ),
     ),
     "slug-medium": (
       "primary": (
