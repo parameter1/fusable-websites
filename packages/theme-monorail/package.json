@@ -16,6 +16,18 @@
     "@parameter1/base-cms-marko-web-html-sitemap": "^2.46.1",
     "@parameter1/base-cms-marko-web-social-sharing": "^2.22.2",
     "@parameter1/base-cms-marko-web-theme-default": "^2.51.0",
-    "@parameter1/base-cms-object-path": "^2.45.0"
+    "@parameter1/base-cms-object-path": "^2.45.0",
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.1",
+    "graphql": "^14.5.4",
+    "graphql-tag": "^2.10.1",
+    "html-entities": "^2.1.0",
+    "http-errors": "^1.7.3",
+    "moment": "^2.29.1",
+    "newrelic": "^6.4.1",
+    "node-fetch": "^2.6.1",
+    "object-path": "^0.11.5",
+    "slug": "^4.0.2"
   }
 }
