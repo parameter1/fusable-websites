@@ -5,6 +5,9 @@
   "<theme-client-side-block-loader>": {
     "template": "./client-side-block-loader.marko"
   },
+  "<theme-menu-toggle-button>": {
+    "template": "./menu-toggle-button.marko"
+  },
   "<theme-pagination-controls>": {
     "template": "./pagination-controls.marko"
   },

@@ -31,9 +31,6 @@
     "<below-container>": {},
     "<foot>": {}
   },
-  "<global-menu-toggle-button>": {
-    "template": "./menu-toggle-button.marko"
-  },
   "<global-site-menu>": {
     "template": "./site-menu/index.marko"
   },
