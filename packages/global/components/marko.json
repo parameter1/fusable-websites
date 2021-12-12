@@ -10,9 +10,6 @@
     "./nodes/marko.json",
     "./page/marko.json"
   ],
-  "<global-client-side-block-loader>": {
-    "template": "./client-side-block-loader.marko"
-  },
   "<global-sponsored-label-logo>": {
     "template": "./sponsored-label-logo.marko"
   },

@@ -2,6 +2,9 @@
   "taglib-imports": [
     "./breadcrumbs/marko.json"
   ],
+  "<theme-client-side-block-loader>": {
+    "template": "./client-side-block-loader.marko"
+  },
   "<theme-recaptcha>": {
     "template": "./recaptcha.marko"
   }
