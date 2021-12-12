@@ -71,13 +71,13 @@ $ const perPage = 10;
         </@nodes>
       </marko-web-node-list>
     </marko-web-query>
-    <global-query-total-count|{ totalCount }| name="all-author-content" params={ contactId: id }>
-      <global-pagination-controls
+    <theme-query-total-count|{ totalCount }| name="all-author-content" params={ contactId: id }>
+      <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
         path=req.path
       />
-    </global-query-total-count>
+    </theme-query-total-count>
   </@section>
 
   <@section|{ aliases }|>

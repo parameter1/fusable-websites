@@ -14,7 +14,7 @@ $ const perPage = 10;
 >
   <@head>
     <global-latest-products-feed-block|{ totalCount }| alias=alias count-only=true>
-      <global-pagination-controls
+      <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
         path=alias
@@ -50,7 +50,7 @@ $ const perPage = 10;
           <@query-params limit=perPage skip=p.skip({ perPage }) />
         </global-latest-products-feed-block>
         <global-latest-products-feed-block|{ totalCount }| alias=alias count-only=true>
-          <global-pagination-controls
+          <theme-pagination-controls
             per-page=perPage
             total-count=totalCount
             path=alias
