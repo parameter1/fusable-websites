@@ -40,9 +40,6 @@
   "<global-pagination-controls>": {
     "template": "./pagination-controls.marko"
   },
-  "<global-recaptcha>": {
-    "template": "./recaptcha.marko"
-  },
   "<global-site-menu>": {
     "template": "./site-menu/index.marko"
   },

@@ -1,5 +1,8 @@
 {
   "taglib-imports": [
     "./breadcrumbs/marko.json"
-  ]
+  ],
+  "<theme-recaptcha>": {
+    "template": "./recaptcha.marko"
+  }
 }
