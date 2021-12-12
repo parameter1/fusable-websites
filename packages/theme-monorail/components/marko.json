@@ -11,6 +11,9 @@
   "<theme-recaptcha>": {
     "template": "./recaptcha.marko"
   },
+  "<theme-social-follow>": {
+    "template": "./social-follow.marko"
+  },
   "<theme-query-total-count>": {
     "template": "./query-total-count.marko"
   }
