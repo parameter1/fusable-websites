@@ -34,9 +34,6 @@
   "<global-menu-toggle-button>": {
     "template": "./menu-toggle-button.marko"
   },
-  "<global-pagination-controls>": {
-    "template": "./pagination-controls.marko"
-  },
   "<global-site-menu>": {
     "template": "./site-menu/index.marko"
   },
