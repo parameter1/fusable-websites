@@ -72,13 +72,6 @@ module.exports = {
       width: '109px',
     },
   },
-  // sponsoredSectionLogos: {
-  //   'partners-in-business': {
-  //     src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/pib-tbs-logo.png?auto=format&w=88&fit=crop',
-  //     width: '88px',
-  //     height: '55px',
-  //   },
-  // },
   sponsoredSectionNameLogos: {
     gear: {
       src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/trucker-gear-logo.png?auto=format&w=275&fit=crop',
