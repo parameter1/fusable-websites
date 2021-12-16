@@ -2384,10 +2384,10 @@
   dependencies:
     "@parameter1/base-cms-utils" "^2.22.2"
 
-"@parameter1/base-cms-marko-web-theme-default@^2.51.0":
-  version "2.51.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-default/-/base-cms-marko-web-theme-default-2.51.0.tgz#d31604a331ece610eb9bbcb1c6c5e9ed427b2185"
-  integrity sha512-WtHdwv+C4VnGjffXTbWQXFkdrV/CwzS0WkDFwOFo+WVuQMbolNjl7AYdD+F4C3tjqbhzRgqTBLX4rHeeKaVDVw==
+"@parameter1/base-cms-marko-web-theme-default@^2.63.0":
+  version "2.63.0"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-default/-/base-cms-marko-web-theme-default-2.63.0.tgz#bbe5b17a1f6e7214d2adb99e0749c27ef77a2ffc"
+  integrity sha512-SQjvJ8WxkE7nsAGhW56bfplo+ShPluXEBT9128pq9a27+WzjcsUKApW8V5XETFNF8zO+zpxh0lAUnVRbDY/8eQ==
   dependencies:
     "@parameter1/base-cms-marko-web-icons" "^2.46.3"
     "@parameter1/base-cms-object-path" "^2.45.0"
