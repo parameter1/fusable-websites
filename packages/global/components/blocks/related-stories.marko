@@ -22,6 +22,7 @@ $ const blockName = "related-stories";
       limit: limit - nodes.length,
       excludeContentIds,
       requiresImage: true,
+      excludeContentTypes: ["Contact", "Company", "Document", "Product", "Promotion"],
       queryFragment
     };
     <marko-web-query|{ nodes: related }|
