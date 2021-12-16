@@ -5,7 +5,7 @@ $ const homeTitle = input.homeTitle || "Home";
 
 <theme-breadcrumbs>
   <@item>
-    <marko-web-link href="/" title=homeTitle>${homeTitle}</marko-web-link>
+    <marko-web-link href="/" title=homeTitle>$!{homeTitle}</marko-web-link>
   </@item>
   <for|item| of=items>
     <@item ...item />

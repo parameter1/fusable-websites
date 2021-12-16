@@ -14,7 +14,7 @@ $ const perPage = 18;
 >
   <@head>
     <global-section-feed-block|{ totalCount }| alias=alias count-only=true>
-      <global-pagination-controls
+      <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
         path=alias
@@ -118,7 +118,7 @@ $ const perPage = 18;
       <@query-params limit=5 skip=p.skip({ perPage, skip: 13 }) />
     </global-section-feed-block>
     <global-section-feed-block|{ totalCount }| alias=alias count-only=true>
-      <global-pagination-controls
+      <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
         path=alias

@@ -15,6 +15,7 @@ const redirectHandler = require('./redirect-handler');
 const oembedHandler = require('./oembed-handler');
 const omedaConfig = require('./config/omeda');
 const idxRouteTemplates = require('./templates/user');
+const recaptcha = require('./config/recaptcha');
 
 const routes = (siteRoutes, siteConfig) => (app) => {
   // Handle submissions on /__inquiry
@@ -73,6 +74,9 @@ module.exports = (options = {}) => {
       // Setup NativeX.
       const nativeXConfig = get(options, 'siteConfig.nativeX');
       set(app.locals, 'nativeX', nativeXConfig);
+
+      // Recaptcha
+      set(app.locals, 'recaptcha', recaptcha);
     },
     onAsyncBlockError: e => newrelic.noticeError(e),
 

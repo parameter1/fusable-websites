@@ -1,5 +1,23 @@
 {
   "taglib-imports": [
     "./breadcrumbs/marko.json"
-  ]
+  ],
+  "<theme-client-side-block-loader>": {
+    "template": "./client-side-block-loader.marko"
+  },
+  "<theme-menu-toggle-button>": {
+    "template": "./menu-toggle-button.marko"
+  },
+  "<theme-pagination-controls>": {
+    "template": "./pagination-controls.marko"
+  },
+  "<theme-recaptcha>": {
+    "template": "./recaptcha.marko"
+  },
+  "<theme-social-follow>": {
+    "template": "./social-follow.marko"
+  },
+  "<theme-query-total-count>": {
+    "template": "./query-total-count.marko"
+  }
 }

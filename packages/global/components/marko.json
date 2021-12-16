@@ -10,9 +10,6 @@
     "./nodes/marko.json",
     "./page/marko.json"
   ],
-  "<global-client-side-block-loader>": {
-    "template": "./client-side-block-loader.marko"
-  },
   "<global-sponsored-label-logo>": {
     "template": "./sponsored-label-logo.marko"
   },
@@ -34,15 +31,6 @@
     "<below-container>": {},
     "<foot>": {}
   },
-  "<global-menu-toggle-button>": {
-    "template": "./menu-toggle-button.marko"
-  },
-  "<global-pagination-controls>": {
-    "template": "./pagination-controls.marko"
-  },
-  "<global-recaptcha>": {
-    "template": "./recaptcha.marko"
-  },
   "<global-site-menu>": {
     "template": "./site-menu/index.marko"
   },
@@ -54,11 +42,5 @@
   },
   "<global-site-footer>": {
     "template": "./site-footer.marko"
-  },
-  "<global-social-follow>": {
-    "template": "./social-follow.marko"
-  },
-  "<global-query-total-count>": {
-    "template": "./query-total-count.marko"
   }
 }
