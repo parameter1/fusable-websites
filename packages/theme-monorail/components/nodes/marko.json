@@ -35,5 +35,8 @@
   },
   "<theme-content-published-node>": {
     "template": "./content-published.marko"
+  },
+  "<theme-product-feed-content-node>": {
+    "template": "./product-feed-content.marko"
   }
 }
