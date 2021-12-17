@@ -1,5 +1,8 @@
 {
   "<theme-author-node>": {
     "template": "./author.marko"
+  },
+  "<theme-author-published-node>": {
+    "template": "./author-published.marko"
   }
 }
