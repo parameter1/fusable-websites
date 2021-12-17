@@ -14,15 +14,22 @@ $ if (locale) moment.locale(locale);
 $ const publishedDate = defaultValue(obj.published, null, v => moment(v).tz(timezone));
 $ const updatedDate = defaultValue(obj.updated, null, v => moment(v).tz(timezone));
 
-<marko-web-obj-date
+<marko-web-obj-date|{ value }|
   type="content"
   block-name=blockName
   obj=obj
   field="published"
   format=format
   locale=locale
-/>
-<if(updatedDate.isAfter(publishedDate, "day"))>
+>
+  <if(input.publishedPrefix)>
+    ${input.publishedPrefix} ${value}
+  </if>
+  <else>
+    ${value}
+  </else>
+</marko-web-obj-date>
+<if(updatedDate && updatedDate.isAfter(publishedDate, "day"))>
   <marko-web-obj-date|{ value }|
     type="content"
     block-name=blockName
