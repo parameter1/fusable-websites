@@ -28,7 +28,12 @@ $ const lazyload = defaultValue(input.lazyload, true);
   <marko-web-element block-name=blockName name="details">
     <marko-web-content-name block-name=blockName obj=author link=true />
     <if(showPublished)>
-      <theme-content-published-node block-name=blockName obj=content />
+      <theme-content-published-node
+        block-name=blockName
+        obj=content
+        format=input.format
+        published-prefix=input.publishedPrefix
+      />
     </if>
   </marko-web-element>
 </marko-web-block>
