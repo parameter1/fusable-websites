@@ -4,5 +4,8 @@
   },
   "<theme-author-published-node>": {
     "template": "./author-published.marko"
+  },
+  "<theme-content-published-node>": {
+    "template": "./content-published.marko"
   }
 }
