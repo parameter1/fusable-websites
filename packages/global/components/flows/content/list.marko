@@ -23,7 +23,7 @@ $ const nativeX = getAsObject(input, "nativeX");
           node=node
           config=nxConfig
         >
-          <global-content-node
+          <theme-content-node
             ...input.node
             node=nxNode
             attrs=containerAttrs
@@ -32,7 +32,7 @@ $ const nativeX = getAsObject(input, "nativeX");
         </marko-web-native-x-render>
       </if>
       <else>
-        <global-content-node
+        <theme-content-node
           ...input.node
           node=node
         />

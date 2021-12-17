@@ -42,7 +42,7 @@ $ const blockName = "section-list";
       <@nodes nodes=nodes>
         <@slot|{ node, index }|>
           <if(index === 0)>
-            <global-content-node
+            <theme-content-node
               image-position="top"
               card=true
               flush=true
@@ -52,10 +52,10 @@ $ const blockName = "section-list";
               node=node
             >
               <@image fluid=true width=330 ar="3:2" />
-            </global-content-node>
+            </theme-content-node>
           </if>
           <else>
-            <global-content-node
+            <theme-content-node
               display-image=false
               flush=true
               modifiers=[`${blockName}-item`]

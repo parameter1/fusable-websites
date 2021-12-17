@@ -32,7 +32,7 @@ $ const blockName = "partners-in-business";
 
     <marko-web-element block-name=blockName name="row">
       <marko-web-element block-name=blockName name="col">
-        <global-content-node
+        <theme-content-node
           image-position="top"
           card=true
           flush=true
@@ -41,10 +41,10 @@ $ const blockName = "partners-in-business";
           node=heroImageNode
         >
           <@image fluid=true width=340 ar="3:2" />
-        </global-content-node>
+        </theme-content-node>
       </marko-web-element>
       <marko-web-element block-name=blockName name="col">
-        <global-content-node
+        <theme-content-node
           full-height=true
           card=true
           display-image=false
@@ -63,7 +63,7 @@ $ const blockName = "partners-in-business";
         >
           <@nodes nodes=listNodes>
             <@slot|{ node }|>
-              <global-content-node
+              <theme-content-node
                 display-image=false
                 flush=true
                 modifiers=[`${blockName}-item`]
