@@ -12,6 +12,8 @@ $ const withSection = defaultValue(input.withSection, true);
 $ const withAttribution = defaultValue(input.withAttribution, false);
 $ const withDates = defaultValue(input.withDates, true);
 $ const withPrimarySectionModifier = defaultValue(input.withPrimarySectionModifier, true);
+$ const displayButton = defaultValue(input.displayButton, false);
+$ const callToAction = defaultValue(input.callToAction, "View Profile");
 
 $ const isWebinar = content.type === "webinar";
 $ const isPromotion = content.type === "promotion";
@@ -131,6 +133,15 @@ $ const imageLink = primaryImage.src ? { href: content.siteContext.path, attrs: 
       </@text>
       <@text|{ blockName }| show=(Boolean(withDates && !isEvent))>
         <marko-web-content-published block-name=blockName obj=content format="MMMM D, YYYY" />
+      </@text>
+      <@text show=displayButton>
+        <marko-web-link
+          class="btn btn-primary btn-block"
+          href=content.siteContext.path
+          title=content.shortName
+        >
+          ${callToAction}
+        </marko-web-link>
       </@text>
     </@body>
   </if>

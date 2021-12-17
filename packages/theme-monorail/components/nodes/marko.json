@@ -1,5 +1,11 @@
 {
-  "<global-content-node>": {
+  "<theme-author-node>": {
+    "template": "./author.marko"
+  },
+  "<theme-author-published-node>": {
+    "template": "./author-published.marko"
+  },
+  "<theme-content-node>": {
     "template": "./content.marko",
     "<image>": {},
     "<title>": {},
@@ -22,24 +28,31 @@
     "@with-attribution": "boolean",
     "@with-dates": "boolean",
     "@with-primary-section-modifier": "boolean",
+    "@display-button": "boolean",
+    "@call-to-action": "string",
 
     "@modifiers": "array",
     "@attrs": "object",
     "@link-attrs": "object"
   },
-  "<global-author-node>": {
-    "template": "./author.marko"
-  },
-  "<global-author-published-node>": {
-    "template": "./author-published.marko"
-  },
-  "<global-content-published-node>": {
+  "<theme-content-published-node>": {
     "template": "./content-published.marko"
   },
-  "<global-product-feed-content-node>": {
+  "<theme-directory-section-feed-content-node>": {
+    "template": "./directory-section-feed-content.marko"
+  },
+  "<theme-product-feed-content-node>": {
     "template": "./product-feed-content.marko"
   },
-  "<global-section-feed-content-node>": {
+  "<theme-section-feed-content-node>": {
     "template": "./section-feed-content.marko"
+  },
+  "<theme-youtube-card-node>": {
+    "template": "./youtube-card.marko",
+    "@image-position": "string",
+    "@modifiers": "array",
+    "@node": "object",
+    "@company-id": "number",
+    "@link-attrs": "object"
   }
 }

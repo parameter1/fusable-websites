@@ -10,6 +10,7 @@ $ const linkAttrs = getAsObject(input, "linkAttrs");
 
 $ const withBody = defaultValue(input.withBody, false);
 $ const withDates = defaultValue(input.withDates, true);
+$ const isUpcoming = content.startDate > Date.now();
 $ const withSection = defaultValue(input.withSection, true);
 $ const withTeaser = defaultValue(input.withTeaser, true);
 $ const displayImage = defaultValue(input.displayImage, true);
@@ -53,13 +54,25 @@ $ const blockName = "section-feed-content-node";
           obj=content
         />
       </if>
-      <if(withDates)>
+      <if(withDates && content.startDate)>
+        <div class=`${blockName}__content-event-dates`>
+          <marko-web-content-start-date tag="span" block-name=blockName obj=content />
+        </div>
+        <if(content.linkUrl)>
+          <default-theme-content-link-url
+            obj=content
+            label=(isUpcoming ? "Register for Webinar" : "View Webinar")
+            target="_blank"
+          />
+        </if>
+      </if>
+      <else-if(withDates)>
         <marko-web-content-published
           block-name=blockName
           obj=content
           format="MMMM D, YYYY"
         />
-      </if>
+      </else-if>
     </marko-web-element>
   </marko-web-element>
   <if(displayImage)>

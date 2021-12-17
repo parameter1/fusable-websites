@@ -25,7 +25,7 @@ $ const countOnly = defaultValue(input.countOnly, false);
     >
       <@nodes nodes=nodes>
         <@slot|{ node }|>
-          <global-product-feed-content-node node=node />
+          <theme-product-feed-content-node node=node />
         </@slot>
         <@slot position="after" index=2 modifiers=["ad"]>
           <global-gam-define-display-ad

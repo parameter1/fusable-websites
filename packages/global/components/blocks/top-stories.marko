@@ -33,7 +33,7 @@ $ const lazyload = defaultValue(input.lazyload, true);
 
       <marko-web-element block-name=blockName name="row">
         <marko-web-element block-name=blockName name="col" modifiers=["hero"]>
-          <global-content-node
+          <theme-content-node
             image-position="top"
             card=true
             flush=true
@@ -42,10 +42,10 @@ $ const lazyload = defaultValue(input.lazyload, true);
             node=heroImageNode
           >
             <@image fluid=true width=600 ar="3:2" lazyload=lazyload />
-          </global-content-node>
+          </theme-content-node>
         </marko-web-element>
         <marko-web-element block-name=blockName name="col" modifiers=["list"]>
-          <global-content-node
+          <theme-content-node
             full-height=true
             card=true
             display-image=false
