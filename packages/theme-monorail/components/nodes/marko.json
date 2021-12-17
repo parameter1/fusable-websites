@@ -28,6 +28,8 @@
     "@with-attribution": "boolean",
     "@with-dates": "boolean",
     "@with-primary-section-modifier": "boolean",
+    "@display-button": "boolean",
+    "@call-to-action": "string",
 
     "@modifiers": "array",
     "@attrs": "object",
