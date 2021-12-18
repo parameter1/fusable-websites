@@ -1,20 +1,20 @@
 {
-  "<global-gam-define-display-ad>": {
+  "<theme-gam-define-display-ad>": {
     "template": "./define-display-ad.marko"
   },
-  "<global-gam-wallpaper-ad>": {
+  "<theme-gam-wallpaper-ad>": {
     "template": "./wallpaper-ad.marko",
     "@aliases": "array",
     "@position": "string"
   },
-  "<global-gam-inject-ads>": {
+  "<theme-gam-inject-ads>": {
     "template": "./inject-ads.marko",
     "@inject <inject>[]": {},
     "@detect-embeds": "boolean",
     "@selector": "string",
     "@child-selector": "string"
   },
-  "<global-gam-prestitial>": {
+  "<theme-gam-prestitial>": {
     "template": "./prestitial.marko",
     "@name": {
       "type": "string",

@@ -11,7 +11,7 @@ $ const { id, type, pageNode, ...rest } = input;
   ...rest
 >
   <@right-rail|{ content }|>
-    <global-gam-define-display-ad
+    <theme-gam-define-display-ad
       name="rotation-1"
       position="content_page"
       aliases=["gear"]
@@ -22,14 +22,14 @@ $ const { id, type, pageNode, ...rest } = input;
     <if(labels.includes("Sponsored by RoadPro"))>
       <site-road-pro-facebook />
     </if>
-    <global-gam-define-display-ad
+    <theme-gam-define-display-ad
       name="rotation-2"
       position="section_page"
       aliases=["gear"]
       modifiers=["max-width-300", "center", "margin-auto-x", "rail"]
       class="mb-block"
     />
-    <global-gam-define-display-ad
+    <theme-gam-define-display-ad
       name="rotation-3"
       position="section_page"
       aliases=["gear"]
@@ -102,6 +102,6 @@ $ const { id, type, pageNode, ...rest } = input;
   </@section>
 
   <@section>
-    <global-client-side-most-popular-block />
+    <theme-client-side-most-popular-block />
   </@section>
 </global-content-company-layout>

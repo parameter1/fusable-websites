@@ -1,6 +1,5 @@
 import { getAsArray } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
-import DefineDisplayAd from "../../gam/define-display-ad";
 
 $ const { site } = out.global;
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
@@ -21,13 +20,13 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
   ...rest
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
-    <global-gam-define-display-ad
+    <theme-gam-define-display-ad
       name="leaderboard"
       position="content_page"
       aliases=aliases
       modifiers=["inter-block"]
     />
-    <global-gam-wallpaper-ad aliases=aliases position="content_page" />
+    <theme-gam-wallpaper-ad aliases=aliases position="content_page" />
   </@section>
 
   <@section|{ blockName, content, aliases, authors }| modifiers=["content-header"]>
@@ -79,7 +78,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 
           $ const desktopCounts = [1000, 2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500];
           $ const mobileCounts = [350, 1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250];
-          <global-gam-inject-ads selector=`#${bodyId}` detect-embeds=true>
+          <theme-gam-inject-ads selector=`#${bodyId}` detect-embeds=true>
             <for|char| of=desktopCounts>
               <!-- desktop/tablet only -->
               <@inject
@@ -99,7 +98,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                 modifiers=["max-width-970", "margin-auto-x", "inline-content"]
               />
             </for>
-          </global-gam-inject-ads>
+          </theme-gam-inject-ads>
         </if>
 
         <marko-web-content-body block-name=blockName obj=content attrs={ id: bodyId } />
@@ -151,7 +150,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
         </if>
 
         <if(displayComments)>
-          <global-identity-x-comment-stream content=content />
+          <theme-identity-x-comment-stream content=content />
         </if>
       </default-theme-page-contents>
     </div>
@@ -167,7 +166,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 
   <if(showBottomAdBlock)>
     <@section|{ aliases }|>
-      <global-gam-define-display-ad
+      <theme-gam-define-display-ad
         name="rotation"
         position="content_page"
         aliases=aliases

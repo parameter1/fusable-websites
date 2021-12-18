@@ -1,12 +1,8 @@
 {
   "taglib-imports": [
     "./blocks/marko.json",
-    "./client-side-blocks/marko.json",
     "./flows/marko.json",
-    "./gam/marko.json",
-    "./identity-x/marko.json",
     "./layouts/marko.json",
-    "./native-x/marko.json",
     "./page/marko.json"
   ],
   "<global-sponsored-label-logo>": {
@@ -29,9 +25,6 @@
     },
     "<below-container>": {},
     "<foot>": {}
-  },
-  "<global-site-menu>": {
-    "template": "./site-menu/index.marko"
   },
   "<global-site-header>": {
     "template": "./site-header.marko"

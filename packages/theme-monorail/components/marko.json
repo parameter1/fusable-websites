@@ -1,6 +1,10 @@
 {
   "taglib-imports": [
     "./breadcrumbs/marko.json",
+    "./client-side-blocks/marko.json",
+    "./gam/marko.json",
+    "./identity-x/marko.json",
+    "./native-x/marko.json",
     "./nodes/marko.json"
   ],
   "<theme-client-side-block-loader>": {
@@ -14,6 +18,9 @@
   },
   "<theme-recaptcha>": {
     "template": "./recaptcha.marko"
+  },
+  "<theme-site-menu>": {
+    "template": "./site-menu/index.marko"
   },
   "<theme-social-follow>": {
     "template": "./social-follow.marko"

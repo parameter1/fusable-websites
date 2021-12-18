@@ -10,7 +10,7 @@ $ const sections = getAsArray(input, "sections");
   ...rest
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
-    <global-gam-define-display-ad
+    <theme-gam-define-display-ad
       name="leaderboard"
       position="content_page"
       aliases=aliases
@@ -19,7 +19,7 @@ $ const sections = getAsArray(input, "sections");
   </@section>
 
   <@section|{ aliases, blockName, content }| modifiers=["content-header"]>
-    <global-gam-wallpaper-ad aliases=aliases position="content_page" />
+    <theme-gam-wallpaper-ad aliases=aliases position="content_page" />
     $ const { primarySection } = content;
     <div class="row">
       <div class="col-lg-8">
@@ -63,7 +63,7 @@ $ const sections = getAsArray(input, "sections");
           />
         </if>
         <else>
-          <global-gam-define-display-ad
+          <theme-gam-define-display-ad
             name="rail-1"
             position="content_page"
             aliases=aliases
@@ -76,7 +76,7 @@ $ const sections = getAsArray(input, "sections");
   </@section>
 
   <@section|{ aliases }|>
-    <global-gam-define-display-ad
+    <theme-gam-define-display-ad
       name="rotation"
       position="content_page"
       aliases=aliases

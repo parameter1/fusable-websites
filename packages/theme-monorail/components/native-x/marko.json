@@ -1,5 +1,5 @@
 {
-  "<global-native-x-render>": {
+  "<theme-native-x-render>": {
     "template": "./render.marko"
   }
 }
