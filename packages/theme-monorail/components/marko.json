@@ -19,6 +19,9 @@
   "<theme-recaptcha>": {
     "template": "./recaptcha.marko"
   },
+  "<theme-site-menu>": {
+    "template": "./site-menu/index.marko"
+  },
   "<theme-social-follow>": {
     "template": "./social-follow.marko"
   },
