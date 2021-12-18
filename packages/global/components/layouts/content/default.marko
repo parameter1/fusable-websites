@@ -21,7 +21,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
   ...rest
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
-    <global-gam-define-display-ad
+    <theme-gam-define-display-ad
       name="leaderboard"
       position="content_page"
       aliases=aliases
@@ -167,7 +167,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 
   <if(showBottomAdBlock)>
     <@section|{ aliases }|>
-      <global-gam-define-display-ad
+      <theme-gam-define-display-ad
         name="rotation"
         position="content_page"
         aliases=aliases

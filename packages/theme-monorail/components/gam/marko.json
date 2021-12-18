@@ -1,4 +1,7 @@
 {
+  "<theme-gam-define-display-ad>": {
+    "template": "./define-display-ad.marko"
+  },
   "<theme-gam-inject-ads>": {
     "template": "./inject-ads.marko",
     "@inject <inject>[]": {},
