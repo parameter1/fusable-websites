@@ -57,7 +57,7 @@ $ const lazyload = defaultValue(input.lazyload, true);
       </marko-web-element>
 
       <if(cardNodes.length)>
-        <global-content-card-deck-4-col-flow
+        <theme-content-card-deck-4-col-flow
           nodes=cardNodes
           modifiers=[blockName]
           ...(withNativeX && { nativeX: { name: "default", index: 3, sectionName: "Sponsor Content" } })
@@ -65,7 +65,7 @@ $ const lazyload = defaultValue(input.lazyload, true);
           <@node modifiers=[`${blockName}-card`]>
             <@image lazyload=lazyload />
           </@node>
-        </global-content-card-deck-4-col-flow>
+        </theme-content-card-deck-4-col-flow>
       </if>
     </marko-web-block>
   </if>
