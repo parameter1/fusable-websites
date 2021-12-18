@@ -3,6 +3,7 @@
     "template": "./list.marko",
     "<header>": {},
     "<body>": {},
+    "<footer>": {},
     "<node>": {
       "<attribution>": {},
       "<image>": {}
@@ -17,6 +18,7 @@
     "@flush-x": "boolean",
     "@flush-y": "boolean",
     "@class": "string",
+    "@collapsible": "boolean",
     "@modifiers": "array"
   },
   "<theme-content-directory-section-flow>": {
