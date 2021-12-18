@@ -2,7 +2,6 @@
   "taglib-imports": [
     "./blocks/marko.json",
     "./flows/marko.json",
-    "./gam/marko.json",
     "./layouts/marko.json",
     "./page/marko.json"
   ],
