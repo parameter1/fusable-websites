@@ -29,7 +29,7 @@
     },
     "@nodes": "array"
   },
-  "<theme-content-card-deck-4-col-flow>": {
-    "template": "./card-deck-4-col.marko"
+  "<theme-content-card-deck-col-flow>": {
+    "template": "./card-deck-col.marko"
   }
 }
