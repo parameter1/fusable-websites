@@ -1,6 +1,7 @@
 {
   "taglib-imports": [
     "./breadcrumbs/marko.json",
+    "./client-side-blocks/marko.json",
     "./nodes/marko.json"
   ],
   "<theme-client-side-block-loader>": {

@@ -1,7 +1,6 @@
 {
   "taglib-imports": [
     "./blocks/marko.json",
-    "./client-side-blocks/marko.json",
     "./flows/marko.json",
     "./gam/marko.json",
     "./identity-x/marko.json",
