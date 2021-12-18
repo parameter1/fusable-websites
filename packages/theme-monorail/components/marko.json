@@ -2,6 +2,7 @@
   "taglib-imports": [
     "./breadcrumbs/marko.json",
     "./client-side-blocks/marko.json",
+    "./identity-x/marko.json",
     "./native-x/marko.json",
     "./nodes/marko.json"
   ],
