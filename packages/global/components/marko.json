@@ -5,7 +5,6 @@
     "./gam/marko.json",
     "./identity-x/marko.json",
     "./layouts/marko.json",
-    "./native-x/marko.json",
     "./page/marko.json"
   ],
   "<global-sponsored-label-logo>": {
