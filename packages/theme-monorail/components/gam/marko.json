@@ -2,6 +2,11 @@
   "<theme-gam-define-display-ad>": {
     "template": "./define-display-ad.marko"
   },
+  "<theme-gam-wallpaper-ad>": {
+    "template": "./wallpaper-ad.marko",
+    "@aliases": "array",
+    "@position": "string"
+  },
   "<theme-gam-inject-ads>": {
     "template": "./inject-ads.marko",
     "@inject <inject>[]": {},
