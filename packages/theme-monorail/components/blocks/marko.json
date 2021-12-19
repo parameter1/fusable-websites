@@ -7,7 +7,7 @@
   "<theme-full-width-native-ad-block>": {
     "template": "./full-width-native-ad.marko"
   },
-  "<theme-gear-block>": {
+  "<theme-products-block>": {
     "template": "./gear.marko"
   },
   "<theme-latest-podcast-block>": {
