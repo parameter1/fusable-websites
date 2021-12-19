@@ -77,13 +77,6 @@
   "<global-resource-library-block>": {
     "template": "./resource-library.marko"
   },
-  "<global-section-body-feed-block>": {
-    "template": "./section-body-feed.marko",
-    "<query-params>": {},
-    "<node>": {},
-    "@alias": "string",
-    "@count-only": "boolean"
-  },
   "<global-sponsors-block>": {
     "template": "./sponsors.marko",
     "@alias": "string"

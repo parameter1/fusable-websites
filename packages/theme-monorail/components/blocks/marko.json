@@ -4,6 +4,13 @@
     "template": "./callout-cards.marko",
     "@slots <slot>[]": {}
   },
+  "<theme-section-body-feed-block>": {
+    "template": "./section-body-feed.marko",
+    "<query-params>": {},
+    "<node>": {},
+    "@alias": "string",
+    "@count-only": "boolean"
+  },
   "<theme-section-feed-block>": {
     "template": "./section-feed.marko",
     "<query-params>": {},
