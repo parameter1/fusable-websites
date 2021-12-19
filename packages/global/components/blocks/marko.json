@@ -17,9 +17,6 @@
     "@description": "string",
     "@query-params": "object"
   },
-  "<global-latest-podcast-block>": {
-    "template": "./latest-podcast.marko"
-  },
   "<global-more-gear-block>": {
     "template": "./more-gear.marko"
   },
