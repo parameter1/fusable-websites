@@ -31,6 +31,9 @@
   "<theme-most-popular-block>": {
     "template": "./most-popular.marko"
   },
+  "<theme-newsletter-signup-banner-large-block>": {
+    "template": "./newsletter-signup-banner-large.marko"
+  },
   "<theme-opinion-block>": {
     "template": "./opinion.marko",
     "@alias" : "string"
