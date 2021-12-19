@@ -4,6 +4,10 @@
     "template": "./callout-cards.marko",
     "@slots <slot>[]": {}
   },
+  "<theme-opinion-block>": {
+    "template": "./opinion.marko",
+    "@alias" : "string"
+  },
   "<theme-section-body-feed-block>": {
     "template": "./section-body-feed.marko",
     "<query-params>": {},
