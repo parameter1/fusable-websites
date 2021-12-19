@@ -2,11 +2,6 @@
   "taglib-imports": [
     "./promos/marko.json"
   ],
-  "<global-callout-cards-block>": {
-    "template": "./callout-cards.marko",
-    "@slots <slot>[]": {}
-  },
-
   "<global-ccj-solutions-summit-block>": {
     "template": "./ccj-solutions-summit.marko"
   },

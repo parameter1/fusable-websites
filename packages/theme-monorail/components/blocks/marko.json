@@ -1,0 +1,7 @@
+{
+  "taglib-imports": [],
+  "<theme-callout-cards-block>": {
+    "template": "./callout-cards.marko",
+    "@slots <slot>[]": {}
+  }
+}
