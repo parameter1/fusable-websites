@@ -7,6 +7,12 @@
   "<theme-full-width-native-ad-block>": {
     "template": "./full-width-native-ad.marko"
   },
+  "<theme-latest-products-feed-block>": {
+    "template": "./latest-products-feed.marko",
+    "<query-params>": {},
+    "@alias": "string",
+    "@count-only": "boolean"
+  },
   "<theme-opinion-block>": {
     "template": "./opinion.marko",
     "@alias" : "string"
