@@ -93,9 +93,6 @@
     "@lazyload": "boolean",
     "@modifiers": "array"
   },
-  "<global-section-list-block>": {
-    "template": "./section-list.marko"
-  },
   "<global-section-list-deck-block>": {
     "template": "./section-list-deck.marko"
   },
