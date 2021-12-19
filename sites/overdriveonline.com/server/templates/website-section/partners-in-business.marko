@@ -81,9 +81,9 @@ $ const manualSrc = "pib-issue-cover.png?auto=format&w=120&fit=crop";
       <else>Latest Stories</else>
     </marko-web-element>
 
-    <global-section-feed-block alias=alias>
+    <theme-section-feed-block alias=alias>
       <@query-params limit=3 skip=p.skip({ perPage, skip: 3 }) />
-    </global-section-feed-block>
+    </theme-section-feed-block>
   </@section>
 
   <@section|{ aliases }|>
@@ -96,9 +96,9 @@ $ const manualSrc = "pib-issue-cover.png?auto=format&w=120&fit=crop";
   </@section>
 
   <@section>
-    <global-section-feed-block alias=alias>
+    <theme-section-feed-block alias=alias>
       <@query-params limit=5 skip=p.skip({ perPage, skip: 6 }) />
-    </global-section-feed-block>
+    </theme-section-feed-block>
   </@section>
 
   <@section|{ aliases }|>
@@ -111,9 +111,9 @@ $ const manualSrc = "pib-issue-cover.png?auto=format&w=120&fit=crop";
   </@section>
 
   <@section>
-    <global-section-feed-block alias=alias>
+    <theme-section-feed-block alias=alias>
       <@query-params limit=5 skip=p.skip({ perPage, skip: 11 }) />
-    </global-section-feed-block>
+    </theme-section-feed-block>
   </@section>
 
   <@section|{ aliases }|>
@@ -126,17 +126,17 @@ $ const manualSrc = "pib-issue-cover.png?auto=format&w=120&fit=crop";
   </@section>
 
   <@section>
-    <global-section-feed-block alias=alias>
+    <theme-section-feed-block alias=alias>
       <@query-params limit=5 skip=p.skip({ perPage, skip: 16 }) />
-    </global-section-feed-block>
+    </theme-section-feed-block>
 
-    <global-section-feed-block|{ totalCount }| alias=alias count-only=true>
+    <theme-section-feed-block|{ totalCount }| alias=alias count-only=true>
       <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
         path=alias
       />
-    </global-section-feed-block>
+    </theme-section-feed-block>
   </@section>
 
   <@section|{ aliases }|>

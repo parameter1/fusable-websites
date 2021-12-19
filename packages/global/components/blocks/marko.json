@@ -84,15 +84,6 @@
     "@alias": "string",
     "@count-only": "boolean"
   },
-  "<global-section-feed-block>": {
-    "template": "./section-feed.marko",
-    "<query-params>": {},
-    "<node>": {},
-    "@alias": "string",
-    "@count-only": "boolean",
-    "@lazyload": "boolean",
-    "@modifiers": "array"
-  },
   "<global-sponsors-block>": {
     "template": "./sponsors.marko",
     "@alias": "string"

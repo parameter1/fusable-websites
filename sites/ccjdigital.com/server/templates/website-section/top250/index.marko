@@ -24,14 +24,14 @@ $ const perPage = 18;
 
     <@section|{ blockName, section }| modifiers=["break-container", "top250"]>
       <graphic-header />
-      <global-section-feed-block|{ totalCount }| alias=alias count-only=true>
+      <theme-section-feed-block|{ totalCount }| alias=alias count-only=true>
         <theme-pagination-controls
           per-page=perPage
           total-count=totalCount
           path=alias
           as-rels=true
         />
-      </global-section-feed-block>
+      </theme-section-feed-block>
     </@section>
     <if(!canAccess)>
       <@section|{ blockName, section }|>
@@ -93,9 +93,9 @@ $ const perPage = 18;
             <marko-web-website-section-name tag="h2" block-name=blockName modifiers=["top250-related-content"] obj=section>
               Related Stories
             </marko-web-website-section-name>
-            <global-section-feed-block alias=alias modifiers=["top250"]>
+            <theme-section-feed-block alias=alias modifiers=["top250"]>
               <@query-params limit=5 skip=pagination.skip({ perPage, skip: 0 }) />
-            </global-section-feed-block>
+            </theme-section-feed-block>
           </div>
         </div>
       </@section>
@@ -141,9 +141,9 @@ $ const perPage = 18;
       </@section>
 
       <@section>
-        <global-section-feed-block alias=alias>
+        <theme-section-feed-block alias=alias>
           <@query-params limit=2 skip=pagination.skip({ perPage, skip: 0 }) />
-        </global-section-feed-block>
+        </theme-section-feed-block>
       </@section>
 
       <@section>
@@ -151,9 +151,9 @@ $ const perPage = 18;
       </@section>
 
       <@section>
-        <global-section-feed-block alias=alias>
+        <theme-section-feed-block alias=alias>
           <@query-params limit=16 skip=pagination.skip({ perPage, skip: 2 }) />
-        </global-section-feed-block>
+        </theme-section-feed-block>
       </@section>
     </else>
 
