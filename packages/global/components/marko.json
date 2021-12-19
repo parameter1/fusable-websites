@@ -1,8 +1,7 @@
 {
   "taglib-imports": [
     "./blocks/marko.json",
-    "./layouts/marko.json",
-    "./page/marko.json"
+    "./layouts/marko.json"
   ],
   "<global-sponsored-label-logo>": {
     "template": "./sponsored-label-logo.marko"

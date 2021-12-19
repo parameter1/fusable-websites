@@ -6,7 +6,8 @@
     "./gam/marko.json",
     "./identity-x/marko.json",
     "./native-x/marko.json",
-    "./nodes/marko.json"
+    "./nodes/marko.json",
+    "./page/marko.json"
   ],
   "<theme-client-side-block-loader>": {
     "template": "./client-side-block-loader.marko"

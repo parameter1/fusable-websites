@@ -5,7 +5,7 @@ $ const content = convert(story);
 $ const { id, type } = content;
 $ const { primarySection } = content;
 
-<global-default-page title=story.title description=story.teaser>
+<theme-default-page title=story.title description=story.teaser>
   <@head>
     <marko-web-native-x-gtm-init />
   </@head>
@@ -44,4 +44,4 @@ $ const { primarySection } = content;
     <marko-web-native-x-story-track-outbound-links container="#native-x-story-body" />
     <marko-web-native-x-story-track-end-of-content />
   </@page>
-</global-default-page>
+</theme-default-page>
