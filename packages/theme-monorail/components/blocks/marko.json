@@ -44,6 +44,9 @@
   "<theme-related-stories-block>": {
     "template": "./related-stories.marko"
   },
+  "<theme-resource-library-block>": {
+    "template": "./resource-library.marko"
+  },
   "<theme-section-body-feed-block>": {
     "template": "./section-body-feed.marko",
     "<query-params>": {},
