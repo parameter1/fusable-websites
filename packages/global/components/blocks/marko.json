@@ -14,9 +14,6 @@
     "@description": "string",
     "@query-params": "object"
   },
-  "<global-more-gear-block>": {
-    "template": "./more-gear.marko"
-  },
   "<global-newsletter-signup-banner-block>": {
     "template": "./newsletter-signup-banner.marko"
   },

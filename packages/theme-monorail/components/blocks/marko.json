@@ -19,6 +19,9 @@
     "@alias": "string",
     "@count-only": "boolean"
   },
+  "<theme-more-products-block>": {
+    "template": "./more-gear.marko"
+  },
   "<theme-opinion-block>": {
     "template": "./opinion.marko",
     "@alias" : "string"
