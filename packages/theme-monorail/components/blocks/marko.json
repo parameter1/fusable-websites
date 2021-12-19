@@ -28,6 +28,9 @@
   "<theme-more-products-block>": {
     "template": "./more-gear.marko"
   },
+  "<theme-most-popular-block>": {
+    "template": "./most-popular.marko"
+  },
   "<theme-opinion-block>": {
     "template": "./opinion.marko",
     "@alias" : "string"
