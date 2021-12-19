@@ -10,6 +10,12 @@
   "<theme-products-block>": {
     "template": "./gear.marko"
   },
+  "<theme-hero-card-block>": {
+    "template": "./hero-card.marko",
+    "@alias": "string",
+    "@description": "string",
+    "@query-params": "object"
+  },
   "<theme-latest-podcast-block>": {
     "template": "./latest-podcast.marko"
   },
