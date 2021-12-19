@@ -3,5 +3,8 @@
   "<theme-callout-cards-block>": {
     "template": "./callout-cards.marko",
     "@slots <slot>[]": {}
+  },
+  "<theme-white-papers-block>": {
+    "template": "./white-papers.marko"
   }
 }

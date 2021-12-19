@@ -77,9 +77,6 @@
   "<global-resource-library-block>": {
     "template": "./resource-library.marko"
   },
-  "<global-white-papers-block>": {
-    "template": "./white-papers.marko"
-  },
   "<global-section-body-feed-block>": {
     "template": "./section-body-feed.marko",
     "<query-params>": {},
