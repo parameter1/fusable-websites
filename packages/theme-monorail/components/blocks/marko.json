@@ -4,6 +4,9 @@
     "template": "./callout-cards.marko",
     "@slots <slot>[]": {}
   },
+  "<theme-top-stories-block>": {
+    "template": "./top-stories.marko"
+  },
   "<theme-top-stories-menu-block>": {
     "template": "./top-stories-menu.marko"
   },

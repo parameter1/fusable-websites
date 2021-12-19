@@ -105,9 +105,6 @@
   "<global-section-list-deck-block>": {
     "template": "./section-list-deck.marko"
   },
-  "<global-top-stories-block>": {
-    "template": "./top-stories.marko"
-  },
   "<global-sponsors-block>": {
     "template": "./sponsors.marko",
     "@alias": "string"
