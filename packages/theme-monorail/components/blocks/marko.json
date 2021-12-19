@@ -4,6 +4,9 @@
     "template": "./callout-cards.marko",
     "@slots <slot>[]": {}
   },
+  "<theme-full-width-native-ad-block>": {
+    "template": "./full-width-native-ad.marko"
+  },
   "<theme-opinion-block>": {
     "template": "./opinion.marko",
     "@alias" : "string"
