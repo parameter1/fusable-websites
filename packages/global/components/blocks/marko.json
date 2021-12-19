@@ -8,9 +8,6 @@
   "<global-ccj-top-250-block>": {
     "template": "./ccj-top-250.marko"
   },
-  "<global-newsletter-signup-banner-block>": {
-    "template": "./newsletter-signup-banner.marko"
-  },
   "<global-partners-in-business-block>": {
     "template": "./partners-in-business.marko"
   },
