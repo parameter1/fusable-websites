@@ -7,6 +7,9 @@
   "<theme-full-width-native-ad-block>": {
     "template": "./full-width-native-ad.marko"
   },
+  "<theme-gear-block>": {
+    "template": "./gear.marko"
+  },
   "<theme-latest-podcast-block>": {
     "template": "./latest-podcast.marko"
   },

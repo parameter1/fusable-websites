@@ -8,9 +8,6 @@
   "<global-ccj-top-250-block>": {
     "template": "./ccj-top-250.marko"
   },
-  "<global-gear-block>": {
-    "template": "./gear.marko"
-  },
   "<global-hero-card-block>": {
     "template": "./hero-card.marko",
     "@alias": "string",
