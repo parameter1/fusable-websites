@@ -4,6 +4,9 @@
     "template": "./callout-cards.marko",
     "@slots <slot>[]": {}
   },
+  "<theme-section-list-deck-block>": {
+    "template": "./section-list-deck.marko"
+  },
   "<theme-section-list-block>": {
     "template": "./section-list.marko"
   },
