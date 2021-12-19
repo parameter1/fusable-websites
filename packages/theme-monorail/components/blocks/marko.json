@@ -8,6 +8,9 @@
     "template": "./opinion.marko",
     "@alias" : "string"
   },
+  "<theme-primary-image-block>": {
+    "template": "./primary-image.marko"
+  },
   "<theme-read-next-block>": {
     "template": "./read-next.marko"
   },

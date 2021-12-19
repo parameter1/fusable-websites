@@ -66,7 +66,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
           $ let forceDisplay;
           $ if (type === "contact") forceDisplay = "left";
           $ if (type === "video") forceDisplay = "none";
-          <global-primary-image-block
+          <theme-primary-image-block
             obj=content.primaryImage
             force-display=forceDisplay;
           />
