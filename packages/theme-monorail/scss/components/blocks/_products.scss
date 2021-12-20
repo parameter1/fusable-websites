@@ -1,4 +1,4 @@
-.gear-block {
+.products-block {
   &__header {
     @include skin-typography($style: "section-header");
   }
@@ -40,7 +40,7 @@
 
 .card-deck-flow {
   $self: &;
-  &--gear-block {
+  &--products-block {
     #{ $self } {
       &__node {
         margin-bottom: 20px;
@@ -55,7 +55,7 @@
 .node {
   $self: &;
 
-  &--gear-block {
+  &--products-block {
     padding: 16px;
     background-color: $gray-100;
     border-radius: 4px;

@@ -1,7 +1,6 @@
-import queryFragment from "../../graphql/fragments/gear-block";
+import queryFragment from "../../graphql/fragments/products-block";
 import sectionFragment from "../../graphql/fragments/section-info";
 
-<!-- @todo determine how to display the sponsor logo -->
 $ const queryParams = {
   sectionAlias: input.alias,
   limit: 3,
@@ -9,7 +8,7 @@ $ const queryParams = {
   sectionFragment,
 };
 
-$ const blockName = "gear-block";
+$ const blockName = "products-block";
 
 <marko-web-query|{ nodes, section }| name="website-scheduled-content" params=queryParams>
   <marko-web-block name=blockName>

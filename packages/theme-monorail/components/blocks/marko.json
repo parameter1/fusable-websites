@@ -7,9 +7,6 @@
   "<theme-full-width-native-ad-block>": {
     "template": "./full-width-native-ad.marko"
   },
-  "<theme-products-block>": {
-    "template": "./gear.marko"
-  },
   "<theme-hero-card-block>": {
     "template": "./hero-card.marko",
     "@alias": "string",
@@ -43,6 +40,9 @@
   },
   "<theme-primary-image-block>": {
     "template": "./primary-image.marko"
+  },
+  "<theme-products-block>": {
+    "template": "./products.marko"
   },
   "<theme-read-next-block>": {
     "template": "./read-next.marko"
