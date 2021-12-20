@@ -60,6 +60,11 @@
     "@alias": "string",
     "@count-only": "boolean"
   },
+  "<theme-section-card-deck-block>": {
+    "template": "./section-card-deck.marko",
+    "@alias" : "string",
+    "@default-description": "string"
+  },
   "<theme-section-feed-block>": {
     "template": "./section-feed.marko",
     "<query-params>": {},
