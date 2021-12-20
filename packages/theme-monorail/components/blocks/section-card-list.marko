@@ -1,7 +1,6 @@
-import queryFragment from "../../graphql/fragments/partners-in-business-block";
-import sectionFragment from "../../graphql/fragments/section-info";
+import sectionFragment from "@randall-reilly/package-theme-monorail/graphql/fragments/section-info";
+import queryFragment from "../../graphql/fragments/section-card-list-block";
 
-<!-- @todo likely should change the name of this component -->
 $ const queryParams = {
   limit: 3,
   requiresImage: true,
@@ -9,7 +8,7 @@ $ const queryParams = {
   queryFragment,
   sectionFragment,
 };
-$ const blockName = "partners-in-business";
+$ const blockName = "section-card-list";
 
 <marko-web-query|{ nodes, section }| name="website-scheduled-content" params=queryParams>
   $ const heroNode = nodes.slice(0, 1)[0];
@@ -26,7 +25,6 @@ $ const blockName = "partners-in-business";
       ${section.name}
     </marko-web-element>
     <marko-web-element block-name=blockName name="description">
-      <!-- The leading business training program for owner-operators -->
       ${section.description || input.defaultDescription}
     </marko-web-element>
 
