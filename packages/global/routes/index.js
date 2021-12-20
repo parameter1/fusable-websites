@@ -1,6 +1,7 @@
 const htmlSitemap = require('@parameter1/base-cms-marko-web-html-sitemap/routes');
 const renderBlock = require('@randall-reilly/package-theme-monorail/routes/render-block');
 const search = require('@randall-reilly/package-theme-monorail/routes/search');
+const taxonomy = require('@randall-reilly/package-theme-monorail/routes/taxonomy');
 const feed = require('./feed');
 const nativeX = require('./native-x');
 const omedaNewsletters = require('./omeda-newsletters');
@@ -8,7 +9,6 @@ const printContent = require('./print-content');
 const publicFiles = require('./public-files');
 const redirects = require('./redirects');
 const staticPage = require('./static-page');
-const taxonomy = require('./taxonomy');
 
 module.exports = (app, siteConfig) => {
   // Feed
