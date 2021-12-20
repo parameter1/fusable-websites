@@ -1,4 +1,4 @@
-.pib-featured {
+.section-card-deck-featured {
   &__title {
     padding-top: 20px;
     margin-bottom: 20px;
@@ -8,7 +8,7 @@
 
 .node {
   $self: &;
-  &--pib-featured {
+  &--section-card-deck-featured {
     #{ $self } {
       &__title {
         @include skin-typography($style: "header-1.5", $link-style: "primary");

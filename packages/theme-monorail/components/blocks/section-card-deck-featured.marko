@@ -1,6 +1,5 @@
-import queryFragment from "../../graphql/fragments/pib-featured-block";
+import queryFragment from "../../graphql/fragments/section-card-deck-featured-block";
 
-<!-- @todo likely should change the name of this component -->
 $ const queryParams = {
   limit: 3,
   requiresImage: true,
@@ -8,7 +7,7 @@ $ const queryParams = {
   queryFragment,
 };
 
-$ const blockName = "pib-featured";
+$ const blockName = "section-card-deck-featured";
 
 
 <marko-web-query|{ nodes }| name="website-scheduled-content" params=queryParams>

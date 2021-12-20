@@ -65,6 +65,9 @@
     "@alias" : "string",
     "@default-description": "string"
   },
+  "<theme-section-card-deck-featured-block>": {
+    "template": "./section-card-deck-featured.marko"
+  },
   "<theme-section-card-list-block>": {
     "template": "./section-card-list.marko"
   },
