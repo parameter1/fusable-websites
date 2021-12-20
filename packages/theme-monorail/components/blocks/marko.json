@@ -23,7 +23,7 @@
     "@count-only": "boolean"
   },
   "<theme-more-products-block>": {
-    "template": "./more-gear.marko"
+    "template": "./more-products.marko"
   },
   "<theme-most-popular-block>": {
     "template": "./most-popular.marko"

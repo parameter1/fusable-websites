@@ -1,4 +1,4 @@
-.more-gear {
+.more-products {
   &__header-wrapper {
     display: flex;
     align-items: baseline;
@@ -19,7 +19,7 @@
 .node {
   $self: &;
 
-  &--more-gear {
+  &--more-products {
     padding: 16px;
     background-color: $gray-100;
     border-radius: 4px;
