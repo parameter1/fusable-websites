@@ -12,6 +12,7 @@ $ const withSection = defaultValue(input.withSection, false);
 $ const displayImage = defaultValue(input.displayImage, true);
 $ const isFeatured = defaultValue(input.isFeatured, false);
 $ const displayFeaturedTeaser = defaultValue(input.displayFeaturedTeaser, true);
+$ const requestQuote = defaultValue(input.requestQuote, true);
 
 $ const imageOptions = {
   w: 250,
@@ -52,12 +53,14 @@ $ const blockName = "section-feed-content-node";
             <marko-web-content-address2 block-name=blockName obj=content />
             <marko-web-content-city-state-zip block-name=blockName obj=content />
             <marko-web-content-tollfree block-name=blockName obj=content />
-            <marko-web-link
-              href=content.siteContext.path
-              attrs=linkAttrs
-            >
-              Request Quote &raquo;
-            </marko-web-link>
+            <if(requestQuote)>
+              <marko-web-link
+                href=content.siteContext.path
+                attrs=linkAttrs
+              >
+                Request Quote &raquo;
+              </marko-web-link>
+            </if>
             <marko-web-content-website
               block-name=blockName
               obj=content
