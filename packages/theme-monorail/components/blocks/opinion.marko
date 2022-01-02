@@ -13,9 +13,7 @@ $ const blockName = "opinion";
 
 <marko-web-query|{ nodes, section }| name="website-scheduled-content" params=queryParams>
   <marko-web-block name=blockName>
-    <marko-web-element block-name=blockName name="header">
-      ${section.name}
-    </marko-web-element>
+    <marko-web-website-section-name obj=section link=true block-name=blockName class=`${blockName}__header` />
     <default-theme-card-deck-flow
       cols=3
       nodes=nodes
