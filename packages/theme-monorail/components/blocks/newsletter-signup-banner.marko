@@ -12,7 +12,7 @@ $ const {
   demographic,
 } = site.getAsObject("newsletter.signupBanner");
 
-$ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/files/base/randallreilly/all/image/${imagePath}`, { w: 120, auto: "format,compress" }) : null;
+$ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/${imagePath}`, { w: 120, auto: "format,compress" }) : null;
 $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
 
 <if(name && description)>

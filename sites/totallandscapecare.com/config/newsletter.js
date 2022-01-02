@@ -42,12 +42,12 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
-    imagePath: 'static/newsletter-pushdown/tlc-full.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tlc-full.png',
   },
   pushdown: {
     ...defaults,
     description: 'Join 14,000 landscaping professionals who get helpful insights and important news delivered straight to their inbox with the <em>Total Landscape Care</em> newsletter.',
-    imagePath: 'static/newsletter-pushdown/tlc-half.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tlc-half.png',
   },
 
   // links off to seperate omeda dragonform

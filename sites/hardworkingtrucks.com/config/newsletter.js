@@ -35,13 +35,13 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
-    imagePath: 'static/newsletter-pushdown/hwt-full.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/hwt-full.png',
   },
   pushdown: {
     ...defaults,
     name: 'Newsletter Just for Truck Owners',
     description: 'Get news you need to know about pickups, commercial vans and Class 3-8 trucks — delivered straight to your inbox.',
-    imagePath: 'static/newsletter-pushdown/hwt-half.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/hwt-half.png',
   },
 
   // links off to seperate omeda dragonform

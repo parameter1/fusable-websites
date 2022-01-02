@@ -66,12 +66,12 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
-    imagePath: 'static/newsletter-pushdown/eqw-full.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/eqw-full.png',
   },
   pushdown: {
     ...defaults,
     description: 'Join 55,000 construction professionals who get helpful insights and important news delivered straight to their inbox with the <span class="newsletter-name">Equipment World</span> newsletter.',
-    imagePath: 'static/newsletter-pushdown/eqw-half.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/eqw-half.png',
   },
 
   // links off to seperate omeda dragonform

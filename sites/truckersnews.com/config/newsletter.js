@@ -52,12 +52,12 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
-    imagePath: 'static/newsletter-pushdown/tn-full.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tn-full.png',
   },
   pushdown: {
     ...defaults,
     description: 'Join 40,000 company drivers who get helpful insights and important news delivered straight to their inbox with the <em>Truckers News</em> newsletter.',
-    imagePath: 'static/newsletter-pushdown/tn-half.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tn-half.png',
   },
 
   // links off to seperate omeda dragonform
