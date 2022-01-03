@@ -24,6 +24,10 @@ fragment SectionFeedBlockContentFragment on Content {
     alt
     isLogo
   }
+  ... on ContentWebinar {
+    linkUrl
+    startDate
+  }
 }
 
 `;
