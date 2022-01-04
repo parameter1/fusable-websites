@@ -11,6 +11,7 @@ $ const blockName = "section-feed";
 $ const countOnly = defaultValue(input.countOnly, false);
 $ const modifiers = defaultValue(input.modifiers, []);
 $ const lazyload = defaultValue(input.lazyload, true);
+$ const withSection = defaultValue(input.withSection, true);
 
 <if(countOnly)>
   <theme-query-total-count|data| name="website-scheduled-content" params=queryParams>
@@ -27,7 +28,12 @@ $ const lazyload = defaultValue(input.lazyload, true);
     >
       <@nodes nodes=nodes>
         <@slot|{ node }|>
-          <theme-section-feed-content-node node=node lazyload=lazyload />
+          <theme-section-feed-content-node
+            node=node
+            display-image=input.displayImage
+            with-section=withSection
+            lazyload=lazyload
+          />
         </@slot>
       </@nodes>
     </marko-web-node-list>

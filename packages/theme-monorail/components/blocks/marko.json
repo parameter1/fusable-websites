@@ -77,6 +77,7 @@
     "<node>": {},
     "@alias": "string",
     "@count-only": "boolean",
+    "@display-image": "boolean",
     "@lazyload": "boolean",
     "@modifiers": "array"
   },
