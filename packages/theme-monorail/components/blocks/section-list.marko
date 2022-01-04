@@ -1,9 +1,13 @@
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 import { getAsObject } from "@parameter1/base-cms-object-path";
 import cardFragment from "../../graphql/fragments/section-list-card-block";
 import listFragment from "../../graphql/fragments/section-list-block";
 import sectionFragment from "../../graphql/fragments/section-info";
 
 $ const { alias } = input;
+
+$ const withSection = defaultValue(input.withSection, true);
+$ const withViewMore = defaultValue(input.withViewMore, true);
 
 $ const queryParams = {
   limit: 4,
@@ -49,6 +53,7 @@ $ const blockName = "section-list";
               modifiers=[`${blockName}-card`]
               with-teaser=false
               with-dates=false
+              with-section=withSection
               node=node
             >
               <@image fluid=true width=330 ar="3:2" />
@@ -61,16 +66,19 @@ $ const blockName = "section-list";
               modifiers=[`${blockName}-item`]
               with-teaser=false
               with-dates=false
+              with-section=withSection
               node=node
             />
           </else>
         </@slot>
       </@nodes>
-      <@footer modifiers=["view-more"]>
-        <marko-web-website-section-name obj=section link=true>
-          View More &raquo;
-        </marko-web-website-section-name>
-      </@footer>
+      <if(withViewMore)>
+        <@footer modifiers=["view-more"]>
+          <marko-web-website-section-name obj=section link=true>
+            View More &raquo;
+          </marko-web-website-section-name>
+        </@footer>
+      </if>
     </marko-web-node-list>
   </marko-web-query>
 </marko-web-query>
