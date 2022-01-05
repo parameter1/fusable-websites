@@ -78,6 +78,7 @@
     "@alias": "string",
     "@count-only": "boolean",
     "@display-image": "boolean",
+    "@with-section": "boolean",
     "@lazyload": "boolean",
     "@modifiers": "array"
   },
