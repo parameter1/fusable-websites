@@ -80,7 +80,8 @@
     "@display-image": "boolean",
     "@with-section": "boolean",
     "@lazyload": "boolean",
-    "@modifiers": "array"
+    "@modifiers": "array",
+    "@query-name": "string"
   },
   "<theme-section-list-deck-block>": {
     "template": "./section-list-deck.marko"
