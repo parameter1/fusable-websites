@@ -1,4 +1,4 @@
-import queryFragment from "@randall-reilly/package-global/graphql/fragments/section-feed-block";
+import queryFragment from "@randall-reilly/package-theme-monorail/graphql/fragments/section-feed-block";
 
 $ const { id, type, pageNode, ...rest } = input;
 
@@ -62,14 +62,14 @@ $ const { id, type, pageNode, ...rest } = input;
   </@after-body>
 
   <@section>
-    <global-callout-cards-block>
+    <theme-callout-cards-block>
       <@slot>
         <global-eqw-coty-promo-block />
       </@slot>
       <@slot>
-        <global-white-papers-block />
+        <theme-white-papers-block />
       </@slot>
-    </global-callout-cards-block>
+    </theme-callout-cards-block>
   </@section>
 
   <@section>

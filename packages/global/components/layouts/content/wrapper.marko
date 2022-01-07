@@ -6,7 +6,7 @@ $ const { GAM } = out.global;
 $ const sections = getAsArray(input, "sections");
 $ const alias = get(input, "primarySection.alias");
 
-<global-content-page id=id type=type>
+<theme-content-page id=id type=type>
   <@head>
     <marko-web-gtm-content-context|{ context }| id=id>
       <marko-web-gtm-push data=context />
@@ -42,4 +42,4 @@ $ const alias = get(input, "primarySection.alias");
       </marko-web-page-wrapper>
     </marko-web-resolve-page>
   </@page>
-</global-content-page>
+</theme-content-page>

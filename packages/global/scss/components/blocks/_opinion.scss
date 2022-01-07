@@ -17,7 +17,9 @@
     @include media-breakpoint-up(md) {
       margin-bottom: 30px;
     }
-    @include skin-typography($style: "section-header");
+    a {
+      @include skin-typography($style: "section-header");
+    }
   }
 }
 

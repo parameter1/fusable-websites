@@ -1,5 +1,5 @@
 const withContent = require('@randall-reilly/package-global/middleware/with-content');
-const queryFragment = require('@randall-reilly/package-global/graphql/fragments/content-page');
+const queryFragment = require('@randall-reilly/package-theme-monorail/graphql/fragments/content-page');
 const contact = require('@randall-reilly/package-global/templates/content/contact');
 const company = require('../templates/content/company');
 const product = require('../templates/content/product');

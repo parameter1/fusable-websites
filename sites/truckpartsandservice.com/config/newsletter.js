@@ -47,12 +47,12 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
-    imagePath: 'static/newsletter-pushdown/tps-full.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tps-full.png',
   },
   pushdown: {
     ...defaults,
     description: 'Join 20,000 dealer and aftermarket professionals who get helpful insights and important news delivered straight to their inbox with the <em>Trucks, Parts, Service</em> newsletter.',
-    imagePath: 'static/newsletter-pushdown/tps-half.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tps-half.png',
   },
 
   // links off to seperate omeda dragonform

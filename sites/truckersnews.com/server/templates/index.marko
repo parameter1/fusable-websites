@@ -13,7 +13,7 @@ $ const { id, alias, name, pageNode } = input;
   </@head>
 
   <@section>
-    <global-section-list-deck-block aliases=["trucks", "jobs", "life"] />
+    <theme-section-list-deck-block aliases=["trucks", "jobs", "life"] />
   </@section>
 
   <@section|{ aliases }|>
@@ -26,22 +26,22 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <global-partners-in-business-block alias="shedrives" default-description="News for women at the wheel" />
+    <theme-section-card-list-block alias="shedrives" default-description="News for women at the wheel" />
   </@section>
 
   <@section>
-    <global-hero-card-block query-params={ includeContentTypes: ["Video"] } alias="videos" description="Watch as trucking news happens" />
+    <theme-hero-card-block query-params={ includeContentTypes: ["Video"] } alias="videos" description="Watch as trucking news happens" />
   </@section>
 
   <!-- <@section>
-    <global-callout-cards-block>
+    <theme-callout-cards-block>
       <@slot>
         <global-ccj-top-250-block />
       </@slot>
       <@slot>
-        <global-white-papers-block />
+        <theme-white-papers-block />
       </@slot>
-    </global-callout-cards-block>
+    </theme-callout-cards-block>
   </@section> -->
 
   <@section>
@@ -58,10 +58,10 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <global-gear-block alias="gear" default-description="Products for a better driving life" />
+    <theme-products-block alias="gear" default-description="Products for a better driving life" />
   </@section>
 
   <!-- <@section>
-    <global-reader-rigs-block alias="workforce" default-description="Lorem ipsum dolor sit amet" />
+    <theme-section-card-deck-block alias="workforce" default-description="Lorem ipsum dolor sit amet" />
   </@section> -->
 </global-website-section-home-layout>

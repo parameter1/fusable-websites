@@ -13,14 +13,14 @@ $ const perPage = 10;
   page-node=pageNode
 >
   <@head>
-    <global-latest-products-feed-block|{ totalCount }| alias=alias count-only=true>
+    <theme-latest-products-feed-block|{ totalCount }| alias=alias count-only=true>
       <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
         path=alias
         as-rels=true
       />
-    </global-latest-products-feed-block>
+    </theme-latest-products-feed-block>
   </@head>
 
   <@section|{ aliases }| modifiers=["first"]>
@@ -46,16 +46,16 @@ $ const perPage = 10;
           <marko-web-website-section-name tag="h1" block-name=blockName obj=section />
         </else>
 
-        <global-latest-products-feed-block alias=alias>
+        <theme-latest-products-feed-block alias=alias>
           <@query-params limit=perPage skip=p.skip({ perPage }) />
-        </global-latest-products-feed-block>
-        <global-latest-products-feed-block|{ totalCount }| alias=alias count-only=true>
+        </theme-latest-products-feed-block>
+        <theme-latest-products-feed-block|{ totalCount }| alias=alias count-only=true>
           <theme-pagination-controls
             per-page=perPage
             total-count=totalCount
             path=alias
           />
-        </global-latest-products-feed-block>
+        </theme-latest-products-feed-block>
       </div>
       <div class="col-lg-4 pt-block">
         <theme-gam-define-display-ad
@@ -98,7 +98,7 @@ $ const perPage = 10;
   </@section>
 
   <@section modifiers=["my-block-lg"]>
-    <global-top-stories-block />
+    <theme-top-stories-block />
   </@section>
 
   <for|s| of=sections>

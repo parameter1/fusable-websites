@@ -13,11 +13,11 @@ $ const { id, alias, name, pageNode } = input;
   </@head>
 
   <@section modifiers=["break-container"]>
-    <global-opinion-block alias="commentary" />
+    <theme-opinion-block alias="commentary" />
   </@section>
 
   <@section>
-    <global-section-list-deck-block aliases=["business", "workforce", "trucks-trailers"] />
+    <theme-section-list-deck-block aliases=["business", "workforce", "trucks-trailers"] />
   </@section>
 
   <@section|{ aliases }|>
@@ -30,18 +30,18 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <global-partners-in-business-block alias="distributor-of-the-year" default-description="Keep up to date on the independent aftermarket’s highest honor" />
+    <theme-section-card-list-block alias="distributor-of-the-year" default-description="Keep up to date on the independent aftermarket’s highest honor" />
   </@section>
 
   <@section>
-    <global-callout-cards-block>
+    <theme-callout-cards-block>
       <@slot>
         <global-tps-used-truck-guide-promo-block />
       </@slot>
       <@slot>
-        <global-white-papers-block />
+        <theme-white-papers-block />
       </@slot>
-    </global-callout-cards-block>
+    </theme-callout-cards-block>
   </@section>
 
   <@section>
@@ -58,14 +58,14 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <global-gear-block alias="products" default-description="Parts, components and accessories from OE and aftermarket suppliers" />
+    <theme-products-block alias="products" default-description="Parts, components and accessories from OE and aftermarket suppliers" />
   </@section>
 
   <@section>
-    <global-reader-rigs-block alias="maintenance" default-description="Tips, tricks and best practices to keep your shop busy and customers happy" />
+    <theme-section-card-deck-block alias="maintenance" default-description="Tips, tricks and best practices to keep your shop busy and customers happy" />
   </@section>
 
   <@section>
-    <global-resource-library-block alias="resource-library" />
+    <theme-resource-library-block alias="resource-library" />
   </@section>
 </global-website-section-home-layout>

@@ -55,11 +55,11 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
-    imagePath: 'static/newsletter-pushdown/ccj-full.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ccj-full.png',
   },
   pushdown: {
     ...defaults,
-    imagePath: 'static/newsletter-pushdown/ccj-half.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ccj-half.png',
     description: 'Join 80,000 trucking professionals who get helpful insights and important news delivered straight to their inbox with the CCJ newsletter.',
   },
 

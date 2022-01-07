@@ -13,11 +13,11 @@ $ const { id, alias, name, pageNode } = input;
   </@head>
 
   <@section modifiers=["break-container"]>
-    <global-opinion-block alias="editors-picks" />
+    <theme-opinion-block alias="editors-picks" />
   </@section>
 
   <@section>
-    <global-section-list-deck-block aliases=["equipment", "business", "technology"] />
+    <theme-section-list-deck-block aliases=["equipment", "business", "technology"] />
   </@section>
 
   <@section|{ aliases }|>
@@ -30,22 +30,22 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <global-partners-in-business-block alias="big-iron-dealer" default-description="What’s impacting today’s dealerships" />
+    <theme-section-card-list-block alias="big-iron-dealer" default-description="What’s impacting today’s dealerships" />
   </@section>
 
   <@section>
-    <global-hero-card-block query-params={ includeContentTypes: ["Video"] } alias="videos" />
+    <theme-hero-card-block query-params={ includeContentTypes: ["Video"] } alias="videos" />
   </@section>
 
   <@section>
-    <global-callout-cards-block>
+    <theme-callout-cards-block>
       <@slot>
         <global-eqw-coty-promo-block />
       </@slot>
       <@slot>
-        <global-white-papers-block />
+        <theme-white-papers-block />
       </@slot>
-    </global-callout-cards-block>
+    </theme-callout-cards-block>
   </@section>
 
   <@section>
@@ -62,18 +62,18 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <global-gear-block alias="gear" default-description="Cool stuff for contractors" />
+    <theme-products-block alias="gear" default-description="Cool stuff for contractors" />
   </@section>
 
   <@section>
-    <global-reader-rigs-block alias="vintage-equipment" default-description="Antique equipment finds" />
+    <theme-section-card-deck-block alias="vintage-equipment" default-description="Antique equipment finds" />
   </@section>
 
   <@section>
-    <global-reader-rigs-block alias="better-roads" default-description="Roadbuilding in focus" />
+    <theme-section-card-deck-block alias="better-roads" default-description="Roadbuilding in focus" />
   </@section>
 
   <@section>
-    <global-resource-library-block alias="resource-library" />
+    <theme-resource-library-block alias="resource-library" />
   </@section>
 </global-website-section-home-layout>

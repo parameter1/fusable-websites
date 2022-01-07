@@ -13,11 +13,11 @@ $ const { id, alias, name, pageNode } = input;
   </@head>
 
   <@section modifiers=["break-container"]>
-    <global-opinion-block alias="voices" />
+    <theme-opinion-block alias="voices" />
   </@section>
 
   <@section>
-    <global-section-list-deck-block aliases=["business", "equipment", "life"] />
+    <theme-section-list-deck-block aliases=["business", "equipment", "life"] />
   </@section>
 
   <@section|{ aliases }|>
@@ -30,18 +30,18 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <global-partners-in-business-block alias="partners-in-business" />
+    <theme-section-card-list-block alias="partners-in-business" />
   </@section>
 
   <@section>
-    <global-callout-cards-block>
+    <theme-callout-cards-block>
       <@slot>
-        <global-latest-podcast-block alias="overdrive-radio" />
+        <theme-latest-podcast-block alias="overdrive-radio" />
       </@slot>
       <@slot>
         <site-promo-card-rotation-block />
       </@slot>
-    </global-callout-cards-block>
+    </theme-callout-cards-block>
   </@section>
 
   <@section>
@@ -58,14 +58,14 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <global-gear-block alias="gear" />
+    <theme-products-block alias="gear" />
   </@section>
 
   <@section>
-    <global-reader-rigs-block alias="reader-rigs" />
+    <theme-section-card-deck-block alias="reader-rigs" />
   </@section>
 
   <@section>
-    <global-resource-library-block alias="resource-library" />
+    <theme-resource-library-block alias="resource-library" />
   </@section>
 </global-website-section-home-layout>

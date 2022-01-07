@@ -57,21 +57,21 @@ $ const perPage = 18;
   </@section>
 
   <@section>
-    <global-section-body-feed-block alias=alias>
+    <theme-section-body-feed-block alias=alias>
       <@query-params limit=perPage skip=p.skip({ perPage }) />
       <@node with-section=false with-dates=false />
-    </global-section-body-feed-block>
-    <global-section-body-feed-block|{ totalCount }| alias=alias count-only=true>
+    </theme-section-body-feed-block>
+    <theme-section-body-feed-block|{ totalCount }| alias=alias count-only=true>
       <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
         path=alias
       />
-    </global-section-body-feed-block>
+    </theme-section-body-feed-block>
   </@section>
 
   <@section>
-    <global-top-stories-block />
+    <theme-top-stories-block />
   </@section>
 
   <@section|{ aliases }|>
@@ -84,14 +84,14 @@ $ const perPage = 18;
   </@section>
 
   <@section>
-    <global-callout-cards-block>
+    <theme-callout-cards-block>
       <@slot>
         <global-eqw-coty-promo-block />
       </@slot>
       <@slot>
-        <global-white-papers-block />
+        <theme-white-papers-block />
       </@slot>
-    </global-callout-cards-block>
+    </theme-callout-cards-block>
   </@section>
 
   <@section>

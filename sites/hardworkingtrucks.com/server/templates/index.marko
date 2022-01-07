@@ -13,11 +13,11 @@ $ const { id, alias, name, pageNode } = input;
   </@head>
 
   <@section modifiers=["break-container"]>
-    <global-opinion-block alias="opinion" />
+    <theme-opinion-block alias="opinion" />
   </@section>
 
   <@section>
-    <global-section-list-deck-block aliases=["trucks", "alternative-power", "maintenance"] />
+    <theme-section-list-deck-block aliases=["trucks", "alternative-power", "maintenance"] />
   </@section>
 
   <@section|{ aliases }|>
@@ -30,18 +30,18 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <global-partners-in-business-block alias="vocational" default-description="Bucket trucks, dump trucks, refuse trucks and more" />
+    <theme-section-card-list-block alias="vocational" default-description="Bucket trucks, dump trucks, refuse trucks and more" />
   </@section>
 
   <!-- <@section>
-    <global-callout-cards-block>
+    <theme-callout-cards-block>
       <@slot>
         <global-ccj-top-250-block />
       </@slot>
       <@slot>
-        <global-white-papers-block />
+        <theme-white-papers-block />
       </@slot>
-    </global-callout-cards-block>
+    </theme-callout-cards-block>
   </@section> -->
 
   <@section>
@@ -58,14 +58,14 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <global-gear-block alias="products" default-description="Latest product innovations designed to improve your truck or van" />
+    <theme-products-block alias="products" default-description="Latest product innovations designed to improve your truck or van" />
   </@section>
 
   <@section>
-    <global-reader-rigs-block alias="vans" default-description="Class 1 cargo through Class 6 step vans" />
+    <theme-section-card-deck-block alias="vans" default-description="Class 1 cargo through Class 6 step vans" />
   </@section>
 
   <@section>
-    <global-resource-library-block alias="resource-library" />
+    <theme-resource-library-block alias="resource-library" />
   </@section>
 </global-website-section-home-layout>
