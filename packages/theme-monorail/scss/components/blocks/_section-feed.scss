@@ -117,4 +117,29 @@
       }
     }
   }
+  &--company-related-feed,
+  &--company-categories-feed {
+    #{ $self } {
+      &__header {
+        @include skin-typography($style: "section-header");
+        padding-bottom: 10px;
+        margin-top: 20px;
+        font-size: 26px;
+        border-bottom: 1px solid $gray-700;
+      }
+    }
+    .section-feed-content-node {
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+      }
+    }
+  }
+  &--company-categories-feed {
+    #{ $self } {
+      &__node {
+        padding-top: .5rem;
+        padding-bottom: 0;
+      }
+    }
+  }
 }

@@ -70,6 +70,10 @@ $marko-web-primary-image-margin: 1.5rem !default;
     }
   }
 
+  &--forced-left {
+    margin-bottom: 1.5rem;
+  }
+
   @each $ar in $marko-web-node-image-aspect-ratios {
     $x: nth($ar, 1);
     $y: nth($ar, 2);
