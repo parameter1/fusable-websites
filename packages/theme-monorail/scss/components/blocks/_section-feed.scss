@@ -74,6 +74,21 @@
     }
   }
 
+  &__content-event-dates {
+    margin-top: 10px;
+    @include skin-typography($style: "teaser-text-1", $link-style: "primary", $breakpoint: sm);
+  }
+  &__content-start-date {
+    &::before {
+      font-weight: $font-weight-bold;
+      content: "Date: ";
+    }
+  }
+
+  .btn-primary {
+    margin-top: 10px;
+  }
+
   &__content-published {
     margin-top: 10px;
     @include skin-typography($style: "date");
