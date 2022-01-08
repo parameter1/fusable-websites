@@ -5,28 +5,8 @@
 @import "../../node_modules/@randall-reilly/package-theme-monorail/scss/core";
 
 // skin components
-@import "./components/blocks/callout-cards";
 @import "./components/blocks/ccj-solutions-summit";
 @import "./components/blocks/ccj-top-250";
-@import "./components/blocks/hero-card";
-@import "./components/blocks/latest-podcast";
-@import "./components/blocks/latest-products-feed";
-@import "./components/blocks/most-popular";
-@import "./components/blocks/newsletter-signup-banner";
-@import "./components/blocks/newsletter-signup-banner-large";
-@import "./components/blocks/node-author";
-@import "./components/blocks/opinion";
-@import "./components/blocks/primary-image";
-@import "./components/blocks/promo-card";
-@import "./components/blocks/read-next";
-@import "./components/blocks/related-stories";
-@import "./components/blocks/resource-library";
-@import "./components/blocks/white-papers";
-@import "./components/blocks/section-feed";
-@import "./components/blocks/section-list";
-@import "./components/blocks/social-follow";
-@import "./components/blocks/top-stories";
-@import "./components/blocks/top-stories-menu";
 
 body {
   -webkit-font-smoothing: antialiased;
