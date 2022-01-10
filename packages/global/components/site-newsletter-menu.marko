@@ -14,7 +14,7 @@ $ const {
 
 $ const { hasCookie, fromEmail } = getAsObject(out.global, "newsletterState");
 $ const initiallyExpanded = (!hasCookie && !fromEmail) ? true : false;
-$ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/files/base/randallreilly/all/image/${imagePath}`, { w: 280, auto: "format,compress" }) : null;
+$ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/${imagePath}`, { w: 280, auto: "format,compress" }) : null;
 $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
 
 <if(name && description)>
