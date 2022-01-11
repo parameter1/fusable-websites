@@ -1,3 +1,5 @@
+$comment-start-height: 440px !default;
+$bottom-gradient-height: 80px !default;
 .comment-stream {
   display: flex;
   flex-direction: column;
@@ -9,8 +11,17 @@
     align-items: center;
     justify-content: space-between;
     min-width: 265px;
+    margin-top: -60px;
     margin-right: auto;
     margin-left: auto;
+    border-radius: 10px;
+    text-transform: initial;
+    z-index: 2;
+    &.btn-secondary,
+    &.btn-secondary:hover,
+    &.btn-secondary:focus {
+      background-color: $white;
+    }
   }
 }
 
@@ -22,17 +33,45 @@
 }
 
 .idx-comment-stream {
-  display: none;
+  $self: &;
+  position: relative;
+  display: block;
+  height: $comment-start-height;
+  overflow: hidden;
   margin-top: 24px;
+  border: 1px solid $gray-200;
+  border-radius: 4px;
+  padding-top: map-get($spacers, block);
+  padding-right: map-get($spacers, 3);
+  padding-bottom: map-get($spacers, block);
+  padding-left: map-get($spacers, 3);
+  &::after {
+    height: 50px;
+    background-color: lawngreen;
+  }
+  &__counter {
+   &--0,
+   &--1 {
+     ~ .comment-stream__toggle-btn {
+       display: none;
+     }
+   }
+  }
 
   &--open {
-    display: block;
+    height: initial;
+    ~ .comment-stream__toggle-btn {
+      display: none;
+    }
+    #{ $self }__bottom {
+      display: none;
+    }
   }
 
   &__header {
     margin-bottom: 24px;
 
-    font-size: 20px;
+    font-size: 24px;
     font-weight: $font-weight-semibold;
     line-height: 1;
     color: $gray-800;
@@ -55,25 +94,43 @@
   }
 
   &__posts {
+    #{ $self }__post:last-of-type .idx-comment-post {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
     margin-top: 6px;
-  }
-
-  &__login-message {
-    font-size: 18px;
-    line-height: 1.44;
   }
 
   &__login-form-wrapper {
     margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid $gray-200;
+  }
+
+  &__login-message {
+    @include make-col-ready();
+    @include make-col(5);
+    font-size: 16px;
+    line-height: 1.44;
+    padding-left: 0;
+    &--cta {
+      font-size: 18px;
+      display: block;
+      font-weight: $font-weight-bold;
+    }
   }
 
   &__login-form {
     padding-bottom: 24px;
-    border-bottom: 1px solid $gray-200;
-
+    @include make-col-ready();
+    @include make-col(7);
+    &:only-child {
+      @include make-col(12);
+    }
     .form-group {
       @include media-breakpoint-up(md) {
-        width: 50%;
+        // width: 50%;
       }
     }
 
@@ -108,6 +165,19 @@
     @include theme-toggle-button();
     margin-left: auto;
   }
+  &__bottom {
+    height: $bottom-gradient-height;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+99&0+3,1+100 */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    position: absolute;
+    top: $comment-start-height - $bottom-gradient-height;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
 }
 
 .idx-comment-post {
@@ -124,8 +194,11 @@
 
   &__header {
     margin-bottom: 19px;
+    display: flex;
+    flex-direction: row;
 
     :nth-child(2) {
+      margin-left: map-get($spacers, 1);
       display: flex;
       justify-content: space-between;
     }
@@ -134,7 +207,7 @@
   &__display-name {
     margin-bottom: 2px;
     font-size: 16px;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-bold;
     line-height: 1.3125;
     color: $gray-800;
   }

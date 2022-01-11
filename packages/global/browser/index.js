@@ -5,6 +5,7 @@ import SocialSharing from '@parameter1/base-cms-marko-web-social-sharing/browser
 import Inquiry from '@parameter1/base-cms-marko-web-inquiry/browser';
 import NativeX from '@parameter1/base-cms-marko-web-native-x/browser';
 import OmedaIdentityX from '@parameter1/base-cms-marko-web-omeda-identity-x/browser';
+import MonoRail from '@randall-reilly/package-theme-monorail/browser';
 
 const BlockLoader = () => import(/* webpackChunkName: "global-block-loader" */ './block-loader.vue');
 const InlineNewsletterForm = () => import(/* webpackChunkName: "global-inline-newsletter-form" */ './inline-newsletter-form.vue');
@@ -58,6 +59,7 @@ export default (Browser) => {
   NativeX(Browser);
   Inquiry(Browser);
   OmedaIdentityX(Browser);
+  MonoRail(Browser);
 
   Browser.register('GlobalBlockLoader', BlockLoader);
 
