@@ -1,9 +1,3 @@
-import GlobalMenuToggleButton from './menu-toggle-button.vue';
-import GlobalNewsletterToggleButton from './newsletter-toggle-button.vue';
-import GlobalSiteNewsletterMenu from './site-newsletter-menu.vue';
+import ThemeComponents from '@randall-reilly/package-theme-monorail/browser/ssr';
 
-export default {
-  GlobalMenuToggleButton,
-  GlobalNewsletterToggleButton,
-  GlobalSiteNewsletterMenu,
-};
+export default ThemeComponents;
