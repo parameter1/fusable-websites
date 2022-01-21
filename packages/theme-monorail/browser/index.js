@@ -4,6 +4,7 @@ import Search from '@parameter1/base-cms-marko-web-search/browser';
 import SocialSharing from '@parameter1/base-cms-marko-web-social-sharing/browser';
 import Inquiry from '@parameter1/base-cms-marko-web-inquiry/browser';
 import NativeX from '@parameter1/base-cms-marko-web-native-x/browser';
+import IdentityX from '@parameter1/base-cms-marko-web-identity-x/browser';
 import OmedaIdentityX from '@parameter1/base-cms-marko-web-omeda-identity-x/browser';
 
 const CommentToggleButton = () => import(/* webpackChunkName: "theme-comment-toggle-button" */ './comment-toggle-button.vue');
@@ -21,19 +22,24 @@ const setP1EventsIdentity = ({ p1events, brandKey, encryptedId }) => {
   if (!p1events || !brandKey || !encryptedId) return;
   p1events('setIdentity', `omeda.${brandKey}.customer*${encryptedId}~encrypted`);
 };
-export default (Browser) => {
-  Browser.register('ThemeCommentToggleButton', CommentToggleButton);
+export default (Browser, config = { enableOmedaIdentityX: true }) => {
   const { EventBus } = Browser;
+  const { enableOmedaIdentityX } = config;
+
+  if (enableOmedaIdentityX) {
+    EventBus.$on('omeda-identity-x-authenticated', ({ brandKey, encryptedId }) => {
+      setP1EventsIdentity({ p1events: window.p1events, brandKey, encryptedId });
+    });
+    EventBus.$on('omeda-identity-x-rapid-identify-response', ({ brandKey, encryptedId }) => {
+      setP1EventsIdentity({ p1events: window.p1events, brandKey, encryptedId });
+    });
+  }
+
+  Browser.register('ThemeCommentToggleButton', CommentToggleButton);
+
   EventBus.$on('identity-x-logout', () => {
     if (window.p1events) window.p1events('setIdentity', null);
   });
-  EventBus.$on('omeda-identity-x-authenticated', ({ brandKey, encryptedId }) => {
-    setP1EventsIdentity({ p1events: window.p1events, brandKey, encryptedId });
-  });
-  EventBus.$on('omeda-identity-x-rapid-identify-response', ({ brandKey, encryptedId }) => {
-    setP1EventsIdentity({ p1events: window.p1events, brandKey, encryptedId });
-  });
-
   const emitNewsletterEvent = ({ type, action, data }) => {
     let label = `Step ${data.step}`;
     if (action === 'Error') label = `${label} Error: ${data.error}`;
@@ -56,8 +62,12 @@ export default (Browser) => {
   Search(Browser);
   SocialSharing(Browser);
   NativeX(Browser);
+  if (enableOmedaIdentityX) {
+    OmedaIdentityX(Browser);
+  } else {
+    IdentityX(Browser);
+  }
   Inquiry(Browser);
-  OmedaIdentityX(Browser);
 
   Browser.register('ThemeBlockLoader', BlockLoader);
 
