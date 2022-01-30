@@ -59,6 +59,11 @@
 .node {
   $self: &;
 
+  &__website-section-name {
+    margin-bottom: 6px;
+    @include skin-typography($style: "slug-small", $link-style: "primary", $breakpoint: sm);
+  }
+
   &--section-card-deck {
     #{ $self } {
       &__title {
