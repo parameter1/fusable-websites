@@ -1,6 +1,6 @@
 {
   "name": "@randall-reilly/overdriveonline.com",
-  "version": "1.23.1",
+  "version": "1.24.0",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/sites/overdriveonline.com",
   "license": "MIT",
@@ -21,8 +21,8 @@
     "@parameter1/base-cms-object-path": "^2.45.0",
     "@parameter1/base-cms-utils": "^2.22.2",
     "@parameter1/base-cms-web-cli": "^2.62.0",
-    "@randall-reilly/package-global": "^1.23.1",
-    "@randall-reilly/package-theme-monorail": "^1.23.0",
+    "@randall-reilly/package-global": "^1.24.0",
+    "@randall-reilly/package-theme-monorail": "^1.24.0",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
   }
