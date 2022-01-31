@@ -28,21 +28,25 @@ $ const placement = nxConfig.getPlacement({ name: placementName, aliases });
 
         <marko-web-element block-name=blockName name="row">
           <for|ad| of=ads>
-            $ const node = convertAdToContent(ad, { sectionName: `Sponsored by ${ad.campaign.advertiserName}` });
-            <marko-web-element block-name=blockName name="col">
-              <theme-content-node
-                image-position="top"
-                card=true
-                flush=true
-                modifiers=[blockName]
-                node=node
-                with-section=true
-                with-teaser=false
-                with-dates=false
-              >
-                <@image fluid=true width=330 ar="4:3" />
-              </theme-content-node>
-            </marko-web-element>
+            <if(ad.hasCampaign)>
+              $ const node = convertAdToContent(ad, { sectionName: `Sponsored by ${ad.campaign.advertiserName}` });
+              <marko-web-element block-name=blockName name="col">
+                <theme-content-node
+                  image-position="top"
+                  card=true
+                  flush=true
+                  modifiers=[blockName]
+                  node=node
+                  with-section=true
+                  with-teaser=false
+                  with-dates=false
+                  attrs=ad.attributes.container
+                  link-attrs=ad.attributes.link
+                >
+                  <@image fluid=true width=330 ar="4:3" />
+                </theme-content-node>
+              </marko-web-element>
+            </if>
           </for>
         </marko-web-element>
       </marko-web-element>
