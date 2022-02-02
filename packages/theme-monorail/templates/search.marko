@@ -1,12 +1,18 @@
 import queryFragment from "../graphql/fragments/section-feed-block";
+import { get } from '@parameter1/base-cms-object-path';
 
-$ const { config, req, $markoWebSearch: search } = out.global;
+$ const { config, req, $markoWebSearch: search, site } = out.global;
 
 $ const type = "search";
 $ const title = "Search";
 $ const description = `Search ${config.siteName()}`;
 
 $ const currentPage = search.getCurrentPage();
+
+$ const overrideSortField = get(site, 'config.setSearchSortFieldToScore');
+$ const searchQueryPresent = (search.query.searchQuery && search.query.searchQuery !== '');
+$ const setDefaultSortField = (searchQueryPresent && !search.query.sortField && overrideSortField);
+$ const sortField = setDefaultSortField ? 'SCORE' : search.input.sortField;
 
 <marko-web-default-page-layout type=type title=title description=description>
   <@head>
@@ -40,24 +46,33 @@ $ const currentPage = search.getCurrentPage();
           </div>
 
           <div class="col-lg-9">
-            <marko-web-search-form>
-              <@block class="search-form" />
-              <div class="form-group search-form__group">
-                <label for="search-phrase" class="sr-only">Enter search phrase</label>
-                <marko-web-search-input
-                  id="search-phrase"
-                  class="form-control"
-                  placeholder="Enter search phrase..."
-                />
+            <div class="row">
+              <div class="col-xl-9">
+                <marko-web-search-form>
+                  <@block class="search-form" />
+                  <div class="form-group search-form__group">
+                    <label for="search-phrase" class="sr-only">Enter search phrase</label>
+                    <marko-web-search-input
+                      id="search-phrase"
+                      class="form-control"
+                      placeholder="Enter search phrase..."
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary search-form__btn">
+                    Search
+                  </button>
+                </marko-web-search-form>
+                </div>
+                <div class="col-xl-3">
+                  <marko-web-search-sort-by sort-field=sortField />
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary search-form__btn">
-                Search
-              </button>
-            </marko-web-search-form>
 
             <marko-web-search-query|{ nodes, totalCount }|
               limit=search.getLimit()
               skip=search.getSkip()
+              sort-field=sortField
+              sort-order=search.input.sortOrder
               content-types=search.input.contentTypes
               search-query=search.input.searchQuery
               assigned-to-website-section-ids=search.input.assignedToWebsiteSectionIds
