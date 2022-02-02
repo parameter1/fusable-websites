@@ -73,7 +73,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
           />
         </else-if>
 
-        $ const requiresRegistration = get(content, "userRegistration.isRequired");
+        $ const requiresRegistration = get(content, "userRegistration.isCurrentlyRequired");
         $ const accessLevels = getAsArray(content, "userRegistration.accessLevels");
         <marko-web-identity-x-access|context|
           enabled=requiresRegistration
