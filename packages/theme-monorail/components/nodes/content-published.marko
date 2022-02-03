@@ -13,6 +13,7 @@ $ if (locale) moment.locale(locale);
 
 $ const publishedDate = defaultValue(obj.published, null, v => moment(v).tz(timezone));
 $ const updatedDate = defaultValue(obj.updated, null, v => moment(v).tz(timezone));
+$ const displayUpdatedDate = defaultValue(input.displayUpdatedDate, true);
 
 <marko-web-obj-date|{ value }|
   type="content"
@@ -29,7 +30,7 @@ $ const updatedDate = defaultValue(obj.updated, null, v => moment(v).tz(timezone
     ${value}
   </else>
 </marko-web-obj-date>
-<if(updatedDate && updatedDate.isAfter(publishedDate, "day"))>
+<if(updatedDate && updatedDate.isAfter(publishedDate, "day") && displayUpdatedDate)>
   <marko-web-obj-date|{ value }|
     type="content"
     block-name=blockName
