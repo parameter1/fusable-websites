@@ -5,6 +5,7 @@ $ const { author, content } = input;
 $ const blockName = "author-published-node";
 $ const showPublished = defaultValue(input.showPublished, true);
 $ const lazyload = defaultValue(input.lazyload, true);
+$ const displayUpdatedDate = defaultValue(input.displayUpdatedDate, true);
 
 <marko-web-block name=blockName>
   $ const { primaryImage } = author;
@@ -33,6 +34,7 @@ $ const lazyload = defaultValue(input.lazyload, true);
         obj=content
         format=input.format
         published-prefix=input.publishedPrefix
+        display-updated-date=displayUpdatedDate
       />
     </if>
   </marko-web-element>
