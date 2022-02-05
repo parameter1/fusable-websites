@@ -78,11 +78,13 @@ services:
     environment:
       <<: *env
       <<: *env-virgon
+      HOST: www-rr-eqw.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9801
       LIVERELOAD_PORT: 19801
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce562fd28860bc33b826d6
+    hostname: www-rr-eqw.dev.parameter1.com
     ports:
       - "9801:80"
       - "19801:19801"
@@ -94,11 +96,13 @@ services:
     environment:
       <<: *env
       <<: *env-virgon
+      HOST: www-rr-tlc.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9802
       LIVERELOAD_PORT: 19802
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce563dd28860bc33b829c5
+    hostname: www-rr-tlc.dev.parameter1.com
     ports:
       - "9802:80"
       - "19802:19802"
@@ -110,11 +114,13 @@ services:
     environment:
       <<: *env
       <<: *env-virgon
+      HOST: www-rr-tn.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9803
       LIVERELOAD_PORT: 19803
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce6131d28860bc33c5b786
+    hostname: www-rr-tn.dev.parameter1.com
     ports:
       - "9803:80"
       - "19803:19803"
@@ -126,11 +132,13 @@ services:
     environment:
       <<: *env
       <<: *env-virgon
+      HOST: www-rr-ccj.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9804
       LIVERELOAD_PORT: 19804
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce5519d28860bc33b80a42
+    hostname: www-rr-ccj.dev.parameter1.com
     ports:
       - "9804:80"
       - "19804:19804"
@@ -142,11 +150,13 @@ services:
     environment:
       <<: *env
       <<: *env-virgon
+      HOST: www-rr-hwt.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9805
       LIVERELOAD_PORT: 19805
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce557bd28860bc33b8140d
+    hostname: www-rr-hwt.dev.parameter1.com
     ports:
       - "9805:80"
       - "19805:19805"
@@ -158,11 +168,13 @@ services:
     environment:
       <<: *env
       <<: *env-virgon
+      HOST: www-rr-ovd.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9806
       LIVERELOAD_PORT: 19806
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce561dd28860bc33b823ce
+    hostname: www-rr-ovd.dev.parameter1.com
     ports:
       - "9806:80"
       - "19806:19806"
@@ -174,11 +186,13 @@ services:
     environment:
       <<: *env
       <<: *env-virgon
+      HOST: www-rr-tps.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9807
       LIVERELOAD_PORT: 19807
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce55abd28860bc33b818d0
+    hostname: www-rr-tps.dev.parameter1.com
     ports:
       - "9807:80"
       - "19807:19807"
