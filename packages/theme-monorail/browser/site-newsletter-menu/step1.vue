@@ -30,7 +30,11 @@
           @focus="didFocus = true"
         >
         <privacy-policy :block-name="blockName" />
-        <sign-up-button :class="element('form-button')" :is-loading="isLoading" />
+        <sign-up-button
+          :class="element('form-button')"
+          :is-loading="isLoading"
+          :disabled="disabled"
+        />
       </form>
 
       <div v-if="error" class="alert alert-danger mt-3 mb-0" role="alert">
@@ -82,6 +86,10 @@ export default {
     description: {
       type: String,
       required: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     imageSrc: {
       type: String,
