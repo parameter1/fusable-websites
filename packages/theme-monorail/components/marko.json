@@ -22,6 +22,9 @@
   "<theme-recaptcha>": {
     "template": "./recaptcha.marko"
   },
+  "<theme-site-footer>": {
+    "template": "./site-footer.marko"
+  },
   "<theme-site-menu>": {
     "template": "./site-menu/index.marko"
   },
