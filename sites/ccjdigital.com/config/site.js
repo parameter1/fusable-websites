@@ -33,6 +33,14 @@ module.exports = {
         'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ccj-logo.svg?h=120&auto=format,compress 2x',
       ],
     },
+    corporate: {
+      alt: 'Randall-Reilly Logo',
+      href: 'https://www.randallreilly.com',
+      src: 'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress',
+      srcset: [
+        'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress&dpr=2 2x',
+      ],
+    },
   },
   socialMediaLinks: [
     { provider: 'facebook', href: 'https://www.facebook.com/CommercialCarrierJournal', target: '_blank' },

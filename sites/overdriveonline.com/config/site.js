@@ -31,6 +31,14 @@ module.exports = {
         'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd_logo.svg?h=70&auto=format,compress 2x',
       ],
     },
+    corporate: {
+      alt: 'Randall-Reilly Logo',
+      href: 'https://www.randallreilly.com',
+      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress',
+      srcset: [
+        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress&dpr=2 2x',
+      ],
+    },
   },
   tagline: 'The Voice of the American Trucker',
   socialMediaLinks: [

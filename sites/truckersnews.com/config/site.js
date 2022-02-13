@@ -31,6 +31,14 @@ module.exports = {
         'https://img.truckersnews.com/files/base/randallreilly/all/image/static/tn/tn-logo-white.svg?h=120&auto=format,compress 2x',
       ],
     },
+    corporate: {
+      alt: 'Randall-Reilly Logo',
+      href: 'https://www.randallreilly.com',
+      src: 'https://img.truckersnews.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress',
+      srcset: [
+        'https://img.truckersnews.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress&dpr=2 2x',
+      ],
+    },
   },
   socialMediaLinks: [
     { provider: 'facebook', href: 'https://www.facebook.com/TruckersNews/', target: '_blank' },
