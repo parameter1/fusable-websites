@@ -11,6 +11,7 @@
     "template": "./hero-card.marko",
     "@alias": "string",
     "@description": "string",
+    "@name": "string",
     "@query-params": "object"
   },
   "<theme-latest-podcast-block>": {
@@ -27,9 +28,6 @@
   },
   "<theme-most-popular-block>": {
     "template": "./most-popular.marko"
-  },
-  "<theme-native-x-card-deck-block>": {
-    "template": "./native-x-card-deck.marko"
   },
   "<theme-newsletter-signup-banner-block>": {
     "template": "./newsletter-signup-banner.marko"

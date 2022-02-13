@@ -3,6 +3,7 @@ import sectionFragment from "../../graphql/fragments/section-info";
 
 <!-- @todo likely should change the name of this component -->
 $ const queryParams = {
+  ...input.queryParams,
   sectionAlias: input.alias,
   requiresImage: true,
   limit: 4,
@@ -15,17 +16,19 @@ $ const blockName = "resource-library";
 <marko-web-query|{ nodes, section }| name="website-scheduled-content" params=queryParams>
   <marko-web-block name=blockName>
     <marko-web-element block-name=blockName name="header">
-      ${section.name}
+      ${section && section.name || input.name}
     </marko-web-element>
     <marko-web-element block-name=blockName name="description-wrapper">
       <marko-web-element block-name=blockName name="description">
-        $!{section.description || input.defaultDescription}
+        $!{section && section.description || input.defaultDescription}
       </marko-web-element>
-      <marko-web-element block-name=blockName name="view-more">
-        <marko-web-link href=section.canonicalPath>
-          View more &raquo;
-        </marko-web-link>
-      </marko-web-element>
+      <if(section)>
+        <marko-web-element block-name=blockName name="view-more">
+          <marko-web-link href=section.canonicalPath>
+            View more &raquo;
+          </marko-web-link>
+        </marko-web-element>
+      </if>
     </marko-web-element>
     <marko-web-element block-name=blockName name="deck-wrapper">
 
@@ -60,10 +63,12 @@ $ const blockName = "resource-library";
       </marko-web-element>
     </marko-web-element>
 
-    <marko-web-element block-name=blockName name="view-more-bottom">
-      <marko-web-link href=section.canonicalPath>
-        View more &raquo;
-      </marko-web-link>
-    </marko-web-element>
+    <if(section)>
+      <marko-web-element block-name=blockName name="view-more-bottom">
+        <marko-web-link href=section.canonicalPath>
+          View more &raquo;
+        </marko-web-link>
+      </marko-web-element>
+    </if>
   </marko-web-block>
 </marko-web-query>

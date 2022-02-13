@@ -11,23 +11,26 @@ $ const queryParams = {
   sectionFragment,
 };
 
+$ const name = defaultValue(input.name, "");
 $ const description = defaultValue(input.description, "");
 $ const blockName = "hero-card";
 
 <marko-web-query|{ nodes, section }| name="website-scheduled-content" params=queryParams>
   <marko-web-block name=blockName>
     <marko-web-element block-name=blockName name="header">
-      ${section.name}
+      ${section && section.name || name}
     </marko-web-element>
     <marko-web-element block-name=blockName name="description-wrapper">
       <marko-web-element block-name=blockName name="description">
-        $!{section.description || description}
+        $!{section && section.description || description}
       </marko-web-element>
-      <marko-web-element block-name=blockName name="view-more">
-        <marko-web-link href=section.canonicalPath>
-          View more &raquo;
-        </marko-web-link>
-      </marko-web-element>
+      <if(section)>
+        <marko-web-element block-name=blockName name="view-more">
+          <marko-web-link href=section.canonicalPath>
+            View more &raquo;
+          </marko-web-link>
+        </marko-web-element>
+      </if>
     </marko-web-element>
     <div class="row">
       <div class="col-md col-md-9">
@@ -75,10 +78,12 @@ $ const blockName = "hero-card";
         </default-theme-card-deck-flow>
       </div>
     </div>
-    <marko-web-element block-name=blockName name="view-more-bottom">
-      <marko-web-link href=section.canonicalPath>
-        View more &raquo;
-      </marko-web-link>
-    </marko-web-element>
+    <if(section)>
+      <marko-web-element block-name=blockName name="view-more-bottom">
+        <marko-web-link href=section.canonicalPath>
+          View more &raquo;
+        </marko-web-link>
+      </marko-web-element>
+    </if>
   </marko-web-block>
 </marko-web-query>
