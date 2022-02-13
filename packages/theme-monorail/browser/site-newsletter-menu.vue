@@ -7,6 +7,7 @@
         :block-name="blockName"
         :name="name"
         :description="description"
+        :disabled="disabled"
         :image-src="imageSrc"
         :image-srcset="imageSrcset"
         :recaptcha-site-key="recaptchaSiteKey"
@@ -74,6 +75,10 @@ export default {
     demographic: {
       type: Object,
       required: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     imageSrc: {
       type: String,

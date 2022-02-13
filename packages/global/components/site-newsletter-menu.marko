@@ -9,8 +9,8 @@ $ const {
   defaultNewsletter,
   newsletters,
   demographic,
+  disabled,
 } = site.getAsObject("newsletter.pushdown");
-
 
 $ const { hasCookie, fromEmail } = getAsObject(out.global, "newsletterState");
 $ const initiallyExpanded = (!hasCookie && !fromEmail) ? true : false;
@@ -28,6 +28,7 @@ $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
       defaultNewsletter,
       newsletters,
       demographic,
+      disabled,
       imageSrc,
       imageSrcset,
       initiallyExpanded,
