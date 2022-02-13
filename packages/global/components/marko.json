@@ -26,8 +26,5 @@
   },
   "<global-site-header>": {
     "template": "./site-header.marko"
-  },
-  "<global-site-newsletter-menu>": {
-    "template": "./site-newsletter-menu.marko"
   }
 }
