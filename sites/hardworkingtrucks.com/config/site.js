@@ -31,6 +31,14 @@ module.exports = {
         'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo.svg?h=120&auto=format,compress 2x',
       ],
     },
+    corporate: {
+      alt: 'Randall-Reilly Logo',
+      href: 'https://www.randallreilly.com',
+      src: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress',
+      srcset: [
+        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress&dpr=2 2x',
+      ],
+    },
   },
   socialMediaLinks: [
     { provider: 'facebook', href: 'https://www.facebook.com/hardworkingtrucks/', target: '_blank' },

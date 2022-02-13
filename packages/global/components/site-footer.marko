@@ -106,13 +106,19 @@ $ const tagline = site.get("tagline");
   </default-theme-site-footer-container>
   <default-theme-site-footer-container block-name=blockName modifiers=["primary"]>
     <marko-web-element block-name=blockName name="inner-container">
-      <marko-web-img
-        alt="Randall-Reilly Logo"
-        src="https://p1-cms-assets.imgix.net/files/base/randallreilly/all/image/static/rr-logo.svg?w=200"
-        srcset="https://p1-cms-assets.imgix.net/files/base/randallreilly/all/image/static/rr-logo.svg?w=400 2x"
-        link={ href: "https://www.randallreilly.com", class: `${blockName}__corporate-link` }
-        class=`${blockName}__corporate-logo`
-      />
+      $ const corporateSrc = site.get("logos.corporate.src");
+      $ const corporateSrcset = site.getAsArray("logos.corporate.srcset");
+      $ const corporateHref = site.get("logos.corporate.href");
+      $ const corporateAlt = site.get("logos.corporate.alt") || site.get("company");
+      <if(corporateSrc)>
+        <marko-web-img
+          alt=corporateAlt
+          src=corporateSrc
+          srcset=corporateSrcset
+          link={ href: corporateHref, class: `${blockName}__corporate-link`, target: '_blank' }
+          class=`${blockName}__corporate-logo lazyload`
+        />
+      </if>
 
       $ const footerItems = site.getAsArray("navigation.footer.items");
       <theme-breadcrumbs modifiers=["site-footer"]>
