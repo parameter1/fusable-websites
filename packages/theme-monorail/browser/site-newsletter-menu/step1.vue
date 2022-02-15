@@ -29,7 +29,7 @@
           required
           @focus="didFocus = true"
         >
-        <privacy-policy :block-name="blockName" />
+        <privacy-policy :block-name="blockName" :privacy-policy-link="privacyPolicyLink" />
         <sign-up-button
           :class="element('form-button')"
           :is-loading="isLoading"
@@ -98,6 +98,10 @@ export default {
     imageSrcset: {
       type: String,
       default: null,
+    },
+    privacyPolicyLink: {
+      type: Object,
+      required: true,
     },
   },
 
