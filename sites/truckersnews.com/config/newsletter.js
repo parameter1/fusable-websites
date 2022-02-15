@@ -1,3 +1,5 @@
+const privacyPolicy = require('./privacy-policy');
+
 const baseConfig = {
   action: 'https://randallreilly.dragonforms.com/loading.do',
   hiddenInputs: [
@@ -14,6 +16,7 @@ const defaults = {
     name: 'Truckers News Daily',
     eventCategory: 'Daily Newsletter Subscription',
   },
+  privacyPolicy,
   newsletters: [
     {
       deploymentTypeId: 84,

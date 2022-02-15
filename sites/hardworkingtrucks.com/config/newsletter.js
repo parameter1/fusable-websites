@@ -1,3 +1,5 @@
+const privacyPolicy = require('./privacy-policy');
+
 const baseConfig = {
   action: 'https://randallreilly.dragonforms.com/loading.do',
   hiddenInputs: [
@@ -13,6 +15,7 @@ const defaults = {
     name: 'Hard Working Trucks Weekly',
     eventCategory: 'HWT Weekly Newsletter',
   },
+  privacyPolicy,
   newsletters: [],
   demographic: {
     id: 1463,

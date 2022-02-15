@@ -1,3 +1,5 @@
+const privacyPolicy = require('./privacy-policy');
+
 const baseConfig = {
   action: 'https://randallreilly.dragonforms.com/loading.do',
   hiddenInputs: [
@@ -13,6 +15,7 @@ const defaults = {
     name: 'CCJ Daily Report',
     eventCategory: 'Daily Newsletter Subscription',
   },
+  privacyPolicy,
   newsletters: [
     {
       deploymentTypeId: 30,

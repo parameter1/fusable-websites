@@ -1,3 +1,5 @@
+const privacyPolicy = require('./privacy-policy');
+
 const baseConfig = {
   action: 'https://randallreilly.dragonforms.com/loading.do',
   hiddenInputs: [
@@ -13,6 +15,7 @@ const defaults = {
     name: 'Overdrive Daily Newsletter',
     eventCategory: 'Daily Newsletter Subscription',
   },
+  privacyPolicy,
   newsletters: [
     {
       deploymentTypeId: 35,
