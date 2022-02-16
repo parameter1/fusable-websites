@@ -6,9 +6,11 @@
       :newsletter="defaultNewsletter"
       :name="name"
       :description="description"
+      :disabled="disabled"
       :image-src="imageSrc"
       :image-srcset="imageSrcset"
       :recaptcha-site-key="recaptchaSiteKey"
+      :privacy-policy-link="privacyPolicyLink"
       @submit="stepOneSubmit"
       @subscribe="$emit('subscribe', $event)"
       @focus="$emit('focus', { step: 1 })"
@@ -72,6 +74,10 @@ export default {
       type: Object,
       required: true,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     imageSrc: {
       type: String,
       default: null,
@@ -79,6 +85,10 @@ export default {
     imageSrcset: {
       type: String,
       default: null,
+    },
+    privacyPolicyLink: {
+      type: Object,
+      required: true,
     },
   },
 

@@ -11,6 +11,7 @@
         :image-src="imageSrc"
         :image-srcset="imageSrcset"
         :recaptcha-site-key="recaptchaSiteKey"
+        :privacy-policy-link="privacyPolicyLink"
         @submit="stepOneSubmit"
         @subscribe="$emit('subscribe', $event)"
         @focus="$emit('focus', { step: 1 })"
@@ -87,6 +88,10 @@ export default {
     imageSrcset: {
       type: String,
       default: null,
+    },
+    privacyPolicyLink: {
+      type: Object,
+      required: true,
     },
     initiallyExpanded: {
       type: Boolean,

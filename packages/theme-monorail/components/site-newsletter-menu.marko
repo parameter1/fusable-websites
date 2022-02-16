@@ -10,6 +10,7 @@ $ const {
   newsletters,
   demographic,
   disabled,
+  privacyPolicy,
 } = site.getAsObject("newsletter.pushdown");
 
 $ const { hasCookie, fromEmail } = getAsObject(out.global, "newsletterState");
@@ -33,6 +34,7 @@ $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
       imageSrcset,
       initiallyExpanded,
       recaptchaSiteKey: recaptcha.siteKey,
+      privacyPolicyLink: privacyPolicy,
     }
   />
 </if>

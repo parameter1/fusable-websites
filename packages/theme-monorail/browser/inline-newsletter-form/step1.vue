@@ -31,9 +31,10 @@
         <sign-up-button
           :class="`${blockName}__form-button`"
           :is-loading="isLoading"
+          :disabled="disabled"
         />
       </form>
-      <privacy-policy :block-name="blockName" />
+      <privacy-policy :block-name="blockName" :privacy-policy-link="privacyPolicyLink" />
 
 
       <div v-if="error" class="alert alert-danger mt-3 mb-0" role="alert">
@@ -75,6 +76,10 @@ export default {
       type: String,
       required: true,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     imageSrc: {
       type: String,
       default: null,
@@ -83,8 +88,11 @@ export default {
       type: String,
       default: null,
     },
+    privacyPolicyLink: {
+      type: Object,
+      required: true,
+    },
   },
-
 
   data: () => ({
     blockName: 'inline-newsletter-form-step1',
