@@ -59,7 +59,7 @@ $ const tagline = site.get("tagline");
                     <input type="hidden" name=item.name value=item.value />
                   </for>
                 </div>
-                <button class="btn btn-primary" type="submit">Sign Up</button>
+                <button class="btn btn-primary" type="submit" disabled=(newsletterConfig.disabled && "disabled")>Sign Up</button>
               </form>
             </marko-web-block>
           </if>
