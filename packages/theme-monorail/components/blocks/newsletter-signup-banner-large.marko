@@ -1,7 +1,7 @@
 $ const blockName = "newsletter-signup-banner-large";
 
 $ const { site } = out.global;
-$ const { action, hiddenInputs, name, description } = site.getAsObject('newsletter.signupBannerLarge');
+$ const { action, hiddenInputs, name, description, disabled } = site.getAsObject('newsletter.signupBannerLarge');
 
 <if(action && description && name)>
   <marko-web-block name=blockName class=input.class>
@@ -24,7 +24,7 @@ $ const { action, hiddenInputs, name, description } = site.getAsObject('newslett
       <for|item| of=hiddenInputs>
         <input type="hidden" name=item.name value=item.value />
       </for>
-      <button class="btn btn-primary" type="submit">Sign Up</button>
+      <button class="btn btn-primary" type="submit" disabled=(disabled && "disabled")>Sign Up</button>
     </form>
   </marko-web-block>
 </if>
