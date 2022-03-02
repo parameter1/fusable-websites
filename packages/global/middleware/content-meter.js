@@ -38,9 +38,15 @@ async function shouldMeter(req) {
 }
 
 module.exports = () => asyncRoute(async (req, res, next) => {
-  const { id } = req.params;
+  const { identityX, params } = req;
+  const { id } = params;
+  const idxObj = { isEnabled: true, requiredAccessLevelIds: [] };
+  const { isLoggedIn } = await identityX.checkContentAccess(idxObj);
+  const olyEncId = get(req, 'query.oly_enc_id');
 
-  if (config.enabled && await shouldMeter(req)) {
+  if (isLoggedIn || olyEncId);
+
+  else if (config.enabled && await shouldMeter(req)) {
     const hasCookie = Boolean(get(req, `cookies.${cookieName}`));
 
     const value = (hasCookie) ? JSON.parse(get(req, `cookies.${cookieName}`)) : [];
