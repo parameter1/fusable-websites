@@ -1,0 +1,66 @@
+$ const {
+  displayGate,
+  viewLimit,
+  views,
+} = input.contentMeterState;
+
+$ function setTextVariables() {
+  if (views < viewLimit) {
+    return [
+      `You have ${viewLimit - views} article views remaining.`,
+      `Create a free account`,
+      'Create a free account for unlimited access to Overdrive.',
+      'Create Account'
+    ];
+  }
+  return [
+    'We hope you’ve enjoyed your articles.',
+    'Create a free account',
+    'To keep reading, create a free account.',
+    'Continue',
+  ];
+}
+$ const [title, colapsedTitle, callToAction, registerText] = setTextVariables();
+
+
+<div class="content-meter">
+  <if(displayGate)>
+    <div class="content-meter__overlay"/>
+  </if>
+  <div class="content-meter__bar">
+
+    <h5 class="content-meter__title content-meter--open">
+      <span class="content-meter__title--expanded">
+        ${title}
+      </span>
+      <span class="content-meter__title--colapsed">
+        ${colapsedTitle}
+      </span>
+      <theme-menu-toggle-button
+        class="content-meter__toggler"
+        targets=[
+          ".content-meter",
+          ".content-meter__body",
+          ".content-meter__title",
+          ".content-meter__call-to-action",
+          ]
+        toggle-class="content-meter--open"
+        icon-modifiers=["lg"]
+        icon-name="chevron-up"
+        expanded=true
+        expanded-icon-name="chevron-down"
+      />
+    </h5>
+    <p class="content-meter__call-to-action content-meter--open">
+      ${callToAction}
+    </p>
+    <div class="content-meter__body content-meter--open">
+      <a class="content-meter__register-btn" href="/user/register" title="Create Account">
+        ${registerText}
+      </a>
+      <p class="content-meter__login-text">
+        Already registered? <a class="content-meter__login-text--link" href="/user/login">Sign In</a>
+      </p>
+    </div>
+  </div>
+</div>
