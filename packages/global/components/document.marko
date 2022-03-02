@@ -6,6 +6,7 @@ $ const {
   req,
   nativeX,
   GAM,
+  contentMeterState,
 } = out.global;
 
 <marko-web-document ...input>
@@ -86,6 +87,9 @@ $ const {
   <@below-container>
     <${input.belowContainer} />
     <theme-site-footer />
+    <if(contentMeterState)>
+      <global-content-meter-block content-meter-state=contentMeterState />
+    </if>
   </@below-container>
   <@below-wrapper>
     <marko-web-deferred-script-loader-load />
