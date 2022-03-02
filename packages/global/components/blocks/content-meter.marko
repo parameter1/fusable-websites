@@ -4,12 +4,14 @@ $ const {
   views,
 } = input.contentMeterState;
 
+$ const { config } = out.global;
+
 $ function setTextVariables() {
   if (views < viewLimit) {
     return [
       `You have ${viewLimit - views} article views remaining.`,
       `Create a free account`,
-      'Create a free account for unlimited access to Overdrive.',
+      `Create a free account for unlimited access to ${config.siteName()}.`,
       'Create Account'
     ];
   }
@@ -46,9 +48,9 @@ $ const [title, colapsedTitle, callToAction, registerText] = setTextVariables();
           ]
         toggle-class="content-meter--open"
         icon-modifiers=["lg"]
-        icon-name="chevron-up"
-        expanded=true
-        expanded-icon-name="chevron-down"
+        icon-name="chevron-down"
+        initially-expanded=true
+        expanded-icon-name="chevron-up"
       />
     </h5>
     <p class="content-meter__call-to-action content-meter--open">
