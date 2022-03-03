@@ -1,5 +1,6 @@
 $ const {
   displayGate,
+  displayOverlay,
   viewLimit,
   views,
 } = input.contentMeterState;
@@ -26,7 +27,7 @@ $ const [title, colapsedTitle, callToAction, registerText] = setTextVariables();
 
 
 <div class="content-meter">
-  <if(displayGate)>
+  <if(displayGate && displayOverlay)>
     <div class="content-meter__overlay"/>
   </if>
   <div class="content-meter__bar">

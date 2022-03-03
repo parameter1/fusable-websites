@@ -8,11 +8,10 @@ const queryFragment = require('@randall-reilly/package-theme-monorail/graphql/fr
 
 const cookieName = 'contentMeter';
 const now = new Date().getTime();
-// @todo convert this to pull from site config to allow for overrides
-const config = require('../config/content-meter');
 
 async function shouldMeter(req) {
   const { apollo, params } = req;
+  const config = req.app.locals.site.getAsObject('contentMeter');
   const { id } = params;
   const additionalInput = buildContentInput({ req });
   const content = await loader(apollo, { id, additionalInput, queryFragment });
@@ -39,13 +38,14 @@ async function shouldMeter(req) {
 
 module.exports = () => asyncRoute(async (req, res, next) => {
   const { identityX, params } = req;
+  const config = req.app.locals.site.getAsObject('contentMeter');
   const { id } = params;
   const idxObj = { isEnabled: true, requiredAccessLevelIds: [] };
   const contentAccess = await identityX.checkContentAccess(idxObj);
   const { isLoggedIn, requiresUserInput } = contentAccess;
   const olyEncId = get(req, 'query.oly_enc_id');
 
-  if (olyEncId || (isLoggedIn && !requiresUserInput));
+  if (!config.enabled || olyEncId || (isLoggedIn && !requiresUserInput));
 
   else if (isLoggedIn && requiresUserInput && await shouldMeter(req)) {
     res.locals.contentMeterState = {
