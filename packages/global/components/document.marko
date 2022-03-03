@@ -87,7 +87,7 @@ $ const {
   <@below-container>
     <${input.belowContainer} />
     <theme-site-footer />
-    <if(contentMeterState)>
+    <if(contentMeterState && !contentMeterState.isLoggedIn)>
       <global-content-meter-block content-meter-state=contentMeterState />
     </if>
   </@below-container>
