@@ -11,7 +11,7 @@ module.exports = {
   // excludePrimarySectionAlias: [
   //   'home',
   // ],
-  // 30 days to miliseconds
+  // 30 days to milliseconds
   timeframe: 30 * 24 * 60 * 60 * 1000,
   displayOverlay: true,
 };
