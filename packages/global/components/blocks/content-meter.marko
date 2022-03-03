@@ -12,34 +12,31 @@ $ function setTextVariables() {
     return [
       `You have ${viewLimit - views} article views remaining.`,
       `Create a free account`,
-      `Enter your email address to create a free ${config.siteName()} account & continue reading`,
+      `Create a free ${config.siteName()} account to continue reading`,
       'Create Account'
     ];
   }
   return [
     'We hope you’ve enjoyed your articles.',
     'Create a free account',
-    `Enter your email address to create a free ${config.siteName()} account & continue reading`,
+    `Create a free ${config.siteName()} account to continue reading`,
     'Continue',
   ];
 }
 $ const [title, collapsedTitle, callToAction, registerText] = setTextVariables();
 
 
-<div class="content-meter">
+<div class="content-meter content-meter--open">
   <if(displayGate && displayOverlay)>
     <div class="content-meter__overlay"/>
   </if>
   <div class="content-meter__bar">
 
-    <h5 class="content-meter__title content-meter--open">
+    <div class="content-meter__title">
       <theme-menu-toggle-button
         class="content-meter__toggler"
         targets=[
-          ".content-meter",
-          ".content-meter__body",
-          ".content-meter__title",
-          ".content-meter__call-to-action",
+          ".content-meter"
         ]
         beforeExpanded=`${title}`
         beforeCollapsed=`${collapsedTitle}`
@@ -49,11 +46,11 @@ $ const [title, collapsedTitle, callToAction, registerText] = setTextVariables()
         icon-name="chevron-up"
         expanded-icon-name="chevron-down"
       />
-    </h5>
-    <p class="content-meter__call-to-action content-meter--open">
+    </div>
+    <p class="content-meter__call-to-action">
       ${callToAction}
     </p>
-    <div class="content-meter__body content-meter--open">
+    <div class="content-meter__body">
       <div class="content-meter__login-form">
         <marko-web-identity-x-form-login />
       </div>
