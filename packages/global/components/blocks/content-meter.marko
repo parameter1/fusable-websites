@@ -33,28 +33,22 @@ $ const [title, colapsedTitle, callToAction, registerText] = setTextVariables();
   <div class="content-meter__bar">
 
     <h5 class="content-meter__title content-meter--open">
-      <span class="content-meter__title--expanded">
-        ${title}
-      </span>
-      <span class="content-meter__title--colapsed">
-        ${colapsedTitle}
-      </span>
-      <if(!displayGate)>
-        <theme-menu-toggle-button
-          class="content-meter__toggler"
-          targets=[
-            ".content-meter",
-            ".content-meter__body",
-            ".content-meter__title",
-            ".content-meter__call-to-action",
-          ]
-          toggle-class="content-meter--open"
-          icon-modifiers=["lg"]
-          icon-name="chevron-down"
-          initially-expanded=true
-          expanded-icon-name="chevron-up"
-        />
-      </if>
+      <theme-menu-toggle-button
+        class="content-meter__toggler"
+        targets=[
+          ".content-meter",
+          ".content-meter__body",
+          ".content-meter__title",
+          ".content-meter__call-to-action",
+        ]
+        beforeExpanded=`${title}`
+        beforeColapsed=`${colapsedTitle}`
+        toggle-class="content-meter--open"
+        icon-modifiers=["xl"]
+        initially-expanded=true
+        icon-name="chevron-up"
+        expanded-icon-name="chevron-down"
+      />
     </h5>
     <p class="content-meter__call-to-action content-meter--open">
       ${callToAction}
