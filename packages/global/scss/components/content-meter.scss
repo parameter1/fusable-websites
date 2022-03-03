@@ -95,6 +95,7 @@ $content-meter-mobile-breakpoint: 600px !default;
       &__toggler {
         span {
           @include skin-typography($style: "content-meter-header");
+          margin-bottom: map-get($spacers, block);
         }
       }
       &__call-to-action {
