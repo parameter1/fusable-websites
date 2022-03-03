@@ -80,7 +80,7 @@ export default {
       type: String,
       default: null,
     },
-    beforeColapsed: {
+    beforeCollapsed: {
       type: String,
       default: null,
     },
@@ -92,7 +92,7 @@ export default {
       type: String,
       default: null,
     },
-    afterColapsed: {
+    afterCollapsed: {
       type: String,
       default: null,
     },
@@ -105,22 +105,22 @@ export default {
       const {
         before,
         beforeExpanded,
-        beforeColapsed,
+        beforeCollapsed,
         expanded,
       } = this;
       if (expanded && beforeExpanded) return beforeExpanded;
-      if (!expanded && beforeColapsed) return beforeColapsed;
+      if (!expanded && beforeCollapsed) return beforeCollapsed;
       return before;
     },
     calcAfter() {
       const {
         after,
         afterExpanded,
-        afterColapsed,
+        afterCollapsed,
         expanded,
       } = this;
       if (expanded && afterExpanded) return afterExpanded;
-      if (!expanded && afterColapsed) return afterColapsed;
+      if (!expanded && afterCollapsed) return afterCollapsed;
       return after;
     },
     icon() {
