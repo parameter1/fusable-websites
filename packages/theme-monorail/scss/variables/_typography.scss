@@ -354,6 +354,28 @@ $typography: non-destructive-map-merge(
       "letter-spacing": .25px,
       "text-transform": uppercase,
     ),
+    "content-meter-header": (
+      "color": $white,
+      "font-family": $skin-font-family-secondary,
+      "font-weight": $font-weight-bold,
+      "font-size": 28px,
+      "font-size-mobile": 28px,
+      "line-height": 1,
+      "line-height-mobile": 1.15,
+      "letter-spacing": .3px,
+      "text-transform": none,
+    ),
+    "content-meter-cta": (
+      "color": $white,
+      "font-family": $skin-font-family-secondary,
+      "font-weight": $font-weight-medium,
+      "font-size": 22px,
+      "font-size-mobile": 20px,
+      "line-height": 1,
+      "line-height-mobile": 1.1,
+      "letter-spacing": .24px,
+      "text-transform": none,
+    ),
   ),
   $typography
 );
