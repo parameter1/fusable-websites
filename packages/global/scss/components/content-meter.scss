@@ -50,7 +50,14 @@
       &__body {
         display: none;
         &.content-meter--open {
-          display: block;
+          display: flex;
+          justify-content: center;
+        }
+        #{ $self }__login-form {
+          max-width: 300px;
+          .form-group label {
+            display: none;
+          }
         }
       }
     }
@@ -74,5 +81,17 @@
     .marko-web-icon svg {
       fill: $white;
     };
+  }
+
+  &__login-form {
+    fieldset {
+      @media (min-width: $skin-desktop-menu-breakpoint) {
+        display: flex;
+        .form-group {
+          margin-bottom: 0;
+          margin-right: 1rem;
+        }
+      }
+    }
   }
 }
