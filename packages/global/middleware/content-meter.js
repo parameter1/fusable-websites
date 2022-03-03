@@ -41,12 +41,19 @@ module.exports = () => asyncRoute(async (req, res, next) => {
   const { identityX, params } = req;
   const { id } = params;
   const idxObj = { isEnabled: true, requiredAccessLevelIds: [] };
-  const { isLoggedIn } = await identityX.checkContentAccess(idxObj);
+  const contentAccess = await identityX.checkContentAccess(idxObj);
+  const { isLoggedIn, requiresUserInput } = contentAccess;
   const olyEncId = get(req, 'query.oly_enc_id');
 
-  if (isLoggedIn || olyEncId);
+  if (olyEncId || (isLoggedIn && !requiresUserInput));
 
-  else if (config.enabled && await shouldMeter(req)) {
+  else if (isLoggedIn && requiresUserInput && await shouldMeter(req)) {
+    res.locals.contentMeterState = {
+      isLoggedIn: true,
+      requiresUserInput,
+      displayGate: false,
+    };
+  } else if (config.enabled && await shouldMeter(req)) {
     const hasCookie = Boolean(get(req, `cookies.${cookieName}`));
 
     const value = (hasCookie) ? JSON.parse(get(req, `cookies.${cookieName}`)) : [];
@@ -67,6 +74,8 @@ module.exports = () => asyncRoute(async (req, res, next) => {
     res.locals.contentMeterState = {
       ...config,
       views: valid.length,
+      isLoggedIn: false,
+      requiredUserInput: true,
       displayGate,
     };
     res.cookie(cookieName, JSON.stringify(valid), { maxAge: config.timeframe });
