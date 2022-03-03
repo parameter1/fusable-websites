@@ -2,5 +2,4 @@ const defulatConfig = require('@randall-reilly/package-global/config/content-met
 
 module.exports = {
   ...defulatConfig,
-  displayOverlay: false,
 };
