@@ -33,6 +33,12 @@ async function shouldMeter(req) {
   if (excludePrimarySectionAliass.includes(content.primarySection.alias)) {
     return false;
   }
+  // excludeLabels: Excludes content metering on page that matches labels
+  const excludeLabels = defaultValue(config.excludeLabels, []);
+  const contentLabels = defaultValue(content.labels, []);
+  if (excludeLabels.some(r => contentLabels.indexOf(r) >= 0)) {
+    return false;
+  }
   return true;
 }
 

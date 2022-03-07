@@ -1,6 +1,10 @@
 module.exports = {
   enabled: process.env.ENABLE_CONTENT_METER === 'true',
   viewLimit: 3,
+  excludeLabels: [
+    'Sponsored',
+    'Sponsored by RoadPro',
+  ],
   // excludeContentTypes: [
   //   'company',
   //   'contact',
