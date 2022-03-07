@@ -65,7 +65,7 @@ module.exports = () => asyncRoute(async (req, res, next) => {
   const idFromCookie = cookies.oly_enc_id ? getId(cookies.oly_enc_id.replace(/^"/, '').replace(/"$/, '')) : undefined;
   const olyEncId = config.useOlyEncIdCookie ? idFromQuery || idFromCookie : idFromQuery;
 
-  if (!config.enabled || olyEncId || (isLoggedIn && !requiresUserInput));
+  if (!config.enable || olyEncId || (isLoggedIn && !requiresUserInput));
 
   else if (isLoggedIn && requiresUserInput && await shouldMeter(req)) {
     res.locals.contentMeterState = {
@@ -73,7 +73,7 @@ module.exports = () => asyncRoute(async (req, res, next) => {
       requiresUserInput,
       displayGate: false,
     };
-  } else if (config.enabled && await shouldMeter(req)) {
+  } else if (config.enable && await shouldMeter(req)) {
     const hasCookie = Boolean(get(req, `cookies.${cookieName}`));
 
     const value = (hasCookie) ? JSON.parse(get(req, `cookies.${cookieName}`)) : [];
