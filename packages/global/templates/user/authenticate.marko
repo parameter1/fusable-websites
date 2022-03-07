@@ -6,15 +6,7 @@ $ const title = "Authenticate";
 <marko-web-default-page-layout type=type title=title description=title>
   <@page>
     <marko-web-page-wrapper>
-      <@section|{ aliases }| modifiers=["first"]>
-        <theme-gam-define-display-ad
-          name="leaderboard"
-          position="static_page"
-          aliases=aliases
-          modifiers=["inter-block"]
-        />
-      </@section>
-      <@section>
+      <@section modifiers=["user-form"]>
         <marko-web-identity-x-form-authenticate />
       </@section>
     </marko-web-page-wrapper>

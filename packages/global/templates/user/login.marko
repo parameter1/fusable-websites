@@ -12,27 +12,9 @@ $ const description = `Log in to ${config.siteName()}`;
   </@head>
   <@page>
     <marko-web-page-wrapper>
-      <@section|{ aliases }| modifiers=["first"]>
-        <theme-gam-define-display-ad
-          name="leaderboard"
-          position="static_page"
-          aliases=aliases
-          modifiers=["inter-block"]
-        />
-      </@section>
-
-      <@section>
+      <@section modifiers=["user-form"]>
         <h1 class="page-wrapper__title">${description}</h1>
         <marko-web-identity-x-form-login />
-      </@section>
-
-      <@section|{ aliases }|>
-        <theme-gam-define-display-ad
-          name="rotation"
-          position="static_page"
-          aliases=aliases
-          modifiers=["inter-block"]
-        />
       </@section>
     </marko-web-page-wrapper>
   </@page>
