@@ -8,22 +8,22 @@ const whitepaper = require('../templates/content/whitepaper');
 const content = require('../templates/content');
 
 module.exports = (app) => {
-  app.get('/*?contact/:id(\\d{8})*', contentMeter(), withContent({
+  app.get('/*?contact/:id(\\d{8})*', withContent({
     template: contact,
     queryFragment,
   }));
 
-  app.get('/*?company/:id(\\d{8})*', contentMeter(), withContent({
+  app.get('/*?company/:id(\\d{8})*', withContent({
     template: company,
     queryFragment,
   }));
 
-  app.get('/*?product/:id(\\d{8})*', contentMeter(), withContent({
+  app.get('/*?product/:id(\\d{8})*', withContent({
     template: product,
     queryFragment,
   }));
 
-  app.get('/*?whitepaper/:id(\\d{8})*', contentMeter(), withContent({
+  app.get('/*?whitepaper/:id(\\d{8})*', withContent({
     template: whitepaper,
     queryFragment,
   }));
