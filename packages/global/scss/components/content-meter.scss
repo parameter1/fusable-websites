@@ -76,6 +76,11 @@ $content-meter-mobile-breakpoint: 600px !default;
   }
 
   &__login-form {
+    max-width: 700px;
+    p {
+      font-family: $skin-font-family-secondary;
+      font-weight: $font-weight-medium;
+    }
     fieldset {
       @media (min-width: $content-meter-mobile-breakpoint) {
         display: flex;
