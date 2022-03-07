@@ -79,8 +79,10 @@ $ const {
       on="newsletter-form-subscription"
       clear-data=true
     />
-    <global-site-header has-user=false reg-enabled=false />
-    <theme-site-menu has-user=false reg-enabled=false />
+    <marko-web-identity-x-context|{ hasUser, isEnabled }|>
+      <global-site-header has-user=hasUser reg-enabled=isEnabled />
+      <theme-site-menu has-user=hasUser reg-enabled=isEnabled />
+    </marko-web-identity-x-context>
     <theme-site-newsletter-menu />
     <${input.aboveContainer} />
   </@above-container>
