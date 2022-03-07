@@ -1,5 +1,5 @@
 module.exports = {
-  enabled: true,
+  enabled: process.env.ENABLE_CONTENT_METER === 'true',
   viewLimit: 3,
   // excludeContentTypes: [
   //   'company',
