@@ -1,5 +1,5 @@
 module.exports = {
-  enabled: process.env.ENABLE_CONTENT_METER === 'true',
+  enable: process.env.ENABLE_CONTENT_METER === 'true',
   viewLimit: 3,
   excludeLabels: [
     'Sponsored',
