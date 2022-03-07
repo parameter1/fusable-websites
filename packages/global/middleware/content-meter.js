@@ -42,14 +42,28 @@ async function shouldMeter(req) {
   return true;
 }
 
+const getId = (value) => {
+  if (!value) return null;
+  const trimmed = `${value}`.trim();
+  return /^[a-z0-9]{15}$/i.test(trimmed) ? trimmed : null;
+};
+
 module.exports = () => asyncRoute(async (req, res, next) => {
-  const { identityX, params } = req;
+  const {
+    identityX,
+    params,
+    query,
+    cookies,
+  } = req;
   const config = req.app.locals.site.getAsObject('contentMeter');
   const { id } = params;
   const idxObj = { isEnabled: true, requiredAccessLevelIds: [] };
   const contentAccess = await identityX.checkContentAccess(idxObj);
   const { isLoggedIn, requiresUserInput } = contentAccess;
-  const olyEncId = get(req, 'query.oly_enc_id');
+  // oly_enc_id getting of query param or if cookie is present
+  const idFromQuery = getId(query.oly_enc_id);
+  const idFromCookie = cookies.oly_enc_id ? getId(cookies.oly_enc_id.replace(/^"/, '').replace(/"$/, '')) : undefined;
+  const olyEncId = config.useOlyEncIdCookie ? idFromQuery || idFromCookie : idFromQuery;
 
   if (!config.enabled || olyEncId || (isLoggedIn && !requiresUserInput));
 
