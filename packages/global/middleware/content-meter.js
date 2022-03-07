@@ -63,7 +63,7 @@ module.exports = () => asyncRoute(async (req, res, next) => {
   // oly_enc_id getting of query param or if cookie is present
   const idFromQuery = getId(query.oly_enc_id);
   const idFromCookie = cookies.oly_enc_id ? getId(cookies.oly_enc_id.replace(/^"/, '').replace(/"$/, '')) : undefined;
-  const olyEncId = config.useOlyEncIdCookie ? idFromQuery || idFromCookie : idFromQuery;
+  const olyEncId = idFromQuery || idFromCookie;
 
   if (!config.enable || olyEncId || (isLoggedIn && !requiresUserInput));
 
