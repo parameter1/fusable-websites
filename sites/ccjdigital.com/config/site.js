@@ -1,4 +1,5 @@
 const navigation = require('./navigation');
+const contentMeter = require('./content-meter');
 const gam = require('./gam');
 const nativeX = require('./native-x');
 const top250 = require('./top250');
@@ -8,6 +9,7 @@ const search = require('./search');
 
 module.exports = {
   navigation,
+  contentMeter,
   gam,
   nativeX,
   identityX,
