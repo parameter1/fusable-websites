@@ -17,6 +17,7 @@ const oembedHandler = require('./oembed-handler');
 const omedaConfig = require('./config/omeda');
 const idxRouteTemplates = require('./templates/user');
 const recaptcha = require('./config/recaptcha');
+const idxNavItems = require('./config/identity-x-nav');
 
 const routes = (siteRoutes, siteConfig) => (app) => {
   // Handle submissions on /__inquiry
@@ -67,6 +68,7 @@ module.exports = (options = {}) => {
         idxConfig,
         idxRouteTemplates,
       });
+      idxNavItems({ site: app.locals.site });
 
       // Setup GAM.
       const gamConfig = get(options, 'siteConfig.gam');

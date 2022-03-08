@@ -11,6 +11,9 @@ module.exports = {
   gam,
   nativeX,
   identityX,
+  idxNavItems: {
+    enable: process.env.IDX_NAV_ENABLE || false,
+  },
   newsletter,
   search,
   top250,

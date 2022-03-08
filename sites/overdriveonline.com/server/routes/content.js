@@ -1,4 +1,5 @@
 const withContent = require('@randall-reilly/package-global/middleware/with-content');
+const contentMeter = require('@randall-reilly/package-global/middleware/content-meter');
 const queryFragment = require('@randall-reilly/package-theme-monorail/graphql/fragments/content-page');
 const contact = require('@randall-reilly/package-global/templates/content/contact');
 const company = require('../templates/content/company');
@@ -27,7 +28,7 @@ module.exports = (app) => {
     queryFragment,
   }));
 
-  app.get('/*?/:id(\\d{8})/*|/:id(\\d{8})(/|$)', withContent({
+  app.get('/*?/:id(\\d{8})/*|/:id(\\d{8})(/|$)', contentMeter(), withContent({
     template: content,
     queryFragment,
   }));

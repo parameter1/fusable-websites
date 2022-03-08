@@ -2,7 +2,15 @@ import { getAsArray, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
 import getContentPreview from "@randall-reilly/package-theme-monorail/utils/get-content-preview";
 
-$ const { site } = out.global;
+$ const { site, contentMeterState } = out.global;
+// @todo move to util to be used in other contnet layouts
+$ const getRestrictByContentMeter = () => {
+  if (!contentMeterState) return false;
+  if (!contentMeterState.isLoggedIn && !contentMeterState.displayGate) return false;
+  if (contentMeterState.isLoggedIn && !contentMeterState.requiresUserInput) return false;
+  return true;
+}
+$ const restrictByContentMeter = getRestrictByContentMeter();
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
 
@@ -21,12 +29,14 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
   ...rest
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
-    <theme-gam-define-display-ad
-      name="leaderboard"
-      position="content_page"
-      aliases=aliases
-      modifiers=["inter-block"]
-    />
+    <if(!restrictByContentMeter)>
+      <theme-gam-define-display-ad
+        name="leaderboard"
+        position="content_page"
+        aliases=aliases
+        modifiers=["inter-block"]
+      />
+    </if>
     <theme-gam-wallpaper-ad aliases=aliases position="content_page" />
   </@section>
 
@@ -56,24 +66,25 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
     $ const { primarySection } = content;
     <div class="content-page-body">
       <default-theme-page-contents|{ blockName }| attrs={ "data-gallery-id": id }>
-        <if(content.embedCode)>
-          $ const iframeContent = contentIframe(content);
-          <marko-web-content-embed-code block-name=blockName obj=iframeContent />
+        <if(!restrictByContentMeter)>
+          <if(content.embedCode)>
+            $ const iframeContent = contentIframe(content);
+            <marko-web-content-embed-code block-name=blockName obj=iframeContent />
+          </if>
+          <else-if(type === "media-gallery")>
+            <!-- <marko-web-image-slider images=images /> -->
+          </else-if>
+          <else-if(displayPrimaryImage)>
+            $ let forceDisplay;
+            $ if (type === "contact") forceDisplay = "left";
+            $ if (type === "video") forceDisplay = "none";
+            <theme-primary-image-block
+              obj=content.primaryImage
+              force-display=forceDisplay
+            />
+          </else-if>
         </if>
-        <else-if(type === "media-gallery")>
-          <!-- <marko-web-image-slider images=images /> -->
-        </else-if>
-        <else-if(displayPrimaryImage)>
-          $ let forceDisplay;
-          $ if (type === "contact") forceDisplay = "left";
-          $ if (type === "video") forceDisplay = "none";
-          <theme-primary-image-block
-            obj=content.primaryImage
-            force-display=forceDisplay;
-          />
-        </else-if>
-
-        $ const requiresRegistration = get(content, "userRegistration.isCurrentlyRequired");
+        $ const requiresRegistration = (restrictByContentMeter) ? true : get(content, "userRegistration.isCurrentlyRequired");
         $ const accessLevels = getAsArray(content, "userRegistration.accessLevels");
         <marko-web-identity-x-access|context|
           enabled=requiresRegistration

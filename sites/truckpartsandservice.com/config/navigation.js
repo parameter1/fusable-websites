@@ -40,6 +40,7 @@ const mobileMenu = {
 
 const desktopMenu = {
   about: [...utilities],
+  user: [],
   sections: [
     ...topics.primary,
     ...topics.expanded,

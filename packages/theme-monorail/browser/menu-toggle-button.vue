@@ -5,12 +5,12 @@
     :aria-label="buttonLabel"
     @click="toggle"
   >
-    <span v-if="before">
-      {{ before }}
+    <span v-if="calcBefore">
+      {{ calcBefore }}
     </span>
     <component :is="icon" :modifiers="iconModifiers" />
-    <span v-if="after">
-      {{ after }}
+    <span v-if="calcAfter">
+      {{ calcAfter }}
     </span>
   </button>
 </template>
@@ -76,7 +76,23 @@ export default {
       type: String,
       default: null,
     },
+    beforeExpanded: {
+      type: String,
+      default: null,
+    },
+    beforeCollapsed: {
+      type: String,
+      default: null,
+    },
     after: {
+      type: String,
+      default: null,
+    },
+    afterExpanded: {
+      type: String,
+      default: null,
+    },
+    afterCollapsed: {
       type: String,
       default: null,
     },
@@ -85,6 +101,28 @@ export default {
     expanded: false,
   }),
   computed: {
+    calcBefore() {
+      const {
+        before,
+        beforeExpanded,
+        beforeCollapsed,
+        expanded,
+      } = this;
+      if (expanded && beforeExpanded) return beforeExpanded;
+      if (!expanded && beforeCollapsed) return beforeCollapsed;
+      return before;
+    },
+    calcAfter() {
+      const {
+        after,
+        afterExpanded,
+        afterCollapsed,
+        expanded,
+      } = this;
+      if (expanded && afterExpanded) return afterExpanded;
+      if (!expanded && afterCollapsed) return afterCollapsed;
+      return after;
+    },
     icon() {
       if (this.expanded) return `icon-${this.expandedIconName}`;
       return `icon-${this.iconName}`;

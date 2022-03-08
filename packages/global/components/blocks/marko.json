@@ -17,6 +17,9 @@
   "<global-reader-rigs-submit-block>": {
     "template": "./reader-rigs-submit.marko"
   },
+  "<global-content-meter-block>": {
+    "template": "./content-meter.marko"
+  },
   "<global-sponsors-block>": {
     "template": "./sponsors.marko",
     "@alias": "string"
