@@ -108,8 +108,10 @@ $content-meter-mobile-breakpoint: 600px !default;
       }
       &__body {
         display: flex;
+        min-height: 108px;
         @media (min-width: $content-meter-mobile-breakpoint) {
           justify-content: center;
+          min-height: 48px;
         }
       }
     }
