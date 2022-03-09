@@ -18,6 +18,7 @@ const omedaConfig = require('./config/omeda');
 const idxRouteTemplates = require('./templates/user');
 const recaptcha = require('./config/recaptcha');
 const idxNavItems = require('./config/identity-x-nav');
+let disableNewsletterInitiallyExpanded = false;
 
 const routes = (siteRoutes, siteConfig) => (app) => {
   // Handle submissions on /__inquiry
@@ -54,8 +55,21 @@ module.exports = (options = {}) => {
       // Use paginated middleware
       app.use(htmlSitemapPagination());
 
-      // Use newsletterState middleware
-      app.use(newsletterState());
+      // set exclusion for newsletter pushdown cookie logic and setting of pushdown being disabled.
+      app.use((req, res, next) => {
+        const excludedStartsWith = ['/__', '/user'];
+        const exclusions = excludedStartsWith.filter(match => req.path.startsWith(match));
+        if (exclusions.length) {
+          disableNewsletterInitiallyExpanded = true;
+          res.locals.disableNewsletterInitiallyExpanded = disableNewsletterInitiallyExpanded;
+        }
+        next();
+      });
+
+      if (!disableNewsletterInitiallyExpanded) {
+        // Use newsletterState middleware
+        app.use(newsletterState());
+      }
 
       // Setup IdentityX + Omeda
       const idxConfig = getAsObject(options, 'siteConfig.identityX');

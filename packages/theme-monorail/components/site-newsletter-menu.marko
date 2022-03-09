@@ -1,7 +1,7 @@
 import { buildImgixUrl } from "@parameter1/base-cms-image";
 import { getAsObject } from "@parameter1/base-cms-object-path";
 
-$ const { site, config, recaptcha } = out.global;
+$ const { site, config, recaptcha, disableNewsletterInitiallyExpanded } = out.global;
 $ const {
   name,
   description,
@@ -14,7 +14,7 @@ $ const {
 } = site.getAsObject("newsletter.pushdown");
 
 $ const { hasCookie, fromEmail } = getAsObject(out.global, "newsletterState");
-$ const initiallyExpanded = (!hasCookie && !fromEmail) ? true : false;
+$ const initiallyExpanded = (!hasCookie && !fromEmail && !disableNewsletterInitiallyExpanded) ? true : false;
 $ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/${imagePath}`, { w: 280, auto: "format,compress" }) : null;
 $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
 
