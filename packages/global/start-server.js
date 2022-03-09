@@ -18,8 +18,8 @@ const omedaConfig = require('./config/omeda');
 const idxRouteTemplates = require('./templates/user');
 const recaptcha = require('./config/recaptcha');
 const idxNavItems = require('./config/identity-x-nav');
-let disableNewsletterInitiallyExpanded = false;
 
+let disableNewsletterInitiallyExpanded = false;
 const routes = (siteRoutes, siteConfig) => (app) => {
   // Handle submissions on /__inquiry
   loadInquiry(app);
