@@ -10,8 +10,8 @@ $ const { config } = out.global;
 $ function setTextVariables() {
   // Set title based on views remaining
   let dynamicTitle = 'We hope you’ve enjoyed your articles.'
-  if (viewLimit - views === 1) dynamicTitle = `You have 1 article view remaining.`;
   if (views < viewLimit) dynamicTitle = `You have ${viewLimit - views} article views remaining.`;
+  if (viewLimit - views === 1) dynamicTitle = `You have 1 article view remaining.`;
 
   return [
     dynamicTitle,
