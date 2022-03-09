@@ -6,11 +6,12 @@ $ const {
 } = input.contentMeterState;
 
 $ const { config } = out.global;
+$ const dynamicTitle = (viewLimit - views === 1) ? 'You have one article view remaining.' : `You have ${viewLimit - views} article views remaining.`;
 
 $ function setTextVariables() {
   if (views < viewLimit) {
     return [
-      `You have ${viewLimit - views} article views remaining.`,
+      dynamicTitle,
       `Create a free account`,
       `Create a free ${config.siteName()} account to continue reading`,
       'Create Account'
