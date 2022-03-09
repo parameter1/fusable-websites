@@ -65,7 +65,8 @@ module.exports = () => asyncRoute(async (req, res, next) => {
   const idFromCookie = cookies.oly_enc_id ? getId(cookies.oly_enc_id.replace(/^"/, '').replace(/"$/, '')) : undefined;
   const olyEncId = idFromQuery || idFromCookie;
 
-  if (!config.enable || olyEncId || (isLoggedIn && !requiresUserInput));
+  // If disabled, not logged in & have a oly_enc_id or logged in and have all required fields
+  if (!config.enable || (!isLoggedIn && olyEncId) || (isLoggedIn && !requiresUserInput));
 
   else if (isLoggedIn && requiresUserInput && await shouldMeter(req)) {
     res.locals.contentMeterState = {
