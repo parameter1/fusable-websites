@@ -90,7 +90,7 @@ module.exports = () => asyncRoute(async (req, res, next) => {
       valid.push({ id, viewed: now });
     }
 
-    const displayGate = (valid.length === config.viewLimit && !valid.find(v => v.id === id));
+    const displayGate = (valid.length >= config.viewLimit && !valid.find(v => v.id === id));
 
     res.locals.contentMeterState = {
       ...config,
