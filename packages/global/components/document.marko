@@ -85,13 +85,13 @@ $ const {
     </marko-web-identity-x-context>
     <theme-site-newsletter-menu />
     <${input.aboveContainer} />
+    <if(contentMeterState && !contentMeterState.isLoggedIn)>
+      <global-content-meter-block content-meter-state=contentMeterState />
+    </if>
   </@above-container>
   <@below-container>
     <${input.belowContainer} />
     <theme-site-footer />
-    <if(contentMeterState && !contentMeterState.isLoggedIn)>
-      <global-content-meter-block content-meter-state=contentMeterState />
-    </if>
   </@below-container>
   <@below-wrapper>
     <marko-web-deferred-script-loader-load />
