@@ -1,7 +1,11 @@
 $content-meter-mobile-breakpoint: 600px !default;
 .content-meter {
   $self: &;
+  ~ .site-footer {
+    margin-bottom: 72px;
+  }
   &__overlay {
+    z-index: 1499;
     position: fixed;
     background-color: rgba(0, 0, 0, .7);
     top: 0;
@@ -93,6 +97,12 @@ $content-meter-mobile-breakpoint: 600px !default;
   }
 
   &--open {
+    ~ .site-footer {
+      margin-bottom: 296px;
+      @media (min-width: $content-meter-mobile-breakpoint) {
+        margin-bottom: 166px;
+      }
+    }
     #{ $self } {
       &__bar {
         padding-bottom: map-get($spacers, 4);
