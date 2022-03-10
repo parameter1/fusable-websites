@@ -16,6 +16,6 @@ module.exports = () => (req, res, next) => {
     res.cookie(cookieName, true, { maxAge });
   }
 
-  res.locals.newsletterState = { hasCookie, fromEmail, initiallyExpanded };
+  res.locals.newsletterState = { initiallyExpanded };
   next();
 };
