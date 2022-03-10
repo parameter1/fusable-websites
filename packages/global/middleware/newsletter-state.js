@@ -7,6 +7,7 @@ module.exports = () => (req, res, next) => {
   const utmMedium = get(req, 'query.utm_medium');
   const olyEncId = get(req, 'query.oly_enc_id');
   const fromEmail = utmMedium === 'email' || olyEncId || false;
+  const initiallyExpanded = !(hasCookie || fromEmail);
 
   if (!hasCookie) {
     // Expire in 14 days (2yr if already signed up)
@@ -15,6 +16,6 @@ module.exports = () => (req, res, next) => {
     res.cookie(cookieName, true, { maxAge });
   }
 
-  res.locals.newsletterState = { hasCookie, fromEmail };
+  res.locals.newsletterState = { hasCookie, fromEmail, initiallyExpanded };
   next();
 };
