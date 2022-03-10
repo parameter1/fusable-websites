@@ -88,10 +88,10 @@ $ const {
   </@above-container>
   <@below-container>
     <${input.belowContainer} />
-    <theme-site-footer />
     <if(contentMeterState && !contentMeterState.isLoggedIn)>
       <global-content-meter-block content-meter-state=contentMeterState />
     </if>
+    <theme-site-footer />
   </@below-container>
   <@below-wrapper>
     <marko-web-deferred-script-loader-load />
