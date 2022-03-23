@@ -1,10 +1,7 @@
 $ const { site } = out.global;
 $ const type = "static";
 $ const title = "Distributor of the Year Award Nominations";
-$ {
-  const description =
-    "The TPS Distributor of the Year award serves as one of the independent aftermarket’s highest honors. Created in 2002, the award program acknowledges independent aftermarket distributors who display excellent customer service, business acumen, market knowledge and willingness to improve and evolve their business with industry changes.";
-}
+$ const description = "The TPS Distributor of the Year award serves as one of the independent aftermarket’s highest honors. Created in 2002, the award program acknowledges independent aftermarket distributors who display excellent customer service, business acumen, market knowledge and willingness to improve and evolve their business with industry changes.";
 <marko-web-default-page-layout type=type title=title description=description>
   <@head>
     <marko-web-gtm-default-context|{ context }| type=type>
@@ -39,53 +36,12 @@ $ {
                 The <em>TPS</em> Distributor of the Year award serves as one of the independent aftermarket’s highest honors. Created in 2002, the award program acknowledges independent aftermarket distributors who display excellent customer service, business acumen, market knowledge and willingness to improve and evolve their business with industry changes.
               </p>
               <p>
-                <a href="/distributor-of-the-year">Click here</a> to view past award finalists and winners.
-              </p>
-              <p class="text-center">
-                <strong>Sponsored by</strong>
+                <a href="/distributor-of-the-year-archive">Click here</a> to view past award finalists and winners.
               </p>
             </div>
           </div>
         </div>
-        <div class="row sponsor-logos">
-          <div class="col logo">
-            <marko-web-img
-              class="img-fluid"
-              alt="Successful Dealer Award Sponsor: CVSN"
-              src="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/cvsn.png?h=100"
-              srcset="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/cvsn.png?h=100 2x"/>
-          </div>
-          <div class="col logo">
-            <marko-web-img
-              class="img-fluid"
-              alt="Successful Dealer Award Sponsor: Interstate Billing"
-              src="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/interstate-billing.png?h=100"
-              srcset="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/interstate-billing.png?h=100 2x"/>
-          </div>
-          <div class="col logo">
-            <marko-web-img
-              class="img-fluid"
-              alt="Successful Dealer Award Sponsor: Karmak"
-              src="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/karmak.png?h=100"
-              srcset="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/karmak.png?h=100 2x"/>
-          </div>
-          <div class="col logo">
-            <marko-web-img
-              class="img-fluid"
-              alt="Successful Dealer Award Sponsor: Meritor"
-              src="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/meritor.png?h=100"
-              srcset="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/meritor.png?h=100 2x"/>
-          </div>
-        </div>
-        <div class="row sponsor-logos">
-          <div class="col-3 logo">
-            <marko-web-img
-              class="img-fluid"
-              alt="Successful Dealer Award Sponsor: Minimizer/Premier Manufacturing"
-              src="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/minimizer-premier-manufacturing.png?h=100"
-              srcset="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/minimizer-premier-manufacturing.png?h=100 2x"/>
-          </div>
-        </div>
+        <global-sponsors-block alias="distributor-of-the-year" />
         <div class="content-page-body">
           <div id="wufoo-qwi5aax0lscm3g">
             Fill out my

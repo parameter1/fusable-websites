@@ -55,8 +55,8 @@ $ const perPage = 18;
       />
     </if>
 
-    <if(['distributor-of-the-year', 'successful-dealer-award'].includes(alias))>
-      <global-sponsors-block alias=alias />
+    <if(['distributor-of-the-year-archive', 'successful-dealer-award-archive'].includes(alias))>
+      <global-sponsors-block alias=alias.replace('-archive', '') />
     </if>
 
     <theme-section-feed-block alias=alias lazyload=false>

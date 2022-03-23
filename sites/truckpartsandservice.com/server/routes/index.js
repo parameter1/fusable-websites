@@ -2,7 +2,7 @@ const home = require('./home');
 const content = require('./content');
 const dynamicPages = require('./dynamic-page');
 const websiteSections = require('./website-section');
-// const staticPages = require('./static');
+const staticPages = require('./static');
 
 module.exports = (app) => {
   // Homepage
@@ -15,7 +15,7 @@ module.exports = (app) => {
   content(app);
 
   // Static Pages
-  // staticPages(app);
+  staticPages(app);
 
   // Website Sections
   websiteSections(app);
