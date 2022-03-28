@@ -16,7 +16,7 @@ $ function setTextVariables() {
   return [
     dynamicTitle,
     'Create a free account',
-    `Create a free ${config.siteName()} account to continue reading`,
+    `Create a free <span class="content-meter__call-to-action--site-name">${config.siteName()}</span> account to continue reading`,
     'Continue',
   ];
 }
@@ -45,7 +45,7 @@ $ const [title, collapsedTitle, callToAction, registerText] = setTextVariables()
       />
     </div>
     <p class="content-meter__call-to-action">
-      ${callToAction}
+      $!{callToAction}
     </p>
     <div class="content-meter__body">
       <div class="content-meter__login-form">
