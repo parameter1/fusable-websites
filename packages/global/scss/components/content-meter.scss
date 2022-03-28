@@ -22,6 +22,9 @@ $content-meter-mobile-breakpoint: 600px !default;
         @media (max-width: $content-meter-mobile-breakpoint) {
           text-align: left;
         }
+        &--site-name {
+          font-style: italic;
+        }
       }
       &__body {
         display: none;
