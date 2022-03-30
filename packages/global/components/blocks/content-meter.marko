@@ -22,8 +22,13 @@ $ function setTextVariables() {
 }
 $ const [title, collapsedTitle, callToAction, registerText] = setTextVariables();
 
+$ const classes = [
+  "content-meter",
+  "content-meter--open",
+  `${(displayGate && displayOverlay) ? "content-meter--display-overlay" : "" }`,
+].join(" ");
 
-<div class="content-meter content-meter--open">
+<div class=classes>
   <if(displayGate && displayOverlay)>
     <div class="content-meter__overlay"/>
   </if>
