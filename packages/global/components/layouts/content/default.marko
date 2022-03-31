@@ -14,7 +14,7 @@ $ const displayPublishedDate = ["company", "contact", "whitepaper"].includes(typ
 $ const displayReadNext = showReadNextBlock && ["article"].includes(type);
 $ const displaySocialShare = ["contact"].includes(type) ? false : true;
 $ const displayComments = ["contact"].includes(type) ? false : true;
-$ const displayNewsletterSignup = ["contact"].includes(type) ? false : true;
+$ const displayNewsletterSignup = ["contact"].includes(type) || restrictByContentMeter ? false : true;
 $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type);
 
 <global-content-wrapper-layout
@@ -86,7 +86,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
           required-access-level-ids=accessLevels
         >
           <if(!context.canAccess || context.requiresUserInput || restrictByContentMeter)>
-            $ const body = getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
+            $ const body = restrictByContentMeter ? getContentPreview({ body: content.body, selector: "p:lt(7)" }) : getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
             <marko-web-content-body block-name=blockName obj={ body } />
 
             <div class="content-page-preview-overlay" />
@@ -197,7 +197,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
     />
   </@section>
 
-  <if(showBottomAdBlock)>
+  <if(showBottomAdBlock && !restrictByContentMeter)>
     <@section|{ aliases }|>
       <theme-gam-define-display-ad
         name="rotation"
