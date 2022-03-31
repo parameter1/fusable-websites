@@ -2,15 +2,10 @@ import { getAsArray, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
 import getContentPreview from "@randall-reilly/package-theme-monorail/utils/get-content-preview";
 
+import getContentMeterDisplayOverlay from "../../../utils/get-content-meter-display-overlay";
+
 $ const { site, contentMeterState } = out.global;
-// @todo move to util to be used in other contnet layouts
-$ const getRestrictByContentMeter = () => {
-  if (!contentMeterState) return false;
-  if (!contentMeterState.isLoggedIn && !contentMeterState.displayGate) return false;
-  if (contentMeterState.isLoggedIn && !contentMeterState.requiresUserInput) return false;
-  return true;
-}
-$ const restrictByContentMeter = getRestrictByContentMeter();
+$ const displayOverlay = getContentMeterDisplayOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
 
@@ -19,7 +14,7 @@ $ const displayPublishedDate = ["company", "contact", "whitepaper"].includes(typ
 $ const displayReadNext = showReadNextBlock && ["article"].includes(type);
 $ const displaySocialShare = ["contact"].includes(type) ? false : true;
 $ const displayComments = ["contact"].includes(type) ? false : true;
-$ const displayNewsletterSignup = ["contact"].includes(type) ? false : true;
+$ const displayNewsletterSignup = ["contact"].includes(type) || displayOverlay ? false : true;
 $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type);
 
 <global-content-wrapper-layout
@@ -29,7 +24,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
   ...rest
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
-    <if(!restrictByContentMeter)>
+    <if(!displayOverlay)>
       <theme-gam-define-display-ad
         name="leaderboard"
         position="content_page"
@@ -66,7 +61,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
     $ const { primarySection } = content;
     <div class="content-page-body">
       <default-theme-page-contents|{ blockName }| attrs={ "data-gallery-id": id }>
-        <if(!restrictByContentMeter)>
+        <if(!displayOverlay)>
           <if(content.embedCode)>
             $ const iframeContent = contentIframe(content);
             <marko-web-content-embed-code block-name=blockName obj=iframeContent />
@@ -84,25 +79,27 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             />
           </else-if>
         </if>
-        $ const requiresRegistration = (restrictByContentMeter) ? true : get(content, "userRegistration.isCurrentlyRequired");
+        $ const requiresRegistration = contentMeterState && contentMeterState.requiresUserInput ? contentMeterState.requiresUserInput : get(content, "userRegistration.isCurrentlyRequired");
         $ const accessLevels = getAsArray(content, "userRegistration.accessLevels");
         <marko-web-identity-x-access|context|
           enabled=requiresRegistration
           required-access-level-ids=accessLevels
         >
-          <if(!context.canAccess || context.requiresUserInput)>
-            $ const body = getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
+          <if(!context.canAccess || context.requiresUserInput || (contentMeterState && (!contentMeterState.isLoggedIn || contentMeterState.requiresUserInput)))>
+            $ const body = displayOverlay ? getContentPreview({ body: content.body, selector: "p:lt(7)" }) : getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
             <marko-web-content-body block-name=blockName obj={ body } />
 
             <div class="content-page-preview-overlay" />
-            <theme-content-page-gate
-              can-access=context.canAccess
-              is-logged-in=context.isLoggedIn
-              has-required-access-level=context.hasRequiredAccessLevel
-              requires-access-level=context.requiresAccessLevel
-              requires-user-input=context.requiresUserInput
-              messages=context.messages
-            />
+            <if(!displayOverlay || (displayOverlay && requiresRegistration))>
+              <theme-content-page-gate
+                can-access=context.canAccess
+                is-logged-in=context.isLoggedIn
+                has-required-access-level=context.hasRequiredAccessLevel
+                requires-access-level=context.requiresAccessLevel
+                requires-user-input=context.requiresUserInput
+                messages=context.messages
+              />
+            </if>
           </if>
           <else>
 
@@ -200,7 +197,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
     />
   </@section>
 
-  <if(showBottomAdBlock)>
+  <if(showBottomAdBlock && !displayOverlay)>
     <@section|{ aliases }|>
       <theme-gam-define-display-ad
         name="rotation"

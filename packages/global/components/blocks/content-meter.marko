@@ -9,21 +9,26 @@ $ const { config } = out.global;
 
 $ function setTextVariables() {
   // Set title based on views remaining
-  let dynamicTitle = 'We hope you’ve enjoyed your articles.'
+  let dynamicTitle = "We hope you’ve enjoyed your articles."
   if (views < viewLimit) dynamicTitle = `You have ${viewLimit - views} article views remaining.`;
   if (viewLimit - views === 1) dynamicTitle = `You have 1 article view remaining.`;
 
   return [
     dynamicTitle,
-    'Create a free account',
+    "Create a free account",
     `Create a free <span class="content-meter__call-to-action--site-name">${config.siteName()}</span> account to continue reading`,
-    'Continue',
+    "Continue",
   ];
 }
 $ const [title, collapsedTitle, callToAction, registerText] = setTextVariables();
 
+$ const classes = [
+  "content-meter",
+  "content-meter--open",
+  `${(displayGate && displayOverlay) ? "content-meter--display-overlay" : "" }`,
+].join(" ");
 
-<div class="content-meter content-meter--open">
+<div class=classes>
   <if(displayGate && displayOverlay)>
     <div class="content-meter__overlay"/>
   </if>

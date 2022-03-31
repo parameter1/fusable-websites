@@ -4,6 +4,16 @@ $content-meter-mobile-breakpoint: 600px !default;
   ~ .site-footer {
     margin-bottom: 72px;
   }
+  &--display-overlay {
+    ~ .site-footer {
+      display: none;
+      margin-bottom: 0;
+    }
+    ~ .document-container {
+      height: 0;
+      overflow: hidden;
+    }
+  }
   &__overlay {
     z-index: 1499;
     position: fixed;
