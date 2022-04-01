@@ -15,13 +15,13 @@
     "test": "yarn lint && yarn compile && yarn build"
   },
   "dependencies": {
-    "@parameter1/base-cms-marko-core": "^2.75.1",
-    "@parameter1/base-cms-marko-web": "^2.75.1",
+    "@parameter1/base-cms-marko-core": "^2.80.0",
+    "@parameter1/base-cms-marko-web": "^2.80.0",
     "@parameter1/base-cms-marko-web-gtm": "^2.77.0",
     "@parameter1/base-cms-marko-web-identity-x": "^2.79.1",
     "@parameter1/base-cms-object-path": "^2.75.1",
     "@parameter1/base-cms-utils": "^2.75.1",
-    "@parameter1/base-cms-web-cli": "^2.75.1",
+    "@parameter1/base-cms-web-cli": "^2.80.0",
     "@randall-reilly/package-global": "^1.29.9",
     "@randall-reilly/package-theme-monorail": "^1.29.8",
     "csvtojson": "^2.0.10",
