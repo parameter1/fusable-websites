@@ -96,7 +96,7 @@ module.exports = () => asyncRoute(async (req, res, next) => {
       ...config,
       views: valid.length,
       isLoggedIn: false,
-      requiredUserInput: true,
+      requiresUserInput: true,
       displayGate,
     };
     res.cookie(cookieName, JSON.stringify(valid), { maxAge: config.timeframe });
