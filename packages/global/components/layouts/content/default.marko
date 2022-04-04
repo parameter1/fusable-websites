@@ -2,10 +2,10 @@ import { getAsArray, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
 import getContentPreview from "@randall-reilly/package-theme-monorail/utils/get-content-preview";
 
-import getContentMeterDisplayOverlay from "../../../utils/get-content-meter-display-overlay";
+import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
 
 $ const { site, contentMeterState } = out.global;
-$ const displayOverlay = getContentMeterDisplayOverlay(contentMeterState);
+$ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
 
@@ -14,7 +14,7 @@ $ const displayPublishedDate = ["company", "contact", "whitepaper"].includes(typ
 $ const displayReadNext = showReadNextBlock && ["article"].includes(type);
 $ const displaySocialShare = ["contact"].includes(type) ? false : true;
 $ const displayComments = ["contact"].includes(type) ? false : true;
-$ const displayNewsletterSignup = ["contact"].includes(type) || displayOverlay ? false : true;
+$ const displayNewsletterSignup = ["contact"].includes(type) || showOverlay ? false : true;
 $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type);
 
 <global-content-wrapper-layout
@@ -24,7 +24,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
   ...rest
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
-    <if(!displayOverlay)>
+    <if(!showOverlay)>
       <theme-gam-define-display-ad
         name="leaderboard"
         position="content_page"
@@ -61,7 +61,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
     $ const { primarySection } = content;
     <div class="content-page-body">
       <default-theme-page-contents|{ blockName }| attrs={ "data-gallery-id": id }>
-        <if(!displayOverlay)>
+        <if(!showOverlay)>
           <if(content.embedCode)>
             $ const iframeContent = contentIframe(content);
             <marko-web-content-embed-code block-name=blockName obj=iframeContent />
@@ -79,18 +79,18 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             />
           </else-if>
         </if>
-        $ const requiresRegistration = (displayOverlay || (!displayOverlay && contentMeterState && contentMeterState.isLoggedIn && contentMeterState.requiresUserInput)) ? true : get(content, "userRegistration.isCurrentlyRequired");
+        $ const requiresRegistration = cmRestrictContentByReg(contentMeterState, content);
         $ const accessLevels = getAsArray(content, "userRegistration.accessLevels");
         <marko-web-identity-x-access|context|
           enabled=requiresRegistration
           required-access-level-ids=accessLevels
         >
-          <if(!context.canAccess || context.requiresUserInput || (displayOverlay && contentMeterState && (!contentMeterState.isLoggedIn || contentMeterState.requiresUserInput)))>
-            $ const body = displayOverlay ? getContentPreview({ body: content.body, selector: "p:lt(7)" }) : getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
+          <if(!context.canAccess || context.requiresUserInput || cmTruncateBody(contentMeterState))>
+            $ const body = showOverlay ? getContentPreview({ body: content.body, selector: "p:lt(7)" }) : getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
             <marko-web-content-body block-name=blockName obj={ body } />
 
             <div class="content-page-preview-overlay" />
-            <if(!displayOverlay && requiresRegistration)>
+            <if(!showOverlay && requiresRegistration)>
               <theme-content-page-gate
                 can-access=context.canAccess
                 is-logged-in=context.isLoggedIn
@@ -197,7 +197,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
     />
   </@section>
 
-  <if(showBottomAdBlock && !displayOverlay)>
+  <if(showBottomAdBlock && !showOverlay)>
     <@section|{ aliases }|>
       <theme-gam-define-display-ad
         name="rotation"
