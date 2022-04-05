@@ -12,8 +12,11 @@
     "@messages": "object",
     "@title": "string",
     "@user-input-title": "string",
-    "@profile-confirmation": "",
+    "@profile-confirmation": "string",
     "@profile-call-to-action": "string",
-    "@profile-button-label": "string"
+    "@profile-button-label": "string",
+    "@login-event-name": "string",
+    "@profile-view-event-name": "string",
+    "@profile-submit-event-name": "string"
   }
 }
