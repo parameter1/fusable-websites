@@ -10,7 +10,8 @@ $ const {
   hasRequiredAccessLevel,
   requiresAccessLevel,
   requiresUserInput,
-  profileCallToAction
+  profileCallToAction,
+  profileButtonLabel
 } = input;
 $ const messages = getAsObject(input, "messages");
 $ const title = defaultValue(input.title, "Log in to view the full article");
@@ -54,7 +55,7 @@ $ const userInputTitle = defaultValue(input.userInputTitle, "Complete your profi
     </marko-web-element>
 
     <marko-web-element name="form-wrapper" block-name=blockName>
-      <marko-web-identity-x-form-profile call-to-action=profileCallToAction reload-page-on-submit=true />
+      <marko-web-identity-x-form-profile call-to-action=profileCallToAction button-label=profileButtonLabel reload-page-on-submit=true />
     </marko-web-element>
   </else-if>
 </marko-web-block>

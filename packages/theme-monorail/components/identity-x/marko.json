@@ -13,6 +13,7 @@
     "@title": "string",
     "@user-input-title": "string",
     "@profile-confirmation": "",
-    "@profile-call-to-action": "string"
+    "@profile-call-to-action": "string",
+    "@profile-button-label": "string"
   }
 }
