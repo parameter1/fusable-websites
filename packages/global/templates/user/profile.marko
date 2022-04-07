@@ -1,7 +1,8 @@
 $ const { config } = out.global;
 
 $ const type = "profile";
-$ const title = "User profile";
+$ const title = "Step 2 of 2";
+$ const confirmation = "Email Confirmed!";
 $ const description = `Complete your ${config.siteName()} user profile`;
 
 <marko-web-default-page-layout type=type title=title description=description>
@@ -13,7 +14,10 @@ $ const description = `Complete your ${config.siteName()} user profile`;
   <@page>
     <marko-web-page-wrapper>
       <@section modifiers=["user-form"]>
-        <h1 class="page-wrapper__title">${description}</h1>
+        <div class="page-wrapper__confirmation">
+          ${confirmation}
+        </div>
+        <h1 class="page-wrapper__title">${title}</h1>
         <marko-web-identity-x-form-profile />
       </@section>
     </marko-web-page-wrapper>
