@@ -7,30 +7,31 @@ module.exports = ({ site }) => {
   if (!enabled) return;
   const defaultTargets = [
     'navigation.desktopMenu.user',
+    'navigation.mobileMenu.user',
   ];
   const targets = site.getAsArray('idxNavItems.navigationTargets').length ? site.getAsArray('idxNavItems.navigationTargets') : defaultTargets;
   const navConfig = [
-    {
-      href: idxConfig.getEndpointFor('login'),
-      label: 'Log In',
-      when: 'logged-out',
-      modifiers: ['user'],
-    },
+    // {
+    //   href: idxConfig.getEndpointFor('login'),
+    //   label: 'Log In',
+    //   when: 'logged-out',
+    //   modifiers: ['user'],
+    // },
     {
       href: idxConfig.getEndpointFor('profile'),
-      label: 'My Account',
+      label: 'Manage Account',
       when: 'logged-in',
       modifiers: ['user'],
     },
     {
       href: idxConfig.getEndpointFor('logout'),
-      label: 'Log Out',
+      label: 'Sign Out',
       when: 'logged-in',
       modifiers: ['user'],
     },
     {
       href: idxConfig.getEndpointFor('register'),
-      label: 'Register',
+      label: 'Sign Up',
       when: 'logged-out',
       modifiers: ['user'],
     },
