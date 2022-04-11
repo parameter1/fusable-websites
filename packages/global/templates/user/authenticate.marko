@@ -7,7 +7,11 @@ $ const title = "Authenticate";
   <@page>
     <marko-web-page-wrapper>
       <@section modifiers=["user-form"]>
-        <marko-web-identity-x-form-authenticate />
+        <div class="page-wrapper__confirmation">
+          Email Confirmed!
+        </div>
+        <h1 class="page-wrapper__title">Step 2 of 2</h1>
+        <marko-web-identity-x-form-authenticate button-label="Create Account" call-to-action="" />
       </@section>
     </marko-web-page-wrapper>
   </@page>
