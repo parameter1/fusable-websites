@@ -31,7 +31,7 @@ export default {
         const { dataLayer } = window;
         if (dataLayer) {
           dataLayer.push({
-            event: 'meter_view',
+            event: 'content_meter_view',
             views,
             remaining,
             overlayDispayed,
