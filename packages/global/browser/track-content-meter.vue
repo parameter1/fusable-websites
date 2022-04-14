@@ -1,5 +1,5 @@
 <template>
-  <div id="content-meter" />
+  <div id="content-meter-gtm-event" />
 </template>
 
 <script>
@@ -28,11 +28,10 @@ export default {
     const { views, remaining, overlayDispayed } = this;
     this.observer = new IntersectionObserver((event) => {
       if (event[0].isIntersecting) {
-        const { dataLayerIdentityX, dataLayer } = window;
-        const dl = dataLayerIdentityX || dataLayer;
-        if (dl) {
-          dl.push({
-            event: 'content_meter_view',
+        const { dataLayer } = window;
+        if (dataLayer) {
+          dataLayer.push({
+            event: 'meter_view',
             views,
             remaining,
             overlayDispayed,
