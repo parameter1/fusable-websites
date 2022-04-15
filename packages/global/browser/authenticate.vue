@@ -1,0 +1,193 @@
+<template>
+  <div v-if="isRedirecting">
+    <p>You've successfully logged in. Redirecting you...</p>
+  </div>
+  <div v-else-if="isLoading">
+    <p>Logging in...</p>
+  </div>
+  <div v-else-if="showProfileForm">
+    <profile-form
+      :endpoints="endpoints"
+      :active-user="activeUser"
+      :required-server-fields="requiredServerFields"
+      :required-client-fields="requiredClientFields"
+      :consent-policy="consentPolicy"
+      :email-consent-request="emailConsentRequest"
+      :regional-consent-policies="regionalConsentPolicies"
+      @submit="redirect"
+    />
+  </div>
+  <div v-else-if="error" class="alert alert-danger" role="alert">
+    <h5 class="alert-heading">
+      Unable to Login
+    </h5>
+    <p>{{ error.message }}</p>
+    <hr>
+    <p class="mb-0">
+      Please try <a :href="endpoints.login" class="alert-link">logging in</a> again.
+    </p>
+  </div>
+</template>
+
+<script>
+import redirect from '@parameter1/base-cms-marko-web-identity-x/browser/utils/redirect';
+import cookiesEnabled from '@parameter1/base-cms-marko-web-identity-x/browser/utils/cookies-enabled';
+import post from '@parameter1/base-cms-marko-web-identity-x/browser/utils/post';
+import AuthenticationError from '@parameter1/base-cms-marko-web-identity-x/browser/errors/authentication';
+import FeatureError from '@parameter1/base-cms-marko-web-identity-x/browser/errors/feature';
+
+import ProfileForm from './profile.vue';
+
+const isEmpty = v => v == null || v === '';
+
+export default {
+  /**
+   *
+   */
+  components: { ProfileForm },
+
+  /**
+   *
+   */
+  props: {
+    token: {
+      type: String,
+      required: true,
+    },
+    endpoints: {
+      type: Object,
+      required: true,
+    },
+    redirectTo: {
+      type: String,
+      default: '/',
+    },
+    requiredServerFields: {
+      type: Array,
+      default: () => [],
+    },
+    requiredClientFields: {
+      type: Array,
+      default: () => [],
+    },
+    consentPolicy: {
+      type: String,
+      default: null,
+    },
+    emailConsentRequest: {
+      type: String,
+      default: null,
+    },
+    regionalConsentPolicies: {
+      type: Array,
+      default: () => [],
+    },
+  },
+
+  /**
+   *
+   */
+  data: () => ({
+    error: null,
+    isLoading: false,
+    isRedirecting: false,
+    isProfileComplete: true,
+    activeUser: null,
+    requiresCustomFieldAnswers: false,
+    mustReVerifyProfile: false,
+  }),
+
+  /**
+   *
+   */
+  computed: {
+    /**
+     *
+     */
+    requiredFields() {
+      return [...this.requiredServerFields, ...this.requiredClientFields];
+    },
+
+    /**
+     *
+     */
+    formHasRequiredFields() {
+      return Boolean(this.requiredFields.length);
+    },
+
+    isUserRedirect() {
+      const { redirectTo } = this;
+      const { login, register } = this.endpoints;
+      if (redirectTo.indexOf(login) === 0) return true;
+      if (redirectTo.indexOf(register) === 0) return true;
+      return false;
+    },
+
+    /**
+     *
+     */
+    showProfileForm() {
+      if (this.mustReVerifyProfile) return true;
+      if (this.requiresCustomFieldAnswers) return true;
+      return !this.isProfileComplete;
+    },
+  },
+
+  /**
+   *
+   */
+  mounted() {
+    if (cookiesEnabled()) {
+      this.authenticate();
+    } else {
+      this.error = new FeatureError('Your browser does not support cookies. Please enable cookies to use this feature.');
+    }
+  },
+
+  /**
+   *
+   */
+  methods: {
+    /**
+     *
+     */
+    async authenticate() {
+      this.isLoading = true;
+      try {
+        const { token } = this;
+        if (!token) throw new Error('No login token was provided.');
+
+        const res = await post('/authenticate', { token });
+        const data = await res.json();
+
+        if (!res.ok) throw new AuthenticationError(data.message, res.status);
+        this.$emit('authenticated', data);
+
+        this.activeUser = data.user;
+        this.mustReVerifyProfile = data.user.mustReVerifyProfile;
+        this.isProfileComplete = this.requiredFields.every(key => !isEmpty(this.activeUser[key]));
+        this.requiresCustomFieldAnswers = this.activeUser.customSelectFieldAnswers
+          .some(({ hasAnswered, field }) => field.required && !hasAnswered);
+
+        if (!this.showProfileForm) this.redirect();
+      } catch (e) {
+        if (/no token was found/i.test(e.message)) {
+          e.message = 'This login link has either expired or was already used.';
+        }
+        this.error = e;
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    /**
+     *
+     */
+    redirect() {
+      this.isRedirecting = true;
+      const redirectTo = this.isUserRedirect ? '/' : this.redirectTo;
+      redirect(redirectTo);
+    },
+  },
+};
+</script>
