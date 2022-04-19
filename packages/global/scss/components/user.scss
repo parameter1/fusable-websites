@@ -42,3 +42,22 @@
     margin-bottom: map-get($spacers, block);
   }
 }
+
+.page-wrapper {
+  &__section {
+    &--user-form{
+      .address-block {
+        > legend {
+          display: none;
+        }
+        &.border {
+          border: none !important;
+        }
+        &.px-3 {
+          padding-right: 0 !important;
+          padding-left: 0 !important;
+        }
+      }
+    }
+  }
+}
