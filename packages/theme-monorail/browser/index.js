@@ -24,7 +24,7 @@ const setP1EventsIdentity = ({ p1events, brandKey, encryptedId }) => {
 };
 export default (Browser, config = { enableOmedaIdentityX: true }) => {
   const { EventBus } = Browser;
-  const { enableOmedaIdentityX, identityXComponents } = config;
+  const { enableOmedaIdentityX } = config;
 
   if (enableOmedaIdentityX) {
     EventBus.$on('omeda-identity-x-authenticated', ({ brandKey, encryptedId }) => {
@@ -63,9 +63,9 @@ export default (Browser, config = { enableOmedaIdentityX: true }) => {
   SocialSharing(Browser);
   NativeX(Browser);
   if (enableOmedaIdentityX) {
-    OmedaIdentityX(Browser, identityXComponents);
+    OmedaIdentityX(Browser);
   } else {
-    IdentityX(Browser, identityXComponents);
+    IdentityX(Browser);
   }
   Inquiry(Browser);
 
