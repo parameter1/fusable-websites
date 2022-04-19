@@ -5,7 +5,10 @@ $ const {
   views,
 } = input.contentMeterState;
 
-$ const { config } = out.global;
+$ const { config, site } = out.global;
+$ const additionalEventData = {
+  promoCode: site.get("contentMeter.promoCode", undefined),
+};
 
 $ function setTextVariables() {
   // Set title based on views remaining
@@ -54,7 +57,10 @@ $ const classes = [
     </p>
     <div class="content-meter__body">
       <div class="content-meter__login-form">
-        <marko-web-identity-x-form-login login-email-placeholder="your@email.com" />
+        <marko-web-identity-x-form-login
+          login-email-placeholder="your@email.com"
+          additional-event-data=additionalEventData
+        />
       </div>
     </div>
   </div>
