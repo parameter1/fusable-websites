@@ -13,6 +13,7 @@ module.exports = ({
     'city',
     'regionCode',
   ],
+  defaultCountryCode = 'US',
   requiredServerFields = ['organization', 'countryCode', 'postalCode'],
   requiredClientFields = ['organization', 'countryCode', 'postalCode'],
   ...rest
@@ -20,6 +21,7 @@ module.exports = ({
   const config = new IdentityXConfiguration({
     appId,
     apiToken: process.env.IDENTITYX_API_TOKEN,
+    defaultCountryCode,
     hiddenFields,
     requiredServerFields,
     requiredClientFields,
