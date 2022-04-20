@@ -40,13 +40,6 @@ $ const {
       push={ "event": "page_view" }
     />
 
-    <marko-web-identity-x-gtm-init
-      container-id=site.get("gtm.containerId")
-      on="load"
-      request-frame=true
-      target-tag="body"
-    />
-
     <!-- init native-x -->
     <marko-web-native-x-init
       uri=nativeX.getUri()
