@@ -45,7 +45,8 @@
 
 .page-wrapper {
   &__section {
-    &--user-form{
+    &--user-form,
+    .content-page-gate {
       .address-block {
         > legend {
           display: none;
