@@ -33,9 +33,15 @@ $ const {
     />
 
     <!-- init gtm -->
+    <!-- @todo move this script to marko-web-gtm-init once confirmed working -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'page_view'
+      });
+    </script>
     <marko-web-gtm-init
       container-id=site.get("gtm.containerId")
-      on="load"
       request-frame=true
       target-tag="body"
     />
