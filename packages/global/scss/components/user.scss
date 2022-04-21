@@ -2,10 +2,11 @@
   $self: &;
   &__section--user-form {
     &:only-child  {
-      margin-top: 30px;
-      margin-bottom: 30px;
+      margin: 30px auto;
+      max-width: 400px;
       background-color: $gray-100;
       padding: 30px;
+
       @media (max-width: $content-meter-mobile-breakpoint) {
         padding: 15px;
         margin: 0 -15px;
