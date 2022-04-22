@@ -6,35 +6,47 @@
 
 export default {
   props: {
-    contentMeterState: {
-      type: Object,
-      required: true,
+    views: {
+      type: Number,
+      default: 0,
+    },
+    viewLimit: {
+      type: Number,
+      default: 3,
+    },
+    displayGate: {
+      type: Boolean,
+      default: false,
+    },
+    displayOverlay: {
+      type: Boolean,
+      required: false,
     },
   },
   computed: {
-    views() {
-      return this.contentMeterState.views;
-    },
     remaining() {
-      const { viewLimit, views } = this.contentMeterState;
+      const { viewLimit, views } = this;
       return viewLimit - views;
     },
-    overlayDispayed() {
-      const { displayGate, displayOverlay } = this.contentMeterState;
+    overlayDisplayed() {
+      const { displayGate, displayOverlay } = this;
       return displayGate && displayOverlay;
     },
   },
   created() {
-    const { views, remaining, overlayDispayed } = this;
+    const { views, remaining, overlayDisplayed } = this;
     this.observer = new IntersectionObserver((event) => {
       if (event[0].isIntersecting) {
         const { dataLayer } = window;
         if (dataLayer) {
           dataLayer.push({
-            event: 'content_meter_view',
-            views,
-            remaining,
-            overlayDispayed,
+            event: 'identity-x-content-meter-view',
+            'identity-x': {
+              label: 'content-meter',
+              views,
+              remaining,
+              overlayDisplayed,
+            },
           });
         }
       }

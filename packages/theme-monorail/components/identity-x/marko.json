@@ -16,7 +16,6 @@
     "@profile-call-to-action": "string",
     "@profile-button-label": "string",
     "@login-event-name": "string",
-    "@profile-view-event-name": "string",
-    "@profile-submit-event-name": "string"
+    "@profile-event-name": "string"
   }
 }
