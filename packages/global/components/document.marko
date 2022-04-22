@@ -85,7 +85,12 @@ $ const {
     </marko-web-identity-x-context>
     <theme-site-newsletter-menu />
     <if(contentMeterState && !contentMeterState.isLoggedIn)>
-      <global-content-meter-block content-meter-state=contentMeterState />
+      <global-content-meter-block
+        views=contentMeterState.views
+        view-limit=contentMeterState.viewLimit
+        display-overlay=contentMeterState.displayOverlay
+        display-gate=contentMeterState.displayGate
+      />
     </if>
     <${input.aboveContainer} />
   </@above-container>

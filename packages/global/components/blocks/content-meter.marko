@@ -1,13 +1,16 @@
+$ const { config, site, contentMeterState } = out.global;
 $ const {
   displayGate,
   displayOverlay,
   viewLimit,
   views,
-} = input.contentMeterState;
-
-$ const { config, site } = out.global;
+} = contentMeterState;
 $ const additionalEventData = {
   promoCode: site.get("contentMeter.promoCode", undefined),
+  views,
+  viewLimit,
+  displayGate,
+  displayOverlay,
 };
 
 $ function setTextVariables() {
@@ -36,7 +39,7 @@ $ const classes = [
     <div class="content-meter__overlay"/>
   </if>
   <div class="content-meter__bar">
-
+    <global-content-meter-track />
     <div class="content-meter__title">
       <theme-menu-toggle-button
         class="content-meter__toggler"
@@ -59,6 +62,7 @@ $ const classes = [
       <div class="content-meter__login-form">
         <marko-web-identity-x-form-login
           login-email-placeholder="your@email.com"
+          event-label="content_meter_login"
           additional-event-data=additionalEventData
         />
       </div>
