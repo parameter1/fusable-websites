@@ -21,6 +21,18 @@ $ const hasUser = defaultValue(input.hasUser, false);
       <div class="col-6 col-md-4 col-lg-4">
         <!-- search box -->
         <search block-name=blockName />
+        <!-- user section || IDX_NAV_ENABLE -->
+        <if(site.getAsArray("navigation.desktopMenu.user"))>
+          <!-- user section -->
+            <default-theme-site-menu-section
+            tag="nav"
+            block-name=blockName
+            items=site.getAsArray("navigation.desktopMenu.user")
+            modifiers=["user"]
+            reg-enabled=regEnabled
+            has-user=hasUser
+          />
+        </if>
         <!-- social -->
         <social-icons block-name=blockName />
         <!-- about section -->
@@ -33,19 +45,6 @@ $ const hasUser = defaultValue(input.hasUser, false);
           reg-enabled=regEnabled
           has-user=hasUser
         />
-        <!-- user section || IDX_NAV_ENABLE -->
-        <if(site.getAsArray("navigation.desktopMenu.user"))>
-          <!-- user section -->
-            <default-theme-site-menu-section
-            tag="nav"
-            block-name=blockName
-            label="User"
-            items=site.getAsArray("navigation.desktopMenu.user")
-            modifiers=["secondary"]
-            reg-enabled=regEnabled
-            has-user=hasUser
-          />
-        </if>
       </div>
       <div class="col-6 col-md-4 col-lg-3">
         <!-- sections -->
@@ -69,6 +68,18 @@ $ const hasUser = defaultValue(input.hasUser, false);
   <marko-web-element block-name=blockName name="contents-mobile">
     <!-- search box -->
     <search block-name=blockName />
+    <!-- user section || IDX_NAV_ENABLE -->
+    <if(site.getAsArray("navigation.mobileMenu.user"))>
+      <!-- user section -->
+        <default-theme-site-menu-section
+        tag="nav"
+        block-name=blockName
+        items=site.getAsArray("navigation.mobileMenu.user")
+        modifiers=["user"]
+        reg-enabled=regEnabled
+        has-user=hasUser
+      />
+    </if>
     <!-- social -->
     <social-icons block-name=blockName />
     <!-- primary section -->

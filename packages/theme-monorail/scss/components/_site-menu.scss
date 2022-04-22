@@ -161,6 +161,16 @@ body.site-menu--open {
         }
       }
     }
+    &--user {
+      padding-bottom: 4px;
+      margin-bottom: $theme-site-navbar-menu-link-padding-x + 4px;
+      border-bottom: 1px solid $gray-200;
+      #{ $self }__link {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        @include skin-typography($style: "menu-item-secondary-header");
+      }
+    }
   }
 }
 

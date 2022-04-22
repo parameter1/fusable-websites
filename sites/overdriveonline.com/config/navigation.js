@@ -29,6 +29,7 @@ const utilities = [
 ];
 
 const mobileMenu = {
+  user: [],
   primary: [
     ...topics.primary,
     ...topics.expanded,
