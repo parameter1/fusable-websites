@@ -60,7 +60,9 @@ $ const { primarySection } = content;
               modifiers=["section-feed"]
             >
               <@header>
-                More from ${story.advertiser.name}
+                <h2 title=`More from ${story.advertiser.name}` class="page-wrapper__website-section-name" >
+                  More from ${story.advertiser.name}
+                </h2>
               </@header>
               <@nodes nodes=nodes>
                 <@slot|{ node }|>
@@ -74,7 +76,6 @@ $ const { primarySection } = content;
               </@nodes>
             </marko-web-node-list>
           </marko-web-native-x-story-advertiser-related-stories>
-          $ console.log(nativeX.publisherId)
         </if>
       </@section>
     </marko-web-page-wrapper>
