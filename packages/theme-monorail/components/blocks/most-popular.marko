@@ -5,7 +5,7 @@ import { extractFragmentData } from "@parameter1/base-cms-web-common/utils";
 import queryFragment from "../../graphql/fragments/most-popular-block";
 
 $ const { MOST_POPULAR_API_URI } = process.env;
-$ const { site, config, apollo } = out.global;
+$ const { site, config, apollo, i18n } = out.global;
 
 $ const blockName = "most-popular";
 
@@ -56,7 +56,7 @@ $ const buildContentQuery = () => {
       <if(ordered.length)>
         <marko-web-block name=blockName>
           <marko-web-element block-name=blockName name="header">
-            Most Popular
+            ${i18n("Most Popular")}
           </marko-web-element>
           <default-theme-card-deck-flow
             modifiers=[blockName]

@@ -1,6 +1,8 @@
 import queryFragment from "../../graphql/fragments/products-block";
 import sectionFragment from "../../graphql/fragments/section-info";
 
+$ const { i18n } = out.global;
+
 $ const queryParams = {
   requiresImage: true,
   ...input.params,
@@ -16,11 +18,11 @@ $ const blockName = "more-products";
   <marko-web-block name=blockName>
     <marko-web-element block-name=blockName name="header-wrapper">
       <marko-web-element block-name=blockName name="header">
-        More ${section.name}
+        ${i18n("More")} ${section.name}
       </marko-web-element>
       <marko-web-element block-name=blockName name="view-more">
         <marko-web-link href=section.canonicalPath>
-          View more &raquo;
+          ${i18n("View more")} &raquo;
         </marko-web-link>
       </marko-web-element>
     </marko-web-element>

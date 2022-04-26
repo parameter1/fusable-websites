@@ -4,7 +4,7 @@ import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 
 $ const { perPage, totalCount, path } = input;
 $ const asRels = defaultValue(input.asRels, false);
-$ const { pagination: p } = out.global;
+$ const { pagination: p, i18n } = out.global;
 
 $ const totalPages = p.totalPages({ perPage, totalCount });
 $ const nextPage = p.nextPage({ perPage, totalCount });
@@ -34,18 +34,18 @@ $ const blockName = "pagination-controls";
           class=`btn btn-primary ${blockName}__prev`
           href=prevHref
         >
-          Previous Page
+          ${i18n("Previous Page")}
         </marko-web-link>
       </if>
       <marko-web-element block-name=blockName name="pages">
-        Page ${p.page} of ${totalPages}
+        ${i18n("Page")} ${p.page} ${i18n("of")} ${totalPages}
       </marko-web-element>
       <if(nextPage)>
         <marko-web-link
           class=`btn btn-primary ${blockName}__next`
           href=nextHref
         >
-          Next Page
+          ${i18n("Next Page")}
         </marko-web-link>
       </if>
     </marko-web-block>

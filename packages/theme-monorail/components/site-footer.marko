@@ -1,7 +1,7 @@
 import getNavItems from "@parameter1/base-cms-marko-web-theme-default/components/site-navbar/utils/get-nav-items";
 import { asObject } from "@parameter1/base-cms-utils";
 
-$ const { config, site } = out.global;
+$ const { config, site, i18n } = out.global;
 
 $ const newsletterConfig = site.getAsObject('newsletter.signupFooter');
 $ const blockName = input.blockName || "site-footer";
@@ -46,7 +46,7 @@ $ const tagline = site.get("tagline");
               </if>
               <form action=newsletterConfig.action method="GET">
                 <div class="form-group">
-                  <label for="footer-newsletter-signup-email">Email</label>
+                  <label for="footer-newsletter-signup-email">${i18n("Email")}</label>
                   <input
                     id="footer-newsletter-signup-email"
                     class="form-control"
@@ -59,7 +59,7 @@ $ const tagline = site.get("tagline");
                     <input type="hidden" name=item.name value=item.value />
                   </for>
                 </div>
-                <button class="btn btn-primary" type="submit" disabled=(newsletterConfig.disabled && "disabled")>Sign Up</button>
+                <button class="btn btn-primary" type="submit" disabled=(newsletterConfig.disabled && "disabled")>${i18n("Sign Up")}</button>
               </form>
             </marko-web-block>
           </if>
@@ -77,7 +77,7 @@ $ const tagline = site.get("tagline");
                 <default-theme-site-menu-section
                   tag="nav"
                   block-name=navBlockName
-                  label="Topics"
+                  label=`${i18n("Topics")}`
                   items=topics
                   reg-enabled=false
                   has-user=false
@@ -90,7 +90,7 @@ $ const tagline = site.get("tagline");
                 <default-theme-site-menu-section
                   tag="nav"
                   block-name=navBlockName
-                  label="More"
+                  label=`${i18n("More")}`
                   items=more
                   reg-enabled=false
                   has-user=false

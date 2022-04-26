@@ -1,7 +1,7 @@
 import queryFragment from "../graphql/fragments/section-feed-block";
 import { get } from '@parameter1/base-cms-object-path';
 
-$ const { config, req, $markoWebSearch: search, site } = out.global;
+$ const { config, req, $markoWebSearch: search, site, i18n } = out.global;
 
 $ const type = "search";
 $ const title = "Search";
@@ -36,7 +36,7 @@ $ const sortField = setDefaultSortField ? 'SCORE' : search.input.sortField;
             <marko-web-search-filter-container modifiers=["sticky"]>
               <@before-title|{ blockName }|>
                 <marko-web-website-section-name|{ value }| tag="h1" block-name=blockName obj={ name: title }>
-                  <if(currentPage > 1)>${value}: Page ${currentPage}</if>
+                  <if(currentPage > 1)>${value}: ${i18n("Page")} ${currentPage}</if>
                   <else>${value}</else>
                 </marko-web-website-section-name>
               </@before-title>
@@ -59,7 +59,7 @@ $ const sortField = setDefaultSortField ? 'SCORE' : search.input.sortField;
                     />
                   </div>
                   <button type="submit" class="btn btn-primary search-form__btn">
-                    Search
+                    ${i18n("Search")}
                   </button>
                 </marko-web-search-form>
                 </div>
@@ -80,7 +80,7 @@ $ const sortField = setDefaultSortField ? 'SCORE' : search.input.sortField;
             >
               <marko-web-page-wrapper modifiers=["no-padding-x"]>
                 <@section modifiers=["search-results"]>
-                  <div>${new Intl.NumberFormat().format(totalCount)} Results</div>
+                  <div>${new Intl.NumberFormat().format(totalCount)} ${i18n("Results")}</div>
                   <marko-web-search-selected-filters />
                 </@section>
                 <if(nodes.length)>

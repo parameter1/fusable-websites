@@ -1,7 +1,7 @@
 import { defaultValue } from "@parameter1/base-cms-marko-web/utils";
 import convertAdToContent from "@parameter1/base-cms-marko-web-native-x/utils/convert-ad-to-content";
 
-$ const { nativeX: nxConfig } = out.global;
+$ const { nativeX: nxConfig, i18n } = out.global;
 $ const { section } = input;
 $ const limit = defaultValue(input.limit, 3);
 $ const placementName = defaultValue(input.placementName, "default");
@@ -29,7 +29,7 @@ $ const placement = nxConfig.getPlacement({ name: placementName, aliases });
         <marko-web-element block-name=blockName name="row">
           <for|ad| of=ads>
             <if(ad.hasCampaign)>
-              $ const node = convertAdToContent(ad, { sectionName: `Sponsored by ${ad.campaign.advertiserName}` });
+              $ const node = convertAdToContent(ad, { sectionName: `${i18n("Sponsored by")} ${ad.campaign.advertiserName}` });
               <marko-web-element block-name=blockName name="col">
                 <theme-content-node
                   image-position="top"

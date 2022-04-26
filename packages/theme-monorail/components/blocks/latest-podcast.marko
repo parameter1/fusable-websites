@@ -9,7 +9,7 @@ $ const queryParams = {
   sectionFragment,
 };
 
-$ const { site } = out.global;
+$ const { site, i18n } = out.global;
 $ const podcastLinks = site.getAsArray("podcastLinks");
 $ const blockName = "latest-podcast";
 
@@ -31,7 +31,7 @@ $ const blockName = "latest-podcast";
       <@body>
         <@header>
           <@left>
-            Latest Episode
+            ${i18n("Latest Episode")}
           </@left>
         </@header>
         <@title tag="h5">
@@ -39,7 +39,7 @@ $ const blockName = "latest-podcast";
         </@title>
         <@text modifiers=["more-episodes"]>
           <marko-web-website-section-name|{ value }| tag=null obj=section link=true>
-            More episodes &raquo;
+            ${i18n("More episodes")} &raquo;
           </marko-web-website-section-name>
         </@text>
         <if(podcastLinks.length)>

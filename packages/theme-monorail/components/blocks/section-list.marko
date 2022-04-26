@@ -4,6 +4,8 @@ import cardFragment from "../../graphql/fragments/section-list-card-block";
 import listFragment from "../../graphql/fragments/section-list-block";
 import sectionFragment from "../../graphql/fragments/section-info";
 
+$ const { i18n } = out.global;
+
 $ const { alias } = input;
 
 $ const withSection = defaultValue(input.withSection, true);
@@ -75,7 +77,7 @@ $ const blockName = "section-list";
       <if(withViewMore)>
         <@footer modifiers=["view-more"]>
           <marko-web-website-section-name obj=section link=true>
-            View More &raquo;
+            ${i18n("View More")} &raquo;
           </marko-web-website-section-name>
         </@footer>
       </if>

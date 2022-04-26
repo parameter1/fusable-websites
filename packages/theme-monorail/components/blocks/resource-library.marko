@@ -1,6 +1,8 @@
 import queryFragment from "../../graphql/fragments/resource-library-block";
 import sectionFragment from "../../graphql/fragments/section-info";
 
+$ const { i18n } = out.global;
+
 <!-- @todo likely should change the name of this component -->
 $ const queryParams = {
   ...input.queryParams,
@@ -25,7 +27,7 @@ $ const blockName = "resource-library";
       <if(section)>
         <marko-web-element block-name=blockName name="view-more">
           <marko-web-link href=section.canonicalPath>
-            View more &raquo;
+            ${i18n("View more")} &raquo;
           </marko-web-link>
         </marko-web-element>
       </if>
@@ -66,7 +68,7 @@ $ const blockName = "resource-library";
     <if(section)>
       <marko-web-element block-name=blockName name="view-more-bottom">
         <marko-web-link href=section.canonicalPath>
-          View more &raquo;
+          ${i18n("View more")} &raquo;
         </marko-web-link>
       </marko-web-element>
     </if>

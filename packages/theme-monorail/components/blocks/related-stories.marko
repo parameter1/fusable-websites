@@ -1,5 +1,6 @@
 import queryFragment from "../../graphql/fragments/related-stories-block";
 
+$ const { i18n } = out.global;
 $ const { contentId, sectionId, published } = input;
 $ const limit = 4;
 $ const queryParams = {
@@ -9,7 +10,7 @@ $ const queryParams = {
   queryFragment,
 };
 
-$ const title = "Related Stories";
+$ const title = `${i18n("Related Stories")}`;
 $ const blockName = "related-stories";
 
 <marko-web-query|{ nodes }| name="related-published-content" params=queryParams collapsible=false>
