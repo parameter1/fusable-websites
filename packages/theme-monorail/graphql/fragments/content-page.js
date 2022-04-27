@@ -143,6 +143,7 @@ fragment ContentPageFragment on Content {
         displayName
         caption
         credit
+        inCarousel
         source {
           width
           height

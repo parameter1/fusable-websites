@@ -22,7 +22,12 @@ const setP1EventsIdentity = ({ p1events, brandKey, encryptedId }) => {
   if (!p1events || !brandKey || !encryptedId) return;
   p1events('setIdentity', `omeda.${brandKey}.customer*${encryptedId}~encrypted`);
 };
-export default (Browser, config = { enableOmedaIdentityX: true }) => {
+
+export default (Browser, config = {
+  enableOmedaIdentityX: true,
+  withGTM: true,
+  withP1Events: true,
+}) => {
   const { EventBus } = Browser;
   const { enableOmedaIdentityX } = config;
 

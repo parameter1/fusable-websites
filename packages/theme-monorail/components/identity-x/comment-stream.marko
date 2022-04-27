@@ -1,7 +1,9 @@
 import { getAsObject } from "@parameter1/base-cms-object-path";
 import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 
+$ const { site } = out.global;
 $ const content = getAsObject(input, "content");
+$ const lang = site.config.lang || "en";
 
 <div class="comment-stream">
   <div class="idx-comment-stream-wrapper">
@@ -20,7 +22,8 @@ $ const content = getAsObject(input, "content");
         isExpanded: false,
         classes: "btn btn-secondary comment-stream__toggle-btn",
         targets: [".idx-comment-stream-wrapper"],
-        toggleClass: "idx-comment-stream-wrapper--open"
+        toggleClass: "idx-comment-stream-wrapper--open",
+        lang
       }
     />
   </div>

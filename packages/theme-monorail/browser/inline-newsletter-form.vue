@@ -11,6 +11,7 @@
       :image-srcset="imageSrcset"
       :recaptcha-site-key="recaptchaSiteKey"
       :privacy-policy-link="privacyPolicyLink"
+      :lang="lang"
       @submit="stepOneSubmit"
       @subscribe="$emit('subscribe', $event)"
       @focus="$emit('focus', { step: 1 })"
@@ -24,6 +25,7 @@
       :newsletters="newsletters"
       :demographic="demographic"
       :recaptcha-site-key="recaptchaSiteKey"
+      :lang="lang"
       as-card
       @submit="$emit('submit', { step: 2 })"
       @subscribe="$emit('subscribe', $event)"
@@ -89,6 +91,10 @@ export default {
     privacyPolicyLink: {
       type: Object,
       required: true,
+    },
+    lang: {
+      type: String,
+      default: 'en',
     },
   },
 

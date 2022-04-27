@@ -4,13 +4,14 @@
     type="button"
     @click="toggle"
   >
-    <span>View All Comments</span>
+    <span>{{ translate("viewAllComments") }}</span>
   </button>
 </template>
 
 <script>
 import EventBus from '@parameter1/base-cms-marko-web/browser/event-bus';
 import get from '@parameter1/base-cms-marko-web-identity-x/browser/utils/get';
+import i18n from './i18n-vue';
 
 export default {
 
@@ -34,6 +35,10 @@ export default {
     toggleClass: {
       type: String,
       required: true,
+    },
+    lang: {
+      type: String,
+      default: 'en',
     },
   },
 
@@ -73,6 +78,9 @@ export default {
       EventBus.$emit('comments-expanded', this.expanded);
       const elements = document.querySelectorAll(this.targets.join(','));
       Array.prototype.forEach.call(elements, el => el.classList.toggle(this.toggleClass));
+    },
+    translate(key) {
+      return i18n(this.lang, key);
     },
   },
 };
