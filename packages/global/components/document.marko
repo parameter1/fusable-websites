@@ -68,6 +68,10 @@ $ const {
     </marko-web-gam-enable>
     <marko-web-gam-targeting key-values={ uri: req.path } />
   </@head>
+  <@above-wrapper>
+    <marko-web-gtm-noscript container-id=site.get("gtm.containerId") />
+    <${input.aboveWrapper} />
+  </@above-wrapper>
   <@above-container>
     <marko-web-browser-component name="OmedaIdentityXRapidIdentify" />
 

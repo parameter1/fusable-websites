@@ -45,9 +45,9 @@ $ const additionalEventData = {
       </marko-web-element>
 
       <marko-web-element name="form-wrapper" block-name=blockName>
-        <marko-web-identity-x-form-register
+        <marko-web-identity-x-form-login
           additional-event-data=additionalEventData
-          event-label=loginEventName
+          source=loginEventName
         />
       </marko-web-element>
     </else>
@@ -68,7 +68,7 @@ $ const additionalEventData = {
         button-label=profileButtonLabel
         reload-page-on-submit=true
         additional-event-data=additionalEventData
-        event-label=profileEventName
+        login-source=profileEventName
       />
     </marko-web-element>
   </else-if>
