@@ -2281,10 +2281,10 @@
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-icons/-/base-cms-marko-web-icons-2.46.3.tgz#61c0052b4346c31d39ea1acd811b7656e8ef4abe"
   integrity sha512-ni3iKJLKeAuUs/pZUaeeS0hIbvPRe1SJDxqNH/UVUD8G7Putht4Ok6jsFnADB0vSqYB3E5uyaBNNi8NrsVlhLw==
 
-"@parameter1/base-cms-marko-web-identity-x@^2.88.0":
-  version "2.88.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-identity-x/-/base-cms-marko-web-identity-x-2.88.0.tgz#abaefd385e55aaa00826d7c5ec3c798bccf13337"
-  integrity sha512-NraTlNhGbPsZj1dyge7gFR00FPD0+q1EokwBugclxip8Xa0ESADDQKQmXMXYWKtLvnb8q2OXFiUryBd2GEz4ZQ==
+"@parameter1/base-cms-marko-web-identity-x@^2.88.1":
+  version "2.88.1"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-identity-x/-/base-cms-marko-web-identity-x-2.88.1.tgz#5a0444d0fe075f96c2dc4bb066de528809cc9493"
+  integrity sha512-ZINl8YkvM8Odb9qJkgo5jVHVNPfjL+hVgNF6uYmjdWhepbA+1V3VBJ+EXhOwEhx2IugRCLQu3LalfTt2ukrXqg==
   dependencies:
     "@parameter1/base-cms-marko-web-gtm" "^2.88.0"
     "@parameter1/base-cms-object-path" "^2.75.1"
@@ -2332,12 +2332,12 @@
     graphql-tag "^2.12.5"
     node-fetch "^2.6.5"
 
-"@parameter1/base-cms-marko-web-omeda-identity-x@^2.88.0":
-  version "2.88.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda-identity-x/-/base-cms-marko-web-omeda-identity-x-2.88.0.tgz#82338cfa1f40c8bdb3dedee7194d41c457256b47"
-  integrity sha512-VTwfEMGrEdeGXq99hBRx2vPGiMwc2AvDbgcexvbwL5PMUAVR9cumc+SvdDLFSX4HXYqujTvYLIHxG+5t0jCSeg==
+"@parameter1/base-cms-marko-web-omeda-identity-x@^2.88.1":
+  version "2.88.1"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda-identity-x/-/base-cms-marko-web-omeda-identity-x-2.88.1.tgz#2ab90800fd62443e1d4cddbbcb3d332696728a77"
+  integrity sha512-vrIz7cLQunD87apeIjM4ZnnV+E9rwRlCMA024L7EcWCdAMyyhUH8K3ibo83TAisgYCnq2/998Z9Bi3972B57XQ==
   dependencies:
-    "@parameter1/base-cms-marko-web-identity-x" "^2.88.0"
+    "@parameter1/base-cms-marko-web-identity-x" "^2.88.1"
     "@parameter1/base-cms-marko-web-omeda" "^2.79.0"
     "@parameter1/base-cms-object-path" "^2.75.1"
     "@parameter1/base-cms-utils" "^2.75.1"
