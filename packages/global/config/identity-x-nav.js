@@ -11,12 +11,12 @@ module.exports = ({ site }) => {
   ];
   const targets = site.getAsArray('idxNavItems.navigationTargets').length ? site.getAsArray('idxNavItems.navigationTargets') : defaultTargets;
   const navConfig = [
-    // {
-    //   href: idxConfig.getEndpointFor('login'),
-    //   label: 'Log In',
-    //   when: 'logged-out',
-    //   modifiers: ['user'],
-    // },
+    {
+      href: idxConfig.getEndpointFor('login'),
+      label: 'Sign In',
+      when: 'logged-out',
+      modifiers: ['user'],
+    },
     {
       href: idxConfig.getEndpointFor('profile'),
       label: 'Manage Account',
@@ -29,12 +29,12 @@ module.exports = ({ site }) => {
       when: 'logged-in',
       modifiers: ['user'],
     },
-    {
-      href: idxConfig.getEndpointFor('register'),
-      label: 'Sign Up',
-      when: 'logged-out',
-      modifiers: ['user'],
-    },
+    // {
+    //   href: idxConfig.getEndpointFor('register'),
+    //   label: 'Sign Up',
+    //   when: 'logged-out',
+    //   modifiers: ['user'],
+    // },
   ];
   targets.forEach((target) => {
     const nav = site.get(target);
