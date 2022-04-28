@@ -14,8 +14,7 @@ $ const {
 } = site.getAsObject("newsletter.pushdown");
 
 $ const lang = site.config.lang || "en";
-$ const { hasCookie, fromEmail } = getAsObject(out.global, "newsletterState");
-$ const initiallyExpanded = (!hasCookie && !fromEmail) ? true : false;
+$ const { initiallyExpanded } = getAsObject(out.global, "newsletterState");
 $ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/${imagePath}`, { w: 280, auto: "format,compress" }) : null;
 $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
 
