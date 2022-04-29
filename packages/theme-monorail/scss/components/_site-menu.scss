@@ -170,6 +170,7 @@ body.site-menu--open {
       #{ $self } {
         &__header {
           @include skin-typography($style: "menu-item-secondary-header");
+          background-color: transparent;
           margin-bottom: 6px;
         }
 
