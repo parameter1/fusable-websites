@@ -2,6 +2,8 @@ import { getAsObject } from "@parameter1/base-cms-object-path";
 import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 import queryFragment from "../../graphql/fragments/top-stories-menu-block";
 
+$ const { i18n } = out.global;
+
 $ const sectionAlias = defaultValue(input.sectionAlias, 'home');
 
 $ const queryParams = {
@@ -20,7 +22,7 @@ $ const blockName = "top-stories-menu";
     modifiers=[blockName]
   >
     <@header>
-      Top Stories
+      ${i18n("Top Stories")}
     </@header>
     <@nodes nodes=nodes>
       <@slot|{ node }|>

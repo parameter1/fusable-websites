@@ -1,6 +1,8 @@
 import queryFragment from "../../graphql/fragments/section-card-list-block";
 import sectionFragment from "../../graphql/fragments/section-info";
 
+$ const { i18n } = out.global;
+
 $ const queryParams = {
   limit: 3,
   requiresImage: true,
@@ -75,7 +77,7 @@ $ const blockName = "section-card-list";
         </marko-web-node-list>
         <marko-web-element block-name=blockName name="btn-wrapper">
           <marko-web-link href=section.canonicalPath class="btn btn-secondary">
-            More ${section.name}
+            ${i18n("More")} ${section.name}
           </marko-web-link>
         </marko-web-element>
       </marko-web-element>

@@ -2,7 +2,7 @@
   <div :class="classNames">
     <div :class="`${blockName}__card-header`">
       <check-icon :class="`${blockName}__check-icon`" />
-      Signed up for the {{ defaultNewsletter.name }}
+      {{ translate("signedUpFor") }} {{ defaultNewsletter.name }}
     </div>
     <form
       :class="`${blockName}__card-body`"
@@ -14,10 +14,10 @@
       >
         <div v-show="!isComplete">
           <div :class="`${blockName}__header`">
-            Complete your sign-up
+            {{ translate("completeSignUp") }}
           </div>
           <div :class="`${blockName}__about-you`">
-            About you
+            {{ translate("aboutYou") }}
           </div>
           <div :class="`${blockName}__form`">
             <input-form-group
@@ -25,7 +25,7 @@
               :block-name="blockName"
               :disabled="isLoading"
               field="company-name"
-              label="Company Name"
+              :label="companyName"
               required
               @focus="didFocus = true"
             />
@@ -40,7 +40,7 @@
               @focus="didFocus = true"
             >
               <option value="">
-                Select
+                {{ translate("select") }}
               </option>
               <option
                 v-for="value in demographic.values"
@@ -64,7 +64,7 @@
 
           <div v-if="newsletters.length">
             <div :class="`${blockName}__subscriptions-header`">
-              Choose your subscriptions
+              {{ translate("chooseSubscriptions") }}
             </div>
 
             <div :class="`${blockName}__subscriptions row`">
@@ -90,9 +90,10 @@
                 :class="`${blockName}__form-button`"
                 :is-loading="isLoading"
                 :disabled="isComplete"
+                :lang="lang"
               />
             </div>
-            <privacy-policy :block-name="blockName" />
+            <privacy-policy :block-name="blockName" :lang="lang" />
           </div>
         </div>
       </transition>
@@ -102,11 +103,10 @@
       >
         <div v-show="formHidden">
           <div :class="`${blockName}__thank-you-header`">
-            Thank you for subscribing!
+            {{ translate("thankYou") }}
           </div>
           <p class="mb-0">
-            You should start receiving your subscription in the next 24 hours
-            along with a special welcome from the experts at <em>{{ siteName }}</em>.
+            {{ translate("startReceiving") }} <em>{{ siteName }}</em>.
           </p>
         </div>
       </transition>
@@ -129,6 +129,7 @@ import SelectFormGroup from './select-form-group.vue';
 import SignUpButton from './sign-up-button.vue';
 
 import getRecaptchaToken from './get-recaptcha-token';
+import i18n from '../i18n-vue';
 
 export default {
   components: {
@@ -175,6 +176,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    lang: {
+      type: String,
+      default: 'en',
+    },
   },
 
   data: () => ({
@@ -198,6 +203,9 @@ export default {
       if (this.asCard) classNames.push(`${blockName}--as-card`);
       if (this.inPushdown) classNames.push(`${blockName}--in-pushdown`);
       return classNames;
+    },
+    companyName() {
+      return i18n(this.lang, 'companyName');
     },
   },
 
@@ -256,6 +264,10 @@ export default {
       } finally {
         this.isLoading = false;
       }
+    },
+
+    translate(key) {
+      return i18n(this.lang, key);
     },
   },
 };

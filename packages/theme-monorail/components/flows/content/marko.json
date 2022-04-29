@@ -27,7 +27,8 @@
     "<node>": {
       "<image>": {}
     },
-    "@nodes": "array"
+    "@nodes": "array",
+    "@with-section": "boolean"
   },
   "<theme-content-card-deck-col-flow>": {
     "template": "./card-deck-col.marko"

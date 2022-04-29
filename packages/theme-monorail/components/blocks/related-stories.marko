@@ -1,6 +1,17 @@
+import { defaultValue } from "@parameter1/base-cms-marko-web/utils";
 import queryFragment from "../../graphql/fragments/related-stories-block";
 
+$ const { i18n } = out.global;
 $ const { contentId, sectionId, published } = input;
+
+$ const withNativeX = defaultValue(input.withNativeX, false);
+$ const nativeX = {
+  name: "default",
+  index: 3,
+  sectionName: "Sponsor Content",
+  ...input.nativeX,
+};
+
 $ const limit = 4;
 $ const queryParams = {
   contentId,
@@ -9,7 +20,7 @@ $ const queryParams = {
   queryFragment,
 };
 
-$ const title = "Related Stories";
+$ const title = `${i18n("Related Stories")}`;
 $ const blockName = "related-stories";
 
 <marko-web-query|{ nodes }| name="related-published-content" params=queryParams collapsible=false>
@@ -35,7 +46,11 @@ $ const blockName = "related-stories";
           <marko-web-element block-name=blockName name="header">
             ${title}
           </marko-web-element>
-          <theme-content-card-deck-col-flow nodes=nodes modifiers=[blockName]>
+          <theme-content-card-deck-col-flow
+            nodes=nodes
+            modifiers=[blockName]
+            ...(withNativeX && { nativeX })
+          >
             <@node modifiers=[blockName] />
           </theme-content-card-deck-col-flow>
         </marko-web-block>

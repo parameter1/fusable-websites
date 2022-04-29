@@ -3,6 +3,8 @@ import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 import queryFragment from "../../graphql/fragments/white-papers-block";
 import sectionFragment from "../../graphql/fragments/section-info";
 
+$ const { i18n } = out.global;
+
 $ const sectionAlias = defaultValue(input.sectionAlias, "white-papers");
 $ const contentTypes = defaultValue(input.contentTypes, ["Whitepaper"]);
 
@@ -37,7 +39,7 @@ $ const queryParams = {
           <@header>
             <@left modifiers=["company-name"]>
               <marko-web-content-name|{ value }| obj=node.company>
-                Sponsored by ${value}
+                ${i18n("Sponsored by")} ${value}
               </marko-web-content-name>
             </@left>
           </@header>
@@ -54,14 +56,14 @@ $ const queryParams = {
                 href=node.siteContext.path
                 title="Download"
               >
-                Download
+                ${i18n("Download")}
               </marko-web-link>
               <marko-web-link
                 class="btn btn-secondary"
                 href=`/${sectionAlias}`
                 title="View All"
               >
-                View All
+                ${i18n("View All")}
               </marko-web-link>
             </@left>
           </@footer>

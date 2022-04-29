@@ -1,7 +1,10 @@
 import { getAsObject } from "@parameter1/base-cms-object-path";
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 
 $ const { nodes, header } = input
 $ const image = getAsObject(input, "node.image");
+
+$ const withSection = defaultValue(input.withSection, false);
 
 $ const blockName = "read-next";
 
@@ -26,6 +29,7 @@ $ const blockName = "read-next";
             flush=true
             node=node
             with-dates=false
+            with-section=withSection
             modifiers=[blockName]
           >
             <@image width=160 ar="3:2" ...image />

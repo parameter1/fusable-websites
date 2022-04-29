@@ -13,6 +13,7 @@ $ const {
   privacyPolicy,
 } = site.getAsObject("newsletter.pushdown");
 
+$ const lang = site.config.lang || "en";
 $ const { initiallyExpanded } = getAsObject(out.global, "newsletterState");
 $ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/${imagePath}`, { w: 280, auto: "format,compress" }) : null;
 $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
@@ -34,6 +35,7 @@ $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
       initiallyExpanded,
       recaptchaSiteKey: recaptcha.siteKey,
       privacyPolicyLink: privacyPolicy,
+      lang
     }
   />
 </if>

@@ -74,6 +74,10 @@ module.exports = (options = {}) => {
       const nativeXConfig = get(options, 'siteConfig.nativeX');
       set(app.locals, 'nativeX', nativeXConfig);
 
+      // i18n
+      const i18n = v => v;
+      set(app.locals, 'i18n', options.i18n || i18n);
+
       // Recaptcha
       set(app.locals, 'recaptcha', recaptcha);
 

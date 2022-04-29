@@ -2,7 +2,7 @@ import hierarchyAliases from "@parameter1/base-cms-marko-web/utils/hierarchy-ali
 import { getAsArray } from "@parameter1/base-cms-object-path";
 import queryFragment from "../graphql/fragments/section-feed-block";
 
-$ const { id, name, type, description } = input;
+$ const { id, name, type, description, i18n } = input;
 $ const { GAM, req } = out.global;
 
 $ const { pagination: p } = out.global;
@@ -33,7 +33,7 @@ $ const title = `${type}: ${name}`;
 
       <@section|{ blockName }|>
         <marko-web-website-section-name|{ value }| tag="h1" block-name=blockName obj={ name: title }>
-          <if(p.page > 1)>${value}: Page ${p.page}</if>
+          <if(p.page > 1)>${value}: ${i18n("Page")} ${p.page}</if>
           <else>${value}</else>
         </marko-web-website-section-name>
 

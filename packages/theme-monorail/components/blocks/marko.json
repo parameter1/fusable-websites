@@ -29,6 +29,9 @@
   "<theme-most-popular-block>": {
     "template": "./most-popular.marko"
   },
+  "<theme-native-x-card-deck-block>": {
+    "template": "./native-x-card-deck.marko"
+  },
   "<theme-newsletter-signup-banner-block>": {
     "template": "./newsletter-signup-banner.marko"
   },

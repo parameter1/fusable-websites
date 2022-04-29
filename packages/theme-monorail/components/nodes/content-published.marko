@@ -2,6 +2,8 @@ import moment from "moment-timezone";
 import { getAsObject } from "@parameter1/base-cms-object-path";
 import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 
+$ const { i18n } = out.global;
+
 $ const config = getAsObject(out.global, "markoCoreDate");
 
 $ const { obj, blockName } = input;
@@ -39,6 +41,6 @@ $ const displayUpdatedDate = defaultValue(input.displayUpdatedDate, true);
     format=format
     locale=locale
   >
-    Updated ${value}
+    ${i18n("Updated")} ${value}
   </marko-web-obj-date>
 </if>

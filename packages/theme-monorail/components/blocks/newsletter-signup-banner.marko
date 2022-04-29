@@ -14,6 +14,7 @@ $ const {
   privacyPolicy,
 } = site.getAsObject("newsletter.signupBanner");
 
+$ const lang = site.config.lang || "en";
 $ const imageSrc = imagePath ? buildImgixUrl(`https://${config.website("imageHost")}/${imagePath}`, { w: 120, auto: "format,compress" }) : null;
 $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
 
@@ -32,6 +33,7 @@ $ const imageSrcset = imageSrc ? `${imageSrc}&dpr=2 2x` : null;
       imageSrcset,
       recaptchaSiteKey: recaptcha.siteKey,
       privacyPolicyLink: privacyPolicy,
+      lang
     }
   />
 </if>

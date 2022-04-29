@@ -2,6 +2,8 @@ import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 import queryFragment from "../../graphql/fragments/content-list";
 import sectionFragment from "../../graphql/fragments/section-info";
 
+$ const { i18n } = out.global;
+
 <!-- @todo determine how to display the sponsor logo -->
 $ const queryParams = {
   ... input.queryParams,
@@ -27,7 +29,7 @@ $ const blockName = "hero-card";
       <if(section)>
         <marko-web-element block-name=blockName name="view-more">
           <marko-web-link href=section.canonicalPath>
-            View more &raquo;
+            ${i18n("View more")} &raquo;
           </marko-web-link>
         </marko-web-element>
       </if>
@@ -81,7 +83,7 @@ $ const blockName = "hero-card";
     <if(section)>
       <marko-web-element block-name=blockName name="view-more-bottom">
         <marko-web-link href=section.canonicalPath>
-          View more &raquo;
+          ${i18n("View more")} &raquo;
         </marko-web-link>
       </marko-web-element>
     </if>
