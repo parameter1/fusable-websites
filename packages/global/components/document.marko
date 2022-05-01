@@ -9,6 +9,8 @@ $ const {
   contentMeterState,
 } = out.global;
 
+$ const { gamDefer, gtmDefer } = req.query;
+
 <marko-web-document ...input>
   <@head>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -30,6 +32,7 @@ $ const {
     <marko-web-gam-init
       request-frame=true
       target-tag="body"
+      on=gamDefer
     />
 
     <!-- init gtm -->
@@ -37,6 +40,7 @@ $ const {
       container-id=site.get("gtm.containerId")
       request-frame=true
       target-tag="body"
+      on=gtmDefer
     />
 
     <!-- init native-x -->
