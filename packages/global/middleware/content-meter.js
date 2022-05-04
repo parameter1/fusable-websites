@@ -4,7 +4,7 @@ const defaultValue = require('@parameter1/base-cms-marko-core/utils/default-valu
 const { asyncRoute } = require('@parameter1/base-cms-utils');
 const { content: loader } = require('@parameter1/base-cms-web-common/page-loaders');
 const buildContentInput = require('@parameter1/base-cms-marko-web/utils/build-content-input');
-const queryFragment = require('@randall-reilly/package-theme-monorail/graphql/fragments/content-meter');
+const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-meter');
 
 const cookieName = 'contentMeter';
 const now = new Date().getTime();

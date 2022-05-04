@@ -25,7 +25,7 @@
     "@parameter1/base-cms-web-cli": "^2.81.0",
     "@randall-reilly/equipment-experts": "^1.29.10",
     "@randall-reilly/package-global": "^1.33.6",
-    "@randall-reilly/package-theme-monorail": "^1.33.3",
+    "@parameter1/base-cms-marko-web-theme-monorail": "^2.89.1",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
   }

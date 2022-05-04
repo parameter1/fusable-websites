@@ -1,6 +1,6 @@
 const withNativeXStory = require('@parameter1/base-cms-marko-web-native-x/middleware/with-story');
 const { getAsObject } = require('@parameter1/base-cms-object-path');
-const queryFragment = require('@randall-reilly/package-theme-monorail/graphql/fragments/native-x-story');
+const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/native-x-story');
 const template = require('../templates/content/native-x-story');
 
 module.exports = (app) => {

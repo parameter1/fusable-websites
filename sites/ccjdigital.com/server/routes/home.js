@@ -1,5 +1,5 @@
 const { withWebsiteSection } = require('@parameter1/base-cms-marko-web/middleware');
-const queryFragment = require('@randall-reilly/package-theme-monorail/graphql/fragments/website-section-page');
+const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/website-section-page');
 const postIdHandler = require('@randall-reilly/package-global/middleware/post-id-handler');
 const newsletterState = require('@randall-reilly/package-global/middleware/newsletter-state');
 const home = require('../templates/index');

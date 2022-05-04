@@ -1,5 +1,5 @@
 const { withContent } = require('@parameter1/base-cms-marko-web/middleware');
-const queryFragment = require('@randall-reilly/package-theme-monorail/graphql/fragments/content-page');
+const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-page');
 const print = require('../templates/content/print');
 
 module.exports = (app) => {
