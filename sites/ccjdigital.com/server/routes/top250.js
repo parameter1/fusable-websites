@@ -1,5 +1,5 @@
 const { withWebsiteSection } = require('@parameter1/base-cms-marko-web/middleware');
-const queryFragment = require('@randall-reilly/package-theme-monorail/graphql/fragments/website-section-page');
+const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/website-section-page');
 const config = require('../../config/top250');
 const template = require('../templates/website-section/top250');
 const guide = require('../templates/website-section/top250/guide');

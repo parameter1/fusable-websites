@@ -1,3 +1,3 @@
-import ThemeComponents from '@randall-reilly/package-theme-monorail/browser/ssr';
+import ThemeComponents from '@parameter1/base-cms-marko-web-theme-monorail/browser/ssr';
 
 export default ThemeComponents;

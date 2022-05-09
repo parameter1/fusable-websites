@@ -33,7 +33,7 @@
     "@parameter1/base-cms-web-cli": "^2.81.0",
     "@parameter1/base-cms-web-common": "^2.80.0",
     "@parameter1/omeda-graphql-client-express": "^0.4.2",
-    "@randall-reilly/package-theme-monorail": "^1.33.3",
+    "@parameter1/base-cms-marko-web-theme-monorail": "^2.89.1",
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.1",
