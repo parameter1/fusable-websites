@@ -15,14 +15,14 @@ $content-meter-mobile-breakpoint: 600px !default;
     }
   }
   &__overlay {
-    z-index: 1499;
     position: fixed;
-    background-color: rgba(0, 0, 0, .7);
     top: 0;
     bottom: 0;
+    z-index: 1499;
     width: 100%;
     visibility: visible;
-    transition: visibility 0s, opacity 0.5s linear;
+    background-color: rgba(0, 0, 0, .7);
+    transition: visibility 0s, opacity .5s linear;
   }
   &__bar {
     #{ $self } {
@@ -39,12 +39,14 @@ $content-meter-mobile-breakpoint: 600px !default;
       &__body {
         display: none;
         #{ $self }__login-form {
+          // stylelint-disable-next-line
           .form-group label {
             display: none;
           }
           @media (max-width: $content-meter-mobile-breakpoint) {
             width: 100%;
           }
+          // stylelint-disable-next-line
           .btn {
             @media (max-width: $content-meter-mobile-breakpoint) {
               width: 100%;
@@ -53,26 +55,26 @@ $content-meter-mobile-breakpoint: 600px !default;
         }
       }
     }
-    padding: map-get($spacers, 3);
     position: fixed;
     bottom: 0;
-    width: 100%;
-    text-align: center;
-    color: $white;
-    background: $black;
     // footer zindex is set to 1500 ;)
     z-index: 1501;
+    width: 100%;
+    padding: map-get($spacers, 3);
+    color: $white;
+    text-align: center;
+    background: $black;
   }
   &__toggler {
-    border: none;
     background: initial;
+    border: none;
     &:focus {
       outline: none;
 
     }
     .marko-web-icon svg {
       fill: $white;
-    };
+    }
     @media (max-width: $content-meter-mobile-breakpoint) {
       display: flex;
       width: 100%;
@@ -82,13 +84,13 @@ $content-meter-mobile-breakpoint: 600px !default;
         flex-grow: 2;
         text-align: left;
       }
-      color: $white;
       font-family: $skin-font-family-secondary;
-      font-weight: $font-weight-bold;
       font-size: 18px;
+      font-weight: $font-weight-bold;
       line-height: 38px;
-      letter-spacing: .3px;
+      color: $white;
       text-transform: none;
+      letter-spacing: .3px;
     }
   }
 
@@ -102,8 +104,8 @@ $content-meter-mobile-breakpoint: 600px !default;
       @media (min-width: $content-meter-mobile-breakpoint) {
         display: flex;
         .form-group {
-          margin-bottom: 0;
           margin-right: 1rem;
+          margin-bottom: 0;
         }
       }
     }
@@ -121,6 +123,7 @@ $content-meter-mobile-breakpoint: 600px !default;
         padding-bottom: map-get($spacers, 4);
       }
       &__toggler {
+        // stylelint-disable-next-line
         span {
           @include skin-typography($style: "content-meter-header");
           margin-bottom: map-get($spacers, block);
