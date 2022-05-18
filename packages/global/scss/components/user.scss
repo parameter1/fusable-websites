@@ -2,10 +2,10 @@
   $self: &;
   &__section--user-form {
     &:only-child  {
-      margin: 30px auto;
       max-width: 400px;
-      background-color: $gray-100;
       padding: 30px;
+      margin: 30px auto;
+      background-color: $gray-100;
 
       @media (max-width: $content-meter-mobile-breakpoint) {
         padding: 15px;
@@ -14,15 +14,36 @@
     }
     #{ $self }__title {
       @include skin-typography($style: "content-meter-cta");
-      color: $theme-page-title-color;
       font-weight: $font-weight-bold;
+      color: $theme-page-title-color;
+    }
+  }
+  &__section {
+    &--user-form,
+    .content-page-gate {
+      .address-block {
+        > legend {
+          display: none;
+        }
+        &.border {
+          // stylelint-disable-next-line declaration-no-important
+          border: none !important;
+        }
+        &.px-3 {
+          // stylelint-disable-next-line declaration-no-important
+          padding-right: 0 !important;
+          // stylelint-disable-next-line declaration-no-important
+          padding-left: 0 !important;
+        }
+      }
     }
   }
   #{ $self }__confirmation {
-    background-color: $gray-200;
-    font-weight: $font-weight-bold;
     padding: map-get($spacers, 2);
     margin-bottom: map-get($spacers, block);
+    font-weight: $font-weight-bold;
+    background-color: $gray-200;
+
   }
 }
 .content-page-gate {
@@ -32,34 +53,14 @@
 
   #{ $self }__title {
     @include skin-typography($style: "content-meter-cta");
-    color: $theme-page-title-color;
     font-weight: $font-weight-bold;
+    color: $theme-page-title-color;
   }
 
   #{ $self }__confirmation {
-    background-color: $gray-200;
-    font-weight: $font-weight-bold;
     padding: map-get($spacers, 2);
     margin-bottom: map-get($spacers, block);
-  }
-}
-
-.page-wrapper {
-  &__section {
-    &--user-form,
-    .content-page-gate {
-      .address-block {
-        > legend {
-          display: none;
-        }
-        &.border {
-          border: none !important;
-        }
-        &.px-3 {
-          padding-right: 0 !important;
-          padding-left: 0 !important;
-        }
-      }
-    }
+    font-weight: $font-weight-bold;
+    background-color: $gray-200;
   }
 }
