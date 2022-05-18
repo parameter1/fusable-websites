@@ -33,19 +33,10 @@ $ const { id, alias, name, pageNode } = input;
     <theme-section-card-list-block alias="vocational" default-description="Bucket trucks, dump trucks, refuse trucks and more" />
   </@section>
 
-  <!-- <@section>
-    <theme-callout-cards-block>
-      <@slot>
-        <global-ccj-top-250-block />
-      </@slot>
-      <@slot>
-        <theme-white-papers-block />
-      </@slot>
-    </theme-callout-cards-block>
-  </@section> -->
-
   <@section>
-    <theme-client-side-most-popular-block />
+    <div role="region" aria-label="Most Popular Stories">
+      <theme-client-side-most-popular-block />
+    </div>
   </@section>
 
   <@section|{ aliases }|>
