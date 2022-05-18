@@ -1,6 +1,7 @@
 const navigation = require('./navigation');
 const contentMeter = require('./content-meter');
 const gam = require('./gam');
+const omeda = require('./omeda');
 const nativeX = require('./native-x');
 const top250 = require('./top250');
 const identityX = require('./identity-x');
@@ -11,6 +12,7 @@ module.exports = {
   navigation,
   contentMeter,
   gam,
+  omeda,
   nativeX,
   identityX,
   idxNavItems: {
