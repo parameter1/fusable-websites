@@ -1,24 +1,26 @@
 const contentMeter = require('./content-meter');
-const navigation = require('./navigation');
 const gam = require('./gam');
-const nativeX = require('./native-x');
-const omeda = require('./omeda');
 const identityX = require('./identity-x');
+const nativeX = require('./native-x');
+const navigation = require('./navigation');
 const newsletter = require('./newsletter');
+const omeda = require('./omeda');
 const search = require('./search');
 
 module.exports = {
+  // module configs
   contentMeter,
-  navigation,
   gam,
-  omeda,
-  nativeX,
   identityX,
+  nativeX,
+  navigation,
+  newsletter,
+  omeda,
+  search,
+  // theme configs
   idxNavItems: {
     enable: process.env.IDX_NAV_ENABLE || false,
   },
-  newsletter,
-  search,
   company: 'Randall-Reilly, LLC',
   p1events: {
     tenant: 'randallreilly',
