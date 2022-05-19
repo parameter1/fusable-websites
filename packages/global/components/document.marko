@@ -106,15 +106,7 @@ $ const { gamDefer, gtmDefer } = req.query;
     <theme-site-footer />
   </@below-container>
   <@below-wrapper>
-  $ const { recaptcha } = out.global;
-    <if(recaptcha && recaptcha.siteKey)>
-      <marko-web-deferred-script-loader-register
-        name='recaptcha'
-        on="load"
-        src=`https://www.google.com/recaptcha/api.js?render=${recaptcha.siteKey}`
-        request-frame=true
-      />
-    </if>
     <marko-web-deferred-script-loader-load />
+    <theme-recaptcha />
   </@below-wrapper>
 </marko-web-document>
