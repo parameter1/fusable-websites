@@ -163,42 +163,43 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 
             $ const sidebars = getAsArray(content, "sidebars").map((sidebar) => sidebar.body);
             <marko-web-content-sidebars block-name=blockName obj={ sidebars } />
+
+            <if(type === "document" || type === "whitepaper")>
+              <default-theme-content-download obj=content>
+                <@wufoo user-name=site.get("wufoo.userName") />
+                <@link class="btn btn-primary" />
+              </default-theme-content-download>
+            </if>
+
+            <if(type !== "contact")>
+              <for|author| of=authors>
+                <if(getAsArray(author, "labels").includes("Contributor"))>
+                  <marko-web-content-body obj=author block-name="inline-author-bio" />
+                </if>
+              </for>
+            </if>
+
+            <if(displayReadNext)>
+              <theme-read-next-block
+                content-id=id
+                section-id=primarySection.id
+                published=content.published
+              />
+            </if>
+
+            <if(displayNewsletterSignup)>
+              <theme-newsletter-signup-banner-block />
+            </if>
+
+            <if(displaySocialShare)>
+              <marko-web-social-sharing
+                path=content.siteContext.path
+                providers=["print", "facebook", "linkedin", "twitter", "pinterest"]
+                print-path=`/print/content/${content.id}`
+              />
+            </if>
           </else>
         </marko-web-identity-x-access>
-
-        <if(type === "document" || type === "whitepaper")>
-          <default-theme-content-download obj=content>
-            <@wufoo user-name=site.get("wufoo.userName") />
-            <@link class="btn btn-primary" />
-          </default-theme-content-download>
-        </if>
-        <if(type !== "contact")>
-          <for|author| of=authors>
-            <if(getAsArray(author, "labels").includes("Contributor"))>
-              <marko-web-content-body obj=author block-name="inline-author-bio" />
-            </if>
-          </for>
-        </if>
-
-        <if(displayReadNext)>
-          <theme-read-next-block
-            content-id=id
-            section-id=primarySection.id
-            published=content.published
-          />
-        </if>
-
-        <if(displayNewsletterSignup)>
-          <theme-newsletter-signup-banner-block />
-        </if>
-
-        <if(displaySocialShare)>
-          <marko-web-social-sharing
-            path=content.siteContext.path
-            providers=["print", "facebook", "linkedin", "twitter", "pinterest"]
-            print-path=`/print/content/${content.id}`
-          />
-        </if>
 
         <if(displayComments)>
           <theme-identity-x-comment-stream content=content />
