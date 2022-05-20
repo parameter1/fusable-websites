@@ -1,5 +1,5 @@
-const defulatConfig = require('@randall-reilly/package-global/config/content-meter');
+const defaultConfig = require('@randall-reilly/package-global/config/content-meter');
 
 module.exports = {
-  ...defulatConfig,
+  ...defaultConfig,
 };
