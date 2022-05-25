@@ -14,10 +14,13 @@ module.exports = startServer({
   routes,
   onStart: () => {
     // Automatically opt-in unverified users to OVD newsletter when inputting email address
-    const deploymentTypeIds = [33];
     identityX.addHook({
       name: 'onLoginLinkSent',
-      fn: ({ req, user }) => req.$omedaRapidIdentify({ email: user.email, deploymentTypeIds }),
+      fn: ({ req, user }) => req.$omedaRapidIdentify({
+        email: user.email,
+        deploymentTypeIds: [33],
+        promoCode: 'OV_registration_meter',
+      }),
     });
   },
 }).then(() => log('Website started!')).catch(e => setImmediate(() => { throw e; }));
