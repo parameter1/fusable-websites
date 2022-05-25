@@ -14,7 +14,7 @@ module.exports = startServer({
   routes,
   onStart: () => {
     // Automatically opt-in unverified users to OVD newsletter when inputting email address
-    const deploymentTypeIds = [62];
+    const deploymentTypeIds = [33];
     identityX.addHook({
       name: 'onLoginLinkSent',
       fn: ({ req, user }) => req.$omedaRapidIdentify({ email: user.email, deploymentTypeIds }),
