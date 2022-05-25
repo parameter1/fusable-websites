@@ -1,24 +1,28 @@
-const navigation = require('./navigation');
 const contentMeter = require('./content-meter');
 const gam = require('./gam');
-const nativeX = require('./native-x');
-const top250 = require('./top250');
 const identityX = require('./identity-x');
+const nativeX = require('./native-x');
+const navigation = require('./navigation');
 const newsletter = require('./newsletter');
+const omeda = require('./omeda');
 const search = require('./search');
+const top250 = require('./top250');
 
 module.exports = {
-  navigation,
+  // module configs
   contentMeter,
   gam,
-  nativeX,
   identityX,
+  nativeX,
+  navigation,
+  newsletter,
+  omeda,
+  search,
+  top250,
+  // theme configs
   idxNavItems: {
     enable: process.env.IDX_NAV_ENABLE || false,
   },
-  newsletter,
-  search,
-  top250,
   company: 'Randall-Reilly, LLC',
   p1events: {
     tenant: 'randallreilly',

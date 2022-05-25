@@ -54,6 +54,7 @@ x-env-virgon: &env-virgon
 x-site-command: &site-cmd
   entrypoint: ["node_modules/.bin/basecms-website"]
   command: ["dev", "index.js"]
+  <<: *node
 
 volumes:
   yarn-cache: {}
@@ -74,126 +75,119 @@ services:
       <<: *env
 
   eqw:
-    <<: *node
     <<: *site-cmd
     working_dir: /root/sites/equipmentworld.com
     environment:
-      <<: *env
-      <<: *env-virgon
+      <<: [*env, *env-virgon]
       HOST: www-rr-eqw.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9901
       LIVERELOAD_PORT: 19901
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce562fd28860bc33b826d6
+      OMEDA_INPUT_ID: ${EQW_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-eqw.dev.parameter1.com
     ports:
       - "9901:80"
       - "19901:19901"
 
   tlc:
-    <<: *node
     <<: *site-cmd
     working_dir: /root/sites/totallandscapecare.com
     environment:
-      <<: *env
-      <<: *env-virgon
+      <<: [*env, *env-virgon]
       HOST: www-rr-tlc.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9902
       LIVERELOAD_PORT: 19902
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce563dd28860bc33b829c5
+      OMEDA_INPUT_ID: ${TLC_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-tlc.dev.parameter1.com
     ports:
       - "9902:80"
       - "19902:19902"
 
   tn:
-    <<: *node
     <<: *site-cmd
     working_dir: /root/sites/truckersnews.com
     environment:
-      <<: *env
-      <<: *env-virgon
+      <<: [*env, *env-virgon]
       HOST: www-rr-tn.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9903
       LIVERELOAD_PORT: 19903
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce6131d28860bc33c5b786
+      OMEDA_INPUT_ID: ${TN_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-tn.dev.parameter1.com
     ports:
       - "9903:80"
       - "19903:19903"
 
   ccj:
-    <<: *node
     <<: *site-cmd
     working_dir: /root/sites/ccjdigital.com
     environment:
-      <<: *env
-      <<: *env-virgon
+      <<: [*env, *env-virgon]
       HOST: www-rr-ccj.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9904
       LIVERELOAD_PORT: 19904
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce5519d28860bc33b80a42
+      OMEDA_INPUT_ID: ${CCJ_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-ccj.dev.parameter1.com
     ports:
       - "9904:80"
       - "19904:19904"
 
   hwt:
-    <<: *node
     <<: *site-cmd
     working_dir: /root/sites/hardworkingtrucks.com
     environment:
-      <<: *env
-      <<: *env-virgon
+      <<: [*env, *env-virgon]
       HOST: www-rr-hwt.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9905
       LIVERELOAD_PORT: 19905
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce557bd28860bc33b8140d
+      OMEDA_INPUT_ID: ${HWT_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-hwt.dev.parameter1.com
     ports:
       - "9905:80"
       - "19905:19905"
 
   ovd:
-    <<: *node
     <<: *site-cmd
     working_dir: /root/sites/overdriveonline.com
     environment:
-      <<: *env
-      <<: *env-virgon
+      <<: [*env, *env-virgon]
       HOST: www-rr-ovd.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9906
       LIVERELOAD_PORT: 19906
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce561dd28860bc33b823ce
+      OMEDA_INPUT_ID: ${OVD_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-ovd.dev.parameter1.com
     ports:
       - "9906:80"
       - "19906:19906"
 
   tps:
-    <<: *node
     <<: *site-cmd
     working_dir: /root/sites/truckpartsandservice.com
     environment:
-      <<: *env
-      <<: *env-virgon
+      <<: [*env, *env-virgon]
       HOST: www-rr-tps.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9907
       LIVERELOAD_PORT: 19907
       TENANT_KEY: randallreilly_all
       SITE_ID: 5fce55abd28860bc33b818d0
+      OMEDA_INPUT_ID: ${TPS_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-tps.dev.parameter1.com
     ports:
       - "9907:80"
