@@ -3,12 +3,10 @@ This monorepo contains the codebase for websites managed by Randall-Reilly. All 
 
 ----
 ## Requirements
-This project supports two development environments:
-- [Docker Compose](https://docs.docker.com/compose/) (preferred)
-
-or
-- [Node.js](https://nodejs.org) (version 10.x)
-- [Yarn](https://yarnpkg.com) package manager.
+This project supports one of these development environments:
+- GitHub Codespaces (preferred)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Node.js](https://nodejs.org) (version 10.x) + [Yarn](https://yarnpkg.com) package manager.
 
 ### Additional Resources
 
@@ -19,6 +17,21 @@ or
 
 ----
 ## Getting Started
+### Codespaces
+To get started with this repository in Codespaces, click on the Code/Codespaces/Create codespace button on the top right, or [click here](https://github.com/codespaces/new?hide_repo_select=true&ref=master&repo=297142576) to customize your codespace instance.
+
+Once your codespace is started, you can access it via the browser, or open it in VSCode natively.
+
+To start a service, change into the site directory and execute the `dev` command:
+```sh
+cd sites/overdriveonline.com
+yarn dev
+```
+
+Once the site boot is complete, your container will automatically be port forwarded and can be accessed via the URL in the terminal: http://www-rr-ovd.dev.parameter1.com:9906
+
+Make your changes and commit with the `Git` tab/extension within VSCode, then create a Pull Request like normal.
+
 ### Installation
 After cloning the repository, execute one of the following commands from the project root (based on your chosen development environment):
 ```sh
