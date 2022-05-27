@@ -13,6 +13,7 @@ const sharedRoutes = require('./routes');
 const paginated = require('./middleware/paginated');
 const redirectHandler = require('./redirect-handler');
 const oembedHandler = require('./oembed-handler');
+const recaptcha = require('./config/recaptcha');
 const idxRouteTemplates = require('./templates/user');
 const idxNavItems = require('./config/identity-x-nav');
 
@@ -74,6 +75,9 @@ module.exports = (options = {}) => {
       // Setup NativeX.
       const nativeXConfig = get(options, 'siteConfig.nativeX');
       set(app.locals, 'nativeX', nativeXConfig);
+
+      // Recaptcha
+      set(app.locals, 'recaptcha', recaptcha);
 
       // i18n
       const i18n = v => v;
