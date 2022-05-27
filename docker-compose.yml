@@ -18,8 +18,6 @@ x-env-defaults: &env
   NODE_ENV: development
   OMEDA_APP_ID: ${OMEDA_APP_ID-(unset)}
   OMEDA_INPUT_ID: ${OMEDA_INPUT_ID-(unset)}
-  RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY-(unset)}
-  RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY-(unset)}
   SENDGRID_API_KEY: ${SENDGRID_API_KEY-(unset)}
   SENDGRID_DEV_TO: ${SENDGRID_DEV_TO-support@parameter1.com}
   YARN_CACHE_FOLDER: /.yarn-cache
@@ -29,7 +27,6 @@ x-env-defaults: &env
   EQUIPMENT_EXPERTS_GRAPHQL_URI: ${EQUIPMENT_EXPERTS_GRAPHQL_URI-https://equipment-experts.virgon.base.parameter1.com/graphql}
   ENABLE_CONTENT_METER: ${ENABLE_CONTENT_METER-false}
   IDX_NAV_ENABLE: ${IDX_NAV_ENABLE-false}
-
   RECAPTCHA_V3_SITE_KEY: ${RECAPTCHA_V3_SITE_KEY-(unset)}
   RECAPTCHA_V3_SECRET_KEY: ${RECAPTCHA_V3_SECRET_KEY-(unset)}
 

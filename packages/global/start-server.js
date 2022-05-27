@@ -14,7 +14,6 @@ const paginated = require('./middleware/paginated');
 const redirectHandler = require('./redirect-handler');
 const oembedHandler = require('./oembed-handler');
 const idxRouteTemplates = require('./templates/user');
-const recaptcha = require('./config/recaptcha');
 const idxNavItems = require('./config/identity-x-nav');
 
 const routes = (siteRoutes, siteConfig) => (app) => {
@@ -79,9 +78,6 @@ module.exports = (options = {}) => {
       // i18n
       const i18n = v => v;
       set(app.locals, 'i18n', options.i18n || i18n);
-
-      // Recaptcha
-      set(app.locals, 'recaptcha', recaptcha);
 
       // Omeda customer upsert
       app.use(odentityCustomerUpsert({
