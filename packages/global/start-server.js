@@ -13,8 +13,8 @@ const sharedRoutes = require('./routes');
 const paginated = require('./middleware/paginated');
 const redirectHandler = require('./redirect-handler');
 const oembedHandler = require('./oembed-handler');
-const recaptcha = require('./config/recaptcha');
 const idxRouteTemplates = require('./templates/user');
+const recaptcha = require('./config/recaptcha');
 const idxNavItems = require('./config/identity-x-nav');
 
 const routes = (siteRoutes, siteConfig) => (app) => {
@@ -76,12 +76,12 @@ module.exports = (options = {}) => {
       const nativeXConfig = get(options, 'siteConfig.nativeX');
       set(app.locals, 'nativeX', nativeXConfig);
 
-      // Recaptcha
-      set(app.locals, 'recaptcha', recaptcha);
-
       // i18n
       const i18n = v => v;
       set(app.locals, 'i18n', options.i18n || i18n);
+
+      // Recaptcha
+      set(app.locals, 'recaptcha', recaptcha);
 
       // Omeda customer upsert
       app.use(odentityCustomerUpsert({
