@@ -31,13 +31,15 @@ module.exports = {
     navbar: {
       src: 'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo-new.svg?h=45&auto=format,compress',
       srcset: [
-        'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo-new.svg?h=90&auto=format,compress 2x',
+        'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo-new.svg?h=45&auto=format,compress&dpr=2 2x',
       ],
+      width: 122,
+      height: 35,
     },
     footer: {
       src: 'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo-new.svg?h=60&auto=format,compress',
       srcset: [
-        'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo-new.svg?h=120&auto=format,compress 2x',
+        'https://img.equipmentworld.com/files/base/randallreilly/all/image/static/eqw/eqw-logo-new.svg?h=60&auto=format,compress&dpr=2 2x',
       ],
     },
     corporate: {

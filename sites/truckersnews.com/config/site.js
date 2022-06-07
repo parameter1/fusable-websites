@@ -31,13 +31,15 @@ module.exports = {
     navbar: {
       src: 'https://img.truckersnews.com/files/base/randallreilly/all/image/static/tn/tn-logo.svg?h=45&auto=format,compress',
       srcset: [
-        'https://img.truckersnews.com/files/base/randallreilly/all/image/static/tn/tn-logo.svg?h=90&auto=format,compress 2x',
+        'https://img.truckersnews.com/files/base/randallreilly/all/image/static/tn/tn-logo.svg?h=45&auto=format,compress&dpr=2 2x',
       ],
+      width: 66,
+      height: 35,
     },
     footer: {
       src: 'https://img.truckersnews.com/files/base/randallreilly/all/image/static/tn/tn-logo-white.svg?h=60&auto=format,compress',
       srcset: [
-        'https://img.truckersnews.com/files/base/randallreilly/all/image/static/tn/tn-logo-white.svg?h=120&auto=format,compress 2x',
+        'https://img.truckersnews.com/files/base/randallreilly/all/image/static/tn/tn-logo-white.svg?h=60&auto=format,compress&dpr=2 2x',
       ],
     },
     corporate: {

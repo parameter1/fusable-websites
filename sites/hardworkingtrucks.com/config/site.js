@@ -31,13 +31,15 @@ module.exports = {
     navbar: {
       src: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo-new.svg?h=45&auto=format,compress',
       srcset: [
-        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo-new.svg?h=90&auto=format,compress 2x',
+        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo-new.svg?h=45&auto=format,compress&dpr=2 2x',
       ],
+      width: 94,
+      height: 35,
     },
     footer: {
       src: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo-new.svg?h=60&auto=format,compress',
       srcset: [
-        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo-new.svg?h=120&auto=format,compress 2x',
+        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo-new.svg?h=60&auto=format,compress&dpr=2 2x',
       ],
     },
     corporate: {
