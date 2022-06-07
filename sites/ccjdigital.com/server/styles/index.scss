@@ -9,6 +9,9 @@ $theme-site-header-breakpoints: (
 // Colors
 $primary: #103a57;
 
+// Newsletter signup forms
+$skin-newsletter-signup-bg-color: #f0f1f2;
+
 @import "../../node_modules/@randall-reilly/package-global/scss/core";
 @import "./top-250";
 
