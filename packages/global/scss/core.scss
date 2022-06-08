@@ -164,3 +164,9 @@ label {
   @extend .embed-responsive;
   @extend .embed-responsive-16by9;
 }
+
+.site-navbar {
+  &__logo {
+    width: auto;
+  }
+}

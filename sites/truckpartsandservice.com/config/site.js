@@ -31,13 +31,15 @@ module.exports = {
     navbar: {
       src: 'https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/tps-logo-new.svg?h=45&auto=format,compress',
       srcset: [
-        'https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/tps-logo-new.svg?h=90&auto=format,compress 2x',
+        'https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/tps-logo-new.svg?h=45&auto=format,compress&dpr=2 2x',
       ],
+      width: 57,
+      height: 35,
     },
     footer: {
       src: 'https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/tps-logo-new.svg?h=60&auto=format,compress',
       srcset: [
-        'https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/tps-logo-new.svg?h=120&auto=format,compress 2x',
+        'https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/tps-logo-new.svg?h=60&auto=format,compress&dpr=2 2x',
       ],
     },
     corporate: {
