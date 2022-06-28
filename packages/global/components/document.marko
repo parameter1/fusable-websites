@@ -87,10 +87,9 @@ $ const { gamDefer, gtmDefer } = req.query;
       clear-data=true
     />
     <marko-web-identity-x-context|{ hasUser, isEnabled }|>
-      <theme-site-header has-user=hasUser reg-enabled=isEnabled />
+      <theme-site-header has-user=hasUser reg-enabled=isEnabled use-idx-newsletter-signup=false />
       <theme-site-menu has-user=hasUser reg-enabled=isEnabled />
     </marko-web-identity-x-context>
-    <theme-site-newsletter-menu />
     <if(contentMeterState && !contentMeterState.isLoggedIn)>
       <global-content-meter-block
         views=contentMeterState.views
@@ -103,7 +102,7 @@ $ const { gamDefer, gtmDefer } = req.query;
   </@above-container>
   <@below-container>
     <${input.belowContainer} />
-    <theme-site-footer />
+    <theme-site-footer use-idx-newsletter-signup=false />
   </@below-container>
   <@below-wrapper>
     <marko-web-deferred-script-loader-load />
