@@ -1,6 +1,6 @@
 {
   "name": "@randall-reilly/dun-and-bradstreet-lambda",
-  "version": "1.38.1",
+  "version": "1.39.0",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/packages/dun-and-bradstreet-lambda",
   "license": "MIT",
