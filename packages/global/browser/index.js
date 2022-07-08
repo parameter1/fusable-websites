@@ -5,7 +5,7 @@ import dunAndBradstreet from './dun-and-bradstreet';
 const ContentMeterTrack = () => import(/* webpackChunkName: "content-meter-tracker" */ './track-content-meter.vue');
 
 export default (Browser) => {
-  dunAndBradstreet();
+  dunAndBradstreet().handle();
   MonoRail(Browser);
   Browser.register('ContentMeterTrack', ContentMeterTrack);
 };
