@@ -115,6 +115,6 @@ export default () => {
   };
 
   onWindowLoad(() => {
-    track().then(data => console.log('D&B data posted', data));
+    track();
   });
 };
