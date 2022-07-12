@@ -192,29 +192,29 @@ label {
       height: auto;
       max-width: 100%;
     }
-    @media (min-width: 650px) {
+    @media (min-width: 768px) {
       img.fr-dii.fr-fir {
-        max-width: 50%;
+        max-width: calc(300px - 0.75rem);
         float: right;
-        margin-left: 1rem;
+        margin-left: 0.75rem;
       }
       img.fr-dii.fr-fil {
-        max-width: 50%;
+        max-width: calc(300px - 0.75rem);
         float: left;
-        margin-right: 1rem;
+        margin-right: 0.75rem;
       }
       span.fr-dii.fr-fir {
         .fr-img-wrap {
-          max-width: 50%;
+          max-width: calc(300px - 0.75rem);
           float: right;
-          margin-left: 1rem;
+          margin-left: 0.75rem;
         }
       }
       span.fr-dii.fr-fil {
         .fr-img-wrap {
-          max-width: 50%;
+          max-width: calc(300px - 0.75rem);
           float: left;
-          margin-right: 1rem;
+          margin-right: 0.75rem;
         }
       }
     }
