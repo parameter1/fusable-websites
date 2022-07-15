@@ -79,4 +79,5 @@ module.exports = {
     bgColor: '#000000',
   },
   setSearchSortFieldToScore: true,
+  fontEmbedMethod: 'javascript',
 };
