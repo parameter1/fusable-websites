@@ -248,7 +248,10 @@ export default ({ debug = false } = {}) => (() => {
 
     if (!data || data.status !== '200') {
       setCookie({ data: currentState });
-      await postJSON({ ...data, __olytics: { state: currentState, record: null } });
+      await postJSON({
+        ...data,
+        __olytics: { state: { current: currentState, previous: previousState }, record: null },
+      });
       return;
     }
 
@@ -267,7 +270,10 @@ export default ({ debug = false } = {}) => (() => {
     if (!hasRequiredFields) {
       log('D&B data is missing the required fields');
       setCookie({ data: currentState, maxAge: 60 * 60 * 24 * 30 });
-      await postJSON({ ...data, __olytics: { state: currentState, record } });
+      await postJSON({
+        ...data,
+        __olytics: { state: { current: currentState, previous: previousState }, record },
+      });
       return;
     }
 
@@ -279,7 +285,10 @@ export default ({ debug = false } = {}) => (() => {
     log('Record sent to Olytics', record);
 
     setCookie({ data: currentState, maxAge: 60 * 60 * 24 * 365 });
-    await postJSON({ ...data, __olytics: { state: currentState, record } });
+    await postJSON({
+      ...data,
+      __olytics: { state: { current: currentState, previous: previousState }, record },
+    });
   };
 
   return {
