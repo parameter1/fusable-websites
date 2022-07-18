@@ -1,4 +1,4 @@
-export default () => (() => {
+export default ({ debug = false } = {}) => (() => {
   const DB_ACCOUNT = 'api4253';
   const DB_IMG_SRC = `https://${DB_ACCOUNT}.d41.co/sync/img?req=${DB_ACCOUNT}&cust=112`;
   const DB_SCRIPT_SRC = 'https://cdn-0.d41.co/tags/dnb_coretag_v4.min.js';
@@ -26,6 +26,14 @@ export default () => (() => {
   const DB_REQUIRED_FIELDS = DB_FIELDS
     .filter(field => field.required === true)
     .map(field => field.key);
+
+  const log = (...args) => {
+    // eslint-disable-next-line
+    if (debug) console.log('D&B Olytics', ...args);
+  };
+
+  const ucFirst = string => `${string[0].toUpperCase()}${string.slice(1)}`;
+  const olyticsKey = key => `dnb${ucFirst(key)}`;
 
   const URI = 'https://jc4f7ji1yg.execute-api.us-east-2.amazonaws.com/default/dun-and-bradstreet-enqueue';
 
@@ -131,13 +139,13 @@ export default () => (() => {
     }
   };
 
-  const getOlyticsObject = async (tries = 0) => new Promise((resolve, reject) => {
+  const getOlyticsObject = (tries = 0) => new Promise((resolve, reject) => {
     if (tries > 5) {
       reject(new Error('Attempts to load Olytics script has reached maximum.'));
-    } else if (window.olytics) {
+    } else if (window.olytics && window.olytics.fire) {
       resolve(window.olytics);
     } else {
-      setTimeout(() => getOlyticsObject(tries + 1), 200);
+      setTimeout(() => getOlyticsObject(tries + 1).then(resolve).catch(reject), 200);
     }
   });
 
@@ -148,58 +156,145 @@ export default () => (() => {
     return { ...obj, [name]: value };
   }, {});
 
-  const setCookie = (maxAge) => {
-    if (maxAge) {
-      document.cookie = `dnbProcessed=true; max-age=${maxAge}`;
+  const getOlyticsAnonId = (interval = 500, tries = 0) => new Promise((resolve, reject) => {
+    if (tries > 10) {
+      reject(new Error('Attempts to load Olytics anonymous ID has reached maximum.'));
+    }
+    const { oly_anon_id: anonId } = parseCookies();
+    if (typeof anonId !== 'undefined') {
+      resolve(anonId);
     } else {
-      document.cookie = 'dnbProcessed=true';
+      setTimeout(() => {
+        getOlyticsAnonId(interval, tries + 1).then(resolve).catch(reject);
+      }, interval);
+    }
+  });
+
+  const getOmedaEncryptedId = () => {
+    const { oly_enc_id: encryptedId } = parseCookies();
+    return encryptedId && encryptedId !== 'null' ? encryptedId : null;
+  };
+
+  const parseJSON = (string) => {
+    try {
+      return JSON.parse(string);
+    } catch (e) {
+      return null;
     }
   };
 
-  const sendToOlytics = async () => {
-    const { oly_enc_id: encryptedId, dnbProcessed } = parseCookies();
-    if (encryptedId && encryptedId !== 'null') return;
-    if (dnbProcessed) return;
+  const setCookie = ({ maxAge, data }) => {
+    const body = encodeURIComponent(JSON.stringify(data));
+    log('setting cookie', { data, maxAge });
+    if (maxAge) {
+      document.cookie = `dnbState=${body}; max-age=${maxAge}`;
+    } else {
+      document.cookie = `dnbState=${body}`;
+    }
+  };
 
-    const [, data] = await Promise.all([
+  const sendToOlytics = async ({ behaviorId }) => {
+    // ensure olytics is present and anonymous ID has been found.
+    const [olytics, anonId] = await Promise.all([
       getOlyticsObject(),
-      getData(),
+      getOlyticsAnonId(),
     ]);
+    const encryptedId = getOmedaEncryptedId();
+    const { dnbState } = parseCookies();
+    log({ encryptedId });
 
-    if (!data || data.status !== '200') {
-      setCookie();
-      await postJSON({ ...data, __olytics: { valid: false, record: null } });
+    // when an omeda customer is present, bail.
+    if (encryptedId && encryptedId !== 'null') {
+      log('Omeda encrypted customer ID found. Bailing.');
       return;
     }
 
+    const previousState = parseJSON(dnbState);
+    log({ previousState });
+
+    // when previous state is found...
+    let bail = false;
+    if (previousState) {
+      if (previousState.match === false) {
+        log('Previous state indicated no match.');
+        bail = true;
+      } else if (previousState.match === true && previousState.sent === false) {
+        log('A previous match was found but not sent to Olytics. @todo: replay if matched fields would now satisfy the requirements.');
+        bail = true;
+      } else if (previousState.match === true && previousState.sent === true) {
+        log('A previous match was sent to Olytics. @todo: replay if new fields were added.');
+        const { olyticsAnonId } = previousState;
+        if (olyticsAnonId !== anonId) {
+          log('The previous Olytics anonymous ID has changed. Resyncing data.', { previousId: olyticsAnonId, currentId: anonId });
+        } else {
+          bail = true;
+        }
+      }
+    }
+    if (bail) {
+      log('Bailing from sync.');
+      return;
+    }
+
+    const currentState = {
+      olyticsAnonId: anonId,
+      match: false,
+      sent: false,
+      fields: [],
+    };
+
+    const data = await getData();
+    log({ dnbData: data });
+
+    if (!data || data.status !== '200') {
+      setCookie({ data: currentState });
+      await postJSON({
+        ...data,
+        __olytics: { state: { current: currentState, previous: previousState }, record: null },
+      });
+      return;
+    }
+
+    currentState.match = true;
     const record = DB_FIELDS.reduce((o, field) => {
       const value = data[field.key];
       if (value == null || value === '') return o;
-      return { ...o, [`dnb_${field.key}`]: value };
+
+      currentState.fields.push(field.key);
+      return { ...o, [`${olyticsKey(field.key)}`]: value };
     }, {});
 
-    const hasRequiredFields = DB_REQUIRED_FIELDS.every(key => record[`dnb_${key}`]);
+    log({ record });
+
+    const hasRequiredFields = DB_REQUIRED_FIELDS.every(key => record[`${olyticsKey(key)}`]);
     if (!hasRequiredFields) {
-      setCookie();
-      await postJSON({ ...data, __olytics: { valid: false, record } });
+      log('D&B data is missing the required fields');
+      setCookie({ data: currentState, maxAge: 60 * 60 * 24 * 30 });
+      await postJSON({
+        ...data,
+        __olytics: { state: { current: currentState, previous: previousState }, record },
+      });
       return;
     }
 
-    // olytics.fire({
-    //   behaviorId: '',
-    //   ...record,
-    // });
+    olytics.fire({
+      behaviorId,
+      ...record,
+    });
+    currentState.sent = true;
+    log('Record sent to Olytics', record);
 
-    // const maxAge = (Date.now() / 1000) + (60 * 60 * 24 * 365);
-    // setCookie(maxAge);
-
-    await postJSON({ ...data, __olytics: { valid: true, record } });
+    setCookie({ data: currentState, maxAge: 60 * 60 * 24 * 365 });
+    await postJSON({
+      ...data,
+      __olytics: { state: { current: currentState, previous: previousState }, record },
+    });
   };
 
   return {
-    handle: () => {
+    handle: ({ behaviorId }) => {
       onWindowLoad(() => {
-        sendToOlytics();
+        sendToOlytics({ behaviorId });
       });
     },
   };
