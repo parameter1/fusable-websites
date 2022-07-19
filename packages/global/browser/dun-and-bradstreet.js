@@ -162,7 +162,7 @@ export default ({ debug = false } = {}) => (() => {
     }
     const { oly_anon_id: anonId } = parseCookies();
     if (typeof anonId !== 'undefined') {
-      resolve(anonId);
+      resolve(anonId.replace(/"/g, ''));
     } else {
       setTimeout(() => {
         getOlyticsAnonId(interval, tries + 1).then(resolve).catch(reject);
