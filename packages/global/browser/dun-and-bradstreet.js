@@ -260,8 +260,11 @@ export default ({ debug = false } = {}) => (() => {
       const value = data[field.key];
       if (value == null || value === '') return o;
 
+      // replace commas so Olytics doesn't treat as a delimited value.
+      const cleaned = `${value}`.trim().replace(/,/g, '');
+
       currentState.fields.push(field.key);
-      return { ...o, [`${olyticsKey(field.key)}`]: value };
+      return { ...o, [`${olyticsKey(field.key)}`]: cleaned };
     }, {});
 
     log({ record });
