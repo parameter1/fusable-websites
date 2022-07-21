@@ -124,6 +124,17 @@ export default ({ debug = false } = {}) => (() => {
     }
   };
 
+  const track = ({
+    data,
+    record,
+    anonId,
+    currentState,
+    previousState,
+  }) => postJSON({
+    ...data,
+    __olytics: { anonId, state: { current: currentState, previous: previousState }, record },
+  });
+
   const onWindowLoad = (callback, requestFrame) => {
     if (document.readyState === 'complete') {
       if (requestFrame) {
@@ -278,9 +289,12 @@ export default ({ debug = false } = {}) => (() => {
     if (data.isp === true) {
       log('D&B data is from an ISP');
       setCookie({ data: currentState, maxAge: 60 * 60 * 24 * 30 });
-      await postJSON({
-        ...data,
-        __olytics: { state: { current: currentState, previous: previousState }, record },
+      await track({
+        data,
+        record,
+        anonId,
+        currentState,
+        previousState,
       });
       return;
     }
@@ -289,9 +303,12 @@ export default ({ debug = false } = {}) => (() => {
     if (!hasRequiredFields) {
       log('D&B data is missing the required fields');
       setCookie({ data: currentState, maxAge: 60 * 60 * 24 * 30 });
-      await postJSON({
-        ...data,
-        __olytics: { state: { current: currentState, previous: previousState }, record },
+      await track({
+        data,
+        record,
+        anonId,
+        currentState,
+        previousState,
       });
       return;
     }
@@ -304,9 +321,12 @@ export default ({ debug = false } = {}) => (() => {
     log('Record sent to Olytics', record);
 
     setCookie({ data: currentState, maxAge: 60 * 60 * 24 * 365 });
-    await postJSON({
-      ...data,
-      __olytics: { state: { current: currentState, previous: previousState }, record },
+    await track({
+      data,
+      record,
+      anonId,
+      currentState,
+      previousState,
     });
   };
 
