@@ -260,10 +260,6 @@ export default ({ debug = false } = {}) => (() => {
 
     if (!data || data.status !== '200') {
       setCookie({ data: currentState });
-      await postJSON({
-        ...data,
-        __olytics: { state: { current: currentState, previous: previousState }, record: null },
-      });
       return;
     }
 
