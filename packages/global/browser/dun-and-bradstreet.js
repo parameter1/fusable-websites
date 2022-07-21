@@ -269,6 +269,16 @@ export default ({ debug = false } = {}) => (() => {
 
     log({ record });
 
+    if (data.isp === true) {
+      log('D&B data is from an ISP');
+      setCookie({ data: currentState, maxAge: 60 * 60 * 24 * 30 });
+      await postJSON({
+        ...data,
+        __olytics: { state: { current: currentState, previous: previousState }, record },
+      });
+      return;
+    }
+
     const hasRequiredFields = DB_REQUIRED_FIELDS.every(key => record[`${olyticsKey(key)}`]);
     if (!hasRequiredFields) {
       log('D&B data is missing the required fields');
