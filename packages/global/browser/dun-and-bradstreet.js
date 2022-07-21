@@ -10,7 +10,7 @@ export default ({ debug = false } = {}) => (() => {
     { key: 'duns', required: true },
     { key: 'employeesAtLocation', required: true },
     { key: 'industrySic', required: true },
-    { key: 'jobFunction', required: true },
+    { key: 'jobFunction', required: false },
     { key: 'parentDuns', required: false },
     { key: 'salesAnnual', required: true },
     { key: 'sicCodes', required: false },
@@ -23,9 +23,13 @@ export default ({ debug = false } = {}) => (() => {
     if (a.key < b.key) return -1;
     return 0;
   });
+
   const DB_REQUIRED_FIELDS = DB_FIELDS
     .filter(field => field.required === true)
     .map(field => field.key);
+
+  const DB_REQUIRED_FIELD_STRING = DB_REQUIRED_FIELDS.join('|');
+  const DB_FIELD_LIST_STRING = DB_FIELDS.map(field => field.key).join('|');
 
   const log = (...args) => {
     // eslint-disable-next-line
@@ -219,13 +223,20 @@ export default ({ debug = false } = {}) => (() => {
         log('Previous state indicated no match.');
         bail = true;
       } else if (previousState.match === true && previousState.sent === false) {
-        log('A previous match was found but not sent to Olytics. @todo: replay if matched fields would now satisfy the requirements.');
-        bail = true;
+        log('A previous match was found but not sent to Olytics.');
+        const { required } = previousState;
+        if (required !== DB_REQUIRED_FIELD_STRING) {
+          log('Field requirements have changed. Resync data.');
+        } else {
+          bail = true;
+        }
       } else if (previousState.match === true && previousState.sent === true) {
-        log('A previous match was sent to Olytics. @todo: replay if new fields were added.');
-        const { olyticsAnonId } = previousState;
+        log('A previous match was sent to Olytics.');
+        const { olyticsAnonId, fieldList } = previousState;
         if (olyticsAnonId !== anonId) {
-          log('The previous Olytics anonymous ID has changed. Resyncing data.', { previousId: olyticsAnonId, currentId: anonId });
+          log('The previous Olytics anonymous ID has changed. Resync data.', { previousId: olyticsAnonId, currentId: anonId });
+        } else if (fieldList !== DB_FIELD_LIST_STRING) {
+          log('The field list has changed. Resync data.');
         } else {
           bail = true;
         }
@@ -240,7 +251,8 @@ export default ({ debug = false } = {}) => (() => {
       olyticsAnonId: anonId,
       match: false,
       sent: false,
-      fields: [],
+      required: DB_REQUIRED_FIELD_STRING,
+      fieldList: DB_FIELD_LIST_STRING,
     };
 
     const data = await getData();
@@ -262,8 +274,6 @@ export default ({ debug = false } = {}) => (() => {
 
       // replace commas so Olytics doesn't treat as a delimited value.
       const cleaned = `${value}`.trim().replace(/,/g, '');
-
-      currentState.fields.push(field.key);
       return { ...o, [`${olyticsKey(field.key)}`]: cleaned };
     }, {});
 
