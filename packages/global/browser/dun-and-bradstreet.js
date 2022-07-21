@@ -127,12 +127,11 @@ export default ({ debug = false } = {}) => (() => {
   const track = ({
     data,
     record,
-    anonId,
     currentState,
     previousState,
   }) => postJSON({
     ...data,
-    __olytics: { anonId, state: { current: currentState, previous: previousState }, record },
+    __olytics: { state: { current: currentState, previous: previousState }, record },
   });
 
   const onWindowLoad = (callback, requestFrame) => {
@@ -292,7 +291,6 @@ export default ({ debug = false } = {}) => (() => {
       await track({
         data,
         record,
-        anonId,
         currentState,
         previousState,
       });
@@ -306,7 +304,6 @@ export default ({ debug = false } = {}) => (() => {
       await track({
         data,
         record,
-        anonId,
         currentState,
         previousState,
       });
@@ -324,7 +321,6 @@ export default ({ debug = false } = {}) => (() => {
     await track({
       data,
       record,
-      anonId,
       currentState,
       previousState,
     });
