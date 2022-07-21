@@ -288,12 +288,6 @@ export default ({ debug = false } = {}) => (() => {
     if (data.isp === true) {
       log('D&B data is from an ISP');
       setCookie({ data: currentState, maxAge: 60 * 60 * 24 * 30 });
-      await track({
-        data,
-        record,
-        currentState,
-        previousState,
-      });
       return;
     }
 
