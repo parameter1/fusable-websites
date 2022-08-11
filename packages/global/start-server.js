@@ -53,19 +53,9 @@ module.exports = (options = {}) => {
       app.use(htmlSitemapPagination());
 
       // Setup IdentityX + Omeda
-      const idxConfig = getAsObject(options, 'siteConfig.identityX');
       const omedaConfig = getAsObject(options, 'siteConfig.omeda');
-      omedaIdentityX(app, {
-        brandKey: omedaConfig.brandKey,
-        clientKey: omedaConfig.clientKey,
-        appId: omedaConfig.appId,
-        inputId: omedaConfig.inputId,
-        rapidIdentProductId: get(omedaConfig, 'rapidIdentification.productId'),
-        omedaPromoCodeDefault: omedaConfig.promoCodeDefault,
-        omedaPromoCodeCookieName: omedaConfig.promoCodeCookieName,
-        idxConfig,
-        idxRouteTemplates,
-      });
+      const omedaIdentityXConfig = getAsObject(options, 'siteConfig.omedaIdentityX');
+      omedaIdentityX(app, { ...omedaIdentityXConfig, idxRouteTemplates });
       idxNavItems({ site: app.locals.site });
 
       // Setup GAM.
