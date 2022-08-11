@@ -5,6 +5,7 @@ const nativeX = require('./native-x');
 const navigation = require('./navigation');
 const newsletter = require('./newsletter');
 const omeda = require('./omeda');
+const omedaIdentityX = require('./omeda-identity-x');
 const search = require('./search');
 
 module.exports = {
@@ -16,6 +17,7 @@ module.exports = {
   navigation,
   newsletter,
   omeda,
+  omedaIdentityX,
   search,
   // theme configs
   idxNavItems: {
