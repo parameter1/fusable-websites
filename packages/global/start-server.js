@@ -4,7 +4,6 @@ const { set, get, getAsObject } = require('@parameter1/base-cms-object-path');
 const loadInquiry = require('@parameter1/base-cms-marko-web-inquiry');
 const htmlSitemapPagination = require('@parameter1/base-cms-marko-web-html-sitemap/middleware/paginated');
 const omedaIdentityX = require('@parameter1/base-cms-marko-web-omeda-identity-x');
-const odentityCustomerUpsert = require('@parameter1/base-cms-marko-web-omeda/odentity/upsert-customer');
 
 const document = require('./components/document');
 const components = require('./components');
@@ -53,7 +52,6 @@ module.exports = (options = {}) => {
       app.use(htmlSitemapPagination());
 
       // Setup IdentityX + Omeda
-      const omedaConfig = getAsObject(options, 'siteConfig.omeda');
       const omedaIdentityXConfig = getAsObject(options, 'siteConfig.omedaIdentityX');
       omedaIdentityX(app, { ...omedaIdentityXConfig, idxRouteTemplates });
       idxNavItems({ site: app.locals.site });
@@ -72,12 +70,6 @@ module.exports = (options = {}) => {
 
       // Recaptcha
       set(app.locals, 'recaptcha', recaptcha);
-
-      // Omeda customer upsert
-      app.use(odentityCustomerUpsert({
-        brandKey: omedaConfig.brandKey,
-        onError: newrelic.noticeError.bind(newrelic),
-      }));
     },
     onAsyncBlockError: e => newrelic.noticeError(e),
 
