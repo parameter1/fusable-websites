@@ -54,7 +54,7 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
-    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ovd-full.png',
+    // imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ovd-full.png',
   },
   pushdown: {
     ...defaults,
