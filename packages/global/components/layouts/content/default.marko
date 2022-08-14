@@ -189,7 +189,11 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             </if>
 
             <if(displayNewsletterSignup)>
-              <theme-newsletter-signup-banner-block />
+              <marko-web-identity-x-context|{ hasUser }|>
+                <if(!hasUser)>
+                  <identity-x-newsletter-form-inline type="inlineContent" />
+                </if>
+              </marko-web-identity-x-context>
             </if>
 
             <if(displaySocialShare)>
