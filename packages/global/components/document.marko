@@ -1,5 +1,6 @@
+
+import createOmedaIdentityBuilder from "@parameter1/base-cms-marko-web-p1-events/utils/create-omeda-identity-builder";
 import { getAsObject } from "@parameter1/base-cms-object-path";
-import omedaConfig from "../config/omeda";
 
 $ const {
   site,
@@ -8,6 +9,8 @@ $ const {
   GAM,
   contentMeterState,
 } = out.global;
+
+$ const omedaConfig = site.get('omeda');
 
 $ const { gamDefer, gtmDefer } = req.query;
 
@@ -33,7 +36,7 @@ $ const { gamDefer, gtmDefer } = req.query;
       on="load"
       request-frame=true
       target-tag="body"
-      identity-query-builder=`var id = query.oly_enc_id; if (id) { return 'omeda.${omedaConfig.brandKey}.customer*' + id + '~encoded'; };`;
+      identity-query-builder=createOmedaIdentityBuilder(omedaConfig.brandKey)
     />
 
     <!-- init gam -->
