@@ -64,10 +64,21 @@
                 </a>
               </template>
               <template v-else-if="(col.type === 'number' && col.numberType === 'usCurrency')">
-                {{ toUSD(row[col.key].displayValue) }}
+                <template v-if="row[col.key].displayValue === ''">
+                  --
+                </template>
+                <template v-else>
+                  {{ toUSD(row[col.key].displayValue) }}
+                </template>
               </template>
+
               <template v-else-if="col.type === 'number'">
-                {{ Number(row[col.key].displayValue).toLocaleString() }}
+                <template v-if="row[col.key].displayValue === ''">
+                  --
+                </template>
+                <template v-else>
+                  {{ Number(row[col.key].displayValue).toLocaleString() }}
+                </template>
               </template>
               <template v-else>
                 {{ row[col.key].displayValue }}
