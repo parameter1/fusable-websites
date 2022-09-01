@@ -9,7 +9,7 @@ import extractRangeValues from './extract-range-values';
  * @return {number[]|null}
  */
 export default ({ value } = {}) => {
-  if (!value) return null;
+  if (!value && typeof value !== 'number') return null;
   const values = extractRangeValues({ value });
   if (!values) return null;
   // remove commas then parse.

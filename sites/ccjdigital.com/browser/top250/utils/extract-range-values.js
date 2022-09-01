@@ -6,7 +6,7 @@
  * @return {string[]|null}
  */
 export default ({ value } = {}) => {
-  if (!value) return null;
+  if (!value && typeof value !== 'number') return null;
   if (!/-/.test(value)) return [value, value];
   const parts = value.split('-').map(v => v.trim()).filter(v => v);
   if (!parts.length) return null;
