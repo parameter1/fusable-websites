@@ -93,7 +93,7 @@
 92,88,May Trucking Co.,Salem,OR,94081,David Daniels,President,www.maytrucking.com,Refrigerated,May Trucking Co.,"218,581,303", "0","1,071","1,071", "0","1,071","1,071", "0","2,700","2,700", 995 , "0", 995
 93,101,"PGT Trucking, Inc.",Aliquippa,PA,192897,Gregg Troian,President,www.pgttrucking.com,Flatbed/Specialized/Heavy Haul,,"325,174,000", "0", "0", "0", 432 , 575 ,"1,007", 121 ,"1,397","1,518", 415 , 501 , 916
 94,117,"Acme Truck Line, Inc.",Gretna,LA,52767,Mike Coatney,Chairman of the Board,www.acmetruck.com,Flatbed/Specialized/Heavy Haul,"Acme Truck Line, Inc.","205,101,000", 469 , "0", 469 ,"1,108", "0","1,108", 769 , "0", 769 ,"1,150", "0","1,150"
-95,NR,Western Flyer Express,Oklahoma City,OK,658909,Randy Timms,CEO,www.drivewfx.com,General Freight,,, "0", "0", "0","1,050", "0","1,050","2,325", "0","2,325",,,"1,030"
+95,,Western Flyer Express,Oklahoma City,OK,658909,Randy Timms,CEO,www.drivewfx.com,General Freight,,, "0", "0", "0","1,050", "0","1,050","2,325", "0","2,325",,,"1,030"
 96,91,Hansen & Adkins Auto Transport,Los Alamitos,CA,568253,Louie Adkins,President,www.hansenadkins.com,Motor Vehicles,,, "0", "0", "0", 299 , 697 , 996 , 299 , 697 , 996 ,,, 996
 97,95,"Trans-System, Inc.",Spokane,WA,,Dennis J. Williams,President & CEO,www.trans-system.com,General Freight,"System Transport, Inc./T-W Transport, Inc./James J. Williams","315,000,000", "0", "0", "0", 200 , 740 , 940 , 60 ,"1,886","1,946", 725 , 217 , 942
 98,92,"Tri-National, Inc.",Earth City,MO,1266329,Robert Rogulic,President,www.tri-nat.com,General Freight,"Tri-National, Inc./Shoreline/Gulf Coast Intermodal","196,087,440", "0", "0", "0", "0", 970 , 970 , "0","2,985","2,985","1,360", "0","1,360"
@@ -215,24 +215,24 @@
 214,227,Midland Transport,Dieppe,NB,180155,,,www.midlandtransport.com,General Freight,,, "0", "0", "0", 296 , 46 , 342 , "0","1,361","1,361",,, 404
 215,223,Long Haul Trucking,Albertville,MN,282451,Jason Michels,CEO,www.longhaultrucking.com,Flatbed/Specialized/Heavy Haul,Long Haul Trucking,"97,700,000", "0", "0", "0", 207 , 132 , 339 , 120 , 280 , 400 , 135 , 200 , 335
 216,230,Andrus Transportation Services,Saint George,UT,167651,James R Andrus,President,www.andrustrans.com,General Freight,,, "0", "0", "0", 105 , 241 , 346 , "0","1,016","1,016",,, 375
-217,NR,"Online Transport, Inc.",Greenfield,IN,848251,Dan Cook,President,www.onlinetransport.com,General Freight,,, "0", "0", "0", 412 , "0", 412 , "0","1,217","1,217",,, 240
+217,,"Online Transport, Inc.",Greenfield,IN,848251,Dan Cook,President,www.onlinetransport.com,General Freight,,, "0", "0", "0", 412 , "0", 412 , "0","1,217","1,217",,, 240
 218,231,Ergon Trucking,Jackson,MS,137758,,,,Tank/Bulk Commodities,,, "0", "0", "0", 231 , 169 , 400 , 36 , 477 , 513 ,,, 354
 219,218,"D.M. Bowman, Inc.",Williamsport,MD,135530,Brian Hill,CEO,www.dmbowman.com,General Freight,"D.M. Bowman, Inc.","101,351,506", "0", "0", "0", "0", 298 , 298 , "0","1,442","1,442", 337 , "0", 337
 220,203,"Salem Carriers, Inc.",Winston Salem,NC,229354,Thomas Teague,President,www.salemcarriers.com,Dedicated Contract Carriage,"Salem Carriers, Inc.","65,643,700", 34 , "0", 34 , 346 , "0", 346 ,"1,398", "0","1,398", 386 , "0", 386
 221,225,"Coastal Transport Co., Inc.",San Antonio,TX,36647,Joe A. Morgan,President/COO,www.coastaltransport.net,Tank/Bulk Commodities,"Coastal Transport Co., Inc.","78,302,981", "0", "0", "0", "0", 342 , 342 , "0", 413 , 413 , 350 , "0", 350
-222,NR,Raider Express,Fort Worth,TX,817781,"Mike Eggleton, Jr.",Vice President,www.raiderexpress.com,Refrigerated,,, "0", "0", "0", 2 , 335 , 337 , "0", 750 , 750 ,,, 350
+222,,Raider Express,Fort Worth,TX,817781,"Mike Eggleton, Jr.",Vice President,www.raiderexpress.com,Refrigerated,,, "0", "0", "0", 2 , 335 , 337 , "0", 750 , 750 ,,, 350
 223,233,Royal Express,Laredo,TX,838117,,,,General Freight,,, "0", "0", "0", "0", 336 , 336 , "0", 900 , 900 ,,, 341
 224,237,McLeod Express,Decatur,IL,992986,Colt McLeod,President,www.mcleodexpress.com,General Freight,,"90,835,000", "0", "0", "0", "0", 310 , 310 , "0", 942 , 942 , 316 , 10 , 326
 225,229,Kivi Bros Trucking,Duluth,MN,593718,Derek Kivi,CEO,wwwkivibros.com,Flatbed/Specialized/Heavy Haul,,"87,000,000", "0", "0", "0", "0", 300 , 300 , "0", 500 , 500 , 310 , 10 , 320
 226,236,Andrews Logistics,Southlake,TX,736714,,,,Tank/Bulk Commodities,,, "0", "0", "0", 4 , 350 , 354 , "0", 800 , 800 ,,, 319
 227,226,Florida Rock & Tank Lines,Jacksonville,FL,29628,Robert E. Sandlin,President,www.floridarockandtanklines.com,Tank/Bulk Commodities,Florida Rock & Tank Lines/Danfair Transport,"81,610,452", "0", "0", "0", 39 , 231 , 270 , "0", 412 , 412 , 316 , 31 , 347
 228,238,Taylor Truck Line Inc.,Northfield,MN,124500,Rob Taylor,President,www.taylortruckline.com,General Freight,,, "0", "0", "0", 68 , 256 , 324 , 13 ,"1,143","1,156",,, 324
-229,NR,"Tidewater Transit Co., Inc.",La Grange,NC,90882,Frank Famularo,President,www.tidewater-transit.com,Tank/Bulk Commodities,,"47,262,210", 37 , 219 , 256 , 40 , 274 , 314 , "0", 634 , 634 , 209 , 37 , 246
+229,,"Tidewater Transit Co., Inc.",La Grange,NC,90882,Frank Famularo,President,www.tidewater-transit.com,Tank/Bulk Commodities,,"47,262,210", 37 , 219 , 256 , 40 , 274 , 314 , "0", 634 , 634 , 209 , 37 , 246
 230,232,L&B Transport LLC,Baton Rouge,LA,281216,Louie Vielee,Owner,www.landbtransport.com,Tank/Bulk Commodities,"L & B Transport/Greenleaf Bulk Carriers, LLC/Trans Matic, Inc.",, 1 , "0", 1 , 326 , "0", 326 , 888 , "0", 116 ,,, 326
 231,173,"Action Enterprise Holdings, LLC",Birmingham,AL,,Staci Pierce,CEO,www.actn.com,Tank/Bulk commodities,"Action Resources, LLC/Stone Trucking, LLC/ Action Environmental, LLC",, "0", "0", "0", 118 , 226 , 344 , "0", 439 , 439 ,,, 286
 232,241,"Risinger Bros. Transfer, Inc.",Morton,IL,244981,Stan Risinger,President,www.risingertrans.com,General Freight,,, "0", "0", "0", 55 , 273 , 328 , "0", 940 , 940 ,,, 258
 233,244,Whiteline Express LTD,Plymouth,MI,186721,William Young,President,www.whiteline-express.com,General Freight,,, "0", "0", "0", "0", 312 , 312 , 795 , 450 ,"1,245",,, 306
-234,NR,Spirit Truck Lines,San Juan,TX,437028,Joe David Garza,COO,www.spirittrucklines.com,General Freight,,, "0", "0", "0", 312 , "0", 312 ,"1,087", 116 ,"1,203",,, 309
+234,,Spirit Truck Lines,San Juan,TX,437028,Joe David Garza,COO,www.spirittrucklines.com,General Freight,,, "0", "0", "0", 312 , "0", 312 ,"1,087", 116 ,"1,203",,, 309
 235,239,"Butler Transport, Inc.",Kansas City,KS,324877,George Butler,President,www.butlertransport.com,Refrigerated,,"75,000,000", "0", "0", "0", "0", 300 , 300 , "0", 590 , 590 , 300 , "0", 300
 236,250,KC Integrated Services,Carleton,MI,347778,Kenyon Calendar,CEO,www.kctrans.com,General Freight,,, "0", "0", "0", 276 , "0", 276 , 817 , 12 , 829 ,,, 337
 237,242,"Matheson Trucking, Inc.",Sacramento,CA,80612,Mark Matheson,CEO & President,www.mathesoninc.com,General Freight,,, "0", "0", "0", "0", 248 , 248 , "0", 332 , 332 ,,, 383
@@ -241,11 +241,11 @@
 240,243,Doug Andrus Distributing,Idaho Falls,ID,234,Clay Murdoch,CEO,www.dougandrus.com,Refrigerated,,"82,962,241", "0", 1 , 1 , 268 , "0", 268 , 510 , "0", 510 , 226 , 10 , 236
 241,247,American Central Transport,Kansas City,MO,76198,Phil Wilt,President,www.americancentral.com,General Freight,"American Central Transport, Inc.","66,011,000", "0", "0", "0", 15 , 285 , 300 , "0","1,000","1,000", 271 , 15 , 286
 242,249,Kriska Holdings LTD,Prescott,ON,297060,Mark Seymour,President,,General Freight,,, "0", "0", "0", 235 , 6 , 241 , 588 , 381 , 969 ,,, 356
-243,NR,Kreilkamp Trucking,Allenton,WI,100139,John Kreilkamp,Chairman,www.kreilkamp.com,Refrigerated,,, "0", "0", "0", "0", 309 , 309 , "0","1,003","1,003",,, 211
+243,,Kreilkamp Trucking,Allenton,WI,100139,John Kreilkamp,Chairman,www.kreilkamp.com,Refrigerated,,, "0", "0", "0", "0", 309 , 309 , "0","1,003","1,003",,, 211
 244,219,"CDN Logistics, Inc.",Northlake,IL,781203,Bob Heinz,President,www.gocdn.com,General Freight,,, "0", 13 , 13 , 60 , 220 , 280 , 249 , 440 , 689 ,,, 238
 245,245,"Indiana Western Express, Inc.",Springfield,MO,397707,Steven Coulter,President,www.iwxmf.com,Refrigerated,,, "0", "0", "0", "0", 274 , 274 , "0", 321 , 321 ,,, 302
 246,246,Penner International Inc,Steinbach,MB,36281,Tom Van Dam,General Manager,www.penner.ca,General Freight,,"64,865,752", "0", "0", "0", 179 , 83 , 262 , "0", 795 , 795 , 63 , 229 , 292
-247,NR,B-H Transfer Co.,Sandersville,GA,92690,Frank L. Young,President,www.b-htransfer.com,Tank/Bulk Commodities,,, "0", 3 , 3 , 143 , 124 , 267 , 230 , 341 , 571 ,,, 270
+247,,B-H Transfer Co.,Sandersville,GA,92690,Frank L. Young,President,www.b-htransfer.com,Tank/Bulk Commodities,,, "0", 3 , 3 , 143 , 124 , 267 , 230 , 341 , 571 ,,, 270
 248,208,"Raven Transport Co., Inc.",Jacksonville,FL,268723,Stephen Silverman,COO,www.raventrans.com,General Freight,,, "0", "0", "0", 256 , 1 , 257 ,"1,300", "0","1,300",,, 220
-249,NR,Royal Freight LP,Pharr,TX,959806,Bill Head,President,www.royalfreight.net,General Freight,,, "0", "0", "0", 256 , 4 , 260 , "0", 981 , 981 ,,, 198
-250,NR,"Dedicated Logistics, Inc.",Oakdale,MN,618375,Tom Wintz,President,www.shipdli.com,Dedicated Contract Carriage,,, 3 , 17 , 20 , 60 , 182 , 242 , 205 , 503 , 708 ,,, 214
+249,,Royal Freight LP,Pharr,TX,959806,Bill Head,President,www.royalfreight.net,General Freight,,, "0", "0", "0", 256 , 4 , 260 , "0", 981 , 981 ,,, 198
+250,,"Dedicated Logistics, Inc.",Oakdale,MN,618375,Tom Wintz,President,www.shipdli.com,Dedicated Contract Carriage,,, 3 , 17 , 20 , 60 , 182 , 242 , 205 , 503 , 708 ,,, 214
