@@ -18,7 +18,7 @@ module.exports = startServer({
       fn: ({ req, user }) => req.$omedaRapidIdentify({
         email: user.email,
         deploymentTypeIds: [22],
-        promoCode: 'EQW_registration_meter',
+        promoCode: 'EW_registration_meter',
       }),
     });
   },
