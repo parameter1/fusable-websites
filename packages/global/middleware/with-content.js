@@ -9,6 +9,9 @@ module.exports = (params = {}) => withContent({
         id
         alias
       }
+      userRegistration {
+        isCurrentlyRequired
+      }
     }
   `,
 });
