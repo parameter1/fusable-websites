@@ -2,35 +2,57 @@ const withContent = require('@randall-reilly/package-global/middleware/with-cont
 const contentMeter = require('@randall-reilly/package-global/middleware/content-meter');
 const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-page');
 const contact = require('@randall-reilly/package-global/templates/content/contact');
-const newsletterState = require('@randall-reilly/package-global/middleware/newsletter-state');
+const { newsletterState, formatContentResponse } = require('@randall-reilly/package-global/middleware/newsletter-state');
 const company = require('../templates/content/company');
 const product = require('../templates/content/product');
 const whitepaper = require('../templates/content/whitepaper');
 const content = require('../templates/content');
 
-module.exports = (app) => {
-  app.get('/*?contact/:id(\\d{8})*', newsletterState(), withContent({
+const routesList = [
+  { // contact
+    regex: '/*?contact/:id(\\d{8})*',
     template: contact,
     queryFragment,
-  }));
-
-  app.get('/*?company/:id(\\d{8})*', newsletterState(), withContent({
+  },
+  { // company
+    regex: '/*?company/:id(\\d{8})*',
     template: company,
     queryFragment,
-  }));
-
-  app.get('/*?product/:id(\\d{8})*', newsletterState(), withContent({
+  },
+  { // product
+    regex: '/*?product/:id(\\d{8})*',
     template: product,
     queryFragment,
-  }));
-
-  app.get('/*?whitepaper/:id(\\d{8})*', newsletterState(), withContent({
+  },
+  { // whitepaper
+    regex: '/*?whitepaper/:id(\\d{8})*',
     template: whitepaper,
     queryFragment,
-  }));
-
-  app.get('/*?/:id(\\d{8})/*|/:id(\\d{8})(/|$)', newsletterState(), contentMeter(), withContent({
+  },
+  { // default
+    regex: '/*?/:id(\\d{8})/*|/:id(\\d{8})(/|$)*',
     template: content,
     queryFragment,
-  }));
+    withContentMeter: true,
+  },
+];
+
+module.exports = (app) => {
+  const { site } = app.locals;
+  const contentMeterEnable = site.get('contentMeter.enable');
+  // determin to use newsletterstate or contentMeter middleware
+  routesList.forEach((route) => {
+    if (route.withContentMeter && contentMeterEnable) {
+      app.get(route.regex, contentMeter(), withContent({
+        template: route.template,
+        queryFragment: route.queryFragment,
+      }));
+    } else {
+      app.get(route.regex, newsletterState({ setCookie: false }), withContent({
+        template: route.template,
+        queryFragment: route.queryFragment,
+        formatResponse: formatContentResponse,
+      }));
+    }
+  });
 };
