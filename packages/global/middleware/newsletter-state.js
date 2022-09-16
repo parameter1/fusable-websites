@@ -23,7 +23,7 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
     fromEmail,
     disabled,
     initiallyExpanded,
-    // set this for other middlewares to now it can be set later
+    // set this for other middlewares to know it can be set later
     // if formatContentResponse conditions are met
     canBeInitiallyExpanded,
     cookie: { name: cookieName, maxAge },
