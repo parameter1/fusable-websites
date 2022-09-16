@@ -7,7 +7,8 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
   const olyEncId = get(req, 'query.oly_enc_id');
   const disabled = get(req, 'query.newsletterDisabled');
   const fromEmail = utmMedium === 'email' || olyEncId || false;
-  const initiallyExpanded = (setCookie === true) && !(hasCookie || fromEmail || disabled);
+  const canBeInitiallyExpanded = !(hasCookie || fromEmail || disabled);
+  const initiallyExpanded = (setCookie === true) && canBeInitiallyExpanded;
 
   // Expire in 14 days (2yr if already signed up)
   const days = fromEmail ? 365 * 2 : 14;
@@ -22,6 +23,9 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
     fromEmail,
     disabled,
     initiallyExpanded,
+    // set this for other middlewares to now it can be set later
+    // if formatContentResponse conditions are met
+    canBeInitiallyExpanded,
     cookie: { name: cookieName, maxAge },
   };
   next();
