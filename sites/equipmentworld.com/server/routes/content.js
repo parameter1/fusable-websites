@@ -52,6 +52,7 @@ module.exports = (app) => {
       app.get(route.regex, newsletterState({ setCookie: false }), contentMeter(), withContent({
         template: route.template,
         queryFragment: route.queryFragment,
+        formatResponse: formatContentResponse,
       }));
     } else {
       app.get(route.regex, newsletterState({ setCookie: false }), withContent({
