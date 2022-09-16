@@ -13,7 +13,7 @@ module.exports = startServer({
   siteConfig,
   routes,
   onStart: () => {
-    // Automatically opt-in unverified users to CCJ newsletter when inputting email address
+    // Automatically opt-in unverified users to TPS newsletter when inputting email address
     identityX.addHook({
       name: 'onLoginLinkSent',
       fn: ({ req, user }) => req.$omedaRapidIdentify({
