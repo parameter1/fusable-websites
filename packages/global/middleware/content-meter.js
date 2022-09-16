@@ -64,7 +64,9 @@ module.exports = () => asyncRoute(async (req, res, next) => {
   const idFromQuery = getId(query.oly_enc_id);
   const idFromCookie = cookies.oly_enc_id ? getId(cookies.oly_enc_id.replace(/^"/, '').replace(/"$/, '')) : undefined;
   const olyEncId = idFromQuery || idFromCookie;
-
+  // Prop to see if the newsletterState is going to attempt to be initiallyExpanded
+  // If it can.  Allow it to win and add prop check to list to disable contentMeter
+  const pushdownWins = Boolean(get(res.locals.newsletterState.canBeInitiallyExpanded));
   // If disabled, not logged in & have a oly_enc_id or logged in and have all required fields
   if (!config.enable || (!isLoggedIn && olyEncId) || (isLoggedIn && !requiresUserInput));
 
@@ -90,14 +92,15 @@ module.exports = () => asyncRoute(async (req, res, next) => {
       valid.push({ id, viewed: now });
     }
 
-    const displayGate = (valid.length >= config.viewLimit && !valid.find(v => v.id === id));
+    const displayOverlay = (valid.length >= config.viewLimit && !valid.find(v => v.id === id));
 
     res.locals.contentMeterState = {
       ...config,
       views: valid.length,
       isLoggedIn: false,
       requiresUserInput: true,
-      displayGate,
+      displayGate: (config.enable && !pushdownWins),
+      displayOverlay,
     };
     res.cookie(cookieName, JSON.stringify(valid), { maxAge: config.timeframe });
   }
