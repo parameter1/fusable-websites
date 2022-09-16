@@ -66,7 +66,7 @@ module.exports = () => asyncRoute(async (req, res, next) => {
   const olyEncId = idFromQuery || idFromCookie;
   // Prop to see if the newsletterState is going to attempt to be initiallyExpanded
   // If it can.  Allow it to win and add prop check to list to disable contentMeter
-  const newsletterCanBeInitiallyExpanded = res.locals.newsletterState.canBeInitiallyExpanded;
+  const pushdownWins = Boolean(get(res.locals.newsletterState.canBeInitiallyExpanded));
   // If disabled, not logged in & have a oly_enc_id or logged in and have all required fields
   if (!config.enable || (!isLoggedIn && olyEncId) || (isLoggedIn && !requiresUserInput));
 
@@ -99,7 +99,7 @@ module.exports = () => asyncRoute(async (req, res, next) => {
       views: valid.length,
       isLoggedIn: false,
       requiresUserInput: true,
-      displayGate: (config.enable && !newsletterCanBeInitiallyExpanded),
+      displayGate: (config.enable && !pushdownWins),
       displayOverlay,
     };
     res.cookie(cookieName, JSON.stringify(valid), { maxAge: config.timeframe });
