@@ -10,6 +10,7 @@ const document = require('./components/document');
 const components = require('./components');
 const fragments = require('./fragments');
 const sharedRoutes = require('./routes');
+const disabledFeatures = require('./middleware/disabled-features');
 const paginated = require('./middleware/paginated');
 const redirectHandler = require('./redirect-handler');
 const oembedHandler = require('./oembed-handler');
@@ -43,6 +44,8 @@ module.exports = (options = {}) => {
       'x-google-news-input': JSON.stringify(googleNewsInput),
     },
     onStart: async (app) => {
+      app.use(disabledFeatures());
+
       if (typeof onStart === 'function') await onStart(app);
       app.set('trust proxy', 'loopback, linklocal, uniquelocal');
 
