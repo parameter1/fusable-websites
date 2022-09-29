@@ -2,6 +2,12 @@ const configureGAM = require('@randall-reilly/package-global/config/gam');
 
 const config = configureGAM({ basePath: 'tps' });
 
+config.lazyLoad = {
+  enabled: true,
+  fetchMarginPercent: 500,
+  renderMarginPercent: 200,
+};
+
 config
   .setAliasAdUnits('default', [
     { name: 'leaderboard', templateName: 'LEADERBOARD', path: 'leaderboard' },
