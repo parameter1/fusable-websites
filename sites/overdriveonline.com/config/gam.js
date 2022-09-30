@@ -5,6 +5,7 @@ const config = configureGAM({ basePath: 'ovd' });
 config
   .setAliasAdUnits('default', [
     { name: 'leaderboard', templateName: 'LEADERBOARD', path: 'leaderboard' },
+    { name: 'leaderboard-desktop', templateName: 'LEADERBOARD-DESKTOP', path: 'leaderboard' },
     { name: 'rotation', templateName: 'ROTATION', path: 'rotation' },
     { name: 'inline-leaderboard-mobile', templateName: 'INLINE-LEADERBOARD-MOBILE', path: 'leaderboard' },
     { name: 'inline-content-mobile', templateName: 'INLINE-CONTENT-MOBILE', path: 'rotation' },
@@ -14,6 +15,7 @@ config
   ])
   .setAliasAdUnits('gear', [
     { name: 'leaderboard', templateName: 'LEADERBOARD', path: 'gear-leaderboard' },
+    { name: 'leaderboard-desktop', templateName: 'LEADERBOARD-DESKTOP', path: 'gear-leaderboard' },
     { name: 'leaderboard-2', templateName: 'LEADERBOARD', path: 'gear-leaderboard' },
     { name: 'rotation', templateName: 'LEADERBOARD', path: 'gear-leaderboard' },
     { name: 'rotation-1', templateName: 'GEAR', path: 'gear-rotation-1' },
@@ -47,6 +49,7 @@ const aliases = [
 
 aliases.forEach(alias => config.setAliasAdUnits(alias, [
   { name: 'leaderboard', templateName: 'LEADERBOARD', path: `${alias}-leaderboard` },
+  { name: 'leaderboard-desktop', templateName: 'LEADERBOARD-DESKTOP', path: `${alias}-leaderboard` },
   { name: 'rotation', templateName: 'ROTATION', path: `${alias}-rotation` },
   { name: 'inline-leaderboard-mobile', templateName: 'INLINE-LEADERBOARD-MOBILE', path: `${alias}-leaderboard` },
   { name: 'inline-content-mobile', templateName: 'INLINE-CONTENT-MOBILE', path: `${alias}-rotation` },
