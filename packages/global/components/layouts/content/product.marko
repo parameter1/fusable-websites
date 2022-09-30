@@ -11,7 +11,7 @@ $ const sections = getAsArray(input, "sections");
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
     <theme-gam-define-display-ad
-      name="leaderboard"
+      name="leaderboard-desktop"
       position="content_page"
       aliases=aliases
       modifiers=["inter-block"]
@@ -44,6 +44,15 @@ $ const sections = getAsArray(input, "sections");
         <div class="content-page-body">
           <default-theme-page-contents|{ blockName }| attrs={ "data-gallery-id": id }>
             $ const bodyId = `content-body-${content.id}`;
+            <theme-gam-inject-ads selector=`#${bodyId}` detect-embeds=true>
+              <!-- mobile leaderboard -->
+              <@inject
+                at=250
+                name="inline-leaderboard-mobile"
+                aliases=aliases
+                modifiers=["max-width-970", "margin-auto-x", "inline-content"]
+              />
+            </theme-gam-inject-ads>
             <marko-web-content-body block-name=blockName obj=content attrs={ id: bodyId } />
           </default-theme-page-contents>
         </div>
