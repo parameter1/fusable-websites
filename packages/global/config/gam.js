@@ -56,6 +56,13 @@ module.exports = ({
         { viewport: [300, 0], size: [[300, 50], [300, 250], [320, 100]] },
       ],
     })
+    .setTemplate('ROTATION-DESKTOP', {
+      size: [[970, 250], [970, 90], [728, 90]],
+      sizeMapping: [
+        { viewport: [980, 0], size: [[970, 250], [970, 90], [728, 90]] },
+        { viewport: [300, 0], size: [] },
+      ],
+    })
     .setTemplate('INLINE-CONTENT-MOBILE', {
       size: [[970, 250], [970, 90], [728, 90], [320, 100]],
       sizeMapping: [
