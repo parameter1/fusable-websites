@@ -3,7 +3,7 @@ import { getAsArray } from "@parameter1/base-cms-object-path";
 $ const { id, alias, name, pageNode } = input;
 $ const sections = getAsArray(input, "sections");
 
-$ const { pagination: p, GAM } = out.global;
+$ const { pagination: p } = out.global;
 $ const perPage = 10;
 
 <global-website-section-default-layout
@@ -24,9 +24,8 @@ $ const perPage = 10;
   </@head>
 
   <@section|{ aliases }| modifiers=["first"]>
-    $ const adName = (GAM.btfLeaderboard) ? "leaderboard-desktop" : "leaderboard";
     <theme-gam-define-display-ad
-      name=adName
+      name="leaderboard"
       position="section_page"
       aliases=aliases
       modifiers=["inter-block"]

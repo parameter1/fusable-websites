@@ -4,7 +4,7 @@ import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/uti
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
 
-$ const { site, contentMeterState, GAM } = out.global;
+$ const { site, contentMeterState } = out.global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
@@ -25,9 +25,8 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
     <if(!showOverlay)>
-      $ const adName = (GAM.btfLeaderboard) ? "leaderboard-desktop" : "leaderboard";
       <theme-gam-define-display-ad
-        name=adName
+        name="leaderboard"
         position="content_page"
         aliases=aliases
         modifiers=["inter-block"]
@@ -126,8 +125,9 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             $ const bodyId = `content-body-${content.id}`;
 
             <if(shouldInjectAds)>
+
               $ const desktopCounts = [1000, 2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500];
-              $ const mobileCounts = [900, 1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250];
+              $ const mobileCounts = [350, 1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250];
               <theme-gam-inject-ads selector=`#${bodyId}` detect-embeds=true>
                 <for|char| of=desktopCounts>
                   <!-- desktop/tablet only -->
@@ -138,15 +138,6 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                     modifiers=["max-width-970", "margin-auto-x", "inline-content"]
                   />
                 </for>
-
-                <!-- mobile leaderboard -->
-                $ const adName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
-                <@inject
-                  at=250
-                  name=adName
-                  aliases=aliases
-                  modifiers=["max-width-970", "margin-auto-x", "inline-content"]
-                />
 
                 <for|char| of=mobileCounts>
                   <!-- mobile only -->
