@@ -4,7 +4,7 @@ import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/uti
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
 
-$ const { site, contentMeterState } = out.global;
+$ const { site, contentMeterState, GAM } = out.global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
@@ -25,8 +25,9 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
     <if(!showOverlay)>
+      $ const adName = (GAM.btfLeaderboard) ? "leaderboard-desktop" : "leaderboard";
       <theme-gam-define-display-ad
-        name="leaderboard-desktop"
+        name=adName
         position="content_page"
         aliases=aliases
         modifiers=["inter-block"]
@@ -139,9 +140,10 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                 </for>
 
                 <!-- mobile leaderboard -->
+                $ const adName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
                 <@inject
                   at=250
-                  name="inline-leaderboard-mobile"
+                  name=adName
                   aliases=aliases
                   modifiers=["max-width-970", "margin-auto-x", "inline-content"]
                 />
