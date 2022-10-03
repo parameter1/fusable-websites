@@ -30,14 +30,6 @@ module.exports = ({
         { viewport: [300, 0], size: [[300, 250], [265, 149]] },
       ],
     })
-    .setTemplate('ROTATION', {
-      size: [[970, 250], [970, 90], [728, 90], [320, 100]],
-      sizeMapping: [
-        { viewport: [980, 0], size: [[970, 250], [970, 90], [970, 66], [728, 90]] },
-        { viewport: [750, 0], size: [[728, 90], [300, 250]] },
-        { viewport: [300, 0], size: [[300, 50], [300, 250], [320, 100]] },
-      ],
-    })
     .setTemplate('LEADERBOARD-DESKTOP', {
       size: [
         [970, 90],
@@ -54,6 +46,14 @@ module.exports = ({
       sizeMapping: [
         { viewport: [980, 0], size: [] },
         { viewport: [300, 0], size: [[300, 250], [265, 149]] },
+      ],
+    })
+    .setTemplate('ROTATION', {
+      size: [[970, 250], [970, 90], [728, 90], [320, 100]],
+      sizeMapping: [
+        { viewport: [980, 0], size: [[970, 250], [970, 90], [970, 66], [728, 90]] },
+        { viewport: [750, 0], size: [[728, 90], [300, 250]] },
+        { viewport: [300, 0], size: [[300, 50], [300, 250], [320, 100]] },
       ],
     })
     .setTemplate('INLINE-CONTENT-MOBILE', {
