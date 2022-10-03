@@ -14,7 +14,7 @@ module.exports = ({
     'regionCode',
   ],
   defaultCountryCode = 'US',
-  requiredServerFields = ['organization', 'countryCode', 'postalCode'],
+  requiredServerFields = ['organization', 'countryCode'],
   requiredClientFields = ['organization', 'countryCode', 'postalCode'],
   ...rest
 } = {}) => {
