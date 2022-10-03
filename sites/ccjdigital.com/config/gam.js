@@ -6,6 +6,8 @@ config.lazyLoad = {
   enabled: false,
 };
 
+config.btfLeaderboard = true;
+
 config.setAliasAdUnits('default', [
   { name: 'leaderboard', templateName: 'LEADERBOARD', path: 'leaderboard' },
   { name: 'inline-leaderboard-mobile', templateName: 'INLINE-LEADERBOARD-MOBILE', path: 'leaderboard' },
