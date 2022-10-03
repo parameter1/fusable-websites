@@ -1,7 +1,5 @@
 import { getAsArray } from "@parameter1/base-cms-object-path";
 
-$ const { GAM } = out.global;
-
 $ const { id, alias, name, pageNode } = input;
 $ const sections = getAsArray(input, "sections");
 
@@ -13,12 +11,11 @@ $ const sections = getAsArray(input, "sections");
   head=input.head
 >
   <@section|{ aliases }| modifiers=["first"]>
-    $ const adName = (GAM.btfLeaderboard) ? "leaderboard-desktop" : "leaderboard";
     <theme-gam-define-display-ad
-      name=adName
+      name="leaderboard"
       position="home_page"
       aliases=aliases
-      modifiers=["inter-block"]
+      modifiers=["max-width-970", "center", "margin-auto-x", "inline"]
     />
     <theme-gam-wallpaper-ad aliases=aliases position="home_page" />
   </@section>
@@ -26,18 +23,6 @@ $ const sections = getAsArray(input, "sections");
   <@section|{ aliases }|>
     <theme-top-stories-block with-header=false lazyload=false />
   </@section>
-
-  <@section|{ aliases }|>
-    <if(GAM.btfLeaderboard)>
-      <theme-gam-define-display-ad
-        name="inline-leaderboard-mobile"
-        position="home_page"
-        aliases=aliases
-        modifiers=["inter-block"]
-      />
-    </if>
-  </@section>
-
   <for|s| of=sections>
     <@section|{ blockName, section, aliases }| modifiers=s.modifiers>
       <${s.renderBody}
