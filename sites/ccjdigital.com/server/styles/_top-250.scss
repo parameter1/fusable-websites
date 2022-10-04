@@ -48,7 +48,6 @@
     }
   }
   &__sponsored-by {
-    display: none;
     margin-top: 20px;
     font-size: 18px;
   }
@@ -139,14 +138,11 @@
           margin-bottom: 0;
         }
         button {
-          margin-left: $block-spacer / 2;
+          margin-top: $block-spacer / 2;
+          margin-left: 0;
           font-weight: $font-weight-normal;
           text-transform: none;
           white-space: nowrap;
-          @include media-breakpoint-down(md) {
-            margin-top: $block-spacer / 2;
-            margin-left: 0;
-          }
         }
       }
     }

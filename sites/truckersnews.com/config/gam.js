@@ -2,16 +2,12 @@ const configureGAM = require('@randall-reilly/package-global/config/gam');
 
 const config = configureGAM({ basePath: 'tn' });
 
-config.lazyLoad = {
-  enabled: false, // set to true to enable lazy loading
-  fetchMarginPercent: 100, // fetch ad when one viewport away
-  renderMarginPercent: 50, // render ad when half viewport away
-  mobileScaling: 2, // double these on mobile
-};
-
 config
   .setAliasAdUnits('default', [
     { name: 'leaderboard', templateName: 'LEADERBOARD', path: 'leaderboard' },
+    { name: 'inline-leaderboard-mobile', templateName: 'INLINE-LEADERBOARD-MOBILE', path: 'leaderboard' },
+    { name: 'leaderboard-desktop', templateName: 'LEADERBOARD-DESKTOP', path: 'leaderboard' },
+    { name: 'rotation-desktop', templateName: 'ROTATION-DESKTOP', path: 'rotation' },
     { name: 'rotation', templateName: 'ROTATION', path: 'rotation' },
     { name: 'inline-content-mobile', templateName: 'INLINE-CONTENT-MOBILE', path: 'rotation' },
     { name: 'inline-content-desktop', templateName: 'INLINE-CONTENT-DESKTOP', path: 'rotation' },
@@ -20,6 +16,9 @@ config
   ])
   .setAliasAdUnits('gear', [
     { name: 'leaderboard', templateName: 'LEADERBOARD', path: 'gear-leaderboard' },
+    { name: 'inline-leaderboard-mobile', templateName: 'INLINE-LEADERBOARD-MOBILE', path: 'gear-leaderboard' },
+    { name: 'leaderboard-desktop', templateName: 'LEADERBOARD-DESKTOP', path: 'gear-leaderboard' },
+    { name: 'rotation-desktop', templateName: 'ROTATION-DESKTOP', path: 'gear-rotation-1' },
     { name: 'leaderboard-2', templateName: 'LEADERBOARD', path: 'gear-leaderboard' },
     { name: 'rotation', templateName: 'LEADERBOARD', path: 'gear-leaderboard' },
     { name: 'rotation-1', templateName: 'GEAR', path: 'gear-rotation-1' },

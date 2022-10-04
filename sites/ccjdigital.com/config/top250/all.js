@@ -3,11 +3,11 @@ const path = require('path');
 
 const columns = {
   rank: {
-    label: 'RANK',
+    label: '2022 RANK',
     type: 'number',
   },
   rank2020: {
-    label: '2020 RANK',
+    label: '2021 RANK',
     type: 'number',
   },
   company: {
@@ -39,7 +39,7 @@ const columns = {
     type: 'string',
   },
   primaryOperation: {
-    label: 'ALL OPERATIONS',
+    label: 'PRIMARY OPERATION',
     type: 'string',
   },
   carriers: {
@@ -47,7 +47,7 @@ const columns = {
     type: 'string',
   },
   revenue2020: {
-    label: '2020 REVENUE',
+    label: '2021 REVENUE',
     type: 'number',
     numberType: 'usCurrency',
   },
