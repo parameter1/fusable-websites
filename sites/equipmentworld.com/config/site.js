@@ -1,6 +1,7 @@
 const contentMeter = require('./content-meter');
 const gam = require('./gam');
 const identityX = require('./identity-x');
+// const identityXOptinHooks = require('./identity-x-optin-hooks');
 const nativeX = require('./native-x');
 const navigation = require('./navigation');
 const newsletter = require('./newsletter');
@@ -13,6 +14,7 @@ module.exports = {
   contentMeter,
   gam,
   identityX,
+  // identityXOptinHooks,
   nativeX,
   navigation,
   newsletter,
