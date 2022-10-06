@@ -4,7 +4,6 @@ const routes = require('./server/routes');
 const siteConfig = require('./config/site');
 const coreConfig = require('./config/core');
 
-const { identityX } = siteConfig;
 const { log } = console;
 
 module.exports = startServer({
@@ -12,15 +11,5 @@ module.exports = startServer({
   coreConfig,
   siteConfig,
   routes,
-  onStart: () => {
-    // Automatically opt-in unverified users to CCJ newsletter when inputting email address
-    identityX.addHook({
-      name: 'onLoginLinkSent',
-      fn: ({ req, user }) => req.$omedaRapidIdentify({
-        email: user.email,
-        deploymentTypeIds: [29],
-        promoCode: 'CCJ_registration_meter',
-      }),
-    });
-  },
+  onStart: () => {},
 }).then(() => log('Website started!')).catch(e => setImmediate(() => { throw e; }));
