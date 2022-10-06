@@ -72,10 +72,10 @@ module.exports = (options = {}) => {
       // Recaptcha
       set(app.locals, 'recaptcha', recaptcha);
 
-      const { identityXOptinHooks } = options.siteConfig;
-      if (identityXOptinHooks) {
+      const { identityXOptInHooks } = options.siteConfig;
+      if (identityXOptInHooks) {
         const { identityX, omeda } = options.siteConfig;
-        Object.entries(identityXOptinHooks).forEach(([name, obj]) => {
+        Object.entries(identityXOptInHooks).forEach(([name, obj]) => {
           const { productIds, promoCode } = obj;
           // Automatically opt-in unsubscribed users to a given array of products on given idXHooks
           if (identityX && productIds && productIds.length) {
