@@ -99,7 +99,7 @@ module.exports = (options = {}) => {
                 // For each autoOptinProduct check if they have a subscription.
                 // Sign the user up if they do not
                 const newSubscriptions = productIds.filter(
-                  id => subscriptions.some(({ product }) => product.deploymentTypeId === id)
+                  id => subscriptions.some(({ product }) => product.deploymentTypeId === id),
                 );
                 if (newSubscriptions.length) {
                   req.$omedaRapidIdentify({
