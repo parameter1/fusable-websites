@@ -4,7 +4,6 @@ const { set, get, getAsObject } = require('@parameter1/base-cms-object-path');
 const loadInquiry = require('@parameter1/base-cms-marko-web-inquiry');
 const htmlSitemapPagination = require('@parameter1/base-cms-marko-web-html-sitemap/middleware/paginated');
 const omedaIdentityX = require('@parameter1/base-cms-marko-web-omeda-identity-x');
-const { getOmedaCustomerRecord } = require('@parameter1/base-cms-marko-web-omeda-identity-x/omeda-data');
 
 const document = require('./components/document');
 const components = require('./components');
@@ -71,48 +70,6 @@ module.exports = (options = {}) => {
 
       // Recaptcha
       set(app.locals, 'recaptcha', recaptcha);
-
-      const { identityXOptInHooks } = options.siteConfig;
-      if (identityXOptInHooks) {
-        const { identityX, omeda } = options.siteConfig;
-        Object.entries(identityXOptInHooks).forEach(([name, obj]) => {
-          const { productIds, promoCode } = obj;
-          // Automatically opt-in unsubscribed users to a given array of products on given idXHooks
-          if (identityX && productIds && productIds.length) {
-            identityX.addHook({
-              name,
-              fn: async ({ req, user }) => {
-                // Get the encriptedCustomerId that matches the omeda brandKey
-                const encryptedCustomerId = user.externalIds.filter(({
-                  identifier,
-                  namespace,
-                }) => identifier.type === 'encrypted'
-                && namespace.provider === 'omeda'
-                && namespace.tenant === omeda.brandKey)[0].identifier.value;
-                // Retrive the omeda customer
-                const omedaCustomer = await getOmedaCustomerRecord({
-                  omedaGraphQLClient: req.$omedaGraphQLClient,
-                  encryptedCustomerId,
-                });
-                // Get the current user subscriptions
-                const { subscriptions } = omedaCustomer;
-                // For each autoOptinProduct check if they have a subscription.
-                // Sign the user up if they do not
-                const newSubscriptions = productIds.filter(
-                  id => subscriptions.some(({ product }) => product.deploymentTypeId === id),
-                );
-                if (newSubscriptions.length) {
-                  req.$omedaRapidIdentify({
-                    email: user.email,
-                    deploymentTypeIds: newSubscriptions,
-                    promoCode,
-                  });
-                }
-              },
-            });
-          }
-        });
-      }
     },
     onAsyncBlockError: e => newrelic.noticeError(e),
 
