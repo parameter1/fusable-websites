@@ -1,3 +1,6 @@
+const { getOmedaCustomerRecord } = require('@parameter1/base-cms-marko-web-omeda-identity-x/omeda-data');
+const { getAsArray } = require('@parameter1/base-cms-object-path');
+
 module.exports = ({
   omedaConfig,
   idxConfig,
@@ -60,4 +63,53 @@ module.exports = ({
   appendPromoCodeToHook,
   appendBehaviorToHook,
   appendDemographicToHook,
+
+  onAuthenticationSuccessFormatter: (async ({ req, payload }) => {
+    // BAIL if omedaGraphQLCLient isnt available return payload.
+    if (!req.$omedaGraphQLClient) return payload;
+
+    const identityXOptInHooks = req.app.locals.site.getAsObject('identityXOptInHooks');
+    const omeda = req.app.locals.site.getAsObject('omeda');
+    if (identityXOptInHooks.onAuthenticationSuccess) {
+      const { productIds, promoCode } = identityXOptInHooks.onAuthenticationSuccess;
+      const { user } = payload;
+
+      if (!user.externalIds) return payload;
+
+      // Get the encriptedCustomerId that matches the omeda brandKey
+      const encryptedCustomerId = user.externalIds.filter(({
+        identifier,
+        namespace,
+      }) => identifier.type === 'encrypted'
+      && namespace.provider === 'omeda'
+      && namespace.tenant === omeda.brandKey)[0].identifier.value;
+
+      // BAIL if no encryptedCustomerId and return payload
+      if (!encryptedCustomerId) return payload;
+
+      // Retrive the omeda customer
+      const omedaCustomer = await getOmedaCustomerRecord({
+        omedaGraphQLClient: req.$omedaGraphQLClient,
+        encryptedCustomerId,
+      });
+      // Get the current user subscriptions
+      const subscriptions = getAsArray(omedaCustomer, 'subscriptions');
+      // For each autoOptinProduct check if they have a subscription.
+      // Sign the user up if they do not
+      const newSubscriptions = productIds.filter(
+        id => !subscriptions.some(({ product }) => product.deploymentTypeId === id),
+      );
+      if (newSubscriptions) {
+        return ({
+          ...payload,
+          deploymentTypeIds: [...newSubscriptions],
+          promoCode,
+          appendPromoCodes: [
+            promoCode,
+          ],
+        });
+      }
+    }
+    return payload;
+  }),
 });
