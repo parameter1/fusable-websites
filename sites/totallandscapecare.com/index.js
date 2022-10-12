@@ -4,7 +4,6 @@ const routes = require('./server/routes');
 const siteConfig = require('./config/site');
 const coreConfig = require('./config/core');
 
-const { identityX } = siteConfig;
 const { log } = console;
 
 module.exports = startServer({
