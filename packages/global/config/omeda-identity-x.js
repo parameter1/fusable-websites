@@ -1,5 +1,5 @@
 const { getOmedaCustomerRecord } = require('@parameter1/base-cms-marko-web-omeda-identity-x/omeda-data');
-const { getAsArray } = require('@parameter1/base-cms-object-path');
+const { get, getAsArray } = require('@parameter1/base-cms-object-path');
 
 module.exports = ({
   omedaConfig,
@@ -74,18 +74,14 @@ module.exports = ({
       const { productIds, promoCode } = identityXOptInHooks.onAuthenticationSuccess;
       const { user } = payload;
 
-      if (!user.externalIds) return payload;
-
-      // Get the encriptedCustomerId that matches the omeda brandKey
-      const encryptedCustomerId = user.externalIds.filter(({
-        identifier,
-        namespace,
-      }) => identifier.type === 'encrypted'
-      && namespace.provider === 'omeda'
-      && namespace.tenant === omeda.brandKey)[0].identifier.value;
+      const found = getAsArray(user, 'externalIds')
+        .find(({ identifier, namespace }) => identifier.type === 'encrypted'
+          && namespace.provider === 'omeda'
+          && namespace.tenant === omeda.brandKey);
 
       // BAIL if no encryptedCustomerId and return payload
-      if (!encryptedCustomerId) return payload;
+      if (!found) return payload;
+      const encryptedCustomerId = get(found, 'identifier.value');
 
       // Retrive the omeda customer
       const omedaCustomer = await getOmedaCustomerRecord({
