@@ -11,5 +11,4 @@ module.exports = startServer({
   coreConfig,
   siteConfig,
   routes,
-  onStart: () => {},
 }).then(() => log('Website started!')).catch(e => setImmediate(() => { throw e; }));
