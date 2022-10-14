@@ -2,5 +2,6 @@ const defaultConfig = require('@randall-reilly/package-global/config/content-met
 
 module.exports = {
   ...defaultConfig,
+  promoCode: 'CCJ_registration_meter',
   enable: true,
 };
