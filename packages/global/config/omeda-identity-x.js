@@ -83,7 +83,9 @@ module.exports = ({
       encryptedCustomerId,
     });
     const subscriptions = getAsArray(omedaCustomer, 'subscriptions');
-    const hasWebsiteSubscription = subscriptions.find(({ product }) => product.type.id === 'WEBSITE' && product.id === rapidIdentProductId);
+    const hasWebsiteSubscription = subscriptions.find(({
+      product,
+    }) => product.id === rapidIdentProductId);
     // If the user already has the website product do
     // return payload with registration_meter promo code ref removed
     if (hasWebsiteSubscription && (payload.promoCode || payload.appendPromoCodes.length)) {
