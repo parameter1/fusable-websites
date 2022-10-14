@@ -2,4 +2,5 @@ const defaultConfig = require('@randall-reilly/package-global/config/content-met
 
 module.exports = {
   ...defaultConfig,
+  promoCode: 'TN_registration_meter',
 };

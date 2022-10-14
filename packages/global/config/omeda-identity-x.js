@@ -63,7 +63,42 @@ module.exports = ({
   appendPromoCodeToHook,
   appendBehaviorToHook,
   appendDemographicToHook,
+  onLoginLinkSentFormatter: (async ({ req, payload }) => {
+    // const identityXOptInHooks = req.app.locals.site.getAsObject('identityXOptInHooks');
+    const omeda = req.app.locals.site.getAsObject('omeda');
+    const { user } = payload;
 
+    const found = getAsArray(user, 'externalIds')
+      .find(({ identifier, namespace }) => identifier.type === 'encrypted'
+        && namespace.provider === 'omeda'
+        && namespace.tenant === omeda.brandKey);
+
+    // BAIL if no encryptedCustomerId and return payload
+    if (!found) return payload;
+    const encryptedCustomerId = get(found, 'identifier.value');
+
+    // Retrive the omeda customer
+    const omedaCustomer = await getOmedaCustomerRecord({
+      omedaGraphQLClient: req.$omedaGraphQLClient,
+      encryptedCustomerId,
+    });
+    const subscriptions = getAsArray(omedaCustomer, 'subscriptions');
+    const hasWebsiteSubscription = subscriptions.find(({
+      product,
+    }) => product.id === rapidIdentProductId);
+    // If the user already has the website product do
+    // return payload with registration_meter promo code ref removed
+    if (hasWebsiteSubscription && (payload.promoCode || payload.appendPromoCodes.length)) {
+      const promoCode = !payload.promoCode.includes('registration_meter') ? payload.promoCode : undefined;
+      const appendPromoCodes = payload.appendPromoCodes.filter(code => !code.includes('registration_meter'));
+      return {
+        ...payload,
+        promoCode,
+        appendPromoCodes,
+      };
+    }
+    return payload;
+  }),
   onAuthenticationSuccessFormatter: (async ({ req, payload }) => {
     // BAIL if omedaGraphQLCLient isnt available return payload.
     if (!req.$omedaGraphQLClient) return payload;
@@ -92,6 +127,7 @@ module.exports = ({
       const subscriptions = getAsArray(omedaCustomer, 'subscriptions');
       // For each autoOptinProduct check if they have a subscription.
       // Sign the user up if they do not
+
       const newSubscriptions = productIds.filter(
         id => !subscriptions.some(({ product }) => product.deploymentTypeId === id),
       );
