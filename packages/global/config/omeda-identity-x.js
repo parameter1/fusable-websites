@@ -132,12 +132,13 @@ module.exports = ({
         id => !subscriptions.some(({ product }) => product.deploymentTypeId === id),
       );
       if (newSubscriptions) {
+        const deploymentTypes = newSubscriptions.map(id => ({ id, optedIn: true }));
         return ({
           ...payload,
-          deploymentTypeIds: [...newSubscriptions],
+          deploymentTypes,
           promoCode,
           appendPromoCodes: [
-            promoCode,
+            { promoCode },
           ],
         });
       }
