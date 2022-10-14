@@ -2328,10 +2328,10 @@
     graphql-tag "^2.12.5"
     node-fetch "^2.6.5"
 
-"@parameter1/base-cms-marko-web-omeda-identity-x@^3.10.0":
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda-identity-x/-/base-cms-marko-web-omeda-identity-x-3.10.0.tgz#6d2df604cee740de73533da1f3b8a0b9ac4f14e0"
-  integrity sha512-S7vAeuyWfvXHUyMnjG7uR1KgIRVoFTpPLFniEjb0nl8hglSNlXAtDp+EWE9vtn/t+CiQwSHgwJWRckWu97zXHg==
+"@parameter1/base-cms-marko-web-omeda-identity-x@^3.10.1":
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda-identity-x/-/base-cms-marko-web-omeda-identity-x-3.10.1.tgz#7c80e6e6c49d109dfc2443d462de525b2019b06b"
+  integrity sha512-jCfwVqysOmi1puh8gKKWQhniecCevD1dX0KnfZ9MfWR4r2t9Y6WVhCzcncpSuRUNcl1sqNX9wMoQwqTlLcRq5A==
   dependencies:
     "@parameter1/base-cms-marko-web-identity-x" "^3.7.4"
     "@parameter1/base-cms-marko-web-omeda" "^3.7.3"
@@ -2417,10 +2417,10 @@
     graphql "^14.7.0"
     graphql-tag "^2.12.5"
 
-"@parameter1/base-cms-marko-web-theme-monorail@^3.10.0":
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-3.10.0.tgz#b2b3f2517aac64b99108807418640cbe7d3e6be8"
-  integrity sha512-ZvviMEWq7sRd7IuMAlfi0QLwiS8hYZW6zHe4Y/JanrVNcUgzgZqLF7xxyp40cJuWnUgUcAiL2zybKEy13dJj9Q==
+"@parameter1/base-cms-marko-web-theme-monorail@^3.10.1":
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-3.10.1.tgz#5101d6e60f244d813fd4ac50fe1cf98106e60e51"
+  integrity sha512-RbC+pbZa0kT2UYS8n/2rtzWLzao0ugh9obSnPORlya38gmByMaCDjAF4O3TYwL1pl7+1jhad2RPCzFETJXjMyg==
   dependencies:
     "@parameter1/base-cms-image" "^3.8.0"
     "@parameter1/base-cms-inflector" "^3.0.0"
@@ -2435,7 +2435,7 @@
     "@parameter1/base-cms-marko-web-inquiry" "^3.0.0"
     "@parameter1/base-cms-marko-web-native-x" "^3.7.3"
     "@parameter1/base-cms-marko-web-omeda" "^3.7.3"
-    "@parameter1/base-cms-marko-web-omeda-identity-x" "^3.10.0"
+    "@parameter1/base-cms-marko-web-omeda-identity-x" "^3.10.1"
     "@parameter1/base-cms-marko-web-p1-events" "^3.7.1"
     "@parameter1/base-cms-marko-web-recaptcha" "^3.0.0"
     "@parameter1/base-cms-marko-web-reveal-ad" "^2.75.1"
