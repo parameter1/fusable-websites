@@ -131,7 +131,6 @@ module.exports = ({
       const newSubscriptions = productIds.filter(
         id => !subscriptions.some(({ product }) => product.deploymentTypeId === id),
       );
-      console.log(payload);
       if (newSubscriptions) {
         return ({
           ...payload,
