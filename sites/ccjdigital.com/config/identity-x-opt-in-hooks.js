@@ -7,6 +7,6 @@ module.exports = {
     appendDemographics: [
       { demographicId: 1482, valueIds: [5138] },
     ],
-    promoCode: 'EQW_Profile Updated_Meter',
+    promoCode: 'CCJ_Profile Updated_Meter',
   },
 };
