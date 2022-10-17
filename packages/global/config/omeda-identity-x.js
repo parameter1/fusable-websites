@@ -145,4 +145,63 @@ module.exports = ({
     }
     return payload;
   }),
+  onUserProfileUpdateFormatter: (async ({ req, payload }) => {
+    // BAIL if omedaGraphQLCLient isnt available return payload.
+    if (!req.$omedaGraphQLClient) return payload;
+
+    const identityXOptInHooks = req.app.locals.site.getAsObject('identityXOptInHooks');
+    const omeda = req.app.locals.site.getAsObject('omeda');
+    if (identityXOptInHooks.onUserProfileUpdate) {
+      const { appendDemographics, promoCode } = identityXOptInHooks.onUserProfileUpdate;
+      const { user } = payload;
+
+      const found = getAsArray(user, 'externalIds')
+        .find(({ identifier, namespace }) => identifier.type === 'encrypted'
+          && namespace.provider === 'omeda'
+          && namespace.tenant === omeda.brandKey);
+
+      // BAIL if no encryptedCustomerId and return payload
+      if (!found) return payload;
+      const encryptedCustomerId = get(found, 'identifier.value');
+
+      // Retrive the omeda customer
+      const omedaCustomer = await getOmedaCustomerRecord({
+        omedaGraphQLClient: req.$omedaGraphQLClient,
+        encryptedCustomerId,
+      });
+      // Get the current user subscriptions
+      const demographics = getAsArray(omedaCustomer, 'demographics');
+
+      // If the user profile completed demo for this doesnt exists, set it.
+      const demosToAppend = appendDemographics.filter(({
+        demographicId,
+      }) => !demographics.find(({ demographic }) => demographic.id === demographicId));
+      if (demosToAppend && demosToAppend.length) {
+        return ({
+          ...payload,
+          appendDemographics: demosToAppend,
+          promoCode,
+          appendPromoCodes: [
+            { promoCode },
+          ],
+        });
+      }
+
+      // This is for second part of onUserProfileUpdate, but now 100% sure
+      // on how omeda intends on handeling this, so waiting for now
+      // const demosAlreadyAppended = appendDemographics.filter(({
+      //   demographicId,
+      // }) => demographics.find(({ demographic }) => demographic.id === demographicId));
+      // if (demosAlreadyAppended && demosAlreadyAppended.length) {
+      //   return ({
+      //     ...payload,
+      //     promoCode: `${promoCode}_now`,
+      //     appendPromoCodes: [
+      //       { promoCode: `${promoCode}_now` },
+      //     ],
+      //   });
+      // }
+    }
+    return payload;
+  }),
 });
