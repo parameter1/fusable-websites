@@ -169,23 +169,39 @@ module.exports = ({
         omedaGraphQLClient: req.$omedaGraphQLClient,
         encryptedCustomerId,
       });
-      // Get the current user subscriptions
-      const demographics = getAsArray(omedaCustomer, 'demographics');
 
-      // If the user profile completed demo for this doesnt exists, set it.
-      const demosToAppend = appendDemographics.filter(({
-        demographicId,
-      }) => !demographics.find(({ demographic }) => demographic.id === demographicId));
-      if (demosToAppend && demosToAppend.length) {
+      // Always apply the ${pubcod_Profile Updated_Meter} promocode & Demo
+      if (omedaCustomer && appendDemographics && appendDemographics.length) {
         return ({
           ...payload,
-          appendDemographics: demosToAppend,
+          appendDemographics,
           promoCode,
           appendPromoCodes: [
             { promoCode },
           ],
         });
       }
+
+      // ###### CONDITIONALLY ADD PROMO DEMO WHEN NOT ALREADY SET ##### //
+      // // Get the current user subscriptions
+      // const demographics = getAsArray(omedaCustomer, 'demographics');
+
+      // // If the user profile completed demo for this doesnt exists, set it.
+      // const demosToAppend = appendDemographics.filter(({
+      //   demographicId,
+      // }) => !demographics.find(({ demographic }) => demographic.id === demographicId));
+      // if (demosToAppend && demosToAppend.length) {
+      //   return ({
+      //     ...payload,
+      //     appendDemographics: demosToAppend,
+      //     promoCode,
+      //     appendPromoCodes: [
+      //       { promoCode },
+      //     ],
+      //   });
+      // }
+      // ###### CONDITIONALLY ADD PROMO DEMO WHEN NOT ALREADY SET ##### //
+
 
       // This is for second part of onUserProfileUpdate, but now 100% sure
       // on how omeda intends on handeling this, so waiting for now
