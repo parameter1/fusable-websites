@@ -131,7 +131,7 @@ module.exports = ({
       const newSubscriptions = productIds.filter(
         id => !subscriptions.some(({ product }) => product.deploymentTypeId === id),
       );
-      if (newSubscriptions) {
+      if (newSubscriptions && newSubscriptions.length) {
         const deploymentTypes = newSubscriptions.map(id => ({ id, optedIn: true }));
         return ({
           ...payload,
