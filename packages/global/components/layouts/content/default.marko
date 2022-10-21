@@ -89,7 +89,9 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
         >
           <if(cmTruncateBody(contentMeterState))>
             $ const body = showOverlay ? getContentPreview({ body: content.body, selector: "p:lt(7)" }) : getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
-            <marko-web-content-body block-name=blockName obj={ body } />
+            <marko-web-content-body block-name=blockName obj={ body } >
+              <@embed-options lazyloadImages=false/>
+            </marko-web-content-body>
 
             <div class="content-page-preview-overlay" />
             <if(!showOverlay)>
@@ -109,7 +111,9 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
           </if>
           <else-if(!context.canAccess || context.requiresUserInput)>
             $ const body = getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
-            <marko-web-content-body block-name=blockName obj={ body } />
+            <marko-web-content-body block-name=blockName obj={ body } >
+              <@embed-options lazyloadImages=false/>
+            </marko-web-content-body>
 
             <div class="content-page-preview-overlay" />
             <theme-content-page-gate
@@ -160,7 +164,9 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
               </theme-gam-inject-ads>
             </if>
 
-            <marko-web-content-body block-name=blockName obj=content attrs={ id: bodyId } />
+            <marko-web-content-body block-name=blockName obj=content attrs={ id: bodyId } >
+              <@embed-options lazyloadImages=false/>
+            </marko-web-content-body>
 
             <!-- needs input -->
             <if(input.afterBody)>
