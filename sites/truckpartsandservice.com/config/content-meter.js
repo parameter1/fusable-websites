@@ -2,4 +2,6 @@ const defaultConfig = require('@randall-reilly/package-global/config/content-met
 
 module.exports = {
   ...defaultConfig,
+  promoCode: 'TPS_registration_meter',
+  enable: true,
 };

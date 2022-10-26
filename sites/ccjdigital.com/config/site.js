@@ -1,10 +1,12 @@
 const contentMeter = require('./content-meter');
 const gam = require('./gam');
 const identityX = require('./identity-x');
+const identityXOptInHooks = require('./identity-x-opt-in-hooks');
 const nativeX = require('./native-x');
 const navigation = require('./navigation');
 const newsletter = require('./newsletter');
 const omeda = require('./omeda');
+const omedaIdentityX = require('./omeda-identity-x');
 const search = require('./search');
 const top250 = require('./top250');
 
@@ -13,10 +15,12 @@ module.exports = {
   contentMeter,
   gam,
   identityX,
+  identityXOptInHooks,
   nativeX,
   navigation,
   newsletter,
   omeda,
+  omedaIdentityX,
   search,
   top250,
   // theme configs
