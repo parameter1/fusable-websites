@@ -26,7 +26,7 @@ $ const getImageSrcFor = (file) => `https://${config.website("imageHost")}/files
     <marko-web-content-name tag="h1" block-name=blockName obj=content />
   </@section>
   <@section>
-    <default-theme-page-contents|{ blockName }|>
+    <theme-page-contents|{ blockName }|>
       <marko-web-content-body block-name=blockName obj={ body: '__' }>
         <p>
           <span data-embed-type="image" data-embed-align="left">
@@ -60,6 +60,6 @@ $ const getImageSrcFor = (file) => `https://${config.website("imageHost")}/files
           <a href="https://s3.us-east-2.amazonaws.com/randall-reilly-creative/sites/Equipment%20World/COY2023_ApplicationForm.pdf" class="btn btn-primary mt-2 mr-2" target="_blank" rel="noopener">Download Paper Application</a>
         </div>
       </marko-web-content-body>
-    </default-theme-page-contents>
+    </theme-page-contents>
   </@section>
 </global-website-section-default-layout>
