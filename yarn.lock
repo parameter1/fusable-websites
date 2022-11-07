@@ -2405,10 +2405,10 @@
   dependencies:
     "@parameter1/base-cms-utils" "^3.0.0"
 
-"@parameter1/base-cms-marko-web-theme-monorail@^3.13.1":
-  version "3.13.1"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-3.13.1.tgz#52c27a63d4a3ff068d44928f88188f8635ae7753"
-  integrity sha512-BWqQc/8MU5aI6Knq7JJ4/BpqaFbVvh50LF01Sta4HlHjp9WMcH7C5/kKkrxTK4OudrI1XSutdS5clhNVXAsgUw==
+"@parameter1/base-cms-marko-web-theme-monorail@^3.13.2":
+  version "3.13.2"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-3.13.2.tgz#935c051349dc908ee904f17661ec81e101037196"
+  integrity sha512-Gd58MZ7oO3+TzVqC2bt7wmgcDJa6blG3mWDyTdTEorz+vQPVyUT9SM1YKqrA60PlC72kC5J+2Quop4c5sIo8LA==
   dependencies:
     "@parameter1/base-cms-image" "^3.13.0"
     "@parameter1/base-cms-inflector" "^3.0.0"
