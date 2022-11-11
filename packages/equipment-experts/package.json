@@ -13,7 +13,7 @@
   "dependencies": {
     "@parameter1/base-cms-embedded-media": "^3.13.5",
     "@parameter1/base-cms-image": "^3.13.5",
-    "@parameter1/base-cms-marko-web": "^3.13.5",
+    "@parameter1/base-cms-marko-web": "^3.14.0",
     "@parameter1/base-cms-object-path": "^3.0.0",
     "@parameter1/base-cms-utils": "^3.0.0",
     "apollo-cache-inmemory": "^1.6.6",
