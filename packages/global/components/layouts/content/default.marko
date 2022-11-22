@@ -1,9 +1,10 @@
 import { getAsArray, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
 import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/utils/get-content-preview";
+import GAMDefineDisplayAd from "@parameter1/base-cms-marko-web-theme-monorail/components/gam/define-display-ad";
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
-
+$ const { global: $global } = out;
 $ const { site, contentMeterState, GAM } = out.global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
@@ -138,21 +139,32 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
               aliases=aliases
               block-name=blockName
               preventHTMLInjection=!shouldInjectAds
-              ad-injection-config = [
+              injections = [
                 {
-                  name: 'inline-content-desktop',
-                  modifiers: ["margin-auto-x",  "inline-content", "inline-content-desktop"],
                   counts: [1000, 2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500],
+                  html: GAMDefineDisplayAd.renderToString({
+                    name: 'inline-content-desktop',
+                    modifiers: ["margin-auto-x",  "inline-content", "inline-content-desktop"],
+                    $global
+                  })
                 },
                 {
                   name: leaderboardAdName,
                   modifiers: leaderboardModifiers,
                   counts: [250],
+                  html: GAMDefineDisplayAd.renderToString({
+                    name: leaderboardAdName,
+                    modifiers: leaderboardModifiers,
+                    $global
+                  })
                 },
                 {
-                  name: 'inline-content-mobile',
-                  modifiers: ["margin-auto-x",  "inline-content", "inline-content-mobile"],
                   counts: [900, 1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250],
+                  html: GAMDefineDisplayAd.renderToString({
+                    name: 'inline-content-mobile',
+                    modifiers: ["margin-auto-x",  "inline-content", "inline-content-mobile"],
+                    $global
+                  })
                 }
               ]
             />
