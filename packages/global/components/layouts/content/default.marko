@@ -131,6 +131,8 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             />
           </else-if>
           <else>
+            $ const leaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
+            $ const leaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
             <theme-body-with-injection
               content=content
               aliases=aliases
@@ -143,8 +145,8 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                   counts: [1000, 2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500],
                 },
                 {
-                  name: 'inline-leaderboard-mobile',
-                  modifiers: ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"],
+                  name: leaderboardAdName,
+                  modifiers: leaderboardModifiers,
                   counts: [250],
                 },
                 {
