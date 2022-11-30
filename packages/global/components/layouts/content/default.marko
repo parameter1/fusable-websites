@@ -4,7 +4,7 @@ import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/uti
 import GAMDefineDisplayAd from "@parameter1/base-cms-marko-web-theme-monorail/components/gam/define-display-ad";
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
-$ const { global: $global } = out;
+
 $ const { site, contentMeterState, GAM } = out.global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
