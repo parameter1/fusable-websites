@@ -1,6 +1,6 @@
 module.exports = {
   enable: process.env.ENABLE_CONTENT_METER === 'true',
-  viewLimit: 3,
+  viewLimit: 2,
   excludeLabels: [
     'Sponsored',
     'Sponsored by RoadPro',
