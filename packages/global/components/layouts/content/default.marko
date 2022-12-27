@@ -212,7 +212,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
         </marko-web-identity-x-access>
 
         <if(displayComments)>
-          <theme-identity-x-comment-stream content=content />
+          <theme-identity-x-comment-stream content=content additional-event-data={ promoCode: "article_comment" } />
         </if>
       </theme-page-contents>
     </div>
