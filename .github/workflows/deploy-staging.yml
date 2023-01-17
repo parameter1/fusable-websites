@@ -1,0 +1,137 @@
+name: Deploy sites (staging)
+
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+  ECR_REGISTRY: 598984531759.dkr.ecr.us-east-2.amazonaws.com
+  IMG_PREFIX: randall-reilly
+
+jobs:
+  vars:
+    runs-on: ubuntu-latest
+    steps:
+    - id: tag_version
+      run: |
+        REF=$(echo $GITHUB_REF | cut -d / -f 3)
+        [[ "$GITHUB_REF" =~ ^refs/tags.*$ ]] && VERSION="$REF" || VERSION="${REF}-${GITHUB_SHA::7}"
+        echo ::set-output name=version::$(echo "$VERSION")
+    - id: send-message
+      uses: archive/github-actions-slack@master
+      with:
+        slack-function: send-message
+        slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
+        slack-channel: deployments
+        slack-text: Deployment of ${{ github.repository }} has begun.
+      env:
+        INPUT_SLACK-OPTIONAL-blocks: |
+          [
+            { type: 'section', text: { type: 'mrkdwn', text: 'A deployment for *${{ github.repository }}* has begun.' } },
+            { type: 'divider' },
+            { type: 'section', fields: [
+                { type: 'mrkdwn', text: '*Version:*\n${{ steps.tag_version.outputs.version }}' },
+                { type: 'mrkdwn', text: '*Author:*\n${{ github.triggering_actor }}' },
+            ]},
+            { type: 'divider' },
+            {
+              type: 'section',
+              text: { type: 'mrkdwn', text: '${{ github.workflow}} #${{ github.run_id }}' },
+              accessory: { type: 'button', text: { type: 'plain_text', text: 'View Deployment' }, url: 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id}}' },
+            },
+          ]
+    outputs:
+      version: ${{ steps.tag_version.outputs.version }}
+      slack-channel: ${{ fromJson(steps.send-message.outputs.slack-result).response.channel }}
+      slack-thread: ${{ fromJson(steps.send-message.outputs.slack-result).response.message.ts }}
+
+  post-deploy-failure:
+    if: failure()
+    needs: [vars, deploy-sites]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Notify failure
+      uses: archive/github-actions-slack@master
+      with:
+        slack-function: send-message
+        slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
+        slack-channel: ${{ needs.vars.outputs.slack-channel }}
+        slack-text: Deployment failed!
+        slack-optional-thread_ts: ${{ needs.vars.outputs.slack-thread }}
+        slack-optional-reply_broadcast: true
+
+  post-deploy-success:
+    if: success()
+    needs: [vars, deploy-sites]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Notify success
+      uses: archive/github-actions-slack@master
+      with:
+        slack-function: send-message
+        slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
+        slack-channel: ${{ needs.vars.outputs.slack-channel }}
+        slack-text: Deployment complete.
+        slack-optional-thread_ts: ${{ needs.vars.outputs.slack-thread }}
+
+  ######################
+  # Add websites here! #
+  ######################
+
+  build-sites:
+    needs: [vars]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        site:
+          - ccjdigital.com
+          - equipmentworld.com
+          - hardworkingtrucks.com
+          - overdriveonline.com
+          - totallandscapecare.com
+          - truckersnews.com
+          - truckpartsandservice.com
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Log in to ECR
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.ECR_REGISTRY }}
+          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Build docker image
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          build-args: |
+            SITE=${{ matrix.site }}
+          tags: ${{ env.ECR_REGISTRY }}/${{ env.IMG_PREFIX }}-${{ matrix.site }}:${{ needs.vars.outputs.version }}
+
+  deploy-sites:
+    needs: [vars, build-sites]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        namespace:
+          - staging-websites-virgon
+        site:
+          - ccjdigital.com
+          - equipmentworld.com
+          - hardworkingtrucks.com
+          - overdriveonline.com
+          - totallandscapecare.com
+          - truckersnews.com
+          - truckpartsandservice.com
+    steps:
+      - name: Deploy to Kubernetes
+        run: |
+          npx @parameter1/rancher2cli dl \
+            --wait --namespace ${{ matrix.namespace }} \
+            basecms-website ${{ env.IMG_PREFIX }}-${{ matrix.site }} \
+            ${{ env.ECR_REGISTRY }}/${{ env.IMG_PREFIX }}-${{ matrix.site }}:${{ needs.vars.outputs.version }}
+        env:
+          RANCHER_CLUSTERID: c-7p6pt
+          RANCHER_TOKEN: ${{ secrets.RANCHER_TOKEN }}
+          RANCHER_URL: ${{ secrets.RANCHER_URL }}
