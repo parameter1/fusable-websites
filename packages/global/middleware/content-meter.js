@@ -55,6 +55,7 @@ module.exports = () => asyncRoute(async (req, res, next) => {
     query,
     cookies,
   } = req;
+  const bypassMeter = get(query, 'bypassContentMetering') === 'true';
   const config = req.app.locals.site.getAsObject('contentMeter');
   const { id } = params;
   const idxObj = { isEnabled: true, requiredAccessLevelIds: [] };
@@ -92,14 +93,15 @@ module.exports = () => asyncRoute(async (req, res, next) => {
       valid.push({ id, viewed: now });
     }
 
-    const displayOverlay = (valid.length >= config.viewLimit && !valid.find(v => v.id === id));
+    const displayOverlay = (valid.length >= config.viewLimit && !valid.find(v => v.id === id))
+    && !bypassMeter;
 
     res.locals.contentMeterState = {
       ...config,
       views: valid.length,
       isLoggedIn: false,
       requiresUserInput: true,
-      displayGate: (config.enable && !pushdownWins),
+      displayGate: (config.enable && !pushdownWins && !bypassMeter),
       displayOverlay,
     };
     res.cookie(cookieName, JSON.stringify(valid), { maxAge: config.timeframe });
