@@ -24,15 +24,19 @@ $ const description = "";
         />
       </@section>
       <@section>
-        $ const { oneTrustId } = data;
-        $ const oneTrustURL = `https://appds8093.blob.core.windows.net/49a9a972-547e-4c49-b23c-4cc77554cacb/privacy-notices/${oneTrustId}.json`;
-        <div id=`otnotice-${oneTrustId}` class="otnotice mt-4"></div>
-        <script>
-          // To ensure external settings are loaded, use the Initialized promise:
-          OneTrust.NoticeApi.Initialized.then(function() {
-            OneTrust.NoticeApi.LoadNotices(['${oneTrustURL}']);
-          });
-        </script>
+        $ const { oneTrustIds } = data;
+        <if(oneTrustIds)>
+          <for|oneTrustId| of=oneTrustIds>
+            $ const oneTrustURL = `https://appds8093.blob.core.windows.net/49a9a972-547e-4c49-b23c-4cc77554cacb/privacy-notices/${oneTrustId}.json`;
+            <div id=`otnotice-${oneTrustId}` class="otnotice mt-4"></div>
+            <script>
+              // To ensure external settings are loaded, use the Initialized promise:
+              OneTrust.NoticeApi.Initialized.then(function() {
+                OneTrust.NoticeApi.LoadNotices(['${oneTrustURL}']);
+              });
+            </script>
+          </for>
+        </if>
       </@section>
     </marko-web-page-wrapper>
   </@page>

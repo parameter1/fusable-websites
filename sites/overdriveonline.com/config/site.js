@@ -72,8 +72,14 @@ module.exports = {
     { label: 'Soundcloud', href: 'https://soundcloud.com/overdriveradio' },
   ],
   oneTrust: [
-    { path: '/collection', id: 'c04235aa-e9e0-4ff9-b558-5e21aa892d20' },
-    { path: '/termsandprivacy', id: '45d9b939-c3de-4b71-8cbf-e2ffe621ff9c' },
+    { path: '/collection', oneTrustIds: ['c04235aa-e9e0-4ff9-b558-5e21aa892d20'] },
+    {
+      path: '/termsandprivacy',
+      oneTrustIds: [
+        'd8f2d6c5-d9af-4d60-a93f-7441ca9ad94c',
+        '45d9b939-c3de-4b71-8cbf-e2ffe621ff9c',
+      ],
+    },
   ],
   gtm: {
     containerId: 'GTM-NDC3FQX',
