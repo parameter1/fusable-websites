@@ -99,7 +99,12 @@ module.exports = ({
     }
     return payload;
   }),
-  onAuthenticationSuccessFormatter: (async ({ req, payload, additionalEventData }) => {
+  onAuthenticationSuccessFormatter: (async ({
+    req,
+    payload,
+    loginSource,
+    additionalEventData,
+  }) => {
     // BAIL if omedaGraphQLCLient isnt available return payload.
     if (!req.$omedaGraphQLClient) return payload;
 
@@ -136,7 +141,11 @@ module.exports = ({
         additionalEventData.autoSignups = [];
         const deploymentTypes = newSubscriptions.map((id) => {
           // eslint-disable-next-line no-param-reassign
-          additionalEventData.autoSignups.push({ userId: user.id, productId: id });
+          additionalEventData.autoSignups.push({
+            userId: user.id,
+            productId: id,
+            loginSource,
+          });
           return { id, optedIn: true };
         });
         return ({
