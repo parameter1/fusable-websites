@@ -1,3 +1,4 @@
+const parser = require('ua-parser-js');
 const { get } = require('@parameter1/base-cms-object-path');
 const defaultValue = require('@parameter1/base-cms-marko-core/utils/default-value');
 
@@ -12,6 +13,10 @@ const now = new Date().getTime();
 async function shouldMeter(req) {
   const { apollo, params } = req;
   const config = req.app.locals.site.getAsObject('contentMeter');
+
+  // If broserser Facebook do not display content meter gate.
+  if (parser(req.headers['user-agent']).browser.name === 'Facebook') return false;
+
   const { id } = params;
   const additionalInput = buildContentInput({ req });
   const content = await loader(apollo, { id, additionalInput, queryFragment });
