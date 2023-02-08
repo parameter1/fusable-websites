@@ -241,7 +241,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 
   <if(showTopStoryBlock)>
     <@section>
-      <theme-top-stories-block />
+      <theme-top-stories-block query-params={ optionName: 'Pinned' } />
     </@section>
   </if>
 
