@@ -13,7 +13,7 @@ $primary: #b9161b;
 $skin-newsletter-signup-bg-color: #f0f1f2;
 $skin-newsletter-signup-inline-btn-color: #460c0e;
 
-@import "../../node_modules/@randall-reilly/package-global/scss/core";
+@import "@randall-reilly/package-global/scss/core";
 
 @import "./components/partners-in-business-page";
 
