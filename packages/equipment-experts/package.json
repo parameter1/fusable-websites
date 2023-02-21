@@ -7,8 +7,11 @@
   "private": true,
   "main": "index.js",
   "scripts": {
+    "compile": "basecms-marko-compile compile",
+    "build": "yarn compile",
     "lint": "eslint --ext .js --ext .vue --max-warnings 5 --ignore-path ../../.eslintignore ./",
-    "test": "yarn lint"
+    "lint:fix": "yarn lint --fix",
+    "test": "yarn lint && yarn compile --no-clean"
   },
   "dependencies": {
     "@parameter1/base-cms-embedded-media": "^4.0.0",
