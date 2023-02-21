@@ -1,7 +1,7 @@
 const { sqs } = require('../aws');
 
 const contentType = 'text/plain';
-const badRequest = body => ({
+const badRequest = (body) => ({
   statusCode: 400,
   body,
   headers: { 'content-type': contentType },

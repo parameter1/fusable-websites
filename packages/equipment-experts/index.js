@@ -12,7 +12,7 @@ const linkTo = (req, p, limit) => {
   return `${protocol}://${req.get('host')}${req.baseUrl}?page=${p}&posts_per_page=${limit}`;
 };
 const filterSearchIndexes = (data, id) => getAsArray(data, 'data.findAll')
-  .filter(index => index.contentId === id)
+  .filter((index) => index.contentId === id)
   .map(({ industry, manufacturer, model }) => ({ industry, manufacturer, model }));
 
 function setDefaultImgixParams(body) {
@@ -63,11 +63,11 @@ module.exports = ({
         post_last_modified: new Date(node.updated),
         post_excerpt: node.teaser,
         featured_image: get(node, 'primaryImage.src'),
-        keywords: getAsArray(node, 'keywords.edges').map(e => get(e, 'node.name')),
+        keywords: getAsArray(node, 'keywords.edges').map((e) => get(e, 'node.name')),
         key_pairs: filterSearchIndexes(indexes, node.id),
         blog: get(node, 'primarySite.shortName'),
         permalink: get(node, 'siteContext.url'),
-        author: getAsArray(node, 'authors.edges').map(e => get(e, 'node.name')).join(', '),
+        author: getAsArray(node, 'authors.edges').map((e) => get(e, 'node.name')).join(', '),
       };
     })),
     links: {

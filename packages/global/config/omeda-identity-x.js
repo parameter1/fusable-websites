@@ -90,7 +90,7 @@ module.exports = ({
     // return payload with registration_meter promo code ref removed
     if (hasWebsiteSubscription && (payload.promoCode || payload.appendPromoCodes.length)) {
       const promoCode = !payload.promoCode.includes('registration_meter') ? payload.promoCode : undefined;
-      const appendPromoCodes = payload.appendPromoCodes.filter(code => !code.includes('registration_meter'));
+      const appendPromoCodes = payload.appendPromoCodes.filter((code) => !code.includes('registration_meter'));
       return {
         ...payload,
         promoCode,
@@ -134,7 +134,7 @@ module.exports = ({
       // Sign the user up if they do not
 
       const newSubscriptions = productIds.filter(
-        id => !subscriptions.some(({ product }) => product.deploymentTypeId === id),
+        (id) => !subscriptions.some(({ product }) => product.deploymentTypeId === id),
       );
       if (newSubscriptions && newSubscriptions.length) {
         // eslint-disable-next-line no-param-reassign
@@ -216,7 +216,6 @@ module.exports = ({
       //   });
       // }
       // ###### CONDITIONALLY ADD PROMO DEMO WHEN NOT ALREADY SET ##### //
-
 
       // This is for second part of onUserProfileUpdate, but now 100% sure
       // on how omeda intends on handeling this, so waiting for now

@@ -63,7 +63,7 @@ export default {
 
   computed: {
     selectedColumn() {
-      return this.columns.find(col => col.key === this.selected);
+      return this.columns.find((col) => col.key === this.selected);
     },
 
     type() {

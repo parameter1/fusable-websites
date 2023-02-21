@@ -25,19 +25,19 @@ export default ({ debug = false } = {}) => (() => {
   });
 
   const DB_REQUIRED_FIELDS = DB_FIELDS
-    .filter(field => field.required === true)
-    .map(field => field.key);
+    .filter((field) => field.required === true)
+    .map((field) => field.key);
 
   const DB_REQUIRED_FIELD_STRING = DB_REQUIRED_FIELDS.join('|');
-  const DB_FIELD_LIST_STRING = DB_FIELDS.map(field => field.key).join('|');
+  const DB_FIELD_LIST_STRING = DB_FIELDS.map((field) => field.key).join('|');
 
   const log = (...args) => {
     // eslint-disable-next-line
     if (debug) console.log('D&B Olytics', ...args);
   };
 
-  const ucFirst = string => `${string[0].toUpperCase()}${string.slice(1)}`;
-  const olyticsKey = key => `dnb${ucFirst(key)}`;
+  const ucFirst = (string) => `${string[0].toUpperCase()}${string.slice(1)}`;
+  const olyticsKey = (key) => `dnb${ucFirst(key)}`;
 
   const URI = 'https://jc4f7ji1yg.execute-api.us-east-2.amazonaws.com/default/dun-and-bradstreet-enqueue';
 
@@ -70,7 +70,6 @@ export default ({ debug = false } = {}) => (() => {
     }
     return imagePromise;
   };
-
 
   let scriptPromise;
   const loadScript = () => {
@@ -166,7 +165,7 @@ export default ({ debug = false } = {}) => (() => {
   const parseCookies = () => document.cookie.split(';').reduce((obj, cookie) => {
     const trimmed = cookie.trim();
     if (!trimmed) return obj;
-    const [name, value] = trimmed.split('=').map(v => decodeURIComponent(v.trim()));
+    const [name, value] = trimmed.split('=').map((v) => decodeURIComponent(v.trim()));
     return { ...obj, [name]: value };
   }, {});
 
@@ -291,7 +290,7 @@ export default ({ debug = false } = {}) => (() => {
       return;
     }
 
-    const hasRequiredFields = DB_REQUIRED_FIELDS.every(key => record[`${olyticsKey(key)}`]);
+    const hasRequiredFields = DB_REQUIRED_FIELDS.every((key) => record[`${olyticsKey(key)}`]);
     if (!hasRequiredFields) {
       log('D&B data is missing the required fields');
       setCookie({ data: currentState, maxAge: 60 * 60 * 24 * 30 });

@@ -100,7 +100,7 @@ const columns = {
     type: 'number',
   },
 };
-const headerLabels = Object.keys(columns).map(key => key);
+const headerLabels = Object.keys(columns).map((key) => key);
 const colParser = Object.keys(columns).map((key) => {
   const obj = {};
   const colKey = columns[key].label;

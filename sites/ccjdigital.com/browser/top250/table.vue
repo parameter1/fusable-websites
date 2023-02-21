@@ -91,7 +91,6 @@
   </div>
 </template>
 
-
 <script>
 import { get } from 'object-path';
 import escapeRegex from './utils/escape-regex';
@@ -140,7 +139,7 @@ export default {
     driftPercent: {
       type: Number,
       default: 0.1,
-      validate: v => v >= 0 && v <= 1,
+      validate: (v) => v >= 0 && v <= 1,
     },
     regions: {
       type: Object,
@@ -415,7 +414,7 @@ export default {
      */
     filterByPrimaryOperation(rows, selectedPrimaryOperation) {
       if (!selectedPrimaryOperation) return rows;
-      return rows.filter(row => row.primaryOperation.raw === selectedPrimaryOperation);
+      return rows.filter((row) => row.primaryOperation.raw === selectedPrimaryOperation);
     },
 
     /**
@@ -424,7 +423,7 @@ export default {
     filterByRegion(rows, selectedRegion) {
       if (!selectedRegion || selectedRegion === 'Regions') return rows;
       const states = this.regions[selectedRegion];
-      return rows.filter(row => states.includes(row.state.raw));
+      return rows.filter((row) => states.includes(row.state.raw));
     },
 
     /**
