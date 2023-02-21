@@ -8,8 +8,7 @@ ADD packages /root/packages
 ADD sites/$SITE /root/sites/$SITE
 RUN yarn --production --pure-lockfile
 
-WORKDIR /root/sites/$SITE
-RUN node_modules/.bin/basecms-website build
+RUN yarn build
 
 FROM node:14.21-alpine
 ENV NODE_ENV production
