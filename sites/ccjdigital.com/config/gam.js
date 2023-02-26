@@ -44,7 +44,7 @@ const aliases = [
   'technology',
 ];
 
-aliases.forEach(alias => config.setAliasAdUnits(alias, [
+aliases.forEach((alias) => config.setAliasAdUnits(alias, [
   { name: 'leaderboard', templateName: 'LEADERBOARD', path: `${alias}-leaderboard` },
   { name: 'inline-leaderboard-mobile', templateName: 'INLINE-LEADERBOARD-MOBILE', path: `${alias}-leaderboard` },
   { name: 'leaderboard-desktop', templateName: 'LEADERBOARD-DESKTOP', path: `${alias}-leaderboard` },
@@ -53,6 +53,5 @@ aliases.forEach(alias => config.setAliasAdUnits(alias, [
   { name: 'inline-content-mobile', templateName: 'INLINE-CONTENT-MOBILE', path: `${alias}-rotation` },
   { name: 'inline-content-desktop', templateName: 'INLINE-CONTENT-DESKTOP', path: `${alias}-rotation` },
 ]));
-
 
 module.exports = config;

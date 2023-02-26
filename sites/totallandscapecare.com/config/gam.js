@@ -37,7 +37,7 @@ const aliases = [
   'job-design-management',
 ];
 
-aliases.forEach(alias => config.setAliasAdUnits(alias, [
+aliases.forEach((alias) => config.setAliasAdUnits(alias, [
   { name: 'leaderboard', templateName: 'LEADERBOARD', path: `${alias}-leaderboard` },
   { name: 'inline-leaderboard-mobile', templateName: 'INLINE-LEADERBOARD-MOBILE', path: `${alias}-leaderboard` },
   { name: 'leaderboard-desktop', templateName: 'LEADERBOARD-DESKTOP', path: `${alias}-leaderboard` },

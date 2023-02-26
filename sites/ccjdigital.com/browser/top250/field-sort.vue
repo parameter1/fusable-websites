@@ -42,7 +42,7 @@ export default {
     direction: {
       type: Number,
       default: 1,
-      validate: v => [1, -1].includes(v),
+      validate: (v) => [1, -1].includes(v),
     },
     selectedKey: {
       type: String,

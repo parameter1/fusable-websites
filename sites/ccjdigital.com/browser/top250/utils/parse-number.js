@@ -13,7 +13,7 @@ export default ({ value } = {}) => {
   const values = extractRangeValues({ value });
   if (!values) return null;
   // remove commas then parse.
-  const parsed = values.map(v => parseFloat(`${v}`.replace(/,/g, ''))).filter(v => !Number.isNaN(v));
+  const parsed = values.map((v) => parseFloat(`${v}`.replace(/,/g, ''))).filter((v) => !Number.isNaN(v));
   if (!parsed.length) return null;
   if (parsed.length === 1) {
     parsed.push(parsed[0]);

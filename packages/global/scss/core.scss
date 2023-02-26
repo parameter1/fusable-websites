@@ -2,7 +2,7 @@
 @import "variables";
 
 // import theme css
-@import "../../node_modules/@parameter1/base-cms-marko-web-theme-monorail/scss/core";
+@import "@parameter1/base-cms-marko-web-theme-monorail/scss/core";
 
 // skin components
 @import "./components/blocks/ccj-solutions-summit";

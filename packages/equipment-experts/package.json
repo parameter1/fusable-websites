@@ -7,15 +7,18 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --ext .js --ext .vue --max-warnings 5 --ignore-path ../../.eslintignore ./",
-    "test": "yarn lint"
+    "compile": "basecms-marko-compile compile",
+    "build": "yarn compile",
+    "lint": "eslint --ext .js --ext .vue --max-warnings 5 --config ../../.eslintrc.js --ignore-path ../../.eslintignore ./",
+    "lint:fix": "yarn lint --fix",
+    "test": "yarn lint && yarn compile --no-clean"
   },
   "dependencies": {
-    "@parameter1/base-cms-embedded-media": "^3.13.5",
-    "@parameter1/base-cms-image": "^3.13.5",
-    "@parameter1/base-cms-marko-web": "^3.17.3",
-    "@parameter1/base-cms-object-path": "^3.0.0",
-    "@parameter1/base-cms-utils": "^3.0.0",
+    "@parameter1/base-cms-embedded-media": "^4.0.2",
+    "@parameter1/base-cms-image": "^4.0.2",
+    "@parameter1/base-cms-marko-web": "^4.5.2",
+    "@parameter1/base-cms-object-path": "^4.0.2",
+    "@parameter1/base-cms-utils": "^4.0.2",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
@@ -23,5 +26,13 @@
     "graphql": "^15.4.0",
     "graphql-tag": "^2.11.0",
     "node-fetch": "^2.6.1"
-  }
+  },
+  "engines": {
+    "node": ">=14.15"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ]
 }
