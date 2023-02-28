@@ -36,7 +36,7 @@
     "@parameter1/base-cms-marko-web-theme-monorail": "^4.5.12",
     "@parameter1/base-cms-object-path": "^4.5.12",
     "@parameter1/base-cms-utils": "^4.5.12",
-    "@parameter1/base-cms-web-cli": "^4.5.12",
+    "@parameter1/base-cms-web-cli": "^4.5.14",
     "@randall-reilly/package-global": "^1.48.10",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
