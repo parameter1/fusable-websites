@@ -1,5 +1,4 @@
 
-import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 import createOmedaIdentityBuilder from "@parameter1/base-cms-marko-web-p1-events/utils/create-omeda-identity-builder";
 import { getAsObject } from "@parameter1/base-cms-object-path";
 
@@ -10,7 +9,6 @@ $ const {
   GAM,
   contentMeterState,
 } = out.global;
-$ const gamInitOnly = defaultValue(site.config.gamInitOnly, false);
 
 $ const { cookies } = req;
 $ const getCookieId = (value, type) => {
@@ -52,12 +50,21 @@ $ const { gamDefer, gtmDefer } = req.query;
     />
 
     <!-- init gam -->
-    <marko-web-gam-init
-      request-frame=true
-      target-tag="body"
-      on="never"
-      init-only=gamInitOnly
-    />
+    <if(GAM.initOnly)>
+      <marko-web-gam-init
+        request-frame=true
+        target-tag="body"
+        on="load"
+        init-only=true
+      />
+    </if>
+    <else>
+      <marko-web-gam-init
+        request-frame=true
+        target-tag="body"
+        on=gamDefer
+      />
+    </else>
 
     <!-- init gtm -->
     <marko-web-gtm-init
