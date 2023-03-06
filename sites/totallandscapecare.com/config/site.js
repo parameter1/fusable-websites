@@ -13,6 +13,7 @@ module.exports = {
   // module configs
   contentMeter,
   gam,
+  gamInitOnly: true,
   identityX,
   // identityXOptInHooks,
   nativeX,
