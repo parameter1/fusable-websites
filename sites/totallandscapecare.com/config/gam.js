@@ -1,7 +1,7 @@
 const configureGAM = require('@randall-reilly/package-global/config/gam');
 
 const config = configureGAM({ basePath: 'tlc' });
-
+config.initOnly = true;
 config.lazyLoad = {
   enabled: false,
 };
