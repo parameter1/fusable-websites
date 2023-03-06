@@ -1,7 +1,7 @@
 const configureGAM = require('@randall-reilly/package-global/config/gam');
 
 const config = configureGAM({ basePath: 'tlc' });
-
+config.initOnly = true;
 config.lazyLoad = {
   enabled: false,
 };
@@ -37,7 +37,7 @@ const aliases = [
   'job-design-management',
 ];
 
-aliases.forEach(alias => config.setAliasAdUnits(alias, [
+aliases.forEach((alias) => config.setAliasAdUnits(alias, [
   { name: 'leaderboard', templateName: 'LEADERBOARD', path: `${alias}-leaderboard` },
   { name: 'inline-leaderboard-mobile', templateName: 'INLINE-LEADERBOARD-MOBILE', path: `${alias}-leaderboard` },
   { name: 'leaderboard-desktop', templateName: 'LEADERBOARD-DESKTOP', path: `${alias}-leaderboard` },

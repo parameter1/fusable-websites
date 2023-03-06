@@ -6,6 +6,7 @@ module.exports = ({
 } = {}) => {
   const config = new GAMConfiguration(accountId, { basePath });
 
+  config.initOnly = false;
   config.lazyLoad = {
     enabled: true, // set to true to enable lazy loading
     fetchMarginPercent: 100, // fetch ad when one viewport away

@@ -1,28 +1,43 @@
 {
   "name": "@randall-reilly/truckpartsandservice.com",
-  "version": "1.48.6",
+  "version": "1.48.12",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/sites/truckpartsandservice.com",
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "dev": "basecms-website dev index.js",
-    "build": "basecms-website build",
-    "compile": "basecms-marko-compile compile --dir ./ --silent true",
-    "lint": "yarn lint:js && yarn lint:css",
-    "lint:js": "eslint --ext .js --ext .vue --max-warnings 5 --ignore-path ../../.eslintignore ./",
-    "lint:css": "stylelint ./**/*.scss --max-warnings 5",
-    "test": "yarn lint && yarn compile && yarn build"
+  "website": {
+    "id": "5fce55abd28860bc33b818d0",
+    "tenant": "randallreilly_all",
+    "account": "randallreilly",
+    "stack": "virgon",
+    "key": "tps",
+    "deploy": true
   },
+  "scripts": {
+    "dev": "basecms-website dev --compile-dir ../../packages --watch-dir ../../packages",
+    "build": "basecms-website build",
+    "compile": "basecms-marko-compile compile",
+    "lint": "eslint --ext .js --ext .vue --max-warnings 5 --config ../../.eslintrc.js --ignore-path ../../.eslintignore ./",
+    "lint:fix": "yarn lint --fix",
+    "test": "yarn lint && yarn compile --no-clean"
+  },
+  "engines": {
+    "node": ">=14.15"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
   "dependencies": {
-    "@parameter1/base-cms-marko-core": "^3.17.3",
-    "@parameter1/base-cms-marko-web": "^3.17.3",
-    "@parameter1/base-cms-marko-web-gtm": "^3.20.0",
-    "@parameter1/base-cms-marko-web-theme-monorail": "^3.22.0",
-    "@parameter1/base-cms-object-path": "^3.0.0",
-    "@parameter1/base-cms-utils": "^3.0.0",
-    "@parameter1/base-cms-web-cli": "^3.17.3",
-    "@randall-reilly/package-global": "^1.48.6",
+    "@parameter1/base-cms-marko-core": "^4.6.0",
+    "@parameter1/base-cms-marko-web": "^4.6.2",
+    "@parameter1/base-cms-marko-web-gtm": "^4.5.12",
+    "@parameter1/base-cms-marko-web-theme-monorail": "^4.6.3",
+    "@parameter1/base-cms-object-path": "^4.5.12",
+    "@parameter1/base-cms-utils": "^4.5.12",
+    "@parameter1/base-cms-web-cli": "^4.6.0",
+    "@randall-reilly/package-global": "^1.48.12",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
   }

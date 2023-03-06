@@ -13,7 +13,7 @@ $primary: #103a57;
 $skin-newsletter-signup-bg-color: #f0f1f2;
 $skin-newsletter-signup-inline-btn-color: #103a57;
 
-@import "../../node_modules/@randall-reilly/package-global/scss/core";
+@import "@randall-reilly/package-global/scss/core";
 @import "./top-250";
 
 .top250-container {

@@ -7,7 +7,7 @@ This project supports two development environments:
 - [Docker Compose](https://docs.docker.com/compose/) (preferred)
 
 or
-- [Node.js](https://nodejs.org) (version 10.x)
+- [Node.js](https://nodejs.org) (version 14.x)
 - [Yarn](https://yarnpkg.com) package manager.
 
 ### Additional Resources
@@ -28,7 +28,7 @@ docker-compose run --rm yarn install
 
 ```sh
 # Mac/Linux/Windows native
-nvm use 10
+nvm use 14
 yarn install
 ```
 Once complete, the project dependencies will be available and the project will be ready to boot.

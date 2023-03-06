@@ -13,7 +13,7 @@ $primary: #b94909;
 $skin-newsletter-signup-bg-color: #f0f1f2;
 $skin-newsletter-signup-inline-btn-color: #8c3608;
 
-@import "../../node_modules/@randall-reilly/package-global/scss/core";
+@import "@randall-reilly/package-global/scss/core";
 
 .safety-watch {
   .btn-secondary,

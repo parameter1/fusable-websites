@@ -8,7 +8,7 @@
 export default ({ value } = {}) => {
   if (!value && typeof value !== 'number') return null;
   if (!/-/.test(value)) return [value, value];
-  const parts = value.split('-').map(v => v.trim()).filter(v => v);
+  const parts = value.split('-').map((v) => v.trim()).filter((v) => v);
   if (!parts.length) return null;
   if (parts.length === 1) return [parts[0], parts[0]];
   return [parts[0], parts[1]];
