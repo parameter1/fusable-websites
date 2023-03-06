@@ -49,8 +49,18 @@ $ const { gamDefer, gtmDefer } = req.query;
       identity-query-builder=createOmedaIdentityBuilder(omedaConfig.brandKey)
     />
 
+    <!-- init gtm -->
+    <marko-web-gtm-init
+      container-id=site.get("gtm.containerId")
+      request-frame=true
+      target-tag="body"
+      on=gtmDefer
+    />
+
     <!-- init gam -->
     <if(GAM.initOnly)>
+      <!-- Push gamDeferOn prop to use in GTM in order to trigger googletags correctly -->
+      <marko-web-gtm-push data={ gamDeferOn: "load"} />
       <marko-web-gam-init
         request-frame=true
         target-tag="body"
@@ -65,14 +75,6 @@ $ const { gamDefer, gtmDefer } = req.query;
         on=gamDefer
       />
     </else>
-
-    <!-- init gtm -->
-    <marko-web-gtm-init
-      container-id=site.get("gtm.containerId")
-      request-frame=true
-      target-tag="body"
-      on=gtmDefer
-    />
 
     <!-- init native-x -->
     <marko-web-native-x-init
