@@ -16,6 +16,7 @@ const topics = {
     { href: '/regulations', label: 'Regulations' },
     { href: '/distributor-of-the-year', label: 'Distributor of the Year' },
     { href: '/successful-dealer-award', label: 'Successful Dealer Award' },
+    { href: '/page/trailblazeraward', label: 'Trailblazer Award' },
     { href: '/white-papers', label: 'White Papers' },
   ],
   secondary: [
