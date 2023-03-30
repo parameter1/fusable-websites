@@ -2,10 +2,6 @@ const configureGAM = require('@randall-reilly/package-global/config/gam');
 
 const config = configureGAM({ basePath: 'ccj' });
 
-config.lazyLoad = {
-  enabled: false,
-};
-
 config.btfLeaderboard = true;
 
 config.setAliasAdUnits('default', [
