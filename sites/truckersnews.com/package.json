@@ -1,6 +1,6 @@
 {
   "name": "@randall-reilly/truckersnews.com",
-  "version": "1.49.2",
+  "version": "1.50.0",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/sites/truckersnews.com",
   "license": "MIT",
@@ -31,13 +31,13 @@
   ],
   "dependencies": {
     "@parameter1/base-cms-marko-core": "^4.9.0",
-    "@parameter1/base-cms-marko-web": "^4.11.3",
+    "@parameter1/base-cms-marko-web": "^4.13.0",
     "@parameter1/base-cms-marko-web-gtm": "^4.5.12",
-    "@parameter1/base-cms-marko-web-theme-monorail": "^4.12.2",
+    "@parameter1/base-cms-marko-web-theme-monorail": "^4.12.3",
     "@parameter1/base-cms-object-path": "^4.5.12",
     "@parameter1/base-cms-utils": "^4.5.12",
     "@parameter1/base-cms-web-cli": "^4.12.1",
-    "@randall-reilly/package-global": "^1.49.2",
+    "@randall-reilly/package-global": "^1.50.0",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
   }
