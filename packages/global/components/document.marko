@@ -58,23 +58,14 @@ $ const { gamDefer, gtmDefer } = req.query;
     />
 
     <!-- init gam -->
-    <if(GAM.initOnly)>
-      <!-- Push gamDeferOn prop to use in GTM in order to trigger googletags correctly -->
-      <marko-web-gtm-push data={ gamDeferOn: "load"} />
-      <marko-web-gam-init
-        request-frame=true
-        target-tag="body"
-        on="load"
-        init-only=true
-      />
-    </if>
-    <else>
-      <marko-web-gam-init
-        request-frame=true
-        target-tag="body"
-        on=gamDefer
-      />
-    </else>
+    <!-- Push gamDeferOn prop to use in GTM in order to trigger googletags correctly -->
+    <marko-web-gtm-push data={ gamDeferOn: "load"} />
+    <marko-web-gam-init
+      request-frame=true
+      target-tag="body"
+      on="load"
+      init-only=true
+    />
 
     <!-- init native-x -->
     <marko-web-native-x-init
