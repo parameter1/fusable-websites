@@ -131,15 +131,26 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             />
           </else-if>
           <else>
-            $ const leaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
-            $ const leaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
+
+            <!-- remove the Desktop Leaderboard overrides stuff and set the mobile version correctly.
+
+            $ const desktopLeaderboardAdName = (GAM.btfLeaderboard) ? "leaderboard-desktop" : "inline-content-desktop'";
+            $ const desktopLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-desktop"] : ["margin-auto-x",  "inline-content", "inline-desktop"];
+
+            Add the following back to <theme-body-with-injection call to add desktop leaderboard logic.
+            desktop-leaderboard-ad-name=desktopLeaderboardAdName
+            desktop-leaderboard-modifiers=desktopLeaderboardModifiers
+
+            -->
+            $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
+            $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
             <theme-body-with-injection
               content=content
               aliases=aliases
               block-name=blockName
               preventHTMLInjection=!shouldInjectAds
-              leaderboard-ad-name=leaderboardAdName
-              leaderboard-modifiers=leaderboardModifiers
+              mobile-leaderboard-ad-name=mobileLeaderboardAdName
+              mobile-leaderboard-modifiers=mobileLeaderboardModifiers
               lazyload-first-image=lazyloadFirstImage
             />
             <if(content.transcript)>
