@@ -14,7 +14,7 @@ $ const perPage = 18;
 >
   <@head>
     <theme-section-feed-block|{ totalCount }| alias=alias count-only=true query-name="website-optioned-content">
-    <@query-params option-name=["Pinned", "Standard"] />
+      <@query-params option-name=["Pinned", "Standard"] />
       <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
