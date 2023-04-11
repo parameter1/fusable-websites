@@ -14,7 +14,7 @@ $ const perPage = 18;
 >
   <@head>
     <theme-section-feed-block|{ totalCount }| alias=alias count-only=true query-name="website-optioned-content">
-    <@query-params option-name="Pinned" />
+    <@query-params option-name=["Pinned", "Standard"] />
       <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
@@ -146,6 +146,7 @@ $ const perPage = 18;
       <@query-params limit=5 skip=p.skip({ perPage, skip: 13 }) option-name="Pinned" />
     </theme-section-feed-block>
     <theme-section-feed-block|{ totalCount }| alias=alias count-only=true>
+      <@query-params option-name=["Pinned", "Standard"] />
       <theme-pagination-controls
         per-page=perPage
         total-count=totalCount

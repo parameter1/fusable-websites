@@ -14,7 +14,7 @@ $ const perPage = 10;
 >
   <@head>
     <theme-latest-products-feed-block|{ totalCount }| alias=alias count-only=true query-name="website-optioned-content">
-     <@query-params option-name="Pinned" />
+      <@query-params option-name=["Pinned", "Standard"] />
       <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
@@ -52,7 +52,7 @@ $ const perPage = 10;
           <@query-params limit=perPage skip=p.skip({ perPage }) option-name="Pinned" />
         </theme-latest-products-feed-block>
         <theme-latest-products-feed-block|{ totalCount }| alias=alias count-only=true query-name="website-optioned-content">
-          <@query-params option-name="Pinned" />
+          <@query-params option-name=["Pinned", "Standard"] />
           <theme-pagination-controls
             per-page=perPage
             total-count=totalCount
