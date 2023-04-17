@@ -79,6 +79,7 @@ services:
       HOST: www-rr-eqw.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9901
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
       LIVERELOAD_PORT: 19901
       OMEDA_INPUT_ID: ${EQW_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-eqw.dev.parameter1.com
@@ -94,6 +95,7 @@ services:
       HOST: www-rr-tlc.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9902
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
       LIVERELOAD_PORT: 19902
       OMEDA_INPUT_ID: ${TLC_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-tlc.dev.parameter1.com
@@ -109,6 +111,7 @@ services:
       HOST: www-rr-tn.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9903
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
       LIVERELOAD_PORT: 19903
       OMEDA_INPUT_ID: ${TN_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-tn.dev.parameter1.com
@@ -124,6 +127,7 @@ services:
       HOST: www-rr-ccj.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9904
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
       LIVERELOAD_PORT: 19904
       OMEDA_INPUT_ID: ${CCJ_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-ccj.dev.parameter1.com
@@ -139,6 +143,7 @@ services:
       HOST: www-rr-hwt.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9905
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
       LIVERELOAD_PORT: 19905
       OMEDA_INPUT_ID: ${HWT_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-hwt.dev.parameter1.com
@@ -154,6 +159,7 @@ services:
       HOST: www-rr-ovd.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9906
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
       LIVERELOAD_PORT: 19906
       OMEDA_INPUT_ID: ${OVD_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-ovd.dev.parameter1.com
@@ -169,6 +175,7 @@ services:
       HOST: www-rr-tps.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9907
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
       LIVERELOAD_PORT: 19907
       OMEDA_INPUT_ID: ${TPS_OMEDA_INPUT_ID-(unset)}
     hostname: www-rr-tps.dev.parameter1.com
