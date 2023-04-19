@@ -1060,10 +1060,10 @@
     graphql "^14.5.4"
     graphql-tag "^2.12.6"
 
-"@parameter1/base-cms-marko-web-icons@^4.16.1":
-  version "4.16.1"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-icons/-/base-cms-marko-web-icons-4.16.1.tgz#1458bf01e17ba47e9bda14fd0ded01eb758f5b2a"
-  integrity sha512-TKVay3ojKY6nRlW20mPqcSqM1gS54QbuBbjn0d6IjaYZRAWAzu7KM1ercyhWGPr4EUFRBNdce2jPCaFN3daJ7g==
+"@parameter1/base-cms-marko-web-icons@^4.16.2":
+  version "4.16.2"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-icons/-/base-cms-marko-web-icons-4.16.2.tgz#0661552d27d9dfe9e405e82e9217080ef290c145"
+  integrity sha512-QWxa3Cb++S+ByhOKfpx2a6pDY9j4ynjxWjOXeR7vclkhTGjjMlgJWNbbpcMdw+7BXFqonKxB3SjlxVMmnR54Mw==
 
 "@parameter1/base-cms-marko-web-identity-x@^4.16.0":
   version "4.16.0"
@@ -1126,6 +1126,19 @@
     graphql "^14.7.0"
     graphql-tag "^2.12.6"
 
+"@parameter1/base-cms-marko-web-omeda-identity-x@^4.16.2":
+  version "4.16.2"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda-identity-x/-/base-cms-marko-web-omeda-identity-x-4.16.2.tgz#cd6599486bd603debad3bf2a0e311cf1c95ca861"
+  integrity sha512-eXS/MBrt49AGcRpNaT3igcbyMCS1aZEzrEle9ivCgyMctOLvfGpKIYq1qlDglcMKkmY9LW7Jk+XqvuJgdo+Slg==
+  dependencies:
+    "@parameter1/base-cms-marko-web-identity-x" "^4.16.0"
+    "@parameter1/base-cms-marko-web-omeda" "^4.16.0"
+    "@parameter1/base-cms-object-path" "^4.5.12"
+    "@parameter1/base-cms-utils" "^4.5.12"
+    "@parameter1/joi" "^1.2.10"
+    graphql "^14.7.0"
+    graphql-tag "^2.12.6"
+
 "@parameter1/base-cms-marko-web-omeda@^4.16.0":
   version "4.16.0"
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-omeda/-/base-cms-marko-web-omeda-4.16.0.tgz#b9548ae2b0fb17f507092244641c36eb69e7d2e5"
@@ -1170,13 +1183,13 @@
     "@parameter1/base-cms-object-path" "^4.5.12"
     "@parameter1/base-cms-utils" "^4.5.12"
 
-"@parameter1/base-cms-marko-web-search@^4.16.1":
-  version "4.16.1"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-search/-/base-cms-marko-web-search-4.16.1.tgz#56ef4f19f46eae310a03fab82822bb3888355432"
-  integrity sha512-O8oZMwYvnTHuseh3VmCfv10lhbyLbohI63qLyD5UNehkp8LTh11Km0PKJTdAB4XLbW4P5Hj0VvEXWhjdzdob6g==
+"@parameter1/base-cms-marko-web-search@^4.16.2":
+  version "4.16.2"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-search/-/base-cms-marko-web-search-4.16.2.tgz#92ade842e7ef920b8e8732c0534ac1d18047174f"
+  integrity sha512-r/tcH6volBeR3ktxwT7YWH1suDWUcbHwUy5DBG6qxv5D4LrfqaFeAUZkk/bsMRbLit+l0MFfKYMBEnNJYPW/Sg==
   dependencies:
     "@parameter1/base-cms-inflector" "^4.5.12"
-    "@parameter1/base-cms-marko-web-icons" "^4.16.1"
+    "@parameter1/base-cms-marko-web-icons" "^4.16.2"
     "@parameter1/base-cms-object-path" "^4.5.12"
     "@parameter1/base-cms-utils" "^4.5.12"
     "@parameter1/base-cms-web-common" "^4.5.12"
@@ -1191,10 +1204,10 @@
   dependencies:
     "@parameter1/base-cms-utils" "^4.5.12"
 
-"@parameter1/base-cms-marko-web-theme-monorail@^4.16.1":
-  version "4.16.1"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-4.16.1.tgz#b8145008a782f7d293bd3013027bcc2019f7997c"
-  integrity sha512-4S2b93qBhYntAvasTNnhpFBW0XmNtiNfgLsCSnJqghrptALY60kftX/TIVf/FL7++9ml0BLESYwzjmFtl5fLBQ==
+"@parameter1/base-cms-marko-web-theme-monorail@^4.16.2":
+  version "4.16.2"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-4.16.2.tgz#c5a06bdc673237e0fec4736ae2db5401055bc607"
+  integrity sha512-JUageuhCDZPDGzzxtHZVtlE7fsVV7dEn7WyNvzDB2pYY+bVaAPTMFWzkih0a5PVJwUGSC8bDuzI7N/dT1uvIYw==
   dependencies:
     "@parameter1/base-cms-dayjs" "^4.5.12"
     "@parameter1/base-cms-image" "^4.6.0"
@@ -1203,16 +1216,16 @@
     "@parameter1/base-cms-marko-web-gam" "^4.5.12"
     "@parameter1/base-cms-marko-web-gtm" "^4.5.12"
     "@parameter1/base-cms-marko-web-html-sitemap" "^4.5.12"
-    "@parameter1/base-cms-marko-web-icons" "^4.16.1"
+    "@parameter1/base-cms-marko-web-icons" "^4.16.2"
     "@parameter1/base-cms-marko-web-identity-x" "^4.16.0"
     "@parameter1/base-cms-marko-web-inquiry" "^4.5.12"
     "@parameter1/base-cms-marko-web-native-x" "^4.5.12"
     "@parameter1/base-cms-marko-web-omeda" "^4.16.0"
-    "@parameter1/base-cms-marko-web-omeda-identity-x" "^4.16.0"
+    "@parameter1/base-cms-marko-web-omeda-identity-x" "^4.16.2"
     "@parameter1/base-cms-marko-web-p1-events" "^4.5.12"
     "@parameter1/base-cms-marko-web-recaptcha" "^4.5.12"
     "@parameter1/base-cms-marko-web-reveal-ad" "^4.5.12"
-    "@parameter1/base-cms-marko-web-search" "^4.16.1"
+    "@parameter1/base-cms-marko-web-search" "^4.16.2"
     "@parameter1/base-cms-marko-web-social-sharing" "^4.11.1"
     "@parameter1/base-cms-object-path" "^4.5.12"
     "@parameter1/base-cms-utils" "^4.5.12"
