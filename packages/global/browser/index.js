@@ -9,13 +9,5 @@ export default (Browser) => {
       window.dataLayer.push({ event: 'identity-x-created-new-user', newIdentityXUser });
     }
   });
-  EventBus.$on('identity-x-authenticated', ({ additionalEventData }) => {
-    const { autoSignups } = additionalEventData;
-    if (autoSignups) {
-      autoSignups.forEach((autoSignup) => {
-        window.dataLayer.push({ event: 'identity-x-auto-signup', autoSignup });
-      });
-    }
-  });
   MonoRail(Browser);
 };
