@@ -1192,7 +1192,7 @@
   dependencies:
     "@parameter1/base-cms-utils" "^4.5.12"
 
-"@parameter1/base-cms-marko-web-theme-monorail@^4.23.1":
+"@parameter1/base-cms-marko-web-theme-monorail@^4.22.2", "@parameter1/base-cms-marko-web-theme-monorail@^4.23.1":
   version "4.23.1"
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-4.23.1.tgz#2e2a493ee7e0e285bd78ae2a8db175b41273ec6a"
   integrity sha512-pZIrjciw6V/aR8rc187gRvcvVYgyMKWtXvmHJ5lYcYaitP7GDU0Ukq0YRW8ek2BfJIjQyKEVVp0RPY3E8yKbCw==
