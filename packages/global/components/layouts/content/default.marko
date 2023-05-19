@@ -129,6 +129,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
               requires-user-input=context.requiresUserInput
               messages=context.messages
             />
+            <marko-web-content-body block-name=blockName attrs={ style: "display: none;" }  obj=content modifiers=["ld-json"] />
           </else-if>
           <else>
 
