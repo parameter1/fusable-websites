@@ -44,3 +44,9 @@ $skin-newsletter-signup-inline-btn-color: #8c3608;
     }
   }
 }
+
+.site-newsletter-menu {
+  @media (max-width: 980px) {
+    display: none;
+  }
+}
