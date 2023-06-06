@@ -53,6 +53,7 @@ module.exports = {
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tps-full.png',
   },
   pushdown: {
+    canBeInitiallyExpanded: false,
     ...defaults,
     description: 'Join 20,000 dealer and aftermarket professionals who get helpful insights and important news delivered straight to their inbox with the <em>Trucks, Parts, Service</em> newsletter.',
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tps-half.png',
