@@ -72,6 +72,7 @@ module.exports = {
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/eqw-full.png',
   },
   pushdown: {
+    disableMobileCBIE: true,
     ...defaults,
     description: 'Join 55,000 construction professionals who get helpful insights and important news delivered straight to their inbox with the <span class="newsletter-name">Equipment World</span> newsletter.',
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/eqw-half.png',
