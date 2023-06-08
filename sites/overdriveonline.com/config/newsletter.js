@@ -57,7 +57,6 @@ module.exports = {
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ovd-full.png',
   },
   pushdown: {
-    canBeInitiallyExpanded: false,
     ...defaults,
     description: 'Join 135,000 owner-operators who get helpful insights and important news delivered straight to their inbox with the <span class="newsletter-name">Overdrive</span> newsletter.',
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ovd-half.png',
