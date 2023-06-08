@@ -9,7 +9,7 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
   const newsletterConfig = req.app.locals.site.getAsObject('newsletter');
   const { device } = parser(req.headers['user-agent']);
   const disableMobileCBIE = defaultValue(newsletterConfig.pushdown.disableMobileCBIE, false);
-  const canBeExpandOnMobile = disableMobileCBIE !== false || (!device || device.type !== 'mobile');
+  const disableExpandOnMobile = disableMobileCBIE && (device && device.type === 'mobile');
   const siteConfigCBIE = defaultValue(newsletterConfig.pushdown.canBeInitiallyExpanded, true);
   const hasCookie = Boolean(get(req, `cookies.${cookieName}`));
   const utmMedium = get(req, 'query.utm_medium');
@@ -17,7 +17,7 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
   const disabled = get(req, 'query.newsletterDisabled');
   const fromEmail = utmMedium === 'email' || olyEncId || false;
   const canBeInitiallyExpanded = siteConfigCBIE && !(
-    canBeExpandOnMobile
+    disableExpandOnMobile
     || hasCookie
     || fromEmail
     || disabled
