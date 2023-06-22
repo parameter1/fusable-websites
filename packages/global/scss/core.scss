@@ -477,4 +477,8 @@ label {
 .otnotice ~ .otnotice {
   border-top: 5px solid $gray-800;
 }
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
 /*! critical:end */
