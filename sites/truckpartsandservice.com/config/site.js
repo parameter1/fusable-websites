@@ -88,5 +88,4 @@ module.exports = {
     logo: 'https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/tps-logo-new.svg?h=45&auto=format,compress&bg=000000&pad=5',
     bgColor: '#000000',
   },
-  setSearchSortFieldToScore: true,
 };
