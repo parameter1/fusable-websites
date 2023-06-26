@@ -91,5 +91,4 @@ module.exports = {
     logo: 'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ccj-logo-new.svg?h=45&auto=format,compress&bg=000000&pad=5',
     bgColor: '#000000',
   },
-  setSearchSortFieldToScore: true,
 };

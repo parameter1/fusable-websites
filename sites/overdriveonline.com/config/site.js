@@ -107,5 +107,4 @@ module.exports = {
       width: '275px',
     },
   },
-  setSearchSortFieldToScore: true,
 };
