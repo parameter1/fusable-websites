@@ -59,8 +59,11 @@ module.exports = {
   pushdown: {
     disableMobileCBIE: true,
     ...defaults,
-    description: 'Join 135,000 owner-operators who get helpful insights and important news delivered straight to their inbox with the <span class="newsletter-name">Overdrive</span> newsletter.',
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ovd-half.png',
+    name: '135K owner-ops get it. Shouldn’t you?',
+    description: 'Business & regulatory news, custom rigs and more delivered straight to your inbox.',
+    step1CtaLabel: 'Subscribe',
+    step2CtaLabel: 'Subscribe',
   },
 
   // links off to seperate omeda dragonform
