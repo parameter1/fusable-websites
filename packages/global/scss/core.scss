@@ -480,6 +480,10 @@ label {
 // new newsletter form adjustments
 .site-newsletter-menu {
   $self: &;
+  &__form-wrapper {
+    max-width: 600px;
+    margin-right: auto;
+  }
   &__form {
     display: flex;
     flex-wrap: wrap;
