@@ -477,4 +477,37 @@ label {
 .otnotice ~ .otnotice {
   border-top: 5px solid $gray-800;
 }
+// new newsletter form adjustments
+.site-newsletter-menu {
+  $self: &;
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    #newsletter-menu-email {
+      flex: 1;
+      flex-grow: 1;
+    }
+    #{ $self }__form-button {
+      flex-shrink: 1;
+      margin-left: map-get($spacers, 3);
+      padding: 10px;
+    }
+    #{ $self }__privacy-policy {
+      order: 4;
+      flex: 0 0 100%;
+      font-size: 12px;
+    }
+  }
+  &__name {
+    font-size: 28px;
+  }
+  @include media-breakpoint-down(sm) {
+    &__name {
+      font-size: 18px;
+    }
+  }
+  &__close-container{
+    flex-shrink: 1;
+  }
+}
 /*! critical:end */
