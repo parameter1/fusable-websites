@@ -35,7 +35,7 @@
     "@parameter1/base-cms-marko-web": "^4.22.3",
     "@parameter1/base-cms-marko-web-gtm": "^4.17.1",
     "@parameter1/base-cms-marko-web-identity-x": "^4.29.0",
-    "@parameter1/base-cms-marko-web-theme-monorail": "^4.30.0",
+    "@parameter1/base-cms-marko-web-theme-monorail": "^4.30.1",
     "@parameter1/base-cms-object-path": "^4.5.12",
     "@parameter1/base-cms-utils": "^4.5.12",
     "@parameter1/base-cms-web-cli": "^4.18.3",
