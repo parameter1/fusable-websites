@@ -49,8 +49,11 @@ module.exports = {
   },
   pushdown: {
     ...defaults,
-    description: 'Join 14,000 landscaping professionals who get helpful insights and important news delivered straight to their inbox with the <em>Total Landscape Care</em> newsletter.',
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tlc-half.png',
+    name: '14K landscapers get it. Shouldn’t you?',
+    description: 'Business strategies, equipment news & project ideas delivered straight to your inbox.',
+    step1CtaLabel: 'Subscribe',
+    step2CtaLabel: 'Subscribe',
   },
 
   // links off to seperate omeda dragonform

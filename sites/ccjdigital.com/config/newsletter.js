@@ -64,7 +64,10 @@ module.exports = {
     disableMobileCBIE: true,
     ...defaults,
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ccj-half.png',
-    description: 'Join 80,000 trucking professionals who get helpful insights and important news delivered straight to their inbox with the CCJ newsletter.',
+    name: '80K trucking pros get it. Shouldn’t you?',
+    description: 'Breaking news, business solutions & equipment news delivered straight to your inbox.',
+    step1CtaLabel: 'Subscribe',
+    step2CtaLabel: 'Subscribe',
   },
 
   // links off to seperate omeda dragonform

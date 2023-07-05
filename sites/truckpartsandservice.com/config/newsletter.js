@@ -55,8 +55,11 @@ module.exports = {
   pushdown: {
     disableMobileCBIE: true,
     ...defaults,
-    description: 'Join 20,000 dealer and aftermarket professionals who get helpful insights and important news delivered straight to their inbox with the <em>Trucks, Parts, Service</em> newsletter.',
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tps-half.png',
+    name: '20K parts pros get it. Shouldn’t you?',
+    description: 'Business solutions, tech updates & product launches delivered straight to your inbox.',
+    step1CtaLabel: 'Subscribe',
+    step2CtaLabel: 'Subscribe',
   },
 
   // links off to seperate omeda dragonform
