@@ -2,22 +2,11 @@ $ const { alias } = input;
 $ const { config } = out.global;
 $ const getImageSrcFor = (file) => `https://${config.website("imageHost")}/files/base/randallreilly/all/image/static/eqw-coty/${file}`;
 
-<div class="row mb-3">
-  <div class="col-md-6">
-    <marko-web-img
-      src=getImageSrcFor("eqw-coty-logo-2021.svg")
-      alt="Contractor of the Year Logo"
-      attrs={ style: "width: 300px;" }
-    />
-  </div>
-  <div class="col-md-6">
-    <marko-web-img
-      src=getImageSrcFor("sponsor.jpg")
-      alt="Sponsored by Caterpillar"
-      class="d-block ml-md-auto"
-    />
-  </div>
-</div>
+<marko-web-img
+  src=getImageSrcFor("COY-LP2024-hero.png")
+  alt="Equipment World Contractor of the Year Award: Sponsored by Caterpillar"
+  attrs={ style: "width: 100%;"}
+/>
 <nav
   class="navbar navbar-expand-md px-0 bg-light rounded mb-4 font-weight-bold"
   aria-label="Contractor of the Year Award Navigation"
