@@ -1,7 +1,14 @@
+import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
+
 $ const { id, alias, name, pageNode } = input;
 $ const { config } = out.global;
 
 $ const getImageSrcFor = (file) => `https://${config.website("imageHost")}/files/base/randallreilly/all/image/static/eqw-coty/${file}`;
+
+$ const content = {
+  name: "Win the Industry’s Highest Honor: The Contractor of the Year Award!",
+  embedCode: `<iframe width="640" height="360" src="https://www.youtube.com/embed/qBuLl52TRLs" title="Colorado Earthmover Wins 2023 Contractor of the Year Award" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+};
 
 <global-website-section-default-layout
   id=id
@@ -19,45 +26,35 @@ $ const getImageSrcFor = (file) => `https://${config.website("imageHost")}/files
   </@section>
   <@section|{ blockName }|>
     <eqw-coty-nav alias=alias />
-
-    $ const content = {
-      name: "Win the Industry’s Highest Honor: The Contractor of the Year Award!",
-    };
     <marko-web-content-name tag="h1" block-name=blockName obj=content />
   </@section>
   <@section>
     <theme-page-contents|{ blockName }|>
       <marko-web-content-body block-name=blockName obj={ body: '__' }>
-        <p>
-          <span data-embed-type="image" data-embed-align="left">
-            <marko-web-img
-              src=getImageSrcFor("COTY2022_SSC_Underground.jpg")
-              alt="The 2022 Contractor of the Year, Marcia Veidmark & Arvid Veidmark III, SSC Underground, Phoenix, Arizona."
-                srcset=[`${getImageSrcFor("COTY2022_SSC_Underground.jpg")}?dpr=2 2x`]
-            />
-            <span class="caption">The 2022 Contractor of the Year, Marcia Veidmark & Arvid Veidmark III, SSC Underground, Phoenix, Arizona.</span>
-          </span>
-        </p>
-        <h4>Contractors have one of the toughest jobs on the planet and deserve to be recognized for their high levels of work ethic and execution. The team at <em>Equipment World</em> is thrilled to recognize the best of the best with the Contractor of the Year award.</h4>
-        <h4>Do you have what it takes?</h4>
+        <h4>Contractors have one of the toughest jobs on the planet and deserve to be recognized for their high levels of work ethic and execution. Help us celebrate the best of the best with the Contractor of the Year award.</h4>
+        <if(content.embedCode)>
+          $ const iframeContent = contentIframe(content);
+          <br/>
+          <marko-web-content-embed-code block-name=blockName obj=iframeContent />
+          <br/>
+        </if>
+        <h4>What is the Contractor of the Year Award?</h4>
         <p>The <em>Equipment World</em> Contractor of the Year contest recognizes contractors who display the highest standards of business acumen, equipment management expertise, attention to safety and community involvement.</p>
-        <!-- <p>An applicant is required to complete this form in its entirety. Co-owners should submit one application, listing all owners.</p> -->
-        <h4>Win a free trip to Las Vegas and get your company featured in <em>Equipment World</em>!</h4>
-        <p><em>Equipment World</em> editors will carefully review each entry and select <strong>12 finalists</strong>. Each finalist's company will be featured on the <em>EquipmentWorld</em> website and will win a trip for the finalist and one guest to Las Vegas. One finalist will be chosen as the Contractor of the Year.</p>
+        <h4>Entry Requirements</h4>
         <p><em>Contractors who meet these qualifications are invited to enter:</em></p>
         <ul>
-          <li>Have annual revenues of between $3 million and $15 million</li>
+          <li>Have annual revenues of between $3 million and $20 million</li>
           <li>Have at least 10 years of construction company ownership experience</li>
           <li>Have a proven, excellent safety record</li>
           <li>Own at least five ride-on construction machines</li>
           <li>Be able to represent the construction industry in a positive way</li>
         </ul>
-        <h4>Entries for the 2024 Contractor of the Year Awards will open in Summer 2023.</h4>
-        <p>Contractors can nominate themselves or be nominated by others in the construction industry. All applicants are required to complete the entry form in its entirety. Co-owners should submit one application, listing all owners. All information is confidential and is only used for judging purposes.</p>
+        <h4>How Do I Apply?</h4>
+        <p>Contractors can nominate themselves or be nominated by others in the construction industry. The first 50 applicants will receive a free hat courtesy of Caterpillar. <strong>All entries must be received by the deadline of September 22, 2023.</strong></p>
         <div class="flex flex-wrap">
-          <a href="/page/coynotifications" class="btn btn-primary mt-2 mr-2">Notify Me When the Contest Opens</a>
-          <!-- <a href=`/${alias}/nominate-a-contractor` class="btn btn-primary mt-2 mr-2">Apply Now</a>
-          <a href="https://s3.us-east-2.amazonaws.com/randall-reilly-creative/sites/Equipment%20World/COY2023_ApplicationForm.pdf" class="btn btn-primary mt-2 mr-2" target="_blank" rel="noopener">Download Paper Application</a> -->
+          <!--<a href="/page/coynotifications" class="btn btn-primary mt-2 mr-2">Notify Me When the Contest Opens</a>-->
+          <a href=`/${alias}/nominate-a-contractor` class="btn btn-primary mt-2 mr-2">Apply Now</a>
+          <a href="https://s3.us-east-2.amazonaws.com/randall-reilly-creative/sites/Equipment%20World/COY2023_ApplicationForm.pdf" class="btn btn-primary mt-2 mr-2" target="_blank" rel="noopener">Download Paper Application</a>
         </div>
       </marko-web-content-body>
     </theme-page-contents>
