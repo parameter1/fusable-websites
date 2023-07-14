@@ -477,6 +477,13 @@ label {
 .otnotice ~ .otnotice {
   border-top: 5px solid $gray-800;
 }
+
+/*! purgecss start ignore */
+.grecaptcha-badge {
+  visibility: hidden;
+}
+/*! purgecss end ignore */
+
 // new newsletter form adjustments
 .site-newsletter-menu {
   $self: &;
