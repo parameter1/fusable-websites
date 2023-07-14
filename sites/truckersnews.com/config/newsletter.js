@@ -59,8 +59,11 @@ module.exports = {
   },
   pushdown: {
     ...defaults,
-    description: 'Join 40,000 company drivers who get helpful insights and important news delivered straight to their inbox with the <em>Truckers News</em> newsletter.',
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tn-half.png',
+    name: '40K truck drivers get it. Shouldn’t you?',
+    description: 'News company drivers need for life on the road, delivered straight to your inbox.',
+    step1CtaLabel: 'Subscribe',
+    step2CtaLabel: 'Subscribe',
   },
 
   // links off to seperate omeda dragonform

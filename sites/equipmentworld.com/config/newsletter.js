@@ -74,8 +74,11 @@ module.exports = {
   pushdown: {
     disableMobileCBIE: true,
     ...defaults,
-    description: 'Join 55,000 construction professionals who get helpful insights and important news delivered straight to their inbox with the <span class="newsletter-name">Equipment World</span> newsletter.',
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/eqw-half.png',
+    name: '55K industry pros get it. Shouldn’t you?',
+    description: 'Breaking news, business solutions & equipment debuts delivered straight to your inbox.',
+    step1CtaLabel: 'Subscribe',
+    step2CtaLabel: 'Subscribe',
   },
 
   // links off to seperate omeda dragonform
