@@ -478,7 +478,9 @@ label {
   border-top: 5px solid $gray-800;
 }
 
+/*! purgecss start ignore */
 .grecaptcha-badge {
   visibility: hidden;
 }
+/*! purgecss end ignore */
 /*! critical:end */
