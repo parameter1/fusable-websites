@@ -7,11 +7,11 @@ module.exports = () => asyncRoute(async (req, res, next) => {
   } = req;
   const validOpts = ['relatedContent', 'ad'];
   const contentDisplayType = get(cookies, 'contentDisplayType');
+  const newOpt = validOpts[(Math.floor(Math.random() * validOpts.length))];
   if (!contentDisplayType && !validOpts.includes(validOpts)) {
-    const display = validOpts[(Math.floor(Math.random() * validOpts.length))];
     // 30 days
-    res.cookie('contentDisplayType', display, { maxAge: 30 * 24 * 60 * 60 * 1000 });
+    res.cookie('contentDisplayType', newOpt, { maxAge: 30 * 24 * 60 * 60 * 1000 });
   }
-  res.locals.contentDisplayType = contentDisplayType;
+  res.locals.contentDisplayType = contentDisplayType || newOpt;
   next();
 });
