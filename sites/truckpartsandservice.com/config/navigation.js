@@ -1,4 +1,5 @@
 const privacyPolicy = require('./privacy-policy');
+const oneTrust = require('./one-trust');
 
 const topics = {
   primary: [
@@ -16,6 +17,7 @@ const topics = {
     { href: '/regulations', label: 'Regulations' },
     { href: '/distributor-of-the-year', label: 'Distributor of the Year' },
     { href: '/successful-dealer-award', label: 'Successful Dealer Award' },
+    { href: '/page/trailblazeraward', label: 'Trailblazer Award' },
     { href: '/white-papers', label: 'White Papers' },
   ],
   secondary: [
@@ -65,6 +67,7 @@ module.exports = {
     items: [
       privacyPolicy,
       { href: 'https://privacyportal-cdn.onetrust.com/dsarwebform/49a9a972-547e-4c49-b23c-4cc77554cacb/cddab1bc-7e58-4eca-a20d-be42716734cf.html', label: 'Do Not Sell or Share My Personal Information', target: '_blank' },
+      oneTrust,
       { href: '/page/contact-us', label: 'Contact Us' },
       { href: '/site-map', label: 'Site Map' },
     ],

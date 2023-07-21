@@ -13,7 +13,8 @@ $ const perPage = 18;
   page-node=pageNode
 >
   <@head>
-    <theme-section-feed-block|{ totalCount }| alias=alias count-only=true>
+    <theme-section-feed-block|{ totalCount }| alias=alias count-only=true query-name="website-optioned-content">
+      <@query-params option-name=["Pinned", "Standard"] />
       <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
@@ -56,12 +57,17 @@ $ const perPage = 18;
       />
     </if>
 
-    <if(['distributor-of-the-year-archive', 'successful-dealer-award-archive'].includes(alias))>
-      <global-sponsors-block alias=alias.replace('-archive', '') />
+    <if([
+        "distributor-of-the-year-archive",
+        "successful-dealer-award-archive",
+        "trailblazer-award-archive",
+        'trailblazer-award',
+      ].includes(alias))>
+      <global-sponsors-block alias=alias.replace("-archive", "") />
     </if>
 
-    <theme-section-feed-block alias=alias lazyload=false>
-      <@query-params limit=3 skip=p.skip({ perPage }) />
+    <theme-section-feed-block alias=alias lazyload=false query-name="website-optioned-content">
+      <@query-params limit=3 skip=p.skip({ perPage }) option-name="Pinned" />
     </theme-section-feed-block>
   </@section>
 
@@ -91,8 +97,8 @@ $ const perPage = 18;
   </@section>
 
   <@section>
-    <theme-section-feed-block alias=alias>
-      <@query-params limit=2 skip=p.skip({ perPage, skip: 3 }) />
+    <theme-section-feed-block alias=alias query-name="website-optioned-content">
+      <@query-params limit=2 skip=p.skip({ perPage, skip: 3 }) option-name="Pinned" />
     </theme-section-feed-block>
   </@section>
 
@@ -106,8 +112,8 @@ $ const perPage = 18;
   </@section>
 
   <@section>
-    <theme-section-feed-block alias=alias>
-      <@query-params limit=3 skip=p.skip({ perPage, skip: 5 }) />
+    <theme-section-feed-block alias=alias query-name="website-optioned-content">
+      <@query-params limit=3 skip=p.skip({ perPage, skip: 5 }) option-name="Pinned" />
     </theme-section-feed-block>
   </@section>
 
@@ -121,8 +127,8 @@ $ const perPage = 18;
   </@section>
 
   <@section>
-    <theme-section-feed-block alias=alias>
-      <@query-params limit=5 skip=p.skip({ perPage, skip: 8 }) />
+    <theme-section-feed-block alias=alias query-name="website-optioned-content">
+      <@query-params limit=5 skip=p.skip({ perPage, skip: 8 }) option-name="Pinned" />
     </theme-section-feed-block>
   </@section>
 
@@ -136,10 +142,11 @@ $ const perPage = 18;
   </@section>
 
   <@section>
-    <theme-section-feed-block alias=alias>
-      <@query-params limit=5 skip=p.skip({ perPage, skip: 13 }) />
+    <theme-section-feed-block alias=alias query-name="website-optioned-content">
+      <@query-params limit=5 skip=p.skip({ perPage, skip: 13 }) option-name="Pinned" />
     </theme-section-feed-block>
     <theme-section-feed-block|{ totalCount }| alias=alias count-only=true>
+      <@query-params option-name=["Pinned", "Standard"] />
       <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
@@ -149,7 +156,7 @@ $ const perPage = 18;
   </@section>
 
   <@section>
-    <theme-top-stories-block />
+    <theme-top-stories-block query-params={ optionName: "Pinned" } />
   </@section>
 
   <@section|{ aliases }|>

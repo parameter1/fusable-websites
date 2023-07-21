@@ -13,7 +13,8 @@ $ const perPage = 10;
   page-node=pageNode
 >
   <@head>
-    <theme-latest-products-feed-block|{ totalCount }| alias=alias count-only=true>
+    <theme-latest-products-feed-block|{ totalCount }| alias=alias count-only=true query-name="website-optioned-content">
+      <@query-params option-name=["Pinned", "Standard"] />
       <theme-pagination-controls
         per-page=perPage
         total-count=totalCount
@@ -47,10 +48,11 @@ $ const perPage = 10;
           <marko-web-website-section-name tag="h1" block-name=blockName obj=section />
         </else>
 
-        <theme-latest-products-feed-block alias=alias>
-          <@query-params limit=perPage skip=p.skip({ perPage }) />
+        <theme-latest-products-feed-block alias=alias query-name="website-optioned-content">
+          <@query-params limit=perPage skip=p.skip({ perPage }) option-name="Pinned" />
         </theme-latest-products-feed-block>
-        <theme-latest-products-feed-block|{ totalCount }| alias=alias count-only=true>
+        <theme-latest-products-feed-block|{ totalCount }| alias=alias count-only=true query-name="website-optioned-content">
+          <@query-params option-name=["Pinned", "Standard"] />
           <theme-pagination-controls
             per-page=perPage
             total-count=totalCount
@@ -99,7 +101,7 @@ $ const perPage = 10;
   </@section>
 
   <@section modifiers=["my-block-lg"]>
-    <theme-top-stories-block />
+    <theme-top-stories-block query-params={ optionName: "Pinned" } />
   </@section>
 
   <for|s| of=sections>

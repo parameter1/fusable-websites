@@ -93,11 +93,12 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
           enabled=requiresRegistration
           required-access-level-ids=accessLevels
         >
+
+          $ const lazyloadFirstImage = displayPrimaryImage && content.primaryImage;
+
           <if(cmTruncateBody(contentMeterState))>
             $ const body = showOverlay ? getContentPreview({ body: content.body, selector: "p:lt(7)" }) : getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
-            <marko-web-content-body block-name=blockName obj={ body } >
-              <@embed-options lazyloadImages=false/>
-            </marko-web-content-body>
+            <marko-web-content-body block-name=blockName obj={ body } lazyload-first-image=lazyloadFirstImage />
 
             <div class="content-page-preview-overlay" />
             <if(!showOverlay)>
@@ -117,9 +118,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
           </if>
           <else-if(!context.canAccess || context.requiresUserInput)>
             $ const body = getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
-            <marko-web-content-body block-name=blockName obj={ body } >
-              <@embed-options lazyloadImages=false/>
-            </marko-web-content-body>
+            <marko-web-content-body block-name=blockName obj={ body } lazyload-first-image=lazyloadFirstImage />
 
             <div class="content-page-preview-overlay" />
             <theme-content-page-gate
@@ -130,19 +129,30 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
               requires-user-input=context.requiresUserInput
               messages=context.messages
             />
+            <marko-web-content-body block-name=blockName attrs={ style: "display: none;" }  obj=content modifiers=["ld-json"] />
           </else-if>
           <else>
-            $ const leaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
-            $ const leaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
 
-            <!-- Call the body with the above injections passed to it -->
+            <!-- remove the Desktop Leaderboard overrides stuff and set the mobile version correctly.
+
+            $ const desktopLeaderboardAdName = (GAM.btfLeaderboard) ? "leaderboard-desktop" : "inline-content-desktop'";
+            $ const desktopLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-desktop"] : ["margin-auto-x",  "inline-content", "inline-desktop"];
+
+            Add the following back to <theme-body-with-injection call to add desktop leaderboard logic.
+            desktop-leaderboard-ad-name=desktopLeaderboardAdName
+            desktop-leaderboard-modifiers=desktopLeaderboardModifiers
+
+            -->
+            $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
+            $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
             <theme-body-with-injection
               content=content
               aliases=aliases
               block-name=blockName
               preventHTMLInjection=!shouldInjectAds
-              mobileLeaderboardAdName=leaderboardAdName
-              mobileLeaderboardAdModifiers=leaderboardModifiers
+              mobile-leaderboard-ad-name=mobileLeaderboardAdName
+              mobile-leaderboard-modifiers=mobileLeaderboardModifiers
+              lazyload-first-image=lazyloadFirstImage
             />
             <if(content.transcript)>
               <div id=`transcript-${id}` class="page-contents__content-transcript">
@@ -241,7 +251,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 
   <if(showTopStoryBlock)>
     <@section>
-      <theme-top-stories-block />
+      <theme-top-stories-block query-params={ optionName: "Pinned" } />
     </@section>
   </if>
 

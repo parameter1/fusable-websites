@@ -2,9 +2,7 @@ const configureGAM = require('@randall-reilly/package-global/config/gam');
 
 const config = configureGAM({ basePath: 'eqw' });
 
-config.lazyLoad = {
-  enabled: false,
-};
+config.btfLeaderboard = true;
 
 config
   .setAliasAdUnits('default', [

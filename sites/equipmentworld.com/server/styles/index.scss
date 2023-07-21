@@ -13,6 +13,8 @@ $primary: #b94909;
 $skin-newsletter-signup-bg-color: #f0f1f2;
 $skin-newsletter-signup-inline-btn-color: #8c3608;
 
+$theme-site-navbar-secondary-font-size: 16px;
+
 @import "@randall-reilly/package-global/scss/core";
 
 .safety-watch {
@@ -43,4 +45,8 @@ $skin-newsletter-signup-inline-btn-color: #8c3608;
       }
     }
   }
+}
+
+.pb-block {
+  padding-bottom: 24px;
 }

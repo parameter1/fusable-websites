@@ -42,9 +42,11 @@ module.exports = {
   },
   pushdown: {
     ...defaults,
-    name: 'Newsletter Just for Truck Owners',
-    description: 'Get news you need to know about pickups, commercial vans and Class 3-8 trucks — delivered straight to your inbox.',
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/hwt-half.png',
+    name: '99K truck owners get it. Shouldn’t you?',
+    description: 'Pickup, commercial van & Class 3-8 truck news & reviews delivered straight to your inbox.',
+    step1CtaLabel: 'Subscribe',
+    step2CtaLabel: 'Subscribe',
   },
 
   // links off to seperate omeda dragonform

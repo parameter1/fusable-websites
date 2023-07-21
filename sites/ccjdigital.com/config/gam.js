@@ -2,10 +2,6 @@ const configureGAM = require('@randall-reilly/package-global/config/gam');
 
 const config = configureGAM({ basePath: 'ccj' });
 
-config.lazyLoad = {
-  enabled: false,
-};
-
 config.btfLeaderboard = true;
 
 config.setAliasAdUnits('default', [
@@ -22,7 +18,7 @@ config.setAliasAdUnits('default', [
   { name: 'rotation-1-mobile', templateName: 'GEAR-MOBILE', path: 'rail-1' },
   { name: 'rotation-2-mobile', templateName: 'GEAR-MOBILE', path: 'rail-1' },
   { name: 'rotation-3-mobile', templateName: 'GEAR-MOBILE', path: 'rail-1' },
-  { name: 'inline-leaderboard-mobile', templateName: 'INLINE-LEADERBOARD-MOBILE', path: 'gear-leaderboard' },
+  { name: 'inline-leaderboard-mobile', templateName: 'INLINE-LEADERBOARD-MOBILE', path: 'leaderboard' },
   { name: 'inline-content-mobile', templateName: 'INLINE-CONTENT-MOBILE', path: 'rotation' },
   { name: 'inline-content-desktop', templateName: 'INLINE-CONTENT-DESKTOP', path: 'rotation' },
   { name: 'wallpaper-left', templateName: 'WALLPAPER', path: 'wallpaper-left' },
