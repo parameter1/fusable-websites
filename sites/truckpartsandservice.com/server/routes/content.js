@@ -1,5 +1,6 @@
 const withContent = require('@randall-reilly/package-global/middleware/with-content');
 const contentMeter = require('@randall-reilly/package-global/middleware/content-meter');
+const contentDisplay = require('@randall-reilly/package-global/middleware/content-display');
 const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-page');
 const contact = require('@randall-reilly/package-global/templates/content/contact');
 const { newsletterState, formatContentResponse } = require('@randall-reilly/package-global/middleware/newsletter-state');
@@ -44,13 +45,19 @@ module.exports = (app) => {
   // determin to use newsletterstate or contentMeter middleware
   routesList.forEach((route) => {
     if (route.withContentMeter && contentMeterEnable) {
-      app.get(route.regex, newsletterState({ setCookie: false }), contentMeter(), withContent({
-        template: route.template,
-        queryFragment: route.queryFragment,
-        formatResponse: formatContentResponse,
-      }));
+      app.get(
+        route.regex,
+        newsletterState({ setCookie: false }),
+        contentMeter(),
+        contentDisplay(),
+        withContent({
+          template: route.template,
+          queryFragment: route.queryFragment,
+          formatResponse: formatContentResponse,
+        }),
+      );
     } else {
-      app.get(route.regex, newsletterState({ setCookie: false }), withContent({
+      app.get(route.regex, newsletterState({ setCookie: false }), contentDisplay(), withContent({
         template: route.template,
         queryFragment: route.queryFragment,
         formatResponse: formatContentResponse,
