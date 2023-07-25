@@ -16,9 +16,6 @@
 
       &__contents {
         flex-direction: row-reverse;
-        @include media-breakpoint-up(lg) {
-          flex-direction: column;
-        }
       }
 
       $image-size: 112px;
@@ -89,17 +86,13 @@
   &__header {
     @include skin-typography($style: "section-header");
     font-size: 22px !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.5rem !important;
     line-height: 1rem !important;
   }
-  .card-deck-flow--4-cols {
-    .card-deck-flow__node {
-      @include media-breakpoint-up(sm) {
-        @include make-col(6);
-      }
-      @include media-breakpoint-up(lg) {
-        @include make-col(3);
-      }
+  .card-deck-flow__node {
+    padding: 0px;
+    .node {
+      padding: 10px;
     }
   }
 }
