@@ -149,6 +149,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             -->
             $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
             $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
+
             <if(contentDisplayType === 'relatedContent')>
               <marko-web-query|{ nodes }| name="related-published-content" params={ contentId: id, limit: 4, requiresImage: true, queryFragment: storiesQueryFragment } collapsible=false>
                 <if(nodes.length < 4)>
