@@ -68,6 +68,7 @@
         v-if="verified"
         :email="email"
         :vin="vin"
+        :truck-info="truckInfo"
         @cancel="reset"
       />
     </transition>
@@ -117,6 +118,7 @@ export default {
     loading: false,
     vin: null,
     verified: false,
+    truckInfo: null,
   }),
 
   methods: {
@@ -149,6 +151,8 @@ export default {
           error.code = response.status;
           throw error;
         }
+        const { PoweredByVinLink: { year, make, model } } = await response.json();
+        this.truckInfo = `${year} ${make} ${model}`;
         this.verified = true;
       } catch (e) {
         this.error = e.message;
