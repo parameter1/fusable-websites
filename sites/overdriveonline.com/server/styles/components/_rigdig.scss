@@ -1,0 +1,73 @@
+.rigdig-widget {
+  &__container {
+    padding: map-get($spacers, 3);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f0f1f2;
+    border-radius: $input-border-radius;
+  }
+  &__loading-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: map-get($spacers, 2);
+    // animate-spin;
+    svg {
+      fill: $white;
+    }
+  }
+  &__form-group {
+    margin-bottom: map-get($spacers, 2);
+  }
+  &__label {
+    width: 100%;
+  }
+  &__label-text {
+    margin-bottom: map-get($spacers, 2);
+    font-weight: 600;
+  }
+  &__reset {
+    margin-left: map-get($spacers, 2);
+  }
+  &__error {
+    margin-top: map-get($spacers, 3);
+    padding: map-get($spacers, 2);
+    border: 1px solid $red;
+    border-radius: $input-border-radius;
+    color: darken($red, 50%);
+  }
+}
+
+.rigdig-modal {
+  &__wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0, 0.5);
+    z-index: 9999999999;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: $input-border-radius;
+    width: 80%;
+    max-height: 100vh;
+    overflow: auto;
+    position: relative;
+  }
+  &__close {
+    width: 50px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
