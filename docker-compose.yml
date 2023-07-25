@@ -164,6 +164,9 @@ services:
       GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
       LIVERELOAD_PORT: 19906
       OMEDA_INPUT_ID: ${OVD_OMEDA_INPUT_ID-(unset)}
+      RIGDIG_USERNAME: ${RIGDIG_USERNAME}
+      RIGDIG_PASSWORD: ${RIGDIG_PASSWORD}
+      DEBUG: rigdig
     hostname: www-rr-ovd.dev.parameter1.com
     ports:
       - "9906:80"

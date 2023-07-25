@@ -1,0 +1,24 @@
+{
+  "name": "@randall-reilly/package-rigdig",
+  "version": "0.0.0",
+  "author": "Josh Worden <josh@parameter1.com>",
+  "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/packages/rigdig",
+  "license": "MIT",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "compile": "basecms-marko-compile compile",
+    "build": "yarn compile",
+    "lint": "eslint --ext .js --ext .vue --max-warnings 5 --config ../../.eslintrc.js --ignore-path ../../.eslintignore ./",
+    "lint:fix": "yarn lint --fix",
+    "test": "yarn lint && yarn compile --no-clean"
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "envalid": "^7.3.1",
+    "node-fetch": "^2.6.9"
+  },
+  "engines": {
+    "node": ">=14.15"
+  }
+}

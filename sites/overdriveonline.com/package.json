@@ -39,6 +39,7 @@
     "@parameter1/base-cms-utils": "^4.5.12",
     "@parameter1/base-cms-web-cli": "^4.18.3",
     "@randall-reilly/package-global": "^1.59.1",
+    "@randall-reilly/package-rigdig": "^0.0.0",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
   }
