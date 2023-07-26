@@ -11,9 +11,36 @@ fragment TPSCompanyPageFragment on Content {
   websiteSchedules {
     section {
       id
-      name
       alias
+      name
+      fullName
+      site {
+        id
+      }
+      hierarchy {
+        id
+        alias
+        site {
+          id
+        }
+      }
     }
+  }
+  primaryImage {
+    id
+    src(input: { useCropRectangle: true, options: { auto: "format,compress" } })
+    cropRectangle {
+      width
+      height
+    }
+    alt
+    caption
+    credit
+    isLogo
+    cropDimensions {
+      aspectRatio
+    }
+    primaryImageDisplay
   }
   primarySection {
     id

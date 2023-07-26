@@ -20,9 +20,6 @@
   "<global-content-meter-block>": {
     "template": "./content-meter.marko"
   },
-  "<global-stories-block>": {
-    "template": "./stories.marko"
-  },
   "<global-sponsors-block>": {
     "template": "./sponsors.marko",
     "@alias": "string"

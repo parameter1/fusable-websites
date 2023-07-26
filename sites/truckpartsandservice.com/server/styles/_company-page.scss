@@ -1,0 +1,57 @@
+.page--content-company {
+  .inquiry-form {
+    .inquiry-form-button.btn-primary {
+      padding-left: 20px;
+    }
+  }
+  .node-list:not(.inquiry-form) {
+    .node-list__header {
+      &::before {
+        height: 0;
+        width: 0;
+      }
+      background-color: $gray-100;
+      color: $gray-800;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      padding-left: map-get($spacers, 3);
+      border-radius: 4px;
+      font-size: 16px;
+      line-height: 1.25rem;
+      text-transform: uppercase;
+    }
+  }
+  // .content-page-body ~ .node-list,
+  // .content-page-latest-content .node-list {
+  //   &--latest-content-list  {
+  //     .node-list__header {
+  //       padding-left: map-get($spacers, 3)
+  //     }
+  //   }
+  // }
+  .node-list {
+    &--company-categories-feed {
+      .node-list__header {
+        margin-bottom: map-get($spacers, 3);
+      }
+      .node-list__nodes {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+// poorly named! :)
+.content-section-header {
+  color: $gray-800;
+  display: block;
+  text-align: left;
+  text-transform: uppercase;
+  &--border {
+    border-bottom: 1px solid $gray-800;
+    padding-bottom: 0.25rem;
+  }
+  &:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+}
