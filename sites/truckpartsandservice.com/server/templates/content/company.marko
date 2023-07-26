@@ -1,8 +1,17 @@
-import { getAsArray } from "@parameter1/base-cms-object-path";
-import getDirectorySections from "./get-directory-sections";
+import { getAsArray, getAsObject, get } from "@parameter1/base-cms-object-path";
+import eventLinkAttrs from "@parameter1/base-cms-marko-web-p1-events/utils/link-attrs";
+import eventEntity from "@parameter1/base-cms-marko-web-p1-events/utils/base-content-entity";
+import queryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-list";
+import { buildImgixUrl } from "@parameter1/base-cms-image";
+import imageHeight from "@parameter1/base-cms-marko-web/components/node/utils/image-height";
 
-$ const { site } = out.global;
-$ const { id, type, pageNode } = data;
+
+$ const { id, type, pageNode, ...rest } = input;
+$ const sections = getAsArray(input, "sections");
+$ const { site, pagination: p, i18n } = out.global;
+$ const leadersEnabled = site.get("leaders.enabled");
+$ const perPage = 12;
+$ const lang = site.config.lang || "en";
 
 <global-content-wrapper-layout
   id=id
@@ -18,43 +27,139 @@ $ const { id, type, pageNode } = data;
     />
   </@section>
 
-  <@section>
-    <site-directory-title />
-  </@section>
 
-  <@section|{ aliases, content }|>
+
+  <@section|{ aliases, blockName, content }| modifiers=["content-header"]>
+    $ const { primarySection } = content;
+    <div>
+      <div class="content-page-header  content-page-header--full-width">
+        <theme-content-page-breadcrumbs section=primarySection />
+        <div class="row">
+          <div class="col-md-9 col-sm-12 col-lg-10">
+            <div class="ldp">
+              <div class="ldp__logo">
+                <global-company-logo content=content />
+              </div>
+              <div class="ldp__title">
+                <marko-web-content-name tag="h1" class="page-wrapper__title" obj=content />
+                <marko-web-content-city-state-zip tag="p" class="text-small text-muted" obj=content />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-lg-2 col-sm-12 justify-content-center d-flex flex-column px-3 py-3">
+            <div class="ldp__social">
+              <marko-web-leaders-company-website-link company=content lang=lang/>
+              <div class="mt-2 d-flex justify-content-around">
+                <theme-content-contact-details-section block-name=blockName modifiers=["social-links"]>
+                  <for|item| of=content.socialLinks>
+                    <theme-social-icon-link
+                      label=item.label
+                      provider=item.provider
+                      href=item.url
+                      modifiers=["dark", "lg"]
+                    />
+                  </for>
+                </theme-content-contact-details-section>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
     <div class="row">
       <div class="col-lg-8">
-        <site-directory-breadcrumbs section=content.primarySection />
+        <if(p.page === 1)>
 
-        $ const detailsBlock = "directory-company-details";
-        $ const listBlock = "directory-company-categories";
-        <marko-web-block name=detailsBlock>
-          <marko-web-element tag="h2" block-name=detailsBlock name="title">
-            ${content.name}
-          </marko-web-element>
-          <theme-content-contact-details obj=content />
-        </marko-web-block>
+          <div class="content-page-body">
+            <marko-web-node-list collapsible=false class="mt-block">
+              <@header>
+                ${i18n("Company Overview")}
+              </@header>
+              <@body>
+                <label class="content-section-header content-section-header--border">${i18n("Contact")}</label>
+                $ const { socialLinks, website,  ...contentSansSocial } = content;
+                <theme-content-contact-details
+                  obj=contentSansSocial
+                  website-link-attrs=eventLinkAttrs({
+                    category: "Company Profile Page",
+                    label: "Company Website",
+                    entity: eventEntity(content.id, "company"),
+                  })
+                  lang=lang
+                />
 
-        <marko-web-block name=listBlock>
-          $ const sections = getDirectorySections(content);
-          <if(sections.length)>
-            <marko-web-element tag="h3" block-name=listBlock name="header">
-              Associated Categories
-            </marko-web-element>
-            <marko-web-element tag="ul" block-name=listBlock name="list">
-              <for|section| of=sections>
-                <li>
-                  <a href=`/${section.alias}`>${section.name}</a>
-                </li>
-              </for>
-            </marko-web-element>
-          </if>
-        </marko-web-block>
+                <label class="content-section-header content-section-header--border">${i18n("About")} ${content.name}</label>
+                <div class="content-page-body">
+                  <theme-page-contents|{ blockName }| attrs={ "data-gallery-id": id }>
+                    $ const bodyId = `content-body-${content.id}`;
+                    <marko-web-content-body block-name=blockName obj=content attrs={ id: bodyId } />
+                  </theme-page-contents>
+                </div>
+              </@body>
+            </marko-web-node-list>
+          </div>
+          <theme-sections-listed-in-block
+            title="Categories Listed In"
+            schedules=content.websiteSchedules
+            root-alias="aftermarket-truck-parts-suppliers"
+            full-name-find="Aftermarket Truck Parts Suppliers > "
+            full-name-replace=""
+          />
+
+          <theme-latest-content-list-block
+            query-name="all-company-content"
+            query-params={ companyId: id, includeContentTypes: ["Product", "PressRelease"], withSite: false, limit: 5 }
+            title=`${i18n("Latest Products & Press Releases")}`
+            with-native-x-section=false
+            flush-x=false
+            class="mt-block"
+          >
+            <@node with-dates=false />
+          </theme-latest-content-list-block>
+
+
+          <${input.afterBody}
+            aliases=aliases
+            block-name=blockName
+            content=content
+          />
+        </if>
+        <div class="content-page-latest-content">
+          $ const latestTitle = (p.page > 1) ? `${i18n("More From")} ${content.name} - Page ${p.page}` : `${i18n("More From")} ${content.name}`;
+          <theme-latest-content-list-block
+            query-name="all-company-content"
+            query-params={
+              companyId: id,
+              excludeContentTypes: ["Promotion"],
+              limit: perPage,
+              skip: p.skip({ perPage }),
+              withSite: false,
+            }
+            title=latestTitle
+            with-native-x-section=false
+            flush-x=false
+            class="mt-block"
+          >
+            <@node with-dates=false />
+          </theme-latest-content-list-block>
+
+          <theme-section-feed-block|{ totalCount }| query-name="all-company-content" count-only=true>
+            <@query-params
+              companyId=content.id
+              requiresImage=true
+              excludeContentTypes=["Promotion"]
+            />
+            <theme-pagination-controls
+              per-page=perPage
+              total-count=totalCount
+              path=get(content, "siteContext.path")
+            />
+          </theme-section-feed-block>
+        </div>
       </div>
-      <div class="col-lg-4">
-        <site-directory-about />
-        <site-directory-rail-ad aliases=aliases />
+
+      <div class="col-lg-4 pt-block">
       </div>
     </div>
   </@section>
