@@ -1,0 +1,119 @@
+.leaders {
+  $self: &;
+  margin-right: auto;
+  margin-left: auto;
+  &__header-image {
+    img {
+      width: 100%;
+      max-height: 90px;
+    }
+  }
+  &__header-title {
+    padding-left: $leaders-footer-padding-y;
+    @include skin-typography($style: "section-header-small");
+    color: $white;
+  }
+  &__body {
+    background-color: #ffffff;
+  }
+  &__header {
+    border-radius: 4px 4px 0 0;
+  }
+  &--contextual {
+    #{ $self }__body {
+      border-right: 2px solid $leaders-gray-5;
+      border-bottom: none;
+      border-left: 2px solid $leaders-gray-5;
+      border-radius: 0;
+    }
+    #{ $self }__footer {
+      border-right: 2px solid $leaders-gray-5;
+      border-bottom: 2px solid $leaders-gray-5;
+      border-left: 2px solid $leaders-gray-5;
+      border-radius: 0 0 4px 4px;
+    }
+  }
+}
+.leaders-section {
+  $self: &;
+  &__toggle-button {
+    padding: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-radius: 4px;
+    ~ #{ $self }__list {
+      overflow: hidden;
+      border-radius: 0 0 4px 4px;
+    }
+  }
+}
+
+
+.leaders-index-page {
+  &__header-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__title {
+    margin-bottom: .75rem;
+    font-size: 34px;
+  }
+
+  &__header {
+    margin-bottom: .75rem;
+  }
+
+  &__logo {
+    display: flex;
+    padding: .75rem;
+    margin-right: .75rem;
+    margin-bottom: .75rem;
+    background-color: $leaders-primary-color;
+    img {
+      width: 100%;
+      max-height: 90px;
+    }
+  }
+
+  &__body,
+  &__description {
+    > p {
+      margin-bottom: .25rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.page-wrapper {
+  &__section {
+    &--leaders-full-width {
+      .leaders {
+        &--all {
+          max-width: $marko-web-document-container-max-width;
+        }
+      }
+    }
+  }
+}
+
+.ldp {
+  display: flex;
+  align-items: center;
+  &__logo img {
+      border-radius: 0;
+      border: none;
+      box-shadow: initial;
+      margin-right: 2rem;
+    }
+}
+
+.leaders-icon {
+  &--primary-color-light svg {
+    fill: $leaders-primary-color;
+  }
+}
