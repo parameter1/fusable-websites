@@ -3,6 +3,7 @@ const contentMeter = require('@randall-reilly/package-global/middleware/content-
 const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-page');
 const contact = require('@randall-reilly/package-global/templates/content/contact');
 const { newsletterState, formatContentResponse } = require('@randall-reilly/package-global/middleware/newsletter-state');
+const companyQueryFragment = require('../graphql/company-page-fragment');
 const company = require('../templates/content/company');
 const product = require('../templates/content/product');
 const whitepaper = require('../templates/content/whitepaper');
@@ -17,7 +18,7 @@ const routesList = [
   { // company
     regex: '/*?company/:id(\\d{8})*',
     template: company,
-    queryFragment,
+    queryFragment: companyQueryFragment,
   },
   { // product
     regex: '/*?product/:id(\\d{8})*',

@@ -18,6 +18,11 @@ $skin-newsletter-signup-inline-btn-color: #103a57;
 @import "@randall-reilly/package-global/scss/core";
 
 @import "./directory";
+/*! critical:start|content.company */
+@import "@parameter1/base-cms-marko-web-leaders/scss/leaders";
+@import "./company-page";
+@import "./leaders";
+/*! critical:end */
 
 .awards {
   .sponsor-logos {
