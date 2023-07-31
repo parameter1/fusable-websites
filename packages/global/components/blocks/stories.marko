@@ -1,0 +1,34 @@
+$ const {
+  blockName,
+  title,
+  nodes,
+  withNativeX,
+  nativeX,
+} = input;
+<marko-web-block name=blockName>
+  <marko-web-element block-name=blockName name="wrapper">
+  <marko-web-element block-name=blockName name="header">
+    ${title}
+  </marko-web-element>
+  <theme-card-deck-flow
+    cols=2
+    nodes=nodes
+    modifiers=[blockName]
+  >
+    <@slot|{ node }|>
+      <theme-content-node
+        image-position="right"
+        full-height=true
+        card=true
+        flush=false
+        modifiers=[blockName]
+        node=node
+        with-teaser=false
+        with-dates=false
+      >
+        <@image width=112 ar="1:1" />
+      </theme-content-node>
+    </@slot>
+  </theme-card-deck-flow>
+  </marko-web-element>
+</marko-web-block>

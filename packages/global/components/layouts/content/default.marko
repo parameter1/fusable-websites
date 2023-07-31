@@ -1,11 +1,15 @@
 import { getAsArray, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
 import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/utils/get-content-preview";
-import GAMDefineDisplayAd from "@parameter1/base-cms-marko-web-theme-monorail/components/gam/define-display-ad";
+import storiesQueryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/related-stories-block";
+
+// move to core if we go this route.
+import Stories from "../../blocks/stories";
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
 
-$ const { site, contentMeterState, GAM } = out.global;
+$ const { global: $global } = out;
+$ const { site, contentDisplayType, contentMeterState, GAM } = $global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
@@ -145,15 +149,88 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             -->
             $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
             $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
-            <theme-body-with-injection
-              content=content
-              aliases=aliases
-              block-name=blockName
-              preventHTMLInjection=!shouldInjectAds
-              mobile-leaderboard-ad-name=mobileLeaderboardAdName
-              mobile-leaderboard-modifiers=mobileLeaderboardModifiers
-              lazyload-first-image=lazyloadFirstImage
-            />
+
+            <if(contentDisplayType === 'relatedContent')>
+              <marko-web-query|{ nodes }| name="related-published-content" params={ contentId: id, limit: 4, requiresImage: true, queryFragment: storiesQueryFragment } collapsible=false>
+                <if(nodes.length < 4)>
+                  $ const excludeContentIds = [id, ...nodes.map(node => node.id)];
+                  $ const sinceParams = {
+                    sectionId: content.primarySection.id,
+                    since: content.published,
+                    limit: 4 - nodes.length,
+                    excludeContentIds,
+                    requiresImage: true,
+                    excludeContentTypes: ["Contact", "Company", "Document", "Product", "Promotion", "TextAd"],
+                    queryFragment: storiesQueryFragment
+                  };
+                  <marko-web-query|{ nodes: related }|
+                    name="all-published-content"
+                    params=sinceParams
+                  >
+                    $ nodes.push(...related);
+                    $ const htmlInjections = [
+                      {
+                        at: 1200,
+                        html: Stories.renderToString({
+                          title: "Related Stories",
+                          blockName: 'related-stories-inbody',
+                          nodes: nodes,
+                          $global
+                        })
+                      },
+                    ];
+                    <theme-body-with-injection
+                      content=content
+                      aliases=aliases
+                      block-name=blockName
+                      preventHTMLInjection=!shouldInjectAds
+                      html-injections=htmlInjections
+                      mobile-leaderboard-ad-name=mobileLeaderboardAdName
+                      mobile-leaderboard-modifiers=mobileLeaderboardModifiers
+                      lazyload-first-image=lazyloadFirstImage
+                    />
+                  </marko-web-query>
+                </if>
+                <else>
+                  $ const htmlInjections = [
+                      {
+                        at: 1200,
+                        html: Stories.renderToString({
+                          title: "Related Stories",
+                          blockName: 'related-stories-inbody',
+                          nodes: nodes,
+                          $global
+                        })
+                      },
+                    ];
+                    $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
+                    $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
+                    <theme-body-with-injection
+                      content=content
+                      aliases=aliases
+                      block-name=blockName
+                      preventHTMLInjection=!shouldInjectAds
+                      html-injections=htmlInjections
+                      desktopAdCounts=[2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500]
+                      mobile-leaderboard-ad-name=mobileLeaderboardAdName
+                      mobile-leaderboard-modifiers=mobileLeaderboardModifiers
+                      mobileAdCounts=[1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250]
+                      lazyload-first-image=lazyloadFirstImage
+                    />
+                  </else>
+              </marko-web-query>
+            </if>
+            <else>
+              <theme-body-with-injection
+                content=content
+                aliases=aliases
+                block-name=blockName
+                preventHTMLInjection=!shouldInjectAds
+                mobile-leaderboard-ad-name=mobileLeaderboardAdName
+                mobile-leaderboard-modifiers=mobileLeaderboardModifiers
+                lazyload-first-image=lazyloadFirstImage
+              />
+            </else>
             <if(content.transcript)>
               <div id=`transcript-${id}` class="page-contents__content-transcript">
                 <marko-web-element block-name="page-contents" name="content-transcript-title">
@@ -228,15 +305,17 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
     </div>
   </@section>
 
-  <@section|{ content }|>
-    <theme-related-stories-block
-      content-id=content.id
-      section-id=content.primarySection.id
-      published=content.published
-      with-native-x=true
-      native-x={ name: "partner-insights", sectionName: "Partner Insights" }
-    />
-  </@section>
+  <if(contentDisplayType !== 'relatedContent')>
+    <@section|{ content }|>
+      <theme-related-stories-block
+        content-id=content.id
+        section-id=content.primarySection.id
+        published=content.published
+        with-native-x=true
+        native-x={ name: "partner-insights", sectionName: "Partner Insights" }
+      />
+    </@section>
+  </if>
 
   <if(showBottomAdBlock && !showOverlay)>
     <@section|{ aliases }|>

@@ -1,0 +1,98 @@
+.node {
+  $self: &;
+
+  &--related-stories-inbody {
+    padding-bottom: 16px;
+
+    @include media-breakpoint-up(lg) {
+      padding-bottom: 0;
+    }
+
+    #{ $self } {
+      &__title {
+        width: 100%;
+        @include skin-typography($style: "header-3", $link-style: "primary");
+      }
+
+      &__contents {
+        flex-direction: row-reverse;
+      }
+
+      $image-size: 112px;
+      &__node-image {
+        width: $image-size;
+        height: $image-size;
+        @include media-breakpoint-up(lg) {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &__image-inner-wrapper--fluid-3by2 {
+        width: $image-size;
+        min-width: $image-size;
+        height: $image-size;
+        @include media-breakpoint-up(lg) {
+          width: 100%;
+          min-width: 100%;
+          height: auto;
+        }
+
+        &::before {
+          // use bp-down (max-width) instead, since the padding is a calculated % at all widths by default
+          @include media-breakpoint-down(md) {
+            padding-top: 0;
+          }
+        }
+      }
+
+      &__image-wrapper + #{ $self }__body {
+        margin-top: 0;
+        margin-right: 15px;
+        @include media-breakpoint-up(lg) {
+          margin-top: 14px;
+          margin-right: 0;
+        }
+      }
+
+      &__website-section-name {
+        @include skin-typography($style: "slug-small", $link-style: "primary");
+      }
+    }
+  }
+}
+
+.related-stories-inbody {
+  $self: &;
+  padding: 20px 0;
+  margin: 20px 0;
+  @include media-breakpoint-up(lg) {
+    margin-left: calc(-50vw - -350px);
+    margin-right: calc(-50vw - -350px);
+  }
+  &__wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include marko-web-node-list-border($property: border-top);
+  @include marko-web-node-list-border($property: border-bottom);
+
+  .node {
+    border: none;
+  }
+
+  &__header {
+    @include skin-typography($style: "section-header");
+    font-size: 22px !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1rem !important;
+  }
+  .card-deck-flow__node {
+    padding: 0px;
+    .node {
+      padding: 10px;
+    }
+  }
+}
