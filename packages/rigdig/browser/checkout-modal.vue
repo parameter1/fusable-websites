@@ -35,74 +35,85 @@
           <span style="flex-grow: 1">Single Report</span>
           <span>$34.99</span>
         </div>
-        <form :disabled="loading" @submit.prevent="handleSubmit">
-          <!-- <div class="rigdig-modal__form_group">
-            <label class="rigdig-modal__label">
-              <div class="rigdig-widget__label-text">Vehicle Identification Number</div>
-              <input
-                ref="vin"
-                :value="vin"
-                class="form-control disabled rigdig-modal__vin"
-                type="text"
-                disabled
-              >
-            </label>
-          </div> -->
-          <div class="rigdig-modal__form_group">
-            <label class="rigdig-modal__label">
-              <template v-if="email">
-                <div class="rigdig-modal__label-text">
-                  Email Address
-                  <span class="rigdig-modal__signout-link">
-                    Not you?&nbsp;<a class="my-2" href="/user/logout">Click here to sign out</a>.
-                  </span>
-                </div>
+        <template v-if="transactionToken">
+          <!-- @todo need a return url or something to indicate the process is complete
+            to trigger email of PDF -->
+          <iframe :src="`https://sandbox.payfabric.com/payment/Web/Transaction/ResponsiveProcess?token=${transactionToken}`" style="height:51vh; border:none" />
+        </template>
+        <template v-else>
+          <form :disabled="loading" @submit.prevent="handleSubmit">
+            <!-- <div class="rigdig-modal__form_group">
+              <label class="rigdig-modal__label">
+                <div class="rigdig-widget__label-text">Vehicle Identification Number</div>
                 <input
-                  ref="email"
-                  :value="email"
-                  class="form-control disabled rigdig-modal__email"
-                  type="email"
+                  ref="vin"
+                  :value="vin"
+                  class="form-control disabled rigdig-modal__vin"
+                  type="text"
                   disabled
                 >
-              </template>
-              <template v-else>
-                <div class="rigdig-widget__label-text">Email Address</div>
-                <input
-                  ref="email"
-                  v-model="userEmail"
-                  class="form-control rigdig-modal__email"
-                  type="email"
-                  required
-                >
-              </template>
-            </label>
-          </div>
+              </label>
+            </div> -->
+            <div class="rigdig-modal__form_group">
+              <label class="rigdig-modal__label">
+                <template v-if="email">
+                  <div class="rigdig-modal__label-text">
+                    Email Address
+                    <span class="rigdig-modal__signout-link">
+                      Not you?&nbsp;<a class="my-2" href="/user/logout">Click here to sign out</a>.
+                    </span>
+                  </div>
+                  <input
+                    ref="email"
+                    :value="email"
+                    class="form-control disabled rigdig-modal__email"
+                    type="email"
+                    disabled
+                  >
+                </template>
+                <template v-else>
+                  <div class="rigdig-widget__label-text">Email Address</div>
+                  <input
+                    ref="email"
+                    v-model="userEmail"
+                    class="form-control rigdig-modal__email"
+                    type="email"
+                    required
+                  >
+                </template>
+              </label>
+            </div>
 
-          <div class="rigdig-widget__buttons">
-            <button type="submit" class="btn btn-primary rigdig-widget__submit" :disabled="loading">
-              <div class="d-flex align-items-center">
-                <span>{{ buttonLabel }}</span>
-                <div
-                  v-show="loading"
-                  class="spinner-border spinner-border-sm text-light ml-1"
-                  role="status"
-                >
-                  <span class="sr-only">Processing…</span>
+            <div class="rigdig-widget__buttons">
+              <button
+                type="submit"
+                class="btn btn-primary rigdig-widget__submit"
+                :disabled="loading"
+              >
+                <div class="d-flex align-items-center">
+                  <span>{{ buttonLabel }}</span>
+                  <div
+                    v-show="loading"
+                    class="spinner-border spinner-border-sm text-light ml-1"
+                    role="status"
+                  >
+                    <span class="sr-only">Processing…</span>
+                  </div>
                 </div>
-              </div>
-            </button>
-          </div>
-          <div v-if="error" class="rigdig-widget__error">
-            <h4>Unable to purchase report.</h4>
-            <p>
-              The application encountered an error purchasing the Truck History Report.
-              Please try again.
-            </p>
-            <span>
-              {{ error }}
-            </span>
-          </div>
-        </form>
+              </button>
+            </div>
+            <div v-if="error" class="rigdig-widget__error">
+              <h4>Unable to purchase report.</h4>
+              <p>
+                The application encountered an error purchasing the Truck History Report.
+                Please try again.
+              </p>
+              <span>
+                {{ error }}
+              </span>
+            </div>
+          </form>
+        </template>
       </div>
     </div>
   </div>
@@ -147,12 +158,49 @@ export default {
     userEmail: null,
     error: null,
     loading: false,
+    transactionToken: null,
   }),
 
   created() {
     if (this.email) {
       this.userEmail = this.email;
     }
+  },
+
+  methods: {
+    async handleSubmit() {
+      this.error = null;
+      this.loading = true;
+      try {
+        const response = await fetch('/__payfabric/create-transaction-token', {
+          method: 'post',
+          headers: { 'content-type': 'application/json; charset=utf-8' },
+          body: JSON.stringify({
+            vin: this.vin,
+            email: this.userEmail,
+          }),
+        });
+        if (!response.ok) {
+          let message = `PayFabric Purchase failure: ${response.status} ${response.statusText}`;
+          try {
+            const { error } = await response.json();
+            if (error) message = error;
+          } catch (e) {
+            // noop
+          }
+          const error = new Error(message);
+          error.code = response.status;
+          throw error;
+        }
+        const { Token } = await response.json();
+        this.transactionToken = Token;
+      } catch (e) {
+        this.error = e.message;
+        this.loading = false;
+      } finally {
+        this.loading = false;
+      }
+    },
   },
 };
 </script>

@@ -1,5 +1,6 @@
 const { asyncRoute } = require('@parameter1/base-cms-utils');
 const { getAsObject } = require('@parameter1/base-cms-object-path');
+const payfabric = require('@randall-reilly/package-payfabric');
 const { json } = require('express');
 const debug = require('debug')('rigdig');
 
@@ -54,4 +55,7 @@ module.exports = (app) => {
       res.status(error.code || 500).json({ error: error.messge });
     }
   }));
+
+  // load the PayFabric routes
+  payfabric(app);
 };

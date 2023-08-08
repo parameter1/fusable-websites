@@ -166,7 +166,10 @@ services:
       OMEDA_INPUT_ID: ${OVD_OMEDA_INPUT_ID-(unset)}
       RIGDIG_USERNAME: ${RIGDIG_USERNAME}
       RIGDIG_PASSWORD: ${RIGDIG_PASSWORD}
-      DEBUG: rigdig
+      PAYFABRIC_DEVICE_ID: ${PAYFABRIC_DEVICE_ID}
+      PAYFABRIC_DEVICE_PWD: ${PAYFABRIC_DEVICE_PWD}
+      PAYFABRIC_GATEWAY_NAME: ${PAYFABRIC_GATEWAY_NAME}
+      DEBUG: rigdig,payfabric
     hostname: www-rr-ovd.dev.parameter1.com
     ports:
       - "9906:80"
