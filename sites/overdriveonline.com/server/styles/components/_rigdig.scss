@@ -59,8 +59,8 @@
     padding: 1rem;
     background: #fff;
     border-radius: $input-border-radius;
-    width: 80%;
     max-height: 100vh;
+    max-width: 800px;
     overflow: auto;
     position: relative;
   }
@@ -73,6 +73,13 @@
   &__label {
     width: 100%;
   }
+  &__label-text {
+    margin-bottom: map-get($spacers, 2);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   &__promo {
     display: flex;
     margin-bottom: map-get($spacers, 3);
@@ -84,13 +91,19 @@
     & dt {
       font-weight: 600;
     }
+
   }
   &__teaser {
     display: flex;
+    flex-direction: row;
     border-radius: $input-border-radius;
     padding: map-get($spacers, 2);
     align-items: center;
     line-height: 1rem;
     margin-bottom: map-get($spacers, 3);
+  }
+  &__signout-link {
+    color: #888;
+    font-size: .8rem;
   }
 }

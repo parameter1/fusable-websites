@@ -6,7 +6,9 @@
         <button class="btn btn-text rigdig-modal__close" @click="$emit('cancel')">
           <icon-x />
         </button>
-        <h1>Overdrive Truck History Reports</h1>
+        <h1 class="truncate">
+          Overdrive Truck History Reports
+        </h1>
         <h2>Report found!</h2>
         <div class="rigdig-modal__promo">
           <img
@@ -24,7 +26,14 @@
         </div>
         <div class="rigdig-modal__teaser border">
           <icon-file-pdf class="mr-2" />
-          <span>Truck History Reports are PDFs that you'll receive via email.</span>
+          <span style="flex-grow: 1">
+            Truck History Reports are PDFs that you'll receive via email.
+          </span>
+        </div>
+        <div class="rigdig-modal__teaser border">
+          <icon-credit-card class="mr-2" />
+          <span style="flex-grow: 1">Single Report</span>
+          <span>$34.99</span>
         </div>
         <form :disabled="loading" @submit.prevent="handleSubmit">
           <!-- <div class="rigdig-modal__form_group">
@@ -41,23 +50,31 @@
           </div> -->
           <div class="rigdig-modal__form_group">
             <label class="rigdig-modal__label">
-              <div class="rigdig-widget__label-text">Email Address</div>
-              <input
-                v-if="email"
-                ref="email"
-                :value="email"
-                class="form-control disabled rigdig-modal__email"
-                type="email"
-                disabled
-              >
-              <input
-                v-else
-                ref="email"
-                v-model="userEmail"
-                class="form-control rigdig-modal__email"
-                type="email"
-                required
-              >
+              <template v-if="email">
+                <div class="rigdig-modal__label-text">
+                  Email Address
+                  <span class="rigdig-modal__signout-link">
+                    Not you?&nbsp;<a class="my-2" href="/user/logout">Click here to sign out</a>.
+                  </span>
+                </div>
+                <input
+                  ref="email"
+                  :value="email"
+                  class="form-control disabled rigdig-modal__email"
+                  type="email"
+                  disabled
+                >
+              </template>
+              <template v-else>
+                <div class="rigdig-widget__label-text">Email Address</div>
+                <input
+                  ref="email"
+                  v-model="userEmail"
+                  class="form-control rigdig-modal__email"
+                  type="email"
+                  required
+                >
+              </template>
             </label>
           </div>
 
@@ -94,12 +111,14 @@
 <script>
 import IconX from '@parameter1/base-cms-marko-web-icons/browser/x.vue';
 import IconFilePdf from '@parameter1/base-cms-marko-web-icons/browser/file-pdf.vue';
+import IconCreditCard from '@parameter1/base-cms-marko-web-icons/browser/credit-card.vue';
 
 export default {
   name: 'RigDigCheckoutModal',
 
   components: {
     IconX,
+    IconCreditCard,
     IconFilePdf,
   },
 

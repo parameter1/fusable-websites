@@ -6,7 +6,12 @@
     <p class="rigdig-widget__call-to-action">
       {{ callToAction }}
     </p>
-    <form class="rigdig-widget__form" :disabled="loading" @submit.prevent="handleSubmit">
+    <form
+      ref="form"
+      class="rigdig-widget__form"
+      :disabled="loading"
+      @submit.prevent="handleSubmit"
+    >
       <div class="rigdig-widget__form-group">
         <label class="rigdig-widget__label">
           <div v-if="inputLabel" class="rigdig-widget__label-text">{{ inputLabel }}</div>
@@ -18,6 +23,7 @@
             :readonly="loading"
             :placeholder="placeholder"
             required
+            @paste="handlePaste"
           >
         </label>
       </div>
@@ -128,6 +134,10 @@ export default {
       this.attempted = false;
       this.verified = false;
       this.$refs.input.focus();
+    },
+    handlePaste($event) {
+      this.vin = $event.clipboardData.getData('text/plain');
+      this.handleSubmit();
     },
     async handleSubmit() {
       this.error = null;
