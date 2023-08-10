@@ -35,6 +35,12 @@
     border: 1px solid $red;
     border-radius: $input-border-radius;
     color: darken($red, 50%);
+    max-width: 455px;
+  }
+  &__title {
+    @include skin-typography($style: "section-header");
+    margin-right: 2rem;
+    text-transform: none;
   }
 }
 
@@ -52,6 +58,15 @@
     flex-direction: column;
     justify-content: center;
   }
+  &__title {
+    @include skin-typography($style: "section-header");
+    margin-right: 2rem;
+    text-transform: none;
+  }
+  &__subtitle {
+    @include skin-typography($style: "section-header-small");
+    text-transform: none;
+  }
   &__container {
     display: flex;
     flex-direction: column;
@@ -65,7 +80,6 @@
     position: relative;
   }
   &__close {
-    width: 50px;
     position: absolute;
     right: 0;
     top: 0;
@@ -105,5 +119,10 @@
   &__signout-link {
     color: #888;
     font-size: .8rem;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: map-get($spacers, 2);
   }
 }

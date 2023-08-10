@@ -49,6 +49,7 @@ module.exports = class ApiClient {
         Amount: 34.99,
         Currency: 'USD',
         SetupId: this.gatewayName,
+        // ECheckSetupId: 'EVO US_ACH',
         Type: 'Sale',
       }),
     });
@@ -62,5 +63,17 @@ module.exports = class ApiClient {
       endpoint: '/payment/api/jwt/create',
       body: JSON.stringify({ Audience: 'PaymentPage', Subject: transactionId }),
     });
+  }
+
+  /**
+   * Verifies that a transaction was successful
+   */
+  async verifyTransaction({ transactionId }) {
+    const transaction = await this.request({
+      endpoint: `/payment/api/transaction/${transactionId}`,
+      method: 'get',
+    });
+    debug(transaction);
+    return Boolean(transaction);
   }
 };
