@@ -14,7 +14,6 @@ module.exports = class ApiClient {
     this.apiBaseUrl = apiBaseUrl;
     this.token = null;
     this.expires = 0;
-    debug('init', this);
   }
 
   async request({

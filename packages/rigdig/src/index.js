@@ -3,8 +3,7 @@ const { getAsObject } = require('@parameter1/base-cms-object-path');
 const payfabric = require('@randall-reilly/package-payfabric');
 const { json } = require('express');
 const debug = require('debug')('rigdig');
-const send = require('./send');
-const generateNotification = require('./notification-builder');
+const sendNotification = require('./send-notification');
 const RigDigAPIClient = require('./client');
 const { RIGDIG_USERNAME, RIGDIG_PASSWORD } = require('./env');
 
@@ -20,7 +19,7 @@ module.exports = (app) => {
   /**
    * load the PayFabric routes
    */
-  const pfClient = payfabric(app);
+  payfabric(app);
 
   /**
    * Handles requests for VIN verification
@@ -45,6 +44,7 @@ module.exports = (app) => {
 
   /**
    * Handles requests for VIN report creation
+   * 4000 0000 0000 1026
    * 5555 5555 5555 4444
    */
   app.post('/__rigdig/complete', json(), asyncRoute(async (req, res) => {
@@ -59,19 +59,14 @@ module.exports = (app) => {
 
       // Generate the report
       const { items: [report] } = await client.create([vin]);
-      debug('complete', report);
-
-      // Generate the notification
-      const { html, subject, addresses } = await generateNotification({ vin, email, report });
-      debug('complete', subject, html, addresses);
 
       // Send the notification
-      const sendR = await send({ html, subject, addresses });
+      const sendR = await sendNotification(res, { report, email, transactionId });
       debug('complete', sendR);
-      throw new Error('bail');
 
       res.json({ ok: true });
     } catch (error) {
+      debug(error);
       res.status(error.code || 500).json({ error: error.messge });
     }
   }));

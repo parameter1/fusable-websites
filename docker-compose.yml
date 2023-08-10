@@ -169,6 +169,8 @@ services:
       PAYFABRIC_DEVICE_ID: ${PAYFABRIC_DEVICE_ID}
       PAYFABRIC_DEVICE_PWD: ${PAYFABRIC_DEVICE_PWD}
       PAYFABRIC_GATEWAY_NAME: ${PAYFABRIC_GATEWAY_NAME}
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+      SENDGRID_DEV_TO: ${SENDGRID_DEV_TO-support@parameter1.com}
       DEBUG: rigdig,payfabric
     hostname: www-rr-ovd.dev.parameter1.com
     ports:
