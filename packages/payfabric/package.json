@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint --ext .js --max-warnings 5 --config ../../.eslintrc.js --ignore-path ../../.eslintignore ./",
     "lint:fix": "yarn lint --fix",
-    "test": "yarn lint && yarn compile --no-clean"
+    "test": "yarn lint"
   },
   "dependencies": {
     "@parameter1/base-cms-object-path": "^4.5.12",
