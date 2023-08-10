@@ -20,6 +20,18 @@ const createError = (message, code) => {
   return error;
 };
 
+/**
+ * @typedef ResponseContext
+ * @prop {import('@parameter1/base-cms-marko-web-identity-x/service')} identityX
+ *
+ * @typedef IdentityXContext
+ * @prop {IdxAppContext} application
+ * @prop {IdxUserContext} user
+ * @prop {Boolean} hasUser
+ *
+ * @typedef IdxAppContext
+ * @typedef IdxUserContext
+ */
 module.exports = (app) => {
   /**
    * Handles requests to start a payment transaction
@@ -30,7 +42,14 @@ module.exports = (app) => {
       const { vin, email } = body;
       if (!vin) throw createError('You must provide a VIN to continue.', 400);
       if (!email) throw createError('You must provide an email address to continue.', 400);
-      const { Key } = await client.createTransaction({ vin, email });
+
+      /** @type {ResponseContext} */
+      const { identityX } = res.locals;
+      /** @type {IdentityXContext} */
+      const ctx = await identityX.loadActiveContext();
+      const user = ctx.hasUser ? ctx.user : { email };
+
+      const { Key } = await client.createTransaction({ user, vin });
       const { Token } = await client.createJWT({ transactionId: Key });
       res.json({ Token });
     } catch (error) {
