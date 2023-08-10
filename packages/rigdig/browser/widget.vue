@@ -51,16 +51,9 @@
           Reset
         </button>
       </div>
-      <div v-if="error" class="rigdig-widget__error">
-        <h4>Unable to look up VIN.</h4>
-        <p>
-          The application encountered an error looking up the supplied Vehicle Identification
-          Number. Check the value and try again.
-        </p>
-        <span>
-          {{ error }}
-        </span>
-      </div>
+      <alert-error v-if="error" title="Unable to look up VIN.">
+        <p>We couldn't find the Vehicle Identification Number you supplied.</p>
+      </alert-error>
     </form>
     <transition
       enter-active-class="transition duration-100 ease-out"
@@ -83,11 +76,13 @@
 
 <script>
 import CheckoutModal from './checkout-modal.vue';
+import AlertError from './alert-error.vue';
 
 export default {
   name: 'RigDigWidget',
 
   components: {
+    AlertError,
     CheckoutModal,
   },
 

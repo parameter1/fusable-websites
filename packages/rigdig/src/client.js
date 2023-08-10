@@ -73,12 +73,12 @@ module.exports = class ApiClient {
       ...reqHeaders,
       'api-verison': API_VERSION,
       authorization: `Bearer ${token}`,
-      'content-type': 'application/json; charset=utf8',
+      'content-type': 'application/json',
     };
     const result = await fetch(url, { method, body, headers });
 
     if (!result.ok) {
-      debug(`${method.toUpperCase()} ${url} ERR`, result);
+      debug(`${method.toUpperCase()} ${url} ERR`, result.status, result.statusText);
       const error = new Error(`RigDig response unsuccessful: ${result.status} ${result.statusText}`);
       error.code = result.status;
       throw error;

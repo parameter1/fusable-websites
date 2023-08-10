@@ -20,7 +20,7 @@
             The truck history report you requested has been sent to your email.
           </p>
         </template>
-        <template v-else-if="generating">
+        <template v-else-if="transactionId">
           <checkout-header
             :truck-info="truckInfo"
             :vin="vin"
@@ -28,7 +28,34 @@
             :show-price="false"
           />
           <p>Your payment was processed successfully.</p>
-          <p>We're sending your truck history report now!</p>
+          <p>Your transaction ID was {{ transactionId }}.</p>
+          <p class="mb-0">
+            We're sending your truck history report now!
+          </p>
+
+          <div class="rigdig-modal__buttons mt-1">
+            <button
+              type="submit"
+              class="btn btn-secondary rigdig-widget__generate"
+              :disabled="loading"
+              @click="generate"
+            >
+              <div class="d-flex align-items-center">
+                <span>Send Report</span>
+                <div
+                  v-show="loading"
+                  class="spinner-border spinner-border-sm text-light ml-1"
+                  role="status"
+                >
+                  <span class="sr-only">Sending report…</span>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <alert-error v-if="error" title="Unable to send report.">
+            <p>We weren't able to send the Truck History Report.</p>
+          </alert-error>
         </template>
         <template v-else>
           <checkout-header
@@ -102,18 +129,13 @@
               </div>
             </form>
           </template>
+
+          <alert-error v-else-if="error" title="Unable to purchase report.">
+            <p>We weren't able to purchase the Truck History Report.</p>
+            <p><a href="javascript:void(0)" @click="handleSubmit">Click here</a> to retry.</p>
+          </alert-error>
         </template>
 
-        <div v-if="error" class="rigdig-widget__error">
-          <h4>Unable to purchase report.</h4>
-          <p>
-            The application encountered an error purchasing the Truck History Report.
-            Please try again.
-          </p>
-          <span>
-            {{ error }}
-          </span>
-        </div>
         <!-- The PayFabric render target -->
         <div id="payfabricTarget" ref="payfabricTarget" />
       </div>
@@ -123,12 +145,14 @@
 
 <script>
 import IconX from '@parameter1/base-cms-marko-web-icons/browser/x.vue';
+import AlertError from './alert-error.vue';
 import CheckoutHeader from './checkout-header.vue';
 
 export default {
   name: 'RigDigCheckoutModal',
 
   components: {
+    AlertError,
     CheckoutHeader,
     IconX,
   },
@@ -158,9 +182,10 @@ export default {
     userEmail: null,
     error: null,
     loading: false,
-    generating: false,
     complete: false,
     transactionToken: null,
+    transactionId: null,
+    client: null,
   }),
 
   created() {
@@ -174,8 +199,8 @@ export default {
       this.error = null;
       this.loading = true;
       this.complete = false;
-      this.generating = false;
       try {
+        if (this.client) this.client.paymentCancel();
         const response = await fetch('/__payfabric/create-transaction-token', {
           method: 'post',
           headers: { 'content-type': 'application/json; charset=utf-8' },
@@ -202,7 +227,7 @@ export default {
         // console.log('initiating pf');
         // access payfabric client and perform checkout
         // eslint-disable-next-line new-cap, no-new, no-undef
-        const client = new payfabricpayments({
+        this.client = new payfabricpayments({
           // debug: true,
           environment: 'SANDBOX',
           target: 'payfabricTarget',
@@ -217,7 +242,6 @@ export default {
             this.error = e.ResponseMsg;
             this.transactionToken = null;
             // Hide the checkout page since it freezes? why?
-            client.paymentCancel();
           },
           cancelCallback: () => {
             // Clear the transaction to start fresh.
@@ -239,10 +263,16 @@ export default {
     async handleSuccess([{ TrxKey: transactionId }]) {
       this.error = null;
       this.complete = false;
-      this.generating = true;
+      this.transactionId = transactionId;
+      return this.generate();
+    },
+    async generate() {
+      this.error = null;
+      this.complete = false;
+      this.loading = true;
       try {
         const email = this.userEmail;
-        const { vin } = this;
+        const { vin, transactionId } = this;
         const r = await fetch('/__rigdig/complete', {
           headers: { 'content-type': 'application/json' },
           method: 'post',
@@ -263,6 +293,8 @@ export default {
         this.complete = true;
       } catch (e) {
         this.error = e.message;
+      } finally {
+        this.loading = false;
       }
     },
   },

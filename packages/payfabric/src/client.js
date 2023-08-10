@@ -64,16 +64,4 @@ module.exports = class ApiClient {
       body: JSON.stringify({ Audience: 'PaymentPage', Subject: transactionId }),
     });
   }
-
-  /**
-   * Verifies that a transaction was successful
-   */
-  async verifyTransaction({ transactionId }) {
-    const transaction = await this.request({
-      endpoint: `/payment/api/transaction/${transactionId}`,
-      method: 'get',
-    });
-    debug(transaction);
-    return Boolean(transaction);
-  }
 };

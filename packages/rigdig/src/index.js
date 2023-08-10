@@ -29,7 +29,6 @@ module.exports = (app) => {
     try {
       const { body } = await req;
       const { vin } = body;
-      debug('verify', vin);
       if (!vin) throw createError('You must provide a VIN to continue.', 400);
       const data = await client.verify([vin]);
       const { dataExists, PoweredByVinLink } = getAsObject(data, 'items.0');
@@ -53,25 +52,22 @@ module.exports = (app) => {
       const { body } = await req;
       const { vin, email, transactionId } = body;
       debug('complete', { vin, email, transactionId });
+
       if (!vin) throw createError('You must provide a VIN to continue.', 400);
       if (!email) throw createError('You must provide your email address to continue.', 401);
       if (!transactionId) throw createError('You must provide payment to continue.', 402);
 
-      // Validate the transaction, make sure it has processed.
-      const valid = await pfClient.verifyTransaction({ transactionId });
-      debug(valid);
-      if (!valid) throw createError('You must complete payment to continue.', 402);
-
       // Generate the report
-      const r = await client.create([vin]);
-      debug(r);
+      const { items: [report] } = await client.create([vin]);
+      debug('complete', report);
 
       // Generate the notification
-      const { html, subject, addresses } = await generateNotification({ vin, email, r });
+      const { html, subject, addresses } = await generateNotification({ vin, email, report });
+      debug('complete', subject, html, addresses);
 
       // Send the notification
       const sendR = await send({ html, subject, addresses });
-      console.log(sendR);
+      debug('complete', sendR);
       throw new Error('bail');
 
       res.json({ ok: true });
