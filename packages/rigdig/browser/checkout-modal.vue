@@ -14,7 +14,7 @@
             :truck-info="truckInfo"
             :vin="vin"
             title="Report sent!"
-            :show-price="false"
+            :email="userEmail"
           />
           <p>
             The truck history report you requested has been sent to your email.
@@ -25,7 +25,7 @@
             :truck-info="truckInfo"
             :vin="vin"
             title="Report generating!"
-            :show-price="false"
+            :email="userEmail"
           />
           <p>Your payment was processed successfully.</p>
           <p>Your transaction ID was {{ transactionId }}.</p>
@@ -62,6 +62,7 @@
             :truck-info="truckInfo"
             :vin="vin"
             title="Report found!"
+            :email="transactionToken ? userEmail : ''"
           />
 
           <template v-if="!transactionToken">
@@ -128,6 +129,10 @@
                 </button>
               </div>
             </form>
+            <alert-error v-if="error" title="Unable to start checkout.">
+              <p>We weren't able to start the checkout process.</p>
+              <p><a href="javascript:void(0)" @click="handleSubmit">Click here</a> to retry.</p>
+            </alert-error>
           </template>
 
           <alert-error v-else-if="error" title="Unable to purchase report.">
@@ -224,7 +229,6 @@ export default {
         const { Token } = await response.json();
         this.transactionToken = Token;
 
-        // console.log('initiating pf');
         // access payfabric client and perform checkout
         // eslint-disable-next-line new-cap, no-new, no-undef
         this.client = new payfabricpayments({
@@ -233,7 +237,6 @@ export default {
           target: 'payfabricTarget',
           displayMethod: 'IN_PLACE',
           useDefaultWallet: false,
-          // displayMethod: 'DIALOG',
           acceptedPaymentMethods: ['CreditCard', 'ApplePay'],
           session: Token,
           disableCancel: true,
@@ -241,15 +244,12 @@ export default {
           failureCallback: (e) => {
             this.error = e.ResponseMsg;
             this.transactionToken = null;
-            // Hide the checkout page since it freezes? why?
           },
           cancelCallback: () => {
             // Clear the transaction to start fresh.
             this.transactionToken = null;
           },
-          // readyCallback: (...args) => console.log('ready!', args),
         });
-        // console.log('initiated pf', client);
       } catch (e) {
         this.error = e.message;
         this.loading = false;

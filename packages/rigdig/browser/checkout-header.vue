@@ -23,10 +23,15 @@
         Truck History Reports are PDFs that you'll receive via email.
       </span>
     </div>
-    <div v-if="showPrice" class="rigdig-modal__teaser border">
+    <div class="rigdig-modal__teaser border">
       <icon-credit-card class="mr-2" />
       <span style="flex-grow: 1">Single Report</span>
       <span>$34.99</span>
+    </div>
+    <div v-if="email" class="rigdig-modal__teaser border">
+      <icon-email class="mr-2" />
+      <span style="flex-grow: 1">Email Address</span>
+      <span>{{ email }}</span>
     </div>
   </div>
 </template>
@@ -34,12 +39,14 @@
 <script>
 import IconFilePdf from '@parameter1/base-cms-marko-web-icons/browser/file-pdf.vue';
 import IconCreditCard from '@parameter1/base-cms-marko-web-icons/browser/credit-card.vue';
+import IconEmail from '@parameter1/base-cms-marko-web-icons/browser/mail.vue';
 
 export default {
   name: 'CheckoutHeader',
 
   components: {
     IconCreditCard,
+    IconEmail,
     IconFilePdf,
   },
 
@@ -52,9 +59,9 @@ export default {
       type: String,
       required: true,
     },
-    showPrice: {
-      type: Boolean,
-      default: true,
+    email: {
+      type: String,
+      default: '',
     },
     title: {
       type: String,
