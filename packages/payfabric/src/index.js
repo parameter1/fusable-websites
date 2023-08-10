@@ -1,6 +1,5 @@
 const { asyncRoute } = require('@parameter1/base-cms-utils');
 const { json } = require('express');
-const debug = require('debug')('payfabric');
 
 const PayFabricAPIClient = require('./client');
 const {
@@ -29,7 +28,6 @@ module.exports = (app) => {
     try {
       const { body } = await req;
       const { vin, email } = body;
-      debug('create-transactino-token', vin, email);
       if (!vin) throw createError('You must provide a VIN to continue.', 400);
       if (!email) throw createError('You must provide an email address to continue.', 400);
       const { Key } = await client.createTransaction({ vin, email });

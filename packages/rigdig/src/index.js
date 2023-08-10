@@ -51,7 +51,7 @@ module.exports = (app) => {
     try {
       const { body } = await req;
       const { vin, email, transactionId } = body;
-      debug('complete', { vin, email, transactionId });
+      debug('complete.generate', email, transactionId, vin);
 
       if (!vin) throw createError('You must provide a VIN to continue.', 400);
       if (!email) throw createError('You must provide your email address to continue.', 401);
@@ -61,8 +61,8 @@ module.exports = (app) => {
       const { items: [report] } = await client.create([vin]);
 
       // Send the notification
-      const sendR = await sendNotification(res, { report, email, transactionId });
-      debug('complete', sendR);
+      await sendNotification(res, { report, email, transactionId });
+      debug('complete.sent', email, transactionId, vin);
 
       res.json({ ok: true });
     } catch (error) {

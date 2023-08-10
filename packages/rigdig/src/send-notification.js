@@ -26,7 +26,7 @@ const send = ({ html, subject, addresses }) => {
  * @param {String} args.transactionId The default addressee emails will be sent to.
  * @param {Report} args.report        The report data to include in the template.
  *
- * @returns {Promise}
+ * @returns {Promise<import('@sendgrid/client/src/response').ClientResponse>}
  */
 module.exports = (res, { email, transactionId, report }) => {
   const $global = buildMarkoGlobal(res);
