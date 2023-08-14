@@ -1,28 +1,50 @@
 const fetch = require('node-fetch');
 const debug = require('debug')('payfabric');
+const { PAYFABRIC_ENV } = require('./env');
 
+const API_BASEURL = `https://${PAYFABRIC_ENV === 'SANDBOX' ? 'sandbox' : 'www'}.payfabric.com`;
+
+/**
+ * The PayFabric API client
+ * @see https://github.com/PayFabric/APIs/tree/master/PayFabric
+ */
 module.exports = class ApiClient {
+  /**
+   * @param {Object} a
+   * @param {String} a.deviceId     The PayFabric Device ID (include DCN prefix!)
+   * @param {String} a.devicePwd    The PayFabric Device password
+   * @param {String} a.gatewayName  The PayFabric payment gateway to use
+   */
   constructor({
     deviceId,
     devicePwd,
     gatewayName = 'EVO US_CC',
-    apiBaseUrl = 'https://sandbox.payfabric.com',
   } = {}) {
     this.deviceId = deviceId;
     this.devicePwd = devicePwd;
     this.gatewayName = gatewayName;
-    this.apiBaseUrl = apiBaseUrl;
     this.token = null;
     this.expires = 0;
   }
 
+  /**
+   * Makes a request to PayFabric, logging if enabled.
+   * @see https://github.com/PayFabric/APIs/blob/93a22ffaa81342dabc2850ff2e9d4adab4093095/PayFabric/Sections/Authentication.md
+   *
+   * @param {Object} args
+   * @param {String} args.endpoint  The API endpoint to use. It must be prefixed with a /
+   * @param {String} args.body      The request body. If present, it must be JSON stringified
+   * @param {Object} args.headers   The request headers
+   * @param {String} args.method    The request method (GET/POST)
+   * @returns Promise
+   */
   async request({
     endpoint,
     body,
     headers: reqHeaders = {},
     method = 'post',
   } = {}) {
-    const url = `${this.apiBaseUrl}${endpoint}`;
+    const url = `${API_BASEURL}${endpoint}`;
     const headers = {
       ...reqHeaders,
       authorization: `${this.deviceId}|${this.devicePwd}`,
@@ -41,6 +63,9 @@ module.exports = class ApiClient {
   }
 
   /**
+   * Creates a PayFabric Transaction
+   * @see https://github.com/PayFabric/APIs/blob/93a22ffaa81342dabc2850ff2e9d4adab4093095/PayFabric/Sections/Transactions.md#create-a-transaction
+   *
    * @typedef IdentityXUserContext
    * @prop {String} id
    * @prop {String} email
@@ -92,6 +117,8 @@ module.exports = class ApiClient {
 
   /**
    * Creates a JWT to use with a hosted payment page
+   * @see https://github.com/PayFabric/APIs/blob/93a22ffaa81342dabc2850ff2e9d4adab4093095/PayFabric/Sections/JWTToken.md
+   * @returns Promise
    */
   async createJWT({ transactionId }) {
     return this.request({

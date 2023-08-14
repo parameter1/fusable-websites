@@ -68,6 +68,7 @@
         :email="email"
         :vin="vin"
         :truck-info="truckInfo"
+        :environment="environment"
         @cancel="reset"
       />
     </transition>
@@ -110,6 +111,13 @@ export default {
     inputLabel: {
       type: String,
       default: null,
+    },
+    environment: {
+      type: String,
+      default: 'SANDBOX',
+      validator(v) {
+        return ['SANDBOX', 'LIVE'].includes(v);
+      },
     },
   },
 

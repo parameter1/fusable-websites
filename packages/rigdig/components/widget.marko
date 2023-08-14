@@ -1,9 +1,12 @@
+$ const environment = process.env.PAYFABRIC_ENV || 'SANDBOX';
+
 <marko-web-identity-x-context|{ hasUser, user }|>
   <div class="rigdig-widget">
     <marko-web-browser-component name="RigDigWidget" props={
       email: hasUser ? user.email : null,
       inputLabel: 'Vehicle Identification Number',
       placeholder: '1XPHD48X8CD174…',
+      environment,
     } />
   </div>
 </marko-web-identity-x-context>

@@ -179,6 +179,13 @@ export default {
       type: String,
       default: null,
     },
+    environment: {
+      type: String,
+      default: 'SANDBOX',
+      validator(v) {
+        return ['SANDBOX', 'LIVE'].includes(v);
+      },
+    },
   },
 
   emits: ['close'],
@@ -233,7 +240,7 @@ export default {
         // eslint-disable-next-line new-cap, no-new, no-undef
         this.client = new payfabricpayments({
           // debug: true,
-          environment: 'SANDBOX',
+          environment: this.environment,
           target: 'payfabricTarget',
           displayMethod: 'IN_PLACE',
           useDefaultWallet: false,
