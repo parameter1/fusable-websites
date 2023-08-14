@@ -1,0 +1,23 @@
+$ const {
+  blockName,
+  title,
+  nodes,
+  withNativeX,
+  nativeX,
+} = input;
+<marko-web-block name=blockName>
+  <marko-web-element block-name=blockName name="wrapper">
+  <marko-web-element block-name=blockName name="header">
+      ${title}
+    </marko-web-element>
+    <theme-content-card-deck-col-flow
+      nodes=nodes
+      cols=2
+      modifiers=[blockName]
+    >
+      <@node modifiers=[blockName]>
+        <@image ar="1:1" />
+      </@node>
+    </theme-content-card-deck-col-flow>
+  </marko-web-element>
+</marko-web-block>
