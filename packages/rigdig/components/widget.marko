@@ -1,5 +1,5 @@
 $ const environment = process.env.PAYFABRIC_ENV || 'SANDBOX';
-$ const paymentMethods = (process.env.PAYFABRIC_PAYMENT_METHODS || 'CreditCard,ApplePay').split(',');
+$ const paymentMethods = (process.env.PAYFABRIC_PAYMENT_METHODS || 'CreditCard,ApplePay,GooglePay').split(',');
 $ const debug = process.env.NODE_ENV === 'development';
 
 <marko-web-identity-x-context|{ hasUser, user }|>
