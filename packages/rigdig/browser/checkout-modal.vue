@@ -189,6 +189,14 @@ export default {
         return ['SANDBOX', 'LIVE'].includes(v);
       },
     },
+    paymentMethods: {
+      type: Array,
+      default: () => ['CreditCard', 'ApplePay'],
+    },
+    debug: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   emits: ['close'],
@@ -275,12 +283,12 @@ export default {
     async startCheckout() {
       // eslint-disable-next-line new-cap, no-new, no-undef
       this.client = new payfabricpayments({
-        debug: true,
+        debug: this.debug,
         environment: this.environment,
         target: 'payfabricTarget',
         displayMethod: 'IN_PLACE',
         useDefaultWallet: false,
-        acceptedPaymentMethods: ['CreditCard', 'ApplePay'], // @todo param
+        acceptedPaymentMethods: this.paymentMethods,
         session: this.transactionToken,
         disableCancel: true,
         successCallback: (...args) => this.handleSuccess(args),

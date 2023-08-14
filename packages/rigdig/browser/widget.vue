@@ -69,6 +69,8 @@
         :vin="vin"
         :truck-info="truckInfo"
         :environment="environment"
+        :payment-methods="paymentMethods"
+        :debug="debug"
         @cancel="reset"
       />
     </transition>
@@ -118,6 +120,14 @@ export default {
       validator(v) {
         return ['SANDBOX', 'LIVE'].includes(v);
       },
+    },
+    paymentMethods: {
+      type: Array,
+      default: () => ['CreditCard', 'ApplePay'],
+    },
+    debug: {
+      type: Boolean,
+      default: false,
     },
   },
 
