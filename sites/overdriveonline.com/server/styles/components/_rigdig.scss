@@ -146,3 +146,7 @@
     margin-top: map-get($spacers, 2);
   }
 }
+
+#payfabricTarget:not(:empty) {
+  margin-top: 1rem;
+}
