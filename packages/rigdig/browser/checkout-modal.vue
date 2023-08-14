@@ -135,14 +135,17 @@
             </alert-error>
           </template>
 
-          <alert-error v-else-if="error" title="Unable to purchase report.">
+          <!-- The PayFabric render target -->
+          <div id="payfabricTarget" ref="payfabricTarget" />
+
+          <alert-error v-if="transactionToken && error" title="Unable to purchase report.">
             <p>We weren't able to purchase the Truck History Report.</p>
-            <p><a href="javascript:void(0)" @click="handleSubmit">Click here</a> to retry.</p>
+            <p>
+              Review the form above, or
+              <a href="javascript:void(0)" @click="handleSubmit">click here</a> to start over.
+            </p>
           </alert-error>
         </template>
-
-        <!-- The PayFabric render target -->
-        <div id="payfabricTarget" ref="payfabricTarget" />
       </div>
     </div>
   </div>
@@ -207,72 +210,115 @@ export default {
   },
 
   methods: {
+    /**
+     *
+     */
     async handleSubmit() {
       this.error = null;
       this.loading = true;
       this.complete = false;
-      try {
-        if (this.client) this.client.paymentCancel();
-        const response = await fetch('/__payfabric/create-transaction-token', {
-          method: 'post',
-          headers: { 'content-type': 'application/json; charset=utf-8' },
-          body: JSON.stringify({
-            vin: this.vin,
-            email: this.userEmail,
-          }),
-        });
-        if (!response.ok) {
-          let message = `PayFabric Purchase failure: ${response.status} ${response.statusText}`;
-          try {
-            const { error } = await response.json();
-            if (error) message = error;
-          } catch (e) {
-            // noop
-          }
-          const error = new Error(message);
-          error.code = response.status;
-          throw error;
-        }
-        const { Token } = await response.json();
-        this.transactionToken = Token;
 
-        // access payfabric client and perform checkout
-        // eslint-disable-next-line new-cap, no-new, no-undef
-        this.client = new payfabricpayments({
-          // debug: true,
-          environment: this.environment,
-          target: 'payfabricTarget',
-          displayMethod: 'IN_PLACE',
-          useDefaultWallet: false,
-          acceptedPaymentMethods: ['CreditCard', 'ApplePay'],
-          session: Token,
-          disableCancel: true,
-          successCallback: (...args) => this.handleSuccess(args),
-          failureCallback: (e) => {
-            this.error = e.ResponseMsg;
-            this.transactionToken = null;
-          },
-          cancelCallback: () => {
-            // Clear the transaction to start fresh.
-            this.transactionToken = null;
-          },
-        });
+      // Create a transaction
+      try {
+        const token = await this.createTransaction();
+        this.transactionToken = token;
+      } catch (e) {
+        this.error = `Unable to create a transaction: ${e.message}.`;
+        return false;
+      } finally {
+        this.loading = false;
+      }
+
+      // access payfabric sdk client and perform checkout
+      try {
+        await this.startCheckout();
       } catch (e) {
         this.error = e.message;
         this.loading = false;
       } finally {
         this.loading = false;
       }
+      return true;
     },
-    // 5555 5555 5555 4444
-    // Send completed transaction id to endpoint, trigger email send
-    // Update messaging, display thankyou/etc.
+
+    /**
+     *
+     */
+    async createTransaction() {
+      const response = await fetch('/__payfabric/create-transaction-token', {
+        method: 'post',
+        headers: { 'content-type': 'application/json; charset=utf-8' },
+        body: JSON.stringify({
+          vin: this.vin,
+          email: this.userEmail,
+        }),
+      });
+      if (!response.ok) {
+        let message = `PayFabric Purchase failure: ${response.status} ${response.statusText}`;
+        try {
+          const { error } = await response.json();
+          if (error) message = error;
+        } catch (e) {
+          // noop
+        }
+        const error = new Error(message);
+        error.code = response.status;
+        throw error;
+      }
+      const { Token } = await response.json();
+      return Token;
+    },
+
+    /**
+     *
+     */
+    async startCheckout() {
+      // eslint-disable-next-line new-cap, no-new, no-undef
+      this.client = new payfabricpayments({
+        debug: true,
+        environment: this.environment,
+        target: 'payfabricTarget',
+        displayMethod: 'IN_PLACE',
+        useDefaultWallet: false,
+        acceptedPaymentMethods: ['CreditCard', 'ApplePay'], // @todo param
+        session: this.transactionToken,
+        disableCancel: true,
+        successCallback: (...args) => this.handleSuccess(args),
+        failureCallback: (e) => {
+          if (e.ResponseMsg === 'JWT token has expired.') {
+            // Clear the client session, crete a new token, and re-start checkout
+            this.client.destroy();
+            this.transactionToken = null;
+            this.loading = true;
+            this.handleSubmit();
+          } else {
+            // Undo SDK opacity/pointer change. Why isn't the SDK calling this?
+            this.client.transactionStoppedProcessing(this.client, e);
+            this.error = e.ResponseMsg;
+          }
+        },
+        cancelCallback: () => {
+          // Clear the transaction to start fresh.
+          this.client.destroy();
+          this.transactionToken = null;
+        },
+      });
+    },
+
+    /**
+     * Send completed transaction id to endpoint, trigger email send
+     * Update messaging, display thankyou/etc.
+     */
     async handleSuccess([{ TrxKey: transactionId }]) {
       this.error = null;
       this.complete = false;
       this.transactionId = transactionId;
       return this.generate();
     },
+
+    /**
+     *
+     */
     async generate() {
       this.error = null;
       this.complete = false;
