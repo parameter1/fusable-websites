@@ -3,29 +3,29 @@
     <div class="rigdig-modal__wrapper">
       <!-- @todo swap this for bootstrap modal? -->
       <div class="rigdig-modal__container">
-        <h1 class="rigdig-modal__title">
-          Overdrive Truck History Report
+        <h2 class="rigdig-modal__subtitle">
+          Report Found!
           <button class="btn btn-text rigdig-modal__close" @click="$emit('cancel')">
             <icon-x />
           </button>
-        </h1>
-        <template v-if="complete">
+        </h2>
+        <div v-if="complete" class="rigdig-modal__content">
           <checkout-header
             :truck-info="truckInfo"
             :vin="vin"
-            title="Report sent!"
+            :step="2"
             :email="userEmail"
           />
           <p>
             The truck history report you requested has been sent to your email.
           </p>
-        </template>
-        <template v-else-if="transactionId">
+        </div>
+        <div v-else-if="transactionId" class="rigdig-modal__content">
           <checkout-header
             :truck-info="truckInfo"
             :vin="vin"
-            title="Report generating!"
             :email="userEmail"
+            :step="2"
           />
           <p>Your payment was processed successfully.</p>
           <p>Your transaction ID was {{ transactionId }}.</p>
@@ -56,16 +56,21 @@
           <alert-error v-if="error" title="Unable to send report.">
             <p>We weren't able to send the Truck History Report.</p>
           </alert-error>
-        </template>
-        <template v-else>
+        </div>
+        <div v-else class="rigdig-modal__content">
           <checkout-header
             :truck-info="truckInfo"
             :vin="vin"
             title="Report found!"
             :email="transactionToken ? userEmail : ''"
+            :step="transactionToken ? 2 : 1"
+            @back="cancelCheckout"
           />
 
           <template v-if="!transactionToken">
+            <p class="rigdig-modal__copy">
+              Where should we send the report?
+            </p>
             <form :disabled="loading" @submit.prevent="handleSubmit">
               <!-- <div class="rigdig-modal__form_group">
                 <label class="rigdig-modal__label">
@@ -83,7 +88,7 @@
                 <label class="rigdig-modal__label">
                   <template v-if="email">
                     <div class="rigdig-modal__label-text">
-                      Email Address
+                      Email
                       <span class="rigdig-modal__signout-link">
                         Not you?&nbsp;
                         <a class="my-2" href="/user/logout">Click here to sign out</a>.
@@ -98,7 +103,7 @@
                     >
                   </template>
                   <template v-else>
-                    <div class="rigdig-widget__label-text">Email Address</div>
+                    <div class="rigdig-widget__label-text">Email</div>
                     <input
                       ref="email"
                       v-model="userEmail"
@@ -113,17 +118,20 @@
               <div class="rigdig-modal__buttons">
                 <button
                   type="submit"
-                  class="btn btn-primary rigdig-widget__submit"
+                  class="btn btn-primary btn-block rigdig-widget__submit"
                   :disabled="loading"
                 >
-                  <div class="d-flex align-items-center">
-                    <span>{{ buttonLabel }}</span>
-                    <div
-                      v-show="loading"
-                      class="spinner-border spinner-border-sm text-light ml-1"
-                      role="status"
-                    >
-                      <span class="sr-only">Processing…</span>
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div style="width:1.5rem" />
+                    <span>Next</span>
+                    <div style="width:1.5rem">
+                      <div
+                        v-show="loading"
+                        class="spinner-border spinner-border-sm text-light ml-1"
+                        role="status"
+                      >
+                        <span class="sr-only">Processing…</span>
+                      </div>
                     </div>
                   </div>
                 </button>
@@ -135,9 +143,6 @@
             </alert-error>
           </template>
 
-          <!-- The PayFabric render target -->
-          <div id="payfabricTarget" ref="payfabricTarget" />
-
           <alert-error v-if="transactionToken && error" title="Unable to purchase report.">
             <p>We weren't able to purchase the Truck History Report.</p>
             <p>
@@ -145,7 +150,10 @@
               <a href="javascript:void(0)" @click="handleSubmit">click here</a> to start over.
             </p>
           </alert-error>
-        </template>
+        </div>
+
+        <!-- The PayFabric render target -->
+        <div id="payfabricTarget" ref="payfabricTarget" />
       </div>
     </div>
   </div>
@@ -311,6 +319,11 @@ export default {
           this.transactionToken = null;
         },
       });
+    },
+
+    async cancelCheckout() {
+      this.transactionToken = null;
+      if (this.client) this.client.destroy();
     },
 
     /**
