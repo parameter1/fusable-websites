@@ -1,12 +1,15 @@
 <template>
   <div>
-    <h2 class="rigdig-modal__subtitle">
-      {{ title }}
-    </h2>
+    <p class="rigdig-modal__copy">
+      We found a match for the VIN. To purchase the report, complete the payment process below.
+    </p>
+    <p class="rigdig-modal__copy">
+      Reports are delivered instantly via email after payment.
+    </p>
     <div class="rigdig-modal__promo">
       <img
         alt="Truck History Report Sample"
-        src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rigdigreport.jpg?w=150&blur=10"
+        src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rigdigreport.jpg?w=90"
       >
       <div>
         <dl>
@@ -17,40 +20,38 @@
         </dl>
       </div>
     </div>
-    <div class="rigdig-modal__teaser border">
-      <icon-file-pdf class="mr-2" />
-      <span style="flex-grow: 1">
-        Truck History Reports are PDFs that you'll receive via email.
+    <div class="rigdig-modal__promo-footer">
+      <span>
+        1 Truck History Report
       </span>
-    </div>
-    <div class="rigdig-modal__teaser border">
-      <icon-credit-card class="mr-2" />
-      <span style="flex-grow: 1">Single Report</span>
-      <span>$34.99</span>
+      <strong>
+        $34.99
+      </strong>
     </div>
     <div v-if="email" class="rigdig-modal__teaser border">
-      <icon-email class="mr-2" />
-      <span style="flex-grow: 1">Email Address</span>
-      <span>{{ email }}</span>
+      <span>
+        Deliver to <strong>{{ email }}</strong>
+      </span>
+      <a href="javascript:void(0)" @click="$emit('back')">
+        Edit
+      </a>
+    </div>
+    <div class="rigdig-modal__step">
+      Step {{ step }} of 2
     </div>
   </div>
 </template>
 
 <script>
-import IconFilePdf from '@parameter1/base-cms-marko-web-icons/browser/file-pdf.vue';
-import IconCreditCard from '@parameter1/base-cms-marko-web-icons/browser/credit-card.vue';
-import IconEmail from '@parameter1/base-cms-marko-web-icons/browser/mail.vue';
 
 export default {
   name: 'CheckoutHeader',
 
-  components: {
-    IconCreditCard,
-    IconEmail,
-    IconFilePdf,
-  },
-
   props: {
+    step: {
+      type: Number,
+      default: 1,
+    },
     truckInfo: {
       type: String,
       required: true,
@@ -68,5 +69,7 @@ export default {
       required: true,
     },
   },
+
+  emits: ['back'],
 };
 </script>
