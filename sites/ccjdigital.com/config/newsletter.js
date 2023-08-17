@@ -55,6 +55,7 @@ const defaults = {
 };
 
 module.exports = {
+  enableABTesting: true,
   // uses inline omeda form
   signupBanner: {
     ...defaults,

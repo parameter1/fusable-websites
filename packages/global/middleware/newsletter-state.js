@@ -8,6 +8,7 @@ const positions = ['pushdown', 'inbody'];
 const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
   // account for site level enabling of initially expanded
   const newsletterConfig = req.app.locals.site.getAsObject('newsletter');
+  const enableABTesting = defaultValue(newsletterConfig.enableABTesting, false);
   const { device } = parser(req.headers['user-agent']);
   const disableMobileCBIE = defaultValue(newsletterConfig.pushdown.disableMobileCBIE, false);
   const disableExpandOnMobile = disableMobileCBIE && (device && device.type === 'mobile');
@@ -26,7 +27,8 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
   // both checks are using hasCookie vs hasCookie & hasPositioinCookie because the enlPrompted
   // cookie should still tell the injection when to inject, once per 2 weeks or 2 years
   const canBeInitiallyInjected = (
-    position === 'inbody'
+    enableABTesting
+    && position === 'inbody'
     && siteConfigCBI
     && !(
       hasCookie
@@ -59,6 +61,7 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
     disabled,
     initiallyExpanded,
     initiallyInjected,
+    enableABTesting,
     // set this for other middlewares to know it can be set later
     // if formatContentResponse conditions are met
     canBeInitiallyExpanded,
@@ -79,6 +82,7 @@ const formatContentResponse = ({ res, content }) => {
     hasCookie,
     fromEmail,
     disabled,
+    enableABTesting,
     cookie,
     positionCookie,
   } = res.locals.newsletterState;
@@ -98,7 +102,9 @@ const formatContentResponse = ({ res, content }) => {
     )
   ) {
     res.cookie(cookie.name, true, { maxAge: cookie.maxAge });
-    res.cookie(positionCookie.name, positionCookie.value, { maxAge: positionCookie.maxAge });
+    if (enableABTesting) {
+      res.cookie(positionCookie.name, positionCookie.value, { maxAge: positionCookie.maxAge });
+    };
 
     res.locals.newsletterState.initiallyExpanded = !canBeInitiallyInjected;
     res.locals.newsletterState.initiallyInjected = canBeInitiallyInjected;
