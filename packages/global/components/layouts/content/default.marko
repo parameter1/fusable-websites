@@ -123,7 +123,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             </if>
           </if>
           <else-if(!context.canAccess || context.requiresUserInput)>
-            $ const body = getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
+            $ const body = getContentPreview({ body: content.body, selector: "p:lt(4)" });
             <marko-web-content-body block-name=blockName obj={ body } lazyload-first-image=lazyloadFirstImage />
 
             <div class="content-page-preview-overlay" />
