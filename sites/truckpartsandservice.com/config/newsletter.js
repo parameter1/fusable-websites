@@ -53,7 +53,6 @@ module.exports = {
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tps-full.png',
   },
   pushdown: {
-    disableMobileCBIE: true,
     ...defaults,
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tps-half.png',
     name: '20K parts pros get it. Shouldn’t you?',
