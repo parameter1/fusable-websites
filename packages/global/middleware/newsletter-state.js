@@ -10,7 +10,7 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
   const newsletterConfig = req.app.locals.site.getAsObject('newsletter');
   const { device } = parser(req.headers['user-agent']);
   // config and device check to see if we should do ab testing
-  const enableABTesting = defaultValue(newsletterConfig.enableABTesting, (device && device.type === 'mobile'));
+  const enableABTesting = defaultValue(newsletterConfig.enableABTesting && device && device.type === 'mobile', false);
   const disableMobileCBIE = defaultValue(newsletterConfig.pushdown.disableMobileCBIE, false);
   const disableExpandOnMobile = disableMobileCBIE && (device && device.type === 'mobile');
   const siteConfigCBIE = defaultValue(newsletterConfig.pushdown.canBeInitiallyExpanded, true);
