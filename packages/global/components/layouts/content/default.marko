@@ -1,7 +1,9 @@
-import { getAsArray, get } from "@parameter1/base-cms-object-path";
+import { getAsArray, getAsObject, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
 import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/utils/get-content-preview";
 import storiesQueryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/related-stories-block";
+import renderSiteNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monorail/utils/render-site-newsletter-menu";
+import renderSiteIdxNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monorail/utils/render-site-idx-newsletter-menu";
 
 // move to core if we go this route.
 import Stories from "../../blocks/stories";
@@ -150,6 +152,16 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
             $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
 
+            $ const newsletterPromise = renderSiteNewsletterMenu({ out }).then((html) => ({ at: 200, html }));
+            $ const idxNewsletterPromise = renderSiteIdxNewsletterMenu({
+              out,
+              input: {
+                type: "inlineContent",
+                user: context.user,
+                application: context.application,
+              },
+            }).then((html) => ({ at: 500, html }));
+            $ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
             <if(contentDisplayType === 'relatedContent')>
               <marko-web-query|{ nodes }| name="related-published-content" params={ contentId: id, limit: 4, requiresImage: true, queryFragment: storiesQueryFragment } collapsible=false>
                 <if(nodes.length < 4)>
@@ -169,6 +181,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                   >
                     $ nodes.push(...related);
                     $ const htmlInjections = [
+                      ...(initiallyInjected ? [newsletterPromise, idxNewsletterPromise] : []),
                       {
                         at: 1200,
                         html: Stories.renderToString({
@@ -195,6 +208,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                 </if>
                 <else>
                   $ const htmlInjections = [
+                      ...(initiallyInjected ? [newsletterPromise, idxNewsletterPromise] : []),
                       {
                         at: 1200,
                         html: Stories.renderToString({
