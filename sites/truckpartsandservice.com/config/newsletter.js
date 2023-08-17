@@ -47,13 +47,13 @@ const defaults = {
 };
 
 module.exports = {
+  enableABTesting: process.env.INBODY_PUSHDOWN_INJECTION === 'true',
   // uses inline omeda form
   signupBanner: {
     ...defaults,
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tps-full.png',
   },
   pushdown: {
-    disableMobileCBIE: true,
     ...defaults,
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tps-half.png',
     name: '20K parts pros get it. Shouldn’t you?',

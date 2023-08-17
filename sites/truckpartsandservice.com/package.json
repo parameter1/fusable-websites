@@ -1,6 +1,6 @@
 {
   "name": "@randall-reilly/truckpartsandservice.com",
-  "version": "1.59.1",
+  "version": "1.60.0",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/sites/truckpartsandservice.com",
   "license": "MIT",
@@ -32,14 +32,14 @@
   ],
   "dependencies": {
     "@parameter1/base-cms-marko-core": "^4.32.0",
-    "@parameter1/base-cms-marko-web": "^4.32.0",
+    "@parameter1/base-cms-marko-web": "^4.35.0",
     "@parameter1/base-cms-marko-web-gtm": "^4.17.1",
     "@parameter1/base-cms-marko-web-leaders": "^4.27.0",
-    "@parameter1/base-cms-marko-web-theme-monorail": "^4.33.1",
+    "@parameter1/base-cms-marko-web-theme-monorail": "^4.35.0",
     "@parameter1/base-cms-object-path": "^4.5.12",
     "@parameter1/base-cms-utils": "^4.5.12",
     "@parameter1/base-cms-web-cli": "^4.18.3",
-    "@randall-reilly/package-global": "^1.59.1",
+    "@randall-reilly/package-global": "^1.60.0",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
   }

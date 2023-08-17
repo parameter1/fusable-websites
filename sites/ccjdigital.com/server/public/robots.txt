@@ -6,5 +6,11 @@ Disallow: /__
 Disallow: /print/content
 Disallow: /search
 
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
 Sitemap: https://www.ccjdigital.com/sitemap.xml
 Sitemap: https://www.ccjdigital.com/sitemap-google-news.xml

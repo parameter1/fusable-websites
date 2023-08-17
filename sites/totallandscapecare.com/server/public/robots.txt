@@ -6,5 +6,11 @@ Disallow: /__
 Disallow: /print/content
 Disallow: /search
 
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
 Sitemap: https://www.totallandscapecare.com/sitemap.xml
 Sitemap: https://www.totallandscapecare.com/sitemap-google-news.xml
