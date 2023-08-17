@@ -32,7 +32,6 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
     <if(!showOverlay)>
-      $ console.log(initiallyInjected && contentDisplayType !== 'relatedContent', initiallyInjected, contentDisplayType, (!contentDisplayType || contentDisplayType !== 'relatedContent'))
       $ const adName = (GAM.btfLeaderboard && !initiallyInjected) ? "leaderboard-desktop" : "leaderboard";
       <theme-gam-define-display-ad
         name=adName
