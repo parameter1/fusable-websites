@@ -6,6 +6,7 @@ import renderSiteNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monor
 
 // move to core if we go this route.
 import Stories from "../../blocks/stories";
+$ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
 
@@ -31,7 +32,8 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
     <if(!showOverlay)>
-      $ const adName = (GAM.btfLeaderboard) ? "leaderboard-desktop" : "leaderboard";
+      $ console.log(initiallyInjected && contentDisplayType !== 'relatedContent', initiallyInjected, contentDisplayType, (!contentDisplayType || contentDisplayType !== 'relatedContent'))
+      $ const adName = (GAM.btfLeaderboard && !initiallyInjected) ? "leaderboard-desktop" : "leaderboard";
       <theme-gam-define-display-ad
         name=adName
         position="content_page"
@@ -151,8 +153,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
             $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
 
-            $ const newsletterPromise = renderSiteNewsletterMenu({ out }).then((html) => ({ at: 1200, html }));
-            $ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
+
 
             <if(contentDisplayType === 'relatedContent')>
               <marko-web-query|{ nodes }| name="related-published-content" params={ contentId: id, limit: 4, requiresImage: true, queryFragment: storiesQueryFragment } collapsible=false>
@@ -225,6 +226,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
               </marko-web-query>
             </if>
             <else-if(initiallyInjected)>
+              $ const newsletterPromise = renderSiteNewsletterMenu({ out }).then((html) => ({ at: 250, html }));
               $ const htmlInjections = [newsletterPromise];
               <theme-body-with-injection
                 content=content
@@ -232,10 +234,9 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                 block-name=blockName
                 preventHTMLInjection=!shouldInjectAds
                 html-injections=htmlInjections
-                desktopAdCounts=[2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500]
-                mobile-leaderboard-ad-name=mobileLeaderboardAdName
-                mobile-leaderboard-modifiers=mobileLeaderboardModifiers
-                mobileAdCounts=[1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250]
+                mobile-leaderboard-ad-name="inline-content-mobile"
+                mobile-leaderboard-ad-counts=[900]
+                mobile-leaderboard-modifiers=["margin-auto-x",  "inline-content", "inline-mobile"]
                 lazyload-first-image=lazyloadFirstImage
               />
             </else-if>

@@ -8,11 +8,11 @@ const positions = ['pushdown', 'inbody'];
 const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
   // account for site level enabling of initially expanded
   const newsletterConfig = req.app.locals.site.getAsObject('newsletter');
-  const enableABTesting = defaultValue(newsletterConfig.enableABTesting, false);
   const { device } = parser(req.headers['user-agent']);
+  // config and device check to see if we should do ab testing
+  const enableABTesting = defaultValue(newsletterConfig.enableABTesting, (device && device.type === 'mobile'));
   const disableMobileCBIE = defaultValue(newsletterConfig.pushdown.disableMobileCBIE, false);
   const disableExpandOnMobile = disableMobileCBIE && (device && device.type === 'mobile');
-  const siteConfigCBI = defaultValue(newsletterConfig.pushdown.canBeInjected, true);
   const siteConfigCBIE = defaultValue(newsletterConfig.pushdown.canBeInitiallyExpanded, true);
   const hasCookie = Boolean(get(req, `cookies.${cookieName}`));
   const hasPositionCookie = Boolean(get(req, `cookies.${cookieName}Position`));
@@ -29,7 +29,6 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
   const canBeInitiallyInjected = (
     enableABTesting
     && position === 'inbody'
-    && siteConfigCBI
     && !(
       hasCookie
       || fromEmail
