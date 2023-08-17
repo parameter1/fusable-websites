@@ -52,6 +52,7 @@ const defaults = {
 };
 
 module.exports = {
+  enableABTesting: process.env.INBODY_PUSHDON_INJECTION === 'true',
   // uses inline omeda form
   signupBanner: {
     ...defaults,

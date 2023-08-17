@@ -8,7 +8,6 @@ const baseConfig = {
 };
 
 const defaults = {
-  enableABTesting: true,
   name: 'Don’t Miss Out',
   description: 'Get the business tips, industry insights and trending news every contractor needs to know in the <span class="newsletter-name">Equipment World</span> newsletter.',
   defaultNewsletter: {
@@ -67,6 +66,7 @@ const defaults = {
 };
 
 module.exports = {
+  enableABTesting: process.env.INBODY_PUSHDON_INJECTION === 'true',
   // uses inline omeda form
   signupBanner: {
     ...defaults,
