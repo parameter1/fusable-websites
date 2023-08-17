@@ -11,6 +11,7 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
   const { device } = parser(req.headers['user-agent']);
   // config and device check to see if we should do ab testing
   const enableABTesting = defaultValue(newsletterConfig.enableABTesting, (device && device.type === 'mobile'));
+  console.log(enableABTesting, (device && device.type === 'mobile'));
   const disableMobileCBIE = defaultValue(newsletterConfig.pushdown.disableMobileCBIE, false);
   const disableExpandOnMobile = disableMobileCBIE && (device && device.type === 'mobile');
   const siteConfigCBIE = defaultValue(newsletterConfig.pushdown.canBeInitiallyExpanded, true);
@@ -50,8 +51,8 @@ const newsletterState = ({ setCookie = true } = {}) => (req, res, next) => {
   const positionMaxAge = maxAge * 10;
 
   if (initiallyExpanded || initiallyInjected) {
-    res.cookie(cookieName, true, { maxAge });
-    res.cookie(`${cookieName}Position`, position, { maxAge: positionMaxAge });
+    // res.cookie(cookieName, true, { maxAge });
+    // res.cookie(`${cookieName}Position`, position, { maxAge: positionMaxAge });
   }
 
   res.locals.newsletterState = {
@@ -100,10 +101,10 @@ const formatContentResponse = ({ res, content }) => {
       && (!initiallyInjected && !hasCookie && !disabled && !fromEmail)
     )
   ) {
-    res.cookie(cookie.name, true, { maxAge: cookie.maxAge });
-    if (enableABTesting) {
-      res.cookie(positionCookie.name, positionCookie.value, { maxAge: positionCookie.maxAge });
-    };
+    // res.cookie(cookie.name, true, { maxAge: cookie.maxAge });
+    // if (enableABTesting) {
+    //   res.cookie(positionCookie.name, positionCookie.value, { maxAge: positionCookie.maxAge });
+    // };
 
     res.locals.newsletterState.initiallyExpanded = !canBeInitiallyInjected;
     res.locals.newsletterState.initiallyInjected = canBeInitiallyInjected;
