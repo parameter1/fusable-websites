@@ -1,6 +1,5 @@
 const withContent = require('@randall-reilly/package-global/middleware/with-content');
 const contentMeter = require('@randall-reilly/package-global/middleware/content-meter');
-const contentDisplay = require('@randall-reilly/package-global/middleware/content-display');
 const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-page');
 const contact = require('@randall-reilly/package-global/templates/content/contact');
 const { newsletterState, formatContentResponse } = require('@randall-reilly/package-global/middleware/newsletter-state');
