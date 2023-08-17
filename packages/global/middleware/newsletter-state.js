@@ -103,7 +103,7 @@ const formatContentResponse = ({ res, content }) => {
     res.cookie(cookie.name, true, { maxAge: cookie.maxAge });
     if (enableABTesting) {
       res.cookie(positionCookie.name, positionCookie.value, { maxAge: positionCookie.maxAge });
-    };
+    }
 
     res.locals.newsletterState.initiallyExpanded = !canBeInitiallyInjected;
     res.locals.newsletterState.initiallyInjected = canBeInitiallyInjected;
