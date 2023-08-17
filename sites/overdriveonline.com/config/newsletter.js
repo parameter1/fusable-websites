@@ -57,7 +57,6 @@ module.exports = {
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ovd-full.png',
   },
   pushdown: {
-    disableMobileCBIE: true,
     ...defaults,
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ovd-half.png',
     name: '135K owner-ops get it. Shouldn’t you?',

@@ -185,8 +185,10 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                       block-name=blockName
                       preventHTMLInjection=!shouldInjectAds
                       html-injections=htmlInjections
+                      desktopAdCounts=[2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500]
                       mobile-leaderboard-ad-name=mobileLeaderboardAdName
                       mobile-leaderboard-modifiers=mobileLeaderboardModifiers
+                      mobileAdCounts=[1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250]
                       lazyload-first-image=lazyloadFirstImage
                     />
                   </marko-web-query>
@@ -203,8 +205,6 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                         })
                       },
                     ];
-                    $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
-                    $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
                     <theme-body-with-injection
                       content=content
                       aliases=aliases
