@@ -13,7 +13,7 @@ module.exports = ({
     mobileScaling: 2, // double these on mobile
   };
 
-  config.btfLeaderboard = false;
+  config.btfLeaderboard = true;
 
   config
     .setTemplate('LEADERBOARD', {
