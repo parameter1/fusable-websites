@@ -2,8 +2,6 @@ const configureGAM = require('@randall-reilly/package-global/config/gam');
 
 const config = configureGAM({ basePath: 'ovd' });
 
-config.btfLeaderboard = true;
-
 config
   .setAliasAdUnits('default', [
     { name: 'leaderboard', templateName: 'LEADERBOARD', path: 'leaderboard' },

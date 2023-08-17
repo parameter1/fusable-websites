@@ -1,10 +1,12 @@
-import { getAsArray, get } from "@parameter1/base-cms-object-path";
+import { getAsArray, getAsObject, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
 import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/utils/get-content-preview";
 import storiesQueryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/related-stories-block";
+import renderSiteNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monorail/utils/render-site-newsletter-menu";
 
 // move to core if we go this route.
 import Stories from "../../blocks/stories";
+$ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
 
@@ -30,7 +32,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
     <if(!showOverlay)>
-      $ const adName = (GAM.btfLeaderboard) ? "leaderboard-desktop" : "leaderboard";
+      $ const adName = (GAM.btfLeaderboard && !initiallyInjected) ? "leaderboard-desktop" : "leaderboard";
       <theme-gam-define-display-ad
         name=adName
         position="content_page"
@@ -150,6 +152,8 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
             $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
 
+
+
             <if(contentDisplayType === 'relatedContent')>
               <marko-web-query|{ nodes }| name="related-published-content" params={ contentId: id, limit: 4, requiresImage: true, queryFragment: storiesQueryFragment } collapsible=false>
                 <if(nodes.length < 4)>
@@ -203,7 +207,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                           nodes: nodes,
                           $global
                         })
-                      },
+                      }
                     ];
                     <theme-body-with-injection
                       content=content
@@ -220,6 +224,21 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                   </else>
               </marko-web-query>
             </if>
+            <else-if(initiallyInjected)>
+              $ const newsletterPromise = renderSiteNewsletterMenu({ out }).then((html) => ({ at: 250, html }));
+              $ const htmlInjections = [newsletterPromise];
+              <theme-body-with-injection
+                content=content
+                aliases=aliases
+                block-name=blockName
+                preventHTMLInjection=!shouldInjectAds
+                html-injections=htmlInjections
+                mobile-leaderboard-ad-name="inline-content-mobile"
+                mobile-leaderboard-ad-counts=[]
+                mobile-leaderboard-modifiers=["margin-auto-x",  "inline-content", "inline-mobile"]
+                lazyload-first-image=lazyloadFirstImage
+              />
+            </else-if>
             <else>
               <theme-body-with-injection
                 content=content
