@@ -1002,7 +1002,7 @@
     marko "~4.20.0"
     minimist "^1.2.8"
 
-"@parameter1/base-cms-marko-core@^4.32.0":
+"@parameter1/base-cms-marko-core@^4.32.0", "@parameter1/base-cms-marko-core@^4.9.0":
   version "4.32.0"
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-core/-/base-cms-marko-core-4.32.0.tgz#5f6969fae1a5b2436abfb242b8b9a43b4f2c29ae"
   integrity sha512-DgRO/736Hc17wChrT34eImvOjlxbmziNTWKU0i6+8I2J2OghdqTWi0Pw2dDYNsjv3bKLwOpbuLdhf8sxZKn8Cg==
