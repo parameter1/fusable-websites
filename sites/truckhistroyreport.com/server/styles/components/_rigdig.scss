@@ -20,18 +20,38 @@
 }
 /*! critical:start */
 .page-wrapper__section .sticky-top {
-  margin-top: $grid-gutter-width;
+  margin-top: 30px;
   top: 20px;
 }
 .rigdig {
+  &_logo {
+    padding-right: map-get($spacers, 2)
+  }
+
+
+  @media (min-width: 992px) {
+    &__hide-desktop {
+      display: none;
+    }
+  }
+
+  @media (max-width: 992px) {
+    &__hide-mobile {
+      display: none;
+    }
+    &__hide-border-on-mobile {
+      border: none;
+    }
+  }
+
   &__bg-wrapper {
     padding: map-get($spacers, 3);
     margin-left: auto;
     margin-right: auto;
     background-color: #f0f1f2;
     border-radius: $input-border-radius;
-    margin-bottom: $grid-gutter-width;
-    margin-top: $grid-gutter-width;
+    margin-bottom: 30px;
+    margin-top: 30px;
     position: relative;
     .pull-graphic {
       right: -26px;
@@ -43,14 +63,17 @@
     padding: map-get($spacers, 3);
     margin-left: auto;
     margin-right: auto;
-    margin-top: $grid-gutter-width;
-    margin-bottom: $grid-gutter-width;
+    margin-top: 30px;
+    margin-bottom: 30px;
     border: solid 1px $gray-500;
     border-radius: $input-border-radius;
+    hr {
+      width: 100%;
+    }
   }
   &__wrapper {
-    margin-top: $grid-gutter-width;
-    margin-bottom: $grid-gutter-width;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
   &__section-sub-title {
     font-weight: 700;
@@ -80,7 +103,9 @@
   &-btn {
     @include skin-typography($style: "content-meter-cta");
   }
-
+  &__section-title {
+    font-weight: 700;
+  }
 }
 /*! critical:end */
 .rigdig-widget {
