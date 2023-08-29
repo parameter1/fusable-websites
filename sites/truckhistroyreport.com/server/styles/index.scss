@@ -1,0 +1,35 @@
+$theme-site-header-breakpoints: (
+  hide-primary: 100000px, // effectively always hide the primary nav
+  hide-secondary: 750px,
+  small-logo: 950px,
+  small-text-primary: 0,
+  small-text-secondary: 950px
+);
+
+// Colors
+$primary: #b9161b;
+
+// Newsletter signup forms
+$skin-newsletter-signup-bg-color: #f0f1f2;
+$skin-newsletter-signup-inline-btn-color: #460c0e;
+
+@import "@randall-reilly/package-global/scss/core";
+/*! critical:start */
+@import "./components/_rigdig";
+/*! critical:end */
+@import "./components/partners-in-business-page";
+
+.site-navbar {
+  &__items {
+    &--secondary {
+      // ensures the nav items are aligned to the offset logo
+      padding-top: 4px;
+    }
+  }
+}
+
+.site-footer {
+  &__brand {
+    margin-bottom: 0;
+  }
+}

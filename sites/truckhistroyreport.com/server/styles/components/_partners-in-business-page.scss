@@ -1,0 +1,36 @@
+.pib-page {
+  &__header {
+    padding-bottom: 40px;
+    text-align: center;
+  }
+
+  &__website-section-name {
+    margin-bottom: 8px;
+    @include skin-typography($style: "pib-title");
+  }
+
+  &__description {
+    margin-bottom: 27px;
+    @include skin-typography($style: "pib-description");
+  }
+
+  &__partners-label {
+    margin-bottom: 20px;
+    @include skin-typography($style: "pib-partners");
+    text-transform: uppercase;
+  }
+
+  &__partner-logos {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__partner-logo-1 {
+    width: 88px;
+    margin-right: 22px;
+  }
+
+  &__partner-logo-2 {
+    width: 148px;
+  }
+}

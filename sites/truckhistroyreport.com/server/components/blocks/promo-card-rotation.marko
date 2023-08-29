@@ -1,0 +1,7 @@
+import shuffle from "@randall-reilly/package-global/utils/shuffle-array";
+import PromoA from "@randall-reilly/package-global/components/blocks/promos/ovd-reader-rigs-submit";
+import PromoB from "@randall-reilly/package-global/components/blocks/ovd-pib-manual-promo";
+import PromoC from "@parameter1/base-cms-marko-web-theme-monorail/components/blocks/white-papers"
+
+$ const PromotionComponent = shuffle([PromoA, PromoB, PromoC])[0];
+<${PromotionComponent} />

@@ -1,0 +1,48 @@
+{
+  "name": "@randall-reilly/truckhistoryreport.com",
+  "version": "1.59.1",
+  "author": "Jacob Bare <jacob@parameter1.com>",
+  "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/sites/truckhistoryreport.com",
+  "license": "MIT",
+  "private": true,
+  "website": {
+    "id": "5fce561dd28860bc33b823ce",
+    "tenant": "randallreilly_all",
+    "account": "randallreilly",
+    "stack": "virgon",
+    "key": "thr",
+    "deploy": {
+      "staging": true
+    }
+  },
+  "scripts": {
+    "dev": "basecms-website dev --compile-dir ../../packages --watch-dir ../../packages --purge-css-content-dir ../../packages --purge-css-content-dir ../../node_modules/@parameter1",
+    "build": "basecms-website build --purge-css-content-dir ../../packages --purge-css-content-dir ../../node_modules/@parameter1",
+    "build:css": "basecms-website build:css --purge-content-dir ../../packages --purge-content-dir ../../node_modules/@parameter1",
+    "compile": "basecms-marko-compile compile",
+    "lint": "eslint --ext .js --ext .vue --max-warnings 5 --config ../../.eslintrc.js --ignore-path ../../.eslintignore ./",
+    "lint:fix": "yarn lint --fix",
+    "test": "yarn lint && yarn compile --no-clean"
+  },
+  "engines": {
+    "node": ">=14.15"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "dependencies": {
+    "@parameter1/base-cms-marko-core": "^4.32.0",
+    "@parameter1/base-cms-marko-web": "^4.32.0",
+    "@parameter1/base-cms-marko-web-gtm": "^4.17.1",
+    "@parameter1/base-cms-marko-web-theme-monorail": "^4.33.1",
+    "@parameter1/base-cms-object-path": "^4.5.12",
+    "@parameter1/base-cms-utils": "^4.5.12",
+    "@parameter1/base-cms-web-cli": "^4.18.3",
+    "@randall-reilly/package-global": "^1.59.1",
+    "@randall-reilly/package-rigdig": "^0.0.0",
+    "graphql": "^14.5.4",
+    "graphql-tag": "^2.10.1"
+  }
+}

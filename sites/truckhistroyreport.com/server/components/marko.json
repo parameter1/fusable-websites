@@ -1,0 +1,8 @@
+{
+  "taglib-imports": [
+    "./blocks/marko.json"
+  ],
+  "<site-road-pro-facebook>": {
+    "template": "./road-pro-facebook.marko"
+  }
+}

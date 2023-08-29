@@ -153,6 +153,32 @@ services:
       - "9905:80"
       - "19905:19905"
 
+  thr:
+    <<: *site-cmd
+    working_dir: /root/sites/truckhistroyreport.com
+    environment:
+      <<: *env
+      HOST: www-rr-ovd.dev.parameter1.com
+      PORT: 80
+      EXPOSED_PORT: 9906
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
+      LIVERELOAD_PORT: 19906
+      OMEDA_INPUT_ID: ${OVD_OMEDA_INPUT_ID-(unset)}
+      RIGDIG_USERNAME: ${RIGDIG_USERNAME}
+      RIGDIG_PASSWORD: ${RIGDIG_PASSWORD}
+      PAYFABRIC_DEVICE_ID: ${PAYFABRIC_DEVICE_ID}
+      PAYFABRIC_DEVICE_PWD: ${PAYFABRIC_DEVICE_PWD}
+      PAYFABRIC_GATEWAY_NAME: ${PAYFABRIC_GATEWAY_NAME-EVO US_CC}
+      PAYFABRIC_ENV: ${PAYFABRIC_ENV-SANDBOX}
+      PAYFABRIC_PAYMENT_METHODS: ${PAYFABRIC_PAYMENT_METHODS-CreditCard}
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+      SENDGRID_DEV_TO: ${SENDGRID_DEV_TO-support@parameter1.com}
+      DEBUG: rigdig,payfabric
+    hostname: www-rr-ovd.dev.parameter1.com
+    ports:
+      - "9906:80"
+      - "19906:19906"
+
   ovd:
     <<: *site-cmd
     working_dir: /root/sites/overdriveonline.com

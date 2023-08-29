@@ -1,0 +1,534 @@
+import hierarchyAliases from "@parameter1/base-cms-marko-web/utils/hierarchy-aliases";
+
+$ const { id, alias, name, pageNode } = input;
+$ const { GAM } = out.global;
+
+<global-website-section-default-layout
+  id=id
+  alias=alias
+  name=name
+  page-node=pageNode
+  head=input.head
+>
+<@section>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="row rigdig__border-wrapper">
+        <div class="col-sm-2">
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-logo.jpg"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-logo.jpg?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={}
+            />
+          </marko-web-block>
+        </div>
+        <div class="col-sm-10">
+          <h3>
+            Welcome to the new RigDig Truck History Report!
+          </h3>
+          <p>
+            RigDig Truck History Report has a new look and a new home. Looking for RigDigBI? Looking to access past reports?
+          </p>
+        </div>
+      </div>
+      <div class="row rigdig__bg-wrapper">
+        <div class="col-sm-12">
+          <h3>RigDig Truck Histordy Report</h3>
+        </div>
+        <div class="col-sm-12">
+          <p>
+            RigDig Truck History Reports protect you from purchase mistakes and help you make smart buys.
+          </p>
+        </div>
+        <div class="col-sm-5" >
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-poweredby.png"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-poweredby.png?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={ }
+            />
+          </marko-web-block>
+          <div class="rigdig__quote">
+            <p>
+              “RigDig helped me avoid buying a questionable truck.  I ran a RigDig Truck History Report which showed that the odometer had been tampered with.”
+            <br>
+              <span>
+                John T, Fleet Owner
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-1" />
+        <div class="col-sm-6 pull-graphic">
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/preview.png"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/preview.png?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={ w: 400 }
+            />
+          </marko-web-block>
+        </div>
+      </div>
+      <div class="row rigdig__bg-wrapper">
+        <div class="col-sm-12">
+          <h3>
+            Get the story behind the truck
+          </h3>
+          <p>
+            Powered by RigDig BI data, RigDig Truck History Reports give you vital facts to make smart buys. If you’re a fleet manager or owner-operator, don’t make a deal without knowing as much as possible about a truck’s history.
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <h6>
+            <strong>
+              Significant History
+            </strong>
+          </h6>
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__card-graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/significant.jpg"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/significant.jpg?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={}
+            />
+          </marko-web-block>
+          <p>
+            A quick summary of junk, salvage, total loss, title & odometer flags. Indicators of accidents, inspections, carriers, and UCC lien records.
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <h6>
+            <strong>
+              Inspection and Accident History
+            </strong>
+          </h6>
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__card-graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/accident.jpg"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/accident.jpg?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={}
+            />
+          </marko-web-block>
+          <p>
+            Inspection an accident history by past USDOT operators of the vehicle with details on violations issued or severity of the crash.
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <h6>
+            <strong>
+              Title and Odometer Brands
+            </strong>
+          </h6>
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__card-graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/brands.jpg"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/brands.jpg?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={}
+            />
+          </marko-web-block>
+          <p>
+            Branded titles indicate a vehicle has suffered damage serious enough to affect the reliability, safety, and value of the vehicle permanently.
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <h6>
+            <strong>
+              Title History
+            </strong>
+          </h6>
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__card-graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/title.jpg"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/title.jpg?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={}
+            />
+          </marko-web-block>
+          <p>
+            Title history of a vehicle by date the title changed and state where the title record was updated.
+          </p>
+        </div>
+        <div class="div-col-12">
+          <marko-web-block name="rigdig-btn" modifiers=[] class="">
+            View Sample Report
+          </marko-web-block>
+        </div>
+      </div>
+
+      <div class="row rigdig__wrapper">
+        <div class="col-sm-12">
+          <h3>
+            Data Sources
+          </h3>
+          <p>
+            RigDig truck history reports are powered by the most comprehensive and trusted information sources available.
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__card-graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/autodatadirect.jpg"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/autodatadirect.jpg?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={}
+            />
+          </marko-web-block>
+          <p>
+            RigDig integrates information from Junk Yards, Salvage Yards, Auto Recyclers, Insurance Carriers and State Titling Agencies from the National Motor Vehicle Title Information System (NMVTIS) via Auto Data Direct (ADD).
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__card-graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/fmcsa.jpg"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/fmcsa.jpg?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={}
+            />
+          </marko-web-block>
+          <p>
+            The Federal Motor Carrier Safety Administration (FMCSA) is RigDig’s primary source of federally recordable accidents, post-accident inspections, inspection violations and carrier information.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__card-graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-bi.png"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-bi.png?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={}
+            />
+          </marko-web-block>
+          <p>
+            RigDig Business Intelligence is the primary source for vehicle specifications and operating history of carriers associated with a given VIN over time.
+          </p>
+        </div>
+        <div class="col-sm-6">
+          <marko-web-block name="rigdig" modifiers=[] class="">
+            <marko-web-img
+              class="rigdig__card-graphic"
+              src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/eda.png"
+              srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/eda.png?dpr=2 2x"]
+              alt="RigDig Logo"
+              attrs={}
+            />
+          </marko-web-block>
+          <p>
+            Equipment Data Associates (EDA) is RigDig’s primary source of Uniform Commercial Code (UCC) related liens and terminations.
+          </p>
+        </div>
+      </div>
+      <div class="row rigdig__border-wrapper" >
+        <div class="col-sm-12">
+          <h6>
+            <strong>
+              Truck History Report Subscriptions
+            </strong>
+          </h6>
+          <p>
+            Are you a dealer, fleet, finance company, or similar business needing to run 10 or more Truck History Reports a month? Learn more at RigDig BI.
+          </p>
+          <a href="#">
+            <marko-web-block name="rigdig-btn" modifiers=[] class="">
+            Get A Quote
+          </marko-web-block>
+          </a>
+        </div>
+        <div class="col-sm-12">
+          <h6>
+            <strong>
+              Support
+            </strong>
+          </h6>
+          <p>
+            Email us at <a href="#">support@rigdig.com</a> for truck history report support.
+          </p>
+        </div>
+      </div>
+    </div>
+     <div class="col-sm-4">
+      <div class="sticky-top">
+        <rigdig-widget />
+      </div>
+    </div>
+  </div>
+
+  </@section>
+
+
+  <!-- <@section>
+    <rigdig-widget />
+  </@section>
+  <@section>
+    <div class="row">
+      <div class="col-sm-2">
+         <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-logo.jpg"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-logo.jpg?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={}
+          />
+        </marko-web-block>
+      </div>
+      <div class="col-sm-10">
+        <h3>
+          Welcome to the new RigDig Truck History Report!
+        </h3>
+        <p>
+          RigDig Truck History Report has a new look and a new home. Looking for RigDigBI? Looking to access past reports?
+        </p>
+      </div>
+    </div>
+  </@section>
+
+  <@section modifiers=["break-container"]>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>RigDig Truck Histordy Report</h3>
+      </div>
+      <div class="col-sm-12">
+        <p>
+          RigDig Truck History Reports protect you from purchase mistakes and help you make smart buys.
+        </p>
+      </div>
+      <div class="col-sm-4" >
+        <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-poweredby.png"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-poweredby.png?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={ }
+          />
+        </marko-web-block>
+      </div>
+      <div class="col-sm-6">
+        <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/preview.png"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/preview.png?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={ w: 400 }
+          />
+        </marko-web-block>
+      </div>
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-12">
+        <p>
+          “RigDig helped me avoid buying a questionable truck.  I ran a RigDig Truck History Report which showed that the odometer had been tampered with.”
+        <br>
+          <span>
+            John T, Fleet Owner
+          </span>
+        </p>
+      </div>
+    </div>
+  </@section>
+  <@section  modifiers=["break-container"]  >
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>
+          Get the story behind the truck
+        </h3>
+        <p>
+          Powered by RigDig BI data, RigDig Truck History Reports give you vital facts to make smart buys. If you’re a fleet manager or owner-operator, don’t make a deal without knowing as much as possible about a truck’s history.
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <h6>
+          <strong>
+            Significant History
+          </strong>
+        </h6>
+        <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__card-graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/significant.jpg"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/significant.jpg?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={}
+          />
+        </marko-web-block>
+        <p>
+          A quick summary of junk, salvage, total loss, title & odometer flags. Indicators of accidents, inspections, carriers, and UCC lien records.
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <h6>
+          <strong>
+            Inspection and Accident History
+          </strong>
+        </h6>
+        <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__card-graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/accident.jpg"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/accident.jpg?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={}
+          />
+        </marko-web-block>
+        <p>
+          Inspection an accident history by past USDOT operators of the vehicle with details on violations issued or severity of the crash.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <h6>
+          <strong>
+            Title and Odometer Brands
+          </strong>
+        </h6>
+        <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__card-graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/brands.jpg"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/brands.jpg?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={}
+          />
+        </marko-web-block>
+        <p>
+          Branded titles indicate a vehicle has suffered damage serious enough to affect the reliability, safety, and value of the vehicle permanently.
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <h6>
+          <strong>
+            Title History
+          </strong>
+        </h6>
+        <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__card-graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/title.jpg"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/title.jpg?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={}
+          />
+        </marko-web-block>
+        <p>
+          Title history of a vehicle by date the title changed and state where the title record was updated.
+        </p>
+      </div>
+    </div>
+  </@section>
+  <@section>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>
+          Data Sources
+        </h3>
+        <p>
+          RigDig truck history reports are powered by the most comprehensive and trusted information sources available.
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__card-graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/autodatadirect.jpg"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/autodatadirect.jpg?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={}
+          />
+        </marko-web-block>
+        <p>
+          RigDig integrates information from Junk Yards, Salvage Yards, Auto Recyclers, Insurance Carriers and State Titling Agencies from the National Motor Vehicle Title Information System (NMVTIS) via Auto Data Direct (ADD).
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__card-graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/fmcsa.jpg"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/fmcsa.jpg?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={}
+          />
+        </marko-web-block>
+        <p>
+          The Federal Motor Carrier Safety Administration (FMCSA) is RigDig’s primary source of federally recordable accidents, post-accident inspections, inspection violations and carrier information.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__card-graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-bi.png"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-bi.png?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={}
+          />
+        </marko-web-block>
+        <p>
+          RigDig Business Intelligence is the primary source for vehicle specifications and operating history of carriers associated with a given VIN over time.
+        </p>
+      </div>
+      <div class="col-sm-6">
+        <marko-web-block name="rigdig" modifiers=[] class="">
+          <marko-web-img
+            class="rigdig__card-graphic"
+            src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/eda.png"
+            srcset=["https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/eda.png?dpr=2 2x"]
+            alt="RigDig Logo"
+            attrs={}
+          />
+        </marko-web-block>
+        <p>
+          Equipment Data Associates (EDA) is RigDig’s primary source of Uniform Commercial Code (UCC) related liens and terminations.
+        </p>
+      </div>
+      <div class="col-sm-12">
+        <h6>
+          <strong>
+            Truck History Report Subscriptions
+          </strong>
+        </h6>
+        <p>
+          Are you a dealer, fleet, finance company, or similar business needing to run 10 or more Truck History Reports a month? Learn more at RigDig BI.
+        </p>
+        <a href="#">
+          <div class="btn">
+            Get A Quote
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-12">
+        <h6>
+          <strong>
+            Support
+          </strong>
+        </h6>
+        <p>
+          Email us at <a href="#">support@rigdig.com</a> for truck history report support.
+        </p>
+      </div>
+    </div>
+  </@section> -->
+</global-website-section-default-layout>
