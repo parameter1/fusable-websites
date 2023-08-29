@@ -19,6 +19,10 @@
   }
 }
 /*! critical:start */
+.page-wrapper__section .sticky-top {
+  margin-top: $grid-gutter-width;
+  top: 20px;
+}
 .rigdig {
   &__bg-wrapper {
     padding: map-get($spacers, 3);
@@ -26,8 +30,8 @@
     margin-right: auto;
     background-color: #f0f1f2;
     border-radius: $input-border-radius;
-    margin-bottom: map-get($spacers, block);
-    margin-top: map-get($spacers, block);
+    margin-bottom: $grid-gutter-width;
+    margin-top: $grid-gutter-width;
     position: relative;
     .pull-graphic {
       right: -26px;
@@ -39,14 +43,26 @@
     padding: map-get($spacers, 3);
     margin-left: auto;
     margin-right: auto;
-    margin-top: map-get($spacers, block);
-    margin-bottom: map-get($spacers, block);
+    margin-top: $grid-gutter-width;
+    margin-bottom: $grid-gutter-width;
     border: solid 1px $gray-500;
     border-radius: $input-border-radius;
   }
   &__wrapper {
-    margin-top: map-get($spacers, block);
-    margin-bottom: map-get($spacers, block);
+    margin-top: $grid-gutter-width;
+    margin-bottom: $grid-gutter-width;
+  }
+  &__section-sub-title {
+    font-weight: 700;
+    font-size: 18px;
+
+  }
+  &__cta {
+    border-radius: 1rem;
+    border: solid $gray-500;
+    font-weight: 700;
+    padding: .25rem .5rem;
+    color: $black;
   }
   // &__quote {
   //   position: absolute;
