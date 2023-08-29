@@ -6,11 +6,13 @@ import renderSiteNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monor
 
 // move to core if we go this route.
 import Stories from "../../blocks/stories";
+import NativeXCardDeck from "../../blocks/native-x-card-deck";
 $ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
 
 $ const { global: $global } = out;
+$ const { nativeX: nxConfig } = $global;
 $ const { site, contentDisplayType, contentMeterState, GAM } = $global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
@@ -224,31 +226,51 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                   </else>
               </marko-web-query>
             </if>
-            <else-if(initiallyInjected)>
-              $ const newsletterPromise = renderSiteNewsletterMenu({ out }).then((html) => ({ at: 250, html }));
-              $ const htmlInjections = [newsletterPromise];
-              <theme-body-with-injection
-                content=content
-                aliases=aliases
-                block-name=blockName
-                preventHTMLInjection=!shouldInjectAds
-                html-injections=htmlInjections
-                mobile-leaderboard-ad-name="inline-content-mobile"
-                mobile-leaderboard-ad-counts=[]
-                mobile-leaderboard-modifiers=["margin-auto-x",  "inline-content", "inline-mobile"]
-                lazyload-first-image=lazyloadFirstImage
-              />
-            </else-if>
             <else>
-              <theme-body-with-injection
-                content=content
-                aliases=aliases
-                block-name=blockName
-                preventHTMLInjection=!shouldInjectAds
-                mobile-leaderboard-ad-name=mobileLeaderboardAdName
-                mobile-leaderboard-modifiers=mobileLeaderboardModifiers
-                lazyload-first-image=lazyloadFirstImage
-              />
+              $ const uri = nxConfig.getUri();
+              $ const placement = nxConfig.getPlacement({ name: "native", aliases });
+              <marko-web-native-x-fetch-elements|{ ads }| uri=uri id=placement.id opts={ n: 4 }>
+                $ const hasAd = ads && ads.length && ads[0] && ads[0].hasCampaign;
+                $ let htmlInjections = [];
+                <if(hasAd)>
+                  $ const nodes = ads.filter((ad) => ad.hasCampaign);
+                  $ htmlInjections.push(
+                    {
+                      at: 2000,
+                      html: NativeXCardDeck.renderToString({
+                        nodes: nodes,
+                        section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
+                      })
+                    }
+                  );
+                </if>
+                <if(initiallyInjected)>
+                  $ htmlInjections.push(renderSiteNewsletterMenu({ out }).then((html) => ({ at: 250, html })));
+                  <theme-body-with-injection
+                    content=content
+                    aliases=aliases
+                    block-name=blockName
+                    preventHTMLInjection=!shouldInjectAds
+                    html-injections=htmlInjections
+                    mobile-leaderboard-ad-name="inline-content-mobile"
+                    mobile-leaderboard-ad-counts=[]
+                    mobile-leaderboard-modifiers=["margin-auto-x",  "inline-content", "inline-mobile"]
+                    lazyload-first-image=lazyloadFirstImage
+                  />
+                </if>
+                <else>
+                  <theme-body-with-injection
+                    content=content
+                    aliases=aliases
+                    block-name=blockName
+                    preventHTMLInjection=!shouldInjectAds
+                    html-injections=htmlInjections
+                    mobile-leaderboard-ad-name=mobileLeaderboardAdName
+                    mobile-leaderboard-modifiers=mobileLeaderboardModifiers
+                    lazyload-first-image=lazyloadFirstImage
+                  />
+                </else>
+              </marko-web-native-x-fetch-elements>
             </else>
             <if(content.transcript)>
               <div id=`transcript-${id}` class="page-contents__content-transcript">
