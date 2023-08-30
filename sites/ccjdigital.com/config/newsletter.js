@@ -55,13 +55,13 @@ const defaults = {
 };
 
 module.exports = {
+  enableABTesting: process.env.INBODY_PUSHDOWN_INJECTION === 'true',
   // uses inline omeda form
   signupBanner: {
     ...defaults,
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ccj-full.png',
   },
   pushdown: {
-    disableMobileCBIE: true,
     ...defaults,
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ccj-half.png',
     name: '80K trucking pros get it. Shouldn’t you?',

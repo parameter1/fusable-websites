@@ -51,13 +51,13 @@ const defaults = {
 };
 
 module.exports = {
+  enableABTesting: process.env.INBODY_PUSHDOWN_INJECTION === 'true',
   // uses inline omeda form
   signupBanner: {
     ...defaults,
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ovd-full.png',
   },
   pushdown: {
-    disableMobileCBIE: true,
     ...defaults,
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ovd-half.png',
     name: '135K owner-ops get it. Shouldn’t you?',

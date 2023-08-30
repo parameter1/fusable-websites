@@ -12,9 +12,12 @@ $ const { id, alias, name, pageNode } = input;
     <meta name="google-site-verification" content="WW2QzrYsbQWBq40KQCalege4Ob8OQq4Xr9lN_5tT-ng" />
   </@head>
 
-  <@section>
-    <!-- @todo move me! -->
-    <rigdig-widget />
+  <@section modifiers=["native"]>
+    <theme-native-x-card-deck-block
+      section={ name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
+      placement-name="native"
+      limit=4
+    />
   </@section>
 
   <@section modifiers=["break-container"]>
