@@ -68,6 +68,7 @@ $ const perPage = 18;
 
     <theme-section-feed-block alias=alias lazyload=false query-name="website-optioned-content">
       <@query-params limit=3 skip=p.skip({ perPage }) option-name="Pinned" />
+      <@native-x name="native" index=2 aliases=aliases section-name="Sponsor Content" />
     </theme-section-feed-block>
   </@section>
 

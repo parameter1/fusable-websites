@@ -175,6 +175,7 @@ services:
       SENDGRID_API_KEY: ${SENDGRID_API_KEY}
       SENDGRID_DEV_TO: ${SENDGRID_DEV_TO-support@parameter1.com}
       DEBUG: rigdig,payfabric
+      ENABLE_RIGDIG: ${ENABLE_RIGDIG-true}
     hostname: www-rr-ovd.dev.parameter1.com
     ports:
       - "9906:80"
