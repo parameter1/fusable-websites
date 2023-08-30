@@ -31,6 +31,7 @@ x-env-defaults: &env
   IDX_NAV_ENABLE: ${IDX_NAV_ENABLE-false}
   RECAPTCHA_V3_SITE_KEY: ${RECAPTCHA_V3_SITE_KEY-(unset)}
   RECAPTCHA_V3_SECRET_KEY: ${RECAPTCHA_V3_SECRET_KEY-(unset)}
+  INBODY_PUSHDOWN_INJECTION: ${INBODY_PUSHDOWN_INJECTION-false}
 
 x-env-virgon-dev: &env-virgon-dev
   GRAPHQL_URI: ${GRAPHQL_URI-http://host.docker.internal:10103}
@@ -200,6 +201,7 @@ services:
       SENDGRID_API_KEY: ${SENDGRID_API_KEY}
       SENDGRID_DEV_TO: ${SENDGRID_DEV_TO-support@parameter1.com}
       DEBUG: rigdig,payfabric
+      ENABLE_RIGDIG: ${ENABLE_RIGDIG-true}
     hostname: www-rr-ovd.dev.parameter1.com
     ports:
       - "9906:80"

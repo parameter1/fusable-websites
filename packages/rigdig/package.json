@@ -14,10 +14,10 @@
     "test": "yarn lint && yarn compile --no-clean"
   },
   "dependencies": {
-    "@parameter1/base-cms-marko-core": "^4.9.0",
-    "@parameter1/base-cms-marko-web": "^4.22.3",
+    "@parameter1/base-cms-marko-core": "^4.36.0",
+    "@parameter1/base-cms-marko-web": "^4.36.0",
     "@parameter1/base-cms-marko-web-icons": "^4.27.0",
-    "@parameter1/base-cms-marko-web-identity-x": "^4.29.0",
+    "@parameter1/base-cms-marko-web-identity-x": "^4.34.0",
     "@parameter1/base-cms-object-path": "^4.5.12",
     "@parameter1/base-cms-utils": "^4.5.12",
     "@randall-reilly/package-payfabric": "^0.0.0",

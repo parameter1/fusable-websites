@@ -1,14 +1,18 @@
-import { getAsArray, get } from "@parameter1/base-cms-object-path";
+import { getAsArray, getAsObject, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
 import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/utils/get-content-preview";
 import storiesQueryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/related-stories-block";
+import renderSiteNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monorail/utils/render-site-newsletter-menu";
 
 // move to core if we go this route.
 import Stories from "../../blocks/stories";
+import NativeXCardDeck from "../../blocks/native-x-card-deck";
+$ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
 
 $ const { global: $global } = out;
+$ const { nativeX: nxConfig } = $global;
 $ const { site, contentDisplayType, contentMeterState, GAM } = $global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
@@ -30,7 +34,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
 >
   <@section|{ aliases }| modifiers=["first-sm"]>
     <if(!showOverlay)>
-      $ const adName = (GAM.btfLeaderboard) ? "leaderboard-desktop" : "leaderboard";
+      $ const adName = (GAM.btfLeaderboard && !initiallyInjected) ? "leaderboard-desktop" : "leaderboard";
       <theme-gam-define-display-ad
         name=adName
         position="content_page"
@@ -121,7 +125,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             </if>
           </if>
           <else-if(!context.canAccess || context.requiresUserInput)>
-            $ const body = getContentPreview({ body: content.body, selector: "p:nth-of-type(1)" });
+            $ const body = getContentPreview({ body: content.body, selector: "p:lt(4)" });
             <marko-web-content-body block-name=blockName obj={ body } lazyload-first-image=lazyloadFirstImage />
 
             <div class="content-page-preview-overlay" />
@@ -149,6 +153,8 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             -->
             $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
             $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
+
+
 
             <if(contentDisplayType === 'relatedContent')>
               <marko-web-query|{ nodes }| name="related-published-content" params={ contentId: id, limit: 4, requiresImage: true, queryFragment: storiesQueryFragment } collapsible=false>
@@ -185,8 +191,10 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                       block-name=blockName
                       preventHTMLInjection=!shouldInjectAds
                       html-injections=htmlInjections
+                      desktopAdCounts=[2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500]
                       mobile-leaderboard-ad-name=mobileLeaderboardAdName
                       mobile-leaderboard-modifiers=mobileLeaderboardModifiers
+                      mobileAdCounts=[1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250]
                       lazyload-first-image=lazyloadFirstImage
                     />
                   </marko-web-query>
@@ -197,14 +205,12 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                         at: 1200,
                         html: Stories.renderToString({
                           title: "Related Stories",
-                          blockName: 'related-stories-inbody',
+                          blockName: "related-stories-inbody",
                           nodes: nodes,
                           $global
                         })
-                      },
+                      }
                     ];
-                    $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
-                    $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
                     <theme-body-with-injection
                       content=content
                       aliases=aliases
@@ -221,15 +227,50 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
               </marko-web-query>
             </if>
             <else>
-              <theme-body-with-injection
-                content=content
-                aliases=aliases
-                block-name=blockName
-                preventHTMLInjection=!shouldInjectAds
-                mobile-leaderboard-ad-name=mobileLeaderboardAdName
-                mobile-leaderboard-modifiers=mobileLeaderboardModifiers
-                lazyload-first-image=lazyloadFirstImage
-              />
+              $ const uri = nxConfig.getUri();
+              $ const placement = nxConfig.getPlacement({ name: "native", aliases });
+              <marko-web-native-x-fetch-elements|{ ads }| uri=uri id=placement.id opts={ n: 4 }>
+                $ const hasAd = ads && ads.length && ads[0] && ads[0].hasCampaign;
+                $ let htmlInjections = [];
+                <if(hasAd)>
+                  $ const nodes = ads.filter((ad) => ad.hasCampaign);
+                  $ htmlInjections.push(
+                    {
+                      at: 2000,
+                      html: NativeXCardDeck.renderToString({
+                        nodes: nodes,
+                        section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
+                      })
+                    }
+                  );
+                </if>
+                <if(initiallyInjected)>
+                  $ htmlInjections.push(renderSiteNewsletterMenu({ out }).then((html) => ({ at: 250, html })));
+                  <theme-body-with-injection
+                    content=content
+                    aliases=aliases
+                    block-name=blockName
+                    preventHTMLInjection=!shouldInjectAds
+                    html-injections=htmlInjections
+                    mobile-leaderboard-ad-name="inline-content-mobile"
+                    mobile-leaderboard-ad-counts=[]
+                    mobile-leaderboard-modifiers=["margin-auto-x",  "inline-content", "inline-mobile"]
+                    lazyload-first-image=lazyloadFirstImage
+                  />
+                </if>
+                <else>
+                  <theme-body-with-injection
+                    content=content
+                    aliases=aliases
+                    block-name=blockName
+                    preventHTMLInjection=!shouldInjectAds
+                    html-injections=htmlInjections
+                    mobile-leaderboard-ad-name=mobileLeaderboardAdName
+                    mobile-leaderboard-modifiers=mobileLeaderboardModifiers
+                    lazyload-first-image=lazyloadFirstImage
+                  />
+                </else>
+              </marko-web-native-x-fetch-elements>
             </else>
             <if(content.transcript)>
               <div id=`transcript-${id}` class="page-contents__content-transcript">
