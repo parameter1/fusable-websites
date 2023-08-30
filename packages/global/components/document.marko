@@ -81,6 +81,14 @@ $ const { gamDefer, gtmDefer } = req.query;
       target-tag="body"
     />
 
+    <!-- @todo config this somehow? -->
+    $ const src = "https://sandbox.payfabric.com/Payment/WebGate/Content/bundles/payfabricpayments.v2.bundle.min.js";
+    <marko-web-deferred-script-loader-register
+      name="payfabric"
+      src="https://sandbox.payfabric.com/Payment/WebGate/Content/bundles/payfabricpayments.v2.bundle.min.js"
+      request-frame=true
+    />
+
     <${input.head} />
 
     <marko-web-identity-x-context|{ hasUser, user }|>
