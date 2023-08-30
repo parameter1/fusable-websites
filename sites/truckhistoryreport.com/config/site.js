@@ -29,7 +29,7 @@ module.exports = {
   p1events: {
     tenant: 'randallreilly',
     enabled: true,
-    cookieDomain: process.env.NODE_ENV === 'production' ? 'overdriveonline.com' : '',
+    cookieDomain: process.env.NODE_ENV === 'production' ? 'truckhistoryreport.com' : '',
   },
   logos: {
     navbar: {
@@ -57,19 +57,12 @@ module.exports = {
   },
   tagline: 'The Voice of the American Trucker',
   socialMediaLinks: [
-    { provider: 'facebook', href: 'https://www.facebook.com/OverdriveTrucking/', target: '_blank' },
-    { provider: 'twitter', href: 'https://twitter.com/overdriveupdate', target: '_blank' },
-    { provider: 'linkedin', href: 'https://www.linkedin.com/company/92929570/', target: '_blank' },
-    { provider: 'youtube', href: 'https://www.youtube.com/channel/UCVb9_pwbvG99tK1apahFyIg?view_as=subscriber', target: '_blank' },
-    { provider: 'instagram', href: 'https://www.instagram.com/overdriveonline/', target: '_blank' },
-    { provider: 'tiktok', href: 'https://www.tiktok.com/@overdriveonline.com', target: '_blank' },
-  ],
-  podcastLinks: [
-    { label: 'Apple Podcasts', href: 'https://podcasts.apple.com/us/podcast/overdrive-online/id736806291' },
-    // { label: 'Google Podcasts', href: '#' },
-    { label: 'Spotify', href: 'https://open.spotify.com/show/6P7SIZeenGgvAaaIm2SOAq' },
-    { label: 'Stitcher', href: 'https://www.stitcher.com/show/overdrive-radio' },
-    { label: 'Soundcloud', href: 'https://soundcloud.com/overdriveradio' },
+    // { provider: 'facebook', href: 'https://www.facebook.com/OverdriveTrucking/', target: '_blank' },
+    // { provider: 'twitter', href: 'https://twitter.com/overdriveupdate', target: '_blank' },
+    // { provider: 'linkedin', href: 'https://www.linkedin.com/company/92929570/', target: '_blank' },
+    // { provider: 'youtube', href: 'https://www.youtube.com/channel/UCVb9_pwbvG99tK1apahFyIg?view_as=subscriber', target: '_blank' },
+    // { provider: 'instagram', href: 'https://www.instagram.com/overdriveonline/', target: '_blank' },
+    // { provider: 'tiktok', href: 'https://www.tiktok.com/@overdriveonline.com', target: '_blank' },
   ],
   oneTrust: [
     { path: '/collection', oneTrustIds: ['c04235aa-e9e0-4ff9-b558-5e21aa892d20'] },
@@ -94,18 +87,6 @@ module.exports = {
     sendFrom: 'OverdriveOnline.com <noreply@parameter1.com>',
     logo: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd-logo-new.svg?h=35&auto=format,compress&bg=000000&pad=5',
     bgColor: '#000000',
-  },
-  sponsoredLabelLogos: {
-    'Sponsored by RoadPro': {
-      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/road-pro-logo.png?auto=format&w=109&fit=crop',
-      width: '109px',
-    },
-  },
-  sponsoredSectionNameLogos: {
-    gear: {
-      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/trucker-gear-logo.png?auto=format&w=275&fit=crop',
-      width: '275px',
-    },
   },
   setSearchSortFieldToScore: true,
 };
