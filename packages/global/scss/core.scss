@@ -474,6 +474,23 @@ label {
       }
     }
   }
+  .content-card-deck {
+    $self: &;
+    padding: 20px 0;
+    margin: 20px 0;
+    @include media-breakpoint-up(lg) {
+      margin-left: calc(-50vw - -350px);
+      margin-right: calc(-50vw - -350px);
+    }
+    &__wrapper {
+      width: 100%;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @include marko-web-node-list-border($property: border-top);
+    @include marko-web-node-list-border($property: border-bottom);
+  }
 }
 
 .otnotice ~ .otnotice {
@@ -523,4 +540,15 @@ label {
     flex-shrink: 1;
   }
 }
+
+// overrides for inbody content injections
+.page-contents__content-body {
+  .site-newsletter-menu {
+    margin-right: -1rem;
+    margin-left: -1rem;
+    padding-right: map-get($spacers, 2);
+    padding-left: map-get($spacers, 2);
+  }
+}
+
 /*! critical:end */

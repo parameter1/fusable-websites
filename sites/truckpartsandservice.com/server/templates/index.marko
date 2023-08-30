@@ -12,6 +12,14 @@ $ const { id, alias, name, pageNode } = input;
     <meta name="google-site-verification" content="FyobokA5szivS0CI4ycd8S2BhTP8vCO1RaJKZziF_7U" />
   </@head>
 
+  <@section modifiers=["native"]>
+    <theme-native-x-card-deck-block
+      section={ name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
+      placement-name="native"
+      limit=4
+    />
+  </@section>
+
   <@section modifiers=["break-container"]>
     <theme-opinion-block alias="commentary" />
   </@section>
