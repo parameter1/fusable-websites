@@ -155,7 +155,7 @@ services:
 
   thr:
     <<: *site-cmd
-    working_dir: /root/sites/truckhistroyreport.com
+    working_dir: /root/siteds/truckhistoryreport.com
     environment:
       <<: *env
       HOST: www-rr-ovd.dev.parameter1.com
