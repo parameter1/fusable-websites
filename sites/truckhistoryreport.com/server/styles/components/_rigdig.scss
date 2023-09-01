@@ -298,3 +298,48 @@
 #payfabricTarget:not(:empty) {
   margin-top: 1rem;
 }
+
+.rigdig-question {
+  &__item--wrapper {
+    margin-top: 0; // map-get($spacers, block);
+    margin-bottom: 0; // map-get($spacers, block);
+    background: none;
+    border-bottom: 1px solid $gray-300;
+  }
+  &__toggle {
+    @include theme-toggle-button();
+    @include skin-typography($style: "header-1.5");
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    span:not(.marko-web-icon) {
+      text-align: left;
+    }
+    & > .icon {
+      @include theme-navbar-link-color(( active: $white, hover: $white, default: $white ));
+    }
+  }
+  &__item--wrapper {
+    .node-list {
+      padding-top: map-get($spacers, 2);
+      padding-bottom: map-get($spacers, 2);
+      &__body {
+        display: none;
+      }
+    }
+    &.rigdig-question {
+      &__item--open {
+        .node-list {
+          &__body {
+            margin-top: map-get($spacers, 2);
+            border-top: solid 1px $gray-100;
+            display: initial;
+          }
+        }
+      }
+    }
+  }
+}

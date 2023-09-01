@@ -1,5 +1,8 @@
 {
   "<site-promo-card-rotation-block>": {
     "template": "./promo-card-rotation.marko"
+  },
+  "<site-questions-block>": {
+    "template": "./questions.marko"
   }
 }
