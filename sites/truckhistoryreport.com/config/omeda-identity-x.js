@@ -6,5 +6,5 @@ module.exports = configure({
   omedaConfig,
   idxConfig,
   rapidIdentProductId: 19,
-  websiteBehaviorAttributeId: 390192,
+  websiteBehaviorAttributeId: 669636,
 });
