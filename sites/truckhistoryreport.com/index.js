@@ -1,8 +1,8 @@
 const startServer = require('@randall-reilly/package-global/start-server');
+const coreConfig = require('@randall-reilly/package-overdrive/config/core');
 
 const routes = require('./server/routes');
 const siteConfig = require('./config/site');
-const coreConfig = require('./config/core');
 
 const { log } = console;
 

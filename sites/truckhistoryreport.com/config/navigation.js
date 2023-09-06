@@ -1,5 +1,5 @@
-const privacyPolicy = require('./privacy-policy');
-const oneTrust = require('./one-trust');
+const privacyPolicy = require('@randall-reilly/package-overdrive/config/privacy-policy');
+const oneTrust = require('@randall-reilly/package-overdrive/config/one-trust');
 
 const topics = {
   primary: [
