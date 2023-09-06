@@ -29,7 +29,7 @@ module.exports = {
   p1events: {
     tenant: 'randallreilly',
     enabled: true,
-    cookieDomain: process.env.NODE_ENV === 'production' ? 'truckhistoryreport.com' : '',
+    cookieDomain: process.env.NODE_ENV === 'production' ? 'overdriveonline.com' : '',
   },
   logos: {
     navbar: {
