@@ -5,7 +5,6 @@
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/packages/overdrive",
   "license": "MIT",
   "private": true,
-  "main": "config/site.js",
   "scripts": {
     "lint": "eslint --ext .js --max-warnings 5 --config ../../.eslintrc.js --ignore-path ../../.eslintignore ./",
     "lint:fix": "yarn lint --fix",
