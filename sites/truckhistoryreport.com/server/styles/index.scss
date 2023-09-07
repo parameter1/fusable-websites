@@ -32,3 +32,29 @@ $skin-newsletter-signup-inline-btn-color: #460c0e;
     margin-bottom: 0;
   }
 }
+/*! critical:start */
+.site-menu--open,
+.site-footer {
+  .social-follow .social-follow__header {
+    visibility: hidden;
+    position: relative;
+    &:after {
+      visibility: visible;
+      content: " Follow Overdrive";
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.rigdig {
+  $self: &;
+  &__section-sub-title {
+    + #{ $self } + p.small {
+      margin-top: map-get($spacers, 2);
+    }
+  }
+}
+
+/*! critical:end */

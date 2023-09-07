@@ -1,7 +1,9 @@
 import hierarchyAliases from "@parameter1/base-cms-marko-web/utils/hierarchy-aliases";
 
 $ const { id, alias, name, pageNode } = input;
-$ const { GAM } = out.global;
+$ const { site, config } = out.global;
+
+$ console.log(site, config)
 
 <global-website-section-default-layout
   id=id
@@ -30,7 +32,7 @@ $ const { GAM } = out.global;
             Welcome to the new RigDig Truck History Report!
           </h3>
           <p>
-            RigDig Truck History Report has a new look and a new home. Looking for RigDigBI? Looking to access past reports?
+            RigDig Truck History Report has a new look and a new home. Looking for <a href="https://rigdigbi.com/" title="RigDig BI">RigDigBI</a>?
           </p>
         </div>
       </div>
@@ -114,7 +116,7 @@ $ const { GAM } = out.global;
               attrs={}
             />
           </marko-web-block>
-          <p>
+          <p class="small">
             A quick summary of junk, salvage, total loss, title & odometer flags. Indicators of accidents, inspections, carriers, and UCC lien records.
           </p>
         </div>
@@ -131,7 +133,7 @@ $ const { GAM } = out.global;
               attrs={}
             />
           </marko-web-block>
-          <p>
+          <p class="small">
             Inspection an accident history by past USDOT operators of the vehicle with details on violations issued or severity of the crash.
           </p>
         </div>
@@ -148,7 +150,7 @@ $ const { GAM } = out.global;
               attrs={}
             />
           </marko-web-block>
-          <p>
+          <p class="small">
             Branded titles indicate a vehicle has suffered damage serious enough to affect the reliability, safety, and value of the vehicle permanently.
           </p>
         </div>
@@ -165,7 +167,7 @@ $ const { GAM } = out.global;
               attrs={}
             />
           </marko-web-block>
-          <p>
+          <p class="small">
             Title history of a vehicle by date the title changed and state where the title record was updated.
           </p>
         </div>
