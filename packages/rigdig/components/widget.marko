@@ -4,13 +4,14 @@ $ const debug = process.env.NODE_ENV === 'development';
 
 <marko-web-identity-x-context|{ hasUser, user }|>
   <div class="rigdig-widget">
-    <marko-web-browser-component name="RigDigWidget" props={
+    <marko-web-browser-component name="RigDigWidget" ssr=true props={
       email: hasUser ? user.email : null,
       inputLabel: 'Vehicle Identification Number',
       placeholder: '1XPHD48X8CD174…',
       debug,
       environment,
       paymentMethods,
+      withDetails: input.withDetails,
     } />
   </div>
 </marko-web-identity-x-context>

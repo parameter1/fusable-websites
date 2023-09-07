@@ -1,0 +1,5 @@
+{
+  "<site-questions-block>": {
+    "template": "./questions.marko"
+  }
+}

@@ -28,6 +28,26 @@
         </label>
       </div>
 
+      <div v-if="withDetails" class="rigdig-widget__form-group--details">
+        <label class="rigdig-widget__label">
+          Reports Include
+        </label>
+        <ul class="rigdig-widget__benifits-list">
+          <li><icon-check-circle class="mr-2" />Reported accidents</li>
+          <li><icon-check-circle class="mr-2" />Reported inspection violations</li>
+          <li><icon-check-circle class="mr-2" />Title and odometer brands</li>
+          <li><icon-check-circle class="mr-2" />Reported insurance claims</li>
+          <li><icon-check-circle class="mr-2" />Carrier/owner history</li>
+          <li><icon-check-circle class="mr-2" />Plus more vehicle data</li>
+        </ul>
+        <div class="rigdig-widget__pricing">
+          <span>Price</span> <span>$34.95</span>
+        </div>
+        <div class="rigdig-widget__info">
+          <icon-email class="mr-2" /> Reports are delivered immediately via email
+        </div>
+      </div>
+
       <div class="rigdig-widget__buttons">
         <button type="submit" class="btn btn-primary rigdig-widget__submit" :disabled="loading">
           <div class="d-flex align-items-center">
@@ -78,6 +98,9 @@
 </template>
 
 <script>
+import IconEmail from '@parameter1/base-cms-marko-web-icons/browser/mail.vue';
+import IconCheckCircle from '@parameter1/base-cms-marko-web-icons/browser/check-circle.vue';
+
 import CheckoutModal from './checkout-modal.vue';
 import AlertError from './alert-error.vue';
 
@@ -85,6 +108,8 @@ export default {
   name: 'RigDigWidget',
 
   components: {
+    IconCheckCircle,
+    IconEmail,
     AlertError,
     CheckoutModal,
   },
@@ -124,6 +149,10 @@ export default {
     paymentMethods: {
       type: Array,
       default: () => ['CreditCard', 'ApplePay'],
+    },
+    withDetails: {
+      type: Boolean,
+      dafault: false,
     },
     debug: {
       type: Boolean,
