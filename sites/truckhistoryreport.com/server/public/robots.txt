@@ -8,5 +8,5 @@ Disallow: /__
 Disallow: /print/content
 Disallow: /search
 
-Sitemap: https://www.overdriveonline.com/sitemap.xml
-Sitemap: https://www.overdriveonline.com/sitemap-google-news.xml
+Sitemap: https://truckhistory.overdriveonline.com/sitemap.xml
+Sitemap: https://truckhistory.overdriveonline.com/sitemap-google-news.xml
