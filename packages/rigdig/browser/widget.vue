@@ -28,26 +28,6 @@
         </label>
       </div>
 
-      <div v-if="withDetails" class="rigdig-widget__form-group--details">
-        <label class="rigdig-widget__label">
-          Reports Include
-        </label>
-        <ul class="rigdig-widget__benifits-list">
-          <li><icon-check-circle class="mr-2" />Reported accidents</li>
-          <li><icon-check-circle class="mr-2" />Reported inspection violations</li>
-          <li><icon-check-circle class="mr-2" />Title and odometer brands</li>
-          <li><icon-check-circle class="mr-2" />Reported insurance claims</li>
-          <li><icon-check-circle class="mr-2" />Carrier/owner history</li>
-          <li><icon-check-circle class="mr-2" />Plus more vehicle data</li>
-        </ul>
-        <div class="rigdig-widget__pricing">
-          <span>Price</span> <span>$34.95</span>
-        </div>
-        <div class="rigdig-widget__info">
-          <icon-email class="mr-2" /> Reports are delivered immediately via email
-        </div>
-      </div>
-
       <div class="rigdig-widget__buttons">
         <button type="submit" class="btn btn-primary rigdig-widget__submit" :disabled="loading">
           <div class="d-flex align-items-center">
@@ -74,6 +54,25 @@
       <alert-error v-if="error" title="Unable to look up VIN.">
         <p>We couldn't find the Vehicle Identification Number you supplied.</p>
       </alert-error>
+      <div v-if="withDetails" class="rigdig-widget__form-group--details">
+        <label class="rigdig-widget__label">
+          Reports Include
+        </label>
+        <ul class="rigdig-widget__benifits-list">
+          <li><icon-check-circle class="mr-2" />Reported accidents</li>
+          <li><icon-check-circle class="mr-2" />Reported inspection violations</li>
+          <li><icon-check-circle class="mr-2" />Title and odometer brands</li>
+          <li><icon-check-circle class="mr-2" />Reported insurance claims</li>
+          <li><icon-check-circle class="mr-2" />Carrier/owner history</li>
+          <li><icon-check-circle class="mr-2" />Plus more vehicle data</li>
+        </ul>
+        <div class="rigdig-widget__pricing">
+          <span>Price</span> <span>$34.95</span>
+        </div>
+        <div class="rigdig-widget__info">
+          <icon-email class="mr-2" /> Reports are delivered immediately via email
+        </div>
+      </div>
     </form>
     <transition
       enter-active-class="transition duration-100 ease-out"
@@ -121,11 +120,11 @@ export default {
     },
     title: {
       type: String,
-      default: 'Overdrive Truck History Reports',
+      default: 'Look up a report by VIN',
     },
     callToAction: {
       type: String,
-      default: 'Look up the full history of any truck, including reported accidents, inspection violations, insurance claims, owner history, and more.',
+      default: 'Enter a VIN (17-characters) to see if we have a report in our database',
     },
     placeholder: {
       type: String,
@@ -133,7 +132,7 @@ export default {
     },
     buttonLabel: {
       type: String,
-      default: 'Look up VIN',
+      default: 'Find Report',
     },
     inputLabel: {
       type: String,
