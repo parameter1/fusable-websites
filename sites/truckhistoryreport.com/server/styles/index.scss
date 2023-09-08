@@ -60,7 +60,11 @@ $skin-newsletter-signup-inline-btn-color: #460c0e;
     }
   }
 }
-
+/*! purgecss start ignore */
+.document-container:has(.rigdig-modal) {
+  z-index: 1501;
+}
+/*! purgecss end ignore */
 .rigdig {
   $self: &;
   &__section-sub-title {
