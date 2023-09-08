@@ -1,4 +1,4 @@
-$wrapper-border-radius: 10px;
+$wrapper-border-radius: 10px !default;
 .rigdig-alert {
   &__wrapper {
     margin: 1rem 0 0;
@@ -47,7 +47,7 @@ $wrapper-border-radius: 10px;
   }
 
   &__bg-wrapper {
-    padding: map-get($spacers, 3);
+    padding: 32px;
     margin-left: auto;
     margin-right: auto;
     background-color: #f0f1f2;
@@ -65,7 +65,7 @@ $wrapper-border-radius: 10px;
     }
   }
   &__border-wrapper {
-    padding: map-get($spacers, 3);
+    padding: 32px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
@@ -86,6 +86,7 @@ $wrapper-border-radius: 10px;
     width: 100%;
   }
   &__cta {
+    color: $black;
     border-radius: 40px;
     border: solid $gray-500 1px;
     padding: 14px 24px;
@@ -118,7 +119,7 @@ $wrapper-border-radius: 10px;
 /*! critical:end */
 .rigdig-widget {
   &__container {
-    padding: 24px; //32px;
+    padding: 32px;
     margin-left: auto;
     margin-right: auto;
     background-color: $gray-200;
@@ -224,7 +225,7 @@ $wrapper-border-radius: 10px;
     margin: 1rem;
     padding: 1rem;
     background: #fff;
-    border-radius: $input-border-radius;
+    border-radius: $wrapper-border-radius;
     max-height: 100vh;
     width: 400px;
     overflow: auto;
