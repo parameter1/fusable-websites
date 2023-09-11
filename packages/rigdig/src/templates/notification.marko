@@ -2,7 +2,7 @@ import { getAsObject } from '@parameter1/base-cms-object-path';
 import isDev from "@parameter1/base-cms-marko-core/utils/is-dev";
 import { titleize } from "@parameter1/base-cms-inflector";
 
-$ const styles = 'table {width: 480px;margin: 0 auto;} .danger { color: red } body{font-family: sans-serif; color: #333; margin: 0;}h1{font-family: monospace; line-height: 58px; text-align:center; margin: 0;}.subject, .footer{text-align:center; padding: 1em;}.footer{font-family: monospace; color: #CCC;}';
+$ const styles = 'table {width: 480px;margin: 0 auto;} .danger { color: red } body{font-family: sans-serif; color: #333; margin: 0;}h1{font-family: monospace; line-height: 58px; text-align:center; margin: 0;} .footer{text-align:center; padding: 1em;}.footer{font-family: monospace; color: #CCC;}';
 $ const { subject, addresses, report, transactionId } = input;
 $ const { make, model, year } = report.PoweredByVinLink;
 
@@ -13,61 +13,70 @@ $ const { make, model, year } = report.PoweredByVinLink;
     <title>${subject}</title>
   </head>
   <body>
-    <table>
+    <table style="padding: 16px;">
       <tbody>
         <tr>
-          <td colspan="1" style="margin:0;padding-top:30px;padding-bottom:30px;text-align:left" class="subject">
-            <img src="https://randall-reilly-creative.s3.amazonaws.com/Audience%20Development/Randall%20Reilly/OD_Logo.png" alt="Overdrive, by Randall Reilly">
-          </td>
-          <td colspan="1" style="margin:0;padding-top:30px;padding-bottom:30px" class="subject">
-            <p style="margin:0;font-size:15px;text-align:right;line-height:20px;font-weight:400;color:#262626">
+          <td colspan="2" style="margin:0;padding-top:30px;padding:0 0 10px 0;">
+            <p style="margin:0;font-size:24px;text-align:left;font-weight:600;color:#000">
               Truck History Report
             </p>
+
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="subject">
-            <!-- <center> -->
-              <table width="480" style="margin:0 auto;width:540px;padding:0;border-radius:12px;background-color:#f5f5f5">
+          <td colspan="2" style="padding:8px 30px 16px 0; margin:0;text-align:left">
+            <img width="209px" src="https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/rigdig-poweredby.png" alt="Overdrive, by Randall Reilly">
+          </td>
+        </tr>
+        <tr colspan="2">
+          <td style="padding:0 30px 16px 0;">
+            <h2 style="margin:0;padding:0;color:#262626;font-size:18px;font-weight:700;text-align:left">
+              Your truck history report is ready to download!
+            </h2>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div style="border:solid 1px #D1D5DB;border-radius:16px">
+              <table width="100%" style="margin:0 auto;width:100%;padding:0;">
                 <tr>
-                  <td style="">
-                    <img src="https://rigdig.com/wp-content/themes/rigdig/style/images/rigdig-logo.png" alt="Truck History Report Logo" style="margin: -3px;border-radius: 12px 12px 0px 0px;width: 538px;border: 1px solid white;background-color: #261a0e;padding: 1rem;padding-top: 4rem" />
+                  <td style="padding:16px 16px 16px 16px">
+                    <h2 style="margin:0;padding:0;color: #000;font-size: 16px; text-align: left;font-style: normal;font-weight: 700;line-height: normal;">Order Summary</h2>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding:30px 30px 10px 30px">
-                    <h2 style="margin:0;padding:0;color:#262626;font-size:24px;font-weight:700;line-height:36px;text-align:left">Your <em>Overdrive</em> Truck History Report</h2>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding:0px 30px 10px 30px">
-                    <p style="margin:0;padding:0;text-align:left;color:#262626;font-size:15px;line-height:28px">
-                      Describe the report, its advantages, etc.
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding:0px 30px 10px 30px">
+                  <td style="padding:0px 8px 16px 16px">
                     <table style="margin:0;padding:0;text-align:left;color:#262626;font-size:15px;line-height:28px; width: 100%">
-                      <tr><td>VIN:</td><td>${report.vin}</td></tr>
-                      <tr><td>Transaction ID:</td><td>${transactionId}</td></tr>
+                      <tr><td>VIN:</td><td><strong>${report.vin}</strong></td></tr>
+                      <tr><td>Transaction ID:</td><td><strong>${transactionId}</strong></td></tr>
                       <tr></tr>
-                      <tr><td>Year:</td><td>${year}</td></tr>
-                      <tr><td>Make:</td><td>${make}</td></tr>
-                      <tr><td>Model:</td><td>${model}</td></tr>
+                      <tr><td>Year:</td><td><strong>${year}</strong></td></tr>
+                      <tr><td>Make:</td><td><strong>${make}</strong></td></tr>
+                      <tr><td>Model:</td><td><strong>${model}</strong></td></tr>
                       <tr></tr>
                     </table>
                   </td>
                 </tr>
-                <tr>
-                  <td style="padding:0px 30px 30px 30px; text-align: left">
-                    <div style="text-align:center;color:#ffffff;font-weight:400;font-size:15px;background-color:#D1232A;border-radius:3px;display:inline-block;padding:1rem">
-                      <a href=report.createdAtUri style="color:#ffffff;text-decoration:none;border:none" target="_blank">Read the report</a>
-                    </div>
-                  </td>
-                </tr>
               </table>
-            <!-- </center> -->
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="padding:30px 0 30px 0; text-align: left">
+            <div style="text-align:center;color:#ffffff;font-weight:400;font-size:15px;background-color:#B9161B;border-radius:8px;display:inline-block;padding:1rem">
+              <a href=report.createdAtUri style="color:#ffffff;text-decoration:none;border:none" target="_blank">Download Report (PDF)</a>
+            </div>
+          </td>
+
+        </tr>
+        <tr>
+          <td colspan="2" >
+            <p style="color: #3F4043;font-size: 16px;font-weight: 500;">
+              Need help?
+            </p>
+            <p style="color: #3F4043;font-size: 16px;font-weight: 500;">
+              Learn more about truck history reports or contact customer support at <a href="mailto:support@rigdig.com?subejct=Help me with my Truck History Report" title="Email Support" >support@rigdig.com</a>
+            </p>
           </td>
         </tr>
         <tr>
