@@ -1,3 +1,4 @@
+$wrapper-border-radius: 10px !default;
 .rigdig-alert {
   &__wrapper {
     margin: 1rem 0 0;
@@ -46,11 +47,11 @@
   }
 
   &__bg-wrapper {
-    padding: map-get($spacers, 3);
+    padding: 32px;
     margin-left: auto;
     margin-right: auto;
     background-color: #f0f1f2;
-    border-radius: $input-border-radius;
+    border-radius: $wrapper-border-radius;
     margin-bottom: 30px;
     margin-top: 30px;
     position: relative;
@@ -64,13 +65,13 @@
     }
   }
   &__border-wrapper {
-    padding: map-get($spacers, 3);
+    padding: 32px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
     margin-bottom: 30px;
     border: solid 1px $gray-500;
-    border-radius: $input-border-radius;
+    border-radius: $wrapper-border-radius;
     hr {
       width: 100%;
     }
@@ -85,12 +86,15 @@
     width: 100%;
   }
   &__cta {
+    color: $gray-800;
     border-radius: 40px;
     border: solid $gray-500 1px;
     padding: 14px 24px;
     font-weight: 700;
     font-size: 14px;
     &:hover {
+      color: $gray-800;
+      text-decoration: none;
       cursor: pointer;
     }
   }
@@ -117,11 +121,11 @@
 /*! critical:end */
 .rigdig-widget {
   &__container {
-    padding: map-get($spacers, 3);
+    padding: 32px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #f0f1f2;
-    border-radius: $input-border-radius;
+    background-color: $gray-200;
+    border-radius: $wrapper-border-radius;
   }
   &__loading-icon {
     width: 20px;
@@ -148,6 +152,11 @@
   &__reset {
     margin-left: map-get($spacers, 2);
   }
+  &__submit {
+    margin-bottom: map-get($spacers, block);
+    text-transform: none;
+    padding: 12px;
+  }
   &__error {
     margin-top: map-get($spacers, 3);
     padding: map-get($spacers, 2);
@@ -157,7 +166,7 @@
     max-width: 455px;
   }
   &__title {
-    @include skin-typography($style: "section-header");
+    @include skin-typography($style: "section-header-small");
     margin-right: 2rem;
     text-transform: none;
   }
@@ -218,7 +227,7 @@
     margin: 1rem;
     padding: 1rem;
     background: #fff;
-    border-radius: $input-border-radius;
+    border-radius: $wrapper-border-radius;
     max-height: 100vh;
     width: 400px;
     overflow: auto;

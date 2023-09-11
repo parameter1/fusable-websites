@@ -6,7 +6,7 @@ $ const debug = process.env.NODE_ENV === 'development';
   <div class="rigdig-widget">
     <marko-web-browser-component name="RigDigWidget" ssr=true props={
       email: hasUser ? user.email : null,
-      inputLabel: 'Vehicle Identification Number',
+      inputLabel: input.inputLabel,
       placeholder: '1XPHD48X8CD174…',
       debug,
       environment,
