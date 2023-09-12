@@ -67,8 +67,17 @@ $skin-newsletter-signup-inline-btn-color: #460c0e;
 /*! purgecss end ignore */
 .rigdig {
   $self: &;
-  .rigdig_logo {
-    padding-right: map-get($spacers, 2);
+  &__intro {
+    display: flex;
+    padding: 16px;
+    // tighten up intro on nonDesktop devices
+    @media (max-width: 992px) {
+      padding: 0;
+      margin: 16px 0 -32px;
+    }
+  }
+  &__logo {
+    padding: 8px 16px 8px 0;
   }
   &__section-sub-title {
     + #{ $self } + p.small {
