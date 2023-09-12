@@ -182,6 +182,10 @@ $wrapper-border-radius: 10px !default;
     margin-bottom: map-get($spacers, 2);
     font-weight: 600;
   }
+  &__buttons {
+    display: flex;
+    align-items: flex-start;
+  }
   &__reset {
     margin-left: map-get($spacers, 2);
   }
