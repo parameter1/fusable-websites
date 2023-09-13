@@ -235,6 +235,7 @@ $wrapper-border-radius: 10px !default;
 }
 
 .rigdig-modal {
+  $self: &;
   &__wrapper {
     position: fixed;
     top: 0;
@@ -284,10 +285,25 @@ $wrapper-border-radius: 10px !default;
     padding: 15px;
     padding-bottom: 0;
     &--complete {
-      margin-left: 0.75rem;
-      margin-right: 0.75rem;
-      border: solid 1px $gray-500;
-      border-radius: $wrapper-border-radius;
+      padding: 12px;
+      + .payfabricTarget {
+        display: none;
+      }
+      #{ $self }__payment-details {
+        padding: 15px;
+        border: solid 1px $gray-500;
+        border-radius: $wrapper-border-radius;
+        margin-bottom: 24px;
+      }
+      .btn-primary {
+        text-transform: none;
+      }
+      #{ $self }__buttons a {
+        width: 100%;
+        .rigdig-widget__submit {
+          margin-bottom: 0;
+        }
+      }
       dl {
         display: flex;
         flex-direction: row;

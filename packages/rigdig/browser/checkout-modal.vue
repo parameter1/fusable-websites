@@ -11,7 +11,7 @@
           </button>
         </h2>
         <div v-if="complete" class="rigdig-modal__content rigdig-modal__content--complete">
-          <div class="rigdig__payment-details">
+          <div class="rigdig-modal__payment-details">
             <div>
               <dl>
                 <dt>Order Details</dt>
@@ -26,16 +26,40 @@
                 </dd>
               </dl>
             </div>
+            <p>
+              The truck history report you requested has been sent to
+              <strong> {{ userEmail }}</strong>. You can also access the report at the link below.
+            </p>
           </div>
-          <p>
-            The truck history report you requested has been sent to
-            <strong> {{ userEmail }}</strong>.
-          </p>
+          <div class="rigdig-modal__buttons mt-1">
+            <a :href="createdAtUri" title="Download your report" target="_blank">
+              <button
+                type="submit"
+                class="btn btn-primary btn-block rigdig-widget__submit"
+                :disabled="loading"
+              >
+                <div class="d-flex align-items-center justify-content-between">
+                  <div style="width:1.5rem" />
+                  <span>View Report</span>
+                  <div style="width:1.5rem">
+                    <div
+                      v-show="loading"
+                      class="spinner-border spinner-border-sm text-light ml-1"
+                      role="status"
+                    >
+                      <span class="sr-only">Generating Report…</span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </a>
+          </div>
         </div>
         <div v-else-if="transactionId" class="rigdig-modal__content">
           <checkout-header
             :truck-info="truckInfo"
             :vin="vin"
+            title="Sending Report!"
             :email="userEmail"
             :step="2"
           />
@@ -231,6 +255,7 @@ export default {
     transactionToken: null,
     transactionId: null,
     client: null,
+    createdAtUri: null,
   }),
 
   computed: {
@@ -384,6 +409,11 @@ export default {
           error.code = r.status;
           throw error;
         }
+
+        const data = await r.json();
+        const { report } = data;
+        const { createdAtUri } = report;
+        this.createdAtUri = createdAtUri;
         this.complete = true;
       } catch (e) {
         this.error = e.message;
