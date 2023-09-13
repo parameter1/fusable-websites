@@ -4,20 +4,32 @@
       <!-- @todo swap this for bootstrap modal? -->
       <div class="rigdig-modal__container">
         <h2 class="rigdig-modal__subtitle">
-          Report Found!
+          <icon-check-circle v-if="complete" :modifiers="['xl', 'complete']" />
+          {{ title }}
           <button class="btn btn-text rigdig-modal__close" @click="$emit('cancel')">
             <icon-x />
           </button>
         </h2>
-        <div v-if="complete" class="rigdig-modal__content">
-          <checkout-header
-            :truck-info="truckInfo"
-            :vin="vin"
-            :step="2"
-            :email="userEmail"
-          />
+        <div v-if="complete" class="rigdig-modal__content rigdig-modal__content--complete">
+          <div class="rigdig__payment-details">
+            <div>
+              <dl>
+                <dt>Order Details</dt>
+                <dd class="small">
+                  {{ truckInfo || 'Truck details unavailable' }}
+                </dd>
+                <dd class="small">
+                  {{ vin }}
+                </dd>
+                <dd class="small">
+                  $34.99
+                </dd>
+              </dl>
+            </div>
+          </div>
           <p>
-            The truck history report you requested has been sent to your email.
+            The truck history report you requested has been sent to
+            <strong> {{ userEmail }}</strong>.
           </p>
         </div>
         <div v-else-if="transactionId" class="rigdig-modal__content">
@@ -161,6 +173,7 @@
 
 <script>
 import IconX from '@parameter1/base-cms-marko-web-icons/browser/x.vue';
+import IconCheckCircle from '@parameter1/base-cms-marko-web-icons/browser/check-circle.vue';
 import AlertError from './alert-error.vue';
 import CheckoutHeader from './checkout-header.vue';
 
@@ -171,6 +184,7 @@ export default {
     AlertError,
     CheckoutHeader,
     IconX,
+    IconCheckCircle,
   },
 
   props: {
@@ -218,6 +232,12 @@ export default {
     transactionId: null,
     client: null,
   }),
+
+  computed: {
+    title() {
+      return this.complete ? 'Payment Received!' : 'Report Found!';
+    },
+  },
 
   created() {
     if (this.email) {
