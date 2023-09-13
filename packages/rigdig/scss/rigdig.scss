@@ -286,7 +286,7 @@ $wrapper-border-radius: 10px !default;
     padding-bottom: 0;
     &--complete {
       padding: 12px;
-      + .payfabricTarget {
+      + #payfabricTarget {
         display: none;
       }
       #{ $self }__payment-details {
