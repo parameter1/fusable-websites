@@ -64,7 +64,7 @@ module.exports = (app) => {
       await sendNotification(res, { report, email, transactionId });
       debug('complete.sent', email, transactionId, vin);
 
-      res.json({ ok: true });
+      res.json({ ok: true, report });
     } catch (error) {
       debug(error);
       res.status(error.code || 500).json({ error: error.messge });
