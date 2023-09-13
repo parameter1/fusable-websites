@@ -59,12 +59,13 @@ module.exports = (app) => {
 
       // Generate the report
       const { items: [report] } = await client.create([vin]);
+      const { createdAtUri, linkId } = report;
 
       // Send the notification
       await sendNotification(res, { report, email, transactionId });
       debug('complete.sent', email, transactionId, vin);
 
-      res.json({ ok: true });
+      res.json({ ok: true, report: { createdAtUri, linkId } });
     } catch (error) {
       debug(error);
       res.status(error.code || 500).json({ error: error.messge });

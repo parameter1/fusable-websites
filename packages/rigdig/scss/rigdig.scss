@@ -235,6 +235,7 @@ $wrapper-border-radius: 10px !default;
 }
 
 .rigdig-modal {
+  $self: &;
   &__wrapper {
     position: fixed;
     top: 0;
@@ -257,6 +258,16 @@ $wrapper-border-radius: 10px !default;
     @include skin-typography($style: "section-header-small");
     padding: 0.75rem 0.75rem 0rem 0.75rem;
     text-transform: none;
+    .marko-web-icon--check-circle {
+      display: block;
+    }
+    .marko-web-icon--complete svg {
+      color: #16A34A;
+      fill: #16A34A;
+      path {
+        stroke: #16A34A !important;
+      }
+    }
   }
   &__container {
     display: flex;
@@ -273,6 +284,48 @@ $wrapper-border-radius: 10px !default;
   &__content {
     padding: 15px;
     padding-bottom: 0;
+    &--complete {
+      padding: 12px;
+      + #payfabricTarget {
+        display: none;
+      }
+      #{ $self }__payment-details {
+        padding: 15px;
+        border: solid 1px $gray-500;
+        border-radius: $wrapper-border-radius;
+        margin-bottom: 24px;
+      }
+      .btn-primary {
+        text-transform: none;
+      }
+      #{ $self }__buttons a {
+        width: 100%;
+        .rigdig-widget__submit {
+          margin-bottom: 0;
+        }
+      }
+      dl {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        dt {
+          @include make-col(12);
+        }
+        dd {
+          margin-bottom: 0;
+          @include make-col(6);
+          &:nth-child(4) {
+            order: 3;
+            font-weight: 700;
+            text-align: right;
+          }
+          &:nth-child(3) {
+            order: 4;
+          }
+        }
+
+      }
+    }
   }
   &__copy {
     line-height: 1rem;
