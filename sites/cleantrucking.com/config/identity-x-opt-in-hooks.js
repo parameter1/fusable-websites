@@ -1,6 +1,6 @@
 module.exports = {
   onAuthenticationSuccess: {
-    productIds: [27],
-    promoCode: 'TN_registration_meter',
+    productIds: [],
+    promoCode: 'CT_registration_meter',
   },
 };
