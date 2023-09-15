@@ -21,6 +21,10 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
+    <theme-hero-card-block query-params={ includeContentTypes: ["Video"] } alias="videos" description="Watch as trucking news happens" />
+  </@section>
+
+  <@section>
     <theme-section-list-deck-block aliases=["battery-electric", "hydrogen", "alt-fuels"] />
   </@section>
 
@@ -34,34 +38,7 @@ $ const { id, alias, name, pageNode } = input;
   </@section>
 
   <@section>
-    <theme-native-x-card-deck-block
-      section={ name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
-      placement-name="partner-insights"
-    />
-  </@section>
-
-  <!-- <@section>
-    <theme-section-card-list-block alias="shedrives" default-description="News for women at the wheel" />
-  </@section> -->
-  <@section>
     <theme-section-list-deck-block aliases=["maintenance", "infrastructure", "funding"] />
-  </@section>
-
-  <!-- <@section>
-    <theme-hero-card-block query-params={ includeContentTypes: ["Video"] } alias="videos" description="Watch as trucking news happens" />
-  </@section> -->
-
-  <@section>
-    <theme-client-side-most-popular-block />
-  </@section>
-
-  <@section|{ aliases }|>
-    <theme-gam-define-display-ad
-      name="rotation"
-      position="home_page"
-      aliases=aliases
-      modifiers=["inter-block"]
-    />
   </@section>
 
 </global-website-section-home-layout>
