@@ -3,15 +3,12 @@ const oneTrust = require('./one-trust');
 
 const topics = {
   primary: [
-    { href: '/trucks', label: 'Trucks' },
-    { href: '/news', label: 'News' },
-    { href: '/jobs', label: 'Jobs' },
-    { href: '/gear', label: 'Gear' },
-    { href: '/how-to', label: 'How-To' },
-    { href: '/life', label: 'Life' },
-    { href: '/videos', label: 'Videos' },
-    { href: '/shedrives', label: 'SheDrives' },
-
+    { href: '/battery-electric', label: 'Battery Electric' },
+    { href: '/hydrogen', label: 'Hydrogen' },
+    { href: '/alt-fuels', label: 'Alt Fuels' },
+    { href: '/maintenance', label: 'Maintenance' },
+    { href: '/infrastructure', label: 'Infrastructure' },
+    { href: '/funding', label: 'Funding' },
   ],
   expanded: [
   ],

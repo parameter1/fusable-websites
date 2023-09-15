@@ -20,9 +20,9 @@ $ const { id, alias, name, pageNode } = input;
     />
   </@section>
 
-  <!-- <@section>
-    <theme-section-list-deck-block aliases=["trucks", "jobs", "life"] />
-  </@section> -->
+  <@section>
+    <theme-section-list-deck-block aliases=["battery-electric", "hydrogen", "alt-fuels"] />
+  </@section>
 
   <@section|{ aliases }|>
     <theme-gam-define-display-ad
@@ -43,20 +43,12 @@ $ const { id, alias, name, pageNode } = input;
   <!-- <@section>
     <theme-section-card-list-block alias="shedrives" default-description="News for women at the wheel" />
   </@section> -->
+  <@section>
+    <theme-section-list-deck-block aliases=["maintenance", "infrastructure", "funding"] />
+  </@section>
 
   <!-- <@section>
     <theme-hero-card-block query-params={ includeContentTypes: ["Video"] } alias="videos" description="Watch as trucking news happens" />
-  </@section> -->
-
-  <!-- <@section>
-    <theme-callout-cards-block>
-      <@slot>
-        <global-ccj-top-250-block />
-      </@slot>
-      <@slot>
-        <theme-white-papers-block shuffle=true limit=20 />
-      </@slot>
-    </theme-callout-cards-block>
   </@section> -->
 
   <@section>
@@ -72,11 +64,4 @@ $ const { id, alias, name, pageNode } = input;
     />
   </@section>
 
-  <!-- <@section>
-    <theme-products-block alias="gear" default-description="Products for a better driving life" />
-  </@section> -->
-
-  <!-- <@section>
-    <theme-content-card-deck-block alias="workforce" default-description="Lorem ipsum dolor sit amet" />
-  </@section> -->
 </global-website-section-home-layout>
