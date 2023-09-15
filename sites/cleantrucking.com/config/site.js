@@ -74,7 +74,7 @@ module.exports = {
     },
   ],
   gtm: {
-    containerId: 'GTM-KKR45JP',
+    containerId: 'GTM-5MLCBFT9',
   },
   wufoo: {
     userName: 'randallreilly',
@@ -88,16 +88,8 @@ module.exports = {
     bgColor: '#000000',
   },
   sponsoredLabelLogos: {
-    'Sponsored by RoadPro': {
-      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/road-pro-logo.png?auto=format&w=109&fit=crop',
-      width: '109px',
-    },
   },
   sponsoredSectionNameLogos: {
-    gear: {
-      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/trucker-gear-logo.png?auto=format&w=275&fit=crop',
-      width: '275px',
-    },
   },
   setSearchSortFieldToScore: true,
 };
