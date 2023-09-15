@@ -56,11 +56,11 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
-    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ct-full.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tn-full.png',
   },
   pushdown: {
     ...defaults,
-    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ct-half.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tn-half.png',
     name: '40K truck drivers get it. Shouldn’t you?',
     description: 'News company drivers need for life on the road, delivered straight to your inbox.',
     step1CtaLabel: 'Subscribe',
