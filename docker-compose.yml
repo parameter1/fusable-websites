@@ -138,6 +138,22 @@ services:
       - "9904:80"
       - "19904:19904"
 
+  ct:
+    <<: *site-cmd
+    working_dir: /root/sites/cleantrucking.com
+    environment:
+      <<: *env
+      HOST: www-rr-ct.dev.parameter1.com
+      PORT: 80
+      EXPOSED_PORT: 9913
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
+      LIVERELOAD_PORT: 19913
+      OMEDA_INPUT_ID: ${CT_OMEDA_INPUT_ID-(unset)}
+    hostname: www-rr-ct.dev.parameter1.com
+    ports:
+      - "9913:80"
+      - "19913:19913"
+
   hwt:
     <<: *site-cmd
     working_dir: /root/sites/hardworkingtrucks.com

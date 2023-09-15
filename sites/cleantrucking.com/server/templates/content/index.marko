@@ -1,0 +1,24 @@
+$ const { id, type, pageNode, ...rest } = input;
+
+<global-content-default-layout
+  id=id
+  type=type
+  page-node=pageNode
+  ...rest
+>
+
+  <@section|{ aliases }|>
+    <theme-gam-define-display-ad
+      name="rotation"
+      position="content_page"
+      aliases=aliases
+      modifiers=["inter-block"]
+    />
+  </@section>
+
+  <@section>
+    <div role="region" aria-label="Most Popular Stories">
+      <theme-client-side-most-popular-block />
+    </div>
+  </@section>
+</global-content-default-layout>
