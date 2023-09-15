@@ -11,6 +11,11 @@ const topics = {
     { href: '/funding', label: 'Funding' },
   ],
   expanded: [
+    { href: '#', label: 'Survey Download' },
+    { href: '/videos', label: 'Videos' },
+    { href: '#', label: 'Test Drivers' },
+    { href: '#', label: 'Fleet Profiles' },
+    { href: '#', label: 'Applications' },
   ],
   secondary: [
   ],
@@ -66,7 +71,6 @@ module.exports = {
     topics: topics.primary,
     more: [
       ...utilities,
-      { href: '/videos', label: 'Videos' },
     ],
   },
 };
