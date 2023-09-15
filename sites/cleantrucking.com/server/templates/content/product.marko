@@ -1,0 +1,71 @@
+import { getAsArray } from "@parameter1/base-cms-object-path";
+
+$ const { id, type, pageNode, ...rest } = input;
+
+<global-content-product-layout
+  id=id
+  type=type
+  page-node=pageNode
+  ...rest
+>
+  <@right-rail|{ content }|>
+    <theme-gam-define-display-ad
+      name="rotation-1"
+      position="content_page"
+      aliases=["gear"]
+      modifiers=["max-width-300", "center", "margin-auto-x", "rail"]
+    />
+    $ const labels = getAsArray(content, "labels");
+    <if(labels.includes("Sponsored by RoadPro"))>
+      <site-road-pro-facebook />
+    </if>
+    <theme-gam-define-display-ad
+      name="rotation-2"
+      position="section_page"
+      aliases=["gear"]
+      modifiers=["max-width-300", "center", "margin-auto-x", "rail"]
+    />
+    <theme-gam-define-display-ad
+      name="rotation-3"
+      position="section_page"
+      aliases=["gear"]
+      modifiers=["max-width-300", "center", "margin-auto-x", "rail"]
+    />
+  </@right-rail>
+  <@after-body|{ content }|>
+    <theme-gam-define-display-ad
+      name="rotation-1-mobile"
+      position="content_page"
+      aliases=["gear"]
+      modifiers=["max-width-300", "center", "margin-auto-x", "rail-mobile"]
+    />
+    <theme-gam-define-display-ad
+      name="rotation-2-mobile"
+      position="section_page"
+      aliases=["gear"]
+      modifiers=["max-width-300", "center", "margin-auto-x", "rail-mobile"]
+    />
+    <theme-more-products-block alias="gear" params={ excludeContentIds: [content.id] } />
+    <theme-gam-define-display-ad
+      name="rotation-3-mobile"
+      position="section_page"
+      aliases=["gear"]
+      modifiers=["max-width-300", "center", "margin-auto-x", "rail-mobile"]
+    />
+  </@after-body>
+
+  <!-- <@section>
+    <theme-callout-cards-block>
+      <@slot>
+        <global-ccj-top-250-block />
+      </@slot>
+      <@slot>
+        <global-ovd-pib-manual-promo-block />
+      </@slot>
+    </theme-callout-cards-block>
+  </@section> -->
+
+  <@section>
+    <theme-client-side-most-popular-block />
+  </@section>
+</global-content-product-layout>

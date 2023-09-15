@@ -1,0 +1,82 @@
+import hierarchyAliases from "@parameter1/base-cms-marko-web/utils/hierarchy-aliases";
+
+$ const { id, alias, name, pageNode } = input;
+
+<global-website-section-home-layout
+  id=id
+  alias=alias
+  name=name
+  page-node=pageNode
+>
+  <@head>
+    <meta name="google-site-verification" content="pozW861EXi4a3iQ2Kunl77Ghm97gCSqWW-uQOvNJumI" />
+  </@head>
+
+  <@section modifiers=["native"]>
+    <theme-native-x-card-deck-block
+      section={ name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
+      placement-name="native"
+      limit=4
+    />
+  </@section>
+
+  <!-- <@section>
+    <theme-section-list-deck-block aliases=["trucks", "jobs", "life"] />
+  </@section> -->
+
+  <@section|{ aliases }|>
+    <theme-gam-define-display-ad
+      name="rotation"
+      position="home_page"
+      aliases=aliases
+      modifiers=["inter-block"]
+    />
+  </@section>
+
+  <@section>
+    <theme-native-x-card-deck-block
+      section={ name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
+      placement-name="partner-insights"
+    />
+  </@section>
+
+  <!-- <@section>
+    <theme-section-card-list-block alias="shedrives" default-description="News for women at the wheel" />
+  </@section> -->
+
+  <!-- <@section>
+    <theme-hero-card-block query-params={ includeContentTypes: ["Video"] } alias="videos" description="Watch as trucking news happens" />
+  </@section> -->
+
+  <!-- <@section>
+    <theme-callout-cards-block>
+      <@slot>
+        <global-ccj-top-250-block />
+      </@slot>
+      <@slot>
+        <theme-white-papers-block shuffle=true limit=20 />
+      </@slot>
+    </theme-callout-cards-block>
+  </@section> -->
+
+  <@section>
+    <theme-client-side-most-popular-block />
+  </@section>
+
+  <@section|{ aliases }|>
+    <theme-gam-define-display-ad
+      name="rotation"
+      position="home_page"
+      aliases=aliases
+      modifiers=["inter-block"]
+    />
+  </@section>
+
+  <!-- <@section>
+    <theme-products-block alias="gear" default-description="Products for a better driving life" />
+  </@section> -->
+
+  <!-- <@section>
+    <theme-content-card-deck-block alias="workforce" default-description="Lorem ipsum dolor sit amet" />
+  </@section> -->
+</global-website-section-home-layout>
