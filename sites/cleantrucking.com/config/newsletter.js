@@ -3,41 +3,39 @@ const privacyPolicy = require('./privacy-policy');
 const baseConfig = {
   action: 'https://randallreilly.dragonforms.com/loading.do',
   hiddenInputs: [
-    { name: 'omedasite', value: 'tn_subscriptions' },
+    { name: 'omedasite', value: 'ct_subscriptions' },
   ],
-  href: 'https://randallreilly.dragonforms.com/loading.do?omedasite=tn_subscriptions',
+  href: 'https://randallreilly.dragonforms.com/loading.do?omedasite=ct_subscriptions',
 };
 
 const defaults = {
-  name: 'Don’t Miss Out',
-  description: 'Get the job alerts, industry insights and trending news every truck driver needs to know in the <em>Truckers News</em> newsletter.',
+  name: 'Cleaner Trucking is here.',
+  description: 'And zero-emission vehicles are on the horizon. Stay up to date on the latest',
   defaultNewsletter: {
+    // Update to CT's
     deploymentTypeId: 27,
     name: 'Truckers News Daily',
     eventCategory: 'Daily Newsletter Subscription',
   },
   privacyPolicy,
   newsletters: [
+    // Update to CT's
     {
       deploymentTypeId: 84,
       name: 'Truckers News Monthly Gear',
       description: '',
       eventCategory: 'Monthly Gear Subscription',
     },
+    // Update to CT's
     {
       deploymentTypeId: 28,
       name: 'Truckers News Weekly',
       description: '',
       eventCategory: 'Weekly Newsletter Subscription',
     },
-    {
-      deploymentTypeId: 26,
-      name: 'She Drives Weekly',
-      description: '',
-      eventCategory: 'She Drives Newsletter Subscription',
-    },
   ],
   demographic: {
+    // Update to CT's
     id: 1464,
     label: 'Your primary role?',
     values: [
@@ -56,13 +54,14 @@ module.exports = {
   // uses inline omeda form
   signupBanner: {
     ...defaults,
-    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tn-full.png',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ct-full.png',
   },
   pushdown: {
     ...defaults,
-    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/tn-half.png',
-    name: '40K truck drivers get it. Shouldn’t you?',
-    description: 'News company drivers need for life on the road, delivered straight to your inbox.',
+    imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ct-half.png',
+    // Update to CT's
+    name: 'Cleaner Trucking is here.',
+    description: 'And zero-emission vehicles are on the horizon. Stay up to date on the latest',
     step1CtaLabel: 'Subscribe',
     step2CtaLabel: 'Subscribe',
   },
@@ -70,12 +69,14 @@ module.exports = {
   // links off to seperate omeda dragonform
   signupBannerLarge: {
     ...baseConfig,
-    name: 'Don’t Miss Out',
-    description: 'Get the job alerts, industry insights and trending news every truck driver needs to know in the <em>Truckers News</em> newsletter. ',
+    // Update to CT's
+    name: 'Cleaner Trucking is here.',
+    description: 'And zero-emission vehicles are on the horizon. Stay up to date on the latest',
   },
   signupFooter: {
     ...baseConfig,
-    name: 'Newsletter Just for Truck Drivers',
-    description: 'Get trucking news and insights, plus job alerts and trending gear — delivered straight to your inbox.',
+    // Update to CT's
+    name: 'Cleaner Trucking is here.',
+    description: 'And zero-emission vehicles are on the horizon. Stay up to date on the latest',
   },
 };
