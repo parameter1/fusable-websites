@@ -52,7 +52,18 @@
         </button>
       </div>
       <alert-error v-if="error" title="Unable to look up VIN.">
-        <p>We couldn't find the Vehicle Identification Number you supplied.</p>
+        <!-- Invalid Vin Provided and API returns 400 -->
+        <p v-if="status === 400">
+          An invalid Vehicle Identification Number you supplied.
+        </p>
+        <!-- Found the vin, and api returns okay but no reports & we return a 400 internally-->
+        <p v-else-if="status === 404">
+          No report could be found with the Vehicle Identification Number you supplied.
+        </p>
+        <!-- Display other abnormal errors -->
+        <p v-else>
+          {{ error }}
+        </p>
       </alert-error>
       <div v-if="withDetails" class="rigdig-widget__form-group--details">
         <label class="rigdig-widget__label">
@@ -162,6 +173,7 @@ export default {
   data: () => ({
     attempted: false,
     error: null,
+    status: null,
     loading: false,
     vin: null,
     verified: false,
@@ -182,6 +194,7 @@ export default {
     },
     async handleSubmit() {
       this.error = null;
+      this.status = null;
       this.loading = true;
       try {
         const response = await fetch('/__rigdig/verify', {
@@ -200,6 +213,7 @@ export default {
           }
           const error = new Error(message);
           error.code = response.status;
+          this.status = error.code;
           throw error;
         }
         const { PoweredByVinLink: { year, make, model } } = await response.json();
