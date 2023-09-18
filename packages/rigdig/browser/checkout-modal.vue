@@ -27,7 +27,7 @@
               </dl>
             </div>
             <p>
-              The truck history report you requested has been sent to
+              The Truck History Report you requested has been sent to
               <strong> {{ userEmail }}</strong>. You can also access the report at the link below.
             </p>
           </div>
