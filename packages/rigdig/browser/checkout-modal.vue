@@ -182,7 +182,7 @@
           <alert-error v-if="transactionToken && error" title="Unable to purchase report.">
             <p>We weren't able to purchase the Truck History Report.</p>
             <p>
-              Review the form above, or
+              Review the form below, or
               <a href="javascript:void(0)" @click="handleSubmit">click here</a> to start over.
             </p>
           </alert-error>
