@@ -9,8 +9,8 @@ const baseConfig = {
 };
 
 const defaults = {
-  name: 'Cleaner Trucking is here.',
-  description: 'And zero-emission vehicles are on the horizon. Stay up to date on the latest',
+  name: 'Clean trucking is here to stay. Is your business ready?',
+  description: 'Breaking news on zero-emission vehicles, infrastructure and regulations, alternative fuel tech and more, delivered straight to your inbox.',
   defaultNewsletter: {
     // Update to CT's
     deploymentTypeId: 27,
@@ -60,8 +60,8 @@ module.exports = {
     ...defaults,
     imagePath: 'files/base/randallreilly/all/image/static/newsletter-pushdown/ct-half.png',
     // Update to CT's
-    name: 'Cleaner Trucking is here.',
-    description: 'And zero-emission vehicles are on the horizon. Stay up to date on the latest',
+    name: 'Clean trucking is here to stay. Is your business ready?',
+    description: 'Breaking news on zero-emission vehicles, infrastructure and regulations, alternative fuel tech and more, delivered straight to your inbox.',
     step1CtaLabel: 'Subscribe',
     step2CtaLabel: 'Subscribe',
   },
@@ -70,13 +70,13 @@ module.exports = {
   signupBannerLarge: {
     ...baseConfig,
     // Update to CT's
-    name: 'Cleaner Trucking is here.',
-    description: 'And zero-emission vehicles are on the horizon. Stay up to date on the latest',
+    name: 'Clean trucking is here to stay. Is your business ready?',
+    description: 'Breaking news on zero-emission vehicles, infrastructure and regulations, alternative fuel tech and more, delivered straight to your inbox.',
   },
   signupFooter: {
     ...baseConfig,
     // Update to CT's
-    name: 'Cleaner Trucking is here.',
-    description: 'And zero-emission vehicles are on the horizon. Stay up to date on the latest',
+    name: 'Clean trucking is here to stay. Is your business ready?',
+    description: 'Breaking news on zero-emission vehicles, infrastructure and regulations, alternative fuel tech and more, delivered straight to your inbox.',
   },
 };
