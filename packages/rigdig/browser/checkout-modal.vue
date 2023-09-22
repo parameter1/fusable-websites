@@ -65,10 +65,9 @@
           />
           <alert-error v-if="error" title="Unable to send report.">
             <p>
-              We weren't able generate your Truck History Report!
-              An error occured with transactionID, {{transactionId}},
-              in reference to VIN: {{ vin }}. Please contact
-              <a herf="supportEmail">{{ supportEmail }}</a> with any questions.
+              An error has occured generating your report for VIN: {{ vin }}.
+              Please contact <a :href="`mailto:${supportEmail}`">{{ supportEmail }}
+              </a> in reference to Transaction ID:  {{ transactionId }} with any questions.
             </p>
           </alert-error>
           <div v-else>
