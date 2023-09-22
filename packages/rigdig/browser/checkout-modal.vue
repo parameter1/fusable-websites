@@ -63,35 +63,41 @@
             :email="userEmail"
             :step="2"
           />
-          <p>Your payment was processed successfully.</p>
-          <p>Your transaction ID was {{ transactionId }}.</p>
-          <p class="mb-0">
-            We're sending your truck history report now!
-          </p>
-
-          <div class="rigdig-modal__buttons mt-1">
-            <button
-              type="submit"
-              class="btn btn-secondary rigdig-widget__generate"
-              :disabled="loading"
-              @click="generate"
-            >
-              <div class="d-flex align-items-center">
-                <span>Send Report</span>
-                <div
-                  v-show="loading"
-                  class="spinner-border spinner-border-sm text-light ml-1"
-                  role="status"
-                >
-                  <span class="sr-only">Sending report…</span>
-                </div>
-              </div>
-            </button>
-          </div>
-
           <alert-error v-if="error" title="Unable to send report.">
-            <p>We weren't able to send the Truck History Report.</p>
+            <p>
+              We weren't able generate your Truck History Report!
+              An error occured with transactionID, {{transactionId}},
+              in reference to VIN: {{ vin }}. Please contact
+              <a herf="supportEmail">{{ supportEmail }}</a> with any questions.
+            </p>
           </alert-error>
+          <div v-else>
+            <p>Your payment was processed successfully.</p>
+            <p>Your transaction ID was {{ transactionId }}.</p>
+            <p class="mb-0">
+              We're sending your truck history report now!
+            </p>
+
+            <div class="rigdig-modal__buttons mt-1">
+              <button
+                type="submit"
+                class="btn btn-secondary rigdig-widget__generate"
+                :disabled="loading"
+                @click="generate"
+              >
+                <div class="d-flex align-items-center">
+                  <span>Send Report</span>
+                  <div
+                    v-show="loading"
+                    class="spinner-border spinner-border-sm text-light ml-1"
+                    role="status"
+                  >
+                    <span class="sr-only">Sending report…</span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
         </div>
         <div v-else class="rigdig-modal__content">
           <checkout-header
@@ -242,6 +248,10 @@ export default {
     debug: {
       type: Boolean,
       default: false,
+    },
+    supportEmail: {
+      type: String,
+      default: 'support@rigdig.com',
     },
   },
 
