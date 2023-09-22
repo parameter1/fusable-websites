@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const debug = require('debug')('payfabric');
+const { inspect } = require('util');
 const { PAYFABRIC_ENV } = require('./env');
 
 const API_BASEURL = `https://${PAYFABRIC_ENV === 'SANDBOX' ? 'sandbox' : 'www'}.payfabric.com`;
@@ -53,7 +54,17 @@ module.exports = class ApiClient {
     const result = await fetch(url, { method, body, headers });
 
     if (!result.ok) {
-      debug(`${method.toUpperCase()} ${url} ERR`, { body, headers }, result);
+      debug(`${method.toUpperCase()} ${url} ERR`, inspect({
+        request: {
+          headers: JSON.stringify({ ...headers, authorization: 'Bearer [redacted]' }),
+          ...(body && { body }),
+        },
+        response: {
+          status: `${result.status} ${result.statusText}`,
+          headers: JSON.stringify(result.headers.raw()),
+          body: await result.text(),
+        },
+      }, { depth: null, colors: true }));
       const error = new Error(`PayFabric response unsuccessful: ${result.status} ${result.statusText}`);
       error.code = result.status;
       throw error;
