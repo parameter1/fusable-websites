@@ -67,7 +67,7 @@ module.exports = (app) => {
             await sendErrorNotification(res, {
               error,
               vin,
-              email,
+              userEmail: email,
               transactionId,
             });
           }
