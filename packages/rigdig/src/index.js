@@ -60,10 +60,9 @@ module.exports = (app) => {
       if (!transactionId) throw createError('You must provide payment to continue.', 402);
 
       // Generate the report
-      const retries = 2;
+      const retries = 1;
       const response = await retry(async () => client.create([`${vin}g`]), {
         onFailedAttempt: async (error) => {
-          console.log('error: ', error.attemptNumber)
           if (error.attemptNumber === retries) {
             await sendErrorNotification(res, {
               error,
