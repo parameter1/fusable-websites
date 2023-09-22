@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const debug = require('debug')('rigdig');
+const { inspect } = require('util');
 
 const API_VERSION = '1.0';
 const API_BASEURL = 'https://client-api.rigdigbi.com';
@@ -75,10 +76,21 @@ module.exports = class ApiClient {
       authorization: `Bearer ${token}`,
       'content-type': 'application/json',
     };
+    /** @type {import('node-fetch').Response} */
     const result = await fetch(url, { method, body, headers });
 
     if (!result.ok) {
-      debug(`${method.toUpperCase()} ${url} ERR`, result.status, result.statusText);
+      debug(`${method.toUpperCase()} ${url} ERR`, inspect({
+        request: {
+          headers: JSON.stringify({ ...headers, authorization: 'Bearer [redacted]' }),
+          ...(body && { body }),
+        },
+        response: {
+          status: `${result.status} ${result.statusText}`,
+          headers: JSON.stringify(result.headers.raw()),
+          body: await result.text(),
+        },
+      }, { depth: null, colors: true }));
       const error = new Error(`RigDig response unsuccessful: ${result.status} ${result.statusText}`);
       error.code = result.status;
       throw error;
