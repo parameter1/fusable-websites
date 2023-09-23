@@ -63,7 +63,7 @@
             :email="userEmail"
             :step="2"
           />
-          <alert-error v-if="error" title="Unable to send report.">
+          <alert-error v-if="error" :show-help="false" title="Unable to send report.">
             <p>
               An error has occured generating your report for VIN: {{ vin }}.
               Please contact <a :href="`mailto:${supportEmail}`">{{ supportEmail }}
