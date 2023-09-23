@@ -29,7 +29,7 @@ const send = ({ html, subject, addresses }) => {
  * @returns {Promise<import('@sendgrid/client/src/response').ClientResponse>}
  */
 module.exports = (res, {
-  email = 'brian@parameter1.com',
+  email = 'support@rigdig.com',
   error,
   transactionId,
   userEmail,
@@ -40,6 +40,7 @@ module.exports = (res, {
   const addresses = {
     from: 'Overdrive Truck History Reports <no-reply@overdriveonline.com>',
     to: email,
+    cc: 'support@parameter1.com', // @todo remove post testing.
   };
 
   const html = template.renderToString({
