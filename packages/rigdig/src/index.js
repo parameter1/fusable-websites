@@ -61,7 +61,7 @@ module.exports = (app) => {
 
       // Generate the report
       const retries = 1;
-      const response = await retry(async () => client.create([`${vin}g`]), {
+      const response = await retry(async () => client.create([vin]), {
         onFailedAttempt: async (error) => {
           if (error.attemptNumber === retries) {
             await sendErrorNotification(res, {
