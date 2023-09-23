@@ -1,9 +1,11 @@
+const retry = require('p-retry');
 const { asyncRoute } = require('@parameter1/base-cms-utils');
 const { getAsObject } = require('@parameter1/base-cms-object-path');
 const payfabric = require('@randall-reilly/package-payfabric');
 const { json } = require('express');
 const debug = require('debug')('rigdig');
 const sendNotification = require('./send-notification');
+const sendErrorNotification = require('./send-error-notification');
 const RigDigAPIClient = require('./client');
 const { RIGDIG_USERNAME, RIGDIG_PASSWORD } = require('./env');
 
@@ -58,9 +60,23 @@ module.exports = (app) => {
       if (!transactionId) throw createError('You must provide payment to continue.', 402);
 
       // Generate the report
-      const { items: [report] } = await client.create([vin]);
-      const { createdAtUri, linkId } = report;
+      const retries = 1;
+      const response = await retry(async () => client.create([vin]), {
+        onFailedAttempt: async (error) => {
+          if (error.attemptNumber === retries) {
+            await sendErrorNotification(res, {
+              error,
+              vin,
+              userEmail: email,
+              transactionId,
+            });
+          }
+        },
+        retries,
+      });
+      const { items: [report] } = response;
 
+      const { createdAtUri, linkId } = report;
       // Send the notification
       await sendNotification(res, { report, email, transactionId });
       debug('complete.sent', email, transactionId, vin);
