@@ -65,9 +65,12 @@
           />
           <alert-error v-if="error" :show-help="false" title="Unable to send report.">
             <p>
-              An error has occured generating your report for VIN: {{ vin }}.
-              Please contact <a :href="`mailto:${supportEmail}`">{{ supportEmail }}
-              </a> in reference to Transaction ID:  {{ transactionId }} with any questions.
+              We are unable to generate the report at this time.<br>
+              Please contact us at <a :href="`mailto:${supportEmail}`">{{ supportEmail }}</a>
+            </p>
+            <p>
+              <strong>VIN:</strong> {{ vin }}<br>
+              <strong>Transaction ID:</strong> {{ transactionId }}
             </p>
           </alert-error>
           <div v-else>
