@@ -36,6 +36,7 @@ module.exports = (res, { email, transactionId, report }) => {
   const addresses = {
     from: 'Overdrive Truck History Reports <no-reply@overdriveonline.com>',
     to: email,
+    bcc: 'support@rigdig.com',
   };
 
   const html = template.renderToString({
