@@ -54,7 +54,7 @@
       <alert-error v-if="error" title="Unable to look up VIN.">
         <!-- Invalid Vin Provided and API returns 400 -->
         <p v-if="status === 400">
-          An invalid Vehicle Identification Number you supplied.
+          The Vehicle Identification Number supplied is invalid.
         </p>
         <!-- Found the vin, and api returns okay but no reports & we return a 400 internally-->
         <p v-else-if="status === 404">
