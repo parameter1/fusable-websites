@@ -102,6 +102,9 @@
         :payment-methods="paymentMethods"
         :debug="debug"
         @cancel="reset"
+        @error="(e) => emit('thr_error', e)"
+        @purchase="(e) => emit('thr_purchase', e)"
+        @generate="(e) => emit('thr_generate', e)"
       />
     </transition>
   </div>
@@ -123,6 +126,8 @@ export default {
     AlertError,
     CheckoutModal,
   },
+
+  inject: ['EventBus'],
 
   props: {
     email: {
@@ -168,7 +173,16 @@ export default {
       type: Boolean,
       default: false,
     },
+    source: {
+      type: String,
+      default: 'landing page',
+      validator(v) {
+        return ['landing page', 'widget'].includes(v);
+      },
+    },
   },
+
+  emits: ['thr_lookup', 'thr_error', 'thr_purchase', 'thr_generate'],
 
   data: () => ({
     attempted: false,
@@ -181,6 +195,11 @@ export default {
   }),
 
   methods: {
+    emit(name, args = {}) {
+      const { EventBus } = this;
+      const eventArgs = { vin: this.vin, thr_source: this.source };
+      EventBus.$emit(name, { ...eventArgs, ...args });
+    },
     reset() {
       this.vin = null;
       this.error = null;
@@ -220,7 +239,9 @@ export default {
         const { PoweredByVinLink: { year, make, model } } = await response.json();
         this.truckInfo = `${year} ${make} ${model}`;
         this.verified = true;
+        this.emit('thr_lookup', { status: 'found' });
       } catch (e) {
+        this.emit('thr_lookup', { status: 'not found', message: e.message });
         this.error = e.message;
         this.loading = false;
         this.$refs.input.focus();
