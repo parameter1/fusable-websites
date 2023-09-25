@@ -40,7 +40,7 @@ module.exports = (res, {
   const addresses = {
     from: 'Overdrive Truck History Reports <no-reply@overdriveonline.com>',
     to: email,
-    cc: 'support@parameter1.com', // @todo remove post testing.
+    bcc: 'support@rigdig.com',
   };
 
   const html = template.renderToString({
