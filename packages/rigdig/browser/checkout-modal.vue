@@ -257,7 +257,7 @@ export default {
     },
   },
 
-  emits: ['close'],
+  emits: ['cancel', 'purchase', 'error', 'generate'],
 
   data: () => ({
     userEmail: null,
@@ -297,6 +297,7 @@ export default {
         this.transactionToken = token;
       } catch (e) {
         this.error = `Unable to create a transaction: ${e.message}.`;
+        this.$emit('error', { message: this.error.message });
         return false;
       } finally {
         this.loading = false;
@@ -368,6 +369,7 @@ export default {
             // Undo SDK opacity/pointer change. Why isn't the SDK calling this?
             this.client.transactionStoppedProcessing(this.client, e);
             this.error = e.ResponseMsg;
+            this.$emit('error', { message: this.error.message });
           }
         },
         cancelCallback: () => {
@@ -391,6 +393,7 @@ export default {
       this.error = null;
       this.complete = false;
       this.transactionId = transactionId;
+      this.$emit('purchase', { transactionId });
       return this.generate();
     },
 
@@ -419,6 +422,7 @@ export default {
           }
           const error = new Error(message);
           error.code = r.status;
+          this.$emit('error', { transactionId, message: error.message });
           throw error;
         }
 
@@ -427,6 +431,7 @@ export default {
         const { createdAtUri } = report;
         this.createdAtUri = createdAtUri;
         this.complete = true;
+        this.$emit('generate', { transactionId, createdAtUri });
       } catch (e) {
         this.error = e.message;
       } finally {
