@@ -181,9 +181,11 @@
                 </button>
               </div>
             </form>
-            <alert-error v-if="error" title="Unable to start checkout.">
-              <p>We weren't able to start the checkout process.</p>
-              <p><a href="javascript:void(0)" @click="handleSubmit">Click here</a> to retry.</p>
+            <alert-error v-if="error" :show-help="false" title="Unable to start checkout.">
+              <p>
+                The email address you supplied is invalid.  Please verify and try again or
+                <a :href="`mailto:${supportEmail}`">contact us</a>.
+              </p>
             </alert-error>
           </template>
 
