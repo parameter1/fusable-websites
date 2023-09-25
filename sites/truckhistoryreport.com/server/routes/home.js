@@ -10,4 +10,7 @@ module.exports = (app) => {
     template: home,
     queryFragment,
   }));
+  app.get('*', (req, res) => {
+    res.redirect('/', 302);
+  });
 };
