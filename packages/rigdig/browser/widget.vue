@@ -193,6 +193,7 @@ export default {
       this.handleSubmit();
     },
     async handleSubmit() {
+      this.vin = this.vin ? `${this.vin}`.trim() : this.vin;
       this.error = null;
       this.status = null;
       this.loading = true;
