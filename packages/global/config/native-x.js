@@ -2,5 +2,5 @@ const NativeXConfiguration = require('@parameter1/base-cms-marko-web-native-x/co
 
 module.exports = ({
   uri = 'https://delivery.mindfulcms.com/rr/default/compat/native-website',
-  enabled = false,
+  enabled = true,
 } = {}) => new NativeXConfiguration(uri, { enabled, tenantKey: 'randallreilly' });
