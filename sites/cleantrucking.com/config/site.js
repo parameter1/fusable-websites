@@ -33,9 +33,9 @@ module.exports = {
   },
   logos: {
     navbar: {
-      src: 'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ct-logo.png?h=45&auto=format,compress',
+      src: 'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ct-logo.svg?h=45&auto=format,compress',
       srcset: [
-        'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ct-logo.png?h=45&auto=format,compress&dpr=2 2x',
+        'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ct-logo.svg?h=45&auto=format,compress&dpr=2 2x',
       ],
       width: 66,
       height: 35,
@@ -84,7 +84,7 @@ module.exports = {
     directSend: false,
     sendTo: 'support@parameter1.com',
     sendFrom: 'cleantrucking.com <noreply@parameter1.com>',
-    logo: 'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ct-logo.png?h=45&auto=format,compress&bg=000000&pad=5',
+    logo: 'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ct-logo.svg?h=45&auto=format,compress&bg=000000&pad=5',
     bgColor: '#000000',
   },
   sponsoredLabelLogos: {
