@@ -30,7 +30,7 @@ const utilities = [
 ];
 
 const mobileMenu = {
-  user: [],
+  // user: [],
   primary: [
     ...topics.primary,
     ...topics.expanded,
@@ -43,7 +43,7 @@ const mobileMenu = {
 
 const desktopMenu = {
   about: [...utilities],
-  user: [],
+  // user: [],
   sections: [
     ...topics.primary,
     ...topics.expanded,
