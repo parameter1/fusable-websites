@@ -1,9 +1,10 @@
-import { getAsObject } from '@parameter1/base-cms-object-path';
+import { get, getAsObject } from '@parameter1/base-cms-object-path';
 import isDev from "@parameter1/base-cms-marko-core/utils/is-dev";
 import { titleize } from "@parameter1/base-cms-inflector";
 
 $ const styles = 'table {width: 480px;margin: 0 auto;} .danger { color: red } body{font-family: sans-serif; color: #333; margin: 0;}h1{font-family: monospace; line-height: 58px; text-align:center; margin: 0;} .footer{text-align:center; padding: 1em;}.footer{font-family: monospace; color: #CCC;}';
 $ const { subject, addresses, report, transactionId } = input;
+$ const vin = get(report, 'vin');
 $ const PoweredByVinLink = getAsObject(report, 'PoweredByVinLink');
 $ const { make, model, year } = PoweredByVinLink;
 
@@ -49,7 +50,7 @@ $ const { make, model, year } = PoweredByVinLink;
                 <tr>
                   <td style="padding:0px 8px 16px 16px">
                     <table style="margin:0;padding:0;text-align:left;color:#262626;font-family: 'Roboto', Arial, sans-serif;font-size:15px;line-height:28px; width: 100%">
-                      <tr><td>VIN:</td><td><strong>${report.vin}</strong></td></tr>
+                      <tr><td>VIN:</td><td><strong>${vin}</strong></td></tr>
                       <tr><td>Transaction ID:</td><td><strong>${transactionId}</strong></td></tr>
                       <tr></tr>
                       <tr><td>Year:</td><td><strong>${year}</strong></td></tr>
