@@ -23,7 +23,6 @@
             :readonly="loading"
             :placeholder="placeholder"
             required
-            @paste="handlePaste"
           >
         </label>
       </div>
@@ -206,10 +205,6 @@ export default {
       this.attempted = false;
       this.verified = false;
       this.$refs.input.focus();
-    },
-    handlePaste($event) {
-      this.vin = $event.clipboardData.getData('text/plain');
-      this.handleSubmit();
     },
     async handleSubmit() {
       this.vin = this.vin ? `${this.vin}`.trim() : this.vin;
