@@ -20,6 +20,7 @@ const topics = {
     { href: '/overdrive-radio', label: 'Overdrive Radio' },
     { href: '/videos', label: 'Videos' },
     { href: '/white-papers', label: 'Whitepapers' },
+    { href: 'https://truckhistory.overdriveonline.com/', label: 'Truck Histroy Report', target: '_blank' },
   ],
 };
 
@@ -75,6 +76,7 @@ module.exports = {
     more: [
       ...utilities,
       { href: '/videos', label: 'Videos' },
+      { href: 'https://truckhistory.overdriveonline.com/', label: 'Truck Histroy Report', target: '_blank' },
     ],
   },
 };
