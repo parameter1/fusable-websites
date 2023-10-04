@@ -212,6 +212,11 @@
 /*! critical:start|content */
 @import "./components/content-meter";
 /*! critical:end */
+/*! critical:start|home */
+/*! purgecss start ignore */
+@import "./components/blocks/thr-vin-lookup-promo-card";
+/*! purgecss end ignore */
+/*! critical:end */
 /*! critical:start */
 @import "./components/user";
 /*! critical:end */
