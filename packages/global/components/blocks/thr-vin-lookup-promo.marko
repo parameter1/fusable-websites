@@ -1,0 +1,31 @@
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
+
+$ const blockName = "thr-vin-lookup-card";
+$ const logoRoot = "https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/tlc";
+$ const reportSrc = "tlc-attachments-cover.png?auto=format&w=120&fit=crop";
+
+<marko-web-block name=blockName>
+  <marko-web-element block-name=blockName name="inner-wrapper">
+    <div>
+      <marko-web-element block-name=blockName name="title">
+        Truck History Report
+      </marko-web-element>
+      <marko-web-element block-name=blockName name="description">
+        Look up the full history of any truck, including: reported accidents, inspection violations, insurance claim, owner history and more.
+      </marko-web-element>
+      <marko-web-link
+        class=`btn btn-primary`
+        href="https://truckhistory.overdriveonline.com/"
+        title="Truck History Report"
+      >
+        Look Up VIN
+      </marko-web-link>
+    </div>
+    <marko-web-img
+      class=`${blockName}__report-img`
+      src='https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rigdigreport-full.png?w=150'
+      srcset=[`https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rigdigreport-full.png?w=150&dpr=2 2x`]
+      alt="Attachments Idea Book Cover"
+    />
+  </marko-web-element>
+</marko-web-block>
