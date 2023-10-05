@@ -13,9 +13,9 @@ const topics = {
   expanded: [
     { href: '#', label: 'Survey Download' },
     { href: '/videos', label: 'Videos' },
-    { href: '#', label: 'Test Drivers' },
-    { href: '#', label: 'Fleet Profiles' },
-    { href: '#', label: 'Applications' },
+    { href: '/test-drivers', label: 'Test Drivers' },
+    { href: '/fleet-profiles', label: 'Fleet Profiles' },
+    { href: '/applications', label: 'Applications' },
   ],
   secondary: [
   ],
