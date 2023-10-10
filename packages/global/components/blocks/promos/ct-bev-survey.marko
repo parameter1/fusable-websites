@@ -1,0 +1,31 @@
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
+
+$ const blockName = "pib-page-card";
+$ const logoRoot = "https://img.overdriveonline.com/files/base/randallreilly/all/image/static/";
+$ const manualSrc = "rigdigreport.jpg?auto=format&w=120&fit=crop";
+
+<marko-web-block name=blockName>
+  <marko-web-element block-name=blockName name="inner-wrapper">
+    <div>
+      <marko-web-element block-name=blockName name="title">
+        Hydrogen Fuel Cell & BEV Survey
+      </marko-web-element>
+      <marko-web-element block-name=blockName name="description">
+        The following survey was sent as a link in an email cover message in February 2023 to the newsletter lists for Overdrive and CCJ.
+      </marko-web-element>
+      <marko-web-link
+        class=`btn btn-primary ${blockName}__download-btn`
+        href="https://randallreilly.infogram.com/1pxdlkgwex9xp9aqxper6z7e9xsn271j7d0"
+        title="View Survey"
+      >
+        View Survey
+      </marko-web-link>
+    </div>
+    <marko-web-img
+      class=`${blockName}__issue-cover`
+      src=`${logoRoot}/${manualSrc}`
+      srcset=[`${logoRoot}/${manualSrc}&dpr=2 2x`]
+      alt="View Survey"
+    />
+  </marko-web-element>
+</marko-web-block>

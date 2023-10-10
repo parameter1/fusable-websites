@@ -37,4 +37,15 @@ $ const { id, alias, name, pageNode } = input;
     <theme-content-card-deck-block alias="fleet-profiles" query-params={ limit: 4 } />
   </@section>
 
+  <@section>
+    <theme-callout-cards-block>
+      <@slot>
+        <global-ct-bev-survey-promo-block />
+      </@slot>
+      <@slot>
+        <site-promo-card-rotation-block />
+      </@slot>
+    </theme-callout-cards-block>
+  </@section>
+
 </global-website-section-home-layout>

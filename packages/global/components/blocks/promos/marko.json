@@ -1,4 +1,10 @@
 {
+  "<global-ct-bev-survey-promo-block>": {
+    "template": "./ct-bev-survey.marko"
+  },
+  "<global-ct-bev-survey-2-promo-block>": {
+    "template": "./ct-bev-survey-2.marko"
+  },
   "<global-ovd-reader-rigs-submit-promo-block>": {
     "template": "./ovd-reader-rigs-submit.marko"
   },
