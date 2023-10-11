@@ -3,18 +3,18 @@ const privacyPolicy = require('./privacy-policy');
 const baseConfig = {
   action: 'https://randallreilly.dragonforms.com/loading.do',
   hiddenInputs: [
-    { name: 'omedasite', value: 'ct_subscriptions' },
+    { name: 'omedasite', value: 'CT_nlsignup' },
   ],
-  href: 'https://randallreilly.dragonforms.com/loading.do?omedasite=ct_subscriptions',
+  href: 'https://randallreilly.dragonforms.com/loading.do?omedasite=CT_nlsignup',
 };
 
 const defaults = {
   name: 'Clean trucking is here to stay. Is your business ready?',
-  description: 'Breaking news on zero-emission vehicles, infrastructure and regulations, alternative fuel tech and more, delivered straight to your inbox.',
+  description: 'The latest zero emission technology, infrastructure and regulatory news and analysis for trucking pros.',
   defaultNewsletter: {
     // Update to CT's
     deploymentTypeId: 119,
-    name: 'Clean Trucking Newsletter',
+    name: 'Clean Trucking Weekly',
     eventCategory: 'Daily Newsletter Subscription',
   },
   privacyPolicy,
