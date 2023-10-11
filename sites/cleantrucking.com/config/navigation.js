@@ -12,7 +12,7 @@ const topics = {
     { href: '/funding', label: 'Funding' },
   ],
   expanded: [
-    { href: '#', label: 'Survey Download' },
+    { href: '/survey-report', label: 'Survey Report' },
     { href: '/videos', label: 'Videos' },
     { href: '/test-drives', label: 'Test Drives' },
     { href: '/fleet-profiles', label: 'Fleet Profiles' },
