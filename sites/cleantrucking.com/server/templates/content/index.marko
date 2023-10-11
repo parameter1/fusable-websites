@@ -21,4 +21,15 @@ $ const { id, type, pageNode, ...rest } = input;
       <theme-client-side-most-popular-block />
     </div>
   </@section>
+
+  <@section>
+    <theme-callout-cards-block>
+      <@slot>
+        <global-ct-bev-survey-promo-block />
+      </@slot>
+      <@slot>
+        <site-promo-card-rotation-block />
+      </@slot>
+    </theme-callout-cards-block>
+  </@section>
 </global-content-default-layout>

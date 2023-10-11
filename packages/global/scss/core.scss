@@ -547,7 +547,14 @@ label {
 }
 
 // overrides for inbody content injections
+/*! purgecss start ignore */
 .page-contents__content-body {
+  > .infogram-embed {
+    position: relative;
+    iframe {
+      max-width: 100%;
+    }
+  }
   .site-newsletter-menu {
     margin-right: -1rem;
     margin-left: -1rem;
@@ -555,5 +562,5 @@ label {
     padding-left: map-get($spacers, 2);
   }
 }
-
+/*! purgecss end ignore */
 /*! critical:end */
