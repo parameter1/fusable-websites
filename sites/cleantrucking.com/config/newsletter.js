@@ -13,38 +13,28 @@ const defaults = {
   description: 'Breaking news on zero-emission vehicles, infrastructure and regulations, alternative fuel tech and more, delivered straight to your inbox.',
   defaultNewsletter: {
     // Update to CT's
-    deploymentTypeId: 27,
-    name: 'Truckers News Daily',
+    deploymentTypeId: 119,
+    name: 'Clean Trucking Newsletter',
     eventCategory: 'Daily Newsletter Subscription',
   },
   privacyPolicy,
-  newsletters: [
-    // Update to CT's
-    {
-      deploymentTypeId: 84,
-      name: 'Truckers News Monthly Gear',
-      description: '',
-      eventCategory: 'Monthly Gear Subscription',
-    },
-    // Update to CT's
-    {
-      deploymentTypeId: 28,
-      name: 'Truckers News Weekly',
-      description: '',
-      eventCategory: 'Weekly Newsletter Subscription',
-    },
-  ],
+  newsletters: [],
   demographic: {
     // Update to CT's
-    id: 1464,
+    id: 1496,
     label: 'Your primary role?',
     values: [
-      { id: 4935, label: 'Leased to for-hire car' },
-      { id: 4932, label: 'With Authority for-hire' },
-      { id: 4931, label: 'Not for-hire' },
-      { id: 4930, label: 'Company Driver' },
-      { id: 4936, label: 'School' },
-      { id: 4933, label: 'Other' },
+      { id: 5270, label: 'Corporate Mangement/Owner' },
+      { id: 5273, label: 'Operations/Safety Management' },
+      { id: 5272, label: 'Maintenance Management' },
+      { id: 5271, label: 'Purchasing/Adkinistrative/Marketing' },
+      { id: 5277, label: 'Technician/Mechanic' },
+      { id: 5276, label: 'Sales' },
+      { id: 5275, label: 'Driver' },
+      { id: 5274, label: 'Engineering' },
+      { id: 5269, label: 'Recruiting' },
+      { id: 5267, label: 'Other' },
+      { id: 5268, label: 'None of the Above' },
     ],
   },
 };
