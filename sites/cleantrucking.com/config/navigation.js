@@ -6,12 +6,12 @@ const topics = {
     { href: '/battery-electric', label: 'Battery Electric' },
     { href: '/hydrogen', label: 'Hydrogen' },
     { href: '/alt-fuels', label: 'Alt Fuels' },
-    { href: '/maintenance', label: 'Maintenance' },
     { href: '/sales-support', label: 'Sales & Support' },
     { href: '/infrastructure', label: 'Infrastructure' },
     { href: '/funding', label: 'Funding' },
   ],
   expanded: [
+    { href: '/maintenance', label: 'Maintenance' },
     { href: '/survey-report', label: 'Survey Report' },
     { href: '/videos', label: 'Videos' },
     { href: '/test-drives', label: 'Test Drives' },
