@@ -52,6 +52,7 @@ $wrapper-border-radius: 10px !default;
     margin-right: auto;
     background-color: #f0f1f2;
     border-radius: $wrapper-border-radius;
+    overflow: hidden;
     margin-bottom: 30px;
     margin-top: 30px;
     position: relative;
