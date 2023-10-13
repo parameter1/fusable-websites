@@ -16,7 +16,7 @@ const topics = {
     { href: '/videos', label: 'Videos' },
     { href: '/test-drives', label: 'Test Drives' },
     { href: '/fleet-profiles', label: 'Fleet Profiles' },
-    { href: '/applications', label: 'Applications' },
+    // { href: '/applications', label: 'Applications' },
   ],
   secondary: [
   ],
