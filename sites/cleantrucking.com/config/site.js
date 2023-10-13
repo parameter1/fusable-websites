@@ -56,8 +56,8 @@ module.exports = {
     },
   },
   socialMediaLinks: [
-    { provider: 'facebook', href: 'https://www.facebook.com/cleantrucking/', target: '_blank' },
-    { provider: 'twitter', href: 'https://twitter.com/cleantrucking', target: '_blank' },
+    // { provider: 'facebook', href: 'https://www.facebook.com/cleantrucking/', target: '_blank' },
+    // { provider: 'twitter', href: 'https://twitter.com/cleantrucking', target: '_blank' },
     { provider: 'youtube', href: 'https://www.youtube.com/channel/UC55CJCUhEdHwOcQ_A4c9U9g', target: '_blank' },
   ],
   gcse: {
