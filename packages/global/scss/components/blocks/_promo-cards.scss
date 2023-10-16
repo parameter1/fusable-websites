@@ -1,0 +1,39 @@
+.bev-survey-page-card {
+  $self: &;
+  height: 100%;
+  padding: 24px;
+  background-color: $gray-100;
+  border-radius: 4px;
+
+  &__title {
+    margin-bottom: 8px;
+    @include skin-typography($style: "header-2");
+  }
+
+  &__description {
+    margin-bottom: 16px;
+    @include skin-typography($style: "small-body-text");
+  }
+
+  &__inner-wrapper {
+    display: flex;
+  }
+
+  &__issue-cover {
+    align-self: flex-start;
+    width: 120px;
+    margin-left: 24px;
+  }
+
+  &--image-only {
+    #{ $self }__inner-wrapper {
+      flex-direction: column-reverse;
+    }
+    #{ $self }__issue-cover {
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: map-get($spacers, block);
+      align-self: center;
+    }
+  }
+}

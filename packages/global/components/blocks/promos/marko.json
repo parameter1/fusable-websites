@@ -1,9 +1,12 @@
 {
-  "<global-ct-bev-survey-promo-block>": {
-    "template": "./ct-bev-survey.marko"
+  "<global-bev-survey-promo-block>": {
+    "template": "./bev-survey.marko"
   },
-  "<global-ct-bev-survey-2-promo-block>": {
-    "template": "./ct-bev-survey-2.marko"
+  "<global-bev-survey-image-only-promo-block>": {
+    "template": "./bev-survey-image-only.marko"
+  },
+  "<global-bev-survey-text-only-promo-block>": {
+    "template": "./bev-survey-text-only.marko"
   },
   "<global-ovd-reader-rigs-submit-promo-block>": {
     "template": "./ovd-reader-rigs-submit.marko"
