@@ -20,3 +20,12 @@ $skin-newsletter-signup-inline-btn-color: #145624;
     width: auto;
   }
 }
+
+.page {
+  &--content-15636227 {
+    .content-page-header,
+    .content-page-body {
+      max-width: initial;
+    }
+  }
+}
