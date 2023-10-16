@@ -1,6 +1,6 @@
 {
   "name": "@randall-reilly/hardworkingtrucks.com",
-  "version": "1.66.16",
+  "version": "1.67.2",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/sites/hardworkingtrucks.com",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "@parameter1/base-cms-object-path": "^4.5.12",
     "@parameter1/base-cms-utils": "^4.5.12",
     "@parameter1/base-cms-web-cli": "^4.18.3",
-    "@randall-reilly/package-global": "^1.66.16",
+    "@randall-reilly/package-global": "^1.67.2",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
   }
