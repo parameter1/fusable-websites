@@ -5,6 +5,13 @@ module.exports = (params = {}) => withContent({
   ...params,
   loaderQueryFragment: gql`
     fragment WithContentPrimarySectionFragment on Content {
+      siteContext {
+        path
+        canonicalUrl
+      }
+      primarySite {
+        id
+      }
       primarySection {
         id
         alias
