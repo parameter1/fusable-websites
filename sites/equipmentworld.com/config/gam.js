@@ -14,6 +14,8 @@ config
     { name: 'inline-content-desktop', templateName: 'INLINE-CONTENT-DESKTOP', path: 'rotation' },
     { name: 'wallpaper-left', templateName: 'WALLPAPER', path: 'wallpaper-left' },
     { name: 'wallpaper-right', templateName: 'WALLPAPER', path: 'wallpaper-right' },
+    { name: 'welcome-ad', templateName: 'WELCOME-AD', path: 'welcome-ad' },
+    { name: 'xl-content', templateName: 'XL-CONTENT', path: 'xl-content' },
   ])
   .setAliasAdUnits('contractor-of-the-year', [
     { name: 'leaderboard', templateName: 'LEADERBOARD', path: 'coty-leaderboard' },

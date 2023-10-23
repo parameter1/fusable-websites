@@ -22,6 +22,8 @@ config.setAliasAdUnits('default', [
   { name: 'wallpaper-left', templateName: 'WALLPAPER', path: 'wallpaper-left' },
   { name: 'wallpaper-right', templateName: 'WALLPAPER', path: 'wallpaper-right' },
   { name: 'interstitial', path: 'interstitial' },
+  { name: 'welcome-ad', templateName: 'WELCOME-AD', path: 'welcome-ad' },
+  { name: 'xl-content', templateName: 'XL-CONTENT', path: 'xl-content' },
 ]);
 
 const aliases = [
