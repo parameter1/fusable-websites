@@ -9,6 +9,7 @@ const topics = {
     { href: '/sales-support', label: 'Sales & Support' },
     { href: '/infrastructure', label: 'Infrastructure' },
     { href: '/funding', label: 'Funding' },
+    { href: '/regulation-legislation', label: 'Regulation & Legislation' },
   ],
   expanded: [
     { href: '/maintenance', label: 'Maintenance' },
