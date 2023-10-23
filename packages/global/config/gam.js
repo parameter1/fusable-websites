@@ -104,6 +104,21 @@ module.exports = ({
         { viewport: [980, 0], size: [] },
         { viewport: [300, 0], size: [300, 250] },
       ],
+    })
+    .setTemplate('WELCOME-AD', {
+      size: [[428, 241], [736, 414], [1060, 596]],
+      sizeMapping: [
+        { viewport: [1070, 0], size: [[736, 414], [1060, 596]] },
+        { viewport: [980, 0], size: [[428, 241], [736, 414]] },
+        { viewport: [720, 0], size: [428, 241] },
+      ],
+    })
+    .setTemplate('XL-CONTENT', {
+      size: [[430, 720], [1124, 600]],
+      sizeMapping: [
+        { viewport: [1128, 0], size: [1124, 600] },
+        { viewport: [980, 0], size: [430, 720] },
+      ],
     });
 
   return config;
