@@ -3,6 +3,7 @@ const contentMeter = require('@randall-reilly/package-global/middleware/content-
 const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-page');
 const contact = require('@randall-reilly/package-global/templates/content/contact');
 const { newsletterState, formatContentResponse } = require('@randall-reilly/package-global/middleware/newsletter-state');
+const redirectToFn = require('@randall-reilly/package-global/utils/content-redirect-to-function');
 const company = require('../templates/content/company');
 const deathByTrench = require('../templates/content/death-by-trench');
 const product = require('../templates/content/product');
@@ -57,6 +58,7 @@ module.exports = (app) => {
           template: route.template,
           queryFragment: route.queryFragment,
           formatResponse: formatContentResponse,
+          redirectToFn,
         }),
       );
     } else {
@@ -64,6 +66,7 @@ module.exports = (app) => {
         template: route.template,
         queryFragment: route.queryFragment,
         formatResponse: formatContentResponse,
+        redirectToFn,
       }));
     }
   });
