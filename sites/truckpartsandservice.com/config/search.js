@@ -9,4 +9,5 @@ module.exports = {
     73903,
     73900,
   ],
+  defaultSortField: 'SCORE',
 };
