@@ -3,6 +3,7 @@ const configureNativeX = require('@randall-reilly/package-global/config/native-x
 const config = configureNativeX();
 
 config.enabled = true;
+config.publisherId = '5fd267ec1305250001368472';
 
 config
   .setAliasPlacements('default', [
