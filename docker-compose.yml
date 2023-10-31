@@ -190,7 +190,7 @@ services:
       PAYFABRIC_PAYMENT_METHODS: ${PAYFABRIC_PAYMENT_METHODS-CreditCard}
       SENDGRID_API_KEY: ${SENDGRID_API_KEY}
       SENDGRID_DEV_TO: ${SENDGRID_DEV_TO-support@parameter1.com}
-      DEBUG: rigdig,payfabric
+      DEBUG: rigdig,payfabric,sendgrid
     hostname: www-rr-thr.dev.parameter1.com
     ports:
       - "9909:80"
@@ -216,7 +216,7 @@ services:
       PAYFABRIC_PAYMENT_METHODS: ${PAYFABRIC_PAYMENT_METHODS-CreditCard}
       SENDGRID_API_KEY: ${SENDGRID_API_KEY}
       SENDGRID_DEV_TO: ${SENDGRID_DEV_TO-support@parameter1.com}
-      DEBUG: rigdig,payfabric
+      DEBUG: rigdig,payfabric,sendgrid
       ENABLE_RIGDIG: ${ENABLE_RIGDIG-true}
     hostname: www-rr-ovd.dev.parameter1.com
     ports:

@@ -1,3 +1,4 @@
+const debug = require('debug')('sendgrid');
 const buildMarkoGlobal = require('@parameter1/base-cms-marko-web/utils/build-marko-global');
 const sgMail = require('@sendgrid/mail');
 const isDev = require('@parameter1/base-cms-marko-core/utils/is-dev');
@@ -11,6 +12,7 @@ const send = ({ html, subject, addresses }) => {
   const { from } = addresses;
   if (!from) throw new Error('Cannot send mail without a from address!');
   const emails = isDev ? { to: SENDGRID_DEV_TO, from } : addresses;
+  debug('send', { subject, emails });
   return sgMail.send({ html, subject, ...emails });
 };
 
