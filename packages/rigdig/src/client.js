@@ -39,6 +39,7 @@ module.exports = class ApiClient {
   async getToken() {
     const now = Math.floor(new Date().valueOf() / 1000);
     const expires = this.expires ? Math.floor(this.expires.valueOf() / 1000) : 0;
+    debug('getToken', this.token, { expires, EXPIRATION_GRACE, now });
     if (!this.token || expires + EXPIRATION_GRACE <= now) this.token = await this.fetchToken();
     return this.token;
   }
@@ -80,6 +81,11 @@ module.exports = class ApiClient {
     const result = await fetch(url, { method, body, headers });
 
     if (!result.ok) {
+      // Force token renewal for next request
+      if (result.status === 401) {
+        debug('Forcing auth token refresh');
+        this.token = null;
+      }
       debug(`${method.toUpperCase()} ${url} ERR`, inspect({
         request: {
           headers: JSON.stringify({ ...headers, authorization: 'Bearer [redacted]' }),
