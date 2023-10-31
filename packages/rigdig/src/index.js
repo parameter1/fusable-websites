@@ -59,32 +59,36 @@ module.exports = (app) => {
       if (!email) throw createError('You must provide your email address to continue.', 401);
       if (!transactionId) throw createError('You must provide payment to continue.', 402);
 
-      // Generate the report
-      const retries = 1;
-      const response = await retry(async () => client.create([vin]), {
-        onFailedAttempt: async (error) => {
-          if (error.attemptNumber === retries) {
-            await sendErrorNotification(res, {
-              error,
-              vin,
-              userEmail: email,
-              transactionId,
-            });
-          }
-        },
-        retries,
-      });
-      const { items: [report] } = response;
+      try {
+        // Generate the report
+        const response = await retry(async () => client.create([vin]), { retries: 1 });
+        const { items: [report] } = response;
 
-      const { createdAtUri, linkId } = report;
-      // Send the notification
-      await sendNotification(res, { report, email, transactionId });
-      debug('complete.sent', email, transactionId, vin);
+        const { createdAtUri, linkId } = report;
+        // Send the notification
+        await sendNotification(res, { report, email, transactionId });
+        debug('complete.sent', email, transactionId, vin);
 
-      res.json({ ok: true, report: { createdAtUri, linkId } });
+        res.json({ ok: true, report: { createdAtUri, linkId } });
+      } catch (e) {
+        debug(e);
+        await sendErrorNotification(res, {
+          error: e,
+          vin,
+          userEmail: email,
+          transactionId,
+        });
+        res.status(e.code || 500).json({ error: e.message });
+      }
     } catch (error) {
       debug(error);
-      res.status(error.code || 500).json({ error: error.messge });
+      await sendErrorNotification(res, {
+        error,
+        vin: null,
+        userEmail: null,
+        transactionId: null,
+      });
+      res.status(error.code || 500).json({ error: error.message });
     }
   }));
 };
