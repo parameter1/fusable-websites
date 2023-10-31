@@ -39,7 +39,6 @@ module.exports = class ApiClient {
   async getToken() {
     const now = Math.floor(new Date().valueOf() / 1000);
     const expires = this.expires ? Math.floor(this.expires.valueOf() / 1000) : 0;
-    debug('getToken', this.token, { expires, EXPIRATION_GRACE, now });
     if (!this.token || expires + EXPIRATION_GRACE <= now) this.token = await this.fetchToken();
     return this.token;
   }
