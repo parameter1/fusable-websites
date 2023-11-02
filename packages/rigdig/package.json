@@ -14,12 +14,12 @@
     "test": "yarn lint && yarn compile --no-clean"
   },
   "dependencies": {
-    "@parameter1/base-cms-marko-core": "^4.40.0",
-    "@parameter1/base-cms-marko-web": "^4.40.0",
+    "@parameter1/base-cms-marko-core": "^4.40.3",
+    "@parameter1/base-cms-marko-web": "^4.40.3",
     "@parameter1/base-cms-marko-web-icons": "^4.36.8",
-    "@parameter1/base-cms-marko-web-identity-x": "^4.40.1",
-    "@parameter1/base-cms-object-path": "^4.5.12",
-    "@parameter1/base-cms-utils": "^4.5.12",
+    "@parameter1/base-cms-marko-web-identity-x": "^4.40.3",
+    "@parameter1/base-cms-object-path": "^4.40.3",
+    "@parameter1/base-cms-utils": "^4.40.3",
     "@randall-reilly/package-payfabric": "^1.64.5",
     "@sendgrid/mail": "^6.4.0",
     "debug": "^4.3.4",
