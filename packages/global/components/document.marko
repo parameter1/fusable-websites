@@ -1,7 +1,6 @@
 
 import createOmedaIdentityBuilder from "@parameter1/base-cms-marko-web-p1-events/utils/create-omeda-identity-builder";
 import { getAsObject } from "@parameter1/base-cms-object-path";
-import getCookieId from "@parameter1/base-cms-marko-web-omeda-identity-x/utils/get-cookie-id";
 
 $ const {
   site,
@@ -10,8 +9,6 @@ $ const {
   GAM,
   contentMeterState,
 } = out.global;
-
-$ const { cookies } = req;
 
 $ const omedaConfig = site.get('omeda');
 
