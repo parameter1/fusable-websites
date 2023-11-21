@@ -219,6 +219,11 @@
 @import "./components/blocks/thr-vin-lookup-promo-card";
 /*! purgecss end ignore */
 /*! critical:end */
+/*! critical:start|content */
+/*! purgecss start ignore */
+@import "./components/blocks/thr-vin-lookup-inbody-promo-card";
+/*! purgecss end ignore */
+/*! critical:end */
 /*! critical:start */
 @import "./components/user";
 /*! critical:end */
