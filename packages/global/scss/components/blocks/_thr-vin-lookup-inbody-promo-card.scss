@@ -84,9 +84,7 @@
   .learn-more-link {
     margin-left: 24px;
     @include skin-typography($style: "small-body-text", $link-style: "primary");
-    a {
-      color: $primary;
-    }
+    color: $primary;
   }
 
   label {
