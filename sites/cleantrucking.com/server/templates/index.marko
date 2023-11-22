@@ -1,0 +1,55 @@
+import hierarchyAliases from "@parameter1/base-cms-marko-web/utils/hierarchy-aliases";
+
+$ const { id, alias, name, pageNode } = input;
+
+<global-website-section-home-layout
+  id=id
+  alias=alias
+  name=name
+  page-node=pageNode
+>
+  <@head>
+    <meta name="google-site-verification" content="KflYYn-PmMzT2Je0fPogDPbn4zBPPHNxduUmOyj6UjE" />
+  </@head>
+
+  <@section modifiers=["native"]>
+    <theme-native-x-card-deck-block
+      section={ name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
+      placement-name="native"
+      limit=4
+    />
+  </@section>
+
+  <@section>
+    <theme-hero-card-block query-params={ includeContentTypes: ["Video"] } alias="videos" description="Watch discussions, test drives and reviews of alternative power vehicles" />
+  </@section>
+
+  <@section>
+    <theme-section-list-deck-block aliases=["battery-electric", "hydrogen", "alt-fuels"] />
+  </@section>
+
+  <@section|{ aliases }|>
+    <theme-gam-define-display-ad
+      name="rotation"
+      position="home_page"
+      aliases=aliases
+      modifiers=["inter-block"]
+    />
+  </@section>
+
+  <@section>
+    <theme-content-card-deck-block alias="fleet-profiles" query-params={ limit: 4 } />
+  </@section>
+
+  <@section>
+    <theme-callout-cards-block>
+      <@slot>
+        <global-bev-survey-image-only-promo-block />
+      </@slot>
+      <@slot>
+        <site-promo-card-rotation-block />
+      </@slot>
+    </theme-callout-cards-block>
+  </@section>
+
+</global-website-section-home-layout>

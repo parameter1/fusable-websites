@@ -28,10 +28,12 @@ x-env-defaults: &env
   EQUIPMENT_EXPERTS_GRAPHQL_URI: ${EQUIPMENT_EXPERTS_GRAPHQL_URI-https://equipment-experts.virgon.base.parameter1.com/graphql}
   ENABLE_CONTENT_METER: ${ENABLE_CONTENT_METER-false}
   CONTENT_METER_VIEW_LIMIT: ${CONTENT_METER_VIEW_LIMIT-3}
+  SHOW_INBODY_THR_PROMO: ${SHOW_INBODY_THR_PROMO-false}
   IDX_NAV_ENABLE: ${IDX_NAV_ENABLE-false}
   RECAPTCHA_V3_SITE_KEY: ${RECAPTCHA_V3_SITE_KEY-(unset)}
   RECAPTCHA_V3_SECRET_KEY: ${RECAPTCHA_V3_SECRET_KEY-(unset)}
   INBODY_PUSHDOWN_INJECTION: ${INBODY_PUSHDOWN_INJECTION-false}
+  NATIVEX_SERVE_URI: ${NATIVEX_SERVE_URI-}
 
 x-env-virgon-dev: &env-virgon-dev
   GRAPHQL_URI: ${GRAPHQL_URI-http://host.docker.internal:10103}
@@ -138,6 +140,22 @@ services:
       - "9904:80"
       - "19904:19904"
 
+  ct:
+    <<: *site-cmd
+    working_dir: /root/sites/cleantrucking.com
+    environment:
+      <<: *env
+      HOST: www-rr-ct.dev.parameter1.com
+      PORT: 80
+      EXPOSED_PORT: 9913
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
+      LIVERELOAD_PORT: 19913
+      OMEDA_INPUT_ID: ${CT_OMEDA_INPUT_ID-(unset)}
+    hostname: www-rr-ct.dev.parameter1.com
+    ports:
+      - "9913:80"
+      - "19913:19913"
+
   hwt:
     <<: *site-cmd
     working_dir: /root/sites/hardworkingtrucks.com
@@ -153,6 +171,32 @@ services:
     ports:
       - "9905:80"
       - "19905:19905"
+
+  thr:
+    <<: *site-cmd
+    working_dir: /root/sites/truckhistoryreport.com
+    environment:
+      <<: *env
+      HOST: www-rr-thr.dev.parameter1.com
+      PORT: 80
+      EXPOSED_PORT: 9909
+      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
+      LIVERELOAD_PORT: 19909
+      OMEDA_INPUT_ID: ${THR_OMEDA_INPUT_ID-(unset)}
+      RIGDIG_USERNAME: ${RIGDIG_USERNAME}
+      RIGDIG_PASSWORD: ${RIGDIG_PASSWORD}
+      PAYFABRIC_DEVICE_ID: ${PAYFABRIC_DEVICE_ID}
+      PAYFABRIC_DEVICE_PWD: ${PAYFABRIC_DEVICE_PWD}
+      PAYFABRIC_GATEWAY_NAME: ${PAYFABRIC_GATEWAY_NAME-EVO US_CC}
+      PAYFABRIC_ENV: ${PAYFABRIC_ENV-SANDBOX}
+      PAYFABRIC_PAYMENT_METHODS: ${PAYFABRIC_PAYMENT_METHODS-CreditCard}
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+      SENDGRID_DEV_TO: ${SENDGRID_DEV_TO-support@parameter1.com}
+      DEBUG: rigdig,payfabric,sendgrid
+    hostname: www-rr-thr.dev.parameter1.com
+    ports:
+      - "9909:80"
+      - "19909:19909"
 
   ovd:
     <<: *site-cmd
@@ -174,7 +218,7 @@ services:
       PAYFABRIC_PAYMENT_METHODS: ${PAYFABRIC_PAYMENT_METHODS-CreditCard}
       SENDGRID_API_KEY: ${SENDGRID_API_KEY}
       SENDGRID_DEV_TO: ${SENDGRID_DEV_TO-support@parameter1.com}
-      DEBUG: rigdig,payfabric
+      DEBUG: rigdig,payfabric,sendgrid
       ENABLE_RIGDIG: ${ENABLE_RIGDIG-true}
     hostname: www-rr-ovd.dev.parameter1.com
     ports:

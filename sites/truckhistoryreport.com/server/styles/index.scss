@@ -1,0 +1,93 @@
+// the next two lines make the container 1300px wide and puts 40px between left and right rail
+// @todo rigure out better way to adjust this without messing with $grid-gutter-width.
+$marko-web-document-container-max-width: 1300px;
+.page-wrapper__section {
+  > .row {
+    .col-lg-8,
+    .col-lg-4 {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+
+$theme-site-header-breakpoints: (
+  hide-primary: 100000px, // effectively always hide the primary nav
+  hide-secondary: 750px,
+  small-logo: 950px,
+  small-text-primary: 0,
+  small-text-secondary: 950px
+);
+
+// Colors
+$primary: #b9161b;
+
+// Newsletter signup forms
+$skin-newsletter-signup-bg-color: #f0f1f2;
+$skin-newsletter-signup-inline-btn-color: #460c0e;
+
+@import "@randall-reilly/package-global/scss/core";
+/*! critical:start */
+@import "@randall-reilly/package-rigdig/scss/rigdig";
+/*! critical:end */
+
+.site-navbar {
+  &__items {
+    &--secondary {
+      // ensures the nav items are aligned to the offset logo
+      padding-top: 4px;
+    }
+  }
+}
+
+.site-footer {
+  &__brand {
+    margin-bottom: 0;
+  }
+}
+/*! critical:start */
+.site-menu--open,
+.site-footer {
+  .social-follow .social-follow__header {
+    visibility: hidden;
+    position: relative;
+    &:after {
+      visibility: visible;
+      content: " Follow Overdrive";
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+/*! purgecss start ignore */
+.document-container:has(.rigdig-modal) {
+  z-index: 15001;
+}
+/*! purgecss end ignore */
+.rigdig {
+  $self: &;
+  &__intro {
+    display: flex;
+    padding: 16px;
+    // tighten up intro on nonDesktop devices
+    @media (max-width: 992px) {
+      padding: 0;
+      margin: 16px 0 -32px;
+    }
+  }
+  &__logo {
+    padding: 8px 16px 8px 0;
+  }
+  &__section-sub-title {
+    + #{ $self } + p.small {
+      margin-top: map-get($spacers, 2);
+    }
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/*! critical:end */

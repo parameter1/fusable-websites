@@ -1,9 +1,9 @@
 <template>
   <div>
-    <p class="rigdig-modal__copy">
+    <p v-if="step === 1" class="rigdig-modal__copy">
       We found a match for the VIN. To purchase the report, complete the payment process below.
     </p>
-    <p class="rigdig-modal__copy">
+    <p v-if="step === 1" class="rigdig-modal__copy">
       Reports are delivered instantly via email after payment.
     </p>
     <div class="rigdig-modal__promo">

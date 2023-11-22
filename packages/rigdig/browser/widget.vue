@@ -23,7 +23,6 @@
             :readonly="loading"
             :placeholder="placeholder"
             required
-            @paste="handlePaste"
           >
         </label>
       </div>
@@ -52,8 +51,38 @@
         </button>
       </div>
       <alert-error v-if="error" title="Unable to look up VIN.">
-        <p>We couldn't find the Vehicle Identification Number you supplied.</p>
+        <!-- Invalid Vin Provided and API returns 400 -->
+        <p v-if="status === 400">
+          The Vehicle Identification Number supplied is invalid.
+        </p>
+        <!-- Found the vin, and api returns okay but no reports & we return a 400 internally-->
+        <p v-else-if="status === 404">
+          No report could be found with the Vehicle Identification Number you supplied.
+        </p>
+        <!-- Display other abnormal errors -->
+        <p v-else>
+          {{ error }}
+        </p>
       </alert-error>
+      <div v-if="withDetails" class="rigdig-widget__form-group--details">
+        <label class="rigdig-widget__label">
+          Reports Include
+        </label>
+        <ul class="rigdig-widget__benifits-list">
+          <li><icon-check-circle class="mr-2" />Reported accidents</li>
+          <li><icon-check-circle class="mr-2" />Reported inspection violations</li>
+          <li><icon-check-circle class="mr-2" />Title and odometer brands</li>
+          <li><icon-check-circle class="mr-2" />Reported insurance claims</li>
+          <li><icon-check-circle class="mr-2" />Carrier/owner history</li>
+          <li><icon-check-circle class="mr-2" />Plus more vehicle data</li>
+        </ul>
+        <div class="rigdig-widget__pricing">
+          <span>Price</span> <span>$34.95</span>
+        </div>
+        <div class="rigdig-widget__info">
+          <icon-email class="mr-2" /> Reports are delivered immediately via email
+        </div>
+      </div>
     </form>
     <transition
       enter-active-class="transition duration-100 ease-out"
@@ -72,12 +101,18 @@
         :payment-methods="paymentMethods"
         :debug="debug"
         @cancel="reset"
+        @error="(e) => emit('thr_error', e)"
+        @purchase="(e) => emit('thr_purchase', e)"
+        @generate="(e) => emit('thr_generate', e)"
       />
     </transition>
   </div>
 </template>
 
 <script>
+import IconEmail from '@parameter1/base-cms-marko-web-icons/browser/mail.vue';
+import IconCheckCircle from '@parameter1/base-cms-marko-web-icons/browser/check-circle.vue';
+
 import CheckoutModal from './checkout-modal.vue';
 import AlertError from './alert-error.vue';
 
@@ -85,9 +120,13 @@ export default {
   name: 'RigDigWidget',
 
   components: {
+    IconCheckCircle,
+    IconEmail,
     AlertError,
     CheckoutModal,
   },
+
+  inject: ['EventBus'],
 
   props: {
     email: {
@@ -96,11 +135,11 @@ export default {
     },
     title: {
       type: String,
-      default: 'Overdrive Truck History Reports',
+      default: 'Look up a report by VIN',
     },
     callToAction: {
       type: String,
-      default: 'Look up the full history of any truck, including reported accidents, inspection violations, insurance claims, owner history, and more.',
+      default: 'Enter a VIN (17-characters) to see if we have a report in our database',
     },
     placeholder: {
       type: String,
@@ -108,7 +147,7 @@ export default {
     },
     buttonLabel: {
       type: String,
-      default: 'Look up VIN',
+      default: 'Find Report',
     },
     inputLabel: {
       type: String,
@@ -125,15 +164,29 @@ export default {
       type: Array,
       default: () => ['CreditCard', 'ApplePay'],
     },
+    withDetails: {
+      type: Boolean,
+      dafault: false,
+    },
     debug: {
       type: Boolean,
       default: false,
     },
+    source: {
+      type: String,
+      default: 'landing page',
+      validator(v) {
+        return ['landing page', 'widget'].includes(v);
+      },
+    },
   },
+
+  emits: ['thr_lookup', 'thr_error', 'thr_purchase', 'thr_generate'],
 
   data: () => ({
     attempted: false,
     error: null,
+    status: null,
     loading: false,
     vin: null,
     verified: false,
@@ -141,6 +194,11 @@ export default {
   }),
 
   methods: {
+    emit(name, args = {}) {
+      const { EventBus } = this;
+      const eventArgs = { vin: this.vin, thr_source: this.source };
+      EventBus.$emit(name, { ...eventArgs, ...args });
+    },
     reset() {
       this.vin = null;
       this.error = null;
@@ -148,12 +206,10 @@ export default {
       this.verified = false;
       this.$refs.input.focus();
     },
-    handlePaste($event) {
-      this.vin = $event.clipboardData.getData('text/plain');
-      this.handleSubmit();
-    },
     async handleSubmit() {
+      this.vin = this.vin ? `${this.vin}`.trim() : this.vin;
       this.error = null;
+      this.status = null;
       this.loading = true;
       try {
         const response = await fetch('/__rigdig/verify', {
@@ -172,12 +228,15 @@ export default {
           }
           const error = new Error(message);
           error.code = response.status;
+          this.status = error.code;
           throw error;
         }
         const { PoweredByVinLink: { year, make, model } } = await response.json();
         this.truckInfo = `${year} ${make} ${model}`;
         this.verified = true;
+        this.emit('thr_lookup', { status: 'found' });
       } catch (e) {
+        this.emit('thr_lookup', { status: 'not found', message: e.message });
         this.error = e.message;
         this.loading = false;
         this.$refs.input.focus();

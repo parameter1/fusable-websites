@@ -1,0 +1,31 @@
+$theme-site-header-breakpoints: (
+  hide-primary: 100000px, // effectively always hide the primary nav
+  hide-secondary: 700px,
+  small-logo: 775px,
+  small-text-primary: 0,
+  small-text-secondary: 830px
+);
+
+// Colors
+$primary: #29b34b;
+
+// Newsletter signup forms
+$skin-newsletter-signup-bg-color: #f0f1f2;
+$skin-newsletter-signup-inline-btn-color: #145624;
+
+@import "@randall-reilly/package-global/scss/core";
+
+.site-footer {
+  &__logo {
+    width: auto;
+  }
+}
+
+.page {
+  &--content-15636227 {
+    .content-page-header,
+    .content-page-body {
+      max-width: initial;
+    }
+  }
+}

@@ -1,9 +1,9 @@
 const withContent = require('@randall-reilly/package-global/middleware/with-content');
 const contentMeter = require('@randall-reilly/package-global/middleware/content-meter');
-const contentDisplay = require('@randall-reilly/package-global/middleware/content-display');
 const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-page');
 const contact = require('@randall-reilly/package-global/templates/content/contact');
 const { newsletterState, formatContentResponse } = require('@randall-reilly/package-global/middleware/newsletter-state');
+const redirectToFn = require('@randall-reilly/package-global/utils/content-redirect-to-function');
 const company = require('../templates/content/company');
 const product = require('../templates/content/product');
 const whitepaper = require('../templates/content/whitepaper');
@@ -48,18 +48,19 @@ module.exports = (app) => {
         route.regex,
         newsletterState({ setCookie: false }),
         contentMeter(),
-        contentDisplay(),
         withContent({
           template: route.template,
           queryFragment: route.queryFragment,
           formatResponse: formatContentResponse,
+          redirectToFn,
         }),
       );
     } else {
-      app.get(route.regex, newsletterState({ setCookie: false }), contentDisplay(), withContent({
+      app.get(route.regex, newsletterState({ setCookie: false }), withContent({
         template: route.template,
         queryFragment: route.queryFragment,
         formatResponse: formatContentResponse,
+        redirectToFn,
       }));
     }
   });

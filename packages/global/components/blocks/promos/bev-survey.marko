@@ -1,0 +1,31 @@
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
+
+$ const blockName = "bev-survey-page-card";
+$ const logoRoot = "https://img.cleantrucking.com/files/base/randallreilly/all/image/2023/10/";
+$ const manualSrc = "overdrive_and_ccj_2023_hydrogen_fuel_cell_and_bev_survey.652d6206523f6.png?auto=format&w=120&fit=crop";
+
+<marko-web-block name=blockName  modifiers=[]>
+  <marko-web-element block-name=blockName name="inner-wrapper">
+    <div>
+      <marko-web-element block-name=blockName name="title">
+        Hydrogen Fuel Cell & BEV Survey
+      </marko-web-element>
+      <marko-web-element block-name=blockName name="description">
+        The following survey was sent as a link in an email cover message in February 2023 to the newsletter lists for Overdrive and CCJ.
+      </marko-web-element>
+      <marko-web-link
+        class=`btn btn-primary ${blockName}__download-btn`
+        href="/15636227"
+        title="View Survey"
+      >
+        View Infogram
+      </marko-web-link>
+    </div>
+    <marko-web-img
+      class=`${blockName}__issue-cover`
+      src=`${logoRoot}/${manualSrc}`
+      srcset=[`${logoRoot}/${manualSrc}&dpr=2 2x`]
+      alt="View Survey"
+    />
+  </marko-web-element>
+</marko-web-block>

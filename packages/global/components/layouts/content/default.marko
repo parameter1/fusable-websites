@@ -7,13 +7,15 @@ import renderSiteNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monor
 // move to core if we go this route.
 import Stories from "../../blocks/stories";
 import NativeXCardDeck from "../../blocks/native-x-card-deck";
+import THR from "../../blocks/thr-vin-lookup-inbody-promo";
+
 $ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
 
 $ const { global: $global } = out;
 $ const { nativeX: nxConfig } = $global;
-$ const { site, contentDisplayType, contentMeterState, GAM } = $global;
+$ const { site, contentMeterState, GAM } = $global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
@@ -154,124 +156,67 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             $ const mobileLeaderboardAdName = (GAM.btfLeaderboard) ? "inline-leaderboard-mobile" : "inline-content-mobile";
             $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
 
+            $ const uri = nxConfig.getUri();
+            $ const placement = nxConfig.getPlacement({ name: "native", aliases });
+            <marko-web-native-x-fetch-elements|{ ads }| uri=uri id=placement.id opts={ n: 4 }>
+              $ const hasAd = ads && ads.length && ads[0] && ads[0].hasCampaign;
+              $ let htmlInjections = [];
+              $ const showInbodyTHRPromo = site.get("showInbodyTHRPromo") || false;
+              $ const desktopAdCounts = showInbodyTHRPromo ? [2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500] : [1500, 2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500];
+              $ const mobileAdCounts = showInbodyTHRPromo ? [1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250] : [900, 1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250];
+              $ if (showInbodyTHRPromo) {
+                htmlInjections.push(
+                  {
+                    at: 1200,
+                    html: THR.renderToString({})
+                  }
+                );
+              };
 
+              <if(hasAd)>
+                $ const nodes = ads.filter((ad) => ad.hasCampaign);
+                $ htmlInjections.push(
+                  {
+                    at: 2000,
+                    html: NativeXCardDeck.renderToString({
+                      nodes: nodes,
+                      section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
+                    })
+                  }
+                );
+              </if>
+              <if(initiallyInjected)>
+                $ htmlInjections.push(renderSiteNewsletterMenu({ out }).then((html) => ({ at: 250, html })));
+                <theme-body-with-injection
+                  content=content
+                  aliases=aliases
+                  block-name=blockName
+                  preventHTMLInjection=!shouldInjectAds
+                  html-injections=htmlInjections
+                  mobile-leaderboard-ad-name="inline-content-mobile"
+                  mobile-leaderboard-ad-counts=[]
+                  mobile-leaderboard-modifiers=["margin-auto-x",  "inline-content", "inline-mobile"]
+                  lazyload-first-image=lazyloadFirstImage
+                  mobile-ad-counts=mobileAdCounts
+                  desktop-ad-counts=desktopAdCounts
+                />
+              </if>
+              <else>
+                <theme-body-with-injection
+                  content=content
+                  aliases=aliases
+                  block-name=blockName
+                  preventHTMLInjection=!shouldInjectAds
+                  html-injections=htmlInjections
+                  mobile-leaderboard-ad-name=mobileLeaderboardAdName
+                  mobile-leaderboard-modifiers=mobileLeaderboardModifiers
+                  lazyload-first-image=lazyloadFirstImage
+                  mobile-ad-counts=mobileAdCounts
+                  desktop-ad-counts=desktopAdCounts
+                />
+              </else>
+            </marko-web-native-x-fetch-elements>
 
-            <if(contentDisplayType === 'relatedContent')>
-              <marko-web-query|{ nodes }| name="related-published-content" params={ contentId: id, limit: 4, requiresImage: true, queryFragment: storiesQueryFragment } collapsible=false>
-                <if(nodes.length < 4)>
-                  $ const excludeContentIds = [id, ...nodes.map(node => node.id)];
-                  $ const sinceParams = {
-                    sectionId: content.primarySection.id,
-                    since: content.published,
-                    limit: 4 - nodes.length,
-                    excludeContentIds,
-                    requiresImage: true,
-                    excludeContentTypes: ["Contact", "Company", "Document", "Product", "Promotion", "TextAd"],
-                    queryFragment: storiesQueryFragment
-                  };
-                  <marko-web-query|{ nodes: related }|
-                    name="all-published-content"
-                    params=sinceParams
-                  >
-                    $ nodes.push(...related);
-                    $ const htmlInjections = [
-                      {
-                        at: 1200,
-                        html: Stories.renderToString({
-                          title: "Related Stories",
-                          blockName: 'related-stories-inbody',
-                          nodes: nodes,
-                          $global
-                        })
-                      },
-                    ];
-                    <theme-body-with-injection
-                      content=content
-                      aliases=aliases
-                      block-name=blockName
-                      preventHTMLInjection=!shouldInjectAds
-                      html-injections=htmlInjections
-                      desktopAdCounts=[2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500]
-                      mobile-leaderboard-ad-name=mobileLeaderboardAdName
-                      mobile-leaderboard-modifiers=mobileLeaderboardModifiers
-                      mobileAdCounts=[1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250]
-                      lazyload-first-image=lazyloadFirstImage
-                    />
-                  </marko-web-query>
-                </if>
-                <else>
-                  $ const htmlInjections = [
-                      {
-                        at: 1200,
-                        html: Stories.renderToString({
-                          title: "Related Stories",
-                          blockName: "related-stories-inbody",
-                          nodes: nodes,
-                          $global
-                        })
-                      }
-                    ];
-                    <theme-body-with-injection
-                      content=content
-                      aliases=aliases
-                      block-name=blockName
-                      preventHTMLInjection=!shouldInjectAds
-                      html-injections=htmlInjections
-                      desktopAdCounts=[2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500]
-                      mobile-leaderboard-ad-name=mobileLeaderboardAdName
-                      mobile-leaderboard-modifiers=mobileLeaderboardModifiers
-                      mobileAdCounts=[1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250]
-                      lazyload-first-image=lazyloadFirstImage
-                    />
-                  </else>
-              </marko-web-query>
-            </if>
-            <else>
-              $ const uri = nxConfig.getUri();
-              $ const placement = nxConfig.getPlacement({ name: "native", aliases });
-              <marko-web-native-x-fetch-elements|{ ads }| uri=uri id=placement.id opts={ n: 4 }>
-                $ const hasAd = ads && ads.length && ads[0] && ads[0].hasCampaign;
-                $ let htmlInjections = [];
-                <if(hasAd)>
-                  $ const nodes = ads.filter((ad) => ad.hasCampaign);
-                  $ htmlInjections.push(
-                    {
-                      at: 2000,
-                      html: NativeXCardDeck.renderToString({
-                        nodes: nodes,
-                        section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
-                      })
-                    }
-                  );
-                </if>
-                <if(initiallyInjected)>
-                  $ htmlInjections.push(renderSiteNewsletterMenu({ out }).then((html) => ({ at: 250, html })));
-                  <theme-body-with-injection
-                    content=content
-                    aliases=aliases
-                    block-name=blockName
-                    preventHTMLInjection=!shouldInjectAds
-                    html-injections=htmlInjections
-                    mobile-leaderboard-ad-name="inline-content-mobile"
-                    mobile-leaderboard-ad-counts=[]
-                    mobile-leaderboard-modifiers=["margin-auto-x",  "inline-content", "inline-mobile"]
-                    lazyload-first-image=lazyloadFirstImage
-                  />
-                </if>
-                <else>
-                  <theme-body-with-injection
-                    content=content
-                    aliases=aliases
-                    block-name=blockName
-                    preventHTMLInjection=!shouldInjectAds
-                    html-injections=htmlInjections
-                    mobile-leaderboard-ad-name=mobileLeaderboardAdName
-                    mobile-leaderboard-modifiers=mobileLeaderboardModifiers
-                    lazyload-first-image=lazyloadFirstImage
-                  />
-                </else>
-              </marko-web-native-x-fetch-elements>
-            </else>
             <if(content.transcript)>
               <div id=`transcript-${id}` class="page-contents__content-transcript">
                 <marko-web-element block-name="page-contents" name="content-transcript-title">
@@ -346,17 +291,16 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
     </div>
   </@section>
 
-  <if(contentDisplayType !== 'relatedContent')>
-    <@section|{ content }|>
-      <theme-related-stories-block
-        content-id=content.id
-        section-id=content.primarySection.id
-        published=content.published
-        with-native-x=true
-        native-x={ name: "partner-insights", sectionName: "Partner Insights" }
-      />
-    </@section>
-  </if>
+  <@section|{ content }|>
+    <theme-related-stories-block
+      content-id=content.id
+      section-id=content.primarySection.id
+      published=content.published
+      with-native-x=true
+      native-x={ name: "partner-insights", sectionName: "Partner Insights" }
+    />
+  </@section>
+
 
   <if(showBottomAdBlock && !showOverlay)>
     <@section|{ aliases }|>

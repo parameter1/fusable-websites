@@ -3,34 +3,33 @@ const oneTrust = require('./one-trust');
 
 const topics = {
   primary: [
-    { href: '/equipment', label: 'Equipment' },
-    { href: '/business', label: 'Business' },
-    { href: '/regulations', label: 'Regulations' },
-    { href: '/life', label: 'Life' },
-    { href: '/custom-rigs', label: 'Custom Rigs' },
-    { href: '/gear', label: 'Gear' },
+    { href: '/battery-electric', label: 'Battery Electric' },
+    { href: '/hydrogen', label: 'Hydrogen' },
+    { href: '/alt-fuels', label: 'Alt Fuels' },
+    { href: '/sales-support', label: 'Sales & Support' },
+    { href: '/infrastructure', label: 'Infrastructure' },
+    { href: '/funding', label: 'Funding' },
+    { href: '/regulation-legislation', label: 'Regulation & Legislation' },
   ],
   expanded: [
-    { href: '/channel-19', label: 'Channel 19' },
-    { href: '/partners-in-business', label: 'Partners in Business' },
-    { href: '/overdrive-extra', label: 'Overdrive Extra' },
+    { href: '/maintenance', label: 'Maintenance' },
+    { href: '/survey-report', label: 'Survey Report' },
+    { href: '/videos', label: 'Videos' },
+    { href: '/test-drives', label: 'Test Drives' },
+    { href: '/fleet-profiles', label: 'Fleet Profiles' },
+    // { href: '/applications', label: 'Applications' },
   ],
   secondary: [
-    { href: '/reader-rigs', label: 'Reader Rigs' },
-    { href: '/overdrive-radio', label: 'Overdrive Radio' },
-    { href: '/videos', label: 'Videos' },
-    { href: '/white-papers', label: 'Whitepapers' },
   ],
 };
 
 const utilities = [
   { href: '/page/advertise', label: 'Advertise' },
   { href: '/page/contact-us', label: 'Contact Us' },
-  { href: '/newsletters', label: 'Newsletters' },
+  { href: 'https://randallreilly.dragonforms.com/loading.do?omedasite=CT_nlsignup', label: 'Newsletters', target: '_blank' },
 ];
 
 const mobileMenu = {
-  user: [],
   primary: [
     ...topics.primary,
     ...topics.expanded,
@@ -74,7 +73,6 @@ module.exports = {
     topics: topics.primary,
     more: [
       ...utilities,
-      { href: '/videos', label: 'Videos' },
     ],
   },
 };

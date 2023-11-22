@@ -1,5 +1,7 @@
 import convert from "@parameter1/base-cms-marko-web-native-x/utils/convert-story-to-content";
 
+$ const { nativeX } = out.global;
+
 $ const { story } = input;
 $ const content = convert(story);
 $ const { id, type } = content;
@@ -7,7 +9,11 @@ $ const { primarySection } = content;
 
 <theme-default-page title=story.title description=story.teaser>
   <@head>
+    <marko-web-gtm-native-x-story-context|{ context }| obj=content>
+      <marko-web-gtm-push data=context />
+    </marko-web-gtm-native-x-story-context>
     <marko-web-native-x-gtm-init />
+    <marko-web-p1-events-track-native-story story=story />
   </@head>
   <@page>
     <marko-web-native-x-story-track-init story=story />
@@ -38,6 +44,39 @@ $ const { primarySection } = content;
             />
           </theme-page-contents>
         </div>
+      </@section>
+
+      <@section modifiers=["related-native-x-stories"]>
+        <if(nativeX.publisherId)>
+          <marko-web-native-x-story-advertiser-related-stories|{ nodes }|
+            publisher-id=nativeX.publisherId
+            advertiser-id=story.advertiser.id
+            exclude-story-ids=[story.id]
+          >
+            <marko-web-node-list
+              inner-justified=true
+              flush-x=true
+              flush-y=false
+              modifiers=["section-feed"]
+            >
+              <@header>
+                <h2 title=`More from ${story.advertiser.name}` class="page-wrapper__website-section-name" >
+                  More from ${story.advertiser.name}
+                </h2>
+              </@header>
+              <@nodes nodes=nodes>
+                <@slot|{ node }|>
+                  <theme-section-feed-content-node
+                    node=convert(node)
+                    display-image=true
+                    with-section=false
+                    lazyload=false
+                  />
+                </@slot>
+              </@nodes>
+            </marko-web-node-list>
+          </marko-web-native-x-story-advertiser-related-stories>
+        </if>
       </@section>
     </marko-web-page-wrapper>
 

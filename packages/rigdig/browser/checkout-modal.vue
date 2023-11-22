@@ -4,58 +4,102 @@
       <!-- @todo swap this for bootstrap modal? -->
       <div class="rigdig-modal__container">
         <h2 class="rigdig-modal__subtitle">
-          Report Found!
+          <icon-check-circle v-if="complete" :modifiers="['xl', 'complete']" />
+          {{ title }}
           <button class="btn btn-text rigdig-modal__close" @click="$emit('cancel')">
             <icon-x />
           </button>
         </h2>
-        <div v-if="complete" class="rigdig-modal__content">
-          <checkout-header
-            :truck-info="truckInfo"
-            :vin="vin"
-            :step="2"
-            :email="userEmail"
-          />
-          <p>
-            The truck history report you requested has been sent to your email.
-          </p>
+        <div v-if="complete" class="rigdig-modal__content rigdig-modal__content--complete">
+          <div class="rigdig-modal__payment-details">
+            <div>
+              <dl>
+                <dt>Order Details</dt>
+                <dd class="small">
+                  {{ truckInfo || 'Truck details unavailable' }}
+                </dd>
+                <dd class="small">
+                  {{ vin }}
+                </dd>
+                <dd class="small">
+                  $34.99
+                </dd>
+              </dl>
+            </div>
+            <p>
+              The Truck History Report you requested has been sent to
+              <strong> {{ userEmail }}</strong>. You can also access the report at the link below.
+            </p>
+          </div>
+          <div class="rigdig-modal__buttons mt-1">
+            <a :href="createdAtUri" title="Download your report" target="_blank">
+              <button
+                type="submit"
+                class="btn btn-primary btn-block rigdig-widget__submit"
+                :disabled="loading"
+              >
+                <div class="d-flex align-items-center justify-content-between">
+                  <div style="width:1.5rem" />
+                  <span>View Report</span>
+                  <div style="width:1.5rem">
+                    <div
+                      v-show="loading"
+                      class="spinner-border spinner-border-sm text-light ml-1"
+                      role="status"
+                    >
+                      <span class="sr-only">Generating Report…</span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </a>
+          </div>
         </div>
         <div v-else-if="transactionId" class="rigdig-modal__content">
           <checkout-header
             :truck-info="truckInfo"
             :vin="vin"
+            title="Sending Report!"
             :email="userEmail"
             :step="2"
           />
-          <p>Your payment was processed successfully.</p>
-          <p>Your transaction ID was {{ transactionId }}.</p>
-          <p class="mb-0">
-            We're sending your truck history report now!
-          </p>
-
-          <div class="rigdig-modal__buttons mt-1">
-            <button
-              type="submit"
-              class="btn btn-secondary rigdig-widget__generate"
-              :disabled="loading"
-              @click="generate"
-            >
-              <div class="d-flex align-items-center">
-                <span>Send Report</span>
-                <div
-                  v-show="loading"
-                  class="spinner-border spinner-border-sm text-light ml-1"
-                  role="status"
-                >
-                  <span class="sr-only">Sending report…</span>
-                </div>
-              </div>
-            </button>
-          </div>
-
-          <alert-error v-if="error" title="Unable to send report.">
-            <p>We weren't able to send the Truck History Report.</p>
+          <alert-error v-if="error" :show-help="false" title="Unable to send report.">
+            <p>
+              We are unable to generate the report at this time.<br>
+              Please contact us at <a :href="`mailto:${supportEmail}`">{{ supportEmail }}</a>
+            </p>
+            <p>
+              <strong>VIN:</strong> {{ vin }}<br>
+              <strong>Transaction ID:</strong> {{ transactionId }}
+            </p>
           </alert-error>
+          <div v-else>
+            <p>Your payment was processed successfully.</p>
+            <p>Your transaction ID was {{ transactionId }}.</p>
+            <p class="mb-0">
+              We're sending your truck history report now!
+            </p>
+
+            <div class="rigdig-modal__buttons mt-1">
+              <button
+                type="submit"
+                class="btn btn-secondary rigdig-widget__generate"
+                :disabled="loading"
+                @click="generate"
+              >
+                <div class="d-flex align-items-center">
+                  <span>Send Report</span>
+                  <div
+                    v-show="loading"
+                    class="spinner-border spinner-border-sm text-light ml-1"
+                    role="status"
+                  >
+                    <span class="sr-only">Sending report…</span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
         </div>
         <div v-else class="rigdig-modal__content">
           <checkout-header
@@ -137,16 +181,18 @@
                 </button>
               </div>
             </form>
-            <alert-error v-if="error" title="Unable to start checkout.">
-              <p>We weren't able to start the checkout process.</p>
-              <p><a href="javascript:void(0)" @click="handleSubmit">Click here</a> to retry.</p>
+            <alert-error v-if="error" :show-help="false" title="Unable to start checkout.">
+              <p>
+                The email address you supplied is invalid.  Please verify and try again or
+                <a :href="`mailto:${supportEmail}`">contact us</a>.
+              </p>
             </alert-error>
           </template>
 
           <alert-error v-if="transactionToken && error" title="Unable to purchase report.">
             <p>We weren't able to purchase the Truck History Report.</p>
             <p>
-              Review the form above, or
+              Review the form below, or
               <a href="javascript:void(0)" @click="handleSubmit">click here</a> to start over.
             </p>
           </alert-error>
@@ -161,6 +207,7 @@
 
 <script>
 import IconX from '@parameter1/base-cms-marko-web-icons/browser/x.vue';
+import IconCheckCircle from '@parameter1/base-cms-marko-web-icons/browser/check-circle.vue';
 import AlertError from './alert-error.vue';
 import CheckoutHeader from './checkout-header.vue';
 
@@ -171,6 +218,7 @@ export default {
     AlertError,
     CheckoutHeader,
     IconX,
+    IconCheckCircle,
   },
 
   props: {
@@ -205,9 +253,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    supportEmail: {
+      type: String,
+      default: 'support@rigdig.com',
+    },
   },
 
-  emits: ['close'],
+  emits: ['cancel', 'purchase', 'error', 'generate'],
 
   data: () => ({
     userEmail: null,
@@ -217,7 +269,14 @@ export default {
     transactionToken: null,
     transactionId: null,
     client: null,
+    createdAtUri: null,
   }),
+
+  computed: {
+    title() {
+      return this.complete ? 'Payment Received!' : 'Report Found!';
+    },
+  },
 
   created() {
     if (this.email) {
@@ -240,6 +299,7 @@ export default {
         this.transactionToken = token;
       } catch (e) {
         this.error = `Unable to create a transaction: ${e.message}.`;
+        this.$emit('error', { message: this.error.message });
         return false;
       } finally {
         this.loading = false;
@@ -311,6 +371,7 @@ export default {
             // Undo SDK opacity/pointer change. Why isn't the SDK calling this?
             this.client.transactionStoppedProcessing(this.client, e);
             this.error = e.ResponseMsg;
+            this.$emit('error', { message: this.error.message });
           }
         },
         cancelCallback: () => {
@@ -334,6 +395,7 @@ export default {
       this.error = null;
       this.complete = false;
       this.transactionId = transactionId;
+      this.$emit('purchase', { transactionId });
       return this.generate();
     },
 
@@ -362,9 +424,16 @@ export default {
           }
           const error = new Error(message);
           error.code = r.status;
+          this.$emit('error', { transactionId, message: error.message });
           throw error;
         }
+
+        const data = await r.json();
+        const { report } = data;
+        const { createdAtUri } = report;
+        this.createdAtUri = createdAtUri;
         this.complete = true;
+        this.$emit('generate', { transactionId, createdAtUri });
       } catch (e) {
         this.error = e.message;
       } finally {

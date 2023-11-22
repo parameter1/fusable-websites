@@ -25,7 +25,7 @@ jobs:
 
   post-deploy-failure:
     if: failure()
-    needs: [notify-start, deploy-sites]
+    needs: [notify-start, build-sites, deploy-sites]
     uses: parameter1/actions/.github/workflows/notify-fail.yml@main
     secrets: inherit
     with:
@@ -33,7 +33,7 @@ jobs:
 
   post-deploy-complete:
     if: success()
-    needs: [notify-start, deploy-sites]
+    needs: [notify-start, build-sites, deploy-sites]
     uses: parameter1/actions/.github/workflows/notify-complete.yml@main
     secrets: inherit
     with:
@@ -53,11 +53,13 @@ jobs:
         ###############################################
         site:
           - { dir: ccjdigital.com, stack: virgon, id: 5fce5519d28860bc33b80a42, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-ccjdigital.com }
+          - { dir: cleantrucking.com, stack: virgon, id: 65045c8861bb6b760d8b456e, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-cleantrucking.com }
           - { dir: equipmentworld.com, stack: virgon, id: 5fce562fd28860bc33b826d6, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-equipmentworld.com }
           - { dir: hardworkingtrucks.com, stack: virgon, id: 5fce557bd28860bc33b8140d, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-hardworkingtrucks.com }
           - { dir: overdriveonline.com, stack: virgon, id: 5fce561dd28860bc33b823ce, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-overdriveonline.com }
           - { dir: totallandscapecare.com, stack: virgon, id: 5fce563dd28860bc33b829c5, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-totallandscapecare.com }
           - { dir: truckersnews.com, stack: virgon, id: 5fce6131d28860bc33c5b786, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-truckersnews.com }
+          - { dir: truckhistoryreport.com, stack: virgon, id: 64ef840ae470d37d308b45f8, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-truckhistoryreport.com }
           - { dir: truckpartsandservice.com, stack: virgon, id: 5fce55abd28860bc33b818d0, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-truckpartsandservice.com }
         ###############################################
         #^# Make sure this matches the site matrix! #^#
@@ -79,11 +81,13 @@ jobs:
         ###############################################
         site:
           - { dir: ccjdigital.com, stack: virgon, id: 5fce5519d28860bc33b80a42, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-ccjdigital.com }
+          - { dir: cleantrucking.com, stack: virgon, id: 65045c8861bb6b760d8b456e, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-cleantrucking.com }
           - { dir: equipmentworld.com, stack: virgon, id: 5fce562fd28860bc33b826d6, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-equipmentworld.com }
           - { dir: hardworkingtrucks.com, stack: virgon, id: 5fce557bd28860bc33b8140d, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-hardworkingtrucks.com }
           - { dir: overdriveonline.com, stack: virgon, id: 5fce561dd28860bc33b823ce, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-overdriveonline.com }
           - { dir: totallandscapecare.com, stack: virgon, id: 5fce563dd28860bc33b829c5, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-totallandscapecare.com }
           - { dir: truckersnews.com, stack: virgon, id: 5fce6131d28860bc33c5b786, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-truckersnews.com }
+          - { dir: truckhistoryreport.com, stack: virgon, id: 64ef840ae470d37d308b45f8, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-truckhistoryreport.com }
           - { dir: truckpartsandservice.com, stack: virgon, id: 5fce55abd28860bc33b818d0, account: randallreilly, tenant: randallreilly_all, rancher_label: randall-reilly-truckpartsandservice.com }
         ###############################################
         #^# Make sure this matches the site matrix! #^#
