@@ -1,6 +1,8 @@
 import hierarchyAliases from "@parameter1/base-cms-marko-web/utils/hierarchy-aliases";
 
 $ const { id, alias, name, pageNode } = input;
+$ const { site } = out.global;
+$ const showInbodyTHRPromo = site.get("showInbodyTHRPromo") || false;
 
 <global-website-section-home-layout
   id=id
@@ -12,7 +14,7 @@ $ const { id, alias, name, pageNode } = input;
     <meta name="google-site-verification" content="WW2QzrYsbQWBq40KQCalege4Ob8OQq4Xr9lN_5tT-ng" />
   </@head>
 
-  <if(process.env.ENABLE_RIGDIG)>
+  <if(process.env.ENABLE_RIGDIG && !showInbodyTHRPromo)>
     <@section>
       <rigdig-widget />
     </@section>
