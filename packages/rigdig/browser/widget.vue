@@ -66,14 +66,15 @@
           >
             Reset
           </button>
-          <marko-web-link
+          <a
             v-if="learnMoreText && learnMoreUrl"
             class="learn-more-link"
             :href="learnMoreUrl"
             title="Truck History Report"
+            target="_blank"
           >
             {{ learnMoreText }}
-          </marko-web-link>
+          </a>
         </div>
         <alert-error v-if="error" title="Unable to look up VIN.">
           <!-- Invalid Vin Provided and API returns 400 -->
