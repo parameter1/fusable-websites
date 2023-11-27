@@ -3,11 +3,11 @@ import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
 import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/utils/get-content-preview";
 import storiesQueryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/related-stories-block";
 import renderSiteNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monorail/utils/render-site-newsletter-menu";
+import widget from "@randall-reilly/package-rigdig/components/widget";
 
 // move to core if we go this route.
 import Stories from "../../blocks/stories";
 import NativeXCardDeck from "../../blocks/native-x-card-deck";
-import THR from "../../blocks/thr-vin-lookup-inbody-promo";
 
 $ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
 
@@ -164,11 +164,22 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
               $ const showInbodyTHRPromo = site.get("showInbodyTHRPromo") || false;
               $ const desktopAdCounts = showInbodyTHRPromo ? [2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500] : [1500, 2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500];
               $ const mobileAdCounts = showInbodyTHRPromo ? [1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250] : [900, 1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250];
+
               $ if (showInbodyTHRPromo) {
                 htmlInjections.push(
                   {
                     at: 1200,
-                    html: THR.renderToString({})
+                    html: widget.renderToString({
+                      title: "Truck History Report",
+                      callToAction: "Look up the full history of any truck, including: reported accidents, inspection violations, insurance claim, owner history and more.",
+                      checkIdentityX: false,
+                      withTag: true,
+                      withDesktopImg: true,
+                      withMobileImg: true,
+                      learnMoreText: "Learn more about truck history reports",
+                      ssr: false,
+                      $global,
+                    })
                   }
                 );
               };

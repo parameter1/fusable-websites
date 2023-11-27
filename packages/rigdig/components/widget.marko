@@ -1,3 +1,4 @@
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 $ const { getAsObject } = require('@parameter1/base-cms-object-path');
 $ const environment = process.env.PAYFABRIC_ENV || 'SANDBOX';
 $ const paymentMethods = (process.env.PAYFABRIC_PAYMENT_METHODS || 'CreditCard,ApplePay,GooglePay').split(',');
@@ -5,20 +6,60 @@ $ const debug = process.env.NODE_ENV === 'development';
 
 $ const { req } = out.global;
 $ const { vin } = getAsObject(req, "query");
+$ const ssr = defaultValue(input.ssr, true);
+$ const checkIdentityX = defaultValue(input.checkIdentityX, true);
+$ const {
+  title,
+  callToAction,
+  withTag,
+  withDetails,
+  withDesktopImg,
+  withMobileImg,
+  learnMoreText,
+  learnMoreUrl,
+} = input;
 
-$ console.log(vin)
-
-<marko-web-identity-x-context|{ hasUser, user }|>
+<if(checkIdentityX)>
+  <marko-web-identity-x-context|{ hasUser, user }|>
+    <div class="rigdig-widget">
+      <marko-web-browser-component name="RigDigWidget" ssr=ssr props={
+        email: hasUser ? user.email : null,
+        inputLabel: input.inputLabel,
+        placeholder: '1XPHD48X8CD174…',
+        queryVin: vin,
+        debug,
+        environment,
+        paymentMethods,
+        title,
+        callToAction,
+        withTag,
+        withDesktopImg,
+        withMobileImg,
+        learnMoreText,
+        learnMoreUrl,
+        withDetails,
+      } />
+    </div>
+  </marko-web-identity-x-context>
+</if>
+<!-- This is being used to call in content body from default layout -->
+<else>
   <div class="rigdig-widget">
-    <marko-web-browser-component name="RigDigWidget" ssr=true props={
-      email: hasUser ? user.email : null,
+    <marko-web-browser-component name="RigDigWidget" ssr=ssr props={
       inputLabel: input.inputLabel,
       placeholder: '1XPHD48X8CD174…',
       queryVin: vin,
       debug,
       environment,
       paymentMethods,
-      withDetails: input.withDetails,
+      title,
+      callToAction,
+      withTag,
+      withDesktopImg,
+      withMobileImg,
+      learnMoreText,
+      learnMoreUrl,
+      withDetails,
     } />
   </div>
-</marko-web-identity-x-context>
+</else>
