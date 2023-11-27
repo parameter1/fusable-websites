@@ -129,6 +129,7 @@
           v-if="verified"
           :email="email"
           :vin="vin"
+          :zip="zip"
           :truck-info="truckInfo"
           :environment="environment"
           :payment-methods="paymentMethods"
@@ -164,6 +165,10 @@ export default {
 
   props: {
     email: {
+      type: String,
+      default: null,
+    },
+    zip: {
       type: String,
       default: null,
     },
