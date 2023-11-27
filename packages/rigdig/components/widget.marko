@@ -12,6 +12,7 @@ $ console.log(vin)
   <div class="rigdig-widget">
     <marko-web-browser-component name="RigDigWidget" ssr=true props={
       email: hasUser ? user.email : null,
+      zip: hasUser ? user.postalCode : null,
       inputLabel: input.inputLabel,
       placeholder: '1XPHD48X8CD174…',
       queryVin: vin,
