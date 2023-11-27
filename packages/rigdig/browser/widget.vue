@@ -95,6 +95,7 @@
       <checkout-modal
         v-if="verified"
         :email="email"
+        :zip="zip"
         :vin="vin"
         :truck-info="truckInfo"
         :environment="environment"
@@ -130,6 +131,10 @@ export default {
 
   props: {
     email: {
+      type: String,
+      default: null,
+    },
+    zip: {
       type: String,
       default: null,
     },
