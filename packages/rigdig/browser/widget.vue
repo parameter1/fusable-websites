@@ -71,6 +71,7 @@
             class="learn-more-link"
             :href="learnMoreUrl"
             title="Truck History Report"
+            target="_blank"
           >
             {{ learnMoreText }}
           </a>
