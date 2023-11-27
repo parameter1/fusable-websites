@@ -1,6 +1,12 @@
+$ const { getAsObject } = require('@parameter1/base-cms-object-path');
 $ const environment = process.env.PAYFABRIC_ENV || 'SANDBOX';
 $ const paymentMethods = (process.env.PAYFABRIC_PAYMENT_METHODS || 'CreditCard,ApplePay,GooglePay').split(',');
 $ const debug = process.env.NODE_ENV === 'development';
+
+$ const { req } = out.global;
+$ const { vin } = getAsObject(req, "query");
+
+$ console.log(vin)
 
 <marko-web-identity-x-context|{ hasUser, user }|>
   <div class="rigdig-widget">
@@ -8,6 +14,7 @@ $ const debug = process.env.NODE_ENV === 'development';
       email: hasUser ? user.email : null,
       inputLabel: input.inputLabel,
       placeholder: '1XPHD48X8CD174…',
+      queryVin: vin,
       debug,
       environment,
       paymentMethods,
