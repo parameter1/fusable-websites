@@ -28,6 +28,22 @@
         $34.99
       </strong>
     </div>
+    <div v-if="salesTax" class="rigdig-modal__promo-footer">
+      <span>
+        Sales Tax
+      </span>
+      <strong>
+        ${{ salesTax }}
+      </strong>
+    </div>
+    <div v-if="salesTax" class="rigdig-modal__promo-footer">
+      <span>
+        <b>Total</b>
+      </span>
+      <strong>
+        ${{ total }}
+      </strong>
+    </div>
     <div v-if="email" class="rigdig-modal__teaser border">
       <span>
         Deliver to <strong>{{ email }}</strong>
@@ -52,6 +68,10 @@ export default {
       type: Number,
       default: 1,
     },
+    salesTax: {
+      type: Number,
+      default: null,
+    },
     truckInfo: {
       type: String,
       required: true,
@@ -71,5 +91,11 @@ export default {
   },
 
   emits: ['back'],
+
+  computed: {
+    total() {
+      return this.salesTax + 34.99;
+    },
+  },
 };
 </script>
