@@ -1,4 +1,4 @@
-.thr-vin-lookup-inbody {
+.rigdig-widget {
   $self: &;
 
   height: 100%;
@@ -9,7 +9,7 @@
   background-color: $gray-100;
   border-radius: 4px;
 
-  @include media-breakpoint-down(lg) {
+  @media (max-width: 980px) {
     &__report-img {
       display: none;
     }
@@ -23,9 +23,10 @@
     }
   }
 
-  @include media-breakpoint-up(lg) {
+  @media (min-width: 980px) {
     margin-left: calc(-50vw - -350px);
     margin-right: calc(-50vw - -350px);
+
     &__header {
       #{ $self }__report-img {
         display: none;
@@ -87,8 +88,24 @@
     color: $primary;
   }
 
-  label {
-    display: none;
-  }
+}
 
+.content-page-body {
+  .rigdig-widget {
+    &__container {
+      display: flex;
+      max-width: $skin-content-body-max-width;
+      background-color: transparent;
+      padding: 0;
+    }
+    &__header {
+      font-size: 20px;
+    }
+    &__call-to-action {
+      font-size: 16px;
+    }
+    .btn-primary + .btn-secondary + .learn-more-link {
+      display: none;
+    }
+  }
 }
