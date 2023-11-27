@@ -48,7 +48,9 @@ $ const {
 <!-- This is being used to call in content body from default layout -->
 <else>
   <div class="rigdig-widget">
-    <marko-web-browser-component name="RigDigWidget" ssr=ssr props={
+    <marko-web-browser-component name="RigDigWidget" ssr=true props={
+      email: hasUser ? user.email : null,
+      zip: hasUser ? user.postalCode : null,
       inputLabel: input.inputLabel,
       placeholder,
       queryVin: vin,
