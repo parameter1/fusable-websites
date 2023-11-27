@@ -57,6 +57,7 @@
         </div>
         <div v-else-if="transactionId" class="rigdig-modal__content">
           <checkout-header
+            :sales-tax="salesTax"
             :truck-info="truckInfo"
             :vin="vin"
             title="Sending Report!"
@@ -103,6 +104,7 @@
         </div>
         <div v-else class="rigdig-modal__content">
           <checkout-header
+            :sales-tax="salesTax"
             :truck-info="truckInfo"
             :vin="vin"
             title="Report found!"
@@ -157,6 +159,28 @@
                     >
                   </template>
                 </label>
+                <label class="rigdig-modal__label">
+                  <template v-if="zip">
+                    <div class="rigdig-widget__label-text">Postal/Zip Code</div>
+                    <input
+                      ref="zip"
+                      :value="zip"
+                      class="form-control rigdig-modal__zip"
+                      type="text"
+                      required
+                    >
+                  </template>
+                  <template v-else>
+                    <div class="rigdig-widget__label-text">Postal/Zip Code</div>
+                    <input
+                      ref="zip"
+                      v-model="userZip"
+                      class="form-control rigdig-modal__zip"
+                      type="text"
+                      required
+                    >
+                  </template>
+                </label>
               </div>
 
               <div class="rigdig-modal__buttons">
@@ -183,7 +207,8 @@
             </form>
             <alert-error v-if="error" :show-help="false" title="Unable to start checkout.">
               <p>
-                The email address you supplied is invalid.  Please verify and try again or
+                The email address or zip code you supplied is invalid.
+                Please verify and try again or
                 <a :href="`mailto:${supportEmail}`">contact us</a>.
               </p>
             </alert-error>
@@ -226,6 +251,10 @@ export default {
       type: String,
       default: null,
     },
+    zip: {
+      type: String,
+      default: null,
+    },
     buttonLabel: {
       type: String,
       default: 'Start checkout',
@@ -263,9 +292,11 @@ export default {
 
   data: () => ({
     userEmail: null,
+    userZip: null,
     error: null,
     loading: false,
     complete: false,
+    salesTax: null,
     transactionToken: null,
     transactionId: null,
     client: null,
@@ -281,6 +312,9 @@ export default {
   created() {
     if (this.email) {
       this.userEmail = this.email;
+    }
+    if (this.zip) {
+      this.userZip = this.zip;
     }
   },
 
@@ -327,6 +361,7 @@ export default {
         body: JSON.stringify({
           vin: this.vin,
           email: this.userEmail,
+          zip: this.userZip,
         }),
       });
       if (!response.ok) {
@@ -341,7 +376,8 @@ export default {
         error.code = response.status;
         throw error;
       }
-      const { Token } = await response.json();
+      const { Token, salesTax } = await response.json();
+      this.salesTax = salesTax;
       return Token;
     },
 
