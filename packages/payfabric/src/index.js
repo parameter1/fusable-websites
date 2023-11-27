@@ -1,5 +1,6 @@
 const { asyncRoute } = require('@parameter1/base-cms-utils');
 const { json } = require('express');
+const calculateSalesTax = require('./utils/calculate-sales-tax');
 
 const PayFabricAPIClient = require('./client');
 const {
@@ -39,19 +40,23 @@ module.exports = (app) => {
   app.post('/__payfabric/create-transaction-token', json(), asyncRoute(async (req, res) => {
     try {
       const { body } = await req;
-      const { vin, email } = body;
+      const { vin, email, zip: postalCode } = body;
       if (!vin) throw createError('You must provide a VIN to continue.', 400);
       if (!email) throw createError('You must provide an email address to continue.', 400);
+      if (!postalCode) throw createError('You must provide a zip code to continue', 400);
 
       /** @type {ResponseContext} */
       const { identityX } = res.locals;
       /** @type {IdentityXContext} */
       const ctx = await identityX.loadActiveContext();
       const user = ctx.hasUser ? ctx.user : { email };
+      // Ensure a postalCode is provided even if existing user record doesn't have one
+      if (!user.postalCode && postalCode) user.postalCode = postalCode;
 
-      const { Key } = await client.createTransaction({ user, vin });
+      const salesTax = await calculateSalesTax({ postalCode });
+      const { Key } = await client.createTransaction({ user, vin, salesTax });
       const { Token } = await client.createJWT({ transactionId: Key });
-      res.json({ Token });
+      res.json({ Token, salesTax });
     } catch (error) {
       res.status(error.code || 500).json({ error: error.message });
     }
