@@ -174,6 +174,10 @@ export default {
       type: String,
       default: 'Enter a VIN (17-characters) to see if we have a report in our database',
     },
+    queryVin: {
+      type: String,
+      default: null,
+    },
     placeholder: {
       type: String,
       default: 'Enter Truck VIN',
@@ -261,6 +265,15 @@ export default {
     verified: false,
     truckInfo: null,
   }),
+
+  mounted() {
+    if (this.queryVin) {
+      this.vin = this.queryVin;
+      this.$nextTick(() => {
+        this.handleSubmit();
+      });
+    }
+  },
 
   methods: {
     emit(name, args = {}) {
