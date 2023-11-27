@@ -145,6 +145,10 @@ export default {
       type: String,
       default: 'Enter Truck VIN',
     },
+    vin: {
+      type: String,
+      default: null,
+    },
     buttonLabel: {
       type: String,
       default: 'Find Report',
