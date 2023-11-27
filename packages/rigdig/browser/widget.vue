@@ -145,7 +145,7 @@ export default {
       type: String,
       default: 'Enter Truck VIN',
     },
-    vin: {
+    queryVin: {
       type: String,
       default: null,
     },
@@ -196,6 +196,10 @@ export default {
     verified: false,
     truckInfo: null,
   }),
+
+  created() {
+    if (this.queryVin) this.vin = this.queryVin;
+  },
 
   methods: {
     emit(name, args = {}) {

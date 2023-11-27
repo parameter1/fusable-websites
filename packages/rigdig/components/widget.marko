@@ -6,13 +6,15 @@ $ const debug = process.env.NODE_ENV === 'development';
 $ const { req } = out.global;
 $ const { vin } = getAsObject(req, "query");
 
+$ console.log(vin)
+
 <marko-web-identity-x-context|{ hasUser, user }|>
   <div class="rigdig-widget">
     <marko-web-browser-component name="RigDigWidget" ssr=true props={
       email: hasUser ? user.email : null,
       inputLabel: input.inputLabel,
       placeholder: '1XPHD48X8CD174…',
-      vin,
+      queryVin: vin,
       debug,
       environment,
       paymentMethods,
