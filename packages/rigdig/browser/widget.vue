@@ -145,6 +145,10 @@ export default {
       type: String,
       default: 'Enter Truck VIN',
     },
+    queryVin: {
+      type: String,
+      default: null,
+    },
     buttonLabel: {
       type: String,
       default: 'Find Report',
@@ -192,6 +196,10 @@ export default {
     verified: false,
     truckInfo: null,
   }),
+
+  created() {
+    if (this.queryVin) this.vin = this.queryVin;
+  },
 
   methods: {
     emit(name, args = {}) {
