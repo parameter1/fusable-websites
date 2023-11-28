@@ -99,12 +99,12 @@ module.exports = class ApiClient {
    * @param {IdentityXUserContext} args.user
    * @param {String} args.vin @todo memo/note?
    */
-  async createTransaction({ user, vin, salesTax }) {
+  async createTransaction({ user, vin, amount }) {
     return this.request({
       endpoint: '/payment/api/transaction/create',
       body: JSON.stringify({
         // @todo additional details, customer reference?
-        Amount: 34.99 + salesTax,
+        Amount: amount,
         Currency: 'USD',
         Customer: user.id || user.email,
         SetupId: this.gatewayName,
