@@ -1,5 +1,6 @@
 const { asyncRoute } = require('@parameter1/base-cms-utils');
 const { json } = require('express');
+const pretaxAmount = require('./utils/pre-tax-amount');
 const calculateSalesTax = require('./utils/calculate-sales-tax');
 
 const PayFabricAPIClient = require('./client');
@@ -53,8 +54,9 @@ module.exports = (app) => {
       // Ensure a postalCode is provided even if existing user record doesn't have one
       if (!user.postalCode && postalCode) user.postalCode = postalCode;
 
-      const salesTax = await calculateSalesTax({ postalCode });
-      const { Key } = await client.createTransaction({ user, vin, salesTax });
+      const salesTax = await calculateSalesTax({ postalCode, pretaxAmount });
+      const amount = pretaxAmount + salesTax;
+      const { Key } = await client.createTransaction({ user, vin, amount });
       const { Token } = await client.createJWT({ transactionId: Key });
       res.json({ Token, salesTax });
     } catch (error) {
