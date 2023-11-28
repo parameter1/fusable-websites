@@ -11,6 +11,9 @@
   "<global-ovd-pib-manual-promo-block>": {
     "template": "./ovd-pib-manual-promo.marko"
   },
+  "<global-partner-insights-promo-block>": {
+    "template": "./partner-insights-promo.marko"
+  },
   "<global-thr-vin-lookup-promo-block>": {
     "template": "./thr-vin-lookup-promo.marko"
   },

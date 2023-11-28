@@ -1,0 +1,60 @@
+import { defaultValue } from "@parameter1/base-cms-marko-web/utils";
+import convertAdToNode from "@parameter1/base-cms-marko-web-native-x/utils/convert-ad-to-node";
+
+$ const { nativeX: nxConfig, i18n } = out.global;
+$ const placementName = defaultValue(input.placementName, "partner-insights");
+$ const aliases = defaultValue(input.aliases, []);
+$ const blockName = "white-papers";
+$ const uri = nxConfig.getUri();
+$ const placement = nxConfig.getPlacement({ name: placementName, aliases });
+
+<marko-web-native-x-fetch-elements|{ ads }| uri=uri id=placement.id opts={ n: 2 }>
+  $ const hasAd = ads && ads.length && ads[0] && ads[0].hasCampaign;
+  <if(hasAd && (ads[0] && ads[0].hasCampaign))>
+    $ const { node: ad } = convertAdToNode(ads[0]);
+     <marko-web-block name=blockName>
+      <marko-web-element block-name=blockName name="header">
+        <marko-web-icon name="file" modifiers=[blockName] />
+        Partners Insights
+      </marko-web-element>
+      <marko-web-node
+        type="whitepaper-content"
+        card=true
+        flush=true
+        full-height=false
+        modifiers=[blockName]
+      >
+        <@body>
+          <theme-standard-promo-node  />
+          <@title tag="h5">
+            <marko-web-content-short-name tag=null obj=ad link=true />
+          </@title>
+          <@text modifiers=["teaser"] show=(Boolean(ad.teaser))>
+            <marko-web-content-teaser tag=null obj=ad link=true />
+          </@text>
+          <@footer modifiers=["buttons"]>
+            <@left>
+              <marko-web-link
+                class=`btn btn-primary ${blockName}__download-btn`
+                href=ad.siteContext.path
+                title="Downlod"
+              >
+                ${i18n("Downlod")}
+              </marko-web-link>
+              <marko-web-link
+                class="btn btn-secondary"
+                href=`/white-papers`
+                title="View All"
+              >
+                ${i18n("View All")}
+              </marko-web-link>
+            </@left>
+          </@footer>
+        </@body>
+      </marko-web-node>
+    </marko-web-block>
+  </if>
+  <else>
+    <theme-white-papers-block shuffle=true limit=20 />
+  </else>
+</marko-web-native-x-fetch-elements>
