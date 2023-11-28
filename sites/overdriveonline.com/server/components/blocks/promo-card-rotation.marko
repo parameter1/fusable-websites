@@ -4,5 +4,19 @@ import PromoB from "@randall-reilly/package-global/components/blocks/ovd-pib-man
 import PromoC from "@parameter1/base-cms-marko-web-theme-monorail/components/blocks/white-papers"
 import PromoD from "@randall-reilly/package-global/components/blocks/thr-vin-lookup-promo";
 
-$ const PromotionComponent = shuffle([PromoA, PromoB, PromoC, PromoD])[0];
+$ const { site } = out.global;
+$ const showInbodyTHRPromo = site.get("showInbodyTHRPromo") || false;
+<!-- toggle adding THR promo card based on inbody display of THR promo -->
+$ const cards = (process.env.ENABLE_RIGDIG && !showInbodyTHRPromo)? [
+    PromoA,
+    PromoB,
+    PromoC,
+    PromoD,
+  ] : [
+    PromoA,
+    PromoB,
+    PromoC,
+  ];
+
+$ const PromotionComponent = shuffle(cards)[0];
 <${PromotionComponent} />
