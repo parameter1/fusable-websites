@@ -1,11 +1,8 @@
 import shuffle from "@randall-reilly/package-global/utils/shuffle-array";
 import PromoA from "@randall-reilly/package-global/components/blocks/partner-insights-promo";
-import PromoB from "@parameter1/base-cms-marko-web-theme-monorail/components/blocks/white-papers"
 $ const cards = [
     PromoA,
-    PromoB,
   ];
 
 $ const PromotionComponent = shuffle(cards)[0];
-$ console.warn(PromotionComponent)
 <${PromotionComponent} />

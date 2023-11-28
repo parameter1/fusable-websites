@@ -7,6 +7,8 @@ $ const aliases = defaultValue(input.aliases, []);
 $ const blockName = "white-papers";
 $ const uri = nxConfig.getUri();
 $ const placement = nxConfig.getPlacement({ name: placementName, aliases });
+$ const fileName = defaultValue(input.fileName, "file");
+$ const blockTitle = defaultValue(input.blockTitle, "Parnter Insight");
 
 <marko-web-native-x-fetch-elements|{ ads }| uri=uri id=placement.id opts={ n: 2 }>
   $ const hasAd = ads && ads.length && ads[0] && ads[0].hasCampaign;
@@ -15,7 +17,7 @@ $ const placement = nxConfig.getPlacement({ name: placementName, aliases });
      <marko-web-block name=blockName>
       <marko-web-element block-name=blockName name="header">
         <marko-web-icon name="file" modifiers=[blockName] />
-        Partners Insights
+        ${blockTitle}
       </marko-web-element>
       <marko-web-node
         type="whitepaper-content"
@@ -55,6 +57,6 @@ $ const placement = nxConfig.getPlacement({ name: placementName, aliases });
     </marko-web-block>
   </if>
   <else>
-    <theme-white-papers-block shuffle=true limit=20 />
+    <theme-white-papers-block shuffle=true limit=20 block-title=blockTitle icon-name=iconName />
   </else>
 </marko-web-native-x-fetch-elements>
