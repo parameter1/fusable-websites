@@ -22,7 +22,7 @@
                   {{ vin }}
                 </dd>
                 <dd class="small">
-                  $34.99
+                  ${{ pretaxAmount }}
                 </dd>
               </dl>
             </div>
@@ -58,6 +58,7 @@
         <div v-else-if="transactionId" class="rigdig-modal__content">
           <checkout-header
             :sales-tax="salesTax"
+            :pretax-amount="pretaxAmount"
             :truck-info="truckInfo"
             :vin="vin"
             title="Sending Report!"
@@ -105,6 +106,7 @@
         <div v-else class="rigdig-modal__content">
           <checkout-header
             :sales-tax="salesTax"
+            :pretax-amount="pretaxAmount"
             :truck-info="truckInfo"
             :vin="vin"
             title="Report found!"
@@ -277,6 +279,10 @@ export default {
     paymentMethods: {
       type: Array,
       default: () => ['CreditCard', 'ApplePay'],
+    },
+    pretaxAmount: {
+      type: Number,
+      default: null,
     },
     debug: {
       type: Boolean,

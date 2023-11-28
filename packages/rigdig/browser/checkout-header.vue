@@ -25,7 +25,7 @@
         1 Truck History Report
       </span>
       <strong>
-        $34.99
+        ${{ pretaxAmount }}
       </strong>
     </div>
     <div v-if="salesTax" class="rigdig-modal__promo-footer">
@@ -72,6 +72,10 @@ export default {
       type: Number,
       default: null,
     },
+    pretaxAmount: {
+      type: Number,
+      default: null,
+    },
     truckInfo: {
       type: String,
       required: true,
@@ -94,7 +98,7 @@ export default {
 
   computed: {
     total() {
-      return this.salesTax + 34.99;
+      return this.salesTax + this.pretaxAmount;
     },
   },
 };

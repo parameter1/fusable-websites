@@ -1,4 +1,5 @@
 $ const { getAsObject } = require('@parameter1/base-cms-object-path');
+$ const pretaxAmount = require('@randall-reilly/package-payfabric/src/utils/pre-tax-amount');
 $ const environment = process.env.PAYFABRIC_ENV || 'SANDBOX';
 $ const paymentMethods = (process.env.PAYFABRIC_PAYMENT_METHODS || 'CreditCard,ApplePay,GooglePay').split(',');
 $ const debug = process.env.NODE_ENV === 'development';
@@ -19,6 +20,7 @@ $ console.log(vin)
       debug,
       environment,
       paymentMethods,
+      pretaxAmount,
       withDetails: input.withDetails,
     } />
   </div>
