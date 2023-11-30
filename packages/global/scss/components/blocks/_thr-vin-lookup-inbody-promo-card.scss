@@ -10,16 +10,24 @@
     background-color: $gray-100;
     border-radius: 4px;
 
+    .rigdig-alert__wrapper {
+      z-index: 5;
+      position: absolute;
+      margin-top: 0;
+      background-color: #f2e4e6; //hsla(0, 100%, 70%, .1)
+      margin-right: 20px;
+    }
+
     @media (max-width: 980px) {
-      &__report-img {
-        display: none;
-      }
       &__header {
        .rigdig-widget__report-img {
           display: block;
           margin-right: 0;
           margin-bottom: 24px;
           align-self: flex-start;
+          &--desktop {
+            display: none;
+          }
         }
       }
     }
@@ -29,9 +37,13 @@
       margin-right: calc(-50vw - -350px);
 
       &__header {
-       .rigdig-widget__report-img {
+       .rigdig-widget__report-img--mobile {
           display: none;
         }
+      }
+
+      &__form {
+        width: 50%;
       }
     }
 
@@ -39,12 +51,12 @@
       display: flex;
       flex-direction: row;
     }
-
+    .rigdig-alert__header,
     &__title {
       margin-bottom: 8px;
       @include skin-typography($style: "header-2");
     }
-
+    .rigdig-alert__wrapper p,
     &__description {
       margin-bottom: 16px;
       @include skin-typography($style: "small-body-text");
@@ -69,10 +81,9 @@
     }
 
     &__report-img {
-      align-self: flex-end;
       margin-left: 24px;
       margin-right: -125px;
-      margin-bottom: -24px;
+      margin-bottom: -149px;
       box-shadow: none;
     }
 
