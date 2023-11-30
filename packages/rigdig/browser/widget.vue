@@ -22,6 +22,13 @@
           :data-srcset="mobileImgSrcSet"
           alt="Example Report"
         >
+        <img
+          v-if="withDesktopImg"
+          class="lazyload rigdig-widget__report-img rigdig-widget__report-img--desktop"
+          :data-src="desktopImgSrc"
+          :data-srcset="desktopImgSrcSet"
+          alt="Attachments Idea Book Cover"
+        >
       </div>
       <form
         ref="form"
@@ -132,13 +139,6 @@
         />
       </transition>
     </div>
-    <img
-      v-if="withDesktopImg"
-      class="lazyload rigdig-widget__report-img rigdig-widget__report-img--desktop"
-      :data-src="desktopImgSrc"
-      :data-srcset="desktopImgSrcSet"
-      alt="Attachments Idea Book Cover"
-    >
   </div>
 </template>
 

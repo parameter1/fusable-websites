@@ -28,7 +28,9 @@ $skin-newsletter-signup-inline-btn-color: #460c0e;
 
 @import "@randall-reilly/package-global/scss/core";
 /*! critical:start */
+/*! purgecss start ignore */
 @import "@randall-reilly/package-rigdig/scss/rigdig";
+/*! purgecss end ignore */
 /*! critical:end */
 
 .site-navbar {
