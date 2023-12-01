@@ -1211,10 +1211,10 @@
   dependencies:
     "@parameter1/base-cms-utils" "^4.40.3"
 
-"@parameter1/base-cms-marko-web-theme-monorail@^4.40.7":
-  version "4.40.7"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-4.40.7.tgz#b28048a5fcc4c0bfb02a35000811254b621b5c9f"
-  integrity sha512-PbAgVUL8KkClra2xSKOeihYoodZhj0pvWvmVtwMp6M4GIpNWeCXuIv0HPYjvcYq7fhZPiS8eu6IE4Dam1+YcSA==
+"@parameter1/base-cms-marko-web-theme-monorail@^4.40.9":
+  version "4.40.9"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-4.40.9.tgz#6e13576fd4cccf8170c001e57e44f12f894599cd"
+  integrity sha512-PSG6lw+U9mb/bPL33z05gMvsLVYm312grHswoUwh80aXKAHxErGkMhFOLbQPlELO/lePFmp4RHGEc+IeANhw8A==
   dependencies:
     "@parameter1/base-cms-dayjs" "^4.5.12"
     "@parameter1/base-cms-image" "^4.6.0"
