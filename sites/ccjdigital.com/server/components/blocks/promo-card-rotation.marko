@@ -1,8 +1,27 @@
 import shuffle from "@randall-reilly/package-global/utils/shuffle-array";
 import PromoA from "@randall-reilly/package-global/components/blocks/partner-insights-promo";
-$ const cards = [
-    PromoA,
+import PromoB from "@parameter1/base-cms-marko-web-theme-monorail/components/blocks/white-papers";
+
+$ const showParnerInsightsAsPromo = process.env.SHOW_PARTNER_INSIGHTS_AS_PROMO === 'true';
+$ const cards = (showParnerInsightsAsPromo) ? [
+    {
+      component: PromoA,
+      props: {},
+    },
+    {
+      component: PromoB,
+      props: {
+        shuffle: true,
+        limit: 20,
+        'block-title': 'Partner Insights',
+      },
+    }
+  ] : [
+    {
+      component: PromoA,
+      props: {},
+    }
   ];
 
-$ const PromotionComponent = shuffle(cards)[0];
-<${PromotionComponent} />
+$ const { component: comp, props } = shuffle(cards)[0];
+<${comp} ...props />
