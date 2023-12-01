@@ -7,7 +7,7 @@ $ const aliases = defaultValue(input.aliases, []);
 $ const blockName = "white-papers";
 $ const uri = nxConfig.getUri();
 $ const placement = nxConfig.getPlacement({ name: placementName, aliases });
-$ const fileName = defaultValue(input.fileName, "file");
+$ const iconName = defaultValue(input.iconName, "file");
 $ const blockTitle = defaultValue(input.blockTitle, "Parnter Insight");
 
 <marko-web-native-x-fetch-elements|{ ads }| uri=uri id=placement.id opts={ n: 2 }>
