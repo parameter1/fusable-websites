@@ -6,15 +6,15 @@ $ const showParnerInsightsAsPromo = process.env.SHOW_PARTNER_INSIGHTS_AS_PROMO =
 $ const cards = (showParnerInsightsAsPromo) ? [
     {
       component: PromoA,
-      props: {},
-    },
-    {
-      component: PromoB,
       props: {
         shuffle: true,
         limit: 20,
         'block-title': 'Partner Insights',
       },
+    },
+    {
+      component: PromoB,
+      props: {},
     }
   ] : [
     {
@@ -22,6 +22,6 @@ $ const cards = (showParnerInsightsAsPromo) ? [
       props: {},
     }
   ];
-
+$ console.log('cards', cards)
 $ const { component: comp, props } = shuffle(cards)[0];
 <${comp} ...props />
