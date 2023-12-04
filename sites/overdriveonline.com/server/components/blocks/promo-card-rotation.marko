@@ -36,5 +36,5 @@ $ if (process.env.ENABLE_RIGDIG && !showInbodyTHRPromo) {
   });
 };
 
-$ const PromotionComponent = shuffle(cards)[0];
-<${PromotionComponent} />
+$ const { component: comp, props } = shuffle(cards)[0];
+<${comp} ...props />
