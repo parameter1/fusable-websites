@@ -14,7 +14,9 @@
       <div class="rigdig-alert__content">
         <slot />
         <p v-if="showHelp">
-          Please try the previous action again, or <a href="#">contact us</a> for assistance.
+          Please try the previous action again, or
+          <a :href="`mailto:${supportEmail}`">contact us</a>
+          for assistance.
         </p>
       </div>
       <!-- buttons/actions? -->
@@ -33,6 +35,10 @@ export default {
     showHelp: {
       type: Boolean,
       default: true,
+    },
+    supportEmail: {
+      type: String,
+      default: 'support@rigdig.com',
     },
   },
 };

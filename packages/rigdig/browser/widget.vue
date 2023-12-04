@@ -17,9 +17,16 @@
         </div>
         <img
           v-if="withMobileImg"
-          class="rigdig-widget__report-img rigdig-widget__report-img--mobile"
-          :src="mobileImgSrc"
-          :srcset="mobileImgSrcSet"
+          class="lazyload rigdig-widget__report-img rigdig-widget__report-img--mobile"
+          :data-src="mobileImgSrc"
+          :data-srcset="mobileImgSrcSet"
+          alt="Example Report"
+        >
+        <img
+          v-if="withDesktopImg"
+          class="lazyload rigdig-widget__report-img rigdig-widget__report-img--desktop"
+          :data-src="desktopImgSrc"
+          :data-srcset="desktopImgSrcSet"
           alt="Attachments Idea Book Cover"
         >
       </div>
@@ -71,7 +78,6 @@
             class="learn-more-link"
             :href="learnMoreUrl"
             title="Truck History Report"
-            target="_blank"
           >
             {{ learnMoreText }}
           </a>
@@ -135,13 +141,6 @@
         />
       </transition>
     </div>
-    <img
-      v-if="withDesktopImg"
-      class="rigdig-widget__report-img rigdig-widget__report-img--desktop"
-      :src="desktopImgSrc"
-      :srcset="desktopImgSrcSet"
-      alt="Attachments Idea Book Cover"
-    >
   </div>
 </template>
 
@@ -218,11 +217,11 @@ export default {
     },
     desktopImgSrc: {
       type: String,
-      default: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/inbody-preview.png?h=252',
+      default: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/inbody-preview.svg?h=252',
     },
     desktopImgSrcSet: {
       type: String,
-      default: "['https://img.overdriveonline.com/files/base/randallreilly/all/image/static/thr/inbody-preview.png?h=252&dpr=2 2x']",
+      default: "['https://img.overdriveonline.com/files/base/randallreilly/all/image/static/inbody-preview.svg?h=252&dpr=2 2x']",
     },
     withMobileImg: {
       type: Boolean,
@@ -230,11 +229,11 @@ export default {
     },
     mobileImgSrc: {
       type: String,
-      default: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rigdigreport-full.png?w=95',
+      default: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rigdigreport-full.svg?w=95',
     },
     mobileImgSrcSet: {
       type: String,
-      default: "['https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rigdigreport-full.png?w=95&dpr=2 2x']",
+      default: "['https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rigdigreport-full.svg?w=95&dpr=2 2x']",
     },
     paymentMethods: {
       type: Array,

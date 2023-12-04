@@ -9,6 +9,7 @@ $ const { req } = out.global;
 $ const { vin } = getAsObject(req, "query");
 $ const ssr = defaultValue(input.ssr, true);
 $ const checkIdentityX = defaultValue(input.checkIdentityX, true);
+$ const placeholder = defaultValue(input.placeholder, '1XPHD48X8CD174…')
 $ const {
   title,
   callToAction,
@@ -27,7 +28,7 @@ $ const {
         email: hasUser ? user.email : null,
         zip: hasUser ? user.postalCode : null,
         inputLabel: input.inputLabel,
-        placeholder: '1XPHD48X8CD174…',
+        placeholder,
         queryVin: vin,
         debug,
         environment,
@@ -50,7 +51,7 @@ $ const {
   <div class="rigdig-widget">
     <marko-web-browser-component name="RigDigWidget" ssr=ssr props={
       inputLabel: input.inputLabel,
-      placeholder: '1XPHD48X8CD174…',
+      placeholder,
       queryVin: vin,
       debug,
       environment,
