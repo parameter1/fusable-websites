@@ -1,4 +1,7 @@
 {
+  "taglib-imports": [
+    "./blocks/marko.json"
+  ],
   "<eqw-coty-nav>": {
     "template": "./coty-nav.marko"
   }
