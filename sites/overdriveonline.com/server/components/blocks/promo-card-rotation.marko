@@ -2,7 +2,9 @@ import shuffle from "@randall-reilly/package-global/utils/shuffle-array";
 import PromoA from "@randall-reilly/package-global/components/blocks/promos/ovd-reader-rigs-submit";
 import PromoB from "@randall-reilly/package-global/components/blocks/ovd-pib-manual-promo";
 import PromoC from "@parameter1/base-cms-marko-web-theme-monorail/components/blocks/white-papers"
-import PromoD from "@randall-reilly/package-global/components/blocks/thr-vin-lookup-promo";
+import PromoD from "@randall-reilly/package-global/components/blocks/partner-insights-promo";
+import PromoF from "@randall-reilly/package-global/components/blocks/thr-vin-lookup-promo";
+
 
 $ const { site } = out.global;
 $ const showInbodyTHRPromo = site.get("showInbodyTHRPromo") || false;
@@ -17,15 +19,11 @@ $ const cards = [
       component: PromoB,
       props: {},
     },
-    {
-      component: PromoC,
-      props: {},
-    },
   ];
 <!-- toggle adding THR promo card based on inbody display of THR promo -->
-$ if (process.env.ENABLE_RIGDIG && !showInbodyTHRPromo) cards.push({ component: PromoD, props: {} });
+$ if (process.env.ENABLE_RIGDIG && !showInbodyTHRPromo) cards.push({ component: PromoF, props: {} });
 <!-- add partner insights promo when configured. -->
-$ if (process.env.ENABLE_RIGDIG && !showInbodyTHRPromo) {
+$ if (showParnerInsightsAsPromo) {
   cards.push({
     component: PromoD,
     props: {
@@ -34,7 +32,13 @@ $ if (process.env.ENABLE_RIGDIG && !showInbodyTHRPromo) {
       'block-title': 'Partner Insights',
     },
   });
+} else {
+  cards.push({
+    component: PromoC,
+    props: {},
+  });
 };
+
 
 $ const { component: comp, props } = shuffle(cards)[0];
 <${comp} ...props />
