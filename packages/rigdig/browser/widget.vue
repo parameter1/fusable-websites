@@ -127,10 +127,12 @@
         <checkout-modal
           v-if="verified"
           :email="email"
+          :zip="zip"
           :vin="vin"
           :truck-info="truckInfo"
           :environment="environment"
           :payment-methods="paymentMethods"
+          :pretax-amount="pretaxAmount"
           :debug="debug"
           @cancel="reset"
           @error="(e) => emit('thr_error', e)"
@@ -163,6 +165,10 @@ export default {
 
   props: {
     email: {
+      type: String,
+      default: null,
+    },
+    zip: {
       type: String,
       default: null,
     },
@@ -232,6 +238,10 @@ export default {
     paymentMethods: {
       type: Array,
       default: () => ['CreditCard', 'ApplePay'],
+    },
+    pretaxAmount: {
+      type: Number,
+      default: null,
     },
     withDetails: {
       type: Boolean,
