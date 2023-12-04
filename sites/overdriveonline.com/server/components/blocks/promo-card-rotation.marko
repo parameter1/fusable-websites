@@ -32,6 +32,15 @@ $ if (showParnerInsightsAsPromo) {
       'block-title': 'Partner Insights',
     },
   });
+  cards.push({
+    component: PromoC,
+    props: {
+      shuffle: true,
+      limit: 20,
+      'block-title': 'Partner Insights',
+    },
+  });
+
 } else {
   cards.push({
     component: PromoC,
