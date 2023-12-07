@@ -98,7 +98,7 @@ export default {
 
   computed: {
     total() {
-      return this.salesTax + this.pretaxAmount;
+      return (this.salesTax + this.pretaxAmount).toFixed(2);
     },
   },
 };
