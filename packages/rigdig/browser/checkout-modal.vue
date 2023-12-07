@@ -22,7 +22,7 @@
                   {{ vin }}
                 </dd>
                 <dd class="small">
-                  ${{ pretaxAmount }}
+                  ${{ total }}
                 </dd>
               </dl>
             </div>
@@ -312,6 +312,9 @@ export default {
   computed: {
     title() {
       return this.complete ? 'Payment Received!' : 'Report Found!';
+    },
+    total() {
+      return (this.salesTax + this.pretaxAmount).toFixed(2);
     },
   },
 
