@@ -1,1 +1,1 @@
-module.exports = 34.99;
+module.exports = 34.95;
