@@ -28,7 +28,7 @@ $ const sponsorImages = {
 $ const imgixSponsors = [];
 $ if (sponsorImages[alias]) {
     sponsorImages[alias].forEach((image, index) => {
-    imgixSponsors.push({ src: buildImgixUrl(image.src, { h: 100, auto: 'format,compress' }), alt: image.alt });
+    imgixSponsors.push({ src: buildImgixUrl(image.src, { h: 200, auto: 'format,compress' }), alt: image.alt });
   });
 }
 
