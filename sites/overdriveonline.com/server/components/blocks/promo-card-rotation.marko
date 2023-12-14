@@ -8,7 +8,6 @@ import PromoF from "@randall-reilly/package-global/components/blocks/thr-vin-loo
 
 $ const { site } = out.global;
 $ const showInbodyTHRPromo = site.get("showInbodyTHRPromo") || false;
-$ const showParnerInsightsAsPromo = process.env.SHOW_PARTNER_INSIGHTS_AS_PROMO === 'true';
 
 $ const cards = [
     {
@@ -19,30 +18,21 @@ $ const cards = [
       component: PromoB,
       props: {},
     },
+    {
+      component: PromoD,
+      props: {},
+    },
+    {
+      component: PromoC,
+      props: {
+        shuffle: true,
+        limit: 20,
+        'block-title': 'Partner Insights',
+      },
+    }
   ];
 <!-- toggle adding THR promo card based on inbody display of THR promo -->
 $ if (process.env.ENABLE_RIGDIG && !showInbodyTHRPromo) cards.push({ component: PromoF, props: {} });
-<!-- add partner insights promo when configured. -->
-$ if (showParnerInsightsAsPromo) {
-  cards.push({
-    component: PromoD,
-    props: {},
-  });
-  cards.push({
-    component: PromoC,
-    props: {
-      shuffle: true,
-      limit: 20,
-      'block-title': 'Partner Insights',
-    },
-  });
-
-} else {
-  cards.push({
-    component: PromoC,
-    props: {},
-  });
-};
 
 
 $ const { component: comp, props } = shuffle(cards)[0];
