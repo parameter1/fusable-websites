@@ -2,8 +2,6 @@ import hierarchyAliases from "@parameter1/base-cms-marko-web/utils/hierarchy-ali
 
 $ const { id, alias, name, pageNode } = input;
 
-$ const showParnerInsightsAsPromo = process.env.SHOW_PARTNER_INSIGHTS_AS_PROMO === 'true';
-
 <global-website-section-home-layout
   id=id
   alias=alias
@@ -38,15 +36,6 @@ $ const showParnerInsightsAsPromo = process.env.SHOW_PARTNER_INSIGHTS_AS_PROMO =
       modifiers=["inter-block"]
     />
   </@section>
-
-  <if(!showParnerInsightsAsPromo)>
-    <@section>
-      <theme-native-x-card-deck-block
-        section={ name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
-        placement-name="partner-insights"
-      />
-    </@section>
-  </if>
 
   <@section>
     <theme-section-card-list-block alias="workforce" default-description="Your people matter" />
