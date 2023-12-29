@@ -39,7 +39,7 @@ $ const showParnerInsightsAsPromo = process.env.SHOW_PARTNER_INSIGHTS_AS_PROMO =
     />
   </@section>
 
-  <if(showParnerInsightsAsPromo)>
+  <if(!showParnerInsightsAsPromo)>
     <@section>
       <theme-native-x-card-deck-block
         section={ name: "Partner Insights", description: "Information to advance your business from industry suppliers" }

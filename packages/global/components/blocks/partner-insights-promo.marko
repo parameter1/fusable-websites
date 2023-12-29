@@ -8,7 +8,7 @@ $ const blockName = "white-papers";
 $ const uri = nxConfig.getUri();
 $ const placement = nxConfig.getPlacement({ name: placementName, aliases });
 $ const iconName = defaultValue(input.iconName, "file");
-$ const blockTitle = defaultValue(input.blockTitle, "Parnter Insight");
+$ const blockTitle = defaultValue(input.blockTitle, "Partner Insights");
 
 <marko-web-native-x-fetch-elements|{ ads }| uri=uri id=placement.id opts={ n: 2 }>
   $ const hasAd = ads && ads.length && ads[0] && ads[0].hasCampaign;
@@ -39,17 +39,17 @@ $ const blockTitle = defaultValue(input.blockTitle, "Parnter Insight");
               <marko-web-link
                 class=`btn btn-primary ${blockName}__download-btn`
                 href=ad.siteContext.path
-                title="Downlod"
+                title="Read More"
               >
-                ${i18n("Downlod")}
+                ${i18n("Read More")}
               </marko-web-link>
-              <marko-web-link
+              <!-- <marko-web-link
                 class="btn btn-secondary"
                 href=`/white-papers`
                 title="View All"
               >
                 ${i18n("View All")}
-              </marko-web-link>
+              </marko-web-link> -->
             </@left>
           </@footer>
         </@body>
