@@ -29,8 +29,7 @@ module.exports = async ({ postalCode, pretaxAmount }) => {
     }),
   });
   if (!request.ok) throw new Error('Bad fetch response, AvaTax');
-  const { totalTax, ...rest } = await request.json();
-  console.log(rest);
+  const { totalTax } = await request.json();
   // totalTax is the amount of tax applied for this transaction
   return Number(totalTax);
 };
