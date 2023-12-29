@@ -14,6 +14,8 @@ module.exports = async ({ postalCode, pretaxAmount }) => {
         {
           quantity: 1,
           amount: pretaxAmount,
+          // https://taxcode.avatax.avalara.com/search?q=DD040000
+          taxCode: 'DD040000',
         },
       ],
       date: `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`,
@@ -27,7 +29,8 @@ module.exports = async ({ postalCode, pretaxAmount }) => {
     }),
   });
   if (!request.ok) throw new Error('Bad fetch response, AvaTax');
-  const { totalTax } = await request.json();
+  const { totalTax, ...rest } = await request.json();
+  console.log(rest);
   // totalTax is the amount of tax applied for this transaction
   return Number(totalTax);
 };
