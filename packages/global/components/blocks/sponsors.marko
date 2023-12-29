@@ -1,6 +1,6 @@
 import { buildImgixUrl } from "@parameter1/base-cms-image";
 
-$ const { alias } = input;
+$ const { alias, showTitle = true } = input;
 
 $ const sponsorImages = {
   "distributor-of-the-year": [
@@ -33,15 +33,17 @@ $ if (sponsorImages[alias]) {
 }
 
 <div class="awards">
-  <div class="content-page-body">
-    <div class="page-contents">
-      <div class="page-contents__content-body">
-        <p class="text-center">
-          <strong>Sponsored by</strong>
-        </p>
+  <if(showTitle)>
+    <div class="content-page-body">
+      <div class="page-contents">
+        <div class="page-contents__content-body">
+          <p class="text-center">
+            <strong>Sponsored by</strong>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  </if>
   <div class="row sponsor-logos">
     <for|image| of=imgixSponsors>
       $ const { src, alt } = image;
