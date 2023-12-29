@@ -55,7 +55,7 @@ module.exports = (app) => {
       if (!user.postalCode && postalCode) user.postalCode = postalCode;
 
       const salesTax = await calculateSalesTax({ postalCode, pretaxAmount });
-      const amount = pretaxAmount + salesTax;
+      const amount = (pretaxAmount + salesTax).toFixed(2);
       const { Key } = await client.createTransaction({ user, vin, amount });
       const { Token } = await client.createJWT({ transactionId: Key });
       res.json({ Token, salesTax });
