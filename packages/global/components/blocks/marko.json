@@ -34,6 +34,7 @@
   },
   "<global-sponsors-block>": {
     "template": "./sponsors.marko",
-    "@alias": "string"
+    "@alias": "string",
+    "@show-title": "boolean"
   }
 }
