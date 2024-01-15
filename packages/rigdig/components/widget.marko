@@ -26,6 +26,7 @@ $ const {
   <marko-web-identity-x-context|{ hasUser, user }|>
     <div class="rigdig-widget">
       <marko-web-browser-component name="RigDigWidget" ssr=ssr props={
+        countryCode: hasUser ? user.countryCode : null,
         email: hasUser ? user.email : null,
         inputLabel: input.inputLabel,
         placeholder,
@@ -33,6 +34,7 @@ $ const {
         debug,
         environment,
         paymentMethods,
+        pretaxAmount,
         title,
         callToAction,
         withTag,

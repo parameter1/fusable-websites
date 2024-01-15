@@ -127,6 +127,7 @@
       >
         <checkout-modal
           v-if="verified"
+          :country-code="countryCode"
           :email="email"
           :zip="zip"
           :vin="vin"
@@ -165,6 +166,10 @@ export default {
   inject: ['EventBus'],
 
   props: {
+    countryCode: {
+      type: String,
+      default: null,
+    },
     email: {
       type: String,
       default: null,
