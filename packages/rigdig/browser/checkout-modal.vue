@@ -313,7 +313,7 @@ export default {
   emits: ['cancel', 'purchase', 'error', 'generate'],
 
   data: () => ({
-    userCountryCode: null,
+    userCountryCode: 'US',
     userEmail: null,
     userZip: null,
     error: null,
