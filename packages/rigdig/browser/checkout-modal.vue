@@ -161,9 +161,17 @@
                     >
                   </template>
                 </label>
-                <label class="rigdig-modal__label">
+                <country-code
+                  v-model="userCountryCode"
+                  class-name="rigdig-modal__form-group"
+                  :required="true"
+                  label="Country"
+                />
+                <label v-if="zipRequired" class="rigdig-modal__label">
                   <template v-if="zip">
-                    <div class="rigdig-widget__label-text">Postal/Zip Code</div>
+                    <div class="rigdig-widget__label-text">
+                      Postal/Zip Code <strong class="text-danger">*</strong>
+                    </div>
                     <input
                       ref="zip"
                       :value="zip"
@@ -173,7 +181,9 @@
                     >
                   </template>
                   <template v-else>
-                    <div class="rigdig-widget__label-text">Postal/Zip Code</div>
+                    <div class="rigdig-widget__label-text">
+                      Postal/Zip Code <strong class="text-danger">*</strong>
+                    </div>
                     <input
                       ref="zip"
                       v-model="userZip"
@@ -235,6 +245,7 @@
 <script>
 import IconX from '@parameter1/base-cms-marko-web-icons/browser/x.vue';
 import IconCheckCircle from '@parameter1/base-cms-marko-web-icons/browser/check-circle.vue';
+import CountryCode from '@parameter1/base-cms-marko-web-identity-x/browser/form/fields/country.vue';
 import AlertError from './alert-error.vue';
 import CheckoutHeader from './checkout-header.vue';
 
@@ -244,11 +255,16 @@ export default {
   components: {
     AlertError,
     CheckoutHeader,
+    CountryCode,
     IconX,
     IconCheckCircle,
   },
 
   props: {
+    countryCode: {
+      type: String,
+      default: null,
+    },
     email: {
       type: String,
       default: null,
@@ -297,6 +313,7 @@ export default {
   emits: ['cancel', 'purchase', 'error', 'generate'],
 
   data: () => ({
+    userCountryCode: 'US',
     userEmail: null,
     userZip: null,
     error: null,
@@ -316,6 +333,9 @@ export default {
     total() {
       return (this.salesTax + this.pretaxAmount).toFixed(2);
     },
+    zipRequired() {
+      return new Set(['US', 'CA']).has(this.userCountryCode);
+    },
   },
 
   created() {
@@ -324,6 +344,9 @@ export default {
     }
     if (this.zip) {
       this.userZip = this.zip;
+    }
+    if (this.countryCode) {
+      this.userCountryCode = this.countryCode;
     }
   },
 
@@ -369,6 +392,7 @@ export default {
         headers: { 'content-type': 'application/json; charset=utf-8' },
         body: JSON.stringify({
           vin: this.vin,
+          countryCode: this.userCountryCode,
           email: this.userEmail,
           zip: this.userZip,
         }),
