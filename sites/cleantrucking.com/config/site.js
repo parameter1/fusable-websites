@@ -13,6 +13,7 @@ module.exports = {
   // module configs
   contentMeter,
   gam,
+  useLinkInjectedBody: process.env.USE_LINK_INJECTED_BODY === 'true',
   identityX,
   // identityXOptInHooks,
   nativeX,
