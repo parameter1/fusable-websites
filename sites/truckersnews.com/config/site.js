@@ -49,9 +49,9 @@ module.exports = {
     corporate: {
       alt: 'Randall-Reilly Logo',
       href: 'https://www.randallreilly.com',
-      src: 'https://img.truckersnews.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress',
+      src: 'https://img.truckersnews.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress',
       srcset: [
-        'https://img.truckersnews.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress&dpr=2 2x',
+        'https://img.truckersnews.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress&dpr=2 2x',
       ],
     },
   },

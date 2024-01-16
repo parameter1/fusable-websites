@@ -33,25 +33,25 @@ module.exports = {
   },
   logos: {
     navbar: {
-      src: 'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ct-logo.svg?h=45&auto=format,compress',
+      src: 'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ByFusableMediaBrandsLogos_CleanTrucking.svg?h=45&auto=format,compress',
       srcset: [
-        'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ct-logo.svg?h=45&auto=format,compress&dpr=2 2x',
+        'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ByFusableMediaBrandsLogos_CleanTrucking.svg?h=45&auto=format,compress&dpr=2 2x',
       ],
       width: 66,
       height: 35,
     },
     footer: {
-      src: 'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ct-logo-white.png?h=60&auto=format,compress',
+      src: 'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ByFusableMediaBrandsLogos_CleanTrucking.svg?h=60&auto=format,compress',
       srcset: [
-        'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ct-logo-white.png?h=60&auto=format,compress&dpr=2 2x',
+        'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/ct/ByFusableMediaBrandsLogos_CleanTrucking.svg?h=60&auto=format,compress&dpr=2 2x',
       ],
     },
     corporate: {
       alt: 'Randall-Reilly Logo',
       href: 'https://www.randallreilly.com',
-      src: 'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress',
+      src: 'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress',
       srcset: [
-        'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress&dpr=2 2x',
+        'https://img.cleantrucking.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress&dpr=2 2x',
       ],
     },
   },

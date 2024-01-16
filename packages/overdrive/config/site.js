@@ -33,25 +33,25 @@ module.exports = {
   },
   logos: {
     navbar: {
-      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd-logo-new.svg?h=46&auto=format,compress',
+      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/ByFusableMediaBrandsLogos_OVD.svg?h=46&auto=format,compress',
       srcset: [
-        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd-logo-new.svg?h=46&auto=format,compress&dpr=2 2x',
+        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/ByFusableMediaBrandsLogos_OVD.svg?h=46&auto=format,compress&dpr=2 2x',
       ],
       width: 199,
       height: 35,
     },
     footer: {
-      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd-logo-new.svg?h=35&auto=format,compress',
+      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/ByFusableMediaBrandsLogos_OVD.svg?h=35&auto=format,compress',
       srcset: [
-        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd-logo-new.svg?h=70&auto=format,compress 2x',
+        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/ByFusableMediaBrandsLogos_OVD.svg?h=70&auto=format,compress 2x',
       ],
     },
     corporate: {
       alt: 'Randall-Reilly Logo',
       href: 'https://www.randallreilly.com',
-      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rr-logo-new.svg?w=200&auto=format,compress',
+      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress',
       srcset: [
-        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rr-logo-new.svg?w=200&auto=format,compress&dpr=2 2x',
+        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress&dpr=2 2x',
       ],
     },
   },

@@ -33,25 +33,25 @@ module.exports = {
   },
   logos: {
     navbar: {
-      src: 'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/tlc/tlc-logo-new.svg?h=45&auto=format,compress',
+      src: 'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/tlc/ByFusableMediaBrandsLogos_TLC.svg?h=45&auto=format,compress',
       srcset: [
-        'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/tlc/tlc-logo-new.svg?h=45&auto=format,compress&dpr=2 2x',
+        'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/tlc/ByFusableMediaBrandsLogos_TLC.svg?h=45&auto=format,compress&dpr=2 2x',
       ],
       width: 57,
       height: 35,
     },
     footer: {
-      src: 'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/tlc/tlc-logo-new.svg?h=60&auto=format,compress',
+      src: 'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/tlc/ByFusableMediaBrandsLogos_TLC.svg?h=60&auto=format,compress',
       srcset: [
-        'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/tlc/tlc-logo-new.svg?h=60&auto=format,compress&dpr=2 2x',
+        'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/tlc/ByFusableMediaBrandsLogos_TLC.svg?h=60&auto=format,compress&dpr=2 2x',
       ],
     },
     corporate: {
       alt: 'Randall-Reilly Logo',
       href: 'https://www.randallreilly.com',
-      src: 'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/rr-logo-new.svg?w=200&auto=format,compress',
+      src: 'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress',
       srcset: [
-        'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/rr-logo-new.svg?w=200&auto=format,compress&dpr=2 2x',
+        'https://img.totallandscapecare.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress&dpr=2 2x',
       ],
     },
   },

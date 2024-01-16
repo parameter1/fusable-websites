@@ -33,25 +33,25 @@ module.exports = {
   },
   logos: {
     navbar: {
-      src: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo-new.svg?h=45&auto=format,compress',
+      src: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/ByFusableMediaBrandsLogos_HWT.svg?h=45&auto=format,compress',
       srcset: [
-        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo-new.svg?h=45&auto=format,compress&dpr=2 2x',
+        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/ByFusableMediaBrandsLogos_HWT.svg?h=45&auto=format,compress&dpr=2 2x',
       ],
       width: 94,
       height: 35,
     },
     footer: {
-      src: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo-new.svg?h=60&auto=format,compress',
+      src: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/ByFusableMediaBrandsLogos_HWT.svg?h=60&auto=format,compress',
       srcset: [
-        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/hwt-logo-new.svg?h=60&auto=format,compress&dpr=2 2x',
+        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/hwt/ByFusableMediaBrandsLogos_HWT.svg?h=60&auto=format,compress&dpr=2 2x',
       ],
     },
     corporate: {
       alt: 'Randall-Reilly Logo',
       href: 'https://www.randallreilly.com',
-      src: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/rr-logo-new.svg?w=200&auto=format,compress',
+      src: 'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress',
       srcset: [
-        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/rr-logo-new.svg?w=200&auto=format,compress&dpr=2 2x',
+        'https://img.hardworkingtrucks.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress&dpr=2 2x',
       ],
     },
   },
