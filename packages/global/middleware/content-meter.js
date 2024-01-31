@@ -2,13 +2,15 @@ const parser = require('ua-parser-js');
 const { get } = require('@parameter1/base-cms-object-path');
 const defaultValue = require('@parameter1/base-cms-marko-core/utils/default-value');
 
-const { asyncRoute } = require('@parameter1/base-cms-utils');
+const { asyncRoute, isFunction } = require('@parameter1/base-cms-utils');
 const { content: loader } = require('@parameter1/base-cms-web-common/page-loaders');
 const buildContentInput = require('@parameter1/base-cms-marko-web/utils/build-content-input');
 const queryFragment = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-meter');
 
 const cookieName = 'contentMeter';
 const now = new Date().getTime();
+
+const defaultRegFn = ({ content }) => get(content, 'userRegistration.isCurrentlyRequired', false);
 
 async function shouldMeter(req) {
   const { apollo, params } = req;
@@ -20,6 +22,16 @@ async function shouldMeter(req) {
   const { id } = params;
   const additionalInput = buildContentInput({ req });
   const content = await loader(apollo, { id, additionalInput, queryFragment });
+  if (!content) return false;
+
+  // Check for local contentGatingHandler and use it or use the defaultRegFn
+  const localFn = req.app.locals.contentGatingHandler;
+  // Get the globally avaiable one if set and is function
+  const contentGatingHandler = (localFn && isFunction(localFn)) ? localFn : defaultRegFn;
+  // bypass if content is already gated by reg of some sort
+  if (contentGatingHandler({ content })) {
+    return false;
+  }
 
   // @todo implement how the gate should be restricted
   // By type || By section || By primarySection
