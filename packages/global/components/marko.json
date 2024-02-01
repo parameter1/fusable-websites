@@ -23,8 +23,5 @@
     },
     "<below-container>": {},
     "<foot>": {}
-  },
-  "<global-content-meter-track>": {
-    "template": "./content-meter-track.marko"
   }
 }

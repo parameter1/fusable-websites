@@ -1,5 +1,5 @@
 const withContent = require('@randall-reilly/package-global/middleware/with-content');
-const contentMeter = require('@randall-reilly/package-global/middleware/content-meter');
+const contentMetering = require('@parameter1/base-cms-marko-web-theme-monorail/middleware/content-metering');
 const qf = require('@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-page');
 const contact = require('@randall-reilly/package-global/templates/content/contact');
 const { newsletterState, formatContentResponse } = require('@randall-reilly/package-global/middleware/newsletter-state');
@@ -11,7 +11,7 @@ const content = require('../templates/content');
 
 module.exports = (app) => {
   const { site } = app.locals;
-  const contentMeterEnable = site.get('contentMeter.enable');
+  const cmConfig = site.getAsObject('contentMeter');
 
   // base on site config||USE_LINK_INJECTED_BODY to enable bcl
   const useLinkInjectedBody = site.get('useLinkInjectedBody');
@@ -47,11 +47,11 @@ module.exports = (app) => {
 
   // determin to use newsletterstate or contentMeter middleware
   routesList.forEach((route) => {
-    if (route.withContentMeter && contentMeterEnable) {
+    if (route.withContentMeter && cmConfig.enabled) {
       app.get(
         route.regex,
         newsletterState({ setCookie: false }),
-        contentMeter(),
+        contentMetering(cmConfig),
         withContent({
           template: route.template,
           queryFragment: route.queryFragment,
