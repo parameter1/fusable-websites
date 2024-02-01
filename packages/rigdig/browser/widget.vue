@@ -282,7 +282,6 @@ export default {
       EventBus.$emit(name, { ...eventArgs, ...args });
     },
     reset() {
-      this.vin = null;
       this.error = null;
       this.attempted = false;
       this.verified = false;
