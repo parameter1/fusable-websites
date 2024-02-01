@@ -1,3 +1,5 @@
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
+
 $ const { config, site, contentMeterState } = out.global;
 $ const {
   displayGate,
@@ -11,14 +13,18 @@ $ const additionalEventData = {
   viewLimit,
   displayGate,
   displayOverlay,
+  contentGateType: "metered",
 };
 
-$ function setTextVariables() {
+
+
+$ const setTextVariables = () => {
   // Set title based on views remaining
-  let dynamicTitle = "We hope you’ve enjoyed your articles."
+  let dynamicTitle = defaultValue(input.dynamicTitle, "Create an account");
   if (views < viewLimit) dynamicTitle = `You have ${viewLimit - views} article views remaining.`;
   if (viewLimit - views === 1) dynamicTitle = `You have 1 article view remaining.`;
   if (viewLimit === views && !displayOverlay) dynamicTitle = `This is your last free article.`;
+  if (viewLimit === 1 && !displayOverlay) dynamicTitle = 'Enjoy this free article.';
 
   return [
     dynamicTitle,
@@ -41,7 +47,7 @@ $ const classes = [
       <div class="content-meter__overlay"/>
     </if>
     <div class="content-meter__bar" role="region" aria-label="Content Meter">
-      <global-content-meter-track />
+      <marko-web-browser-component name="ContentMeterTrack" props=contentMeterState />
       <div class="content-meter__title">
         <theme-menu-toggle-button
           class="content-meter__toggler"
