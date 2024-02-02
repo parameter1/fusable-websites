@@ -1,6 +1,6 @@
 {
   "name": "@randall-reilly/package-global",
-  "version": "1.71.1",
+  "version": "1.71.2",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/packages/global",
   "license": "MIT",
@@ -37,7 +37,7 @@
     "@parameter1/base-cms-web-cli": "^4.40.3",
     "@parameter1/base-cms-web-common": "^4.42.0",
     "@parameter1/omeda-graphql-client-express": "^0.4.2",
-    "@randall-reilly/package-rigdig": "^1.71.0",
+    "@randall-reilly/package-rigdig": "^1.71.2",
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.1",
