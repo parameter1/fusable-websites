@@ -70,8 +70,8 @@ module.exports = {
     {
       path: '/termsandprivacy',
       oneTrustIds: [
-        'd8f2d6c5-d9af-4d60-a93f-7441ca9ad94c',
-        '45d9b939-c3de-4b71-8cbf-e2ffe621ff9c',
+        '0e533e95-c4d0-415f-9f16-a9f2e3840ff8',
+        'd6a774b4-bf5c-46a8-b8b9-0b12da49ef4b',
       ],
     },
   ],
