@@ -28,6 +28,8 @@ $ const displayComments = ["contact"].includes(type) ? false : true;
 $ const displayNewsletterSignup = ["contact"].includes(type) || showOverlay ? false : true;
 $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type);
 
+$ const bypassGate = (contentMeterState && contentMeterState.bypassGate) ? contentMeterState.bypassGate : false;
+
 <global-content-wrapper-layout
   id=id
   type=type
@@ -97,7 +99,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
           </else-if>
         </if>
         $ const contentRequiresRegistration = get(content, "userRegistration.isCurrentlyRequired");
-        $ const requiresRegistration = contentRequiresRegistration || cmRestrictContentByReg(contentMeterState, content);
+        $ const requiresRegistration = !bypassGate && (contentRequiresRegistration || cmRestrictContentByReg(contentMeterState, content));
         $ const accessLevels = getAsArray(content, "userRegistration.accessLevels");
         <marko-web-identity-x-access|context|
           enabled=requiresRegistration

@@ -86,10 +86,16 @@ module.exports = () => asyncRoute(async (req, res, next) => {
   // If it can.  Allow it to win and add prop check to list to disable contentMeter
   const pushdownWins = Boolean(get(res, 'locals.newsletterState.canBeInitiallyExpanded'));
   // If disabled, not logged in & have a oly_enc_id or logged in and have all required fields
-  if (!config.enable || (!isLoggedIn && olyEncId) || (isLoggedIn && !requiresUserInput));
-
-  else if (isLoggedIn && requiresUserInput && await shouldMeter(req)) {
+  if (!config.enable || (!isLoggedIn && olyEncId) || (isLoggedIn && !requiresUserInput)) {
     res.locals.contentMeterState = {
+      olyEncId,
+      isLoggedIn,
+      requiresUserInput,
+      bypassGate: true,
+    };
+  } else if (isLoggedIn && requiresUserInput && await shouldMeter(req)) {
+    res.locals.contentMeterState = {
+      olyEncId,
       isLoggedIn: true,
       requiresUserInput,
       displayGate: false,
@@ -120,6 +126,7 @@ module.exports = () => asyncRoute(async (req, res, next) => {
       requiresUserInput: true,
       displayGate: (config.enable && !pushdownWins && !bypassMeter),
       displayOverlay,
+      olyEncId,
     };
     res.cookie(cookieName, JSON.stringify(valid), { maxAge: config.timeframe });
   }
