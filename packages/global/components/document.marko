@@ -110,9 +110,10 @@ $ const { gamDefer, gtmDefer } = req.query;
       <theme-site-menu has-user=hasUser reg-enabled=isEnabled />
     </marko-web-identity-x-context>
     <if(contentMeterState && !contentMeterState.isLoggedIn)>
-      <global-content-meter-block
+      <theme-content-meter-block
         views=contentMeterState.views
         view-limit=contentMeterState.viewLimit
+        dynamic-title="We hope you’ve enjoyed your articles."
         display-overlay=contentMeterState.displayOverlay
         display-gate=contentMeterState.displayGate
       />
