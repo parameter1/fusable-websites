@@ -1,5 +1,6 @@
 import { getAsArray, getAsObject, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
+import hasOmedaId from "@parameter1/base-cms-marko-web-theme-monorail/utils/has-omeda-id";
 import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/utils/get-content-preview";
 import storiesQueryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/related-stories-block";
 import renderSiteNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monorail/utils/render-site-newsletter-menu";
@@ -15,7 +16,7 @@ import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../
 
 $ const { global: $global } = out;
 $ const { nativeX: nxConfig } = $global;
-$ const { site, contentMeterState, GAM } = $global;
+$ const { site, contentMeterState, GAM, req } = $global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
@@ -27,9 +28,7 @@ $ const displaySocialShare = ["contact"].includes(type) ? false : true;
 $ const displayComments = ["contact"].includes(type) ? false : true;
 $ const displayNewsletterSignup = ["contact"].includes(type) || showOverlay ? false : true;
 $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type);
-
-$ const bypassGate = (contentMeterState && contentMeterState.bypassGate) ? contentMeterState.bypassGate : false;
-
+$ const bypassGate = hasOmedaId(req);
 <global-content-wrapper-layout
   id=id
   type=type
