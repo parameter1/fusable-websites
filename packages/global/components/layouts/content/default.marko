@@ -12,10 +12,11 @@ import NativeXCardDeck from "../../blocks/native-x-card-deck";
 $ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
+import hasOmedaId from "../../../utils/has-omeda-id";
 
 $ const { global: $global } = out;
 $ const { nativeX: nxConfig } = $global;
-$ const { site, contentMeterState, GAM } = $global;
+$ const { site, contentMeterState, GAM, req } = $global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
@@ -27,9 +28,7 @@ $ const displaySocialShare = ["contact"].includes(type) ? false : true;
 $ const displayComments = ["contact"].includes(type) ? false : true;
 $ const displayNewsletterSignup = ["contact"].includes(type) || showOverlay ? false : true;
 $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type);
-
-$ const bypassGate = (contentMeterState && contentMeterState.bypassGate) ? contentMeterState.bypassGate : false;
-
+$ const bypassGate = hasOmedaId(req);
 <global-content-wrapper-layout
   id=id
   type=type
