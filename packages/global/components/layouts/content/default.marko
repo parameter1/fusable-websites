@@ -1,5 +1,6 @@
 import { getAsArray, getAsObject, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
+import hasOmedaId from "@parameter1/base-cms-marko-web-theme-monorail/utils/has-omeda-id";
 import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/utils/get-content-preview";
 import storiesQueryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/related-stories-block";
 import renderSiteNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monorail/utils/render-site-newsletter-menu";
@@ -12,7 +13,6 @@ import NativeXCardDeck from "../../blocks/native-x-card-deck";
 $ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
 
 import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../utils/content-meter-helpers";
-import hasOmedaId from "../../../utils/has-omeda-id";
 
 $ const { global: $global } = out;
 $ const { nativeX: nxConfig } = $global;
