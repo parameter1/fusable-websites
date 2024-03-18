@@ -12,7 +12,6 @@ const content = require('../templates/content');
 
 module.exports = (app) => {
   const { site } = app.locals;
-  const contentMeterEnable = site.get('contentMeter.enable');
 
   // base on site config||USE_LINK_INJECTED_BODY to enable bcl
   const useLinkInjectedBody = site.get('useLinkInjectedBody');
@@ -51,7 +50,7 @@ module.exports = (app) => {
 
   // determin to use newsletterstate or contentMeter middleware
   routesList.forEach((route) => {
-    if (route.withContentMeter && contentMeterEnable) {
+    if (route.withContentMeter && cmConfig.enabled) {
       app.get(
         route.regex,
         newsletterState({ setCookie: false }),
