@@ -1165,10 +1165,10 @@
     node-fetch "^2.6.9"
     tldjs "^2.3.1"
 
-"@parameter1/base-cms-marko-web-p1-events@^4.49.0":
-  version "4.49.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-p1-events/-/base-cms-marko-web-p1-events-4.49.0.tgz#5a9c0ef33c4bc11c39a77d63a72aecb5e61562b4"
-  integrity sha512-mur/7xGo6XMsrojmbWWX3jESIAMTNSei5Zjbf0BVLPPBnI2JKDguJzITd81q93kEAZZlFC6Mo4Jk+bOB+2j4wQ==
+"@parameter1/base-cms-marko-web-p1-events@^4.52.1":
+  version "4.52.1"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-p1-events/-/base-cms-marko-web-p1-events-4.52.1.tgz#2fc0f9c80296401805c023d09418afb29ba9c21b"
+  integrity sha512-8Bhu6+h9Rt29BA+VrGpsJ9YgAbBz2pl73sS2s9oP+DxjW9R8xcnzJAtJcPabYlAofmkdC/6tqyOI3TdAPjliYA==
   dependencies:
     "@parameter1/base-cms-inflector" "^4.5.12"
     "@parameter1/base-cms-marko-web-deferred-script-loader" "^4.40.3"
@@ -1211,10 +1211,10 @@
   dependencies:
     "@parameter1/base-cms-utils" "^4.40.3"
 
-"@parameter1/base-cms-marko-web-theme-monorail@^4.51.3":
-  version "4.51.3"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-4.51.3.tgz#f6e03b34b506b3ae7c0c51edcaa3c0465aaa7e8e"
-  integrity sha512-85cUzpZ52t7qO3tdsxaEJOC4JmHNfe81reep1kkBodkl36Ola+/Tdi+NUsCOUJKHiWKntIxROKzYi0R0GTuZ6A==
+"@parameter1/base-cms-marko-web-theme-monorail@^4.52.1":
+  version "4.52.1"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-theme-monorail/-/base-cms-marko-web-theme-monorail-4.52.1.tgz#d23f6ea47c1e4f56f812b44cdb186c7a705fe55b"
+  integrity sha512-FjaXd5CaaqymUbqjAusoaerhRWIoFpuqzk/I7edc1EO+JQ2iSJDxE3xZwzmetvRxAvaX66w96GaGyaMOFMxtqA==
   dependencies:
     "@parameter1/base-cms-dayjs" "^4.5.12"
     "@parameter1/base-cms-image" "^4.47.1"
@@ -1229,7 +1229,7 @@
     "@parameter1/base-cms-marko-web-native-x" "^4.48.1"
     "@parameter1/base-cms-marko-web-omeda" "^4.51.0"
     "@parameter1/base-cms-marko-web-omeda-identity-x" "^4.51.2"
-    "@parameter1/base-cms-marko-web-p1-events" "^4.49.0"
+    "@parameter1/base-cms-marko-web-p1-events" "^4.52.1"
     "@parameter1/base-cms-marko-web-recaptcha" "^4.5.12"
     "@parameter1/base-cms-marko-web-reveal-ad" "^4.40.3"
     "@parameter1/base-cms-marko-web-search" "^4.48.1"
