@@ -4,6 +4,7 @@ const config = configureNativeX();
 
 config.enabled = true;
 config.publisherId = '5fd4fc5eb192ef0001845442';
+config.domainName = 'www.hardworkingtrucks.com';
 
 config
   .setAliasPlacements('default', [

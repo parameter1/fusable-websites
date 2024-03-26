@@ -4,6 +4,7 @@ const config = configureNativeX();
 
 config.enabled = true;
 config.publisherId = '5fd267ec1305250001368472';
+config.domainName = 'www.truckersnews.com';
 
 config
   .setAliasPlacements('default', [
