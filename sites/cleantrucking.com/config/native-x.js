@@ -3,6 +3,7 @@ const configureNativeX = require('@randall-reilly/package-global/config/native-x
 const config = configureNativeX();
 
 config.enabled = true;
+config.domainName = 'www.cleantrucking.com';
 
 config
   .setAliasPlacements('default', [

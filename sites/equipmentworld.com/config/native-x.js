@@ -4,6 +4,7 @@ const config = configureNativeX();
 
 config.enabled = true;
 config.publisherId = '5fd266f81305250001368440';
+config.domainName = 'www.equipmentworld.com';
 
 config
   .setAliasPlacements('default', [

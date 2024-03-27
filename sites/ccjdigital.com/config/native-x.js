@@ -4,6 +4,7 @@ const config = configureNativeX();
 
 config.enabled = true;
 config.publisherId = '5fd24889b192ef0001843b79';
+config.domainName = 'www.ccjdigital.com';
 
 config
   .setAliasPlacements('default', [
