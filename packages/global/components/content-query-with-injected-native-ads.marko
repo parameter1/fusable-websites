@@ -7,15 +7,19 @@ $ const injectAds = ({
     positions
   }) => {
   const positionsReversed = positions.reverse();
-  const nodesWithInjectionSlots = []
+  const allNodes = []
   contentNodes.forEach((contentNode, index) => {
     const effectiveIndex = index ? (index * 2) + 1 : index;
     const currentInjectionIndex = positionsReversed[positionsReversed.length - 1];
-    nodesWithInjectionSlots[effectiveIndex] = currentInjectionIndex === index && place === 'before' ? adNodes.pop() || null : null;
-    nodesWithInjectionSlots[effectiveIndex + 1] = currentInjectionIndex === index && place === 'in-place' ? adNodes.pop() || contentNode : contentNode;
-    nodesWithInjectionSlots[effectiveIndex + 2] = currentInjectionIndex === index && place === 'after' ? adNodes.pop() || null : null;
+    console.log(currentInjectionIndex, index, effectiveIndex, effectiveIndex + 1, effectiveIndex + 2, adNodes);
+    allNodes[effectiveIndex] = currentInjectionIndex === index && place === 'before' ? adNodes.pop() || null : null;
+    allNodes[effectiveIndex + 1] = currentInjectionIndex === index && place === 'in-place' ? adNodes.pop() || contentNode : contentNode;
+    allNodes[effectiveIndex + 2] = currentInjectionIndex === index && place === 'after' ? adNodes.pop() || null : null;
+    if (currentInjectionIndex === index) {
+      positionsReversed.pop();
+    }
   });
-  const allNodes = place === 'in-place' ? contentNodes : nodesWithInjectionSlots;
+  console.log(allNodes);
   return allNodes.filter((node) => node);
 };
 
