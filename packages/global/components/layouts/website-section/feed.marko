@@ -67,31 +67,29 @@ $ const perPage = 18;
       <global-sponsors-block alias=alias.replace("-archive", "") />
     </if>
 
-    <marko-web-query|{ nodes }|
-      name="website-optioned-content"
-      params={
+    $ const { id: placementId, uri } = nxConfig.getPlacement({ name: "native", aliases });
+    <global-content-query-with-injected-native-ads|{ nodes }|
+      query-name="website-optioned-content"
+      query-params={
         limit: 3,
         skip: p.skip({ perPage }),
         sectionAlias: alias,
         optionName: "Pinned",
         queryFragment
       }
-    >
-      $ const newNodes = [...nodes.slice(0,2), null, ...nodes.slice(2)]
-      <marko-web-native-x-retrieve|{ wasFound, hasCampaign, campaign, linkAttrs, containerAttrs }|
-        ...nxConfig.getPlacement({ name: "native", aliases })
-        section-name="Sponsor Content"
+      placement-id=placementId
+      uri=uri
+      positions=[2]
+      section-name="Sponsor Content"
+      place="before"
       >
-        <if(wasFound && hasCampaign)>
-          $ newNodes[2] = { ...campaign, linkAttrs, containerAttrs };
-        </if>
         <marko-web-node-list
           inner-justified=true
           flush-x=true
           flush-y=false
-          modifiers=[]
+          modifiers=["section-feed"]
         >
-          <@nodes nodes=newNodes.filter((v) => v)>
+          <@nodes nodes=nodes>
             <@slot|{ node, index }|>
               <theme-section-feed-content-node
                 display-image=true
@@ -104,8 +102,7 @@ $ const perPage = 18;
             </@slot>
           </@nodes>
         </marko-web-node-list>
-      </marko-web-native-x-retrieve>
-    </marko-web-query>
+    </global-content-query-with-injected-native-ads>
   </@section>
 
   <@section|{ aliases }|>
