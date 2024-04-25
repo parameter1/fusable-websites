@@ -30,13 +30,11 @@ $ const aliases = [alias];
             optionName: "Pinned",
             queryFragment
           }>
-          $ console.log(nodes[0]);
           $ allNodes.push(...nodes);
             <marko-web-native-x-publisher-stories|{ nodes }|
               domain-name=nxConfig.domainName
               limit=50
             >
-            $ console.log(nodes[0])
             $ allNodes.push(...nodes.map((node) => convert(node)));
             $ allNodes.sort((a, b) => {
               if (a.published > b.published) {
