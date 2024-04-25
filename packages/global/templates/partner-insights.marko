@@ -1,4 +1,5 @@
 import convert from "@parameter1/base-cms-marko-web-native-x/utils/convert-story-to-content";
+import queryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/section-feed-block";
 
 $ const { nativeX: nxConfig, GAM } = out.global;
 
@@ -22,163 +23,183 @@ $ const aliases = [alias];
     </marko-web-website-section-name>
       <div class="row">
         <div class="col-lg-12">
-          <marko-web-native-x-publisher-stories|{ nodes }|
-            domain-name=nxConfig.domainName
-            limit=18
-          >
-          <div class="page-wrapper__section">
-            <marko-web-node-list
-              inner-justified=true
-              flush-x=true
-              flush-y=false
-              modifiers=["section-feed"]
+        $ const allNodes = [];
+          <marko-web-query|{ nodes }| collapsible=false name="website-optioned-content" params={
+            limit: 50,
+            sectionAlias: 'white-papers',
+            optionName: "Pinned",
+            queryFragment
+          }>
+          $ console.log(nodes[0]);
+          $ allNodes.push(...nodes);
+            <marko-web-native-x-publisher-stories|{ nodes }|
+              domain-name=nxConfig.domainName
+              limit=50
             >
-              <@nodes nodes=nodes.slice(0, 3)>
-                <@slot|{ node }|>
-                  <theme-section-feed-content-node
-                    node=convert(node)
-                    display-image=true
-                    with-section=false
-                    lazyload=false
-                    with-dates=true
-                    ...input.node
-                  />
-                </@slot>
-              </@nodes>
-            </marko-web-node-list>
-          </div>
-          <div class="page-wrapper__section">
-            <if(GAM.btfLeaderboard)>
-              <theme-gam-define-display-ad
-                name="inline-leaderboard-mobile"
-                position="section_page"
-                aliases=aliases
-                modifiers=["inter-block"]
-              />
-              <theme-gam-define-display-ad
-                name="rotation-desktop"
-                position="section_page"
-                aliases=aliases
-                modifiers=["inter-block"]
-              />
-            </if>
-            <else>
+            $ console.log(nodes[0])
+            $ allNodes.push(...nodes.map((node) => convert(node)));
+            $ allNodes.sort((a, b) => {
+              if (a.published > b.published) {
+                return -1;
+              } else if (b.published > a.published) {
+                return 1;
+              }
+              return 0;
+            });
+            <div class="page-wrapper__section">
+              <marko-web-node-list
+                inner-justified=true
+                flush-x=true
+                flush-y=false
+                modifiers=["section-feed"]
+              >
+                <@nodes nodes=allNodes.slice(0, 3)>
+                  <@slot|{ node }|>
+                    <theme-section-feed-content-node
+                      node=node
+                      display-image=true
+                      with-section=false
+                      lazyload=false
+                      with-dates=true
+                      ...input.node
+                    />
+                  </@slot>
+                </@nodes>
+              </marko-web-node-list>
+            </div>
+            <div class="page-wrapper__section">
+              <if(GAM.btfLeaderboard)>
+                <theme-gam-define-display-ad
+                  name="inline-leaderboard-mobile"
+                  position="section_page"
+                  aliases=aliases
+                  modifiers=["inter-block"]
+                />
+                <theme-gam-define-display-ad
+                  name="rotation-desktop"
+                  position="section_page"
+                  aliases=aliases
+                  modifiers=["inter-block"]
+                />
+              </if>
+              <else>
+                <theme-gam-define-display-ad
+                  name="rotation"
+                  position="section_page"
+                  aliases=aliases
+                  modifiers=["inter-block"]
+                />
+              </else>
+            </div>
+            <div class="page-wrapper__section">
+              <marko-web-node-list
+                inner-justified=true
+                flush-x=true
+                flush-y=false
+                modifiers=["section-feed"]
+              >
+                <@nodes nodes=allNodes.slice(3, 5)>
+                  <@slot|{ node }|>
+                    <theme-section-feed-content-node
+                      node=node
+                      display-image=true
+                      with-section=false
+                      lazyload=false
+                      with-dates=true
+                      ...input.node
+                    />
+                  </@slot>
+                </@nodes>
+              </marko-web-node-list>
+            </div>
+            <div class="page-wrapper__section">
+              <marko-web-identity-x-context|{ hasUser }|>
+                <if(!hasUser)>
+                  <identity-x-newsletter-form-inline type="inlineSection" />
+                </if>
+              </marko-web-identity-x-context>
+            </div>
+            <div class="page-wrapper__section">
+              <marko-web-node-list
+                inner-justified=true
+                flush-x=true
+                flush-y=false
+                modifiers=["section-feed"]
+              >
+                <@nodes nodes=allNodes.slice(5, 8)>
+                  <@slot|{ node }|>
+                    <theme-section-feed-content-node
+                      node=node
+                      display-image=true
+                      with-section=false
+                      lazyload=false
+                      with-dates=true
+                      ...input.node
+                    />
+                  </@slot>
+                </@nodes>
+              </marko-web-node-list>
+            </div>
+            <div class="page-wrapper__section">
               <theme-gam-define-display-ad
                 name="rotation"
                 position="section_page"
                 aliases=aliases
                 modifiers=["inter-block"]
               />
-            </else>
-          </div>
-          <div class="page-wrapper__section">
-            <marko-web-node-list
-              inner-justified=true
-              flush-x=true
-              flush-y=false
-              modifiers=["section-feed"]
-            >
-              <@nodes nodes=nodes.slice(3, 5)>
-                <@slot|{ node }|>
-                  <theme-section-feed-content-node
-                    node=convert(node)
-                    display-image=true
-                    with-section=false
-                    lazyload=false
-                    with-dates=true
-                    ...input.node
-                  />
-                </@slot>
-              </@nodes>
-            </marko-web-node-list>
-          </div>
-          <div class="page-wrapper__section">
-            <marko-web-identity-x-context|{ hasUser }|>
-              <if(!hasUser)>
-                <identity-x-newsletter-form-inline type="inlineSection" />
-              </if>
-            </marko-web-identity-x-context>
-          </div>
-          <div class="page-wrapper__section">
-            <marko-web-node-list
-              inner-justified=true
-              flush-x=true
-              flush-y=false
-              modifiers=["section-feed"]
-            >
-              <@nodes nodes=nodes.slice(5, 8)>
-                <@slot|{ node }|>
-                  <theme-section-feed-content-node
-                    node=convert(node)
-                    display-image=true
-                    with-section=false
-                    lazyload=false
-                    with-dates=true
-                    ...input.node
-                  />
-                </@slot>
-              </@nodes>
-            </marko-web-node-list>
-          </div>
-          <div class="page-wrapper__section">
-            <theme-gam-define-display-ad
-              name="rotation"
-              position="section_page"
-              aliases=aliases
-              modifiers=["inter-block"]
-            />
-          </div>
-          <div class="page-wrapper__section">
-            <marko-web-node-list
-              inner-justified=true
-              flush-x=true
-              flush-y=false
-              modifiers=["section-feed"]
-            >
-              <@nodes nodes=nodes.slice(8, 13)>
-                <@slot|{ node }|>
-                  <theme-section-feed-content-node
-                    node=convert(node)
-                    display-image=true
-                    with-section=false
-                    lazyload=false
-                    with-dates=true
-                    ...input.node
-                  />
-                </@slot>
-              </@nodes>
-            </marko-web-node-list>
-          </div>
-          <div class="page-wrapper__section">
-            <theme-gam-define-display-ad
-              name="rotation"
-              position="section_page"
-              aliases=aliases
-              modifiers=["inter-block"]
-            />
-          </div>
-          <div class="page-wrapper__section">
-            <marko-web-node-list
-              inner-justified=true
-              flush-x=true
-              flush-y=false
-              modifiers=["section-feed"]
-            >
-              <@nodes nodes=nodes.slice(13, 18)>
-                <@slot|{ node }|>
-                  <theme-section-feed-content-node
-                    node=convert(node)
-                    display-image=true
-                    with-section=false
-                    lazyload=false
-                    with-dates=true
-                    ...input.node
-                  />
-                </@slot>
-              </@nodes>
-            </marko-web-node-list>
-          </div>
-          </marko-web-native-x-publisher-stories>
+            </div>
+            <div class="page-wrapper__section">
+              <marko-web-node-list
+                inner-justified=true
+                flush-x=true
+                flush-y=false
+                modifiers=["section-feed"]
+              >
+                <@nodes nodes=allNodes.slice(8, 13)>
+                  <@slot|{ node }|>
+                    <theme-section-feed-content-node
+                      node=node
+                      display-image=true
+                      with-section=false
+                      lazyload=false
+                      with-dates=true
+                      ...input.node
+                    />
+                  </@slot>
+                </@nodes>
+              </marko-web-node-list>
+            </div>
+            <div class="page-wrapper__section">
+              <theme-gam-define-display-ad
+                name="rotation"
+                position="section_page"
+                aliases=aliases
+                modifiers=["inter-block"]
+              />
+            </div>
+            <div class="page-wrapper__section">
+              <marko-web-node-list
+                inner-justified=true
+                flush-x=true
+                flush-y=false
+                modifiers=["section-feed"]
+              >
+                <@nodes nodes=allNodes.slice(13)>
+                  <@slot|{ node }|>
+                    <theme-section-feed-content-node
+                      node=node
+                      display-image=true
+                      with-section=false
+                      lazyload=false
+                      with-dates=true
+                      ...input.node
+                    />
+                  </@slot>
+                </@nodes>
+              </marko-web-node-list>
+            </div>
+            </marko-web-native-x-publisher-stories>
+          </marko-web-query>
         </div>
       </div>
     </@page>
