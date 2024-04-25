@@ -1,0 +1,74 @@
+import convertAdToContent from "@parameter1/base-cms-marko-web-native-x/utils/convert-ad-to-node";
+
+$ const injectAds = ({
+    adNodes,
+    contentNodes,
+    place = 'in-place',
+    positions
+  }) => {
+  const adNodesReversed = adNodes.reverse();
+  const positionsReversed = positions.reverse();
+  const allNodes = []
+  contentNodes.forEach((contentNode, index) => {
+    const effectiveIndex = (index * 2) + (1 + index);
+    const currentInjectionIndex = positionsReversed[positionsReversed.length - 1];
+    const currentAdNode = adNodesReversed[adNodesReversed.length - 1];
+    allNodes[effectiveIndex] = null;
+    allNodes[effectiveIndex + 1] = contentNode;
+    allNodes[effectiveIndex + 2] = null;
+    if (currentInjectionIndex === index && place === 'before') {
+      allNodes[effectiveIndex] = currentAdNode;
+      positionsReversed.pop();
+      adNodesReversed.pop();
+    }
+    if (currentInjectionIndex === index && place === 'in-place') {
+      allNodes[effectiveIndex + 1] = currentAdNode;
+      positionsReversed.pop();
+      adNodesReversed.pop();
+    }
+    if (currentInjectionIndex === index && place === 'after') {
+      allNodes[effectiveIndex + 2] = currentAdNode;
+      positionsReversed.pop();
+      adNodesReversed.pop();
+    }
+  });
+  return allNodes.filter((node) => node);
+};
+
+$ const allowedQueryNames = [
+  "all-author-content",
+  "all-company-content",
+  "magazine-scheduled-content",
+  "related-published-content",
+  "website-optioned-content",
+  "website-scheduled-content"
+];
+<if(input.queryName && allowedQueryNames.includes(input.queryName))>
+  <marko-web-query|{ nodes: contentNodes }|
+    name=input.queryName
+    params=input.queryParams
+  >
+    $ const n = input.positions.length || 0;
+    <marko-web-native-x-fetch-elements|{ ads }| uri=input.uri id=input.placementId opts={ n }>
+      $ const adNodes = ads.filter((ad) => ad.hasCampaign).map((ad) => {
+          const convertedAd = convertAdToContent(ad, { sectionName: input.sectionName }) || {};
+          const { node, attrs: containerAttrs, linkAttrs } = convertedAd;
+          return {
+            ...node,
+            containerAttrs,
+            linkAttrs
+          }
+        });
+      $ const allNodes = injectAds({ adNodes, contentNodes, place: input.place, positions: input.positions });
+      $ const data = { nodes: allNodes };
+    <if(allNodes)>
+      <if(allNodes.length)>
+        <${input.renderBody} ...data />
+      </if>
+      <else>
+        <${input.whenEmpty} />
+      </else>
+    </if>
+    </marko-web-native-x-fetch-elements>
+  </marko-web-query>
+</if>

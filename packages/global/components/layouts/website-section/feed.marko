@@ -1,9 +1,10 @@
 import { getAsArray } from "@parameter1/base-cms-object-path";
+import queryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/section-feed-block";
 
 $ const { id, alias, name, pageNode } = input;
 $ const sections = getAsArray(input, "sections");
 
-$ const { pagination: p, GAM } = out.global;
+$ const { pagination: p, GAM, nativeX: nxConfig } = out.global;
 $ const perPage = 18;
 
 <global-website-section-default-layout
@@ -66,10 +67,42 @@ $ const perPage = 18;
       <global-sponsors-block alias=alias.replace("-archive", "") />
     </if>
 
-    <theme-section-feed-block alias=alias lazyload=false query-name="website-optioned-content">
-      <@query-params limit=3 skip=p.skip({ perPage }) option-name="Pinned" />
-      <@native-x name="native" index=2 aliases=aliases section-name="Sponsor Content" />
-    </theme-section-feed-block>
+    $ const { id: placementId, uri } = nxConfig.getPlacement({ name: "native", aliases });
+    <global-content-query-with-injected-native-ads|{ nodes }|
+      query-name="website-optioned-content"
+      query-params={
+        limit: 3,
+        skip: p.skip({ perPage }),
+        sectionAlias: alias,
+        optionName: "Pinned",
+        queryFragment
+      }
+      placement-id=placementId
+      uri=uri
+      positions=[1]
+      section-name="Sponsor Content"
+      place="after"
+    >
+        <marko-web-node-list
+          inner-justified=true
+          flush-x=true
+          flush-y=false
+          modifiers=["section-feed"]
+        >
+          <@nodes nodes=nodes>
+            <@slot|{ node, index }|>
+              <theme-section-feed-content-node
+                display-image=true
+                with-section=Boolean(node.containerAttrs || node.linkAttrs)
+                lazyload=true
+                node=node
+                container-attrs=node.containerAttrs
+                link-attrs=node.linkAttrs
+              />
+            </@slot>
+          </@nodes>
+        </marko-web-node-list>
+    </global-content-query-with-injected-native-ads>
   </@section>
 
   <@section|{ aliases }|>
