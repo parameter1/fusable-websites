@@ -1,6 +1,6 @@
 {
   "name": "@randall-reilly/truckhistoryreport.com",
-  "version": "1.75.4",
+  "version": "1.75.5",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/sites/truckhistoryreport.com",
   "license": "MIT",
@@ -38,8 +38,8 @@
     "@parameter1/base-cms-object-path": "^4.40.3",
     "@parameter1/base-cms-utils": "^4.40.3",
     "@parameter1/base-cms-web-cli": "^4.40.3",
-    "@randall-reilly/package-global": "^1.75.4",
-    "@randall-reilly/package-overdrive": "^1.75.4",
+    "@randall-reilly/package-global": "^1.75.5",
+    "@randall-reilly/package-overdrive": "^1.75.5",
     "@randall-reilly/package-rigdig": "^1.72.2",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
