@@ -60,7 +60,7 @@ module.exports = ({
         { viewport: [1150, 0], size: [[1124, 600], [970, 250], [970, 90], [728, 90]] },
         { viewport: [980, 0], size: [[970, 250], [970, 90], [728, 90], [430, 720]] },
         { viewport: [750, 0], size: [[728, 90], [430, 720], [300, 250]] },
-        { viewport: [300, 0], size: [[300, 50], [300, 250], [320, 100]] },
+        { viewport: [300, 0], size: [[430, 720], [300, 50], [300, 250], [320, 100]] },
       ],
     })
     .setTemplate('ROTATION-DESKTOP', {
@@ -76,7 +76,7 @@ module.exports = ({
       sizeMapping: [
         { viewport: [980, 0], size: [] },
         { viewport: [480, 0], size: [430, 720] },
-        { viewport: [300, 0], size: [[300, 50], [300, 250], [320, 100]] },
+        { viewport: [300, 0], size: [[430, 720], [300, 50], [300, 250], [320, 100]] },
       ],
     })
     .setTemplate('INLINE-CONTENT-DESKTOP', {
