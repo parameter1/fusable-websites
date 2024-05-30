@@ -13,6 +13,7 @@ const topics = {
   expanded: [
   ],
   secondary: [
+    { href: '/compact-wheel-loaders', label: 'Compact Wheel Loaders' },
     { href: '/workforce/safety', label: 'Safety' },
     { href: '/safety-watch', label: 'Safety Watch' },
     { href: '/videos', label: 'Videos' },
