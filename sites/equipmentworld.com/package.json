@@ -1,6 +1,6 @@
 {
   "name": "@randall-reilly/equipmentworld.com",
-  "version": "1.75.11",
+  "version": "1.75.13",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/sites/equipmentworld.com",
   "license": "MIT",
@@ -39,8 +39,8 @@
     "@parameter1/base-cms-object-path": "^4.40.3",
     "@parameter1/base-cms-utils": "^4.40.3",
     "@parameter1/base-cms-web-cli": "^4.57.1",
-    "@randall-reilly/equipment-experts": "^1.72.2",
-    "@randall-reilly/package-global": "^1.75.8",
+    "@randall-reilly/equipment-experts": "^1.75.13",
+    "@randall-reilly/package-global": "^1.75.13",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
   }
