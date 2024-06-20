@@ -31,13 +31,13 @@
     "win32"
   ],
   "dependencies": {
-    "@parameter1/base-cms-marko-core": "^4.48.1",
-    "@parameter1/base-cms-marko-web": "^4.48.1",
-    "@parameter1/base-cms-marko-web-gtm": "^4.40.3",
-    "@parameter1/base-cms-marko-web-theme-monorail": "^4.54.0",
+    "@parameter1/base-cms-marko-core": "^4.55.4",
+    "@parameter1/base-cms-marko-web": "^4.55.4",
+    "@parameter1/base-cms-marko-web-gtm": "^4.57.1",
+    "@parameter1/base-cms-marko-web-theme-monorail": "^4.57.1",
     "@parameter1/base-cms-object-path": "^4.40.3",
     "@parameter1/base-cms-utils": "^4.40.3",
-    "@parameter1/base-cms-web-cli": "^4.40.3",
+    "@parameter1/base-cms-web-cli": "^4.57.1",
     "@randall-reilly/package-global": "^1.75.8",
     "@randall-reilly/package-overdrive": "^1.75.8",
     "@randall-reilly/package-rigdig": "^1.72.2",
