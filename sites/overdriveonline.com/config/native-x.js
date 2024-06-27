@@ -3,12 +3,12 @@ const configureNativeX = require('@randall-reilly/package-global/config/native-x
 const config = configureNativeX();
 
 config.enabled = true;
-config.publisherId = '5fd24889b192ef0001843b79';
-config.domainName = 'www.ccjdigital.com';
+config.publisherId = '5fc6b74897841c0001d5a007';
+config.domainName = 'www.overdriveonline.com';
 
 config
   .setAliasPlacements('default', [
-    { name: 'featured-sponsored', id: '6000b6bd0ea4830001340a86' },
+    { name: 'featured-sponsored', id: '64ee5af06b776a0001dc5a75' },
     { name: 'partner-insights', id: '61f5aefe8ec1b500012be0f6' },
   ]);
 
