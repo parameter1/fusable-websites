@@ -158,7 +158,7 @@ $ const bypassGate = hasOmedaId(req);
             $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
 
             $ const uri = nxConfig.getUri();
-            $ const placement = nxConfig.getPlacement({ name: "native", aliases });
+            $ const placement = nxConfig.getPlacement({ name: "partner-insights", aliases });
             <marko-web-native-x-fetch-elements|{ ads }| uri=uri id=placement.id opts={ n: 4 }>
               $ const hasAd = ads && ads.length && ads[0] && ads[0].hasCampaign;
               $ let htmlInjections = [];
