@@ -8,7 +8,7 @@ config.domainName = 'www.totallandscapecare.com';
 
 config
   .setAliasPlacements('default', [
-    { name: 'featured-sponsored', id: '6000b72a0ea4830001340b71' },
+    { name: 'default', id: '6000b72a0ea4830001340b71' },
     { name: 'partner-insights', id: '62c467e41a8b4600011568e5' },
   ]);
 

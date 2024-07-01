@@ -7,7 +7,7 @@ config.domainName = 'www.cleantrucking.com';
 
 config
   .setAliasPlacements('default', [
-    { name: 'featured-sponsored', id: '650483b4a369f10001d83979' },
+    { name: 'default', id: '5ff3320140cc3e000117533e' },
     { name: 'partner-insights', id: '650483cf4520d80001a8cda8' },
   ]);
 

@@ -8,7 +8,7 @@ config.domainName = 'www.hardworkingtrucks.com';
 
 config
   .setAliasPlacements('default', [
-    { name: 'featured-sponsored', id: '6000b714140b3d000104072b' },
+    { name: 'default', id: '6000b714140b3d000104072b' },
     { name: 'partner-insights', id: '62c467631a8b460001156531' },
   ]);
 
