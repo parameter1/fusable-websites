@@ -67,7 +67,7 @@ $ const perPage = 18;
       <global-sponsors-block alias=alias.replace("-archive", "") />
     </if>
 
-    $ const { id: placementId, uri } = nxConfig.getPlacement({ name: "native", aliases });
+    $ const { id: placementId, uri } = nxConfig.getPlacement({ name: "partner-insights", aliases });
     <global-content-query-with-injected-native-ads|{ nodes }|
       query-name="website-optioned-content"
       query-params={
