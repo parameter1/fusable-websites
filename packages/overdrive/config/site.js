@@ -67,7 +67,7 @@ module.exports = {
   ],
   podcastLinks: [
     { label: 'Apple Podcasts', href: 'https://podcasts.apple.com/us/podcast/overdrive-online/id736806291' },
-    { label: 'Google Podcasts', href: 'https://podcasts.google.com/feed/aHR0cHM6Ly93d3cub3ZlcmRyaXZlb25saW5lLmNvbS9mZWVkL3BvZGNhc3Qv' },
+    { label: 'Youtube', href: 'https://www.youtube.com/playlist?list=PLc1lg9rs1dUAhK7CqgY23njy75EnGlqIU' },
     { label: 'Spotify', href: 'https://open.spotify.com/show/6P7SIZeenGgvAaaIm2SOAq' },
     { label: 'Soundcloud', href: 'https://soundcloud.com/overdriveradio' },
   ],
