@@ -12,5 +12,8 @@ Disallow: /
 User-agent: ChatGPT-User
 Disallow: /
 
+User-agent: OAI-SearchBot
+Disallow: /
+
 Sitemap: https://www.equipmentworld.com/sitemap.xml
 Sitemap: https://www.equipmentworld.com/sitemap-google-news.xml

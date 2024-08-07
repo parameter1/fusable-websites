@@ -12,5 +12,8 @@ Disallow: /
 User-agent: ChatGPT-User
 Disallow: /
 
+User-agent: OAI-SearchBot
+Disallow: /
+
 Sitemap: https://www.truckersnews.com/sitemap.xml
 Sitemap: https://www.truckersnews.com/sitemap-google-news.xml
