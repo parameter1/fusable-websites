@@ -16,7 +16,7 @@ import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../
 
 $ const { global: $global } = out;
 $ const { nativeX: nxConfig } = $global;
-$ const { site, contentMeterState, GAM, req } = $global;
+$ const { site, contentMeterState, GAM, req, config } = $global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
@@ -187,7 +187,8 @@ $ const bypassGate = hasOmedaId(req);
                 );
               };
 
-              <if(hasAd)>
+              $ const siteId = get(config, "websiteContext.id");
+              <if(siteId === "5fce5519d28860bc33b80a42" && hasAd)>
                 $ const nodes = ads.filter((ad) => ad.hasCampaign);
                 $ htmlInjections.push(
                   {
@@ -195,7 +196,21 @@ $ const bypassGate = hasOmedaId(req);
                     html: NativeXCardDeck.renderToString({
                       cols: 4,
                       nodes: nodes,
-                      section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
+                      section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers", canonicalPath: "/partner-insights" },
+                      viewMore: true,
+                    })
+                  }
+                );
+              </if>
+              <if(siteId !== "5fce5519d28860bc33b80a42" && hasAd)>
+                $ const nodes = ads.filter((ad) => ad.hasCampaign);
+                $ htmlInjections.push(
+                  {
+                    at: 2000,
+                    html: NativeXCardDeck.renderToString({
+                      cols: 4,
+                      nodes: nodes,
+                      section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers" },
                     })
                   }
                 );
