@@ -187,8 +187,8 @@ $ const bypassGate = hasOmedaId(req);
                 );
               };
 
-              $ const siteId = get(config, "websiteContext.id");
-              <if(siteId === "5fce5519d28860bc33b80a42" && hasAd)>
+              $ const viewMore = Boolean((get(config, "websiteContext.id") === "5fce5519d28860bc33b80a42") && hasAd);
+              <if(hasAd)>
                 $ const nodes = ads.filter((ad) => ad.hasCampaign);
                 $ htmlInjections.push(
                   {
@@ -197,20 +197,7 @@ $ const bypassGate = hasOmedaId(req);
                       cols: 4,
                       nodes: nodes,
                       section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers", canonicalPath: "/partner-insights" },
-                      viewMore: true,
-                    })
-                  }
-                );
-              </if>
-              <if(siteId !== "5fce5519d28860bc33b80a42" && hasAd)>
-                $ const nodes = ads.filter((ad) => ad.hasCampaign);
-                $ htmlInjections.push(
-                  {
-                    at: 2000,
-                    html: NativeXCardDeck.renderToString({
-                      cols: 4,
-                      nodes: nodes,
-                      section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers" },
+                      viewMore: viewMore,
                     })
                   }
                 );
