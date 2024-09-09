@@ -1,6 +1,6 @@
-const configureGAM = require('@randall-reilly/package-global/config/gam-tn');
+const configureGAM = require('@randall-reilly/package-global/config/gam');
 
-const config = configureGAM({ basePath: 'TruckersNews' });
+const config = configureGAM({ basePath: 'TruckersNews', accountId: '313639551' });
 
 config
   .setAliasAdUnits('default', [
