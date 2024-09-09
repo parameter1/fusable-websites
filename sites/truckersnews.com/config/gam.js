@@ -13,8 +13,6 @@ config
     { name: 'inline-content-desktop', templateName: 'INLINE-CONTENT-DESKTOP', path: 'rotation' },
     { name: 'wallpaper-left', templateName: 'WALLPAPER', path: 'wallpaper-left' },
     { name: 'wallpaper-right', templateName: 'WALLPAPER', path: 'wallpaper-right' },
-    { name: 'welcome_ad', templateName: 'WELCOME_AD', path: 'welcome_ad' },
-    { name: 'xl_content', templateName: 'XL_CONTENT', path: 'xl_content' },
   ])
   .setAliasAdUnits('gear', [
     { name: 'leaderboard', templateName: 'LEADERBOARD', path: 'gear-leaderboard' },
