@@ -106,6 +106,7 @@
             <li><icon-check-circle class="mr-2" />Title and odometer brands</li>
             <li><icon-check-circle class="mr-2" />Reported insurance claims</li>
             <li><icon-check-circle class="mr-2" />Carrier/owner history</li>
+            <li><icon-check-circle class="mr-2" />Manufacturer recall notices</li>
             <li><icon-check-circle class="mr-2" />Plus more vehicle data</li>
           </ul>
           <div class="rigdig-widget__pricing">

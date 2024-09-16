@@ -3,11 +3,11 @@ const path = require('path');
 
 const columns = {
   rank: {
-    label: '2023 RANK',
+    label: '2024 RANK',
     type: 'number',
   },
   rank2020: {
-    label: '2022 RANK',
+    label: '2023 RANK',
     type: 'number',
   },
   company: {
@@ -47,7 +47,7 @@ const columns = {
     type: 'string',
   },
   revenue2020: {
-    label: '2022 REVENUE',
+    label: '2023 REVENUE',
     type: 'number',
     numberType: 'usCurrency',
   },
