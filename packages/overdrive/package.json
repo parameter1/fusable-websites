@@ -1,6 +1,6 @@
 {
   "name": "@randall-reilly/package-overdrive",
-  "version": "1.75.23",
+  "version": "1.75.24",
   "author": "Brian Miller <brian@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/packages/overdrive",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "test": "yarn lint"
   },
   "dependencies": {
-    "@randall-reilly/package-global": "^1.75.23"
+    "@randall-reilly/package-global": "^1.75.24"
   },
   "engines": {
     "node": ">=14.15"
