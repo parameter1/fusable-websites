@@ -1,0 +1,118 @@
+$ const { site, config } = out.global;
+$ const {fixedCost, salary, varCostPerMile, loads } = input
+
+$ const type = "static";
+$ const title = "Load Analyzer";
+$ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+<marko-web-default-page-layout type=`${type}` title=title description=description>
+  <@head>
+    <marko-web-gtm-default-context|{ context }| type=type>
+      <marko-web-gtm-push data=context />
+    </marko-web-gtm-default-context>
+  </@head>
+  <@page>
+    <marko-web-page-wrapper>
+      <@section modifiers=["first-sm"]>
+        <theme-gam-define-display-ad
+          name="leaderboard"
+          position="static_page"
+          aliases=[]
+          modifiers=["inter-block"]
+        />
+      </@section>
+      <@section>
+        <marko-web-identity-x-context|{ hasUser }|>
+          <if(!hasUser)>
+            <h1 class="page-wrapper__title">
+              Log in to ${config.siteName()}
+            </h1>
+            <p>
+              Tell me what to put here :)
+            </p>
+            <marko-web-identity-x-form-login />
+          </if>
+          <else>
+            <div class="load-calc-widget__container">
+              <div>
+                <div class="load-calc-widget__header">
+                  <div class="load-calc-widget__copy">
+                    <h1 class="load-calc-widget__title">
+                      Load Analasys
+                    </h1>
+                    <p class="load-calc-widget__call-to-action"> Teaser to come </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <for|load, index| of=loads>
+                    <div class="col-md-3">
+                      $ const {
+                          quarterDays = 0,
+                          deadheadMiles = 0,
+                          loadedMiles = 0,
+                          totalMiles = 0,
+                          grossRate = 0,
+                        } = load;
+                      <div>
+                        Load ${index}
+                      </div>
+                      $ const blah = load.quarterDays
+                      <div class="load-calc-widget__load-answer">
+                        <div class="load-calc-widget__load-answer--label">
+                          Total Cost to haul the laod(fixedCost + (quarterDays * (loadedMiles / 4)):
+                        </div>
+                        <div class="load-calc-widget__load-answer--value">
+                          ${fixedCost + (quarterDays * (loadedMiles / 4))}
+                        </div>
+                      </div>
+                      <div class="load-calc-widget__load-answer">
+                        <div class="load-calc-widget__load-answer--lebel">
+                          Total cost per mile(all miles):
+                        </div>
+                        <div class="load-calc-widget__load-answer--value">
+                          TBD
+                        </div>
+                      </div>
+                      <div class="load-calc-widget__load-answer">
+                        <div class="load-calc-widget__load-answer--lebel">
+                          Potential profit:
+                        </div>
+                        <div class="load-calc-widget__load-answer--value">
+                          TBD
+                        </div>
+                      </div>
+                      <div class="load-calc-widget__load-answer">
+                        <div class="load-calc-widget__load-answer--lebel">
+                          Profit per mile:
+                        </div>
+                        <div class="load-calc-widget__load-answer--value">
+                          TBD
+                        </div>
+                      </div>
+                      <div class="load-calc-widget__load-answer">
+                        <div class="load-calc-widget__load-answer--lebel">
+                          Profit + salary:
+                        </div>
+                        <div class="load-calc-widget__load-answer--value">
+                          TBD
+                        </div>
+                      </div>
+                      <div class="load-calc-widget__load-answer">
+                        <div class="load-calc-widget__load-answer--lebel">
+                          Profit per day:
+                        </div>
+                        <div class="load-calc-widget__load-answer--value">
+                          TBD
+                        </div>
+                      </div>
+                    </div>
+                  </for>
+                </div>
+              </div>
+            </div>
+          </else>
+        </marko-web-identity-x-context>
+      </@section>
+    </marko-web-page-wrapper>
+  </@page>
+</marko-web-default-page-layout>
