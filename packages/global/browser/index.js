@@ -1,5 +1,7 @@
 import MonoRail from '@parameter1/base-cms-marko-web-theme-monorail/browser';
 
+const LoadCalculator = () => import(/* webpackChunkName: "load-calculator" */ './load-calculator.vue');
+
 export default (Browser) => {
   const { EventBus } = Browser;
   EventBus.$on('identity-x-login-link-sent', ({ data, source, additionalEventData }) => {
@@ -9,5 +11,8 @@ export default (Browser) => {
       window.dataLayer.push({ event: 'identity-x-created-new-user', newIdentityXUser });
     }
   });
+
+  Browser.register('LoadCalculator', LoadCalculator);
+
   MonoRail(Browser);
 };
