@@ -6,6 +6,13 @@ $wrapper-border-radius: 10px;
   fieldset {
     &.border {
       border-radius: $wrapper-border-radius;
+      &.col-md-4 {
+        padding-left: 0 ;
+        padding-right: 0;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
     }
   }
   &__container {
@@ -33,10 +40,10 @@ $wrapper-border-radius: 10px;
     }
   }
   &__form-group {
+    border-bottom: 1px solid $gray-200;
     #{ $self } {
       &__label {
         display: flex;
-        border-bottom: 1px solid $gray-200;
         #{ $self }__label-text {
           flex-grow: 2;
           align-content: center;
@@ -48,6 +55,7 @@ $wrapper-border-radius: 10px;
           background-color: transparent;
         }
       }
+      &__label-value--read-only,
       &__totalMiles {
         justify-content: center;
         align-self: center;
@@ -105,6 +113,9 @@ $wrapper-border-radius: 10px;
       @include skin-typography($style: "section-header-small");
       font-size: 16px;
       margin-bottom: 0;
+    }
+    &.h6 {
+      text-transform: none;
     }
     margin-right: 2rem;
     text-transform: none;
