@@ -22,63 +22,78 @@
         :disabled="loading"
         @submit.prevent="handleSubmit"
       >
-        <div class="load-calc-widget__form-group">
-          <label class="load-calc-widget__label">
-            <div class="load-calc-widget__label-text">Fixed cost per day under load</div>
-            <input
-              ref="input"
-              v-model="fixedCost"
-              class="form-control load-calc-widget__fixedCost"
-              type="text"
-              :readonly="loading"
-              :placeholder="placeholder"
-              required
-            >
-          </label>
+        <div class="cost">
+          <legend class="load-calc-widget__title h3 w-auto">Cost</legend>
+          <legend class="p small info w-auto">Enter cost information</legend>
+          <fieldset class="border mb-3 cost-block">
+            <div class="load-calc-widget__form-group">
+              <label class="load-calc-widget__label p-3">
+                <div class="load-calc-widget__label-text">Fixed cost per day under load</div>
+                <input
+                  ref="input"
+                  v-model="fixedCost"
+                  class="form-control load-calc-widget__fixedCost"
+                  type="number"
+                  min="0.00"
+                  max="2500000.00"
+                  :readonly="loading"
+                  :placeholder="placeholder"
+                  required
+                >
+              </label>
+            </div>
+
+            <div class="load-calc-widget__form-group">
+              <label class="load-calc-widget__label p-3">
+                <div class="load-calc-widget__label-text">Salary per day under load</div>
+                <input
+                  ref="input"
+                  v-model="salary"
+                  class="form-control load-calc-widget__salary"
+                  type="number"
+                  min="0.00"
+                  max="2500000"
+                  :readonly="loading"
+                  :placeholder="placeholder"
+                  required
+                >
+              </label>
+            </div>
+
+            <div class="load-calc-widget__form-group">
+              <label class="load-calc-widget__label p-3">
+                <div class="load-calc-widget__label-text">Vairable cost per mile</div>
+                <input
+                  ref="input"
+                  v-model="varCostPerMile"
+                  class="form-control load-calc-widget__varCostPerMile"
+                  type="number"
+                  min="0.00"
+                  max="2500000"
+                  :readonly="loading"
+                  :placeholder="placeholder"
+                  required
+                >
+              </label>
+            </div>
+          </fieldset>
         </div>
-
-        <div class="load-calc-widget__form-group">
-          <label class="load-calc-widget__label">
-            <div class="load-calc-widget__label-text">Salary per day under load</div>
-            <input
-              ref="input"
-              v-model="salary"
-              class="form-control load-calc-widget__salary"
-              type="text"
-              :readonly="loading"
-              :placeholder="placeholder"
-              required
-            >
-          </label>
-        </div>
-
-        <div class="load-calc-widget__form-group">
-          <label class="load-calc-widget__label">
-            <div class="load-calc-widget__label-text">Vairable cost per mile</div>
-            <input
-              ref="input"
-              v-model="varCostPerMile"
-              class="form-control load-calc-widget__varCostPerMile"
-              type="text"
-              :readonly="loading"
-              :placeholder="placeholder"
-              required
-            >
-          </label>
-        </div>
-
-        <hr>
-
-        <h2>Loads</h2>
+        <legend class="load-calc-widget__title h3 w-auto">
+          Load Information
+        </legend>
+        <legend class="p small info w-auto">
+          Enter Load Information for one or more loads
+        </legend>
         <div
           v-for="(load, index) in loads"
           :key="index"
-          class="load"
+          class="load border mb-3"
         >
-          <h2>
+          <legend class="load-calc-widget__title h6 w-auto">
             Load {{ index + 1 }}
             <span
               v-if="index !== 0"
+              class="load-calc-widget__remove-btn"
             >
               <a
                 href="javascript:void(0)"
@@ -88,92 +103,98 @@
                 Remove
               </a>
             </span>
-          </h2>
-          <div class="load-calc-widget__form-group">
-            <label class="load-calc-widget__label">
-              <div class="load-calc-widget__label-text">Days to haul the load(in 1/4 days)</div>
-              <input
-                ref="input"
-                v-model="load.quarterMile"
-                class="form-control load-calc-widget__quarterMile"
-                type="text"
-                :readonly="loading"
-                :placeholder="placeholder"
-                required
-              >
-            </label>
-          </div>
+          </legend>
+          <fieldset class="load-block">
+            <div class="load-calc-widget__form-group">
+              <label class="load-calc-widget__label p-3">
+                <div class="load-calc-widget__label-text">Days to haul the load(in 1/4 days)</div>
+                <input
+                  ref="input"
+                  v-model="load.quarterDays"
+                  class="form-control load-calc-widget__quarterDays"
+                  type="number"
+                  min="0.00"
+                  max="2500000"
+                  :readonly="loading"
+                  :placeholder="placeholder"
+                  required
+                >
+              </label>
+            </div>
 
-          <div class="load-calc-widget__form-group">
-            <label class="load-calc-widget__label">
-              <div class="load-calc-widget__label-text">Deadhead Miles</div>
-              <input
-                ref="input"
-                v-model="load.deadheadMiles"
-                class="form-control load-calc-widget__deadheadMiles"
-                type="text"
-                :readonly="loading"
-                :placeholder="placeholder"
-                required
-              >
-            </label>
-          </div>
+            <div class="load-calc-widget__form-group">
+              <label class="load-calc-widget__label p-3">
+                <div class="load-calc-widget__label-text">Deadhead Miles</div>
+                <input
+                  ref="input"
+                  v-model="load.deadheadMiles"
+                  class="form-control load-calc-widget__deadheadMiles"
+                  type="number"
+                  min="0.00"
+                  max="2500000"
+                  :readonly="loading"
+                  :placeholder="placeholder"
+                  required
+                >
+              </label>
+            </div>
 
-          <div class="load-calc-widget__form-group">
-            <label class="load-calc-widget__label">
-              <div class="load-calc-widget__label-text">Loaded Miles</div>
-              <input
-                ref="input"
-                v-model="load.loadedMiles"
-                class="form-control load-calc-widget__loadedMiles"
-                type="text"
-                :readonly="loading"
-                :placeholder="placeholder"
-                required
-              >
-            </label>
-          </div>
+            <div class="load-calc-widget__form-group">
+              <label class="load-calc-widget__label p-3">
+                <div class="load-calc-widget__label-text">Loaded Miles</div>
+                <input
+                  ref="input"
+                  v-model="load.loadedMiles"
+                  class="form-control load-calc-widget__loadedMiles"
+                  type="number"
+                  min="0.00"
+                  max="2500000"
+                  :readonly="loading"
+                  :placeholder="placeholder"
+                  required
+                >
+              </label>
+            </div>
 
-          <div class="load-calc-widget__form-group">
-            <label class="load-calc-widget__label">
-              <div class="load-calc-widget__label-text">Total miles</div>
-              <input
-                ref="input"
-                v-model="load.totalMiles"
-                class="form-control load-calc-widget__totalMiles"
-                type="text"
-                :readonly="loading"
-                :placeholder="placeholder"
-                required
-              >
-            </label>
-          </div>
+            <div class="load-calc-widget__form-group">
+              <label class="load-calc-widget__label p-3">
+                <div class="load-calc-widget__label-text">Total miles</div>
+                <div class="load-calc-widget__totalMiles">
+                  {{ Number(load.loadedMiles) + Number(load.deadheadMiles) }}
+                </div>
+              </label>
+            </div>
 
-          <div class="load-calc-widget__form-group">
-            <label class="load-calc-widget__label">
-              <div class="load-calc-widget__label-text">Gross Rate</div>
-              <input
-                ref="input"
-                v-model="load.grossRate"
-                class="form-control load-calc-widget__grossRate"
-                type="text"
-                :readonly="loading"
-                :placeholder="placeholder"
-                required
-              >
-            </label>
-          </div>
+            <div class="load-calc-widget__form-group">
+              <label class="load-calc-widget__label p-3">
+                <div class="load-calc-widget__label-text">Gross Rate</div>
+                <input
+                  ref="input"
+                  v-model="load.grossRate"
+                  class="form-control load-calc-widget__grossRate"
+                  type="number"
+                  min="0.00"
+                  max="2500000"
+                  :readonly="loading"
+                  :placeholder="placeholder"
+                  required
+                >
+              </label>
+            </div>
+          </fieldset>
         </div>
-
-        <button
-          v-if="hasUserInput"
-          type="add"
-          class="btn btn-secondary ml-1 load-calc-widget__add-load"
-          :disabled="loading"
-          @click="addLoad"
-        >
-          Add Load
-        </button>
+        <div class="load-calc-widget__buttons">
+          <a
+            v-if="hasUserInput"
+            href="javascript:void(0)"
+            role="button"
+            class="btn btn-secondary ml-1 load-calc-widget__add-load"
+            :disabled="loading"
+            @click="addLoad()"
+          >
+            Add Load
+          </a>
+        </div>
 
         <div class="load-calc-widget__buttons">
           <button
@@ -215,15 +236,15 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Look up a report by VIN',
+      default: 'Load Analyzer',
     },
     description: {
       type: String,
-      default: 'asfddg',
+      default: '',
     },
     placeholder: {
       type: Number,
-      default: 0,
+      default: 0.00,
     },
     buttonLabel: {
       type: String,
@@ -280,7 +301,8 @@ export default {
       });
     }
     if (this.loads.length === 0) {
-      this.loads.push(this.defaultLoad);
+      const newLoad = { ...this.defaultLoad };
+      this.loads.push(newLoad);
     }
   },
   methods: {
@@ -290,10 +312,11 @@ export default {
       document.cookie = `${this.cookieName}=${(value || '')} ${expires}`;
     },
     addLoad() {
-      this.loads.push(this.defaultLoad);
+      const newLoad = { ...this.defaultLoad };
+      this.loads.push(newLoad);
     },
     removeLoad(index) {
-      this.loads = this.loads.splice(index, 1);
+      this.loads.splice(index);
     },
     getCookie() {
       const nameEQ = `${this.cookieName}=`;
@@ -308,14 +331,24 @@ export default {
     },
     reset() {
       this.fieldsToCheck.forEach((field) => { this[field] = 0; });
+      this.loads = [this.defaultLoad];
     },
     async handleSubmit() {
       this.error = null;
       this.status = null;
       this.loading = true;
-      const { fixedCost, salary, varCostPerMile, loads } = this;
-      const payload = { fixedCost, salary, varCostPerMile, loads };
-      await this.setCookie(payload);
+      const {
+        fixedCost,
+        salary,
+        varCostPerMile,
+        loads,
+      } = this;
+      await this.setCookie({
+        fixedCost,
+        salary,
+        varCostPerMile,
+        loads,
+      });
       this.loading = false;
       window.location = '/load-calculator/submit';
     },

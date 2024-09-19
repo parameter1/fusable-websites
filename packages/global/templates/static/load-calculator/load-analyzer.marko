@@ -27,9 +27,6 @@ $ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
             <h1 class="page-wrapper__title">
               Log in to ${config.siteName()}
             </h1>
-            <p>
-              Tell me what to put here :)
-            </p>
             <marko-web-identity-x-form-login />
           </if>
           <else>
@@ -38,73 +35,119 @@ $ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                 <div class="load-calc-widget__header">
                   <div class="load-calc-widget__copy">
                     <h1 class="load-calc-widget__title">
-                      Load Analasys
+                      ${title}
                     </h1>
-                    <p class="load-calc-widget__call-to-action"> Teaser to come </p>
+                    <p class="load-calc-widget__call-to-action"> ${description}</p>
                   </div>
                 </div>
                 <div class="row">
                   <for|load, index| of=loads>
-                    <div class="col-md-3">
+                    <div class="col-md-4 load border">
+                    <!-- {fixedCost, salary, varCostPerMile -->
                       $ const {
-                          quarterDays = 0,
-                          deadheadMiles = 0,
-                          loadedMiles = 0,
-                          totalMiles = 0,
-                          grossRate = 0,
-                        } = load;
-                      <div>
-                        Load ${index}
-                      </div>
-                      $ const blah = load.quarterDays
-                      <div class="load-calc-widget__load-answer">
-                        <div class="load-calc-widget__load-answer--label">
-                          Total Cost to haul the laod(fixedCost + (quarterDays * (loadedMiles / 4)):
+                        quarterDays,
+                        deadheadMiles,
+                        loadedMiles,
+                        totalMiles,
+                        grossRate,
+                      } = load;
+                      <!--
+                        Overdrive Load Analyzer Fields & Formulas
+                        This tool should be mobile-first and allow the user to calculate and compare up to three potential loads at once, so these fields and formulas would be repeated in up two more columns
+
+                        How many loads would you like to analyze and compare? (1,2 or 3)
+
+                        Costs
+                        Fixed cost per day under load: Field 1
+                        Salary per day under load: Field 2
+                        Variable cost per mile: Field 3
+
+                        Load Information
+                        Days to haul the load (in ¼ days:) Field 4
+                        Deadhead miles: Field 5
+                        Loaded miles: Field 6
+                        Total miles: Formula 7 [SUM: Field 5 + Field 6]
+                        Gross rate: Field 8
+
+                        -- Enter email address to view results --
+                        * By submitting your email address, you agree to (boilerplate legalese)
+
+                        These results are delivered to the user’s inbox:
+                        Thank you for using Overdrive’s Load Analyzer tool, sponsored by XXX. Your results are below:
+
+                        Replication of the above fields, plus:
+
+                        Cost/Profit Results
+                        Total costs to haul the load: Formula 9 [SUM: (Field 1 + Field 2) * (Field 4) + (Field 3 * Formula 7)]
+                        Total cost per mile (total miles): Formula 10 [SUM: Formula 9 / Formula 7]
+                        Potential profit: Formula 11 [SUM: Field 8 – Formula 9]
+                        Profit per mile: Formula 12 [SUM: Formula 11 / Formula 7]
+                        Profit plus salary: Formula 13 [SUM: Formula 11 + (Field 2 * Field 4)]
+                        Profit per day: Formula 14 [SUM: Formula 11 / Field 4]
+                        Profit plus salary per day: Formula 15 [SUM: Formula 13 / Field 4]
+                      -->
+                      $ const totalCost = ((fixedCost + salary) * quarterDays) + (varCostPerMile * totalMiles);
+                      $ const totalCostPerMile = totalCost / (deadheadMiles + loadedMiles)
+                      $ const potentialProfit = grossRate - totalCost;
+                      $ const profitPerMile = potentialProfit / totalMiles;
+                      $ const profitPlusSalary = potentialProfit + (salary * quarterDays)
+                      $ const profitPerDay = potentialProfit / quarterDays
+                      <legend class="h3 w-auto">
+                        Load ${index + 1}
+                      </legend>
+                      <legend class="p small info w-auto">
+                        Enter cost information
+                      </legend>
+                      <fieldset class="load-block">
+                        <div class="load-calc-widget__load-answer">
+                          <div class="load-calc-widget__load-answer--label">
+                            Total Cost to haul the laod:
+                          </div>
+                          <div class="load-calc-widget__load-answer--value">
+                            ${totalCost}
+                          </div>
                         </div>
-                        <div class="load-calc-widget__load-answer--value">
-                          ${fixedCost + (quarterDays * (loadedMiles / 4))}
+                        <div class="load-calc-widget__load-answer">
+                          <div class="load-calc-widget__load-answer--lebel">
+                            Total cost per mile(all miles):
+                          </div>
+                          <div class="load-calc-widget__load-answer--value">
+                            ${totalCostPerMile}
+                          </div>
                         </div>
-                      </div>
-                      <div class="load-calc-widget__load-answer">
-                        <div class="load-calc-widget__load-answer--lebel">
-                          Total cost per mile(all miles):
+                        <div class="load-calc-widget__load-answer">
+                          <div class="load-calc-widget__load-answer--lebel">
+                            Potential profit:
+                          </div>
+                          <div class="load-calc-widget__load-answer--value">
+                            ${potentialProfit}
+                          </div>
                         </div>
-                        <div class="load-calc-widget__load-answer--value">
-                          TBD
+                        <div class="load-calc-widget__load-answer">
+                          <div class="load-calc-widget__load-answer--lebel">
+                            Profit per mile:
+                          </div>
+                          <div class="load-calc-widget__load-answer--value">
+                            ${profitPerMile}
+                          </div>
                         </div>
-                      </div>
-                      <div class="load-calc-widget__load-answer">
-                        <div class="load-calc-widget__load-answer--lebel">
-                          Potential profit:
+                        <div class="load-calc-widget__load-answer">
+                          <div class="load-calc-widget__load-answer--lebel">
+                            Profit + salary:
+                          </div>
+                          <div class="load-calc-widget__load-answer--value">
+                            ${profitPlusSalary}
+                          </div>
                         </div>
-                        <div class="load-calc-widget__load-answer--value">
-                          TBD
+                        <div class="load-calc-widget__load-answer">
+                          <div class="load-calc-widget__load-answer--lebel">
+                            Profit per day:
+                          </div>
+                          <div class="load-calc-widget__load-answer--value">
+                            ${profitPerDay}
+                          </div>
                         </div>
-                      </div>
-                      <div class="load-calc-widget__load-answer">
-                        <div class="load-calc-widget__load-answer--lebel">
-                          Profit per mile:
-                        </div>
-                        <div class="load-calc-widget__load-answer--value">
-                          TBD
-                        </div>
-                      </div>
-                      <div class="load-calc-widget__load-answer">
-                        <div class="load-calc-widget__load-answer--lebel">
-                          Profit + salary:
-                        </div>
-                        <div class="load-calc-widget__load-answer--value">
-                          TBD
-                        </div>
-                      </div>
-                      <div class="load-calc-widget__load-answer">
-                        <div class="load-calc-widget__load-answer--lebel">
-                          Profit per day:
-                        </div>
-                        <div class="load-calc-widget__load-answer--value">
-                          TBD
-                        </div>
-                      </div>
+                      </fieldset>
                     </div>
                   </for>
                 </div>

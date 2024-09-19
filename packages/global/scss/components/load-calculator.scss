@@ -1,17 +1,27 @@
-$wrapper-border-radius: 10px !default;
+$wrapper-border-radius: 10px;
 /*! critical:end */
 .load-calc-widget {
+  $self: &;
+  .load,
+  fieldset {
+    &.border {
+      border-radius: $wrapper-border-radius;
+    }
+  }
   &__container {
     padding: 32px;
     margin-left: auto;
     margin-right: auto;
-    background-color: $gray-200;
-    border-radius: $wrapper-border-radius;
-    // @media (max-width: 992px) {
-    //   border-radius: 0;
-    //   margin-left: -20px;
-    //   margin-right: -20px;
-    // }
+
+    .load > legend {
+      padding-left: map-get($spacers, 3);
+      padding-top: map-get($spacers, 3);
+      padding-right: map-get($spacers, 3);
+      + legend {
+        padding-top: 0;
+      }
+      margin: 0;
+    }
   }
   &__loading-icon {
     width: 20px;
@@ -23,21 +33,54 @@ $wrapper-border-radius: 10px !default;
     }
   }
   &__form-group {
-    margin-bottom: map-get($spacers, 2);
+    #{ $self } {
+      &__label {
+        display: flex;
+        border-bottom: 1px solid $gray-200;
+        #{ $self }__label-text {
+          flex-grow: 2;
+          align-content: center;
+        }
+        input[type="number"] {
+          text-align: right;
+          flex-shrink: 2;
+          max-width: 7rem;
+          background-color: transparent;
+        }
+      }
+      &__totalMiles {
+        justify-content: center;
+        align-self: center;
+      }
+    }
+    &:last-of-type {
+      border-bottom: none;
+    }
   }
   &__label {
+    justify-items: center;
     &:last-child {
       margin-bottom: 0;
     }
     width: 100%;
   }
   &__label-text {
-    margin-bottom: map-get($spacers, 2);
-    font-weight: 600;
+    justify-content: center;
+    min-height: 48px;
   }
   &__buttons {
     display: flex;
     align-items: flex-start;
+  }
+  &__remove-btn {
+    a {
+      font-size: 11px;
+      font-weight: 300;
+      color: $black;
+      text-transform: none;
+      text-decoration: underline;
+      margin-left: map-get($spacers, block)
+    }
   }
   &__reset {
     margin-left: map-get($spacers, 2);
@@ -56,7 +99,13 @@ $wrapper-border-radius: 10px !default;
     max-width: 455px;
   }
   &__title {
-    @include skin-typography($style: "section-header-small");
+    @include skin-typography($style: "section-header");
+    &.h3,
+    &.h6 {
+      @include skin-typography($style: "section-header-small");
+      font-size: 16px;
+      margin-bottom: 0;
+    }
     margin-right: 2rem;
     text-transform: none;
   }
