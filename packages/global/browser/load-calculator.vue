@@ -35,7 +35,7 @@
                   class="form-control load-calc-widget__fixedCost"
                   type="number"
                   min="0.00"
-                  max="2500000.00"
+                  max="250000"
                   :readonly="loading"
                   :placeholder="placeholder"
                   required
@@ -115,6 +115,7 @@
                   class="form-control load-calc-widget__quarterDays"
                   type="number"
                   min="0.00"
+                  step="0.25"
                   max="2500000"
                   :readonly="loading"
                   :placeholder="placeholder"
@@ -131,7 +132,8 @@
                   v-model="load.deadheadMiles"
                   class="form-control load-calc-widget__deadheadMiles"
                   type="number"
-                  min="0.00"
+                  min="1"
+                  step="1"
                   max="2500000"
                   :readonly="loading"
                   :placeholder="placeholder"
@@ -148,7 +150,8 @@
                   v-model="load.loadedMiles"
                   class="form-control load-calc-widget__loadedMiles"
                   type="number"
-                  min="0.00"
+                  min="1"
+                  step="1"
                   max="2500000"
                   :readonly="loading"
                   :placeholder="placeholder"
@@ -271,7 +274,6 @@ export default {
       quarterDays: 0,
       deadheadMiles: 0,
       loadedMiles: 0,
-      totalMiles: 0,
       grossRate: 0,
     },
     fieldsToCheck: [
