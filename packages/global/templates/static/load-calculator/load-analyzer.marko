@@ -12,25 +12,37 @@ $ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
     </marko-web-gtm-default-context>
   </@head>
   <@page>
-    <marko-web-page-wrapper>
-      <@section modifiers=["first-sm"]>
-        <theme-gam-define-display-ad
-          name="leaderboard"
-          position="static_page"
-          aliases=[]
-          modifiers=["inter-block"]
-        />
-      </@section>
-      <@section>
-        <marko-web-identity-x-context|{ hasUser }|>
-          <if(!hasUser)>
+    <global-idx-gating|{ context: idxContext, hasRequiredFields, fields }|>
+      $ const { hasUser } = idxContext;
+      $ const canAccess = idxContext.hasUser && hasRequiredFields;
+      <marko-web-page-wrapper>
+        <if(!hasUser)>
+          <@section  modifiers=["user-form"]>
             <h1 class="page-wrapper__title">
               Log in to ${config.siteName()}
             </h1>
             <marko-web-identity-x-form-login />
-          </if>
-          <!-- @todo update else to required full profile before contiuin. -->
-          <else>
+          </@section>
+        </if>
+        <else-if(!canAccess)>
+          <@section modifiers=["user-form"]>
+            <div class="page-wrapper__confirmation">
+              Email Confirmed!
+            </div>
+            <h1 class="page-wrapper__title">Step 2 of 2</h1>
+            <marko-web-identity-x-form-profile call-to-action="" reload-page-on-submit=true button-label="Create Account"/>
+          </@section>
+        </else-if>
+        <else>
+          <@section modifiers=["first-sm"]>
+            <theme-gam-define-display-ad
+              name="leaderboard"
+              position="static_page"
+              aliases=[]
+              modifiers=["inter-block"]
+            />
+          </@section>
+          <@section modifiers=["user-form"]>
             <div class="load-calc-widget">
               <div class="load-calc-widget__container">
                 <div>
@@ -52,8 +64,7 @@ $ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                   </legend>
                   <div class="row">
                     <for|load, index| of=loads>
-                      <div class="col-md-4">
-                      <!-- {fixedCost, salary, varCostPerMile -->
+                      <div class=`col-12 load-wrapper load-wrapper--${index}`>
                         $ const {
                           quarterDays,
                           deadheadMiles,
@@ -61,42 +72,6 @@ $ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                           grossRate,
                         } = load;
                         $ const totalMiles = Number(deadheadMiles)+ Number(loadedMiles);
-                        <!--
-                          Overdrive Load Analyzer Fields & Formulas
-                          This tool should be mobile-first and allow the user to calculate and compare up to three potential loads at once, so these fields and formulas would be repeated in up two more columns
-
-                          How many loads would you like to analyze and compare? (1,2 or 3)
-
-                          Costs
-                          Fixed cost per day under load: Field 1
-                          Salary per day under load: Field 2
-                          Variable cost per mile: Field 3
-
-                          Load Information
-                          Days to haul the load (in ¼ days:) Field 4
-                          Deadhead miles: Field 5
-                          Loaded miles: Field 6
-                          Total miles: Formula 7 [SUM: Field 5 + Field 6]
-                          Gross rate: Field 8
-
-                          -- Enter email address to view results --
-                          * By submitting your email address, you agree to (boilerplate legalese)
-
-                          These results are delivered to the user’s inbox:
-                          Thank you for using Overdrive’s Load Analyzer tool, sponsored by XXX. Your results are below:
-
-                          Replication of the above fields, plus:
-
-                          Cost/Profit Results
-                          Total costs to haul the load: Formula 9 [SUM: (Field 1 + Field 2) * (Field 4) + (Field 3 * Formula 7)]
-                          Total cost per mile (total miles): Formula 10 [SUM: Formula 9 / Formula 7]
-                          Potential profit: Formula 11 [SUM: Field 8 – Formula 9]
-                          Profit per mile: Formula 12 [SUM: Formula 11 / Formula 7]
-                          Profit plus salary: Formula 13 [SUM: Formula 11 + (Field 2 * Field 4)]
-                          Profit per day: Formula 14 [SUM: Formula 11 / Field 4]
-                          Profit plus salary per day: Formula 15 [SUM: Formula 13 / Field 4]
-                        -->
-
                         $ const totalCost = ((Number(fixedCost) + Number(salary)) * Number(quarterDays)) + (Number(varCostPerMile) * Number(totalMiles));
                         $ const totalCostPerMile = (Number(totalCost) / Number(totalMiles));
                         $ const potentialProfit = Number(grossRate) - Number(totalCost);
@@ -186,16 +161,16 @@ $ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                   </div>
                   <legend class="p small info w-auto">
                     <!-- @todo: figure out how to reset cookie -->
-                    <a id="start-over" href="/load-calculator" title="Load Calculator" >
+                    <a id="start-over" href="/load-calculator?reset=true" title="Load Calculator" >
                       Start new calculation
                     </a>
                   </legend>
                 </div>
               </div>
             </div>
-          </else>
-        </marko-web-identity-x-context>
-      </@section>
-    </marko-web-page-wrapper>
+          </@section>
+        </else>
+      </marko-web-page-wrapper>
+    </global-idx-gating>
   </@page>
 </marko-web-default-page-layout>
