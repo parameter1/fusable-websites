@@ -1,11 +1,11 @@
 $wrapper-border-radius: 10px;
 /*! critical:end */
 /*! critical:start|load-calculator */
-.page form.load-calc-widget__form fieldset,
-.page form.load-calc-widget__form .load {
+.page form.load-analyzer__form fieldset,
+.page form.load-analyzer__form .load {
   border-radius: $wrapper-border-radius !important;
 }
-.load-calc-widget {
+.load-analyzer {
   $self: &;
   &__form-wrapper {
     // initial reservation to prevent page bounce.
@@ -121,6 +121,9 @@ $wrapper-border-radius: 10px;
     border: solid 2px $gray-200;
     color: $black;
     font-weight: $font-weight-bold;
+    &:focus {
+      box-shadow: none;
+    }
     &.active {
       color: $white;
       background-color: $gray-800;

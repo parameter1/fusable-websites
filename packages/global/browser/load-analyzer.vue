@@ -1,38 +1,38 @@
 <template>
-  <div class="load-calc-widget__container">
+  <div class="load-analyzer__container">
     <div>
-      <div class="load-calc-widget__website-section-name">
+      <div class="load-analyzer__website-section-name">
         <a href="https://truckhistory.overdriveonline.com/">
           New
         </a>
       </div>
-      <div class="load-calc-widget__header">
-        <div class="load-calc-widget__copy">
-          <h1 class="load-calc-widget__title">
+      <div class="load-analyzer__header">
+        <div class="load-analyzer__copy">
+          <h1 class="load-analyzer__title">
             {{ title }}
           </h1>
-          <p class="load-calc-widget__call-to-action">
+          <p class="load-analyzer__call-to-action">
             {{ description }}
           </p>
         </div>
       </div>
       <form
         ref="form"
-        class="load-calc-widget__form"
+        class="load-analyzer__form"
         :disabled="loading"
         @submit.prevent="handleSubmit"
       >
         <div class="cost">
-          <legend class="load-calc-widget__title h3 w-auto">Cost</legend>
+          <legend class="load-analyzer__title h3 w-auto">Cost</legend>
           <legend class="p small info w-auto">Enter cost information</legend>
           <fieldset class="border mb-3 cost-block">
-            <div class="load-calc-widget__form-group">
-              <label class="load-calc-widget__label p-3">
-                <div class="load-calc-widget__label-text">Fixed cost per day under load</div>
+            <div class="load-analyzer__form-group">
+              <label class="load-analyzer__label p-3">
+                <div class="load-analyzer__label-text">Fixed cost per day under load</div>
                 <input
                   ref="input"
                   v-model="fixedCost"
-                  class="form-control load-calc-widget__fixedCost"
+                  class="form-control load-analyzer__fixedCost"
                   type="number"
                   min="0.00"
                   max="250000"
@@ -43,13 +43,13 @@
               </label>
             </div>
 
-            <div class="load-calc-widget__form-group">
-              <label class="load-calc-widget__label p-3">
-                <div class="load-calc-widget__label-text">Salary per day under load</div>
+            <div class="load-analyzer__form-group">
+              <label class="load-analyzer__label p-3">
+                <div class="load-analyzer__label-text">Salary per day under load</div>
                 <input
                   ref="input"
                   v-model="salary"
-                  class="form-control load-calc-widget__salary"
+                  class="form-control load-analyzer__salary"
                   type="number"
                   min="0.00"
                   max="2500000"
@@ -60,13 +60,13 @@
               </label>
             </div>
 
-            <div class="load-calc-widget__form-group">
-              <label class="load-calc-widget__label p-3">
-                <div class="load-calc-widget__label-text">Vairable cost per mile</div>
+            <div class="load-analyzer__form-group">
+              <label class="load-analyzer__label p-3">
+                <div class="load-analyzer__label-text">Vairable cost per mile</div>
                 <input
                   ref="input"
                   v-model="varCostPerMile"
-                  class="form-control load-calc-widget__varCostPerMile"
+                  class="form-control load-analyzer__varCostPerMile"
                   type="number"
                   min="0.00"
                   step="0.05"
@@ -79,7 +79,7 @@
             </div>
           </fieldset>
         </div>
-        <legend class="load-calc-widget__title h3 w-auto">
+        <legend class="load-analyzer__title h3 w-auto">
           Load Information
         </legend>
         <legend class="p small info w-auto">
@@ -90,11 +90,11 @@
           :key="index"
           class="load border mb-3"
         >
-          <legend class="load-calc-widget__title h6 w-auto">
+          <legend class="load-analyzer__title h6 w-auto">
             Load {{ index + 1 }}
             <span
               v-if="index !== 0"
-              class="load-calc-widget__remove-btn"
+              class="load-analyzer__remove-btn"
             >
               <a
                 href="javascript:void(0)"
@@ -106,13 +106,13 @@
             </span>
           </legend>
           <fieldset class="load-block">
-            <div class="load-calc-widget__form-group">
-              <label class="load-calc-widget__label p-3">
-                <div class="load-calc-widget__label-text">Days to haul the load(in 1/4 days)</div>
+            <div class="load-analyzer__form-group">
+              <label class="load-analyzer__label p-3">
+                <div class="load-analyzer__label-text">Days to haul the load(in 1/4 days)</div>
                 <input
                   ref="input"
                   v-model="load.quarterDays"
-                  class="form-control load-calc-widget__quarterDays"
+                  class="form-control load-analyzer__quarterDays"
                   type="number"
                   min="0.00"
                   step="0.25"
@@ -124,13 +124,13 @@
               </label>
             </div>
 
-            <div class="load-calc-widget__form-group">
-              <label class="load-calc-widget__label p-3">
-                <div class="load-calc-widget__label-text">Deadhead Miles</div>
+            <div class="load-analyzer__form-group">
+              <label class="load-analyzer__label p-3">
+                <div class="load-analyzer__label-text">Deadhead Miles</div>
                 <input
                   ref="input"
                   v-model="load.deadheadMiles"
-                  class="form-control load-calc-widget__deadheadMiles"
+                  class="form-control load-analyzer__deadheadMiles"
                   type="number"
                   min="1"
                   step="1"
@@ -142,13 +142,13 @@
               </label>
             </div>
 
-            <div class="load-calc-widget__form-group">
-              <label class="load-calc-widget__label p-3">
-                <div class="load-calc-widget__label-text">Loaded Miles</div>
+            <div class="load-analyzer__form-group">
+              <label class="load-analyzer__label p-3">
+                <div class="load-analyzer__label-text">Loaded Miles</div>
                 <input
                   ref="input"
                   v-model="load.loadedMiles"
-                  class="form-control load-calc-widget__loadedMiles"
+                  class="form-control load-analyzer__loadedMiles"
                   type="number"
                   min="1"
                   step="1"
@@ -160,22 +160,22 @@
               </label>
             </div>
 
-            <div class="load-calc-widget__form-group">
-              <label class="load-calc-widget__label p-3">
-                <div class="load-calc-widget__label-text">Total miles</div>
-                <div class="load-calc-widget__totalMiles">
+            <div class="load-analyzer__form-group">
+              <label class="load-analyzer__label p-3">
+                <div class="load-analyzer__label-text">Total miles</div>
+                <div class="load-analyzer__totalMiles">
                   {{ Number(load.loadedMiles) + Number(load.deadheadMiles) }}
                 </div>
               </label>
             </div>
 
-            <div class="load-calc-widget__form-group">
-              <label class="load-calc-widget__label p-3">
-                <div class="load-calc-widget__label-text">Gross Rate</div>
+            <div class="load-analyzer__form-group">
+              <label class="load-analyzer__label p-3">
+                <div class="load-analyzer__label-text">Gross Rate</div>
                 <input
                   ref="input"
                   v-model="load.grossRate"
-                  class="form-control load-calc-widget__grossRate"
+                  class="form-control load-analyzer__grossRate"
                   type="number"
                   min="0.00"
                   max="2500000"
@@ -187,12 +187,12 @@
             </div>
           </fieldset>
         </div>
-        <div class="load-calc-widget__buttons">
+        <div class="load-analyzer__buttons">
           <a
             v-if="hasUserInput"
             href="javascript:void(0)"
             role="button"
-            class="btn mb-3 load-calc-widget__add-load"
+            class="btn mb-3 load-analyzer__add-load"
             :disabled="loading"
             @click="addLoad()"
           >
@@ -200,10 +200,10 @@
           </a>
         </div>
 
-        <div class="load-calc-widget__buttons">
+        <div class="load-analyzer__buttons">
           <button
             type="submit"
-            class="btn btn-primary load-calc-widget__submit"
+            class="btn btn-primary load-analyzer__submit"
             :disabled="loading"
           >
             <div class="d-flex align-items-center">
@@ -220,7 +220,7 @@
           <button
             v-if="hasUserInput"
             type="reset"
-            class="btn btn-secondary ml-3 load-calc-widget__reset"
+            class="btn btn-secondary ml-3 load-analyzer__reset"
             :disabled="loading"
             @click="reset"
           >
@@ -235,7 +235,7 @@
 <script>
 
 export default {
-  name: 'LoadCalculatorWidget',
+  name: 'loadAnalyzerWidget',
 
   props: {
     title: {
@@ -257,7 +257,7 @@ export default {
   },
 
   data: () => ({
-    cookieName: 'loadCalculator',
+    cookieName: 'loadAnalyzer',
     attempted: false,
     error: null,
     status: null,
@@ -351,7 +351,7 @@ export default {
         loads,
       });
       this.loading = false;
-      window.location = '/load-calculator/submit';
+      window.location = '/load-analyzer/submit';
     },
   },
 

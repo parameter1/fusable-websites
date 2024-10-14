@@ -43,25 +43,25 @@ $ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
             />
           </@section>
           <@section modifiers=["user-form"]>
-            <div class="load-calc-widget">
-              <div class="load-calc-widget__container">
+            <div class="load-analyzer">
+              <div class="load-analyzer__container">
                 <div>
-                  <div class="load-calc-widget__header">
-                    <div class="load-calc-widget__copy">
-                      <h1 class="load-calc-widget__title">
+                  <div class="load-analyzer__header">
+                    <div class="load-analyzer__copy">
+                      <h1 class="load-analyzer__title">
                         ${title}
                       </h1>
-                      <p class="load-calc-widget__call-to-action"> ${description}</p>
+                      <p class="load-analyzer__call-to-action"> ${description}</p>
                     </div>
                   </div>
-                  <legend class="load-calc-widget__title h3 w-auto">
+                  <legend class="load-analyzer__title h3 w-auto">
                     Results
                   </legend>
                   <div class="row">
-                    <div class="col-12 mt-block load-calc-widget__toggle-wrapper">
+                    <div class="col-12 mt-block load-analyzer__toggle-wrapper">
                       <marko-web-browser-component name="LoadToggler" props={ loadCount: loads.length } />
                       <legend class="p small info w-auto">
-                        <a href="/load-calculator" title="Load Calculator" >
+                        <a href="/load-analyzer" title="Load Calculator" >
                           Edit Inputs
                         </a>
                       </legend>
@@ -85,76 +85,76 @@ $ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                         $ const profitPerDay = Number(potentialProfit) / Number(quarterDays)
                         $ const profitPlusSalaryPerDay = Number(profitPlusSalary) / Number(quarterDays)
                         <div class="load border">
-                          <legend class="load-calc-widget__title h6 w-auto">
+                          <legend class="load-analyzer__title h6 w-auto">
                             Load ${index + 1}
                           </legend>
                           <fieldset class="load-block">
-                            <div class="load-calc-widget__form-group">
-                              <div class="load-calc-widget__label p-3">
-                                <div class="load-calc-widget__label-text">
+                            <div class="load-analyzer__form-group">
+                              <div class="load-analyzer__label p-3">
+                                <div class="load-analyzer__label-text">
                                   Total Cost to haul the laod:
                                 </div>
-                                <div class="load-calc-widget__label-value--read-only">
+                                <div class="load-analyzer__label-value--read-only">
                                   $${totalCost.toFixed(2)}
                                 </div>
                               </div>
                             </div>
-                            <div class="load-calc-widget__form-group">
-                              <div class="load-calc-widget__label p-3">
-                                <div class="load-calc-widget__label-text">
+                            <div class="load-analyzer__form-group">
+                              <div class="load-analyzer__label p-3">
+                                <div class="load-analyzer__label-text">
                                   Total cost per mile(all miles):
                                 </div>
-                                <div class="load-calc-widget__label-value--read-only">
+                                <div class="load-analyzer__label-value--read-only">
                                   $${totalCostPerMile.toFixed(2)}
                                 </div>
                               </div>
                             </div>
-                            <div class="load-calc-widget__form-group">
-                              <div class="load-calc-widget__label p-3">
-                                <div class="load-calc-widget__label-text">
+                            <div class="load-analyzer__form-group">
+                              <div class="load-analyzer__label p-3">
+                                <div class="load-analyzer__label-text">
                                   Potential profit:
                                 </div>
-                                <div class="load-calc-widget__label-value--read-only">
+                                <div class="load-analyzer__label-value--read-only">
                                   $${potentialProfit.toFixed(2)}
                                 </div>
                               </div>
                             </div>
-                            <div class="load-calc-widget__form-group">
-                              <div class="load-calc-widget__label p-3">
-                                <div class="load-calc-widget__label-text">
+                            <div class="load-analyzer__form-group">
+                              <div class="load-analyzer__label p-3">
+                                <div class="load-analyzer__label-text">
                                   Profit per mile:
                                 </div>
-                                <div class="load-calc-widget__label-value--read-only">
+                                <div class="load-analyzer__label-value--read-only">
                                   $${profitPerMile.toFixed(2)}
                                 </div>
                               </div>
                             </div>
-                            <div class="load-calc-widget__form-group">
-                              <div class="load-calc-widget__label p-3">
-                                <div class="load-calc-widget__label-text">
+                            <div class="load-analyzer__form-group">
+                              <div class="load-analyzer__label p-3">
+                                <div class="load-analyzer__label-text">
                                   Profit + salary:
                                 </div>
-                                <div class="load-calc-widget__label-value--read-only">
+                                <div class="load-analyzer__label-value--read-only">
                                   $${profitPlusSalary.toFixed(2)}
                                 </div>
                               </div>
                             </div>
-                            <div class="load-calc-widget__form-group">
-                              <div class="load-calc-widget__label p-3">
-                                <div class="load-calc-widget__label-text">
+                            <div class="load-analyzer__form-group">
+                              <div class="load-analyzer__label p-3">
+                                <div class="load-analyzer__label-text">
                                   Profit per day:
                                 </div>
-                                <div class="load-calc-widget__label-value--read-only">
+                                <div class="load-analyzer__label-value--read-only">
                                   $${profitPerDay.toFixed(2)}
                                 </div>
                               </div>
                             </div>
-                            <div class="load-calc-widget__form-group">
-                              <div class="load-calc-widget__label p-3">
-                                <div class="load-calc-widget__label-text">
+                            <div class="load-analyzer__form-group">
+                              <div class="load-analyzer__label p-3">
+                                <div class="load-analyzer__label-text">
                                   Profit + salary, per day:
                                 </div>
-                                <div class="load-calc-widget__label-value--read-only">
+                                <div class="load-analyzer__label-value--read-only">
                                   $${profitPlusSalaryPerDay.toFixed(2)}
                                 </div>
                               </div>
@@ -164,7 +164,7 @@ $ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                       </div>
                     </for>
                   </div>
-                  <legend class="p small info w-auto">
+                  <legend class="p small info w-full text-center mt-3">
                     <!-- @todo: figure out how to reset cookie -->
                     <a id="start-over" href="/load-calculator?reset=true" title="Load Calculator" >
                       Start new calculation
