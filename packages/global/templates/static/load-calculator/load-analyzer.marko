@@ -57,14 +57,19 @@ $ const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                   <legend class="load-calc-widget__title h3 w-auto">
                     Results
                   </legend>
-                  <legend class="p small info w-auto">
-                    <a href="/load-calculator" title="Load Calculator" >
-                      Edit Inputs
-                    </a>
-                  </legend>
+                  <div class="row">
+                    <div class="col-12 mt-block load-calc-widget__toggle-wrapper">
+                      <marko-web-browser-component name="LoadToggler" props={ loadCount: loads.length } />
+                      <legend class="p small info w-auto">
+                        <a href="/load-calculator" title="Load Calculator" >
+                          Edit Inputs
+                        </a>
+                      </legend>
+                    </div>
+                  </div>
                   <div class="row">
                     <for|load, index| of=loads>
-                      <div class=`col-12 load-wrapper load-wrapper--${index}`>
+                      <div class=`col-12 load-wrapper d-none load-wrapper--${index}` data-load-id=index>
                         $ const {
                           quarterDays,
                           deadheadMiles,

@@ -39,6 +39,10 @@ $wrapper-border-radius: 10px;
       margin: 0;
     }
   }
+  &__toggle-wrapper {
+    display: flex;
+    align-items: center;
+  }
   &__loading-icon {
     width: 20px;
     height: 20px;
@@ -109,6 +113,18 @@ $wrapper-border-radius: 10px;
       text-transform: none;
       text-decoration: underline;
       margin-left: map-get($spacers, block)
+    }
+  }
+  .btn-load {
+    border-radius: 20px;
+    background-color: $gray-200;
+    border: solid 2px $gray-200;
+    color: $black;
+    font-weight: $font-weight-bold;
+    &.active {
+      color: $white;
+      background-color: $gray-800;
+      border: solid 2px $gray-800;
     }
   }
   &__add-load {

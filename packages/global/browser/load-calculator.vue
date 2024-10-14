@@ -235,7 +235,7 @@
 <script>
 
 export default {
-  name: 'LayoutCalculatorWidget',
+  name: 'LoadCalculatorWidget',
 
   props: {
     title: {
@@ -255,8 +255,6 @@ export default {
       default: 'Calculate Results',
     },
   },
-
-  emits: ['thr_lookup', 'thr_error', 'thr_purchase', 'thr_generate'],
 
   data: () => ({
     cookieName: 'loadCalculator',
