@@ -27,7 +27,7 @@
   "<global-content-query-with-injected-native-ads>": {
     "template": "./content-query-with-injected-native-ads.marko"
   },
-  "<globl-idx-gating>": {
+  "<global-idx-gating>": {
     "template": "./idx-gating.marko"
   }
 }
