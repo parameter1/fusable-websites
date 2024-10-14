@@ -1,11 +1,20 @@
 $wrapper-border-radius: 10px;
 /*! critical:end */
+/*! critical:start|load-calculator */
+.page form.load-calc-widget__form fieldset,
+.page form.load-calc-widget__form .load {
+  border-radius: $wrapper-border-radius !important;
+}
 .load-calc-widget {
   $self: &;
+  &__form-wrapper {
+    // initial reservation to prevent page bounce.
+    min-height: 1000px;
+  }
   .load,
   fieldset {
     &.border {
-      border-radius: $wrapper-border-radius;
+      border-radius: $wrapper-border-radius !important;
       &.col-md-4 {
         padding-left: 0 ;
         padding-right: 0;
@@ -16,7 +25,7 @@ $wrapper-border-radius: 10px;
     }
   }
   &__container {
-    padding: 32px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 
@@ -79,6 +88,18 @@ $wrapper-border-radius: 10px;
   &__buttons {
     display: flex;
     align-items: flex-start;
+    > .btn {
+      border-radius: $wrapper-border-radius !important;
+      span {
+        width: 100%;
+      }
+      @include make-col-ready();
+      justify-content: center;
+      &:not(:only-child) {
+        @include make-col(6);
+        max-width: calc(50% - 8px);
+      }
+    }
   }
   &__remove-btn {
     a {
@@ -90,8 +111,10 @@ $wrapper-border-radius: 10px;
       margin-left: map-get($spacers, block)
     }
   }
-  &__reset {
-    margin-left: map-get($spacers, 2);
+  &__add-load {
+    width: 100%;
+    border-radius: $wrapper-border-radius !important;
+    border: 2px dashed $gray-200;
   }
   &__submit {
     margin-bottom: map-get($spacers, block);
@@ -151,3 +174,4 @@ $wrapper-border-radius: 10px;
     justify-content: space-between;
   }
 }
+/*! critical:end */

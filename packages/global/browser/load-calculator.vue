@@ -192,11 +192,11 @@
             v-if="hasUserInput"
             href="javascript:void(0)"
             role="button"
-            class="btn btn-secondary ml-1 load-calc-widget__add-load"
+            class="btn mb-3 load-calc-widget__add-load"
             :disabled="loading"
             @click="addLoad()"
           >
-            Add Load
+            + Add Another Load
           </a>
         </div>
 
@@ -220,7 +220,7 @@
           <button
             v-if="hasUserInput"
             type="reset"
-            class="btn btn-secondary ml-1 load-calc-widget__reset"
+            class="btn btn-secondary ml-3 load-calc-widget__reset"
             :disabled="loading"
             @click="reset"
           >
