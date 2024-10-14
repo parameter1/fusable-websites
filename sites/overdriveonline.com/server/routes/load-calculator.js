@@ -13,7 +13,11 @@ module.exports = (app) => {
     );
   });
 
-  app.get('/load-calculator', (_, res) => {
+  app.get('/load-calculator', (req, res) => {
+    // if reset present clear load cookie
+    if (req.query && Boolean(req.query.reset) === true) {
+      res.clearCookie('loadCalculator', 0);
+    }
     res.marko(loadCalculator);
   });
 };
