@@ -1,5 +1,5 @@
 <template>
-  <div class="load-analyzer__toggler-wrapper" v-if="loadCount > 1">
+  <div v-if="loadCount > 1" class="load-analyzer__toggler-wrapper">
     <button
       v-for="index in loadCount"
       :key="index"
