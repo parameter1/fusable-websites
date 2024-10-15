@@ -1,6 +1,6 @@
 import MonoRail from '@parameter1/base-cms-marko-web-theme-monorail/browser';
 
-const loadAnalyzer = () => import(/* webpackChunkName: "load-analyzer" */ './load-analyzer.vue');
+const LoadAnalyzer = () => import(/* webpackChunkName: "load-analyzer" */ './load-analyzer.vue');
 const LoadToggler = () => import(/* webpackChunkName: "load-toggler" */ './load-toggler.vue');
 
 export default (Browser) => {
@@ -13,7 +13,7 @@ export default (Browser) => {
     }
   });
 
-  Browser.register('LoadAnalyzer', loadAnalyzer);
+  Browser.register('LoadAnalyzer', LoadAnalyzer);
   Browser.register('LoadToggler', LoadToggler);
 
   MonoRail(Browser);
