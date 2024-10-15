@@ -23,12 +23,18 @@
         @submit.prevent="handleSubmit"
       >
         <div class="cost">
-          <legend class="load-analyzer__title h3 w-auto">Cost</legend>
-          <legend class="p small info w-auto">Enter cost information</legend>
+          <legend class="load-analyzer__title h3 w-auto">
+            Cost
+          </legend>
+          <legend class="p small info w-auto">
+            Enter cost information
+          </legend>
           <fieldset class="border mb-3 cost-block">
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
-                <div class="load-analyzer__label-text">Fixed cost per day under load</div>
+                <div class="load-analyzer__label-text">
+                  Fixed cost per day under load
+                </div>
                 <input
                   ref="input"
                   v-model="fixedCost"
@@ -45,7 +51,9 @@
 
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
-                <div class="load-analyzer__label-text">Salary per day under load</div>
+                <div class="load-analyzer__label-text">
+                  Salary per day under load
+                </div>
                 <input
                   ref="input"
                   v-model="salary"
@@ -62,7 +70,9 @@
 
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
-                <div class="load-analyzer__label-text">Vairable cost per mile</div>
+                <div class="load-analyzer__label-text">
+                  Vairable cost per mile
+                </div>
                 <input
                   ref="input"
                   v-model="varCostPerMile"
@@ -235,7 +245,7 @@
 <script>
 
 export default {
-  name: 'loadAnalyzerWidget',
+  name: 'LoadAnalyzer',
 
   props: {
     title: {
@@ -309,7 +319,7 @@ export default {
   methods: {
     async setCookie(payload) {
       const expires = '';
-      const value = JSON.stringify({payload});
+      const value = JSON.stringify({ payload });
       document.cookie = `${this.cookieName}=${(value || '')} ${expires}`;
     },
     addLoad() {

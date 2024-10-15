@@ -13,7 +13,7 @@ export default (Browser) => {
     }
   });
 
-  Browser.register('loadAnalyzer', loadAnalyzer);
+  Browser.register('LoadAnalyzer', loadAnalyzer);
   Browser.register('LoadToggler', LoadToggler);
 
   MonoRail(Browser);
