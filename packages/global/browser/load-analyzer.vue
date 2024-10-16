@@ -84,7 +84,7 @@
             </div>
           </fieldset>
         </div>
-        <legend class="load-analyzer__title h3 w-auto">
+        <legend class="load-analyzer__title h3 w-auto mt-block">
           Load Information
         </legend>
         <legend class="p small info w-auto">
@@ -93,7 +93,7 @@
         <div
           v-for="(load, index) in loads"
           :key="index"
-          class="load border mb-3"
+          class="load border mb-3 mt-block"
         >
           <legend class="load-analyzer__title h6 w-auto">
             Load {{ index + 1 }}
