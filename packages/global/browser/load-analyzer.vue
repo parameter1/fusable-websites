@@ -289,7 +289,7 @@ export default {
     hasUserInput() {
       let hasInput = false;
       this.fieldsToCheck.forEach((field) => {
-        if (this[field] !== this.placeholder) hasInput = true;
+        if (this[field]) hasInput = true;
       });
       return hasInput;
     },
