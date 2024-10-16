@@ -1,11 +1,6 @@
 <template>
   <div class="load-analyzer__container">
     <div>
-      <div class="load-analyzer__website-section-name">
-        <a href="https://truckhistory.overdriveonline.com/">
-          New
-        </a>
-      </div>
       <div class="load-analyzer__header">
         <div class="load-analyzer__copy">
           <h1 class="load-analyzer__title">
