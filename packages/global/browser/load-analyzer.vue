@@ -291,6 +291,11 @@ export default {
       this.fieldsToCheck.forEach((field) => {
         if (this[field]) hasInput = true;
       });
+      this.loads.forEach((load) => {
+        Object.keys(this.defaultLoad).forEach((field) => {
+          if (load[field]) hasInput = true;
+        });
+      });
       return hasInput;
     },
   },
