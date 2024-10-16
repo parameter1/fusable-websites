@@ -252,7 +252,7 @@ export default {
     },
     placeholder: {
       type: Number,
-      default: 0.00,
+      default: 0,
     },
     buttonLabel: {
       type: String,
@@ -305,7 +305,7 @@ export default {
     if (cookie) {
       const { payload } = JSON.parse(cookie);
       Object.entries(payload).forEach(([key, value]) => {
-        if ((this[key] === this.placeholder || key === 'loads') && value) {
+        if ((this.fieldsToCheck.includes(key) || key === 'loads') && value) {
           this[key] = value;
         }
       });
