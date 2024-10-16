@@ -93,7 +93,7 @@
         <div
           v-for="(load, index) in loads"
           :key="index"
-          class="load border mb-3 mt-block"
+          class="load border mb-3"
         >
           <legend class="load-analyzer__title h6 w-auto">
             Load {{ index + 1 }}
@@ -289,7 +289,7 @@ export default {
     hasUserInput() {
       let hasInput = false;
       this.fieldsToCheck.forEach((field) => {
-        if (this[field] !== this.placeholder) hasInput = true;
+        if (this[field]) hasInput = true;
       });
       return hasInput;
     },
