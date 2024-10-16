@@ -1,11 +1,6 @@
 <template>
   <div class="load-analyzer__container">
     <div>
-      <div class="load-analyzer__website-section-name">
-        <a href="https://truckhistory.overdriveonline.com/">
-          New
-        </a>
-      </div>
       <div class="load-analyzer__header">
         <div class="load-analyzer__copy">
           <h1 class="load-analyzer__title">
@@ -118,7 +113,7 @@
           <fieldset class="load-block">
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
-                <div class="load-analyzer__label-text">Days to haul the load(in 1/4 days)</div>
+                <div class="load-analyzer__label-text">Days to haul the load (in 1/4 days)</div>
                 <input
                   ref="input"
                   v-model="load.quarterDays"
@@ -197,9 +192,8 @@
             </div>
           </fieldset>
         </div>
-        <div class="load-analyzer__buttons">
+        <div v-if="hasUserInput" class="load-analyzer__buttons">
           <a
-            v-if="hasUserInput"
             href="javascript:void(0)"
             role="button"
             class="btn mb-3 load-analyzer__add-load"
@@ -210,7 +204,7 @@
           </a>
         </div>
 
-        <div class="load-analyzer__buttons">
+        <div v-if="hasUserInput" class="load-analyzer__buttons">
           <button
             type="submit"
             class="btn btn-primary load-analyzer__submit"
