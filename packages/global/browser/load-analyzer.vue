@@ -118,7 +118,7 @@
           <fieldset class="load-block">
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
-                <div class="load-analyzer__label-text">Days to haul the load(in 1/4 days)</div>
+                <div class="load-analyzer__label-text">Days to haul the load (in 1/4 days)</div>
                 <input
                   ref="input"
                   v-model="load.quarterDays"
