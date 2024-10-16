@@ -38,6 +38,7 @@
                   min="0.00"
                   max="250000"
                   :readonly="loading"
+                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -56,6 +57,7 @@
                   min="0.00"
                   max="2500000"
                   :readonly="loading"
+                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -75,6 +77,7 @@
                   step="0.05"
                   max="2500000"
                   :readonly="loading"
+                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -120,6 +123,7 @@
                   step="0.25"
                   max="2500000"
                   :readonly="loading"
+                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -137,6 +141,7 @@
                   step="1"
                   max="2500000"
                   :readonly="loading"
+                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -154,6 +159,7 @@
                   step="1"
                   max="2500000"
                   :readonly="loading"
+                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -179,6 +185,7 @@
                   min="0.00"
                   max="2500000"
                   :readonly="loading"
+                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -242,6 +249,10 @@ export default {
     description: {
       type: String,
       default: '',
+    },
+    placeholder: {
+      type: Number,
+      default: 0.00,
     },
     buttonLabel: {
       type: String,
