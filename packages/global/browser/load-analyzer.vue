@@ -38,7 +38,6 @@
                   min="0.00"
                   max="250000"
                   :readonly="loading"
-                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -57,7 +56,6 @@
                   min="0.00"
                   max="2500000"
                   :readonly="loading"
-                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -77,7 +75,6 @@
                   step="0.05"
                   max="2500000"
                   :readonly="loading"
-                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -123,7 +120,6 @@
                   step="0.25"
                   max="2500000"
                   :readonly="loading"
-                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -141,7 +137,6 @@
                   step="1"
                   max="2500000"
                   :readonly="loading"
-                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -159,7 +154,6 @@
                   step="1"
                   max="2500000"
                   :readonly="loading"
-                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -185,7 +179,6 @@
                   min="0.00"
                   max="2500000"
                   :readonly="loading"
-                  :placeholder="placeholder"
                   required
                 >
               </label>
@@ -250,10 +243,6 @@ export default {
       type: String,
       default: '',
     },
-    placeholder: {
-      type: Number,
-      default: 0.00,
-    },
     buttonLabel: {
       type: String,
       default: 'Calculate Results',
@@ -266,17 +255,17 @@ export default {
     error: null,
     status: null,
     loading: false,
-    fixedCost: 0,
-    salary: 0,
-    varCostPerMile: 0,
+    fixedCost: null,
+    salary: null,
+    varCostPerMile: null,
     verified: false,
     truckInfo: null,
     loads: [],
     defaultLoad: {
-      quarterDays: 0,
-      deadheadMiles: 0,
-      loadedMiles: 0,
-      grossRate: 0,
+      quarterDays: null,
+      deadheadMiles: null,
+      loadedMiles: null,
+      grossRate: null,
     },
     fieldsToCheck: [
       'fixedCost',
