@@ -197,9 +197,8 @@
             </div>
           </fieldset>
         </div>
-        <div class="load-analyzer__buttons">
+        <div v-if="hasUserInput" class="load-analyzer__buttons">
           <a
-            v-if="hasUserInput"
             href="javascript:void(0)"
             role="button"
             class="btn mb-3 load-analyzer__add-load"
@@ -210,7 +209,7 @@
           </a>
         </div>
 
-        <div class="load-analyzer__buttons">
+        <div v-if="hasUserInput" class="load-analyzer__buttons">
           <button
             type="submit"
             class="btn btn-primary load-analyzer__submit"
