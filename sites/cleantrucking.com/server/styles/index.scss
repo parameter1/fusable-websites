@@ -29,3 +29,11 @@ $skin-newsletter-signup-inline-btn-color: #145624;
     }
   }
 }
+
+.site-navbar {
+  &__items {
+    &--secondary {
+      font-size: 13px;
+    }
+  }
+}
