@@ -33,7 +33,10 @@ $skin-newsletter-signup-inline-btn-color: #145624;
 .site-navbar {
   &__items {
     &--secondary {
-      font-size: 13px;
+      font-size: 15px;
     }
   }
+}
+.site-navbar__items--secondary .site-navbar__link {
+  padding: 8px 8px 0;
 }
