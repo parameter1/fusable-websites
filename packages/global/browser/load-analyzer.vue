@@ -66,7 +66,7 @@
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
                 <div class="load-analyzer__label-text">
-                  Vairable cost per mile
+                  Variable cost per mile
                 </div>
                 <input
                   ref="input"
@@ -85,10 +85,10 @@
           </fieldset>
         </div>
         <legend class="load-analyzer__title h3 w-auto mt-block">
-          Load Information
+          Load information
         </legend>
         <legend class="p small info w-auto">
-          Enter Load Information for one or more loads
+          Enter load information for one or more loads
         </legend>
         <div
           v-for="(load, index) in loads"
@@ -131,7 +131,7 @@
 
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
-                <div class="load-analyzer__label-text">Deadhead Miles</div>
+                <div class="load-analyzer__label-text">Deadhead miles</div>
                 <input
                   ref="input"
                   v-model="load.deadheadMiles"
@@ -149,7 +149,7 @@
 
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
-                <div class="load-analyzer__label-text">Loaded Miles</div>
+                <div class="load-analyzer__label-text">Loaded miles</div>
                 <input
                   ref="input"
                   v-model="load.loadedMiles"
@@ -176,7 +176,7 @@
 
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
-                <div class="load-analyzer__label-text">Gross Rate</div>
+                <div class="load-analyzer__label-text">Gross rate</div>
                 <input
                   ref="input"
                   v-model="load.grossRate"
@@ -228,7 +228,7 @@
             :disabled="loading"
             @click="reset"
           >
-            Reset
+            Reset Loads
           </button>
         </div>
       </form>
@@ -244,11 +244,11 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Load Analyzer',
+      default: 'Overdrive’s Load Profit Analyzer',
     },
     description: {
       type: String,
-      default: '',
+      default: 'Know your costs? Compute the profit in any load per-day and per-mile.',
     },
     placeholder: {
       type: Number,
