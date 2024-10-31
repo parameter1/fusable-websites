@@ -279,7 +279,9 @@ export default {
       grossRate: null,
     },
     fieldsToCheck: [
-      'loads',
+      'fixedCost',
+      'salary',
+      'varCostPerMile',
     ],
   }),
 
