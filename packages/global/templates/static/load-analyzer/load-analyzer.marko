@@ -165,10 +165,46 @@ $ const description = "Know your costs? Compute the profit in any load per-day a
                     </for>
                   </div>
                   <legend class="p small info w-full text-center mt-3">
-                    <!-- @todo: figure out how to reset cookie -->
-                    <a id="start-over" href="/load-analyzer?reset=true" title="Load Calculator" >
+
+                    <!-- @todo: figure out how to reset cookie correctly and if this needs to move into a vue component -->
+                    <a id="start-over" href="/load-analyzer" title="Load Calculator" >
                       Start new calculation
                     </a>
+                    <script>
+                      function getCookie(cname) {
+                        var name = cname + "=";
+                        var decodedCookie = decodeURIComponent(document.cookie);
+                        var ca = decodedCookie.split(';');
+                        for(var i = 0; i <ca.length; i++) {
+                          var c = ca[i];
+                          while (c.charAt(0) == ' ') {
+                            c = c.substring(1);
+                          }
+                          if (c.indexOf(name) == 0) {
+                            return c.substring(name.length, c.length);
+                          }
+                        }
+                        return "";
+                      }
+
+                      function setCookie(name, value, days) {
+                        const date = new Date();
+                        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                        const expires = `expires=${date.toUTCString()}`;
+                        document.cookie = `${name}=${value}; ${expires};`;
+                      }
+
+                      (function() {
+                        // Your code to run when the DOM is ready
+                        document.getElementById("start-over").addEventListener("click", () => {
+                          event.preventDefault(); // Prevent the default behavior
+                          let cookie = JSON.parse(getCookie('loadAnalyzer')) || { payload: { fixedCost:"", salary: "", varCostPerMile: "", loads:[] }};
+                          cookie.payload.loads = [];
+                          setCookie('loadAnalyzer', JSON.stringify(cookie), 365);
+                          window.location = '/load-analyzer';
+                        });
+                      })();
+                    </script>
                   </legend>
                 </div>
               </div>
