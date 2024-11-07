@@ -228,7 +228,7 @@
             :disabled="loading"
             @click="reset"
           >
-            Reset Loads
+            Reset
           </button>
         </div>
       </form>
