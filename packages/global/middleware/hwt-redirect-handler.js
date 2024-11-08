@@ -14,7 +14,7 @@ module.exports = ({ req, res, next }) => {
     if (alias && sectionRedirectsMap.has(alias)) {
       return res.redirect(301, sectionRedirectsMap.get(alias));
     }
-    return res.redirect(301, 'https://www.ccjdigital.com');
+    return res.redirect(301, `https://www.ccjdigital.com${req.url}`);
   }
   return next();
 };
