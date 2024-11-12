@@ -39,6 +39,17 @@ $wrapper-border-radius: 10px;
       margin: 0;
     }
   }
+  &__input-wrapper {
+    &--currency {
+      position: relative;
+      &::before {
+        content: "$";
+        position: absolute;
+        top: 1rem;
+        left: .5rem;
+      }
+    }
+  }
   &__toggle-wrapper {
     display: flex;
     align-items: center;

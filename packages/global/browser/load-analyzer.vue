@@ -30,17 +30,19 @@
                 <div class="load-analyzer__label-text">
                   Fixed cost per day under load
                 </div>
-                <input
-                  ref="input"
-                  v-model="fixedCost"
-                  class="form-control load-analyzer__fixedCost"
-                  type="number"
-                  min="0.00"
-                  max="250000"
-                  :readonly="loading"
-                  :placeholder="placeholder"
-                  required
-                >
+                <div class="load-analyzer__input-wrapper load-analyzer__input-wrapper--currency">
+                  <input
+                    ref="input"
+                    v-model="fixedCost"
+                    class="form-control load-analyzer__fixedCost"
+                    type="number"
+                    min="0.00"
+                    max="250000"
+                    :readonly="loading"
+                    :placeholder="placeholder"
+                    required
+                  >
+                </div>
               </label>
             </div>
 
@@ -49,17 +51,19 @@
                 <div class="load-analyzer__label-text">
                   Salary per day under load
                 </div>
-                <input
-                  ref="input"
-                  v-model="salary"
-                  class="form-control load-analyzer__salary"
-                  type="number"
-                  min="0.00"
-                  max="2500000"
-                  :readonly="loading"
-                  :placeholder="placeholder"
-                  required
-                >
+                <div class="load-analyzer__input-wrapper load-analyzer__input-wrapper--currency">
+                  <input
+                    ref="input"
+                    v-model="salary"
+                    class="form-control load-analyzer__salary"
+                    type="number"
+                    min="0.00"
+                    max="2500000"
+                    :readonly="loading"
+                    :placeholder="placeholder"
+                    required
+                  >
+                </div>
               </label>
             </div>
 
@@ -68,18 +72,20 @@
                 <div class="load-analyzer__label-text">
                   Variable cost per mile
                 </div>
-                <input
-                  ref="input"
-                  v-model="varCostPerMile"
-                  class="form-control load-analyzer__varCostPerMile"
-                  type="number"
-                  min="0.00"
-                  step="0.05"
-                  max="2500000"
-                  :readonly="loading"
-                  :placeholder="placeholder"
-                  required
-                >
+                <div class="load-analyzer__input-wrapper load-analyzer__input-wrapper--currency">
+                  <input
+                    ref="input"
+                    v-model="varCostPerMile"
+                    class="form-control load-analyzer__varCostPerMile"
+                    type="number"
+                    min="0.00"
+                    step="0.05"
+                    max="2500000"
+                    :readonly="loading"
+                    :placeholder="placeholder"
+                    required
+                  >
+                </div>
               </label>
             </div>
           </fieldset>
@@ -114,54 +120,60 @@
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
                 <div class="load-analyzer__label-text">Days to haul the load (in 1/4 days)</div>
-                <input
-                  ref="input"
-                  v-model="load.quarterDays"
-                  class="form-control load-analyzer__quarterDays"
-                  type="number"
-                  min="0.00"
-                  step="0.25"
-                  max="2500000"
-                  :readonly="loading"
-                  :placeholder="placeholder"
-                  required
-                >
+                <div class="load-analyzer__input-wrapper">
+                  <input
+                    ref="input"
+                    v-model="load.quarterDays"
+                    class="form-control load-analyzer__quarterDays"
+                    type="number"
+                    min="0.00"
+                    step="0.25"
+                    max="2500000"
+                    :readonly="loading"
+                    :placeholder="placeholder"
+                    required
+                  >
+                </div>
               </label>
             </div>
 
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
                 <div class="load-analyzer__label-text">Deadhead miles</div>
-                <input
-                  ref="input"
-                  v-model="load.deadheadMiles"
-                  class="form-control load-analyzer__deadheadMiles"
-                  type="number"
-                  min="1"
-                  step="1"
-                  max="2500000"
-                  :readonly="loading"
-                  :placeholder="placeholder"
-                  required
-                >
+                <div class="load-analyzer__input-wrapper">
+                  <input
+                    ref="input"
+                    v-model="load.deadheadMiles"
+                    class="form-control load-analyzer__deadheadMiles"
+                    type="number"
+                    min="1"
+                    step="1"
+                    max="2500000"
+                    :readonly="loading"
+                    :placeholder="placeholder"
+                    required
+                  >
+                </div>
               </label>
             </div>
 
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
                 <div class="load-analyzer__label-text">Loaded miles</div>
-                <input
-                  ref="input"
-                  v-model="load.loadedMiles"
-                  class="form-control load-analyzer__loadedMiles"
-                  type="number"
-                  min="1"
-                  step="1"
-                  max="2500000"
-                  :readonly="loading"
-                  :placeholder="placeholder"
-                  required
-                >
+                <div class="load-analyzer__input-wrapper">
+                  <input
+                    ref="input"
+                    v-model="load.loadedMiles"
+                    class="form-control load-analyzer__loadedMiles"
+                    type="number"
+                    min="1"
+                    step="1"
+                    max="2500000"
+                    :readonly="loading"
+                    :placeholder="placeholder"
+                    required
+                  >
+                </div>
               </label>
             </div>
 
@@ -177,17 +189,19 @@
             <div class="load-analyzer__form-group">
               <label class="load-analyzer__label p-3">
                 <div class="load-analyzer__label-text">Gross rate</div>
-                <input
-                  ref="input"
-                  v-model="load.grossRate"
-                  class="form-control load-analyzer__grossRate"
-                  type="number"
-                  min="0.00"
-                  max="2500000"
-                  :readonly="loading"
-                  :placeholder="placeholder"
-                  required
-                >
+                <div class="load-analyzer__input-wrapper load-analyzer__input-wrapper--currency">
+                  <input
+                    ref="input"
+                    v-model="load.grossRate"
+                    class="form-control load-analyzer__grossRate"
+                    type="number"
+                    min="0.00"
+                    max="2500000"
+                    :readonly="loading"
+                    :placeholder="placeholder"
+                    required
+                  >
+                </div>
               </label>
             </div>
           </fieldset>
