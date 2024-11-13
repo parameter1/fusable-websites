@@ -138,11 +138,20 @@ $ const perPage = 18;
 
   <@section>
     <!-- <theme-newsletter-signup-banner-large-block /> -->
-    <marko-web-identity-x-context|{ hasUser }|>
-      <if(!hasUser)>
-        <identity-x-newsletter-form-inline type="inlineSection" />
-      </if>
-    </marko-web-identity-x-context>
+    <if(alias === 'jobs')>
+      <marko-web-identity-x-context|{ hasUser }|>
+        <if(!hasUser)>
+          <global-job-search-block />
+        </if>
+      </marko-web-identity-x-context>
+    </if>
+    <else>
+      <marko-web-identity-x-context|{ hasUser }|>
+        <if(!hasUser)>
+          <identity-x-newsletter-form-inline type="inlineSection" />
+        </if>
+      </marko-web-identity-x-context>
+    </else>
   </@section>
 
   <@section>
