@@ -1,4 +1,4 @@
 module.exports = {
-  href: '/termsandprivacy',
+  href: 'https://www.ccjdigital.com/termsandprivacy',
   label: 'Terms of Use and Privacy Policy',
 };
