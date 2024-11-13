@@ -70,7 +70,7 @@ $ const bypassGate = hasOmedaId(req);
     </div>
   </@section>
 
-  <@section|{ aliases, content, authors }| modifiers=["content-body"]>
+  <@section|{ aliases, content, authors, alias }| modifiers=["content-body"]>
     $ const { primarySection } = content;
     <div class="content-page-body" role="region" aria-label="Content Body">
       <theme-page-contents|{ blockName }| attrs={ "data-gallery-id": id }>
@@ -283,12 +283,22 @@ $ const bypassGate = hasOmedaId(req);
               />
             </if>
 
+            $ const { primarySection } = content;
             <if(displayNewsletterSignup)>
-              <marko-web-identity-x-context|{ hasUser }|>
-                <if(!hasUser)>
-                  <identity-x-newsletter-form-inline type="inlineContent" />
-                </if>
-              </marko-web-identity-x-context>
+              <if(primarySection.alias === 'jobs')>
+                <marko-web-identity-x-context|{ hasUser }|>
+                  <if(!hasUser)>
+                    <global-job-search-block />
+                  </if>
+                </marko-web-identity-x-context>
+              </if>
+              <else>
+                <marko-web-identity-x-context|{ hasUser }|>
+                  <if(!hasUser)>
+                    <identity-x-newsletter-form-inline type="inlineContent" />
+                  </if>
+                </marko-web-identity-x-context>
+              </else>
             </if>
 
             <if(displaySocialShare)>
