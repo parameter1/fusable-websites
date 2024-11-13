@@ -18,6 +18,7 @@ const oembedHandler = require('./oembed-handler');
 const idxRouteTemplates = require('./templates/user');
 const recaptcha = require('./config/recaptcha');
 const idxNavItems = require('./config/identity-x-nav');
+const hwtRedirectHandler = require('./middleware/hwt-redirect-handler');
 
 const { error } = console;
 
@@ -49,6 +50,9 @@ module.exports = (options = {}) => {
     onStart: async (app) => {
       if (typeof onStart === 'function') await onStart(app);
       app.set('trust proxy', 'loopback, linklocal, uniquelocal');
+
+      // Use HWT redirect handler
+      app.use((req, res, next) => hwtRedirectHandler({ req, res, next }));
 
       // Use paginated middleware
       app.use(paginated());
