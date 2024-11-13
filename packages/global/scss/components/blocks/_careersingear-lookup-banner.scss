@@ -35,7 +35,7 @@
   &__name {
     @include skin-typography($style: "header-1.5");
     margin-bottom: 6px;
-    text-align: center;
+    text-align: left;
   }
 
   &__description {
@@ -44,7 +44,7 @@
     margin-right: auto;
     margin-bottom: 14px;
     margin-left: auto;
-    text-align: center;
+    text-align: left;
   }
 
   &__button {
