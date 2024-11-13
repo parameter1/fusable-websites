@@ -1,0 +1,72 @@
+.careersingear-lookup-banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  padding: 16px;
+  margin-top: 16px;
+  margin-bottom: 38px;
+  background-color: $gray-100;
+  border-radius: 4px;
+  @include skin-typography($style: "teaser-text-1");
+
+  &__left-col {
+    margin-right: 1rem;
+  }
+
+  &__right-col {
+    &--large {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    input {
+      display: inline;
+      max-width: 312px;
+      margin-right: $block-spacer * 0.5;
+    }
+  }
+
+  &__name {
+    @include skin-typography($style: "header-1.5");
+    margin-bottom: 6px;
+    text-align: left;
+  }
+
+  &__description {
+    @include skin-typography($style: "teaser-text-1");
+    max-width: 520px;
+    margin-right: auto;
+    margin-bottom: 14px;
+    margin-left: auto;
+    text-align: left;
+  }
+
+  &__button {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .btn-primary {
+    background-color: #d14900 !important;
+  }
+
+  @media (max-width: 530px) {
+    &__name,
+    &__description {
+      text-align: left;
+    }
+
+    &__form {
+      display: block;
+      input {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
