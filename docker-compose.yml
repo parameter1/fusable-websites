@@ -122,6 +122,8 @@ services:
       GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
       LIVERELOAD_PORT: 19903
       OMEDA_INPUT_ID: ${TN_OMEDA_INPUT_ID-(unset)}
+      NATIVEX_DEFUALT_ID: ${NATIVEX_DEFUALT_ID-}
+      NATIVEX_PI_ID: ${NATIVEX_PI_ID-}
     hostname: www-rr-tn.dev.parameter1.com
     ports:
       - "9903:80"
