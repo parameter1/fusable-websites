@@ -286,11 +286,7 @@ $ const bypassGate = hasOmedaId(req);
             $ const { primarySection } = content;
             <if(displayNewsletterSignup)>
               <if(primarySection.alias === 'jobs')>
-                <marko-web-identity-x-context|{ hasUser }|>
-                  <if(!hasUser)>
-                    <global-job-search-block />
-                  </if>
-                </marko-web-identity-x-context>
+                <global-job-search-block />
               </if>
               <else>
                 <marko-web-identity-x-context|{ hasUser }|>

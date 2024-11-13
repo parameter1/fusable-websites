@@ -139,11 +139,7 @@ $ const perPage = 18;
   <@section>
     <!-- <theme-newsletter-signup-banner-large-block /> -->
     <if(alias === 'jobs')>
-      <marko-web-identity-x-context|{ hasUser }|>
-        <if(!hasUser)>
-          <global-job-search-block />
-        </if>
-      </marko-web-identity-x-context>
+      <global-job-search-block />
     </if>
     <else>
       <marko-web-identity-x-context|{ hasUser }|>
