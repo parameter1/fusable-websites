@@ -1,7 +1,7 @@
 $ const blockName = "careersingear-lookup-banner";
 
 <marko-web-block name=blockName class=input.class>
-  <marko-web-element block-name=blockName name="header">
+  <marko-web-element block-name=blockName name="left-col">
     <marko-web-img
       class=`${blockName}__logo`
       src='https://img.truckersnews.com/files/base/randallreilly/all/image/static/newsletter-pushdown/Search-image-TN.png?auto=format,compress&w=120'
@@ -9,35 +9,33 @@ $ const blockName = "careersingear-lookup-banner";
       alt="Job Search Logo"
     />
   </marko-web-element>
-  <marko-web-element block-name=blockName name="name">
-    Looking for your next job?
-  </marko-web-element>
-  <marko-web-element block-name=blockName name="description">
-    <b>Careersingear.com</b> is the go-to platform for the Trucking industry. Don’t just find the job you need; find the job you want with the company that wants you!
-  </marko-web-element>
-  <form action="https://www.careersingear.com/" method="GET" target="_blank">
-    <div class="form-group">
-      <input
-        id="job"
-        class="form-control"
-        type="job"
-        placeholder="Job titles, keywords, company or description"
-        name="job"
-      />
-    </div>
-    <div class="form-group">
-      <input
-        id="city-state-zip"
-        class="form-control"
-        type="city-state-zip"
-        placeholder="City, State or Zip"
-        name="city-state-zip"
-      />
-    </div>
-    <marko-web-element block-name=blockName name="button-wrapper">
-      <marko-web-link href="https://www.careersingear.com/search" title="search-now" class="btn btn-primary">
-        SEARCH NOW!
-      </marko-web-link>
+  <marko-web-element block-name=blockName name="right-col">
+    <marko-web-element block-name=blockName name="name">
+      Looking for your next job?
     </marko-web-element>
-  </form>
+    <marko-web-element block-name=blockName name="description">
+      <b>Careersingear.com</b> is the go-to platform for the Trucking industry. Don’t just find the job you need; find the job you want with the company that wants you!
+    </marko-web-element>
+    <form action="https://www.careersingear.com/" method="GET" target="_blank">
+      <div class="form-group">
+        <input
+          id="job"
+          class="form-control"
+          type="job"
+          placeholder="Job titles, keywords, company or description"
+          name="job"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          id="city-state-zip"
+          class="form-control"
+          type="city-state-zip"
+          placeholder="City, State or Zip"
+          name="city-state-zip"
+        />
+      </div>
+      <input class="btn btn-primary" type="submit" value="Search Now!" />
+    </form>
+  </marko-web-element>
 </marko-web-block>
