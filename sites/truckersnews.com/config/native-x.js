@@ -8,8 +8,8 @@ config.domainName = 'www.truckersnews.com';
 
 config
   .setAliasPlacements('default', [
-    { name: 'default', id: '6000b7460ea4830001340b96' },
-    { name: 'partner-insights', id: '62c467cc1a8b460001156843' },
+    { name: 'default', id: '670d4b6a22e180b2bbdcfe8b' },
+    { name: 'partner-insights', id: '670d4b7e22e180b2bbdcfe8d' },
   ]);
 
 module.exports = config;
