@@ -1,6 +1,6 @@
 const configureNativeX = require('@randall-reilly/package-global/config/native-x');
 
-const config = configureNativeX();
+const config = configureNativeX({ uri: 'https://delivery.mindfulcms.com/rr-talent/default/compat/native-website' });
 
 config.enabled = true;
 config.publisherId = '5fd267ec1305250001368472';
