@@ -5,8 +5,22 @@ $wrapper-border-radius: 10px;
 .page form.load-analyzer__form .load {
   border-radius: $wrapper-border-radius !important;
 }
+.page_wrapper {
+  $self: &;
+  &__section {
+    &:first-child {
+      .load-analyzer {
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
 .load-analyzer {
   $self: &;
+  &:first-child {
+    margin-top: 30px;
+  }
   &__form-wrapper {
     // initial reservation to prevent page bounce.
     min-height: 1000px;
