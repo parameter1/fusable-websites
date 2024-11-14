@@ -255,6 +255,8 @@
 export default {
   name: 'LoadAnalyzer',
 
+  inject: ['EventBus'],
+
   props: {
     title: {
       type: String,
@@ -330,6 +332,12 @@ export default {
     }
   },
   methods: {
+    emit(name, args = {}) {
+      const { EventBus } = this;
+      const eventArgs = { vin: this.vin, thr_source: this.source };
+      EventBus.$emit(name, { ...eventArgs, ...args });
+    },
+
     async setCookie(payload) {
       const expires = '';
       const value = JSON.stringify({ payload });
@@ -367,12 +375,14 @@ export default {
         varCostPerMile,
         loads,
       } = this;
-      await this.setCookie({
+      const payload = {
         fixedCost,
         salary,
         varCostPerMile,
         loads,
-      });
+      };
+      await this.setCookie(payload);
+      this.emit('loadAnalyzer_submit', { payload });
       this.loading = false;
       window.location = '/load-analyzer/submit';
     },

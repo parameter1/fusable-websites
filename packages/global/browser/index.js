@@ -13,8 +13,13 @@ export default (Browser) => {
     }
   });
 
-  Browser.register('LoadAnalyzer', LoadAnalyzer);
+  Browser.register('LoadAnalyzer', LoadAnalyzer, { provide: { EventBus } });
   Browser.register('LoadToggler', LoadToggler);
+
+  // @todo figure out what else to track
+  EventBus.$on('loadAnalyzer_submit', (payload) => {
+    window.dataLayer.push({ event: 'loadAnalyzer_submit', ...payload });
+  });
 
   MonoRail(Browser);
 };
