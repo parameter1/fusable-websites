@@ -334,7 +334,12 @@ export default {
   methods: {
     emit(name, args = {}) {
       const { EventBus } = this;
-      const eventArgs = { vin: this.vin, thr_source: this.source };
+      const eventArgs = {
+        fixedCost: this.fixedCost,
+        salary: this.salary,
+        varCostPerMile: this.varCostPerMile,
+        loads: this.loads,
+      };
       EventBus.$emit(name, { ...eventArgs, ...args });
     },
 
@@ -382,7 +387,7 @@ export default {
         loads,
       };
       await this.setCookie(payload);
-      this.emit('loadAnalyzer_submit', { payload });
+      this.emit('loadAnalyzer_submit', { ...payload });
       this.loading = false;
       window.location = '/load-analyzer/submit';
     },
