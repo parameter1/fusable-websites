@@ -33,5 +33,8 @@
     "template": "./sponsors.marko",
     "@alias": "string",
     "@show-title": "boolean"
+  },
+  "<global-job-search-block>": {
+    "template": "./job-search.marko"
   }
 }

@@ -46,8 +46,8 @@ $ const perPage = 18;
     </if>
 
     <marko-web-website-section-name|{ value }| tag="h1" block-name=blockName obj=section>
-      <if(p.page > 1)>${value}: Page ${p.page}</if>
-      <else>${value}</else>
+      <if(p.page > 1)>$!{value}: Page ${p.page}</if>
+      <else>$!{value}</else>
     </marko-web-website-section-name>
 
     <if(input.afterName)>
@@ -68,6 +68,7 @@ $ const perPage = 18;
     </if>
 
     $ const { id: placementId, uri } = nxConfig.getPlacement({ name: "partner-insights", aliases });
+    $ const positions = [71559].includes(id) ? [] : [1];
     <global-content-query-with-injected-native-ads|{ nodes }|
       query-name="website-optioned-content"
       query-params={
@@ -79,7 +80,7 @@ $ const perPage = 18;
       }
       placement-id=placementId
       uri=uri
-      positions=[1]
+      positions=positions
       section-name="Sponsor Content"
       place="after"
     >
@@ -138,11 +139,16 @@ $ const perPage = 18;
 
   <@section>
     <!-- <theme-newsletter-signup-banner-large-block /> -->
-    <marko-web-identity-x-context|{ hasUser }|>
-      <if(!hasUser)>
-        <identity-x-newsletter-form-inline type="inlineSection" />
-      </if>
-    </marko-web-identity-x-context>
+    <if(alias === 'jobs')>
+      <global-job-search-block />
+    </if>
+    <else>
+      <marko-web-identity-x-context|{ hasUser }|>
+        <if(!hasUser)>
+          <identity-x-newsletter-form-inline type="inlineSection" />
+        </if>
+      </marko-web-identity-x-context>
+    </else>
   </@section>
 
   <@section>

@@ -1,6 +1,6 @@
 $theme-site-header-breakpoints: (
   hide-primary: 100000px, // effectively always hide the primary nav
-  hide-secondary: 700px,
+  hide-secondary: 1025px,
   small-logo: 775px,
   small-text-primary: 0,
   small-text-secondary: 830px
@@ -28,4 +28,15 @@ $skin-newsletter-signup-inline-btn-color: #145624;
       max-width: initial;
     }
   }
+}
+
+.site-navbar {
+  &__items {
+    &--secondary {
+      font-size: 15px;
+    }
+  }
+}
+.site-navbar__items--secondary .site-navbar__link {
+  padding: 8px 8px 0;
 }
