@@ -1,4 +1,5 @@
 module.exports = {
-  href: '/termsandprivacy',
-  label: 'Terms of Use and Privacy Policy',
+  href: 'https://randallreilly.com/legal/privacy-policy/',
+  label: 'Privacy Policy',
+  target: '_blank',
 };
