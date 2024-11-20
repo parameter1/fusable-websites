@@ -60,8 +60,9 @@ module.exports = {
   },
   footer: {
     items: [
+      { href: 'https://randallreilly.com/legal/website-terms-and-conditions/', label: 'Terms of Use', target: '_blank' },
       privacyPolicy,
-      { href: 'https://privacyportal-cdn.onetrust.com/dsarwebform/49a9a972-547e-4c49-b23c-4cc77554cacb/cddab1bc-7e58-4eca-a20d-be42716734cf.html', label: 'Do Not Sell or Share My Personal Information', target: '_blank' },
+      { href: 'https://randallreilly.com/legal/dsar/', label: 'Do Not Sell or Share My Personal Information', target: '_blank' },
       oneTrust,
       { href: '/page/contact-us', label: 'Contact Us' },
       { href: '/site-map', label: 'Site Map' },
