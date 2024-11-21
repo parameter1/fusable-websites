@@ -146,7 +146,7 @@
                     v-model="load.deadheadMiles"
                     class="form-control load-analyzer__deadheadMiles"
                     type="number"
-                    min="1"
+                    min="0"
                     step="1"
                     max="2500000"
                     :readonly="loading"
@@ -290,7 +290,7 @@ export default {
     loads: [],
     defaultLoad: {
       quarterDays: null,
-      deadheadMiles: null,
+      deadheadMiles: 0,
       loadedMiles: null,
       grossRate: null,
     },
