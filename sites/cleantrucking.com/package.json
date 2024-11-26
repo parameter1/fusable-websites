@@ -1,6 +1,6 @@
 {
   "name": "@randall-reilly/cleantrucking.com",
-  "version": "1.76.4",
+  "version": "1.76.5",
   "author": "Jacob Bare <jacob@parameter1.com>",
   "repository": "https://github.com/parameter1/randall-reilly-websites/tree/master/sites/cleantrucking.com",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "@parameter1/base-cms-object-path": "^4.40.3",
     "@parameter1/base-cms-utils": "^4.40.3",
     "@parameter1/base-cms-web-cli": "^4.57.1",
-    "@randall-reilly/package-global": "^1.76.4",
+    "@randall-reilly/package-global": "^1.76.5",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1"
   }
