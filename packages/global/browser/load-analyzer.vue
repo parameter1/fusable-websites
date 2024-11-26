@@ -264,7 +264,7 @@ export default {
     },
     description: {
       type: String,
-      default: 'Know your costs, owner-operators? Compute the potential profit in any truckload, access per-day and per-mile breakouts, and compare brokers’ offers on multiple loads. Enter your trucking business\’s fixed and variable costs, and load information, to get started.',
+      default: 'Know your costs, owner-operators? Compute the potential profit in any truckload, access per-day and per-mile breakouts, and compare brokers\' offers on multiple loads. Enter your trucking business\'s fixed and variable costs, and load information, to get started.',
     },
     placeholder: {
       type: Number,
