@@ -1,4 +1,9 @@
 $ const blockName = "careersingear-lookup-banner";
+$ const utm = {
+  source: 'TruckersNews',
+  medium: 'jobs',
+  campaign: 'jobs',
+}
 
 <marko-web-block name=blockName class=input.class>
   <marko-web-element block-name=blockName name="left-col">
@@ -16,7 +21,7 @@ $ const blockName = "careersingear-lookup-banner";
     <marko-web-element block-name=blockName name="description">
       <b>Careersingear.com</b> is the go-to platform for the Trucking industry. Don’t just find the job you need; find the job you want with the company that wants you!
     </marko-web-element>
-    <form action="https://www.careersingear.com/search" method="GET" target="_blank">
+    <form action="https://www.careersingear.com/search?utm_source=TruckersNews&utm_medium=jobs&utm_campaign=search" method="GET" target="_blank">
       <span>
         <div class="form-group">
           <input
@@ -34,6 +39,29 @@ $ const blockName = "careersingear-lookup-banner";
             type="location"
             placeholder="City, State or Zip"
             name="location"
+          />
+        </div>
+        <div class="form-group hidden">
+          <input
+            id="utm_source"
+            class="form-control"
+            type="hidden"
+            value=`${utm.source}`
+            name="utm_source"
+          />
+          <input
+            id="utm_medium"
+            class="form-control"
+            type="hidden"
+            value=`${utm.medium}`
+            name="utm_medium"
+          />
+          <input
+            id="utm_campaign"
+            class="form-control"
+            type="hidden"
+            value=`${utm.campaign}`
+            name="utm_campaign"
           />
         </div>
       </span>
