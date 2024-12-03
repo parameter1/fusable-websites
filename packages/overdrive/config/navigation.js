@@ -8,12 +8,15 @@ const topics = {
     { href: '/regulations', label: 'Regulations' },
     { href: '/life', label: 'Life' },
     { href: '/custom-rigs', label: 'Custom Rigs' },
-    { href: '/gear', label: 'Gear' },
+    { href: '/overdrive-extra', label: 'Overdrive Extra' },
   ],
   expanded: [
     { href: '/channel-19', label: 'Channel 19' },
     { href: '/partners-in-business', label: 'Partners in Business' },
-    { href: '/overdrive-extra', label: 'Overdrive Extra' },
+    { href: '/electronic-logging-devices', label: 'ELDs' },
+    { href: '/trucking-law', label: 'Trucking Law' },
+    { href: '/trucker-of-the-year', label: 'Trucker of the Year' },
+    { href: '/small-fleet-champ', label: 'Small Fleet Champ' },
   ],
   secondary: [
     { href: '/reader-rigs', label: 'Reader Rigs' },
