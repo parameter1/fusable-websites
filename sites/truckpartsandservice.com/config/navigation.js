@@ -10,6 +10,8 @@ const topics = {
     { href: '/aftermarket-truck-parts-suppliers', label: 'Buyers\' Guide' },
   ],
   expanded: [
+    { href: '/commentary', label: 'Commentary' },
+
     { href: '/products', label: 'Products' },
     { href: '/trucks-trailers', label: 'Trucks & Trailers' },
     { href: '/alternative-power', label: 'Alternative Power' },
@@ -19,7 +21,6 @@ const topics = {
     { href: '/successful-dealer-award', label: 'Successful Dealer Award' },
     { href: '/trailblazer-award', label: 'Trailblazer Award' },
     { href: '/white-papers', label: 'White Papers' },
-    { href: '/commentary', label: 'Commentary' },
   ],
   secondary: [
   ],
