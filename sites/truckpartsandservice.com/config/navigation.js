@@ -19,6 +19,7 @@ const topics = {
     { href: '/successful-dealer-award', label: 'Successful Dealer Award' },
     { href: '/trailblazer-award', label: 'Trailblazer Award' },
     { href: '/white-papers', label: 'White Papers' },
+    { href: '/commentary', label: 'Commentary' },
   ],
   secondary: [
   ],
