@@ -14,11 +14,11 @@
     "test": "yarn lint && yarn compile --no-clean"
   },
   "dependencies": {
-    "@parameter1/base-cms-embedded-media": "^4.47.1",
-    "@parameter1/base-cms-image": "^4.47.1",
-    "@parameter1/base-cms-marko-web": "^4.55.4",
-    "@parameter1/base-cms-object-path": "^4.40.3",
-    "@parameter1/base-cms-utils": "^4.40.3",
+    "@parameter1/base-cms-embedded-media": "^4.74.0",
+    "@parameter1/base-cms-image": "^4.74.0",
+    "@parameter1/base-cms-marko-web": "^4.80.0",
+    "@parameter1/base-cms-object-path": "^4.74.0",
+    "@parameter1/base-cms-utils": "^4.74.0",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
