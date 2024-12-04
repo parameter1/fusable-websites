@@ -33,4 +33,6 @@ config
     { name: 'wallpaper-right', templateName: 'WALLPAPER', path: 'gear-wallpaper-right' },
   ]);
 
+config.initOnly = false;
+
 module.exports = config;
