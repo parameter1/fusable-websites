@@ -18,8 +18,7 @@ const topics = {
   secondary: [
     { href: '/reader-rigs', label: 'Reader Rigs' },
     { href: '/overdrive-radio', label: 'Overdrive Radio' },
-    { href: '/videos', label: 'Videos' },
-    { href: '/white-papers', label: 'Whitepapers' },
+    { href: 'https://www.overdriveonline.com/load-analyzer', label: 'Load Profit Analyzer' },
     { href: 'https://truckhistory.overdriveonline.com/', label: 'Truck History Report', target: '_blank' },
   ],
 };
