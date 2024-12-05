@@ -3,11 +3,11 @@ import convert from "@parameter1/base-cms-marko-web-native-x/utils/convert-story
 $ const { nativeX } = out.global;
 
 $ const { story } = input;
-$ const content = convert(story);
+$ const content = convert(story, { sectionName: 'Sponsored'});
 $ const { id, type } = content;
 $ const { primarySection } = content;
 
-<theme-default-page title=story.title description=story.teaser>
+<theme-default-page title=story.title description=story.teaser canonical-url=story.url>
   <@head>
     <marko-web-gtm-native-x-story-context|{ context }| obj=content>
       <marko-web-gtm-push data=context />
