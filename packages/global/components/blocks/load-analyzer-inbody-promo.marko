@@ -8,33 +8,37 @@ $ const reportSrc = "tlc-attachments-cover.png?auto=format&w=120&fit=crop";
   <marko-web-element block-name=blockName name="inner-wrapper">
     <div>
       <marko-web-element block-name=blockName name="website-section-name">
-        <a href="https://truckhistory.overdriveonline.com/">
+        <a href="/load-analyzer">
           New
         </a>
       </marko-web-element>
       <marko-web-element block-name=blockName name="header">
         <marko-web-element block-name=blockName name="copy">
           <marko-web-element block-name=blockName name="title">
-            Load Analyzer
-          </marko-web-element>
-          <marko-web-element block-name=blockName name="description">
-            Know your costs? Compute the profit in any load per-day and per-mile
+            Overdrive's Load Profit Analyzer
           </marko-web-element>
         </marko-web-element>
       </marko-web-element>
-      <marko-web-link
-        class="learn-more-link btn btn-primary"
-        href="/load-analyzer"
-        title="Load analyzer"
-      >
-        Try it out!
-      </marko-web-link>
+      <marko-web-element block-name=blockName name="body">
+        <marko-web-element block-name=blockName name="copy">
+          <marko-web-element block-name=blockName name="description">
+            Know your costs? Compute the potential profit in any truckload, analyze per-day and per-mile breakouts, and compare real offers on multiple loads or game out hypothetical rate/lane scenarios. Enter your trucking business's fixed and variable costs, and load information, to get started.
+          </marko-web-element>
+          <marko-web-link
+            class="learn-more-link btn btn-primary"
+            href="/load-analyzer"
+            title="Load analyzer"
+          >
+            Try it out!
+          </marko-web-link>
+        </marko-web-element>
+        <marko-web-img
+          class=`${blockName}__report-img`
+          src='https://img.overdriveonline.com/files/base/randallreilly/all/image/static/overdrive_load_analyzer.png?h=252'
+          srcset=[`https://img.overdriveonline.com/files/base/randallreilly/all/image/static/overdrive_load_analyzer.png?h=252&dpr=2 2x`]
+          alt="Attachments Idea Book Cover"
+        />
+      </marko-web-element>
     </div>
-    <marko-web-img
-      class=`${blockName}__report-img`
-      src='https://img.overdriveonline.com/files/base/randallreilly/all/image/static/overdrive_load_analyzer.png?h=252'
-      srcset=[`https://img.overdriveonline.com/files/base/randallreilly/all/image/static/overdrive_load_analyzer.png?h=252&dpr=2 2x`]
-      alt="Attachments Idea Book Cover"
-    />
   </marko-web-element>
 </marko-web-block>

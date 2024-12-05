@@ -1,6 +1,8 @@
 const privacyPolicy = require('./privacy-policy');
 const oneTrust = require('./one-trust');
 
+const showInbodyLAPromo = (process.env.SHOW_INBODY_LOAD_ANALYZER_PROMO === 'true') || false;
+
 const topics = {
   primary: [
     { href: '/equipment', label: 'Equipment' },
@@ -21,8 +23,11 @@ const topics = {
   secondary: [
     { href: '/reader-rigs', label: 'Reader Rigs' },
     { href: '/overdrive-radio', label: 'Overdrive Radio' },
-    { href: '/videos', label: 'Videos' },
-    { href: '/white-papers', label: 'Whitepapers' },
+    ...(
+      showInbodyLAPromo
+        ? [{ href: 'https://www.overdriveonline.com/load-analyzer', label: 'Load Profit Analyzer' }]
+        : [{ href: '/videos', label: 'Videos' }, { href: '/white-papers', label: 'Whitepapers' }]
+    ),
     { href: 'https://truckhistory.overdriveonline.com/', label: 'Truck History Report', target: '_blank' },
   ],
 };
