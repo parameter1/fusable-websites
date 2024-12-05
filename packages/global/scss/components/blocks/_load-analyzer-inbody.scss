@@ -1,5 +1,6 @@
 
 .load-analyzer-inbody {
+  $self: &;
   height: 100%;
   padding: 24px 24px 0 24px ;
   background-color: $gray-100;
@@ -15,6 +16,15 @@
   &__title {
     margin-bottom: 8px;
     @include skin-typography($style: "header-2");
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: row;
+    #{ $self }__copy {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__description {
