@@ -1,5 +1,6 @@
 
 .load-analyzer-inbody {
+  $self: &;
   height: 100%;
   padding: 24px 24px 0 24px ;
   background-color: $gray-100;
@@ -15,6 +16,28 @@
   &__title {
     margin-bottom: 8px;
     @include skin-typography($style: "header-2");
+  }
+
+  &__inner-wrapper  div  {
+    #{ $self }__body {
+      display: flex;
+      flex-direction: row;
+      #{ $self }__copy {
+        display: flex;
+        flex-direction: column;
+        #{ $self }__description {
+          @include media-breakpoint-down(md) {
+            @include theme-max-lines(
+              $font-size: $theme-item-title-large-font-size,
+              $font-size-sm: $theme-item-title-large-font-size-sm,
+              $line-height: $theme-item-title-large-line-height,
+              $line-height-sm: $theme-item-title-large-line-height-sm,
+              $num: 8
+            );
+          }
+        }
+      }
+    }
   }
 
   &__description {
@@ -42,5 +65,6 @@
   .btn-primary {
     text-transform: none;
     margin-bottom: 24px;
+    max-width: 150px;
   }
 }
