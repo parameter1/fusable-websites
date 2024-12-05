@@ -32,6 +32,7 @@
     "@parameter1/base-cms-marko-web-search": "^4.80.4",
     "@parameter1/base-cms-marko-web-social-sharing": "^4.74.0",
     "@parameter1/base-cms-marko-web-theme-monorail": "^4.81.0",
+    "@parameter1/base-cms-mindful": "^4.78.2",
     "@parameter1/base-cms-object-path": "^4.74.0",
     "@parameter1/base-cms-utils": "^4.74.0",
     "@parameter1/base-cms-web-cli": "^4.74.0",
