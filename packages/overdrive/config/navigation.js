@@ -23,7 +23,7 @@ const topics = {
     ...(
       showInbodyLAPromo
         ? [{ href: 'https://www.overdriveonline.com/load-analyzer', label: 'Load Profit Analyzer' }]
-        : [{ href: '/video', label: 'Video' }, { href: '/whtiepapers', label: 'Whitepapers' }]
+        : [{ href: '/videos', label: 'Videos' }, { href: '/white-papers', label: 'Whitepapers' }]
     ),
     { href: 'https://truckhistory.overdriveonline.com/', label: 'Truck History Report', target: '_blank' },
   ],
