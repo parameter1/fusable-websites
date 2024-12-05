@@ -1,6 +1,6 @@
 const configureGAM = require('@randall-reilly/package-global/config/gam');
 
-const config = configureGAM({ basePath: 'tn' });
+const config = configureGAM({ accountId: '313639551', basePath: 'TruckersNews' });
 
 config
   .setAliasAdUnits('default', [
@@ -32,5 +32,7 @@ config
     { name: 'wallpaper-left', templateName: 'WALLPAPER', path: 'gear-wallpaper-left' },
     { name: 'wallpaper-right', templateName: 'WALLPAPER', path: 'gear-wallpaper-right' },
   ]);
+
+config.initOnly = false;
 
 module.exports = config;

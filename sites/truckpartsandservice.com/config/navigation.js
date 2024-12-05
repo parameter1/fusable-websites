@@ -10,6 +10,7 @@ const topics = {
     { href: '/aftermarket-truck-parts-suppliers', label: 'Buyers\' Guide' },
   ],
   expanded: [
+    { href: '/commentary', label: 'Commentary' },
     { href: '/products', label: 'Products' },
     { href: '/trucks-trailers', label: 'Trucks & Trailers' },
     { href: '/alternative-power', label: 'Alternative Power' },
