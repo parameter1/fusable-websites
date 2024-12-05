@@ -3,10 +3,14 @@ const home = require('./home');
 const content = require('./content');
 const loadAnalyzer = require('./load-analyzer');
 const websiteSections = require('./website-section');
+const loadAnalyzer = require('./load-analyzer');
 
 module.exports = (app) => {
   // RigDig
   rigdig(app);
+
+  // loadAnalyzer
+  loadAnalyzer(app);
 
   // Homepage
   home(app);
