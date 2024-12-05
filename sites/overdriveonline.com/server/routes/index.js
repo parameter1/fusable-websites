@@ -8,9 +8,6 @@ module.exports = (app) => {
   // RigDig
   rigdig(app);
 
-  // loadAnalyzer
-  loadAnalyzer(app);
-
   // Homepage
   home(app);
 
