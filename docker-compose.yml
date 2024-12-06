@@ -111,22 +111,6 @@ services:
       - "9902:80"
       - "19902:19902"
 
-  tn:
-    <<: *site-cmd
-    working_dir: /root/sites/truckersnews.com
-    environment:
-      <<: *env
-      HOST: www-rr-tn.dev.parameter1.com
-      PORT: 80
-      EXPOSED_PORT: 9903
-      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
-      LIVERELOAD_PORT: 19903
-      OMEDA_INPUT_ID: ${TN_OMEDA_INPUT_ID-(unset)}
-    hostname: www-rr-tn.dev.parameter1.com
-    ports:
-      - "9903:80"
-      - "19903:19903"
-
   ccj:
     <<: *site-cmd
     working_dir: /root/sites/ccjdigital.com
