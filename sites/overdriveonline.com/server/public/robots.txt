@@ -12,5 +12,8 @@ Disallow: /
 User-agent: ChatGPT-User
 Disallow: /
 
+User-agent: OAI-SearchBot
+Disallow: /
+
 Sitemap: https://www.overdriveonline.com/sitemap.xml
 Sitemap: https://www.overdriveonline.com/sitemap-google-news.xml

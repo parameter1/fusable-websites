@@ -1,7 +1,12 @@
-$ const { site } = out.global;
+$ const { site, config } = out.global;
 $ const type = "static";
+$ const getImageSrcFor = (file) => `https://${config.website("imageHost")}/files/base/randallreilly/all/image/static/tps-doty/${file}?w=227`;
 $ const title = "Distributor of the Year Award Nominations";
-$ const description = "The TPS Distributor of the Year award serves as one of the independent aftermarket’s highest honors. Created in 2002, the award program acknowledges independent aftermarket distributors who display excellent customer service, business acumen, market knowledge and willingness to improve and evolve their business with industry changes.";
+$ const content = {
+  name: "Recognizing trucking’s most successful distributor operations for their commitment to business excellence."
+}
+$ const description = "Our annual award recognizes trucking’s most successful independent distributor operations for their customer service, industry engagement, corporate leadership and more. Help us celebrate the best of the best with the Distributor of the Year Award.";
+$ const headingStyle = "color: #1A3A54" ;
 <marko-web-default-page-layout type=type title=title description=description>
   <@head>
     <marko-web-gtm-default-context|{ context }| type=type>
@@ -17,39 +22,192 @@ $ const description = "The TPS Distributor of the Year award serves as one of th
           aliases=[]
           modifiers=["inter-block"]/>
       </@section>
-      <@section>
-        <div class="content-page-header">
-          <div class="text-center">
-            <marko-web-img
-              class="img-fluid"
-              alt="Successful Dealer Award"
-              src="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/logo.png?w=340"
-              srcset="https://img.truckpartsandservice.com/files/base/randallreilly/all/image/static/tps/distributor-of-the-year-award/logo.png?w=680 2x"/>
-          </div>
-        </div>
+      <@section|{ blockName }|>
+        <marko-web-img
+          src=`https://${config.website("imageHost")}/files/base/randallreilly/all/image/static/tps-doty/DOTY-LP2024-hero-NEW.jpg`
+          alt="Truck, Parts "
+          attrs={ style: "width: 100%; margin-bottom: 1.5rem"}
+        />
+        <marko-web-content-name
+          tag="h1"
+          block-name=blockName
+          obj=content
+          attrs={ style: headingStyle }
+        />
+          <h4><b>Our annual award recognizes trucking’s most successful independent distributor operations for their customer service, industry engagement, corporate leadership and more. Help us celebrate the best of the best with the Distributor of the Year Award.</b></h4>
       </@section>
       <@section>
-        <div class="content-page-body">
-          <div class="page-contents">
-            <div class="page-contents__content-body">
-              <p>
-                The <em>TPS</em> Distributor of the Year award serves as one of the independent aftermarket’s highest honors. Created in 2002, the award program acknowledges independent aftermarket distributors who display excellent customer service, business acumen, market knowledge and willingness to improve and evolve their business with industry changes.
-              </p>
-              <p>
-                <a href="/distributor-of-the-year-archive">Click here</a> to view past award finalists and winners.
-              </p>
+        <theme-page-contents|{ blockName }|>
+          <marko-web-content-body block-name=blockName obj={ body: '__' }>
+            <div class="mt-4" style="background-color: #f0f1f2; padding:32px">
+              <h4 class="text-center" style="margin-bottom: 0px">This Year's Sponsors</h4>
+              <global-sponsors-block alias="distributor-of-the-year" show-title=false />
+            </div>
+            <h4 class="mt-4" style=headingStyle>What is the <em>TPS</em> Distributor of the Year Award?</h4>
+            <p>The <strong>Distributor of the Year</strong> program is one of the aftermarket’s most coveted and highly sought after awards. Now in its 22<sup>nd</sup> year, the <strong>Distributor of the Year</strong> recognizes independent aftermarket distributors for business performance, business innovation, consistent employee and customer training, market expertise, commitment to customer solutions and more. Businesses named finalists for the <strong>Distributor of the Year</strong> are highlighted on <em>TPS</em> each fall and recognized during an award presentation each January at Heavy Duty Aftermarket Week.</p>
+            <h4 style=headingStyle>Entry Requirements</h4>
+            <p>Any independent aftermarket distributor (except last year’s winner) serving the North American medium- and heavy-duty truck and trailer industries can be nominated for the Distributor of the Year Award. Franchised truck dealers are not eligible (but can participate in the <a href="/successful-dealer-award"><em>Successful Dealer Award</em></a> program).</p>
+            <h4 style=headingStyle>How Do I Apply?</h4>
+            <p><em>TPS</em> accepts nominations from anyone involved in the trucking industry for the Distributor of the Year program. Nominations are accepted on our website from April 1 to June 30 each year.</p>
+            <p><a href=`/page/2023doy` class="btn btn-primary mt-2 mr-2 mb-2">Apply Now</a></p>
+            <h4 style=headingStyle>How are finalists and winners selected?</h4>
+            <p>The <strong>Distributor of the Year</strong> program is driven by industry engagement. The five independent distributors who receive the most nominations from the trucking industry each spring are chosen as our annual award finalists. The <strong>Distributor of the Year</strong> winner is chosen through a closed evaluation process conducted by <em>TPS</em> staff.</p>
+            <div class="row mb-2" style="border: 5px solid #F0F0F0">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-10 py-2">
+                <div class="py-2">
+                  <h4 class="text-center" style=headingStyle>Prior award winners</h4>
+                  <table class="table table-striped" style="font-size: 16px">
+                    <tr style="background-color: #24408E; color: #FFFFFF;">
+                      <th width="30%">
+                        <b class="ml-2">YEAR</b>
+                      </th>
+                      <th width="70%">
+                        <b>WINNER(S)</b>
+                      </th>
+                    </tr>
+                    <tr>
+                      <td><b>2002</b></td>
+                      <td>Inland Truck Parts</td>
+                    </tr>
+                    <tr>
+                      <td><b>2003</b></td>
+                      <td>Drive Train Industries</td>
+                    </tr>
+                    <tr>
+                      <td><b>2004</b></td>
+                      <td>Catco Parts & Service / Midwest Wheel Companies</td>
+                    </tr>
+                    <tr>
+                      <td><b>2005</b></td>
+                      <td>Point Spring & Driveshaft / Midway Truck Parts</td>
+                    </tr>
+                    <tr>
+                      <td><b>2006</b></td>
+                      <td>Page Brake</td>
+                    </tr>
+                    <tr>
+                      <td><b>2007</b></td>
+                      <td>Total Truck Parts</td>
+                    </tr>
+                    <tr>
+                      <td><b>2008</b></td>
+                      <td>Betts Truck Parts</td>
+                    </tr>
+                    <tr>
+                      <td><b>2009</b></td>
+                      <td>Power Train</td>
+                    </tr>
+                    <tr>
+                      <td><b>2010</b></td>
+                      <td>Stone Truck Parts</td>
+                    </tr>
+                    <tr>
+                      <td><b>2011</b></td>
+                      <td>FleetBrake / Carolina Rim & Wheel</td>
+                    </tr>
+                    <tr>
+                      <td><b>2012</b></td>
+                      <td>Midwest Wheel Companies</td>
+                    </tr>
+                    <tr>
+                      <td><b>2013</b></td>
+                      <td>Truck Supply Co. of SC</td>
+                    </tr>
+                    <tr>
+                      <td><b>2014</b></td>
+                      <td>Six Robblees'</td>
+                    </tr>
+                    <tr>
+                      <td><b>2015</b></td>
+                      <td>Sadler Power Train</td>
+                    </tr>
+                    <tr>
+                      <td><b>2016</b></td>
+                      <td>Blaine Brothers</td>
+                    </tr>
+                    <tr>
+                      <td><b>2017</b></td>
+                      <td>Harman HVS</td>
+                    </tr>
+                    <tr>
+                      <td><b>2018</b></td>
+                      <td>CRW Parts</td>
+                    </tr>
+                    <tr>
+                      <td><b>2019</b></td>
+                      <td>Action Truck Parts</td>
+                    </tr>
+                    <tr>
+                      <td><b>2020</b></td>
+                      <td>Cook Brothers Truck Parts</td>
+                    </tr>
+                    <tr>
+                      <td><b>2021</b></td>
+                      <td>Midwest Wheel Companies</td>
+                    </tr>
+                    <tr>
+                      <td><b>2022</b></td>
+                      <td>Weldon Parts</td>
+                    </tr>
+                    <tr>
+                      <td><b>2023</b></td>
+                      <td>Tidewater Fleet Supply/TNT Parts</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              <div class="col-lg-1"></div>
+            </div>
+          </marko-web-content-body>
+          <h4 style=headingStyle><b>Learn more about our prior Distributor of the Year participants</b></h4>
+          <theme-section-feed-block alias="distributor-of-the-year-archive" lazyload=false query-name="website-optioned-content">
+            <@query-params limit=2 option-name="Pinned" />
+          </theme-section-feed-block>
+          <div class="content-card-deck__header">
+            <div class="content-card-deck__header-left">
+            </div>
+            <div class="content-card-deck__header-right">
+              <div class="content-card-deck__view-more" title="Distributor of the Year">
+                <a href="/distributor-of-the-year-archive">View More »</a>
+              </div>
             </div>
           </div>
-        </div>
-        <global-sponsors-block alias="distributor-of-the-year" />
-        <div class="content-page-body">
-          <div id="wufoo-qwi5aax0lscm3g">
-            Fill out my
-            <a href="https://randallreilly.wufoo.com/forms/qwi5aax0lscm3g">online form</a>.
+          <div class="bg-light text-center pt-block" style="padding-left: 24px; padding-right:24px">
+            <h4><b>Scenes from the 2024 Event</b></h4>
+            <div class="row pb-block">
+              <div class="col-lg-3 pt-block">
+                <a href="https://randall-reilly.pixieset.com/hdawdistributoroftheyear2024/" target="_blank">
+                  <marko-web-img src=getImageSrcFor("HDAWDOTY2023-01.jpg") />
+                </a>
+              </div>
+              <div class="col-lg-3 pt-block">
+                <a href="https://randall-reilly.pixieset.com/hdawdistributoroftheyear2024/" target="_blank">
+                  <marko-web-img src=getImageSrcFor("HDAWDOTY2023-09.jpg") />
+                </a>
+              </div>
+              <div class="col-lg-3 pt-block">
+                <a href="https://randall-reilly.pixieset.com/hdawdistributoroftheyear2024/" target="_blank">
+                  <marko-web-img src=getImageSrcFor("HDAWDOTY2023-56.jpg") />
+                </a>
+              </div>
+              <div class="col-lg-3 pt-block">
+                <a href="https://randall-reilly.pixieset.com/hdawdistributoroftheyear2024/" target="_blank">
+                  <marko-web-img src=getImageSrcFor("HDAWDOTY2023-60.jpg") />
+                </a>
+              </div>
+            </div>
+            <div class="content-card-deck__header pb-block">
+              <div class="content-card-deck__header-left">
+              </div>
+              <div class="content-card-deck__header-right">
+                <div class="content-card-deck__view-more" title="Distributor of the Year 2022 Image Gallery">
+                  <a href="https://randall-reilly.pixieset.com/hdawdistributoroftheyear2024/" target="_blank">View Gallery »</a>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <script type="text/javascript"> var qwi5aax0lscm3g; (function(d, t) { var s = d.createElement(t), options = { 'userName':'randallreilly', 'formHash':'qwi5aax0lscm3g', 'autoResize':true, 'height':'1170', 'async':true, 'host':'wufoo.com', 'header':'hide', 'ssl':true }; s.src = ('https:' == d.location.protocol ?'https://':'http://') + 'secure.wufoo.com/scripts/embed/form.js'; s.onload = s.onreadystatechange = function() { var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return; try { qwi5aax0lscm3g = new WufooForm(); qwi5aax0lscm3g.initialize(options); qwi5aax0lscm3g.display(); } catch (e) { } }; var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr); })(document, 'script'); </script>
-        </div>
+        </theme-page-contents>
       </@section>
     </marko-web-page-wrapper>
   </@page>

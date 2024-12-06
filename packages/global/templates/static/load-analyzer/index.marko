@@ -1,0 +1,25 @@
+$ const { site, req } = out.global;
+
+$ const { reset } = req.query;
+$ const type = "static";
+$ const title = "Overdrive's Load Profit Analyzer";
+$ const description = "Know your costs, owner-operators? Compute the potential profit in any truckload, access per-day and per-mile breakouts, and compare brokers’ offers on multiple loads. Enter your trucking business’s fixed and variable costs, and load information, to get started.";
+
+<marko-web-default-page-layout type=`${type}` title=title description=description>
+  <@head>
+    <marko-web-gtm-default-context|{ context }| type=type>
+      <marko-web-gtm-push data=context />
+    </marko-web-gtm-default-context>
+  </@head>
+  <@page>
+    <marko-web-page-wrapper>
+      <@section>
+        <div class="load-analyzer">
+          <div class="load-analyzer__form-wrapper">
+            <marko-web-browser-component name="LoadAnalyzer" />
+          </div>
+        </div>
+      </@section>
+    </marko-web-page-wrapper>
+  </@page>
+</marko-web-default-page-layout>

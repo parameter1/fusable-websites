@@ -24,7 +24,10 @@
     "<below-container>": {},
     "<foot>": {}
   },
-  "<global-content-meter-track>": {
-    "template": "./content-meter-track.marko"
+  "<global-content-query-with-injected-native-ads>": {
+    "template": "./content-query-with-injected-native-ads.marko"
+  },
+  "<global-idx-gating>": {
+    "template": "./idx-gating.marko"
   }
 }

@@ -17,6 +17,8 @@ $skin-newsletter-signup-inline-btn-color: #460c0e;
 /*! critical:start */
 /*! purgecss start ignore */
 @import "@randall-reilly/package-rigdig/scss/rigdig";
+@import "@randall-reilly/package-global/scss/components/load-analyzer";
+@import "@randall-reilly/package-global/scss/components/blocks/load-analyzer-inbody";
 /*! purgecss end ignore */
 /*! critical:end */
 @import "./components/partners-in-business-page";

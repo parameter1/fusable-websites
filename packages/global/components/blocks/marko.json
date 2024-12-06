@@ -17,6 +17,9 @@
   "<global-thr-vin-lookup-promo-block>": {
     "template": "./thr-vin-lookup-promo.marko"
   },
+  "<global-load-analyzer-promo-block>": {
+    "template": "./thr-vin-lookup-promo.marko"
+  },
   "<global-eqw-coty-promo-block>": {
     "template": "./eqw-coty-promo.marko"
   },
@@ -26,14 +29,15 @@
   "<global-reader-rigs-submit-block>": {
     "template": "./reader-rigs-submit.marko"
   },
-  "<global-content-meter-block>": {
-    "template": "./content-meter.marko"
-  },
   "<global-stories-block>": {
     "template": "./stories.marko"
   },
   "<global-sponsors-block>": {
     "template": "./sponsors.marko",
-    "@alias": "string"
+    "@alias": "string",
+    "@show-title": "boolean"
+  },
+  "<global-job-search-block>": {
+    "template": "./job-search.marko"
   }
 }

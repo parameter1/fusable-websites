@@ -5,7 +5,7 @@ $ const { site, pagination } = out.global;
 $ const top250 = getAsObject(site, 'config.top250');
 $ const perPage = 18;
 
-<idx-gating|{ context: idxContext, hasRequiredFields, fields }|>
+<global-idx-gating|{ context: idxContext, hasRequiredFields, fields }|>
   $ const canAccess = idxContext.hasUser && hasRequiredFields;
   $ const identityX = { user: idxContext.user, hasRequiredFields, fields}
   <global-website-section-default-layout
@@ -45,7 +45,15 @@ $ const perPage = 18;
                 <em>CCJ’s</em> Top 250 data format gives you access to consolidated business intelligence not available anywhere else.
               </marko-web-block>
               <marko-web-block  class="top250-access__call-to-action">
-                Unlock the trends propelling the trucking industry’s most successful companies to the top with the <em>CCJ</em> Top 250. Sort real-time stats on fiscal year performance for customizable reporting on revenue, location, fleet type and size, leased vs. owned and driver counts. Track trends and understand your competition with blended, year-to-year data on nine industry segments that tells you where you are now and where you need to go.
+               Want real-time, sortable and customizable data on fiscal year performance for the biggest players in the trucking industry? Track trends and understand the for-hire market with blended, year-to-year data on nine operating segments in <em>CCJ</em>'s Top 250. Get the entire scope of a fleet’s freight-related business operation, including:
+                <ul>
+                  <li>Revenue</li>
+                  <li>Location</li>
+                  <li>Fleet Type</li>
+                  <li>Fleet Size</li>
+                  <li>Leased and Owned Equipment</li>
+                  <li>Driver counts</li>
+                </ul>
               </marko-web-block>
 
               <marko-web-block class="top250-login-box">
@@ -75,8 +83,8 @@ $ const perPage = 18;
                           continue: 'Access the Data',
                           submit: 'Access the Data',
                           logout: 'Logout',
-
                         }
+                        login-email-placeholder="Enter your email here"
                       />
                       <p class="top250-login-box__disclaimer">
                         By providing your email, you agree to our <a href="https://www.ccjdigital.com/termsandprivacy">Terms of Use and Privacy Policy</a>.
@@ -166,4 +174,4 @@ $ const perPage = 18;
       />
     </@section>
   </global-website-section-default-layout>
-</idx-gating>
+</global-idx-gating>

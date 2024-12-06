@@ -13,8 +13,12 @@ module.exports = {
   // module configs
   contentMeter,
   gam,
+  useLinkInjectedBody: process.env.USE_LINK_INJECTED_BODY === 'true',
   identityX,
   identityXOptInHooks,
+  mindful: {
+    namespace: 'rr/default',
+  },
   nativeX,
   navigation,
   newsletter,
@@ -33,25 +37,25 @@ module.exports = {
   },
   logos: {
     navbar: {
-      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd-logo-new.svg?h=46&auto=format,compress',
+      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/ByFusableMediaBrandsLogos_OVD.svg?h=46&auto=format,compress',
       srcset: [
-        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd-logo-new.svg?h=46&auto=format,compress&dpr=2 2x',
+        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/ByFusableMediaBrandsLogos_OVD.svg?h=46&auto=format,compress&dpr=2 2x',
       ],
       width: 199,
       height: 35,
     },
     footer: {
-      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd-logo-new.svg?h=35&auto=format,compress',
+      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/ByFusableMediaBrandsLogos_OVD.svg?h=35&auto=format,compress',
       srcset: [
-        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd-logo-new.svg?h=70&auto=format,compress 2x',
+        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/ovd/ByFusableMediaBrandsLogos_OVD.svg?h=70&auto=format,compress 2x',
       ],
     },
     corporate: {
       alt: 'Randall-Reilly Logo',
       href: 'https://www.randallreilly.com',
-      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rr-logo-new.svg?w=200&auto=format,compress',
+      src: 'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress',
       srcset: [
-        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/rr-logo-new.svg?w=200&auto=format,compress&dpr=2 2x',
+        'https://img.overdriveonline.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress&dpr=2 2x',
       ],
     },
   },
@@ -66,7 +70,7 @@ module.exports = {
   ],
   podcastLinks: [
     { label: 'Apple Podcasts', href: 'https://podcasts.apple.com/us/podcast/overdrive-online/id736806291' },
-    { label: 'Google Podcasts', href: 'https://podcasts.google.com/feed/aHR0cHM6Ly93d3cub3ZlcmRyaXZlb25saW5lLmNvbS9mZWVkL3BvZGNhc3Qv' },
+    { label: 'Youtube', href: 'https://www.youtube.com/playlist?list=PLc1lg9rs1dUAhK7CqgY23njy75EnGlqIU' },
     { label: 'Spotify', href: 'https://open.spotify.com/show/6P7SIZeenGgvAaaIm2SOAq' },
     { label: 'Soundcloud', href: 'https://soundcloud.com/overdriveradio' },
   ],
@@ -75,8 +79,8 @@ module.exports = {
     {
       path: '/termsandprivacy',
       oneTrustIds: [
-        'd8f2d6c5-d9af-4d60-a93f-7441ca9ad94c',
-        '45d9b939-c3de-4b71-8cbf-e2ffe621ff9c',
+        '0e533e95-c4d0-415f-9f16-a9f2e3840ff8',
+        'd6a774b4-bf5c-46a8-b8b9-0b12da49ef4b',
       ],
     },
   ],

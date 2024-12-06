@@ -29,10 +29,12 @@ x-env-defaults: &env
   ENABLE_CONTENT_METER: ${ENABLE_CONTENT_METER-false}
   CONTENT_METER_VIEW_LIMIT: ${CONTENT_METER_VIEW_LIMIT-3}
   SHOW_INBODY_THR_PROMO: ${SHOW_INBODY_THR_PROMO-false}
+  SHOW_INBODY_LOAD_ANALYZER_PROMO: ${SHOW_INBODY_LOAD_ANALYZER_PROMO-false}
   SHOW_PARTNER_INSIGHTS_AS_PROMO: ${SHOW_PARTNER_INSIGHTS_AS_PROMO-false}
   IDX_NAV_ENABLE: ${IDX_NAV_ENABLE-false}
   RECAPTCHA_V3_SITE_KEY: ${RECAPTCHA_V3_SITE_KEY-(unset)}
   RECAPTCHA_V3_SECRET_KEY: ${RECAPTCHA_V3_SECRET_KEY-(unset)}
+  USE_LINK_INJECTED_BODY: ${USE_LINK_INJECTED_BODY-false}
   INBODY_PUSHDOWN_INJECTION: ${INBODY_PUSHDOWN_INJECTION-false}
   NATIVEX_SERVE_URI: ${NATIVEX_SERVE_URI-}
 
@@ -108,22 +110,6 @@ services:
     ports:
       - "9902:80"
       - "19902:19902"
-
-  tn:
-    <<: *site-cmd
-    working_dir: /root/sites/truckersnews.com
-    environment:
-      <<: *env
-      HOST: www-rr-tn.dev.parameter1.com
-      PORT: 80
-      EXPOSED_PORT: 9903
-      GAM_TRACK_API_KEY: ${GAM_TRACK_API_KEY-}
-      LIVERELOAD_PORT: 19903
-      OMEDA_INPUT_ID: ${TN_OMEDA_INPUT_ID-(unset)}
-    hostname: www-rr-tn.dev.parameter1.com
-    ports:
-      - "9903:80"
-      - "19903:19903"
 
   ccj:
     <<: *site-cmd

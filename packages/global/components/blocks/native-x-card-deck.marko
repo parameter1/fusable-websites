@@ -2,7 +2,7 @@ import { defaultValue } from "@parameter1/base-cms-marko-web/utils";
 import { getAsArray, getAsObject } from "@parameter1/base-cms-object-path";
 import convertAdToNode from "@parameter1/base-cms-marko-web-native-x/utils/convert-ad-to-node";
 
-$ const { nativeX: nxConfig, i18n } = out.global;
+$ const { nativeX: nxConfig } = out.global;
 $ const { section, nodes } = input;
 $ const aliases = defaultValue(input.aliases, []);
 $ const cols = input.cols != null ? input.cols : nodes.length;
@@ -31,7 +31,7 @@ $ const description = input.description || section && section.description || inp
           <if(viewMore && section && section.canonicalPath)>
             <marko-web-element block-name=blockName name="view-more">
               <marko-web-link href=section.canonicalPath>
-                ${i18n("View more")} &raquo;
+                View more &raquo;
               </marko-web-link>
             </marko-web-element>
           </if>
@@ -69,7 +69,7 @@ $ const description = input.description || section && section.description || inp
     <if(viewMore && section && section.canonicalPath)>
       <marko-web-element block-name=blockName name="view-more-bottom">
         <marko-web-link href=section.canonicalPath>
-          ${i18n("View more")} &raquo;
+          View more &raquo;
         </marko-web-link>
       </marko-web-element>
     </if>

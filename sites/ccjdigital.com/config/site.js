@@ -14,8 +14,12 @@ module.exports = {
   // module configs
   contentMeter,
   gam,
+  useLinkInjectedBody: process.env.USE_LINK_INJECTED_BODY === 'true',
   identityX,
   identityXOptInHooks,
+  mindful: {
+    namespace: 'rr/default',
+  },
   nativeX,
   navigation,
   newsletter,
@@ -35,25 +39,25 @@ module.exports = {
   },
   logos: {
     navbar: {
-      src: 'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ccj-logo-new.svg?h=45&auto=format,compress',
+      src: 'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ByFusableMediaBrandsLogos_CCJ.svg?h=45&auto=format,compress',
       srcset: [
-        'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ccj-logo-new.svg?h=45&auto=format,compress&dpr=2 2x',
+        'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ByFusableMediaBrandsLogos_CCJ.svg?h=45&auto=format,compress&dpr=2 2x',
       ],
       width: 122,
       height: 35,
     },
     footer: {
-      src: 'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ccj-logo-new.svg?h=60&auto=format,compress',
+      src: 'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ByFusableMediaBrandsLogos_CCJ.svg?h=60&auto=format,compress',
       srcset: [
-        'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ccj-logo-new.svg?h=60&auto=format,compress&dpr=2 2x',
+        'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/ccj/ByFusableMediaBrandsLogos_CCJ.svg?h=60&auto=format,compress&dpr=2 2x',
       ],
     },
     corporate: {
       alt: 'Randall-Reilly Logo',
       href: 'https://www.randallreilly.com',
-      src: 'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/rr-logo-new.svg?w=200&auto=format,compress',
+      src: 'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress',
       srcset: [
-        'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/rr-logo-new.svg?w=200&auto=format,compress&dpr=2 2x',
+        'https://img.ccjdigital.com/files/base/randallreilly/all/image/static/Fusable_CMYK_Reversed-Horizontal.svg?w=200&auto=format,compress&dpr=2 2x',
       ],
     },
   },
@@ -72,8 +76,8 @@ module.exports = {
     {
       path: '/termsandprivacy',
       oneTrustIds: [
-        'd8f2d6c5-d9af-4d60-a93f-7441ca9ad94c',
-        '45d9b939-c3de-4b71-8cbf-e2ffe621ff9c',
+        '0e533e95-c4d0-415f-9f16-a9f2e3840ff8',
+        'd6a774b4-bf5c-46a8-b8b9-0b12da49ef4b',
       ],
     },
   ],

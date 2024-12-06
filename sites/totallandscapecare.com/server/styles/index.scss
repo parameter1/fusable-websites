@@ -14,3 +14,8 @@ $skin-newsletter-signup-bg-color: #f0f1f2;
 $skin-newsletter-signup-inline-btn-color: #36471f;
 
 @import "@randall-reilly/package-global/scss/core";
+
+.site-footer__logo {
+  height: auto;
+  width: 130px;
+}

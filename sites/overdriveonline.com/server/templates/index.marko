@@ -4,8 +4,6 @@ $ const { id, alias, name, pageNode } = input;
 $ const { site } = out.global;
 $ const showInbodyTHRPromo = site.get("showInbodyTHRPromo") || false;
 
-$ const showParnerInsightsAsPromo = process.env.SHOW_PARTNER_INSIGHTS_AS_PROMO === 'true';
-
 <global-website-section-home-layout
   id=id
   alias=alias
@@ -25,7 +23,7 @@ $ const showParnerInsightsAsPromo = process.env.SHOW_PARTNER_INSIGHTS_AS_PROMO =
   <@section modifiers=["native"]>
     <theme-native-x-card-deck-block
       section={ name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
-      placement-name="native"
+      placement-name="partner-insights"
       limit=4
     />
   </@section>
@@ -46,15 +44,6 @@ $ const showParnerInsightsAsPromo = process.env.SHOW_PARTNER_INSIGHTS_AS_PROMO =
       modifiers=["inter-block"]
     />
   </@section>
-
-  <if(!showParnerInsightsAsPromo)>
-    <@section>
-      <theme-native-x-card-deck-block
-        section={ name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
-        placement-name="partner-insights"
-      />
-    </@section>
-  </if>
 
   <@section>
     <theme-section-card-list-block alias="partners-in-business" />

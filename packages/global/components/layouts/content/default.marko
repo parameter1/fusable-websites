@@ -1,5 +1,6 @@
 import { getAsArray, getAsObject, get } from "@parameter1/base-cms-object-path";
 import contentIframe from "@randall-reilly/package-global/utils/content-iframe";
+import hasOmedaId from "@parameter1/base-cms-marko-web-theme-monorail/utils/has-omeda-id";
 import getContentPreview from "@parameter1/base-cms-marko-web-theme-monorail/utils/get-content-preview";
 import storiesQueryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/related-stories-block";
 import renderSiteNewsletterMenu from "@parameter1/base-cms-marko-web-theme-monorail/utils/render-site-newsletter-menu";
@@ -8,6 +9,7 @@ import widget from "@randall-reilly/package-rigdig/components/widget";
 // move to core if we go this route.
 import Stories from "../../blocks/stories";
 import NativeXCardDeck from "../../blocks/native-x-card-deck";
+import LoadAnaylzerInboyPromo from "../../blocks/load-analyzer-inbody-promo";
 
 $ const { initiallyInjected } = getAsObject(out.global, "newsletterState");
 
@@ -15,7 +17,7 @@ import { cmShowOverlay, cmRestrictContentByReg, cmTruncateBody } from "../../../
 
 $ const { global: $global } = out;
 $ const { nativeX: nxConfig } = $global;
-$ const { site, contentMeterState, GAM } = $global;
+$ const { site, contentMeterState, GAM, req, config } = $global;
 $ const showOverlay = cmShowOverlay(contentMeterState);
 $ const { id, type, pageNode, showReadNextBlock, showBottomAdBlock, showTopStoryBlock, ...rest } = input;
 $ const sections = getAsArray(input, "sections");
@@ -27,7 +29,7 @@ $ const displaySocialShare = ["contact"].includes(type) ? false : true;
 $ const displayComments = ["contact"].includes(type) ? false : true;
 $ const displayNewsletterSignup = ["contact"].includes(type) || showOverlay ? false : true;
 $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type);
-
+$ const bypassGate = hasOmedaId(req);
 <global-content-wrapper-layout
   id=id
   type=type
@@ -69,7 +71,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
     </div>
   </@section>
 
-  <@section|{ aliases, content, authors }| modifiers=["content-body"]>
+  <@section|{ aliases, content, authors, alias }| modifiers=["content-body"]>
     $ const { primarySection } = content;
     <div class="content-page-body" role="region" aria-label="Content Body">
       <theme-page-contents|{ blockName }| attrs={ "data-gallery-id": id }>
@@ -97,7 +99,7 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
           </else-if>
         </if>
         $ const contentRequiresRegistration = get(content, "userRegistration.isCurrentlyRequired");
-        $ const requiresRegistration = contentRequiresRegistration || cmRestrictContentByReg(contentMeterState, content);
+        $ const requiresRegistration = !bypassGate && (contentRequiresRegistration || cmRestrictContentByReg(contentMeterState, content));
         $ const accessLevels = getAsArray(content, "userRegistration.accessLevels");
         <marko-web-identity-x-access|context|
           enabled=requiresRegistration
@@ -157,10 +159,11 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
             $ const mobileLeaderboardModifiers = (GAM.btfLeaderboard) ? ["margin-auto-x",  "inline-content", "inline-leaderboard-mobile"] : ["margin-auto-x",  "inline-content", "inline-mobile"];
 
             $ const uri = nxConfig.getUri();
-            $ const placement = nxConfig.getPlacement({ name: "native", aliases });
+            $ const placement = nxConfig.getPlacement({ name: "partner-insights", aliases });
             <marko-web-native-x-fetch-elements|{ ads }| uri=uri id=placement.id opts={ n: 4 }>
               $ const hasAd = ads && ads.length && ads[0] && ads[0].hasCampaign;
               $ let htmlInjections = [];
+              $ const showInbodyLAPromo = site.get("showInbodyLAPromo") || false;
               $ const showInbodyTHRPromo = site.get("showInbodyTHRPromo") || false;
               $ const desktopAdCounts = showInbodyTHRPromo ? [2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500] : [1500, 2750, 4500, 6250, 8000, 9750, 11500, 13250, 15000, 16750, 18500];
               $ const mobileAdCounts = showInbodyTHRPromo ? [1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250] : [900, 1650, 2950, 4250, 5550, 6850, 8150, 9450, 10750, 12050, 13350, 14650, 15950, 17250];
@@ -186,14 +189,26 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
                 );
               };
 
+              $ if (showInbodyLAPromo) {
+                htmlInjections.push(
+                  {
+                    at: 1200,
+                    html: LoadAnaylzerInboyPromo.renderToString()
+                  }
+                );
+              }
+
+              $ const viewMore = Boolean((get(config, "websiteContext.id") === "5fce5519d28860bc33b80a42") && hasAd);
               <if(hasAd)>
                 $ const nodes = ads.filter((ad) => ad.hasCampaign);
                 $ htmlInjections.push(
                   {
                     at: 2000,
                     html: NativeXCardDeck.renderToString({
+                      cols: 4,
                       nodes: nodes,
-                      section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers" }
+                      section: { name: "Partner Insights", description: "Information to advance your business from industry suppliers", canonicalPath: "/partner-insights" },
+                      viewMore: viewMore,
                     })
                   }
                 );
@@ -279,11 +294,16 @@ $ const shouldInjectAds = ["article", "video", "news", "podcast"].includes(type)
               />
             </if>
 
+            $ const { primarySection } = content;
             <if(displayNewsletterSignup)>
               <marko-web-identity-x-context|{ hasUser }|>
-                <if(!hasUser)>
-                  <identity-x-newsletter-form-inline type="inlineContent" />
+                $ const selector = ["a", "b"].sort((a, b) => 0.5 - Math.random())
+                <if(hasUser || (!hasUser && selector[0] === "a"))>
+                  <global-job-search-block />
                 </if>
+                <else-if(!hasUser)>
+                  <identity-x-newsletter-form-inline type="inlineContent" />
+                </else-if>
               </marko-web-identity-x-context>
             </if>
 

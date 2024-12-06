@@ -29,12 +29,12 @@ const defaults = {
       description: 'Top tech developments in the trucking industry',
       eventCategory: 'Weekly Technology Subscription',
     },
-    {
-      deploymentTypeId: 32,
-      name: 'CCJ Weekend Newsletter',
-      description: 'The top news of the week in the trucking industry',
-      eventCategory: 'CCJ Weekend Newsletter',
-    },
+    // {
+    //   deploymentTypeId: 32,
+    //   name: 'CCJ Weekend Newsletter',
+    //   description: 'The top news of the week in the trucking industry',
+    //   eventCategory: 'CCJ Weekend Newsletter',
+    // },
   ],
   demographic: {
     id: 72,
