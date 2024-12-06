@@ -13,7 +13,11 @@ const topics = {
   expanded: [
   ],
   secondary: [
-    { href: '/compact-wheel-loaders', label: 'Compact Wheel Loaders' },
+    { href: '/construction-equipment/compact-equipment', label: 'Compact Equipment' },
+    { href: '/gear', label: 'Gear' },
+    { href: '/attachments', label: 'Attachments' },
+    { href: '/maintenance', label: 'Maintenance' },
+    { href: '/trucks', label: 'Trucks' },
     { href: '/workforce/safety', label: 'Safety' },
     { href: '/safety-watch', label: 'Safety Watch' },
     { href: '/videos', label: 'Videos' },

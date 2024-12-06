@@ -57,7 +57,7 @@ $ const { gamDefer, gtmDefer } = req.query;
       request-frame=true
       target-tag="body"
       on="load"
-      init-only=true
+      init-only=site.get("gam.initOnly", true)
     />
 
     <!-- init native-x -->

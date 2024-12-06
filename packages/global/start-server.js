@@ -7,6 +7,7 @@ const htmlSitemapPagination = require('@parameter1/base-cms-marko-web-html-sitem
 const omedaIdentityX = require('@parameter1/base-cms-marko-web-omeda-identity-x');
 const omedaCookie = require('@parameter1/base-cms-marko-web-omeda/olytics/customer-cookie');
 const fetch = require('node-fetch');
+const MindfulMarkoWebService = require('@parameter1/base-cms-mindful/marko-web/middleware/service');
 
 const document = require('./components/document');
 const components = require('./components');
@@ -18,6 +19,7 @@ const oembedHandler = require('./oembed-handler');
 const idxRouteTemplates = require('./templates/user');
 const recaptcha = require('./config/recaptcha');
 const idxNavItems = require('./config/identity-x-nav');
+const hwtRedirectHandler = require('./middleware/hwt-redirect-handler');
 
 const { error } = console;
 
@@ -49,6 +51,12 @@ module.exports = (options = {}) => {
     onStart: async (app) => {
       if (typeof onStart === 'function') await onStart(app);
       app.set('trust proxy', 'loopback, linklocal, uniquelocal');
+
+      const { namespace } = getAsObject(options, 'siteConfig.mindful');
+      app.use(MindfulMarkoWebService({ namespace }));
+
+      // Use HWT redirect handler
+      app.use((req, res, next) => hwtRedirectHandler({ req, res, next }));
 
       // Use paginated middleware
       app.use(paginated());

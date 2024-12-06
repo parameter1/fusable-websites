@@ -11,12 +11,15 @@ const search = require('./search');
 
 module.exports = {
   // module configs
-  includeOsano: process.env.USE_OSANO === 'true',
+  includeOsano: true,
   contentMeter,
   gam,
   useLinkInjectedBody: process.env.USE_LINK_INJECTED_BODY === 'true',
   identityX,
   // identityXOptInHooks,
+  mindful: {
+    namespace: 'rr/default',
+  },
   nativeX,
   navigation,
   newsletter,
@@ -27,7 +30,7 @@ module.exports = {
   idxNavItems: {
     enable: process.env.IDX_NAV_ENABLE || false,
   },
-  company: 'Randall-Reilly, LLC',
+  company: 'Randall Reilly Talent, LLC',
   p1events: {
     tenant: 'randallreilly',
     enabled: true,
@@ -51,9 +54,9 @@ module.exports = {
     corporate: {
       alt: 'Randall-Reilly Logo',
       href: 'https://www.randallreilly.com',
-      src: 'https://img.truckersnews.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress',
+      src: 'https://img.truckersnews.com/files/base/randallreilly/all/image/static/RR_FullColor_Light.webp?w=200&auto=format,compress',
       srcset: [
-        'https://img.truckersnews.com/files/base/randallreilly/all/image/static/rr-logo.svg?w=200&auto=format,compress&dpr=2 2x',
+        'https://img.truckersnews.com/files/base/randallreilly/all/image/static/RR_FullColor_Light.webp?w=200&auto=format,compress&dpr=2 2x',
       ],
     },
   },

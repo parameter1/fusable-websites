@@ -16,6 +16,9 @@ module.exports = {
   useLinkInjectedBody: process.env.USE_LINK_INJECTED_BODY === 'true',
   identityX,
   // identityXOptInHooks,
+  mindful: {
+    namespace: 'rr/default',
+  },
   nativeX,
   navigation,
   newsletter,

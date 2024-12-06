@@ -1,6 +1,8 @@
 const privacyPolicy = require('./privacy-policy');
 const oneTrust = require('./one-trust');
 
+const showInbodyLAPromo = (process.env.SHOW_INBODY_LOAD_ANALYZER_PROMO === 'true') || false;
+
 const topics = {
   primary: [
     { href: '/equipment', label: 'Equipment' },
@@ -8,17 +10,24 @@ const topics = {
     { href: '/regulations', label: 'Regulations' },
     { href: '/life', label: 'Life' },
     { href: '/custom-rigs', label: 'Custom Rigs' },
-    { href: '/gear', label: 'Gear' },
+    { href: '/overdrive-extra', label: 'Overdrive Extra' },
   ],
   expanded: [
     { href: '/channel-19', label: 'Channel 19' },
     { href: '/partners-in-business', label: 'Partners in Business' },
-    { href: '/overdrive-extra', label: 'Overdrive Extra' },
+    { href: '/electronic-logging-devices', label: 'ELDs' },
+    { href: '/trucking-law', label: 'Trucking Law' },
+    { href: '/trucker-of-the-year', label: 'Trucker of the Year' },
+    { href: '/small-fleet-champ', label: 'Small Fleet Champ' },
   ],
   secondary: [
     { href: '/reader-rigs', label: 'Reader Rigs' },
     { href: '/overdrive-radio', label: 'Overdrive Radio' },
-    { href: 'https://www.overdriveonline.com/load-analyzer', label: 'Load Profit Analyzer' },
+    ...(
+      showInbodyLAPromo
+        ? [{ href: 'https://www.overdriveonline.com/load-analyzer', label: 'Load Profit Analyzer' }]
+        : [{ href: '/videos', label: 'Videos' }, { href: '/white-papers', label: 'Whitepapers' }]
+    ),
     { href: 'https://truckhistory.overdriveonline.com/', label: 'Truck History Report', target: '_blank' },
   ],
 };

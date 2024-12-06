@@ -79,7 +79,7 @@
                     class="form-control load-analyzer__varCostPerMile"
                     type="number"
                     min="0.00"
-                    step="0.05"
+                    step="0.01"
                     max="2500000"
                     :readonly="loading"
                     :placeholder="placeholder"
@@ -146,7 +146,7 @@
                     v-model="load.deadheadMiles"
                     class="form-control load-analyzer__deadheadMiles"
                     type="number"
-                    min="1"
+                    min="0"
                     step="1"
                     max="2500000"
                     :readonly="loading"
@@ -260,11 +260,11 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Overdrive’s Load Profit Analyzer',
+      default: 'Overdrive\'s Load Profit Analyzer',
     },
     description: {
       type: String,
-      default: 'Know your costs? Compute the profit in any load per-day and per-mile.',
+      default: 'Know your costs, owner-operators? Compute the potential profit in any truckload, access per-day and per-mile breakouts, and compare brokers\' offers on multiple loads. Enter your trucking business\'s fixed and variable costs, and load information, to get started.',
     },
     placeholder: {
       type: Number,
@@ -290,7 +290,7 @@ export default {
     loads: [],
     defaultLoad: {
       quarterDays: null,
-      deadheadMiles: null,
+      deadheadMiles: 0,
       loadedMiles: null,
       grossRate: null,
     },

@@ -8,10 +8,11 @@ const topics = {
     { href: '/technology', label: 'Technology' },
     { href: '/workforce', label: 'Workforce' },
     { href: '/products', label: 'Products' },
-    { href: '/perspectives', label: 'Perspectives' },
+    { href: '/regulations', label: 'Regulations' },
     { href: '/ccj-top-250', label: 'CCJ Top 250' },
   ],
   expanded: [
+    { href: '/alternative-power', label: 'Alt Power' },
   ],
   secondary: [
     { href: '/maintenance', label: 'Maintenance' },
