@@ -43,6 +43,7 @@
 
   &__website-section-name {
     @include skin-typography($style: "slug-small", $link-style: "primary");
+    font-size: 16px;
     display: block;
     margin-bottom: 12px;
   }
