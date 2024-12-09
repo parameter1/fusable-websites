@@ -4,6 +4,7 @@ import PromoB from "@randall-reilly/package-global/components/blocks/ovd-pib-man
 import PromoC from "@parameter1/base-cms-marko-web-theme-monorail/components/blocks/white-papers"
 import PromoD from "@randall-reilly/package-global/components/blocks/partner-insights-promo";
 import PromoF from "@randall-reilly/package-global/components/blocks/thr-vin-lookup-promo";
+import PromoG from "@randall-reilly/package-global/components/blocks/ovd-pride-polish-promo";
 
 
 $ const { site } = out.global;
@@ -29,6 +30,10 @@ $ const cards = [
         limit: 20,
         'block-title': 'Partner Insights',
       },
+    },
+    {
+      component: PromoG,
+      props: {},
     }
   ];
 <!-- toggle adding THR promo card based on inbody display of THR promo -->

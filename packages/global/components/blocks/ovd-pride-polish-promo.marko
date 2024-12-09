@@ -1,0 +1,31 @@
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
+
+$ const blockName = "pib-page-card";
+$ const logoRoot = "https://img.overdriveonline.com/files/base/randallreilly/all/image/static";
+$ const imgSrc = "Pride__26_Polish_2024.jpg?auto=format&w=120&fit=crop";
+
+<marko-web-block name=blockName>
+  <marko-web-element block-name=blockName name="inner-wrapper">
+    <div>
+      <marko-web-element block-name=blockName name="title">
+        Pride & Polish
+      </marko-web-element>
+      <marko-web-element block-name=blockName name="description">
+        <em>Overdrive</em>’s annual Pride & Polish virtual truck show attracts entries from across the nation showcasing show-quality design, mechanical ingenuity and plenty of trucking-business pride. Find recent-history awards shows, in-depth features about the winners, and more.
+      </marko-web-element>
+      <marko-web-link
+        class=`btn btn-primary ${blockName}__download-btn`
+        href="https://overdriveonline.com/pride-polish"
+        title="Read More"
+      >
+        Read More
+      </marko-web-link>
+    </div>
+    <marko-web-img
+      class=`${blockName}__issue-cover`
+      src=`${logoRoot}/${imgSrc}`
+      srcset=[`${logoRoot}/${imgSrc}&dpr=2 2x`]
+      alt="Pride & Polish Promo Image"
+    />
+  </marko-web-element>
+</marko-web-block>
