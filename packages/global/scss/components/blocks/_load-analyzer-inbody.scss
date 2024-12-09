@@ -3,6 +3,7 @@
   $self: &;
   height: 100%;
   padding: 24px 24px 0 24px ;
+  margin-bottom: map-get($spacers, block);
   background-color: $gray-100;
   display: flex;
   flex-direction: column;
@@ -38,6 +39,12 @@
         }
       }
     }
+  }
+
+  &__website-section-name {
+    @include skin-typography($style: "slug-small", $link-style: "primary");
+    display: block;
+    margin-bottom: 12px;
   }
 
   &__description {
